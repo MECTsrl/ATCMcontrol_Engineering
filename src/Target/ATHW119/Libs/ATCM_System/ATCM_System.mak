@@ -12,7 +12,6 @@ targettype=ATHW119
 makefirst: force
   xcopy $(TARGET_BASE)\Libs\$(libname)\*.*  $(MAKEDIR)\*.* /s /Y
 make_lib: force
- $(4CG) $(MAKEDIR)\$(libname).4cp  -ml:$(targettype) $(ENGBIN_DIR)\$(targettype)\libs\de\$(libname).$(targettype).4cl
  $(4CG) $(MAKEDIR)\$(libname).4cp  -ml:$(targettype) $(ENGBIN_DIR)\$(targettype)\libs\eng\$(libname).$(targettype).4cl
  $(4CG) $(MAKEDIR)\$(libname).4cp  -ml:$(targettype) $(ENGBIN_DIR)\$(targettype)\libs\$(libname).$(targettype).4cl
  $(4CG) -al $(ENGBIN_DIR)\$(targettype)\libs\eng\$(libname).$(targettype).4cl  $(4CL_DIR)\$(libname).4cl

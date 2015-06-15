@@ -9,9 +9,7 @@ STATIC_RUNTIME = 0
 !include <$(PROJECT_ROOT)\gentools\global.inc>
 libname=Modbus
 make_lib: force
- xcopy $(MAKEDIR)\*.*     $(MAKEDIR)\de\*.*	/Y
  xcopy $(MAKEDIR)\*.*     $(MAKEDIR)\eng\*.*	/Y
- $(4CG) $(MAKEDIR)\de\$(libname).4cp   -ml:0 $(4CL_DIR)\de\$(libname).4cl
  $(4CG) $(MAKEDIR)\eng\$(libname).4cp  -ml:0 $(4CL_DIR)\eng\$(libname).4cl
  copy  $(4CL_DIR)\eng\$(libname).4cl    $(4CL_DIR)\$(libname).4cl	/Y
 doxygen: Modbus.doxy

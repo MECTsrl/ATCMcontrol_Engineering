@@ -28,7 +28,6 @@ make_lib: force
  xcopy  $(MAKEDIR)\table_35\*.*     $(MAKEDIR)\*.* /Y
  xcopy  $(MAKEDIR)\table_36\*.*     $(MAKEDIR)\*.* /Y
  xcopy  $(MAKEDIR)\table_37\*.*     $(MAKEDIR)\*.* /Y
- $(4CG) $(MAKEDIR)\$(libname).4cp  -ml:$(targettype) $(ENGBIN_DIR)\$(targettype)\libs\de\$(libname).$(targettype).4cl
  $(4CG) $(MAKEDIR)\$(libname).4cp  -ml:$(targettype) $(ENGBIN_DIR)\$(targettype)\libs\eng\$(libname).$(targettype).4cl
  $(4CG) $(MAKEDIR)\$(libname).4cp  -ml:$(targettype) $(ENGBIN_DIR)\$(targettype)\libs\$(libname).$(targettype).4cl
  $(4CG) -al $(ENGBIN_DIR)\$(targettype)\libs\eng\$(libname).$(targettype).4cl  $(4CL_DIR)\$(libname).4cl
