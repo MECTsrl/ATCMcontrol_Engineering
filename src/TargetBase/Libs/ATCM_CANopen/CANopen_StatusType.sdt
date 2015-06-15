@@ -1,0 +1,11 @@
+(*[[
+]]*)
+TYPE
+    CANopen_StatusType : STRUCT
+        NetStatus    : WORD;
+        MasterStatus : WORD;
+		ConfgNode    : ARRAY [0..15] of BYTE;
+		ActivNode    : ARRAY [0..15] of BYTE;
+		DiagnNode    : ARRAY [0..15] of BYTE;
+    END_STRUCT;
+END_TYPE

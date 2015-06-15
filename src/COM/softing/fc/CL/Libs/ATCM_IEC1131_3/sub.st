@@ -1,0 +1,13 @@
+(*[[
+    UserURL= "ATCMFile:SUB.htm"
+]]*)
+
+FUNCTION SUB : ANY_MAGNITUDE
+VAR_INPUT 
+    IN1: ANY_MAGNITUDE; 
+    IN2: ANY_MAGNITUDE; 
+END_VAR
+
+inline -
+
+END_FUNCTION

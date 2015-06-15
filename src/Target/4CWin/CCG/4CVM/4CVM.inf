@@ -1,0 +1,57 @@
+# $Header: /4CReleased/V2.20.00/Target/4CWin/CCG/4CVM/4CVM.inf 1     28.02.07 19:09 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: 4CVM.inf $
+#                        $Logfile: /4CReleased/V2.20.00/Target/4CWin/CCG/4CVM/4CVM.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Targe / CCG
+#
+# =COMPONENT            4CVM
+#
+# =CURRENT      $Date: 28.02.07 19:09 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+
+
+
+#
+# ------------------------------------------------------------------------------
+#
+
+TARGET=$(EXE_DIR)\Engineering\bin\4CWin\4cvm.exe
+TARGETTYPE=con
+UNICODE=0
+
+INCLUDE=..\..\inc
+INCLUDE=..\..\res
+
+INCLUDE=$(TARGET_BASE)\CCG\inc
+INCLUDE=$(TARGET_BASE)\Kernel\inc
+
+INCLUDE=$(TARGET_BASE)\CCG\4CVMLib
+
+# custom libs:
+LIBRARY=$(TARGET_BASE)\Kernel\lib\fc_tools.lib 
+LIBRARY=$(TARGET_BASE)\Kernel\lib\fc_todebug.lib 
+LIBRARY=$(TARGET_BASE)\Kernel\lib\fc_util.lib
+LIBRARY=$(TARGET_BASE)\Kernel\lib\cg_tools.lib 
+
+LIBRARY=$(TARGET_BASE)\lib\4cvm.lib
+
+# system libs:
+DEFLIB=ole32.lib 
+
+#used for including from vmm headers
+DEFINE=INC_4C
+
+USER=makefirst:$(EXE_DIR)\Engineering\bin\4CWin
+USER=$(EXE_DIR)\Engineering\bin\4CWin:
+USER=  -md $@
+
+# -------------------------------------------------------------------------------

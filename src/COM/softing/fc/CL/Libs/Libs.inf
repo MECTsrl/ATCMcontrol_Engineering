@@ -1,0 +1,13 @@
+SUBPROJECT=ATCM_System\ATCM_System.mak
+SUBPROJECT=ATCM_IEC1131_3\ATCM_IEC1131_3.mak
+SUBPROJECT=ATCM_Utility\ATCM_Utility.mak
+
+#create stubs in to order of lowest level lib to higher level lib:
+USER=make_lib: force
+USER= cd $(MAKEDIR)\ATCM_System
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_System.mak make_lib DEBUG=$(DEBUG)
+USER= cd $(MAKEDIR)\ATCM_IEC1131_3
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_IEC1131_3.mak make_lib DEBUG=$(DEBUG)
+USER= cd $(MAKEDIR)\ATCM_Utility
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_Utility.mak make_lib DEBUG=$(DEBUG)
+

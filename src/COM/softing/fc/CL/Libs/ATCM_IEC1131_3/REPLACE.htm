@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>REPLACE_DINT</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>REPLACE</h2>
+<p>Replaces a certain number of characters in a string by characters from another 
+  String, beginning from a set position.<br>
+</p>
+<h3>Interface definition</h3>
+<pre class="preforma">
+FUNCTION REPLACE_DINT : ANY_STRING
+VAR_INPUT  
+    IN1 : ANY_STRING; 
+    IN2 : ANY_STRING; 
+    L   : ANY_INT;
+    P   : ANY_INT;
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>ANY_STRING</b></i><br>
+  Edited String</p>
+
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>IN1</b></dt>
+  <dd>Value of type <b><i>ANY_STRING</i></b><br>
+    String in which characters are to be replaced. </dd>
+  <dt><b>IN2</b></dt>
+  <dd>Value of type <b><i>ANY_STRING</i></b><br>
+    String which contains the characters that are to be inserted in <i><b>IN1</b></i> 
+    in place of the characters to be replaced.</dd>
+  <dt><b>L</b></dt>
+  <dd>Value of type <b><i>ANY_INT</i></b><br>
+    Number of characters to be replaced.</dd>
+  <dt><b>P</b></dt>
+  <dd>Value of type <i><b>ANY_INT</b></i><br>
+    Position of the character in<i> <b>IN1</b></i><b> </b>as from which characters 
+    are to be replaced. <br>
+  </dd>
+</dl>
+<h3>Description</h3>
+<p>Replaces in <i><b>IN1</b></i> the number of characters specified in<b> <i>L</i></b> 
+  by the characters contained in <i><b>IN2</b></i>, starting from position <i><b>P</b></i>. 
+  If <i><b>L</b></i> contains a value that exceeds the number of characters contained 
+  in the passed string, starting from the position <i><b>P</b></i>, a runtime 
+  error is generated and the calling task is stopped. The same applies to the 
+  case that <i><b>P</b></i> contains a value that exceeds the number of characters 
+  contained in the passed string.</p>
+</body>
+</html>

@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		{46A1F8B5-CB4E-11D4-B353-0008C77981F8} = s 'ProjectWizardTest'
+		'ProjectWizardTest.EXE'
+		{
+			val AppID = s {46A1F8B5-CB4E-11D4-B353-0008C77981F8}
+		}
+	}
+}

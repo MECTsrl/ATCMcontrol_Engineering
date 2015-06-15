@@ -1,0 +1,23 @@
+HKCR
+{
+	4C_20_Win.CommissioningMgt.%PARAM% = s '4CONTROL: 4C Win Commissioning Managment at %PARAM%'
+	{
+		CLSID = s '%GUID%'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove '%GUID%' = s '4CONTROL: 4C Win Commissioning Managment at %PARAM%'
+		{
+			ProgID = s '4C_20_Win.CommissioningMgt.%PARAM%'
+			VersionIndependentProgID = s '4C_20_Win.CommissioningMgt.%PARAM%'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE% -param %PARAM%'
+			val AppID = s '{cc473905-0371-4868-ba16-44190dbcd8bf}'
+
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

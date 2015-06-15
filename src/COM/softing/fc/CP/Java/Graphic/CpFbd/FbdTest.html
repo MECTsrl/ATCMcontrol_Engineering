@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>ApFbd Testpage</title>
+
+<script>
+var count = 0;
+function update()
+{
+	if (count == 0)
+		fbd.update(0,true, "1;1;1;7;0", "5", null, "10", "10");
+	else if (count == 1)
+		fbd.update(0, false, "1;2;1;8;0", "5", null, "7", "11");
+	else if (count == 2)
+		fbd.update(0, false, "1;3;1;9;0", null, "6", "8", "7");
+	count = (count + 1) % 3;
+	setTimeout("update()", 2000);
+}
+
+function fbdEventHandler(event, param1, param2)
+{
+//	alert(fbd.joinIdLists("1;2;3", "3;4", "add"));
+//	alert(fbd.joinIdLists("1;2;3", "1;3;4", "sub"));			
+	alert(event + ": " + param1 + " ," + param2);	
+}
+
+</script>
+
+</head>
+
+<body onload="update()"><APPLET code=FbdApplet.class data=test.4gr height=433 id=fbd width=820 VIEWASTEXT MAYSCRIPT handler="fbdEventHandler" OPERATE="1">
+	</APPLET>
+</body>

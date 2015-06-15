@@ -1,0 +1,7 @@
+PACKAGE=COM.softing.fc.CC.utility
+
+USER=javaclasses: myjavaclasses
+USER=SRC_ROOT     = $(PROJECT_ROOT)\COM\softing\fc\AddOns\softing\4cpctarget\libs\ATCM_utility\java
+USER=JFLAGS = $(JFLAGS);$(PROJECT_ROOT)\control\classes\classes.zip
+USER=myjavaclasses: 
+USER=	$(JAVAC) $(JFLAGS) $(SRC_ROOT)\*.java

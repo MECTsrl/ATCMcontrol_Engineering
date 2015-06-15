@@ -1,0 +1,31 @@
+// ProjInfoDummy.idl : IDL source for ProjInfoDummy.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (ProjInfoDummy.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+import "CEProjInfo.idl";
+
+[
+	uuid(25E1BEA3-F68A-11D4-B8EE-002018641833),
+	version(1.0),
+	helpstring("ProjInfoDummy 1.0 Type Library")
+]
+library PROJINFODUMMYLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(25E1BEC1-F68A-11D4-B8EE-002018641833),
+		helpstring("ProjInfoDummyComObj Class")
+	]
+	coclass ProjInfoDummyComObj
+	{
+		[default] interface ICEProjInfo;
+		//interface IProjInfo;
+	};
+};

@@ -1,0 +1,52 @@
+<!--ATCM. All rights reserved-->
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; iso-8859-1">
+<script language="JavaScript">
+<!--
+function launchErrorMessage(ErrMsg)
+{
+	IdErrorText.innerText = ErrMsg;
+	IdErrorTitle.innerText = "Sorry !";
+}
+
+function init()
+{
+	IdErrorTitle.innerText = "";
+	IdErrorText.innerText = "";
+
+	// first check browser
+	var Version = navigator.appVersion;
+	var MainVersionNumberWithPoint = new String(Version.match(/^\d*\./));
+	var MainVersionNumber = MainVersionNumberWithPoint.replace(/\./, "");
+
+	if ((navigator.appName.indexOf("Microsoft Internet Explorer") < 0) ||
+	    (MainVersionNumber < 4))
+	{
+		launchErrorMessage("Microsoft Internet Explorer 4.0 or higher required");
+	}
+	else if (!navigator.javaEnabled())
+	{
+		launchErrorMessage("Browser support for Java applets is disabled");
+	}
+	else if (document.location.protocol == "file:")
+	{
+		launchErrorMessage("The file protocol is not supported");
+		document.location = "http://localhost/4c/default.htm"
+	}
+	else
+	{
+		document.location = "CP_HttpServerCheck.asp";
+	}
+}
+// -->
+</script>
+</head>
+<body bgcolor='#E0E0E0' onload="init()">
+<p><font color='#FF0000' size='5'><strong><div id='IdErrorTitle' align='center'>Welcome to ATCMControl...</div></strong></font></p>
+<p><font color='#000000' size='2'><div id='IdErrorText' align='center'>
+If this message does not disappear immediately, then your Browser does not support scripting or scripting is disabled.
+</div></font></p>
+</body>
+</html>

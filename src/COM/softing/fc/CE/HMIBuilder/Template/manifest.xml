@@ -1,0 +1,34 @@
+<?xml version="1.0"?> 
+<hmiproject>
+  <description>[Write descrition here]</description>
+  <sourcedir>src</sourcedir>
+  <bin>
+    <bindir>bin</bindir>
+    <binfile>hmi</binfile>
+  </bin>
+  
+  <images>
+    <imagesdir>img</imagesdir>	
+    <image>[img_file_name.png]</image>
+    <image>[img_file_name.png]</image>
+    <image>[img_file_name.png]</image>
+    <image>[img_file_name.png]</image>
+  </images>
+  <inputs>
+    <input>
+		<label>[input channel label]</label>
+		<address>[input address]</address>
+		<type>[input var type]</type>
+	</input>
+  </inputs>
+  <outputs>
+    <output>
+      <label>[output channel label]</label>
+	  <address>[output address]</address>
+	  <type>[output var type]</type>
+	</output>   
+  </outputs>
+  <targets>
+    <target>FCTPAC020_01</target>
+  </targets>
+</hmiproject>

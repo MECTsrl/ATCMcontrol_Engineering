@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>F_SYNC_READLINE</title>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="stylesheet" href="Lib.css">
+</head>
+<body bgcolor="#ffffcc">
+<h2>F_SYNC_READLINE</h2>
+<p>Reads a line from a file into a string</p>
+<h3>Interface</h3>
+<pre class="preforma">FUNCTION F_SYNC_READLINE:BOOL<br>VAR_IN_OUT<br>    FILE        : F_SYNC_FILE;<br>END_VAR<br>VAR_OUTPUT<br>    DATA        : STRING;<br>END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of the type <i><b>BOOL</b></i><br>
+Signalizes the error status.<br>
+Possible values:<br>
+<i><b>TRUE</b></i>: An error has occurred.<br>
+<i><b>FALSE</b></i>: No error has occurred.</p>
+<h3>Parameter</h3>
+<h3>N_OUT</h3>
+<dl>
+  <dt><b><a name="File"></a>FILE</b></dt>
+  <dd>Instance of the <a href="F_SYNC_FILE.htm"><i><b>F_SYNC_FILE</b></i></a>
+structure<br>
+File object on which the operation is performed.</dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl>
+  <dt><b>DATA</b></dt>
+  <dd>A variable of type<i><b> STRING</b></i>.<br>
+Contains the read bytes on conclusion of the reading operation.</dd>
+</dl>
+<h3>Description</h3>
+<p><b><i>F_SYNC_READFILE</i></b> reads reads a line from the file passed to <i><b>FILE</b></i> depending on the max length
+  of string passed in <i><b>DATA</b></i>.
+Before reading a file, the file must be opened with <i><b><a
+ href="F_SYNC_OPENFILE.htm">F_SYNC_OPENFILE</a></b></i>. Before you
+open the file, you need to set the access mode in the <i><b>MODE</b></i>
+parameter of the structure instance of <i><b><a href="F_SYNC_FILE.htm">F_SYNC_FILE</a></b></i>
+that is passed to <i> <b>F_SYNC_OPENFILE</b></i>. </p>
+<p>The line is read until the
+first newline character (0A hex, 10 dec) and this character will be included
+into <b><i>DATA</i></b> string.<p>
+<p>The file pointer which indicates the current read position is
+represented by the structure variable <i> <b>POSITION</b></i> of the
+structure instance of <i><b>F_SYNC_FILE</b></i> passed to <i><b>FILE</b></i>.
+</p>
+<p>After opening a file, the file pointer is always set to the position
+defined by the <a href="Const_Mode.htm">access mode</a> when opening
+the file. A subsequent read access is therefore always performed at the
+position defined by the access mode unless the file pointer has been
+explicitly set to a different position (see next paragraph). After each
+read access, the value of <i><b>POSITION</b></i> is automatically set
+to a position directly after the last byte read. This allows you to
+sequentially read out a file without having to explicitly set the file
+pointer to the new position. </p>
+<p>The position of a read access can be explicitly set by assigning a
+value to the structure variable <i> <b>POSITION</b></i>. For this
+purpose, the value of <i><b>POSITION</b></i> must be set to the
+desired reading position after opening a file and before the write
+access. On conclusion of the reading operation, the value of <i><b>POSITION</b></i>
+is again set to the position directly after the last byte read. </p>
+<p>&nbsp; </p>
+</body>
+</html>

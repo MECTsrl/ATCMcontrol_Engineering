@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>FIND_DINT</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>FIND</h2>
+<p>Searches a string for a set character string.<br>
+</p>
+<h3>Interface definition</h3>
+<pre class="preforma">
+FUNCTION FIND_DINT : ANY_INT
+VAR_INPUT  
+    IN1 : ANY_STRING; 
+    IN2 : ANY_STRING; 
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>ANY_INT</b></i><br>
+  Yields the position of the sought string.</p>
+
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>IN1</b></dt>
+  <dd>Value of type <b><i>ANY_STRING</i></b><br>
+    String in which the search is to be performed. </dd>
+  <dt><b>IN2</b></dt>
+  <dd>Value of type <b><i>ANY_STRING</i></b><br>
+    Character string which is to be found.</dd>
+  <dt>&nbsp; </dt>
+</dl>
+<h3>Description</h3>
+<p>Returns the position in <i><b>IN1</b></i> at which the character string of<b> 
+  <i>IN2</i></b> is found for the first time. <br>
+  If <i><b>IN2</b></i> is not found, the value <i><b>0</b></i> is returned.</p>
+</body>
+</html>

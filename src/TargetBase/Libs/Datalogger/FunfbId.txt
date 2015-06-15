@@ -1,0 +1,6 @@
+; Library Datalogger
+; <Funzione> <id> <versione min> <versione max>
+Datalog_start 250 0 99999
+Datalog_get   251 0 99999
+Datalog_stop  252 0 99999
+Datalog_eject 253 0 99999

@@ -1,0 +1,5 @@
+SUBPROJECT=4C_Inst3\4C_Inst3.mak
+SUBPROJECT=KADmergeDLL\KADmergeDLL.mak
+SUBPROJECT=KADMerger\KADMerger.mak
+SUBPROJECT=Autorun\Autorun.mak
+SUBPROJECT=Setup\Setup.mak

@@ -1,0 +1,51 @@
+# $Header: /ATCMReleased/V2.20.00/Target/TEMPLATES/Libs/Libs.inf 1     28.02.07 18:54 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: Libs.inf $
+#                        $Logfile: /ATCMReleased/V2.20.00/Target/TEMPLATES/Libs/Libs.inf $
+#
+# =PROJECT              ATCMONTROL V2.x
+#
+# =SWKE                 Target
+#
+# =COMPONENT            Libs
+#
+# =CURRENT      $Date: 28.02.07 18:54 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+SUBPROJECT=ATCM_IEC1131_3\ATCM_IEC1131_3.mak
+SUBPROJECT=ATCM_System\ATCM_System.mak
+SUBPROJECT=ATCM_System2\ATCM_System2.mak
+SUBPROJECT=ATCM_Utility\ATCM_Utility.mak
+SUBPROJECT=ATCM_File\ATCM_File.mak
+SUBPROJECT=HW119\HW119.mak
+SUBPROJECT=Modbus\Modbus.mak
+
+USER=make_lib: force
+USER= $(CP) $(EXE_DIR)\Target\ATHW119\KAD\ATHW119_4cg.kad $(EXE_DIR)\Engineering\bin\4cg.kad
+
+USER= cd $(MAKEDIR)\ATCM_IEC1131_3
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_IEC1131_3.mak make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_System
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_System.mak make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_Utility
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_Utility.mak make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_System2
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_System2.mak make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_File
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_File.mak make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\HW119
+USER= $(MAKE) -$(MAKEFLAGS) -f HW119.mak make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\Modbus
+USER= $(MAKE) -$(MAKEFLAGS) -f Modbus.mak make_lib DEBUG=$(DEBUG)
+
+# -------------------------------------------------------------------------------

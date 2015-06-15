@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<KAD4VM> 
+    <TRGTYP EXT="4cwin" USECHANNELNUM="0">
+
+    <IEC_FEATURES 
+         DATA_TYPES         ="BOOL, INT, DINT, UINT, UDINT, REAL, LREAL, BYTE, WORD, DWORD, TIME, STRING"
+         ARR_IDX_DATA_TYPES ="INT, UINT, DINT, UDINT"
+         LOCAL_RETAIN       ="1"
+         CHECK_ADDRESS_SPACE="1" 
+         LANGUAGES          ="ST, IL, FBD, LD, SFC" 
+    />
+    
+    <TASKIMAGE
+        MAX_READ_REGIONS_PER_TASK    ="2000"
+        MAX_WRITE_REGIONS_PER_TASK   ="2000" 
+    />
+
+    <IOCOMPONENTS>     
+        <CHANNEL NUM="0" INIT="1"  
+            EXT="iotst" CONFIGURATOR=""
+            ISEG_OFFS ="0x00000000" ICHN_SIZE ="0x00040000"
+            OSEG_OFFS ="0x00000000" OCHN_SIZE ="0x00040000"
+            GMSEG_OFFS="0x00000000" GMCHN_SIZE="0x00040000"
+        />
+        <CHANNEL NUM="1" INIT="1"  
+            EXT="iotst" CONFIGURATOR=""
+            ISEG_OFFS ="0x00040000" ICHN_SIZE ="0x00040000"
+            OSEG_OFFS ="0x00040000" OCHN_SIZE ="0x00040000"
+            GMSEG_OFFS="0x00040000" GMCHN_SIZE="0x00040000"
+        />
+        <CHANNEL NUM="5" INIT="1"  
+            EXT="iobac" CONFIGURATOR="{1AE75CF4-B2D1-4B69-9304-71DBBE5FD7B8}"
+            ISEG_OFFS ="0x00080000" ICHN_SIZE ="0x00000000"
+            OSEG_OFFS ="0x00080000" OCHN_SIZE ="0x00080000"
+            GMSEG_OFFS="0x00080000" GMCHN_SIZE="0x00000000"
+        />
+    </IOCOMPONENTS>            
+
+    <VM_SETTINGS
+            ALIGN            ="8"
+            STACK            ="32"
+
+            ENDIAN           ="LIT"
+
+            OP_MINSIZE       ="1"
+            DATATYPE_TIME    ="32M"
+
+            MAX_OBJECTS      ="6000"
+            MAX_CODE_OBJECTS ="2000"
+
+            ISEG_SIZE        ="0x00080000"
+            OSEG_SIZE        ="0x00100000"
+            GMSEG_SIZE       ="0x00080000"
+            GMRSEG_SIZE      ="0x00008000"
+            LOCDATASEG_SIZE  ="0x00500000"
+            CODESEG_SIZE     ="0x00500000"
+    
+            GMIEC_OFFSET     ="0xffffffff" 
+            GMIEC_SIZE       ="0x00500000" 
+    />
+
+    <!-- GMIEC_OFFSET is not supported in V2.1.2 and later, so RTS_CFG_FFO must 
+         always be set in the RTS.
+    -->
+
+    <CG_OPTIONS
+        MEMINFO="1"    
+
+    /> 
+
+    </TRGTYP>
+
+</KAD4VM>

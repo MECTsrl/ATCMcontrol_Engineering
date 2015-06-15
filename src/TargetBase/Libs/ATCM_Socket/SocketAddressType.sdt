@@ -1,0 +1,8 @@
+(*[[
+]]*)
+TYPE
+    SocketAddressType : STRUCT
+		PortNumber: UDINT;
+		Address:    STRING;
+    END_STRUCT;
+END_TYPE

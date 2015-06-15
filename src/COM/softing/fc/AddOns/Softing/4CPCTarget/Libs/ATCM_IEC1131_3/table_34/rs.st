@@ -1,0 +1,16 @@
+
+(*[[
+    UserURL= "ATCM:RS.htm"
+]]*)
+FUNCTION_BLOCK RS
+VAR_INPUT
+   S  : BOOL;
+   R1 : BOOL;
+END_VAR
+VAR_OUTPUT
+   Q1 : BOOL;
+END_VAR
+
+ Q1 := NOT R1 AND (S OR Q1);
+
+END_FUNCTION_BLOCK

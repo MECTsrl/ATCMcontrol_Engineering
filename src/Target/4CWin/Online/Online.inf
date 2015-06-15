@@ -1,0 +1,30 @@
+# $Header: /4CReleased/V2.20.00/Target/4CWin/ONLINE/Online.inf 1     28.02.07 19:11 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: Online.inf $
+#                        $Logfile: /4CReleased/V2.20.00/Target/4CWin/ONLINE/Online.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Target
+#
+# =COMPONENT            Online
+#
+# =CURRENT      $Date: 28.02.07 19:11 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+
+
+
+#
+# ------------------------------------------------------------------------------
+#
+
+SUBPROJECT=OnlComm\OnlComm.mak
+SUBPROJECT=OnlServ\OnlServ.mak
+
+# -------------------------------------------------------------------------------

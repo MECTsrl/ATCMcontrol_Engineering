@@ -1,0 +1,30 @@
+HKCR
+{
+	4C_20_CE.DebugInfoServer.1 = s '4C_20: DebugInfo Server'
+	{
+		CLSID = s '{B0B1A8AD-9B4F-4d2b-9581-58CBB619924C}'
+	}
+	4C_20_CE.DebugInfoServer = s '4C_20: DebugInfo Server'
+	{
+		CLSID = s '{B0B1A8AD-9B4F-4d2b-9581-58CBB619924C}'
+		CurVer = s '4C_20_CE.DebugInfoServer.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {B0B1A8AD-9B4F-4d2b-9581-58CBB619924C} = s '4C_20: DebugInfo Server'
+		{
+			ProgID = s '4C_20_CE.DebugInfoServer.1'
+			VersionIndependentProgID = s '4C_20_CE.DebugInfoServer'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			'TypeLib' = s '{43FE0D78-D58F-463b-A5B2-B051711FB4FC}'
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

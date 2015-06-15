@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Mect User Utility Library</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css">
+</head>
+<body bgcolor="#FFFFCC">
+<h2>DateTimeRead</h2>
+<p>Get the date into the system</p>
+<h3>Interface</h3>
+<pre class="preforma">
+FUNCTION DateTimeRead : UINT
+VAR_OUTPUT
+	DateTime : ARRAY[0..6] of UINT; (*[date in  YEAR, MONTH, DAY, HOUR, MINUTE, SECONDS]*)
+END_VAR
+</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>UINT</b></i><br>
+<br>
+<table border="1">
+<tr>
+	<td>
+		0 :
+	</td>
+ 	<td>
+		<b>Success</b>
+ 	</td>
+ </tr>
+<tr>
+	<td>
+		1 :
+	</td>
+ 	<td>
+		Error
+ 	</td>
+ </tr>
+ </table>
+ </p>
+
+<h3>Parameter</h3>
+<h3>OUTPUT</h3>
+<dl>
+  <dt><b>DateTime</b></dt>
+  <dd>Value of type <b><i>ARRAY[0..6] of UINT</i></b><br>
+      date in  YEAR, MONTH, DAY, HOUR, MINUTE, SECONDS<br></dd>
+</dl>
+<h3>Description</h3>
+<p><b>DateTimeWrite</b> get the date into the system</p>
+</body>
+</html>

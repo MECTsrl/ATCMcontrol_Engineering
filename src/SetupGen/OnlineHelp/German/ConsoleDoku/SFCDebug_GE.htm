@@ -1,0 +1,650 @@
+<html>
+<head>
+<title>SFC-Programmteile debuggen</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Manual_GE.css"></head>
+
+<body bgcolor="#FFFFFF" background="pic/backgrnd.jpg">
+<h1>SFC-Programmteile beobachten und steuern</h1>
+<hr>
+<h3><a name="overview"></a>&Uuml;bersicht</h3>
+<ul>
+  <a href="#SingleStep">SFC-Beobachtungsmodus</a><br>
+  <a href="#MenuOptions">Men&uuml;optionen zur Steuerung von Aktionen und Transitionen</a><a href="#forcing"><br>
+  Die Ausf&uuml;hrung von Aktionen erzwingen und unterdr&uuml;cken</a> 
+  <ul class="inul">
+    <a href="#ForceActionOnce">Die einmalige Ausf&uuml;hrung einer Aktion erzwingen</a><br>
+    <a href="#ForceActionPermanent">Die permanente Ausf&uuml;hrung einer Aktion 
+    erzwingen</a><br>
+    <a href="#SuppressAction">Die Ausf&uuml;hrung einer Aktion permanent unterdr&uuml;cken</a><br>
+    <a href="#SuppressAllActions"> Die permanente Ausf&uuml;hrung aller Aktionen 
+    erzwingen <br>
+    Die Ausf&uuml;hrung aller Aktionen permanent unterdr&uuml;cken</a> <br>
+    <a href="#RevertActions">Alle Aktionen in ihren Ausgangszustand zur&uuml;ckversetzen 
+    </a> 
+  </ul>
+  <a href="#ForceTransition">Die Ausf&uuml;hrung und die Unterdr&uuml;ckung von 
+  Transitionen erzwingen </a> 
+  <ul class="inul">
+    <a href="#ForceTransitionOnce">Eine Transition einmalig erzwingen</a><br>
+    <a href="#ForceTransPermanently">Eine Transition permanent erzwingen</a><br>
+    <a href="#SuppressTrans">Eine Transition permanent blockieren</a><br>
+    <a href="#BlockAllTrans">Alle Transitionen permanent erzwingen</a> <br>
+    <a href="#BlockAllTransitions">Alle Transitionen permanent blockieren</a><br>
+    <a href="#RevertTransitions">Alle Transitionen in ihren Ausgangszustand zur&uuml;ckversetzen 
+    </a> 
+  </ul>
+</ul>
+<hr style="margin-left: 44px">	
+<p>Generell k&ouml;nnen Sie nat&uuml;rlich alle M&ouml;glichkeiten zum Debuggen 
+  von SFC-Programmteilen nutzen, die Ihnen auch beim Debuggen von Projekten zur 
+  Verf&uuml;gung stehen, die keine SFC-Programmteile enthalten. Dar&uuml;berhinaus 
+  bietet Ihnen ATCMControl aber auch einen speziellen SFC-Beobachtungsmodus f&uuml;r 
+  SFC-Programmteile und Optionen, um Aktionen und Transitionen im Debug-Modus 
+  oder zur normalen Laufzeit von Projekten auf ATCM Control gezielt zu beeinflussen 
+  und zu steuern. </p>
+<p>Unabh&auml;ngig davon, ob der normale Laufzeit-Modus oder der Debug-Modus aktiv 
+  ist, werden innerhalb von SFC-Programmteilen im ST-Editor in der Instance-Ansicht 
+  des Editors das Schl&uuml;sselwort <i>STEP</i> der aktuell aktiven Schritte 
+  und das Schl&uuml;sselwort <i>ACTION</i> der aktuell ausgef&uuml;hrten Aktionen 
+  grau hinterlegt, so da&szlig; Sie jederzeit leicht erkennen k&ouml;nnen, welche 
+  Schritte und welche Aktionen zur Zeit ausgef&uuml;hrt werden. </p>
+<img src="pic/markStep.gif" width="417" height="246" class="inP">
+
+<p>Analog dazu wird im Grafikeditor die grafische Repr&auml;sentation des aktiven 
+  Schritts und der obere Teil der grafischen Repr&auml;sentation einer aktuell 
+  aktiven Aktion mit grauer Farbe hinterlegt. Falls die zu einer Aktion geh&ouml;renden 
+  Anweisungen in einem Aktionsblock definiert wurden, werden die Felder f&uuml;r 
+  Qualifizierer und Namen des Aktionssblocks grau hinterlegt. </p>
+<img src="pic/markStepGraph.gif" width="598" height="353" border="1" class="inP"> 
+<h2><a name="SingleStep"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  SFC-Beobachtungsmodus</h2>
+<p>SFC-Programmteile verf&uuml;gen &uuml;ber einen Beobachtungsmodus, der es Ihnen 
+  erlaubt, in SFC-Programmteilen die Weiterschaltung von einem Schritt zum Folgeschritt 
+  selbst zu steuern. Zur normalen Laufzeit wird jedesmal, wenn eine POU (Programm 
+  oder Funktionsbaustein) eine Instanz eines SFC-Programmteils aufruft, ein Zyklus 
+  des SFC-Programmteils ausgef&uuml;hrt. W&auml;hrend dieses Zyklus werden alle 
+  Anweisungen innerhalb der Aktionen, die einem zur Zeit der Ausf&uuml;hrung des 
+  Zyklus aktiven Schritt zugeordnet sind, genau einmal ausgef&uuml;hrt (vorausgesetzt, 
+  da&szlig; die Aktionen mit dem Qualifizierer <i>N</i> aufgerufen werden). Addieren 
+  Sie bspw. in einer Aktion zu einer Variablen den Wert 1, wird der Variablenwert 
+  bei jedem Zyklus, den ein SFC-Programmteil durchl&auml;uft, um den Wert 1 erh&ouml;ht, 
+  sofern ein der Aktion zugeordneter Schritt aktiv ist.<br>
+  Im Prinzip verh&auml;lt sich dies auch im SFC-Beobachtungsmodus so, mit der 
+  Ausnahme, da&szlig; die Transitionsbedingungen nicht bewertet werden. Dies hat 
+  zur Folge, da&szlig; von einem Schritt nicht zum Folgeschritt weitergeschaltet 
+  wird, auch wenn die entsprechende Transitionsbedingung den Wert <i>TRUE</i> 
+  hat. Transaktionen werden im SFC-Beobachtungsmodus nur dann bewertet, wenn Sie 
+  dies ausdr&uuml;cklich per Tastendruck oder Men&uuml;option veranlassen. In 
+  diesem Fall wird die Transaktionsbewertung genau f&uuml;r einen SFC-Zyklus ausgef&uuml;hrt. 
+  Danach wird die Transitionsbewertung wieder ausgesetzt, bis Sie den n&auml;chsten 
+  Einzelschritt veranlassen. Auf diese Weise k&ouml;nnen Sie also SFC-Programmteile 
+  quasi Schritt f&uuml;r Schritt ausf&uuml;hren und selbst bestimmen, wann &uuml;ber 
+  eineTransition zum n&auml;chsten Schritt &uuml;bergegangen wird. </p>
+<p>Beachten Sie bei der Arbeit im SFC-Beobachtungsmodus bitte Folgendes:</p>
+<ul>
+  <li>Transitionen werden nicht erzwungen, wenn Sie einen SFC-Einzelschritt aktivieren. 
+    Mit einem SFC-Einzelschritt setzen Sie lediglich die Transitionsbewertung 
+    f&uuml;r die Dauer eines SFC-Zyklus wieder in Kraft. Nur wenn die Transitionsbedingung 
+    f&uuml;r die Aktivierung des Folgeschritts wirklich erf&uuml;llt ist, wird 
+    der Folgeschritt aktiviert, und der Vorg&auml;ngerschritt deaktiviert. Es 
+    wird nur die Transition bewertet, deren vorgeordneter Schritt aktuell aktiv 
+    ist. </li>
+  <li>Da im SFC-Beobachtungsmodus lediglich die Transitionsbewertung ausgesetzt 
+    wird, wird die dem aktuell aktiven Schritt zugeordnete Aktion weiterhin ausgef&uuml;hrt.</li>
+  <li>Alle Nicht-SFC-Programmteile als auch SFC-Programmteile, f&uuml;r die der 
+    Beobachtungsmodus nicht aktiviert wurde, werden auch im SFC-Beobachtungsmodus 
+    im normalen Taskzyklus der zugeordneten Task weiter ausgef&uuml;hrt. Der SFC-Beobachtungsmodus 
+    betrifft also auschlie&szlig;lich den SFC-Programmteil, f&uuml;r den Sie den 
+    SFC-Beobachtungsmodus aktiviert haben. <br>
+  </li>
+</ul>
+<p>Um den SFC-Beobachtungsmodus zu aktivieren, gehen Sie folgenderma&szlig;en 
+  vor:</p>
+<ul>
+  <li>Stellen Sie sicher, da&szlig; sich das Fenster eines SFC-Programmteils im 
+    Vordergrund von ATCM Engineering befindet, und da&szlig; die Instance-Ansicht 
+    des sich im Vordergrund befindenen Fensters aktivert ist. <br>
+    <br>
+  </li>
+  <li>Klicken Sie mit der rechten Maustaste in das Fenster, um das <b>Kontext</b>-Men&uuml; 
+    aufzurufen, und w&auml;hlen Sie die Option <b>SFC Manual Mode</b><br>
+    <br>
+    <i>- ODER -</i><br>
+    <br>
+    klicken Sie in der Men&uuml;leiste des ATCM Engineering-Hauptfensters auf das 
+    Men&uuml; <b>Debug</b>, und w&auml;hlen Sie die Option <b>SFC Manual Mode</b>.<br>
+    Das H&aumlkchen, das jetzt neben der Option <b>SFC Manual Mode</b> erscheint, 
+    signalisiert Ihnen, da&szlig; der SFC-Beobachtungsmodus jetzt aktiviert ist. 
+  </li>
+</ul>
+<img src="pic/note.gif"
+        width="32" height="31" align="left"> 
+<div style="margin-left: 5; position: relative; top: 0"> 
+  <table border="0" cellpadding="0" class="tabhinweis">
+    <tr> 
+      <td class="HinweisText"> POUs sind solange abstrakte Datenstrukturen, bis 
+        eine konkrete Instanz von ihnen angelegt wurde. In POUs deklarierte Variablen 
+        befinden sich nur dann mit Werten im Speicher, wenn Instanzen von den 
+        entsprechenden POUs deklariert wurden. Vergessen Sie deshalb niemals, 
+        die Instanz-Ansicht eines im Editor ge&ouml;ffneten Fensters zu aktivieren, 
+        bevor Sie einen SFC-Programmteil im SFC-Beobachtungsmodus &uuml;berwachen, 
+        da in der Klassenansicht einer POU eine Variable keiner konkreten Instanz 
+        zugeordnet werden kann. </td>
+    </tr>
+  </table>
+</div>
+<p>Ist der SFC-Beobachtungsmodus aktiv, erscheint im ST-Editor am linken Rand 
+  des Editors ein blauer Streifen.</p>
+<img src="pic/GraphicColor.gif" width="505" height="318" class="inP">
+<p>Im Grafikeditor wird dessen Hintergrund bei Aktivierung des SFC-Beobachtungsmodus 
+  auf die Farbe Hellblau gesetzt. </p>
+<img src="pic/SingleStepColor.gif" width="608" height="369" class="inP">
+<p>Um den SFC-Beobachtungsmodus zu deaktivieren und wieder zur normalen Ausf&uuml;hrung 
+  des aktuellen SFC-Programmteils zur&uuml;ckzukehren, klicken Sie nochmals auf 
+  die Option <b>SFC Manual Mode</b> im <b>Kontext</b>-Men&uuml; oder im Men&uuml; 
+  <b>Debug</b>. Das H&auml;kchen neben der Option <b>SFC Manual Mode</b> wird 
+  wieder entfernt, und die Ausf&uuml;hrung des SFC-Programmteils im normalen Taskzyklus 
+  fortgesetzt. </p>
+<p>Um einen Zyklus im SFC-Beobachtungsmodus auszuf&uuml;hren, </p>
+<p> klicken Sie im Men&uuml; <b>Debug</b> oder im <b>Kontext</b>-Men&uuml; auf 
+  die Option <b>Single SFC-Cycle</b><br>
+  <br>
+  <i>- ODER -</i><br>
+  <br>
+  dr&uuml;cken Sie die Taste <b>F11</b>.<br>
+  <br>
+  Ist die Transaktionsbedingung f&uuml;r den &Uuml;bergang zum n&auml;chsten Schritt 
+  erf&uuml;llt<i></i>, werden genauso wie im normalen Programmablauf auch im SFC-Beobachtungsmodus 
+  die zu dem n&auml;chsten aktiven Schritt geh&ouml;renden Aktionen ausgef&uuml;hrt. 
+</p>
+<p> Wollen Sie auch die in einer Aktion enthaltenen Anweisungen einzeln Schritt 
+  f&uuml;r Schritt ausf&uuml;hren, k&ouml;nnen Sie wie gewohnt Breakpoints verwenden, 
+  um die Anweisungen innerhalb einer Aktion einzeln abzuarbeiten. </p>
+<h2><a name="MenuOptions"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> Men&uuml;optionen zur Steuerung von Aktionen und Transitionen </h2>
+<p>Unabh&auml;ngig davon, ob der SFC-Beobachtungsmodus aktiv ist, oder sich ein 
+  SFC-Programmteil im normalen Laufzeitmodus befindet, l&auml;&szlig;t sich die 
+  Ausf&uuml;hrung von Aktionen und Transitionen &uuml;ber spezielle Men&uuml;optionen 
+  steuern. Die Ausf&uuml;hrung von Aktionen kann z.B. erzwungen werden, auch wenn 
+  der zugeordnete Zustand nicht aktiv ist, oder die Ausf&uuml;hrung von Transitionen 
+  kann verhindet werden, auch wenn deren Transitionsbedingungen erf&uuml;llt sind, 
+  und der vorausgehende Zustand aktiv ist. </p>
+<p>Die Optionen zum Erzwingen oder Verhindern der Ausf&uuml;hrung von Aktionen 
+  und Transitionen stehen Ihnen im Men&uuml; <b>Debug</b> auf der Werkzeugleiste 
+  des Hauptfensters von ATCM Engineering und im <b>Kontext</b>-Men&uuml; des sich 
+  aktuell im Vordergrund befindenden Editors zur Verf&uuml;gung. Sie befinden 
+  sich im <b>Kontext</b>-Men&uuml; im unteren Abschnitt.</p>
+<p> Die Optionen sind kontextsensitiv, d.h. sie stehen Ihnen nur dann zur Verf&uuml;gung, 
+  wenn Ihr aktuelles sich im Vordergund von ATCM Engineering befindenes Arbeitsfenster 
+  den Code einer POU mit einem SFC Programmteil enth&auml;lt. Dar&uuml;berhinaus 
+  ist das Angebot von aktions- und transitionsspezifischen Men&uuml;optionen davon 
+  abh&auml;ngig, an welcher Stelle Sie den Cursor im Fenster des ST- oder FBD-Editors 
+  plaziert haben. <br>
+  Generell lassen sich diese Men&uuml;optionen in Optionen einteilen, die sich 
+  auf alle im aktuellen SFC-Programmteil existierenden Aktionen und Transitionen 
+  beziehen, und solche Optionen, die sich nur auf eine einzelne Aktion oder Transition 
+  auswirken. </p>
+<p>Ausschlie&szlig;lich Optionen, die sich auf alle Aktionen und Transitionen 
+  beziehen, werden im Men&uuml; angeboten, wenn Sie im ST-Editor den Cursor auf 
+  eine Zeile plazieren, die nicht die Sch&uuml;sselw&ouml;rter <i>ACTION</i> oder 
+  <i>TRANSITION</i> enth&auml;lt.</p>
+<img src="pic/STAllOptions.gif" width="495" height="476" class="inP"> 
+<p>Im FBD-Editor werden die sich auf alle Transitionen und Aktionen beziehenden 
+  Men&uuml;optionen angezeigt, wenn Sie den Cursor auf einen freien Bereich im 
+  Grafikeditor positionieren. <b> </b></p>
+<p>Zus&auml;tzlich zu den sich auf alle Transitionen und Aktionen beziehenden 
+  Men&uuml;optionen werden Optionen angezeigt, die sich auf eine spezielle Transition 
+  oder Aktion beziehen, wenn Sie im ST-Editor den Cursor auf eine Zeile plazieren, 
+  die entweder das Schl&uuml;sselwort <i>TRANSITION</i> oder das Schl&uuml;sselwort 
+  <i>ACTION</i> enth&auml;lt. Alle nicht allgemeinen Optionen beziehen sich in 
+  diesem Fall immer auf die Transition oder Aktion, die die sich in der Zeile 
+  befindet, in der der Cursor plaziert wurde. Die angebotenen nicht allgemeinen 
+  Men&uuml;optionen sind davon abh&auml;ngig, ob in der Zeile der aktuellen Cursorposition 
+  eine Transition oder eine Aktion eingeleitet wird. Im ersten Fall werden spezielle 
+  Optionen nur f&uuml;r Transitionen, im letzteren Fall f&uuml;r Aktionen angeboten. 
+</p>
+<img src="pic/STSpecificOptions.gif" width="494" height="477" class="inP">
+<p><a name="so"></a>Im FBD-Editor werden sich auf eine einzelne Transition oder 
+  Aktion beziehende Optionen angezeigt, wenn Sie den Cursor auf den Kopfabschnitt 
+  der entsprechenden grafischen Repr&auml;sentation positionieren. </p>
+<h2><a name="Forcing"></a><a href="#overview"><img src="pic/Jump.gif" width="10" height="9" border="0"></a> 
+  Die Ausf&uuml;hrung von Aktionen erzwingen und unterdr&uuml;cken</h2>
+<p>Sie k&ouml;nnen die Ausf&uuml;hrung einer oder mehrerer Aktionen erzwingen, 
+  auch wenn die diesen Aktionen zugeordneten Zust&auml;nde aktuell nicht aktiv 
+  sind, und die Aktionen somit beim normalen Ablauf der Programmevolution nicht 
+  ausgef&uuml;hrt w&uuml;rde.<br>
+  Ebenso k&ouml;nnen Sie verhindern, da&szlig; eine Aktion ausgef&uuml;hrt wird, 
+  auch wenn der einer Aktion zugeordnete Zustand aktuell aktiv ist, und somit 
+  beim normalen Ablauf der Programmevolution ausgef&uuml;hrt w&uuml;rde. </p>
+<p class="zusammenhalten">Folgende Optionen stehen Ihnen zur Steuerung von Aktionen 
+  zur Verf&uuml;gung: </p>
+<p class="nachoben">Optionen, die sich auf eine einzige Aktion beziehen:</p>
+<ul>
+  <li><a href="#ForceActionOnce">Einmalige Ausf&uuml;hrung einer Aktion erzwingen</a></li>
+  <li><a href="#ForceActionPermanent">Permanente Ausf&uuml;hrung einer Aktion 
+    erzwingen</a></li>
+  <li><a href="#SuppressAction">Ausf&uuml;hrung einer Aktion permanent unterdr&uuml;cken</a></li>
+</ul>
+<p>Optionen, die sich auf alle im aktuellen SFC-Programmteil enthaltenen Aktionen 
+  beziehen:</p>
+<ul>
+  <li><a href="#ForceAllActions">Permanente Ausf&uuml;hrung aller Aktionen erzwingen</a></li>
+  <li><a href="#SuppressAllActions">Ausf&uuml;hrung aller Aktionen permanent unterdr&uuml;cken</a></li>
+  <li><a href="#RevertActions">Alle Aktionen in ihren Ausgangszustand zur&uuml;ckversetzen</a></li>
+</ul>
+<h3><a name="ForceActionOnce"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Die einmalige Ausf&uuml;hrung einer Aktion erzwingen</h3>
+<p> Wenn Sie die einmalige Ausf&uuml;hrung einer Aktion erzwingen, wird diese 
+  Aktion unabh&auml;ngig von der Aktivit&auml;t des ihr zugeordneten Schritts 
+  genau einmal w&auml;hrend eines SFC-Zyklus mit allen in ihr enthaltenen Anweisungen 
+  ausgef&uuml;hrt. </p>
+<p>Um die einmalige Ausf&uuml;hrung einer Aktion zu erzwingen, gehen Sie folgenderma&szlig;en 
+  vor:</p>
+<ol>
+  <li>Stellen Sie sicher, da&szlig; sich das Fenster eines SFC-Programmteils im 
+    Vordergrund von ATCM Engineering befindet, und da&szlig; die Instance-Ansicht 
+    des sich im Vordergrund befindenen Fensters aktivert ist. </li>
+  <li>Im ST-Editor positionieren Sie den Cursor auf die Zeile mit dem Schl&uuml;sselwort 
+    <i>ACTION</i> der Aktion, deren Ausf&uuml;hrung Sie erzwingen m&ouml;chten. 
+    <br>
+    Im Grafikeditor positionieren Sie den Cursor auf den Kopfabschnitt der grafischen 
+    Repr&auml;sentation der gew&uuml;nschten Aktion oder des Aktionsblocks.</li>
+  <li>Klicken Sie im <b>Kontext</b>-Men&uuml; oder im <b>Debug</b>-Men&uuml; auf 
+    die Option <b> Force Action Once</b>. <br>
+  </li>
+</ol>
+<p>Eine Aktion, deren Ausf&uuml;hrung erzwungen wurde, wird im ST-Editor durch 
+  die gr&uuml;ne Farbe des Schl&uuml;sselworts <i>ACTION</i> und einen Datatip 
+  mit der Beschriftung <i>forced</i> angezeigt.</p>
+ 
+<img src="pic/ActionForced.gif" width="384" height="296" class="inP">
+<p>Entsprechend wird eine Aktion, deren Ausf&uuml;hrung erzwungen wurde, im Grafikeditor 
+  dargestellt: </p>
+<img src="pic/ActionForcedGr.gif" width="505" height="78" class="inP" border="1"><br>
+<br>
+<img src="pic/note.gif"
+        width="32" height="31" align="left">
+<div style="margin-left: 5; position: relative; top: 0"> 
+  <table border="0" cellpadding="0" class="tabhinweis">
+    <tr> 
+      <td class="HinweisText"> Die optische Anzeige einer Aktion, deren Ausf&uuml;hrung 
+        einmalig erzwungen wurde, sehen Sie in der Regel nur dann, wenn der Taskzyklus 
+        der aufrufenden Task mit einem sehr hohen Wert eingestellt wurde, da die 
+        zur Visualisierung ben&ouml;tigte Zeit meist h&ouml;her ist, als der eingestellte 
+        Taskzyklus. Dies triff auch dann zu, wenn der SFC-Beobachtungsmodus aktiv 
+        ist, da der SFC-Programmteil auch in diesem Fall mit dem regul&auml;ren 
+        Taskzyklus aufgerufen wird und Aktionen gem&auml;&szlig; dem Taskzyklus 
+        ausf&uuml;hrt. </td>
+    </tr>
+  </table>
+  <p>Eine einmalig erzwungene Aktion wird automatisch wieder in ihren vorhergehenden 
+    Zustand zur&uuml;ckgesetzt, wenn ein SFC-Zyklus nach dem Erzwingen der Aktion 
+    ausgef&uuml;hrt wurde. War die Aktion bspw. vor dem Erzwingen einer einmaligen 
+    Ausf&uuml;hrung im Zustand bockiert, wird dieser Zustand nach der einmaligen 
+    Ausf&uuml;hrung eines SFC-Zyklus wieder aktiviert. </p>
+</div>
+<h3><a name="ForceActionPermanent"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Die permanente Ausführung einer Aktion erzwingen</h3>
+<p>Wenn Sie die permanente Ausf&uuml;hrung einer Aktion erzwingen, wird diese 
+  Aktion mit allen in ihr enthaltenen Anweisungen unabh&auml;ngig von der Aktivit&auml;t 
+  des ihr zugeordneten Schritts permant bei jedem Zyklus eines SFC-Programmteils 
+  ausgef&uuml;hrt. Beachten sie, da&szlig; die permanente erzwungene Ausf&uuml;hrung 
+  einer Aktion keinen Einflu&szlig; auf Transitionsbedingungen und die Aktivit&auml;t 
+  von Schritten hat. Alle zur Zykuszeit eines SFC-Programmteils einem aktiven 
+  Schritt zugeordneten Aktionen werden also weiterhin neben der permanenten Aktion 
+  ausgef&uuml;hrt.</p>
+<p>Um die permanente Ausf&uuml;hrung einer Aktion zu erzwingen, gehen Sie folgenderma&szlig;en 
+  vor:</p>
+<ol>
+  <li>Stellen Sie sicher, da&szlig; sich das Fenster eines SFC-Programmteils im 
+    Vordergrund von ATCM Engineering befindet, und da&szlig; die Instance-Ansicht 
+    des sich im Vordergrund befindenen Fensters aktivert ist. </li>
+  <li>Im ST-Editor positionieren Sie den Cursor auf die Zeile mit dem Schl&uuml;sselwort 
+    <i>ACTION</i> der Aktion, deren Ausf&uuml;hrung Sie erzwingen m&ouml;chten. 
+    <br>
+    Im Grafikeditor positionieren Sie den Cursor auf den Kopfteil der grafischen 
+    Repr&auml;sentation der gew&uuml;nschten Aktion oder des Aktionsblocks.</li>
+  <li>Klicken Sie im <b>Kontext</b>-Men&uuml; oder im <b>Debug</b>-Men&uuml; auf 
+    die Option <b>Force Action Permanently</b>. <br>
+  </li>
+</ol>
+<p> Eine Aktion, deren permanente Ausf&uuml;hrung erzwungen wurde, wird im Editor 
+  durch die gr&uuml;ne Farbe des Schl&uuml;sselworts <i>ACTION</i> und einen Datatip 
+  mit der Beschriftung <i>forced permanently</i> angezeigt. </p>
+<img src="pic/ActionForcedPermantly.gif" width="383" height="296" class="inP"> 
+<p>Entsprechend wird eine Aktion, deren permanente Ausf&uuml;hrung erzwungen wurde, 
+  im Grafikeditor dargestellt:</p>
+<img src="pic/ActionForcedPermantlyGr.gif" width="505" height="86" border="1" class="inP"> 
+<p>Die Aktion wird solange permanent ausgeführt, bis Sie durch erneutes Klicken 
+  auf die Option <b>Force Action Permanently</b> das H&auml;ckchen, das bei Auswahl 
+  dieser Option vor der Option im <b>Kontext</b>-Men&uuml; eingef&uuml;gt wird, 
+  wieder entfernen. </p>
+<h3><a name="SuppressAction"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Die Ausf&uuml;hrung einer Aktion permanent unterdr&uuml;cken</h3>
+<p>Wenn Sie die Ausf&uuml;hrung einer Aktion unterdr&uuml;cken, wird diese Aktion 
+  permanent nicht ausgef&uuml;hrt, auch wenn ein der Aktion zugeordneter Zustand 
+  aktiv ist. Betroffen ist von der Unterdr&uuml;ckung einer Aktion nur die Aktion 
+  selbst, und nicht die der Aktion zugeordneten Schritte oder die Bedingungen 
+  von Transitionen. Die der Aktion zugeordneten Schritte werden also auch weiterhin 
+  gem&auml;&szlig; der regul&auml;ren Progammevolution ausgef&uuml;hrt; nur die 
+  Ausf&uuml;hrung der einem Schritt zugeordneten Aktionen wird unterbunden. </p>
+<p>Um die Ausf&uuml;hrung einer Aktion zu unterdr&uuml;cken, gehen Sie folgenderma&szlig;en 
+  vor:</p>
+<ol>
+  <li>Stellen Sie sicher, da&szlig; sich das Fenster eines SFC-Programmteils im 
+    Vordergrund von ATCM Engineering befindet, und da&szlig; die Instance-Ansicht 
+    des sich im Vordergrund befindenen Fensters aktivert ist. </li>
+  <li>Im ST-Editor positionieren Sie den Cursor auf das Schl&uuml;sselwort <i>ACTION</i> 
+    der Aktion, deren Ausf&uuml;hrung Sie erzwingen m&ouml;chten. <br>
+    Im Grafikeditor positionieren Sie den Cursor auf die grafische Repr&auml;sentation 
+    der gew&uuml;nschten Aktion oder des Aktionsblocks.</li>
+  <li>Klicken Sie im Kontext-<b>Men&uuml;</b> oder im <b>Debug</b>-Men&uuml; auf 
+    die Option <b>Block Action Permanently</b>. <br>
+  </li>
+</ol>
+<p>Eine Aktion, deren Ausf&uuml;hrung unterdr&uuml;ckt wurde, wird im Editor durch 
+  die rote Farbe des Schl&uuml;sselworts <i>ACTION</i> und einen Datatip mit der 
+  Beschriftung <i>blocked </i> angezeigt. </p>
+<img src="pic/ActionBlocked.gif" width="386" height="297" class="inP"> 
+<p>Entsprechend wird eine Aktion, deren Ausf&uuml;hrung permanent unterdr&uuml;ckt 
+  wurde, im Grafikeditor dargestellt:</p>
+<img src="pic/ActionBlockedGr.gif" width="504" height="84" class="inP" border="1">
+<p>Die Ausf&uuml;hrung der Aktion wird solange permanent unterdr&uuml;ckt, bis 
+  Sie durch erneutes Klicken auf die Option <b>Block Action Permanently</b> das 
+  H&auml;ckchen, das bei Auswahl dieser Option vor der Option im <b>Kontext</b>-Men&uuml; 
+  eingef&uuml;gt wird, wieder entfernen. </p>
+<h3><a name="ForceAllActions"></a><a href="#overview"><img src="pic/Jump.gif" width="10" height="9" border="0"></a> 
+  Die permanente Ausf&uuml;hrung aller Aktionen erzwingen</h3>
+<p>Wenn Sie die permanente Ausf&uuml;hrung aller Aktionen erzwingen, werden alle 
+  Aktionen im aktuellen SFC-Programmteil unabh&auml;ngig von der Aktivit&auml;t 
+  des ihnen zugeordneten Zustands permant bei jedem Zyklus eines SFC-Programmteils 
+  ausgef&uuml;hrt. Beachten sie, da&szlig; die permanente erzwungene Ausf&uuml;hrung 
+  einer Aktion keinen Einflu&szlig; auf Transitionsbedingungen und die Aktivit&auml;t 
+  von Zust&auml;nden hat. </p>
+<p>Um die permanente Ausf&uuml;hrung aller Aktionen zu erzwingen, gehen Sie folgenderma&szlig;en 
+  vor:</p>
+<ol>
+  <li>Stellen Sie sicher, da&szlig; sich das Fenster eines SFC-Programmteils im 
+    Vordergrund von ATCM Engineering befindet, und da&szlig; die Instance-Ansicht 
+    des sich im Vordergrund befindenen Fensters aktivert ist. </li>
+  <li>Im ST-Editor oder im Grafikeditor positionieren Sie den Cursor auf eine 
+    beliebige Stelle.</li>
+  <li>Klicken Sie im <b>Kontext</b>-Men&uuml; oder im <b>Debug</b>-Men&uuml; auf 
+    die Option <b>Force All Actions</b>. <br>
+  </li>
+</ol>
+<p>Alle Aktionen werden im ST-Editor durch die gr&uuml;ne Farbe des Schl&uuml;sselworts 
+  <i>ACTION</i> und einen Datatip mit der Beschriftung <i>forced permanently</i> 
+  angezeigt.</p>
+<img src="pic/AllActionsForced.gif" width="388" height="401" class="inP">
+<p>Entsprechend werden Aktionen, deren permanente Ausf&uuml;hrung erzwungen wurde, 
+  im Grafikeditor dargestellt:</p>
+<img src="pic/AllActionsForcedGr.gif" width="595" height="88" border="1" class="inP">
+
+<p>Alle Aktionen werden solange permanent ausgeführt, bis Sie durch Klicken auf 
+  die Option <b>Revert All Actions </b> alle Aktionen wieder in ihren normalen 
+  Zustand zur&uuml;cksetzen. </p>
+<p> Sie k&ouml;nnen auch nach dem Erzwingen der Ausf&uuml;hrung aller Aktionen 
+  nur einzelne Aktionen wieder in ihren vorhergehenden Zustand zur&uuml;cksetzen: 
+</p>
+<ol>
+  <li>Positionieren Sie im ST-Editor dazu den Cursor auf die Zeile mit dem Schl&uuml;sselwort 
+    <i>ACTION</i> der gew&uuml;nschten Aktion. Im Grafikeditor positionieren Sie 
+    den Cursor auf den Kopf der grafischen Repr&auml;sentation einer Aktion.</li>
+  <li>Wenn Sie das <b>Kontext</b>-Men&uuml; &ouml;ffnen, sehen sie vor der Men&uuml;option<b> 
+    Force Action Permanently </b>einen Haken. Da Sie mit der Option<b> Force All 
+    Actions</b> die permanente Ausf&uuml;hrung aller Aktionen erzwungen haben, 
+    ist nun ebenfalls das <b>Kontext</b>-Men&uuml; jeder einzelnen Aktion mit 
+    diesem Haken gekennzeichnet. </li>
+  <li>Klicken Sie im <b>Kontext</b>-Men&uuml; der gew&uuml;nschten Aktion auf 
+    die mit einem Haken versehene Option <b>Force Action Permanently</b>. Es wird 
+    nun die selektierte Aktion wieder in ihren normalen Zustand zur&uuml;ckversetzt. 
+    Alle anderen Aktionen bleiben im Zustand <i>forced</i>.</li>
+</ol>
+<h3><a name="SuppressAllActions"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Die Ausf&uuml;hrung aller Aktionen permanent unterdr&uuml;cken</h3>
+<p>Wenn Sie die Ausf&uuml;hrung aller Aktion unterdr&uuml;cken, wird keine der 
+  im aktuellen SFC-Programmteil enthaltenen Aktionen ausgef&uuml;hrt. Die normale 
+  Programmevolution wird durch das Unterdr&uuml;cken aller Aktionen nicht beeinflu&szlig;t, 
+  sofern Sie die Transitionsbedingungen nicht innerhalb der Aktionen setzen, d.h. 
+  alle Schirtte werden in Abh&auml;ngigkeit von den Transitionsbedingungen weiterhin 
+  durchlaufen, nur die zugeordneten Aktionen werden nicht ausgef&uuml;hrt.</p>
+<p>Um die Ausf&uuml;hrung aller Aktion zu unterdr&uuml;cken, gehen Sie folgenderma&szlig;en 
+  vor:</p>
+<ol>
+  <li>Stellen Sie sicher, da&szlig; sich das Fenster eines SFC-Programmteils im 
+    Vordergrund von ATCM Engineering befindet, und da&szlig; die Instance-Ansicht 
+    des sich im Vordergrund befindenen Fensters aktivert ist. </li>
+  <li>Im ST-Editor und im Grafikeditor positionieren Sie den Cursor auf eine beliebige 
+    Stelle. </li>
+  <li>Klicken Sie im <b>Kontext</b>-Men&uuml; oder im <b>Debug</b>-Men&uuml; auf 
+    die Option <b>Block All Actions</b>. </li>
+</ol>
+<p>Die Ausf&uuml;hrung aller Aktionen wird solange permanent unterdr&uuml;ckt, 
+  bis Sie durch erneutes Klicken auf die Option <b>Block All Actions </b> das 
+  H&auml;ckchen, das bei Auswahl dieser Option vor der Option im Men&uuml; eingef&uuml;gt 
+  wird, wieder entfernen.</p>
+<p> Bei Unterdr&uuml;ckung aller Aktionen wird im Editor bei jeder Aktion das 
+  Schl&uuml;sselwort <i>ACTION</i> in roter Farbe angezeigt, und ein Datatip mit 
+  der Beschriftung <i>blocked</i> ist hinter jedem Aktionsnamen zu sehen. </p>
+<img src="pic/ActionAllBlocked.gif" width="387" height="297" class="inP">
+<p>Im Grafikeditor werden alle Aktionen und Aktionsbl&ouml;cke in mit roter Beschriftung 
+  und Umrandung dargestellt, wenn die Ausf&uuml;hrung aller Aktionen unterdr&uuml;ckt 
+  wurde.</p>
+<img src="pic/ActionAllBlockedGr.gif" width="539" height="83" border="1" class="inP">
+<h3><a name="RevertActions"></a><a href="#overview"><img src="pic/Jump.gif" width="10" height="9" border="0"></a> 
+  Alle Aktionen in ihren Ausgangszustand zur&uuml;ckversetzen</h3>
+<p>Unabh&auml;ngig davon, ob die Ausf&uuml;hrung einzelner Aktionen oder aller 
+  Aktionen eines SFC-Programmteils erzwungen oder unterdr&uuml;ckt wurde, werden 
+  alle Aktionen &uuml;ber diese Option wieder in ihren Ausgangszustand zur&uuml;ckgesetzt, 
+  d.h. die Forcierung oder Blockierung aller Aktionen wird aufgehoben, und der 
+  SFC-Programmteil wird wieder entsprechend der normalen Programmevolution ausgef&uuml;hrt. 
+</p>
+<p>Um alle Aktionen wieder in ihren Ausgangszustand zur&uuml;ckzusetzen, gehen 
+  Sie folgenderma&szlig;en vor:</p>
+<ol>
+  <li>Stellen Sie sicher, da&szlig; sich das Fenster eines SFC-Programmteils im 
+    Vordergrund von ATCM Engineering befindet, und da&szlig; die Instance-Ansicht 
+    des sich im Vordergrund befindenen Fensters aktivert ist. </li>
+  <li>Im ST-Editor und im Grafikeditor positionieren Sie den Cursor auf eine beliebige 
+    Stelle.</li>
+  <li>Klicken Sie im <b>Kontext</b>-Men&uuml; oder im <b>Debug</b>-Men&uuml; auf 
+    die Option <b>Revert All Actions</b>. </li>
+</ol>
+<p>Datatips forcierter oder blockierter Aktionen werden nicht mehr angezeigt, 
+  farblich hervorgehobene Elemente von Aktionen erhalten wieder ihre Ursprungsfarbe.</p>
+<h2><a name="ForceTransition"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Die Ausf&uuml;hrung von Transitionen erzwingen und unterdr&uuml;cken</h2>
+<p>Sie k&ouml;nnen die Ausf&uuml;hrung von Transitionen erzwingen, auch wenn die 
+  entsprechenden Transitionsbedingungen nicht erf&uuml;llt sind. <br>
+  Ebenso k&ouml;nnen sie die Ausf&uuml;hrung von Transitionen unterdr&uuml;cken, 
+  auch wenn die entsprechenden Transitionsbedingungen erf&uuml;llt sind. </p>
+<p>Folgende Optionen stehen Ihnen zur Steuerung von Transitionen zur Verf&uuml;gung:</p>
+<p>Optionen, die sich auf eine einzige Transition beziehen:</p>
+<ul>
+  <li> <a href="#ForceTransitionOnce">Transition einmalig erzwingen</a></li>
+  <li><a href="#ForceTransPermanently">Transition permanent erzwingen</a></li>
+  <li><a href="#SuppressTrans">Transition permanent blockieren</a></li>
+</ul>
+<p>Optionen, die sich auf alle im aktuellen SFC-Programmteil enthaltenen Transitionen 
+  beziehen:</p>
+<ul>
+  <li><a href="#BlockAllTrans">Alle Transitionen permanent erzwingen</a></li>
+  <li><a href="#BlockAllTransitions">Alle Transitionen permanent blockieren</a></li>
+  <li><a href="#RevertTransitions">Alle Transition in ihren Ausgangszustand zur&uuml;cksetzen</a></li>
+</ul>
+<h3><a name="ForceTransitionOnce"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Eine Transition einmalig erzwingen</h3>
+<p>Das Erzwingen von Transitionen eignet sich besonders dazu, bei Alternativverzweigungen 
+  sicherzustellen, da&szlig; unabh&auml;ngig von den aktuellen Transitionsbedingungen 
+  die Verzweigung zu einem bestimmten Schritt f&uuml;hrt. <br>
+  Daneben k&ouml;nnen Sie durch das Erzwingen einer Transitionsbedingung die Aktivierung 
+  eines Folgeschritts veranlassen, ohne da&szlig; die bei normalem Programmverlauf 
+  daf&uuml;r notwendige Transitionsbedingung erf&uuml;llt sein mu&szlig;. Der 
+  auf die Transition folgende Zustand wird in diesem Fall unabh&auml;ngig von 
+  der Transitionsbedingung nach dem Erzwingen der Transition aktiv. </p>
+<p>Der Status einer erzwungenen Transition wird automatisch wieder zur&uuml;ckgesetzt, 
+  wenn die Programmevolution die Transition erreicht hat, und der auf die Transition 
+  folgende Zustand aktiviert wurde. Danach unterliegt die Transition wieder der 
+  in der normalen Programmevolution gesetzten Transitionsbedingung. </p>
+<p>Um eine Transition einmalig zu erzwingen, gehen Sie folgenderma&szlig;en vor:</p>
+<ol>
+  <li>Stellen Sie sicher, da&szlig; sich ein Fenster eines SFC-Programmteils im 
+    Vordergrund von ATCM Engineering befindet, und da&szlig; die Instance-Ansicht 
+    des sich im Vordergrund befindenen Fensters aktivert ist. </li>
+  <li>Im ST-Editor positionieren Sie den Cursor auf die Zeile mit dem Schl&uuml;sselwort 
+    <i>TRANSITION</i> der Transition, deren Ausf&uuml;hrung Sie erzwingen m&ouml;chten. 
+    <br>
+    Im Grafikeditor positionieren Sie den Cursor auf die grafische Repr&auml;sentation 
+    der gew&uuml;nschten Transition. </li>
+  <li>Klicken Sie im <b>Kontext</b>-Men&uuml; oder im <b>Debug</b>-Men&uuml; auf 
+    die Option <b>Force Transition Once</b>. <br>
+  </li>
+</ol>
+<p>Im ST-Editor wird eine Transition, deren Ausf&uuml;hrung erzwungen wurde, durch 
+  die gr&uuml;ne Farbe des Schl&uuml;sselworts <i>TRANSITION</i> und einen Datatip 
+  mit der Beschriftung <i>forced</i> angezeigt. </p>
+<img src="pic/TransBlockedgif.gif" width="385" height="297" class="inP"> 
+<p>Entsprechend wird eine Transition, deren Ausf&uuml;hrung erzwungen wurde, im 
+  Grafikeditor dargestellt:</p>
+<img src="pic/TransForcedGr.gif" width="527" height="231" border="1" class="inP"> 
+<h3><a name="ForceTransPermanently"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Eine Transition permanent erzwingen</h3>
+<p>Wenn Sie eine Transition permanent erzwingen, wird wird diese Transition unabh&auml;ngig 
+  von der zugeordneten Transitionsbedingung immer dann ausgef&uuml;hrt, wenn ein 
+  der Transition vorhergehender Zustand aktiv ist. Bei Alternativverzweigungen 
+  k&ouml;nnen Sie bspw. auf diese Weise erzwingen, da&szlig; eine bestimmte Verzweigung 
+  immer unabh&auml;ngig von den Transitionsbedingungen der in der Verzweigung 
+  angesteuerten Transitionen ausgef&uuml;hrt wird. </p>
+<p>Um eine Transition permanent zu erzwingen, gehen Sie folgenderma&szlig;en vor:</p>
+<ol>
+  <li>Stellen Sie sicher, da&szlig; sich ein Fenster eines SFC-Programmteils im 
+    Vordergrund von ATCM Engineering befindet, und da&szlig; die Instance-Ansicht 
+    des sich im Vordergrund befindenen Fensters aktivert ist. </li>
+  <li>Im ST-Editor positionieren Sie den Cursor auf die Zeile mit dem Schl&uuml;sselwort 
+    <i>TRANSITION</i> der Transition, deren Ausf&uuml;hrung Sie erzwingen m&ouml;chten. 
+    <br>
+    Im Grafikeditor positionieren Sie den Cursor auf die grafische Repr&auml;sentation 
+    der gew&uuml;nschten Transition. </li>
+  <li>Klicken Sie im <b>Kontext</b>-Men&uuml; oder im <b>Debug</b>-Men&uuml; auf 
+    die Option <b>Force Transition Permanently</b>. <br>
+  </li>
+</ol>
+<p>Die Transition wird solange permanent ausgeführt, bis Sie durch erneutes Klicken 
+  auf die Option <b>Force Transition Permanently</b> das H&auml;ckchen, das bei 
+  Auswahl dieser Option vor der Option im Men&uuml; eingef&uuml;gt wird, wieder 
+  entfernen. </p>
+<p>Im ST-Editor wird eine Transition, deren Ausf&uuml;hrung permanent erzwungen 
+  wurde, durch die gr&uuml;ne Farbe des Schl&uuml;sselworts <i>TRANSITION</i> 
+  und einen Datatip mit der Beschriftung <i>forced</i> <i>permanently</i> angezeigt. 
+</p>
+<img src="pic/TransFordedPermanently.gif" width="390" height="301" class="inP"> 
+<p>Entsprechend wird eine Transition, deren permanente Ausf&uuml;hrung erzwungen 
+  wurde, im Grafikeditor dargestellt:</p>
+<img src="pic/TransForcedPermanentlyGr.gif" width="523" height="227" border="1" class="inP">
+<h3><a name="SuppressTrans"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Eine Transition permanent blockieren</h3>
+<p>Wenn Sie eine Transition permanent blockieren, wird diese Transition niemals 
+  ausgef&uuml;hrt. In Alternativverzweigungen k&ouml;nnen Sie bspw. verhindern, 
+  da&szlig; ein bestimmter Schritt aktiv wird, indem Sie die diesem Schritt vorausgehende 
+  Transition blockieren. <br>
+  Beachten Sie, da&szlig; Sie die normale Programmevolution eines SFC-Programmteils 
+  vollst&auml;ndig unterbinden k&ouml;nnen, wenn Sie eine Transition innerhalb 
+  einer linearen Ablaufstruktur blockieren. F&uuml;hrt bspw. der Weg von einem 
+  Schritt zum n&auml;chsten Schritt ausschlie&szlig;lich &uuml;ber die blockierte 
+  Transition, kann keiner der nachfolgenden Schritte aktiv werden. Die Programmevolution 
+  kommt also in diesem Fall zum Stehen.</p>
+<p>Um eine Transition permanent zu blockieren, gehen Sie folgenderma&szlig;en 
+  vor:</p>
+<ol>
+  <li>Stellen Sie sicher, da&szlig; sich das Fenster eines SFC-Programmteils im 
+    Vordergrund von ATCM Engineering befindet, und da&szlig; die Instance-Ansicht 
+    des sich im Vordergrund befindenen Fensters aktiviert ist. </li>
+  <li>Im ST-Editor positionieren Sie den Cursor auf die Zeile mit dem Schl&uuml;sselwort 
+    <i>TRANSITION</i> der Transition, die Sie blockieren m&ouml;chten. <br>
+    Im Grafikeditor positionieren Sie den Cursor auf die grafische Repr&auml;sentation 
+    der gew&uuml;nschten Transition. </li>
+  <li>Klicken Sie im <b>Kontext</b>-Men&uuml; oder im <b>Debug</b>-Men&uuml; auf 
+    die Option <b>Block Transition Permanently</b>. </li>
+</ol>
+<p>Eine Transition, deren Ausf&uuml;hrung permanent blockiert wurde, wird im Editor 
+  durch die rote Farbe des Schl&uuml;sselworts <i>TRANSITION</i> und einen Datatip 
+  mit der Beschriftung <i>blocked</i> angezeigt. </p>
+<img src="pic/TransBlocked.gif" width="385" height="296" class="inP">
+<p>Entsprechend wird eine blockierte Transition im Grafikeditor dargestellt:</p>
+<img src="pic/TransBlockedGr.gif" width="518" height="228" border="1" class="inP"> 
+<h3><a name="BlockAllTrans"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Alle Transitionen permanent erzwingen</h3>
+<p>Wenn Sie alle Transitionen permanent erzwingen, werden alle Transitionen des 
+  aktuellen SFC-Programmteils unabh&auml;ngig von den Transitionsbedingungen permanent 
+  freigeschaltet. </p>
+<p>Um alle Transitionen permanent zu erzwingen, gehen Sie folgenderma&szlig;en 
+  vor:</p>
+<ol>
+  <li>Stellen Sie sicher, da&szlig; sich ein Fenster eines SFC-Programmteils im 
+    Vordergrund von ATCM Engineering befindet, und da&szlig; die Instance-Ansicht 
+    des sich im Vordergrund befindenen Fensters aktiviert ist. </li>
+  <li>Im ST-Editor und im Grafikeditor positionieren Sie den Cursor auf eine beliebige 
+    Stelle. </li>
+  <li>Klicken Sie im <b>Kontext</b>-Men&uuml; oder im <b>Debug</b>-Men&uuml; auf 
+    die Option <b>Force All Transitions</b>. </li>
+</ol>
+<p>Bei Freischaltung aller Transitionen wird im Editor bei jeder Transition das 
+  Schl&uuml;sselwort <i>TRANSITION</i> in gr&uuml;ner Farbe angezeigt, und ein 
+  Datatip mit der Beschriftung <i>forced permanently</i> ist hinter jedem Transitionsnamen 
+  zu sehen. </p>
+<img src="pic/TransBlockedAll.gif" width="388" height="296" class="inP"> 
+<p>Entsprechend erfolgt die Darstellung im Grafikeditor:</p>
+<img src="pic/TransAllForced.gif" width="528" height="249" border="1" class="inP"> 
+<h3><a name="BlockAllTransitions"></a><a href="#overview"><img src="pic/Jump.gif" width="10" height="9" border="0"></a> 
+  Alle Transitionen permanent blockieren</h3>
+<p>Wenn Sie alle Transitionen permanent blockieren, wird keine Transition im aktuellen 
+  SFC-Programmteil ausgef&uuml;hrt. Die Programmevolution verharrt also im aktuell 
+  aktiven Schritt.</p>
+<p>Um alle Transitionen permanent zu blockieren, gehen Sie folgenderma&szlig;en 
+  vor:</p>
+<ol>
+  <li>Stellen Sie sicher, da&szlig; sich ein Fenster eines SFC-Programmteils im 
+    Vordergrund von ATCM Engineering befindet, und da&szlig; die Instance-Ansicht 
+    des sich im Vordergrund befindenen Fensters aktiviert ist. </li>
+  <li>Im ST-Editor und im Grafikeditor positionieren Sie den Cursor auf eine beliebige 
+    Stelle. </li>
+  <li>Klicken Sie im <b>Kontext</b>-Men&uuml; oder im <b>Debug</b>-Men&uuml; auf 
+    die Option <b>Block All Transitions</b>. </li>
+</ol>
+<p>Die Ausf&uuml;hrung aller Transitionen wird solange permanent unterdr&uuml;ckt, 
+  bis Sie durch erneutes Klicken auf die Option <b>Block All Transitions </b> 
+  das H&auml;ckchen, das bei Auswahl dieser Option vor der Option im <b>Kontext</b>-Men&uuml; 
+  eingef&uuml;gt wird, wieder entfernen.</p>
+<p> Bei Unterdr&uuml;ckung aller Transitionen wird im Editor bei jeder Aktion 
+  das Schl&uuml;sselwort <i>TRANSITION</i> in roter Farbe angezeigt, und ein Datatip 
+  mit der Beschriftung <i>blocked</i> ist hinter jedem Aktionsnamen zu sehen. 
+</p>
+<img src="pic/TransAllBlocked.gif" width="388" height="402" class="inP">
+<p>Entsprechend ist die Darstellung im Grafikeditor:</p>
+<img src="pic/TransBlockedAllGr.gif" width="525" height="220" class="inP" border="1"> 
+<h3><a name="RevertTransitions"></a><a href="#overview"><img src="pic/Jump.gif" width="10" height="9" border="0"></a> 
+  Alle Transitionen in ihren Ausgangszustand zur&uuml;ckversetzen</h3>
+<p>Unabh&auml;ngig davon, ob die Ausf&uuml;hrung einzelner Transitionen oder aller 
+  Transitionen eines SFC-Programmteils erzwungen oder blockiert wurde, werden 
+  alle Transitionen &uuml;ber diese Option wieder in ihren Ausgangszustand zur&uuml;ckgesetzt, 
+  d.h. die Forcierung oder Blockierung aller Transitionen wird aufgehoben, und 
+  der SFC-Programmteil wird wieder entsprechend der normalen Programmevolution 
+  ausgef&uuml;hrt. </p>
+<p>Um alle Aktionen wieder in ihren Ausgangszustand zur&uuml;ckzusetzen, gehen 
+  Sie folgenderma&szlig;en vor:</p>
+<ol>
+  <li>Stellen Sie sicher, da&szlig; sich ein Fenster eines SFC-Programmteils im 
+    Vordergrund von ATCM Engineering befindet, und da&szlig; die Instance-Ansicht 
+    des sich im Vordergrund befindenen Fensters aktivert ist. </li>
+  <li>Im ST-Editor und im Grafikeditor positionieren Sie den Cursor auf eine beliebige 
+    Stelle.<br>
+  </li>
+  <li>Klicken Sie im <b>Kontext</b>-Men&uuml; oder im <b>Debug</b>-Men&uuml; auf 
+    die Option <b>Revert All Transitions</b>. </li>
+</ol>
+<p>Datatips von forcierten oder blockierten Transitionen werden nicht mehr angezeigt, 
+  farblich hervorgehobene Elemente von Transitionen erhalten wieder ihre Ursprungsfarbe.</p>
+<p>&nbsp;</p>
+</body>
+</html>

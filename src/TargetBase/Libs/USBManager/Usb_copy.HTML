@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>USB Manager Library</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css">
+</head>
+<body bgcolor="#FFFFCC">
+<h2>Usb_copy</h2>
+<p>Copy either a file or a directory with all its content between usb keys.</p>
+<h3>Interface</h3>
+<pre class="preforma">
+FUNCTION Usb_copy : UINT
+VAR_INPUT
+	srcfile : STRING;
+	dstfile : STRING;
+	src_index : UINT;
+	dst_index : UINT;
+END_VAR
+</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>UINT</b></i><br>
+<br>
+<table border="1">
+<tr>
+	<td>
+		0 :
+	</td>
+ 	<td>
+		<b>Success</b>
+ 	</td>
+ </tr>
+<tr>
+	<td>
+		1 :
+	</td>
+ 	<td>
+		cannot mount/umount usb key
+ 	</td>
+ </tr>
+<tr>
+	<td>
+		2 :
+	</td>
+ 	<td>
+		source file does not exist
+ 	</td>
+ </tr>
+ <tr>
+	<td>
+		3 :
+	</td>
+ 	<td>
+		there's no enough space on destination usbkey to perform the copy
+ 	</td>
+ </tr>
+ <tr>
+	<td>
+		4 :
+	</td>
+ 	<td>
+		copy failed
+ 	</td>
+ </tr>
+ </table>
+ </p>
+
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl>
+  <dt><b>srcfile</b></dt>
+  <dd>Value of type <b><i>STRING</i></b><br>
+    Name of the source file<br></dd>
+</dl>
+<dl>
+  <dt><b>dstfile</b></dt>
+  <dd>Value of type <b><i>STRING</i></b><br>
+     Name of the destination file<br></dd>
+</dl>
+<dl>
+  <dt><b>src_index</b></dt>
+  <dd>Value of type <b><i>UINT</i></b><br>
+     USB key access index or the source file<br></dd>
+</dl>
+<dl>
+  <dt><b>dst_index</b></dt>
+  <dd>Value of type <b><i>UINT</i></b><br>
+     USB key access index or the destination file<br></dd>
+</dl>
+<h3>Description</h3>
+<p><b>Usb_copy</b> Copy either a file or a directory with all its content between usb keys. The status of execution handling is stored in USBfeedback[1]</p>
+</body>
+</html>

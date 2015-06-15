@@ -1,0 +1,6 @@
+USER=makefirst:$(EXE_DIR)\Engineering\bin\HMIBuilder
+USER=$(EXE_DIR)\Engineering\bin\HMIBuilder:
+USER=  -md $@ 
+
+USER=makelast: force
+USER= xcopy $(MAKEDIR)\*	       $(EXE_DIR)\Engineering\bin\HMIBuilder /S /Y /Q /K /R /E 

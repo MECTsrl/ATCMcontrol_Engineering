@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>SFCResetToInitialStep</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>SFCResetToInitialStep </h2>
+<p>Resets a SFC program section.</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION SFCResetToInitialStep
+VAR_INPUT
+    ENABLE : BOOL; 
+END_VAR</pre>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>ENABLE</b></dt>
+  <dd>Value of type <i><b>BOOL</b></i><br>
+    Starts the operation.<br>
+    Potential values:<br>
+    <i><b>TRUE</b></i>: Operation is started.<br>
+    <i><b>FALSE</b></i>: Operation is not started.</dd>
+</dl>
+<h3>Description</h3>
+<p>Resets an <i><b>SFC</b></i> program section if the passed parameter is<i><b> 
+  TRUE</b></i>; with <i><b>FALSE</b></i>, no reset is carried out. If an <i><b>SFC</b></i> 
+  program section is reset, the program evolution is restarted from the initial 
+  step. All transitions and variables are reset to their initial values. This 
+  function may only be used within <i><b>POU</b></i>s that contain an <i><b>SFC</b></i> 
+  program section. The reset triggered by this function always resets the <i><b>SFC</b></i> 
+  network within which the function was called</p>
+</body>
+</html>

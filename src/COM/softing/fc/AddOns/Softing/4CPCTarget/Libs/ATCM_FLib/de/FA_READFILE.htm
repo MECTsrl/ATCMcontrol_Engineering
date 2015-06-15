@@ -1,0 +1,126 @@
+<html>
+<head>
+<title>FA_READFILE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css">
+</head>
+
+<body bgcolor="#FFFFCC">
+<h2>FA_READFILE</h2>
+<p>Liest einen Bytestring aus einer Datei.</p>
+<h3>Schnittstelle</h3>
+<pre class="preforma">FUNCTION_BLOCK FA_READFILE
+VAR_INPUT
+    EXEC        : BOOL;         
+    FILENAME    : WSTRING;      
+    TOUT        : TIME;         
+END_VAR
+VAR_IN_OUT
+    POSITION    : DINT;         
+    LENGTH      : DINT;         
+END_VAR
+VAR_OUTPUT
+    DATA        : BYTE_STRING;  
+    DONE        : BOOL;         
+    ERROR       : BOOL;
+    ERRCD       : DINT;
+    ERRTXT      : WSTRING;
+END_VAR</pre>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>EXEC</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Startet die Operation bei steigender Flanke.</dd>
+  <dt><b>FILENAME</b></dt>
+  <dd>Wert vom Typ <i><b>WSTRING</b></i><br>
+    Spezifiziert den Namen der zu lesenden Datei. Der Dateiname kann einschlie&szlig;lich 
+    des voll qualifizierten Pfads angegeben werden. Wird kein Pfad spezifiziert, 
+    wird intern das Standard-Arbeitsverzeichnis von ATCMControl als Pfad erg&auml;nzt. 
+    Das Standard-Arbeitsverzeichnis ist das Verzeichnis <font face="Courier New, Courier, mono">data</font> 
+    direkt unterhalb des ATCMControl-Installationsverzeichnisses. </dd>
+  <dt><b>TOUT</b></dt>
+  <dd>Wert vom Typ <i><b>TIME</b></i><br>
+    Definiert die Zeitdauer, w&auml;hrend der die Ausf&uuml;hrung des Lesevorgangs 
+    versucht wird. Nach Ablauf dieses Zeitraums, wird der Versuch, aus der Datei 
+    zu lesen, abgebrochen. <br>
+    Standardwert ist T#0ms. Bei einer Initialisierung mit diesem Wert wird kein 
+    Timeout gesetzt, d.h. der Zeitraum, w&auml;hrend dessen versucht wird, eine 
+    Dateioperation auszuf&uuml;hren, wird nicht &uuml;berwacht. </dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl> 
+  <dt><b>POSITION</b></dt>
+  <dd>Wert vom Typ <i><b>DINT</b></i><br>
+    Startposition f&uuml;r den Lesezugriff. Nach Beendigung der Leseoperation 
+    wird <i><b>POSITION</b></i> eine Byte hinter den zuletzt gelesenen Wert gesetzt. 
+    Die erste g&uuml;ltige Leseposition ist 0. <br>
+    F&uuml;r Beginn und Ende einer Datei sowie das Ende einer Zeile sind <a href="Const_Pos.htm">Positions-Konstanten</a> 
+    definiert. </dd>
+  <dt><b>LENGTH</b></dt>
+  <dd>Wert vom Typ <i><b>DINT</b></i><br>
+    Vor dem Zugriff: Länge des zu lesenden Dateiblocks in Bytes. <br>
+    Nach dem Zugriff: Länge des gelesenen Dateiblocks in Bytes.</dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b>DATA</b></dt>
+  <dd>Instanz der Struktur <i><b>BYTE_STRING</b></i><br>
+  </dd>
+  <dd>Enth&auml;lt nach Abschlu&szlig; der Leseoperation die gelesenen Bytes.</dd>
+  <dt><b>DONE</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Signalisiert den (erfolgreichen oder gescheiterten) Abschlu&szlig; der Operation.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Operation ist abgeschlossen.<br>
+    <i><b>FALSE</b></i>: Operation ist noch nicht abgeschlossen.</dd>
+  <dt><b>ERROR</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Signalisiert den Fehlerstatus.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Ein Fehler ist aufgetreten.<br>
+    <i><b>FALSE</b></i>: Es ist kein Fehler aufgetreten.</dd>
+  <dt><b>ERRCD</b></dt>
+  <dd>Wert vom Typ <i><b>DINT</b></i><br>
+    Enth&auml;lt eine Fehlernummer, falls ein Fehler aufgetreten ist. <br>
+    Ist kein Fehler aufgetreten, hat <i><b>ERRCD</b></i> den Wert <b>0</b>.<br>
+  </dd>
+  <dd>M&ouml;gliche Werte sind in den <a href="Const_Error.htm">Fehlerkonstanten</a> 
+    definiert. </dd>
+  <dt><b>ERRTXT</b></dt>
+  <dd>Wert vom Typ <i><b>WSTRING</b></i><br>
+    Enth&auml;lt einen Fehlertext, falls ein Fehler aufgetreten ist. <br>
+    Ist kein Fehler aufgetreten, enth&auml;lt <i><b>ERRTXT</b></i> einen Leerstring.</dd>
+</dl>
+<h3>Beschreibung</h3>
+<p><b><i>FA_READFILE </i></b>liest einen Block der in <i><b>LENGTH</b></i> definierten 
+  L&auml;nge aus der an <i><b>FILE</b></i> &uuml;bergebenen Datei. W&auml;hrend 
+  des Lesezugriffs wird ein kompletter Zugriffszyklus durchlaufen. </p>
+<p>Die Startposition f&uuml;r den Lesezugriff wird in <i><b>POSITION</b></i> definiert. 
+  Nach Ausf&uuml;hrung einer Leseoperation wird <i><b>POSITION</b></i> automatisch 
+  auf ein Byte hinter den zuletzt gelesenen Dateiblock gesetzt. Es ist auf diese 
+  Weise m&ouml;glich mehrere sequentielle Lesezugriffe durchzuf&uuml;hren, ohne 
+  <i> <b>POSITION</b></i> jedesmal neu zu initialisieren. Dazu wird <i><b>POSITION</b></i> 
+  beim ersten Aufruf von <i><b>FA_READFILE</b></i> eine Variable zugewiesen, die 
+  bei jedem folgenden Aufruf einer Instanz von <i><b>FA_READFILE</b></i> wieder 
+  an deren Instanzvariable <i> <b>POSITION</b></i> zugewiesen wird. Die Endposition 
+  des vorausgehenden Lesezugriffs wird dadurch zur Startposition des folgenden 
+  Lesezugriffs. Befindet sich der Dateizeiger am Ende der Datei, hat <i><b>POSITION</b></i> 
+  den Wert -1 bzw. <a href="Const_Pos.htm"><i><b>CFA_EOF</b></i></a>.</p>
+<p>Da eine Instanz von <i><b>FA_READFILE</b></i> einen kompletten Zugriffszyklus 
+  durchf&uuml;hrt, k&ouml;nnen mehrere aufeinanderfolgenden Lesezugriffe sowohl 
+  durch unterschiedliche Instanzen als auch durch sukzessiven Aufruf von ein und 
+  derselben Instanz von <i><b>FA_READFILE</b></i> erfolgen. </p>
+<p>Die L&auml;nge des zu lesenden Dateiblocks wird im Parameter <i><b>LENGTH</b></i> 
+  in der Einheit Byte festgelegt. Es werden pro Aufruf einer Instanz von <i><b>READFILE</b></i> 
+  die in <i><b>LENGTH</b></i> spezifizierte Anzahl von Bytes ab der aktuellen 
+  Leseposition in<i><b> POSITION</b></i> gelesen. </p>
+<p>Die gelesenen Daten werden in der <i><b>BYTE_STRING</b></i>-Instanz <i><b>DATA</b></i> 
+  abgelegt, die beim Aufruf von <i><b>FA_READFILE</b></i> automatisch erzeugt 
+  wird. Verwenden Sie die Konvertierungsfunktion <i><b>COPY_WSTRING_FROM_BYTE_STRING</b></i>, 
+  um den in <i><b>DATA</b></i> gespeicherten Bytestring zu konvertieren und auszuwerten. 
+</p>
+<p>Die zu lesende Datei wird im Bin&auml;rmodus <a href="Const_Mode.htm#ReadShare"> 
+  </a>ge&ouml;ffnet. </p>
+</body>
+</html>

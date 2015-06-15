@@ -1,0 +1,35 @@
+HKCR
+{
+	4C_20_CE.CEProjectManager.1 = s '4C_20: CEProjectManager Class'
+	{
+		CLSID = s '{2080E0DA-4A25-40C0-9444-65B74E6DDC9E}'
+        'Index' 
+        { 
+            val Version = s '2.0' 
+            val LCID = d '1033' 
+        } 
+	}
+	4C_20_CE.CEProjectManager = s '4C_20: CEProjectManager Class'
+	{
+		CLSID = s '{2080E0DA-4A25-40C0-9444-65B74E6DDC9E}'
+		CurVer = s '4C_20_CE.CEProjectManager.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {2080E0DA-4A25-40C0-9444-65B74E6DDC9E} = s '4C_20: CEProjectManager Class'
+		{
+			ProgID = s '4C_20_CE.CEProjectManager.1'
+			VersionIndependentProgID = s '4C_20_CE.CEProjectManager'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+                val ThreadingModel = s 'Both'
+			}
+			'TypeLib' = s '{96A22E5F-5BD1-4FA7-B72E-197C7716DCC6}'
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

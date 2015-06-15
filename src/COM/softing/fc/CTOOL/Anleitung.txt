@@ -1,0 +1,58 @@
+4CONTROL
+Backup And Restore and Deploy Tool
+
+
+Situation:
+Mehrere "identische" Targets werden erzeugt durch Kopieren eines Flashspeichers, hinterher wird bei den einzelnen Targets nur die Addresse (IP-Adresse) geändert, d.h. alle Targets enthalten dasselbe Projekt nur mit unterschiedlichen Kommunikationseinstellungen.
+
+Ziel:
+Man kann sich mit allen diesen Targets vom Engineering verbinden und debuggen, ohne Fehlermeldungen.
+
+
+Vorbereitungsschritte:
+ Erzeugen eines Targets: Erstellen des Projektes, Compile, Download, Testen.
+ Ist das Projekt soweit fertig und soll vervielfältigt werden, sind folgende Schritte auszuführen:
+   a) Projekt öffnen, compile, download auf das Referenz-Target.
+   b) Backup des Projekts anfertigen (s.unten 1)
+   b) Target-Flash Speicher vervielfältigen und die IP-Adressen jeweils ändern.
+
+Debuggen eines der erzeugten Targets:
+   a) Gesichertes Projekt auf dem Engineering Rechner, mit dem die Verbindung hergestellt werden soll, restoren (s. unten 2)
+   b) Das Deploy-Tool verwenden, um in dem Projekt die Kommunikationseinstellungen an das aktuelle Target anzupassen (s. unten 3)
+   c) Engineering mit dem vom Deploy-Tool angepaßten Projekt öffnen, Verbindung aufbauen, ohne Compile und Download, es kommt jetzt, falls das Projekt auf dem Target und im Engineering übereinstimmen, keine Fehlermeldung und alle Debugging-Möglichkeiten im Engineering sind verfügbar.
+
+
+
+Details zu den Tools:
+Die Tools 4cbar.exe und 4cdelpoy.exe befinden sich im ATCMControl Installations-Verzeichnis\Engineering\bin.
+
+1) Backup des Projets:
+   Das Tool 4cbar (ATCMControl Backup and Restore Tool) erzeugt ein Backup eines Projektes.
+   Folgende Kommandozeile verwenden:
+   4cbar -project <Project-Verzeichnis> -backup <Archiv-File> -file -all
+   Projekt-Verzeichnis ist das Verzeichnis, das das zu sichernde Projekt enthält.
+   Archiv-File ist das anzulegende Backup-File. 
+   Wichtig ist die Option -all. Damit wird auch das gen-Verzeichnis des Projekts mitgespeichert, dies ist für das Deploy Tool wichtig. Das Projekt muß in dem Zustand gespeichert werden, indem der Download auf das Target erfolgt ist.
+
+2) Restore des Projekts
+   Das Tool 4cbar restored das gesicherte Projekt wieder in ein beliebiges Verzeichnis.
+   Folgende Kommandozeile verwenden:
+   4cbar -project  <Projekt-Verzeichnis> -restore <Archiv-File> -file
+   
+3) Das Projekt an ein Target anpassen:
+   Dazu wird das Tool 4CDeploy verwendet.
+   Folgende Kommandozeile liefert einen Überblick über die im Projekt vorhandenen Targets:
+   4cdeploy <Projekt-File> -show
+   Projekt-File ist das 4cp File des Projektes.
+   Die Ausgabe ist eine Liste aller enthaltenen Targets in der Form: Target-Name :  Kommunikations-Parameter.
+   Für die serielle Kommunikation wird heir COM1,COM2... angezeigt, dies kann jeweils auf einen adneren Com-Port geändert werden, die weiteren Verbindungsparameter (Geschwindigkeit...) können hier jedoch nicht verändert werden.
+   Bei der Kommunikation wird hier die IP-Adresse bzw. der symbolische Rechner-Name angezeigt.
+   Um die Kommunikationsparameter für die enthaltenen Targets zu ändern ist folgedner Aufruf nötig:
+   4cdeploy <Projekt-File> -patch <Target-Name>:<Target-Addresse> <Target-Name>:<Target-Addresse>
+   Ist nur ein Target im Projekt vorhanden kann auch folgende Abkürzung verwendet werden:
+   4cdeploy <Projekt-File> -patch *:<Target-Addresse>
+   Das Tool nimmt die Veränderungen direkt im angegebenen Projekt vor. D.h. dieses Projekt sit hinterher so angepaßt, daß alle enthaltenen Targets die neuen Einstellungen haben. Entsprechend sind die generierten Files entsprechend auf die neuen Kommunikations-Parameter eingestellt. Außerdem erledigt das Tool alle Einstellungen die der OPC-Server benötigt, um sich mit dem Target zu Verbinden, ohne vorher einen Download durchgeführt zu haben (Registry-Einträge, Config-Files). (Hierzu sind Administrator-Rechte nötig!).
+   Anzugeben sind bei jedem Target der Target-Name und die neue Adresse.
+   Ein entsprechend verändertes Projekt kann im Engineering geöffnet werden und ein Connect ausgeführt werden. Es darf jedoch vor dem Connect kein File verändert werden oder Compile durchgeführt werden, ansonsten kommt eine Meldung, daß das Projekt nicht übersetzt ist, bzw, daß das Projekt auf dem Target nicht mit dem aktuellen übereinstimmt.
+
+

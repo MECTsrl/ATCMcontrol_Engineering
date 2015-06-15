@@ -1,0 +1,43 @@
+HKCR
+{
+	4C_20_CE.BreakPointView.1 = s '4C_20: BreakPointView Class'
+	{
+		CLSID = s '{5ECE09E2-3DBA-419a-A63D-DCBD557DDB4F}'
+        'Index' 
+        { 
+            val Version = s '2.0' 
+            val LCID = d '1033' 
+        } 
+	}
+	4C_20_CE.BreakPointView = s '4C_20: BreakPointView Class'
+	{
+		CLSID = s '{5ECE09E2-3DBA-419a-A63D-DCBD557DDB4F}'
+		CurVer = s '4C_20_CE.BreakPointView.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {5ECE09E2-3DBA-419a-A63D-DCBD557DDB4F} = s '4C_20: BreakPointView Class'
+		{
+			ProgID = s '4C_20_CE.BreakPointView.1'
+			VersionIndependentProgID = s '4C_20_CE.BreakPointView'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'Insertable'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 102'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '131473'
+			}
+			'TypeLib' = s '{031D2BC7-1BA4-48d3-A088-F6E2243084D1}'
+			'Version' = s '1.0'
+			'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

@@ -1,0 +1,412 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 7, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\PMTool.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.deu\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "#include ""version.rc2""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\PMTool.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Info über PMTool"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "PMTool Version 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2004",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_SELECT_TARGET DIALOG DISCARDABLE  0, 0, 186, 151
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Select Target"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "List2",IDC_TARGET_LIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_SORTASCENDING | 
+                    LVS_NOLABELWRAP | LVS_NOSORTHEADER | WS_BORDER | 
+                    WS_TABSTOP,7,7,172,111
+    DEFPUSHBUTTON   "OK",IDOK,73,130,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,130,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_SELECT_TARGET, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 144
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "Inf&o über PMTool..."
+    IDS_BARFILEFILTER       "Backup Files (*.4cb)|*.4cb|All Files (*.*)|*.*||"
+    IDS_NOPROJECTFILE       "No project file found"
+    IDS_WARN_MULTIPLE_PROJECTFILES 
+                            "More than one project file found.\nTake first one."
+    IDS_ERR_READINGTARGETFILE "Error: Error reading target file: %s!"
+    IDS_ERR_NO_PROJECT_PATH "No project path specified"
+    IDS_ERR_NO_BACKUP_PATH  "No backup path specified"
+    IDS_ERR_NO_ADDRESS      "No control address specified."
+    IDS_NO_TARGETS          "No targets to deploy.\nPlease set new addresses first."
+    IDS_COMMAND_FAILED      "Command failed:\n%s"
+    IDS_COMMAND_FAILED_RETCODE 
+                            "Command failed:\nTool returned %d\nMaybe Password is wrong."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ERR_NO_TARGET       "No target selected"
+    IDS_ERR_RESTORE_OPC_CONFIG 
+                            "Error restoring the OPC configuration\nfor the follwing targets:\n%s"
+    IDS_NO_ADMINRIGHTS      "Error: no administrator rights.\nDeploy requires administrator rights."
+END
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_PMTOOL_DIALOG DIALOGEX 0, 0, 320, 200
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "PMTool"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+END
+
+IDD_BACKUP DIALOG DISCARDABLE  0, 0, 383, 202
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Backup"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_PROJECT_PATH_EDIT,20,22,314,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_PROJECT_PATH_BTN,341,22,25,14
+    CONTROL         "File System",IDC_FILE_SYSTEM_RADIO,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,20,68,51,10
+    CONTROL         "Control",IDC_CONTROL_RADIO,"Button",BS_AUTORADIOBUTTON,
+                    20,81,38,10
+    COMBOBOX        IDC_TARGET_COMBO,113,72,156,61,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_BACKUP_PATH_EDIT,20,123,314,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BACKUP_PATH_BTN,341,123,25,14
+    CONTROL         "Include OPC Server Debug Information",
+                    IDC_OPCSERVER_CONFIG_CHECK,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,20,162,150,10
+    PUSHBUTTON      "Backup",IDC_BACKUP_BTN,306,176,70,19
+    GROUPBOX        "ATCMControl Project",IDC_STATIC,7,7,369,40
+    GROUPBOX        "Target (Address)",IDC_STATIC,100,54,184,46
+    GROUPBOX        "Destination",IDC_STATIC,7,54,82,46
+    GROUPBOX        "Backup File",IDC_STATIC,7,108,369,40
+    GROUPBOX        "Password",IDC_STATIC,295,54,82,46
+    EDITTEXT        IDC_PASSWORD_EDIT,310,71,53,14,ES_PASSWORD | 
+                    ES_AUTOHSCROLL
+END
+
+IDD_RESTORE DIALOG DISCARDABLE  0, 0, 383, 225
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Restore"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_BACKUP_PATH_EDIT,20,22,314,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BACKUP_PATH_BTN,341,22,25,14
+    CONTROL         "File System",IDC_FILE_SYSTEM_RADIO,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,20,68,51,10
+    CONTROL         "Control",IDC_CONTROL_RADIO,"Button",BS_AUTORADIOBUTTON,
+                    20,81,38,10
+    EDITTEXT        IDC_ADDRESS_EDIT,113,72,156,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PROJECT_PATH_EDIT,20,123,314,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_PROJECT_PATH_BTN,341,123,25,14
+    CONTROL         "Include OPC Server Configuration",
+                    IDC_OPCSERVER_CONFIG_CHECK,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,20,162,122,10
+    PUSHBUTTON      "Restore",IDC_RESTORE_BTN,306,176,70,19
+    GROUPBOX        "Backup File",IDC_STATIC,7,7,369,40
+    GROUPBOX        "Source",IDC_STATIC,7,54,82,46
+    GROUPBOX        "Address",IDC_STATIC,100,54,184,46
+    GROUPBOX        "ATCMControl Project",IDC_STATIC,7,108,369,40
+    GROUPBOX        "Password",IDC_STATIC,295,54,82,46
+    EDITTEXT        IDC_PASSWORD_EDIT,310,71,53,14,ES_PASSWORD | 
+                    ES_AUTOHSCROLL
+    EDITTEXT        IDC_CONNECT_INFO_EDIT,17,206,271,12,ES_AUTOHSCROLL | 
+                    ES_READONLY | WS_DISABLED | NOT WS_BORDER
+    EDITTEXT        IDC_CONNECT_STATUS_EDIT,307,206,58,12,ES_RIGHT | 
+                    ES_AUTOHSCROLL | ES_READONLY | WS_DISABLED | NOT 
+                    WS_BORDER
+END
+
+IDD_DEPLOY DIALOG DISCARDABLE  0, 0, 383, 230
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Deploy"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_PROJECT_PATH_EDIT,20,22,314,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_PROJECT_PATH_BTN,341,22,25,14
+    CONTROL         "List2",IDC_TARGET_LIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_SORTASCENDING | 
+                    LVS_NOLABELWRAP | LVS_NOSORTHEADER | WS_BORDER | 
+                    WS_TABSTOP,20,69,273,60
+    PUSHBUTTON      "Refresh List",IDC_REFRESH_LIST_BTN,306,115,57,14
+    EDITTEXT        IDC_ADDRESS_EDIT,20,167,143,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Set",IDC_SET_ADDRESS_BTN,179,167,55,14
+    PUSHBUTTON      "Deploy",IDC_DEPLOY_BTN,306,176,70,19
+    GROUPBOX        "ATCMControl Project",IDC_STATIC,7,7,369,40
+    GROUPBOX        "Control Address",IDC_STATIC,7,149,243,46
+    GROUPBOX        "Targets",IDC_STATIC,7,52,369,90
+    EDITTEXT        IDC_CONNECT_INFO_EDIT,17,206,271,12,ES_AUTOHSCROLL | 
+                    ES_READONLY | WS_DISABLED | NOT WS_BORDER
+END
+
+IDD_FILETRANSFER DIALOG DISCARDABLE  0, 0, 383, 225
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "File Transfer"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_PC_PATH_EDIT,15,33,129,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_PC_PATH_BTN,151,33,15,14
+    LISTBOX         IDC_PC_FILE_LIST,15,73,151,114,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | LBS_WANTKEYBOARDINPUT | 
+                    LBS_EXTENDEDSEL | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+    PUSHBUTTON      ">>",IDC_DOWNLOAD_BTN,181,98,22,25
+    EDITTEXT        IDC_ADDRESS_EDIT,217,33,151,14,ES_AUTOHSCROLL
+    LISTBOX         IDC_CONTROL_FILE_LIST,217,73,151,114,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | LBS_WANTKEYBOARDINPUT | 
+                    LBS_EXTENDEDSEL | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+    PUSHBUTTON      "<<",IDC_UPLOAD_BTN,181,140,22,25
+    PUSHBUTTON      "Refresh",IDC_REFRESH_PC_BTN,118,54,48,14
+    PUSHBUTTON      "Refresh",IDC_REFRESH_CONTROL_BTN,320,54,48,14
+    LTEXT           "Files:",IDC_STATIC,15,58,17,8
+    LTEXT           "Files:",IDC_STATIC,217,58,17,8
+    LTEXT           "Path:",IDC_STATIC,15,20,18,8
+    LTEXT           "Address:",IDC_STATIC,217,20,28,8
+    GROUPBOX        "PC",IDC_STATIC,7,7,167,190
+    GROUPBOX        "Control",IDC_STATIC,209,7,167,190
+    PUSHBUTTON      "Delete",IDC_PC_DELETE_BTN,63,54,48,14
+    PUSHBUTTON      "Delete",IDC_CONTROL_DELETE_BTN,265,54,48,14
+    EDITTEXT        IDC_CONNECT_INFO_EDIT,17,206,271,12,ES_AUTOHSCROLL | 
+                    ES_READONLY | WS_DISABLED | NOT WS_BORDER
+    EDITTEXT        IDC_CONNECT_STATUS_EDIT,307,206,58,12,ES_RIGHT | 
+                    ES_AUTOHSCROLL | ES_READONLY | WS_DISABLED | NOT 
+                    WS_BORDER
+END
+
+IDD_COMM_SETTINGS DIALOG DISCARDABLE  0, 0, 257, 127
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Communication Settings for Restore and File Transfer"
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_TARGET_TYPE_COMBO,111,23,127,49,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_TARGET_FIRMWARE_COMBO,111,47,127,49,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMM_CHANNEL_COMBO,111,71,127,49,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,139,106,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,200,106,50,14
+    GROUPBOX        "",IDC_STATIC,7,7,243,90
+    LTEXT           "Target Type:",IDC_STATIC,19,25,42,8
+    LTEXT           "Firmware Version:",IDC_STATIC,19,49,56,8
+    LTEXT           "Communication Channel:",IDC_STATIC,19,73,79,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_PMTOOL_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 313
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 193
+    END
+
+    IDD_BACKUP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 376
+        VERTGUIDE, 20
+        VERTGUIDE, 334
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 195
+    END
+
+    IDD_RESTORE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 376
+        VERTGUIDE, 20
+        VERTGUIDE, 334
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 218
+        HORZGUIDE, 195
+    END
+
+    IDD_DEPLOY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 376
+        VERTGUIDE, 20
+        VERTGUIDE, 334
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 223
+    END
+
+    IDD_FILETRANSFER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 376
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 218
+    END
+
+    IDD_COMM_SETTINGS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 250
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 120
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE 7, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\PMTool.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.deu\afxres.rc"          // Standard components
+#endif
+#include "version.rc2"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

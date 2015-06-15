@@ -1,0 +1,35 @@
+HKCR
+{
+	4C_20_CE.Extract.1 = s '4C_20: HeaderExtract Server'
+	{
+		CLSID = s '{2D413C42-2431-11d5-A0CE-006008736ABF}'
+        'Index'
+        {
+            val Version = s '2.0'
+            val LCID = d '1033'
+        }
+	}
+	4C_20_CE.Extract = s '4C_20: HeaderExtract Server'
+	{
+		CLSID = s '{2D413C42-2431-11d5-A0CE-006008736ABF}'
+		CurVer = s '4C_20_CE.Extract.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {2D413C42-2431-11d5-A0CE-006008736ABF} = s '4C_20: HeaderExtract Server'
+		{
+			ProgID = s '4C_20_CE.Extract.1'
+			VersionIndependentProgID = s '4C_20_CE.Extract'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			'TypeLib' = s '{E83D59DF-4DD2-4cf2-8F23-80743450A9BA}'
+            'Implemented Categories'
+            {
+                {01C36A7b-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

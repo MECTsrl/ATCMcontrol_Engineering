@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>FA_SYNC_READFILE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css">
+</head>
+
+<body bgcolor="#FFFFCC">
+<h2>FA_SYNC_READFILE </h2>
+<p>Liest einen Bytestring aus einer Datei.</p>
+<h3>Schnittstelle</h3>
+<pre class="preforma">FUNCTION FA_SYNC_READFILE:BOOL
+VAR_INPUT
+    EXEC        : BOOL;             
+END_VAR
+VAR_IN_OUT
+    FILE        : FA_SYNC_FILE;     
+    LENGTH      : DINT;             
+END_VAR
+VAR_OUTPUT
+    DATA        : BYTE_STRING;      
+END_VAR</pre>
+<h3>Rückgabewert</h3>
+<p>Wert vom Typ <i><b>BOOL</b></i><br>
+  Signalisiert den Fehlerstatus.<br>
+  M&ouml;gliche Werte:<br>
+  <i><b>TRUE</b></i>: Ein Fehler ist aufgetreten.<br>
+  <i><b>FALSE</b></i>: Es ist kein Fehler aufgetreten.</p>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>EXEC</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Startet die Operation.</dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl> 
+  <dt><b>FILE</b></dt>
+  <dd>Instanz der Struktur <a href="FA_SYNC_FILE.htm"><i><b>FA_SYNC_FILE</b></i></a><br>
+    Dateiobjekt, auf das die Operation ausgef&uuml;hrt wird.</dd>
+  <dt><b>LENGTH</b></dt>
+  <dd>Wert vom Typ <i><b>DINT</b></i><br>
+    Vor dem Zugriff: Länge des zu lesenden Dateiblocks in Bytes. <br>
+    Nach dem Zugriff: Länge des gelesenen Dateiblocks in Bytes.</dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b>DATA</b></dt>
+  <dd>Instanz der Struktur <a href="manual.chm::/Man/Communication/BYTE_STRING_GE.htm"><i><b>BYTE_STRING</b></i></a> 
+    <br>
+Enth&auml;lt nach Abschlu&szlig; der Leseoperation die gelesenen Bytes.</dd>
+</dl>
+<h3>Beschreibung</h3>
+<p><b><i>FA_SYNC_READFILE</i></b> liest einen Block der in <i><b>LENGTH</b></i> 
+  definierten L&auml;nge aus der an <i><b>FILE</b></i> &uuml;bergebenen Datei. 
+  Vor dem Lesen einer Datei mu&szlig; diese mit <i><b><a href="FA_SYNC_OPENFILE.htm">FA_SYNC_OPENFILE</a></b></i> 
+  ge&ouml;ffnet werden. Vor dem &Ouml;ffnen mu&szlig; der Zugriffmodus im Parameter 
+  <i><b>MODE</b></i> der an <i> <b>FA_SYNC_OPENFILE</b></i> &uuml;bergebenen Strukturinstanz 
+  von <i><b><a href="FA_SYNC_FILE.htm">FA_SYNC_FILE</a></b></i> gesetzt werden. 
+</p>
+<p>Der Dateizeiger, der die aktuelle Leseposition markiert, wird durch die Strukturvariable 
+  <i> <b>POSITION</b></i> der an <i><b>FILE</b></i> &uuml;bergebenen Strukturinstanz 
+  von <i><b>SYNC_FILE</b></i> repr&auml;sentiert. </p>
+<p>Nach dem &Ouml;ffnen einer Datei steht der Dateizeiger immer an der Position, 
+  die durch den beim &Ouml;ffnen der Datei gesetzten <a href="Const_Mode.htm">Zugriffsmodus</a> 
+  definiert ist. Ein nachfolgender Lesezugriff erfolgt daher immer an der durch 
+  den Zugriffsmodus definierten Position, wenn der Dateizeiger nicht explizit 
+  auf eine andere Position gesetzt wird. Die Position eines Lesezugriffs kann 
+  durch Zuweisung eines Wertes an die Strukturvariable <i> <b>POSITION</b></i> 
+  explizit gesetzt werden. Dazu mu&szlig; nach dem &Ouml;ffnen einer Datei und 
+  vor dem Lesezugriff der Wert von <i><b>POSITION</b></i> auf die gew&uuml;nschte 
+  Leseposition gesetzt werden. Nach Ende der Leseoperation wird der Wert von <i><b>POSITION</b></i> 
+  wieder auf die sich direkt hinter dem zuletzt gelesenen Byte befindende Position 
+  gesetzt. </p>
+<p>Die gelesenen Daten werden in der <i><b>BYTE_STRING</b></i>-Instanz <i><b>DATA</b></i> 
+  abgelegt, die beim Aufruf von <i><b>FA_SYNC_READFILE</b></i> automatisch erzeugt 
+  wird. Verwenden Sie die Konvertierungsfunktion <i><b>COPY_WSTRING_FROM_BYTE_STRING</b></i>, 
+  um den in <i><b>DATA</b></i> gespeicherten Bytestring zu konvertieren und auszuwerten. 
+</p>
+</body>
+</html>

@@ -1,0 +1,349 @@
+/*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/inc/device.odl 1     28.02.07 19:01 Ln $
+ *----------------------------------------------------------------------------*
+ *
+ * =FILENAME            $Workfile: device.odl $
+ *                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/inc/device.odl $
+ *
+ * =PROJECT             CAK1020  ATCMControl V2.0
+ *
+ * =SWKE                4CC
+ *
+ * =COMPONENT           4CC
+ *
+ * =CURRENT             $Date: 28.02.07 19:01 $
+ *                      $Revision: 1 $
+ *
+ * =ENVIRONMENT         Win32:
+ *                      MS Windows NT 4.0
+ *                      MSVC++ V5.0 / MFC 4.2 / ATL 2.0 / DAO 3.5
+ *                      MS Java 2.0
+ *                      MS Visual SourceSafe 5.0
+ *
+ * =REFERENCES
+ *==
+ *----------------------------------------------------------------------------*
+ *
+
+ 
+
+ 
+
+ *==
+ *
+ *----------------------------------------------------------------------------*
+ * =DESCRIPTION
+ *==
+ *----------------------------------------------------------------------------*
+ * =MODIFICATIONS
+ * $History: device.odl $
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.02.07   Time: 19:01
+ * Created in $/4CReleased/V2.20.00/COM/softing/fc/inc
+ * 
+ * *****************  Version 2  *****************
+ * User: Ef           Date: 27.07.06   Time: 14:46
+ * Updated in $/4Control/COM/softing/fc/inc
+ * implemented Step Over / Step Out (interface remains binary compatible
+ * with old version)
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.08.03   Time: 16:34
+ * Created in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 2  *****************
+ * User: Ed           Date: 3/22/01    Time: 4:32p
+ * Updated in $/4Control/COM/softing/fc/inc
+ *==
+ ******************************************************************************
+H<<*/
+
+[
+  uuid(EDEAA921-773F-469f-9D9C-CF2ED5A6B4D3),
+  version(1.0),
+  helpstring("ATCMControl Control Interfaces")
+]
+library DeviceManagement{
+  importlib ("stdole2.tlb");
+
+  //forward declarations
+  interface IResource;
+  interface IObjectDirectory;
+  interface IBreakpointManager;
+  interface IBreakpointNotify;
+  interface IInternalResourceManager;
+  //end forward declarations
+
+  [
+    uuid(EDEAA922-773F-469f-9D9C-CF2ED5A6B4D3),
+    oleautomation,
+    odl,
+    helpstring("outbound interface")
+  ]
+  interface IDebugOutput : IUnknown{
+    [
+      helpstring("prints on the terminal")
+    ]
+    HRESULT printString([in] long id, [in] BSTR message, [in] DATE dt);
+  };
+
+  [
+    uuid(EDEAA923-773F-469f-9D9C-CF2ED5A6B4D3),
+    oleautomation,
+    odl
+  ]
+  interface IServiceManager : IUnknown{
+    [
+      helpstring("outputDevice must implement a IDebugOutput or IBreakpointNotify")
+    ]
+    HRESULT connectDebug([in] IUnknown *outputDevice, // IDebugOutput *|IBreakpointNotify *
+                         [in] boolean bConnect); // VARIANT_TRUE = connect, VARIANT_FALSE = disconnect
+    [
+      helpstring("get the first and the last valid message id")
+    ]
+    HRESULT getHistory([out] long *first, [out] long *last);
+    [
+      helpstring("get the specified message")
+    ]
+    HRESULT getMessage([in] long id, [out] BSTR *message, [out] DATE *dt);
+    [
+      helpstring("get max. length of the message buffer")
+    ]
+    HRESULT getMaxLength([out, retval] long *len);
+    [
+      helpstring("clears the message buffer, if size == 0 max. length is not changed")
+    ]
+    HRESULT setMaxLength([in] long len);
+  };
+
+  [
+    uuid(EDEAA924-773F-469f-9D9C-CF2ED5A6B4D3),
+    appobject
+  ]
+  coclass CServiceManagement{//implemented in a free threaded apartment
+    [default] interface IServiceManager;
+    //source-interfaces are now accessible via IConnectionPointXXX interfaces too:
+    [default, source] interface IDebugOutput;
+    [source] interface IBreakpointNotify;
+  };
+
+  [
+    uuid(EDEAA925-773F-469f-9D9C-CF2ED5A6B4D3),
+    appobject
+  ]
+  coclass CResourceObject{//implemented in a apartment threaded environment
+    [default] interface IResource;
+    interface IObjectDirectory;
+    interface IBreakpointManager;
+    [restricted] interface IInternalResourceManager;
+  };
+
+  [
+    restricted,
+    uuid(EDEAA926-773F-469f-9D9C-CF2ED5A6B4D3),
+    oleautomation,
+    odl,
+    helpstring("used only internally, do not call")
+  ]
+  interface IInternalResourceManager : IUnknown{
+    HRESULT irmInit(void);   // init resource(initally paused)
+    HRESULT irmExit(void);   // exit resource
+    HRESULT irmResume(void); // start execution
+    HRESULT irmPause(void);  // stop execution
+  };
+
+
+//all following classes are implemented in java
+
+  //IObjectDirectory: 
+  [
+    uuid(EDEAA927-773F-469f-9D9C-CF2ED5A6B4D3),
+    oleautomation,
+    odl
+  ]
+  interface IObjectDirectory : IUnknown
+  {
+    HRESULT iodGetNameList([out,retval] SAFEARRAY(BSTR) *ret);
+    HRESULT iodGetObject([in] BSTR name, [out,retval] IUnknown** ret);
+  };
+
+
+  //IResource: the resource interface
+  [
+    uuid(EDEAA928-773F-469f-9D9C-CF2ED5A6B4D3),
+    oleautomation,
+    odl
+  ]
+  interface IResource : IUnknown
+  {
+    //download
+    [
+      helpstring("begin download transaction")
+    ]
+    HRESULT irStartOnlineChange();
+    [
+      helpstring("make download persistent")
+    ]
+    HRESULT irCommitOnlineChange();
+    [
+      helpstring("undo any download changes")
+    ]
+    HRESULT irCancelOnlineChange();
+
+    [
+      helpstring("can only be called after irStartOnlineChange()")
+    ]
+    HRESULT irDownloadDomain([in] BSTR fileName, [in] SAFEARRAY(unsigned char) *content);
+    HRESULT irUploadDomain([in] BSTR fileName, [out, retval] SAFEARRAY(unsigned char) *content);
+    [
+      helpstring("can only be called after irStartOnlineChange()")
+    ]
+    HRESULT irDeleteDomain([in] BSTR fileName);
+    [
+      helpstring("can only be called after irStartOnlineChange()")
+    ]
+    HRESULT irDeleteAllDomains();
+
+    //informational
+    HRESULT irGetDomainList([out, retval] SAFEARRAY(BSTR) *list);
+    [
+      helpstring("version is incremented after each successful download")
+    ]
+    HRESULT irGetVersion([out, retval] long *ret);
+    HRESULT irGetResourceName([out,retval] BSTR* ret);
+    [
+      helpstring("ERROR = -1, ONCREATION = 0, PAUSED = 1, RUNNING = 2")
+    ]
+    HRESULT irGetResourceState([out,retval] long* ret);
+
+    //helper
+    [
+      helpstring("can only be called if resource is in the running state")
+    ]
+    HRESULT irStartAllTasks();
+    [
+      helpstring("can only be called if resource is in the running state")
+    ]
+    HRESULT irStopAllTasks();
+    HRESULT irColdStartResource();
+    HRESULT irWarmStartResource();
+  };
+
+
+  //ITask: the task interace  
+  [
+    uuid(EDEAA929-773F-469f-9D9C-CF2ED5A6B4D3),
+    oleautomation,
+    odl
+  ]
+  interface ITask : IUnknown
+  {
+    [
+      helpstring("ERROR = -1, ONCREATION = 0, STOPPED = 1, RUNNING = 2, BREAK = 3")
+    ]
+    HRESULT itGetTaskState([out,retval] long *ret);
+    [
+      helpstring("can only be called if resource is in the running state")
+    ]
+    HRESULT itStartTask();
+    [
+      helpstring("stops task after completion of the current task cycle")
+    ]
+    HRESULT itStopTask();
+    [
+      helpstring("stops task immediately without completing the task cycle")
+    ]
+    HRESULT itKillTask();
+    [
+      helpstring("result will only be valid if task is in the error state")
+    ]
+    HRESULT itGetTaskErrNo([out,retval] long *ret);
+  };
+
+
+  //IReadValue
+  [
+    uuid(EDEAA92A-773F-469f-9D9C-CF2ED5A6B4D3),
+    oleautomation,
+    odl
+  ]
+  interface IReadValue : IUnknown
+  {
+    HRESULT irvGetValue([out,retval] VARIANT* val);
+  }
+  //IWriteValue
+  [
+    uuid(EDEAA92B-773F-469f-9D9C-CF2ED5A6B4D3),
+    oleautomation,
+    odl
+  ]
+  interface IWriteValue : IReadValue
+  {
+    HRESULT iwvSetValue([in] VARIANT val);
+  }
+
+  //IReadValueQVT
+  [
+    uuid(EDEAA92C-773F-469f-9D9C-CF2ED5A6B4D3),
+    oleautomation,
+    odl
+  ]
+  interface IReadValueQVT : IUnknown
+  {
+    HRESULT irvGetValueQVT([out] long* q,
+                           [out] VARIANT* v,
+                           [out] DATE* t);
+  }
+  //IWriteValueQVT
+  [
+    uuid(EDEAA92D-773F-469f-9D9C-CF2ED5A6B4D3),
+    oleautomation,
+    odl
+  ]
+  interface IWriteValueQVT : IReadValueQVT
+  {
+    HRESULT iwvSetValueQVT([in] long q,
+                           [in] VARIANT v,
+                           [in] DATE t);
+  }
+
+  //IBreakpointManager: the debug interface
+  [
+    uuid(EDEAA92E-773F-469f-9D9C-CF2ED5A6B4D3),
+    oleautomation,
+    odl
+  ]
+  interface IBreakpointManager : IUnknown
+  {
+    HRESULT ibmOpenDebugSession(void);
+    HRESULT ibmCloseDebugSession(void);
+    HRESULT ibmSetBreakPoint([in] BSTR instanceName, [in] long breakpointNumber, [out, retval] long *hBP);
+    HRESULT ibmClearBreakPoint([in] long hBP);
+    HRESULT ibmClearAllBreakPoints(void);
+    [
+      helpstring("can only be called if task is stopped at a breakpoint: mode: 0=continue, 1=single step, 2=step over, 3=step out")
+    ]
+    HRESULT ibmContinueTask([in] BSTR taskName, [in] short mode);
+  };
+
+  //IBreakpointNotify: the debug interface (outgoing)
+  [
+    uuid(EDEAA92F-773F-469f-9D9C-CF2ED5A6B4D3),
+    oleautomation,
+    odl,
+    helpstring("outbound interface")
+  ]
+  interface IBreakpointNotify : IUnknown
+  {
+    [
+      helpstring("hBP valid if != -1; bpQuality: -1=continue execution, 0=user bp/single step, 1=hard coded")
+    ]
+    HRESULT ibnBreakPointNotify([in] long hBP, [in] BSTR instanceName, [in] long breakpointNumber,
+                                [in] long bpQuality, [in] BSTR taskName);
+    [
+      helpstring("called in case of events like coldstart when all breakpoints have to be re-set")
+    ]
+    HRESULT ibnConfigurationChanged(void);
+  };
+
+};

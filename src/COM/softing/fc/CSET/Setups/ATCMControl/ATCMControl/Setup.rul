@@ -1,0 +1,291 @@
+
+// ATCMControl 4CKernel InstallShield Scripts
+// ----------------------------------------------------------------------------
+
+#include "isrt.h"
+#include "iswi.h"       
+#include "I:\4Control_R\COM\softing\fc\CSET\rul\common.rul"
+     
+export prototype CheckRequirements(HWND);
+export prototype ProcessAfterDataMove(HWND);  
+export prototype SetProperties(HWND);
+export prototype GetInstallDir(HWND);
+export prototype CheckRemoveRequest(HWND); 
+export prototype MergeLibs(HWND);    
+export prototype FixOleForASP(HWND);
+export prototype Call7zip(HWND);
+export prototype RemoveHMIBuilder(HWND);
+  
+
+// To Do:  Create a custom action for this entry-point function:
+// 1.  Right-click on "Custom Actions" in the Actions/Scripts view.
+// 2.  Select "Custom Action Wizard" from the context menu.
+// 3.  Proceed through the wizard and give the custom action a unique name.
+// 4.  Select "Run InstallScript code" for the custom action type, and in
+//     the next panel select "MyFunction" (or the new name of the entry-
+//     point function) for the source. 
+// 5.  Click Next, accepting the default selections until the wizard 
+//     creates the custom action.
+//
+// Once you have made a custom action, you must execute it in your setup by 
+// inserting it into a sequence or making it the result of a dialog's 
+// control event.
+ 
+ 
+ 
+ 
+///////////////////////////////////////////////////////////////////////////////
+//                                                                           
+// Function: CheckRequirements
+//                                                                           
+///////////////////////////////////////////////////////////////////////////////
+function CheckRequirements(hMSI)   
+    STRING szKey, svErrorText, szName, svValue, svRet;
+    NUMBER nvType, nvSize, nv4cPathRet;   
+   
+begin                 
+	// Check required installations
+	svRet = "1";
+
+	// Retrieve ATCMControl V2 install path	                      
+	szKey = "SOFTWARE\\Softing\\4ControlV2\\2.0";
+	szName = "Path";
+	nvType = REGDB_STRING;
+	RegDBSetDefaultRoot (HKEY_LOCAL_MACHINE);	
+	if RegDBGetKeyValueEx (szKey, szName, nvType, svValue, nvSize) = 0 then
+		// Ok
+		nv4cPathRet = 1;
+	else
+		// Show 'DestinationFolder' dialog
+		nv4cPathRet = 0;
+	endif;
+	
+	
+	// Set MSI properties
+	if nv4cPathRet > 0 then
+		// Set 'INSTALLDIR' property
+		MsiSetProperty(hMSI, "INSTALLDIR", svValue);
+	else              
+		// Show 'DestinationFolder' Dialog
+		MsiSetProperty(hMSI, "_FC_SHOW_DESTFOLDER_DIALOG", "1");
+	endif;
+	
+	MsiSetProperty(hMSI, "_FC_REQUIREMENTS", svRet);
+	
+	
+end;                                                                           
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+//                                                                           
+// Function: ProcessAfterDataMove
+//                                                                           
+///////////////////////////////////////////////////////////////////////////////
+function ProcessAfterDataMove(hMSI)
+	NUMBER nvSize, nvItem, nv4cPathRet, nvComponentsListID, nvType, nvComponentsCnt;
+	STRING svFCRemove, sv4cPath, szComponentsKey;
+	STRING szPathKey, szPathName, szPathValue;   
+begin
+             
+	// Retrieve ATCMControl V2 install path	                      
+	szPathKey = "SOFTWARE\\Softing\\4ControlV2\\2.0";
+	szPathName = "Path";
+	nvType = REGDB_STRING;
+	RegDBSetDefaultRoot (HKEY_LOCAL_MACHINE);	
+	if RegDBGetKeyValueEx(szPathKey, szPathName, nvType, sv4cPath, nvSize) = 0 then
+		// Ok
+		nv4cPathRet = 1;
+	else
+		// Show 'DestinationFolder' dialog
+		nv4cPathRet = 0;
+	endif;
+	
+	// Retrieve installed components from registry
+	szComponentsKey = "SOFTWARE\\Softing\\4ControlV2\\2.0\\Components";
+	nvItem = REGDB_KEYS;
+	RegDBSetDefaultRoot(HKEY_LOCAL_MACHINE);
+	nvComponentsListID = ListCreate(STRINGLIST);
+	if nvComponentsListID != LIST_NULL then
+		if RegDBQueryKey(szComponentsKey, nvItem, nvComponentsListID) = 0 then
+			// Ok
+			nvComponentsCnt = ListCount(nvComponentsListID);
+		endif;
+	endif;
+	ListDestroy(nvComponentsListID);
+	
+	// Add / Remove installpath value in the registry 
+	if nvComponentsCnt > 0 & 
+		nv4cPathRet = 0 then 
+		// Create installpath value in the registry
+		nvSize = 100;	
+		MsiGetProperty(hMSI, "INSTALLDIR", sv4cPath, nvSize);
+		
+		nvType = REGDB_STRING;
+		nvSize = -1;
+		RegDBSetKeyValueEx(szPathKey, szPathName, nvType, sv4cPath, nvSize);
+	elseif nvComponentsCnt = 0 & 
+		nv4cPathRet > 0 then 
+		// Remove installpath value in the registry
+		RegDBDeleteValue(szPathKey, szPathName);
+		szPathKey = "SOFTWARE\\Softing\\4ControlV2";
+		RegDBDeleteKey(szPathKey);
+	endif;
+end;
+      
+      
+    
+///////////////////////////////////////////////////////////////////////////////
+//                                                                           
+// Function: GetInstallDir
+//                                                                           
+///////////////////////////////////////////////////////////////////////////////    
+function GetInstallDir(hMSI)   
+    // To Do:  Declare local variables.
+    STRING szKey, szName, svValue, svEngBinDir, sv4cPath;
+    NUMBER nvType, nvSize, nv4cPathRet;   
+begin             
+	// Set the 'INSTALLDIR' property at the begin of the sequences !!!
+	
+	// Retrieve ATCMControl V2 install path	                      
+	szKey = "SOFTWARE\\Softing\\4ControlV2\\2.0";
+	szName = "Path";
+	nvType = REGDB_STRING;
+	RegDBSetDefaultRoot (HKEY_LOCAL_MACHINE);	
+	if RegDBGetKeyValueEx (szKey, szName, nvType, svValue, nvSize) = 0 then
+		// Ok
+		nv4cPathRet = 1;
+	else
+		// Show 'DestinationFolder' dialog
+		nv4cPathRet = 0;
+	endif;
+	
+	// Set MSI properties
+	// INSTALLDIR:
+	if nv4cPathRet > 0 then
+		// Set 'INSTALLDIR' property
+		MsiSetProperty(hMSI, "INSTALLDIR", svValue);
+	else              
+		// Show 'DestinationFolder' Dialog
+		MsiSetProperty(hMSI, "_FC_SHOW_DESTFOLDER_DIALOG", "1");
+	endif;  
+end;
+     
+///////////////////////////////////////////////////////////////////////////////
+//                                                                           
+// Function: SetProperties
+//                                                                           
+/////////////////////////////////////////////////////////////////////////////// 
+function SetProperties(hMSI)   
+    STRING  sv4cPath, svEngBinDir, svLibDir, svProjectsDir;
+    NUMBER  nvSize, nv4cPathRet;   
+begin             
+	
+	nvSize = 100;	
+	MsiGetProperty(hMSI, "INSTALLDIR", sv4cPath, nvSize);
+
+    svEngBinDir = sv4cPath + "Engineering\\bin\\";
+	MsiSetProperty(hMSI, "_FC_ENG_BIN_DIR", svEngBinDir);   
+	
+	svLibDir = sv4cPath + "Engineering\\Lib\\";
+	MsiSetProperty(hMSI, "_FC_DIR_LIB", svLibDir);
+	
+	svProjectsDir = sv4cPath + "Projects\\";
+	MsiSetProperty(hMSI, "_FC_DIR_PROJECTS", svProjectsDir);
+end;
+     
+///////////////////////////////////////////////////////////////////////////////
+//                                                                           
+// Function: CheckRemoveRequest
+//                                                                           
+///////////////////////////////////////////////////////////////////////////////
+function CheckRemoveRequest(hMSI)   
+	STRING svRemove;
+    NUMBER nvSize;
+begin             
+	// Check if remove is selected
+	nvSize = 10;	
+	MsiGetProperty(hMSI, "REMOVE", svRemove, nvSize);
+
+	if svRemove = "ALL" then
+		// Set '_FC_KADMERGE_REMOVE' property
+		MsiSetProperty(hMSI, "_FC_KADMERGE_REMOVE", "1");
+ 	endif;
+end;
+                         
+                 
+///////////////////////////////////////////////////////////////////////////////
+//                                                                           //
+// Function: FixOleForASP ()                                                 //
+//                                                                           //
+//  Purpose: fix the missing DefaultAccessPermission which causes problems.  //
+//  function is needed to work around a problem in Windows 2000 RC2          //
+//  where after installing IIS there is a DefaultLaunchPermission including  //
+//  the IUSR_XXX but there was no DefaultAccessPermission key at all.        //
+//                                                                           //
+///////////////////////////////////////////////////////////////////////////////
+function FixOleForASP(hMSI)
+  STRING szOleKey;
+  NUMBER nvType, nvSize;
+  STRING svValue;
+
+  begin
+  szOleKey = "SOFTWARE\\Microsoft\\Ole";
+
+  RegDBSetDefaultRoot (HKEY_LOCAL_MACHINE);
+
+  if (RegDBGetKeyValueEx( szOleKey, "DefaultAccessPermission",
+                          nvType, svValue, nvSize) < 0) then
+    if (RegDBGetKeyValueEx( szOleKey, "DefaultLaunchPermission",
+                          nvType, svValue, nvSize) = 0) then
+      RegDBSetKeyValueEx( szOleKey, "DefaultAccessPermission",
+                          nvType, svValue, nvSize);
+    endif;
+  endif;
+
+  return TRUE;
+  end;        
+  
+///////////////////////////////////////////////////////////////////////////////
+//                                                                           
+// Function:  Call7zip
+//                                                                           
+//  Purpose:  Calls 7Zip to unzip HMIBuilder file 
+//            
+//                                                                           
+///////////////////////////////////////////////////////////////////////////////
+function Call7zip(hMSI)    
+	STRING cmdLine, appPath, hmiBuilder;
+
+begin
+	appPath = TARGETDIR+"Engineering\\bin\\HMITools\\bins\\Compressor\\7Zip\\7z.exe";
+	cmdLine = " x "+TARGETDIR+"Engineering\\bin\\HMIBuilder.7z -o"+TARGETDIR+"Engineering\\bin -y";
+	hmiBuilder = TARGETDIR+"Engineering\\bin\\HMIBuilder.7z";
+	if (LaunchAppAndWait(appPath, cmdLine, WAIT)>0) then
+		MessageBox("Fail on decompress HMIBuilder", SEVERE);
+		return FALSE;
+	endif;
+	if (DeleteFile(hmiBuilder)>0) then 
+		MessageBox("Fail on remove HMIBuilder.7z", SEVERE);
+		return FALSE;
+	endif;     
+end;
+
+///////////////////////////////////////////////////////////////////////////////
+//                                                                           
+// Function:  RemoveHMIBuilder
+//                                                                           
+//  Purpose:  On uninstall, remove folder containing HMIBuilde virtual machine 
+//            
+//                                                                           
+///////////////////////////////////////////////////////////////////////////////
+function RemoveHMIBuilder(hMSI)    
+	STRING hmiBuilder;
+
+begin
+	hmiBuilder = TARGETDIR+"Engineering\\bin\\HMIBuilder\\";
+	if (DeleteDir(hmiBuilder, ALLCONTENTS)>0) then
+			MessageBox("Fail on delete HMIBuilder folder "+hmiBuilder, SEVERE);		
+	endif;		     
+end;
+

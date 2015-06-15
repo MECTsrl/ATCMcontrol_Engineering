@@ -1,0 +1,21 @@
+(*[[
+    GUID= "{E2284DED-50ED-40C8-A875-7814E078DBA3}",  
+    Alias="alias",
+    CREATED="created",
+    MODIFIED="modified",
+    USRCREATED="usrcreated",
+    USRMODIFIED="usrmodified",
+    URL="url",
+    USERTEXT1="usertext1",
+    USERTEXT2="usertext2",
+    USERTEXT3="usertext3",
+    KEY_001="VALUE_001",
+    KEY_002="VALUE_002",
+    KEY_003="VALUE_003",
+]]*)
+
+CONFIGURATION configuration_001
+    #import "Resource1.res"
+    #import "Resource2.res"
+    #import "Resource3.res"
+END_CONFIGURATION

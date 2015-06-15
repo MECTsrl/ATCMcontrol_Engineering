@@ -1,0 +1,16 @@
+
+TARGET=$(EXE_DIR)\engineering\bin\4dl.exe 
+TARGETTYPE=con 
+
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+
+LIBRARY=$(LIB_DIR)\fc_tools.lib
+LIBRARY=$(LIB_DIR)\fc_todebug.lib
+LIBRARY=$(LIB_DIR)\fc_baselib.lib
+
+DEFLIB=oleaut32.lib
+DEFLIB=ole32.lib
+
+OBJECT=setargv.obj
+

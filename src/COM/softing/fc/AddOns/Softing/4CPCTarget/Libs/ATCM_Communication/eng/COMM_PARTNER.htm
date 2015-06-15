@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>COMM_PARTNER</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>COMM_PARTNER </h2>
+<p>Represents a connection.</p>
+<h3>Interface definition</h3>
+<pre class="preforma">TYPE
+     COMM_PARTNER : STRUCT
+        iCommType   : DINT := CFB_Serial;   
+        iTimeout    : DINT := 0;            
+        sParam      : WSTRING;              
+     END_STRUCT;
+END_TYPE</pre>
+<h3>Parameters</h3>
+<p><b>iCommType</b></p>
+<p>Value of type <i><b>DINT</b></i>. <br>
+  Determines the type of communication. At present, only CFB_SERIAL is supported.</p>
+<p><b>iTimeout</b></p>
+<p>Value of type <i><b>DINT</b></i>. <br>
+  Determines the timeout for read and write requests. <br>
+  The default value is 0, i.e. no timeout is used. <br>
+  <br>
+  <b>sParam</b></p>
+<p>Value of type <i><b>WSTRING</b></i>. <br>
+  String containing parameters for initializing the connection. When a new connection 
+  is opened, the parameters of the interface are defined using the connection 
+  string passed in <i><b>sParam</b></i>. For information regarding syntax and 
+  possible settings click <a href="CommParam.htm">here</a>.</p>
+<h3>Description</h3>
+<p><b><i>COMM_PARTNER</i></b> represents a connection. An instance of <i><b>COMM_PARTNER 
+  </b></i>is passed to an instance of<i><b><a href="CONNECT.htm"> CONNECT</a></b></i> 
+  in order to establish a connection. Before it can be passed to<i><b> CONNECT</b></i>, 
+  the structure elements of the corresponding instance of<i><b> COMM_PARTNER</b></i> 
+  have to be initialized. </p>
+<p>Basic properties of the connection are defined in the connection string of 
+  the element<i><b> sParam</b></i>. The connection properties are valid from the 
+  beginning till the end of a connection. A change of the values of an instance 
+  of <i><b>COMM_PARTNER</b></i> only takes place when a connection is being opened. 
+  Changes to the values of the structure elements have no effects on an already 
+  established connection.</p>
+</body>
+</html>

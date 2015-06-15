@@ -1,0 +1,151 @@
+//Microsoft Developer Studio generated resource script.
+//
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+#include "projectwizardres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_LIBSPAGE_IMAGELIST  BITMAP  DISCARDABLE     "libspage.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_4CWIZ_LIBRARIES DIALOG DISCARDABLE  0, 0, 360, 162
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Project Wizard: Libraries"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Which libraries would you like to use?",IDC_STATIC,20,
+                    20,119,8
+    CONTROL         "List1",IDC_4CWIZ_UNUSED_LIBS,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_SORTASCENDING | LVS_ALIGNLEFT | 
+                    LVS_NOCOLUMNHEADER | WS_BORDER | WS_TABSTOP,20,45,120,99
+    CONTROL         "List2",IDC_4CWIZ_USED_LIBS,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_SORTASCENDING | LVS_ALIGNLEFT | 
+                    LVS_NOCOLUMNHEADER | WS_BORDER | WS_TABSTOP,221,45,120,
+                    99
+    PUSHBUTTON      "&Add >",IDC_4CWIZ_ADD_LIBRARY,153,50,55,14
+    PUSHBUTTON      "< &Remove ",IDC_4CWIZ_REMOVE_LIBRARY,153,70,55,14
+    PUSHBUTTON      "Add A&ll >>",IDC_4CWIZ_ADD_ALL_LIBRARIES,153,105,55,14
+    PUSHBUTTON      "<< Remo&ve All",IDC_4CWIZ_REMOVE_ALL_LIBRARIES,153,125,
+                    55,14
+    LTEXT           "Unused libraries",IDC_STATIC,20,35,51,8
+    LTEXT           "Used libraries",IDC_STATIC,221,35,43,8
+    GROUPBOX        "Library Settings",IDC_STATIC,0,5,359,156
+END
+
+IDD_4CWIZ_PROPERTIES DIALOG DISCARDABLE  0, 0, 360, 162
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Project Wizard: Properties"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Object Information",IDC_STATIC,0,5,359,95
+    LTEXT           "&Alias:",IDC_STATIC,16,24,18,8
+    EDITTEXT        IDC_ALIAS,51,21,292,14,ES_AUTOHSCROLL
+    LTEXT           "Text &1:",IDC_STATIC,16,42,23,8
+    EDITTEXT        IDC_USER_TEXT1,51,39,292,14,ES_AUTOHSCROLL
+    LTEXT           "Text &2:",IDC_STATIC,16,60,23,8
+    EDITTEXT        IDC_USER_TEXT2,51,57,292,14,ES_AUTOHSCROLL
+    LTEXT           "Text &3:",IDC_STATIC,16,78,23,8
+    EDITTEXT        IDC_USER_TEXT3,51,75,292,14,ES_AUTOHSCROLL
+    GROUPBOX        "Links",IDC_STATIC,0,110,359,45
+    LTEXT           "&URL:",IDC_STATIC,20,130,18,8
+    EDITTEXT        IDC_URL,51,130,229,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "B&rowse...",IDC_BROWSE,293,130,50,14
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "projectwizardres.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ERR_NON_UNIQUE_RESOURCE 
+                            "Two or more resources have the same name (%s)"
+    IDS_ERR_NON_UNIQUE_TARGET "Two or more targets have the same name (%s)"
+    IDS_ERR_NON_UNIQUE_TASK "Two or more tasks have the same name (%s)"
+    IDS_ERR_NON_UNIQUE_PROGRAM "Two or more programs have the same name (%s)"
+    IDS_ERR_EQUAL_TASK_AND_PROGRAM_NAME 
+                            "A task and a program have the same name (%s)"
+    IDS_ERR_IDENTIFIER_SYNTAX "The %s identifier '%s' is not correct"
+    IDS_ERR_IDENTIFIER_IS_KEYWORD "The %s identifier '%s' is a keyword"
+    IDS_ERR_IDENTIFIER_TOO_LONG "The %s identifier '%s' is too long"
+    IDS_ERR_FILE_EXISTS     "The file '%s' already exists."
+    IDS_RESOURCE            "resource"
+    IDS_TASK                "task"
+    IDS_PROGRAM             "program"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TARGET              "target"
+    IDS_URL_FILE            "Select File as URL"
+    IDS_URL_FILTER          "HTML files (*.htm; *.html)|*.htm; *.html|All files (*.*)|*.*||"
+END
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,63 @@
+cpp_quote("//+-------------------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  ATCMControl 4CE")
+cpp_quote("//  Copyright 2000 - 2001 SoftingGmbH.")
+cpp_quote("//")
+cpp_quote("//--------------------------------------------------------------------------")
+
+
+#ifndef DO_NO_IMPORTS
+import "unknwn.idl";
+#endif
+
+cpp_quote("//+-------------------------------------------------------------------------")
+cpp_quote("// The interface of the project wizard:")
+[
+    object,
+    oleautomation, //enforce check of automation compatible datatypes
+    uuid(D69F6150-B70E-11d4-B33F-0008C77981F8)
+]
+
+/**
+* interface ICEProjectWizard - Standard interface for project wizards.
+* Is designed to support Visual Basic implementation as well as
+* other supporting languages. Hence constraints imposed by VB implementation
+* shall be considered.<br>
+* <B>Note:</B><br>
+* Do not use int datatype and if there are multiple out parameters, one
+* out paremeter has to be declared [out,retval] and the other has to be 
+* declared [in,out]. Single out parameter shall be declared [out,retval].
+*/
+interface ICEProjectWizard : IUnknown
+{
+    HRESULT ExecuteProjectWizard(
+	  [in,string] BSTR sPath, 
+          [in,string] BSTR sProjectName,
+          [out,retval] BSTR *psFileName);	// SIS: this parameter is not used but must be !NULL
+
+    HRESULT GetDescription(
+	  [in] long iLanguageId,        //in order to support VB impl. it has to be a long
+          [in,out] BSTR *psName,	//in order to support VB impl. it has to be [in,out]
+          [out,retval] BSTR *psDescription);
+};
+
+//-----------------------------------------------------
+// This TYPELIB is generated as a convenience to users of high level tools
+// which are capable of using or browsing TYPELIBs (VC6 and Visual Basic).
+//-----------------------------------------------------
+
+[
+    uuid(5537EEF0-76DF-11d5-927D-00902766E4D9),
+    version(2.0),
+    helpstring("4CONTROL: CEProjectWizard 2.0 Type Library")
+]
+library CEProjectWizardLib
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+
+    interface ICEProjectWizard;
+};
+
+
+

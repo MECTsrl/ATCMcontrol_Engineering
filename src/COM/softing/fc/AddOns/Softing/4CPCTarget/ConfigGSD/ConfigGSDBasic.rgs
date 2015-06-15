@@ -1,0 +1,30 @@
+HKCR
+{
+	4C_20_CIO.ConfigGSD.1 = s '4C_20: Profibus GSD configurator'
+	{
+		CLSID = s '{1541E6BF-D1A8-46fb-A9FE-BF3AA3FC876A}'
+	}
+	4C_20_CIO.ConfigGSD = s '4C_20: Profibus GSD configurator'
+	{
+		CurVer = s '4C_20_CIO.ConfigGSD.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {1541E6BF-D1A8-46fb-A9FE-BF3AA3FC876A} = s '4C_20: Profibus GSD configurator'
+		{
+			ProgID = s '4C_20_CIO.ConfigGSD.1'
+			VersionIndependentProgID = s '4C_20_CIO.ConfigGSD'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			'TypeLib' = s '{CA59AF59-1C36-4d68-A170-82987E70827B}'
+            
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

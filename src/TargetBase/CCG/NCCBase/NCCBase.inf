@@ -1,0 +1,41 @@
+# $Header: /4CReleased/V2.20.00/TargetBase/CCG/NCCBase/NCCBase.inf 1     28.02.07 19:04 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: NCCBase.inf $
+#                        $Logfile: /4CReleased/V2.20.00/TargetBase/CCG/NCCBase/NCCBase.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Targetbase / CCG
+#
+# =COMPONENT            NCC
+#
+# =CURRENT      $Date: 28.02.07 19:04 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+TARGET=$(TARGET_BASE)\lib\NCCBase.lib
+TARGETTYPE=lib
+UNICODE=0
+
+DEFINE=_ATL_NO_SECURITY
+DEFINE=_AFXDLL
+DEFINE=_WINDLL
+DEFINE=_USRDLL
+
+INCLUDE=..\inc
+INCLUDE=..\..\inc
+
+PCHFILE=stdafx
+
+#used for including vm headers
+DEFINE=INC_4C
+
+USER=makefirst:$(TARGET_BASE)\lib
+USER=$(TARGET_BASE)\lib:
+USER=  -md $@
+
+# -------------------------------------------------------------------------------

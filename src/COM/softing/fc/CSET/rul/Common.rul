@@ -1,0 +1,53 @@
+
+// ATCMControl (Kernel) Common InstallShield Scripts
+// ----------------------------------------------------------------------------
+
+#include "isrt.h"
+#include "iswi.h"
+
+#include "I:\4Control_R\Com\Softing\fc\res\BuildNr.h"     
+#include "I:\4Control_R\Com\Softing\fc\res\Product.h"
+
+export prototype GetProductVersion(HWND);
+
+
+// GetProductVersion
+// ----------------------------------------------------------------------------
+function GetProductVersion(hMSI) 
+	STRING svFullProdVer;
+	STRING svBuildNr; 
+	STRING svProdVerMajor;
+	STRING svProdVerMinor;    
+	STRING svProdVerServP;
+    NUMBER nvBuildNr;     
+    NUMBER nvProdVerMajor;
+    NUMBER nvProdVerMinor;
+    NUMBER nvProdVerServP;
+begin             
+
+	nvBuildNr = PRODUCT_BUILD ;	
+	NumToStr(svBuildNr, nvBuildNr);
+	nvProdVerMajor = PROD_VER_MAJOR;
+	NumToStr(svProdVerMajor, nvProdVerMajor);
+	nvProdVerMinor = PROD_VER_MINOR;
+	NumToStr(svProdVerMinor, nvProdVerMinor); 
+	nvProdVerServP = PROD_VER_SERVP;
+	NumToStr(svProdVerServP, nvProdVerServP);
+		                
+	if (StrLength(svProdVerMinor)<2)  then
+		svProdVerMinor = "0" + svProdVerMinor;
+	endif;         
+	if (StrLength(svProdVerServP)<2)  then
+		svProdVerServP = "0" + svProdVerServP;
+	endif;
+	
+		                
+    svFullProdVer =  svProdVerMajor + "." + 
+                     svProdVerMinor + "." +
+                     svProdVerServP + "." + 
+                     svBuildNr;
+                     
+	MsiSetProperty(hMSI, "ProductVersion", svFullProdVer);
+
+end;
+

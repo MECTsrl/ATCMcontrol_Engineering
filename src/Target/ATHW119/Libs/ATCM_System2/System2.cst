@@ -1,0 +1,24 @@
+(*
+ * ATCMControl Embedded - System Library
+ * ----------------------------------------------------------------------------
+ *
+ 
+ *)
+
+CONST
+    (* Task State Values
+     * ------------------------------------------------------------------------
+     * See TSK_GetState.
+     *)
+    TSK_STATE_ERROR       : DINT :=  dint#16#ffffffff;
+    TSK_STATE_ONCREATION  : DINT :=  dint#16#000;
+    TSK_STATE_STOPPED     : DINT :=  dint#16#001;
+    TSK_STATE_RUNNING     : DINT :=  dint#16#002;
+    TSK_STATE_BREAK       : DINT :=  dint#16#003;
+    TSK_STATE_CONTINUED   : DINT :=  dint#16#004;   (* Not to be used! *)
+    TSK_STATE_STEP        : DINT :=  dint#16#005;
+    TSK_STATE_DELETED     : DINT :=  dint#16#006;
+    TSK_STATE_UNLOADED	  : DINT :=  dint#16#010;
+
+END_CONST
+

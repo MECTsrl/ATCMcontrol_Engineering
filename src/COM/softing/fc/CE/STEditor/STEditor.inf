@@ -1,0 +1,25 @@
+TARGET=$(EXE_DIR)\Engineering\bin\STEditorV2.exe
+
+#use define STEDITOR_DEBUG to debug break ST editor upon launch.
+DEFINE=_ATL_NO_SECURITY
+DEFINE=_AFXDLL
+INCLUDE=$(MAKEDIR)\inc
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\ce\inc
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+LIBPATH=$(PROJECT_ROOT)\COM\softing\fc\lib
+LIBPATH=$(PROJECT_ROOT)\COM\softing\fc\CE\lib
+DEFLIB=OE.lib
+DEFLIB=fc_baselib.lib
+DEFLIB=fc_util.lib
+DEFLIB=fc_todebug.lib
+DEFLIB=CESubscr.lib
+DEFLIB=HTMLHelp.lib
+DEFLIB=PrgEditor.lib
+DEFLIB=StdEditor.lib
+DEFLIB=XML_Wrapper.lib
+MASTER_RC=STEditor.rc
+PCHFILE=stdafx
+COPY=stkeywords.ini $(EXE_DIR)\Engineering\bin\stkeywords.ini
+COPY=4chkeywords.ini $(EXE_DIR)\Engineering\bin\4chkeywords.ini
+COPY=ilkeywords.ini $(EXE_DIR)\Engineering\bin\ilkeywords.ini

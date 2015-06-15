@@ -1,0 +1,71 @@
+#H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CSC/AsyncOPC/AsyncOPC.inf 1     28.02.07 19:00 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: AsyncOPC.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CSC/AsyncOPC/AsyncOPC.inf $
+#
+# =PROJECT             CAK1020  ATCMControl V2.0
+#
+# =SWKE                4CSC
+#
+# =COMPONENT           AsyncOPC
+#
+# =CURRENT             $Date: 28.02.07 19:00 $
+#                      $Revision: 1 $
+#
+# =ENVIRONMENT         MS Windows NT 4.0 / MS Windows 2000
+#                      MSVC++ V6.0
+#                      MS Java 3.2
+#                      MS Visual SourceSafe 6.0
+#                      Perl5
+#
+# =REFERENCES
+#==
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+# 4CSC Online system generation configuration file
+#----------------------------------------------------------------------------*
+# =MODIFICATIONS
+# $History: AsyncOPC.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:00
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CSC/AsyncOPC
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:33
+# Created in $/4Control/COM/softing/fc/CSC/AsyncOPC
+# 
+# *****************  Version 1  *****************
+# User: Ca           Date: 8.08.01    Time: 9:41
+# Created in $/4Control/COM/softing/fc/CSC/AsyncOPC
+# copied from V1.3
+#==
+#*****************************************************************************
+#H<<
+
+TARGET=$(EXE_DIR)\pub\AsyncOPC.exe
+TARGETTYPE=GUI
+STATIC_RUNTIME=0
+UNICODE=0
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+DEFLIB=ole32.lib
+DEFLIB=oleaut32.lib
+DEFLIB=uuid.lib
+PCHFILE=stdafx
+DEFINE=_AFXDLL
+DEFINE=_ATL_STATIC_REGISTRY
+DEFINE=_WINDLL
+DEFINE=_USRDLL
+
+

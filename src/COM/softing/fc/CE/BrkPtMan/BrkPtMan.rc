@@ -1,0 +1,176 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_BREAKPOINTVIEW ACCELERATORS DISCARDABLE 
+BEGIN
+    VK_F10,         IDM_CONTEXT_MENU,       VIRTKEY, SHIFT, NOINVERT
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1 TYPELIB ""BrkPtMan.tlb""\r\n"
+    "#include ""cebpmanerror.rc""\r\n"
+    "#include ""version.rc2""\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BREAKPOINTVIEW      BITMAP  DISCARDABLE     "breakpoi.bmp"
+IDB_CALLSTACKVIEW       BITMAP  DISCARDABLE     "callstack.bmp"
+IDB_BPSYMBOL            BITMAP  DISCARDABLE     "bpsymbol.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_BREAKPOINTMAN       REGISTRY DISCARDABLE    "BreakPointMan.rgs"
+IDR_BREAKPOINTVIEW      REGISTRY DISCARDABLE    "BreakPointView.rgs"
+IDR_CALLSTACKVIEW       REGISTRY DISCARDABLE    "CallStackView.rgs"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_BREAKPOINTVIEW DIALOGEX 0, 0, 248, 84
+STYLE WS_CHILD
+EXSTYLE WS_EX_CONTROLPARENT
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "List1",IDC_BPLIST,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,5,22,237,58
+    PUSHBUTTON      "&Remove",IDC_REMOVE,5,5,20,15,BS_ICON
+    PUSHBUTTON      "Remove &All",IDC_REMOVEALL,30,5,20,15,BS_ICON
+    PUSHBUTTON      "&Goto Source",IDC_GOTO,55,5,20,15,BS_ICON
+END
+
+IDD_CALLSTACKVIEW DIALOGEX 0, 0, 256, 126
+STYLE WS_CHILD
+EXSTYLE WS_EX_CONTROLPARENT
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "Static",IDC_STATIC,10,5,225,15
+    CONTROL         "Tree1",IDC_TREE1,"SysTreeView32",WS_BORDER | WS_TABSTOP,
+                    5,35,185,75
+    PUSHBUTTON      "&Goto",IDC_BUTTON1,205,40,40,15
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_REMOVE              ICON    DISCARDABLE     "remove.ico"
+IDI_REMOVEALL           ICON    DISCARDABLE     "removeal.ico"
+IDI_GOTO                ICON    DISCARDABLE     "goto.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_BPVIEW_POPUP MENU DISCARDABLE 
+BEGIN
+    POPUP "Popup"
+    BEGIN
+        MENUITEM "&Goto Source Code",           IDM_GOTO_SOURCE_CODE
+        MENUITEM "&Remove Breakpoint",          IDM_REMOVE_BREAKPOINT
+        MENUITEM "Remove &All Breakpoints",     IDM_REMOVE_ALL_BREAKPOINTS
+        MENUITEM "&Enable/Disable Breakpoint",  IDM_TOGGLE_BREAKPOINT_ENABLED
+
+        MENUITEM "&Continue",                   IDM_CONTINUE_TASK
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PROJNAME            "BrkPtMan"
+    IDS_COLUMNS             "Instance Name                             ,Position                             "
+    IDS_STLINE_POS          "Line %d"
+    IDS_GRBEGIN_POS         "Begin"
+    IDS_GREND_POS           "End"
+    IDS_GRBOX_POS           "Line %d, Col %d"
+    IDS_INSTANCENAME        "%s at %s"
+    IDS_NO_COMPONENT        "Failed to create %s component."
+    IDS_REMOVE_BREAKPOINT   "Remove Breakpoint"
+    IDS_REMOVE_ALL_BREAKPOINTS "Remove All Breakpoints"
+    IDS_GOTO_SOURCE_CODE    "Goto Source Code"
+    IDS_GRSTBOX_POS         "Line %d, Col %d,  ST line %d"
+    AFX_IDS_APP_TITLE		"ATCMControl Engineering"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "BrkPtMan.tlb"
+#include "cebpmanerror.rc"
+#include "version.rc2"
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>FNC_Sceleton</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1"><LINK
+href="Lib.css" rel=stylesheet>
+<META content="MSHTML 6.00.2800.1458" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffcc>
+  <H2>EVT_GetException</H2>
+  <P>Gets the task index number and the exception index number of the last
+  raised task exception.</P>
+  <H3>Interface</H3><PRE class="preforma">FUNCTION EVT_GetException : WORD<br>VAR_OUTPUT<BR>&nbsp;&nbsp;&nbsp; uTask&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : INT;<BR>&nbsp;&nbsp;&nbsp; ulException : DINT;<BR>END_VAR</PRE>
+  <H3>Return value</H3>
+  <P>Value of type&nbsp;<b><i>WORD</i></b> </P>
+  <P>OK if successful, else error number. (See
+  <a href="Const_Errno.htm"><strong><em>ErrNo.cst</em></strong></a> for details.)</P>
+  <H3>Parameters </H3>
+  <h3>OUTPUT</h3>
+  <dl>
+  <dt><b>uTask</b></dt>
+  <dd>Value of type <b><i>INT</i></b><br>
+    Task index number of the task who has most recently raised an exception.<br></dd>
+  </dl>
+  <dl>
+  <dt><b>ulException</b></dt>
+  <dd>Value of type <b><i>DINT</i></b><br>
+    Exception number of most recently raised exception. (See
+  <a href="Const_Exception.htm"><strong><em>Exception.cst</em></strong></a> for details.)<br></dd>
+  </dl>
+  <H3 class=indent>Description </H3>
+  <P>Gets the task index number and the exception index number of the last
+  raised task exception. This funciton can be used to implement an exception
+  handler within the IEC project.</P></BODY></HTML>

@@ -1,0 +1,13 @@
+
+(*[[
+    UserURL= "ATCM:BYTE_TO_DINT.htm"
+]]*)
+
+FUNCTION BYTE_TO_INT : INT
+VAR_INPUT 
+    IN : BYTE; 
+END_VAR
+
+inline{ VMOP }
+
+END_FUNCTION

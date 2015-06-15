@@ -1,0 +1,50 @@
+# $Header: /4CReleased/V2.20.00/TargetBase/CCG/4CVMLib/4cvmlib.inf 1     28.02.07 19:04 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: 4cvmlib.inf $
+#                        $Logfile: /4CReleased/V2.20.00/TargetBase/CCG/4CVMLib/4cvmlib.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Targetbase / CCG
+#
+# =COMPONENT            4CVMLib
+#
+# =CURRENT      $Date: 28.02.07 19:04 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+TARGET=$(TARGET_BASE)\lib\4cvm.lib
+
+TARGETTYPE=lib
+UNICODE=0
+
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\res
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\inc
+
+INCLUDE=..\inc
+INCLUDE=..\..\inc
+
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\ccg\inc
+
+# system libs:
+DEFLIB=ole32.lib 
+
+# for expanding *? in commadline:
+OBJECT=setargv.obj
+
+#used for including from vmm headers
+DEFINE=INC_4C
+
+USER=makefirst:$(TARGET_BASE)\bin
+USER=$(TARGET_BASE)\bin:
+USER=  -md $@
+
+USER=makefirst:$(TARGET_BASE)\lib
+USER=$(TARGET_BASE)\lib:
+USER=  -md $@
+
+# -------------------------------------------------------------------------------

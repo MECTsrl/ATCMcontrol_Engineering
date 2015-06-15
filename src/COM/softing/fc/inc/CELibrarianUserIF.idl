@@ -1,0 +1,98 @@
+/*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/inc/CELibrarianUserIF.idl 1     28.02.07 19:01 Ln $
+ *----------------------------------------------------------------------------*
+ *
+ * =FILENAME            $Workfile: CELibrarianUserIF.idl $
+ *                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/inc/CELibrarianUserIF.idl $
+ *
+ * =PROJECT             7VH102  ATCMControl
+ *
+ * =SWKE                4CE
+ *
+ * =COMPONENT           STEDITOR
+ *
+ * =CURRENT             $Date: 28.02.07 19:01 $
+ *                      $Revision: 1 $
+ *
+ * =ENVIRONMENT         Win32:
+ *                      MS Windows NT 4.0
+ *                      MSVC++ V5.0 / MFC 4.2 / ATL 2.0 / DAO 3.5
+ *                      MS Java 2.0
+ *                      MS Visual SourceSafe 5.0
+ *
+ * =REFERENCES
+ *==
+ *----------------------------------------------------------------------------*
+ *
+
+ 
+
+ 
+
+ *==
+ *
+ *----------------------------------------------------------------------------*
+ * =DESCRIPTION
+ *== COM interface description of Librarian
+ *----------------------------------------------------------------------------*
+ * =MODIFICATIONS
+ * $History: CELibrarianUserIF.idl $
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.02.07   Time: 19:01
+ * Created in $/4CReleased/V2.20.00/COM/softing/fc/inc
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.08.03   Time: 16:34
+ * Created in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 1  *****************
+ * User: Oh           Date: 6/25/01    Time: 8:26a
+ * Created in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 2  *****************
+ * User: Rf           Date: 24.08.99   Time: 13:39
+ * Updated in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 1  *****************
+ * User: So           Date: 24.08.99   Time: 10:51
+ * Created in $/4Control/COM/softing/fc/inc
+ ******************************************************************************
+H<<*/
+
+// This file will be processed by the MIDL tool.
+
+// This file will be included into the odl files of the editor local servers.
+
+// You must add the following lines of code into the 'coclass'-section of your editors
+// odl file to expose the interfaces by your local server:
+// 		interface ICEEdit;
+
+// The base GUID for all standard editor interfaces is {17297FB0-F487-11d1-8831-006097E1BE6E}.
+// Increment the first block of this GUID to add a new GUID to this file ({17297FB1- ..}).
+
+/////////////////////////////////////////////////////////////////////
+// Type Definitions
+/////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////
+// Interface Definitions
+/////////////////////////////////////////////////////////////////////
+
+
+import "wtypes.idl";
+import "unknwn.idl";
+
+
+    [
+		object,
+		uuid(C18A61D1-561B-11d3-8D1E-006008736562),
+		dual,
+		helpstring("ICELibrarianUser Interface"),
+		pointer_default(unique)
+	]
+	interface ICELibrarianUser : IUnknown
+	{
+		[id(1), helpstring("method ShowPouHeader")] 
+            HRESULT ShowPouHeader([in] BSTR sPouHeader);
+	};

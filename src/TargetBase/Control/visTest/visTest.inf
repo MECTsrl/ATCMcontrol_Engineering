@@ -1,0 +1,50 @@
+# $Header: /4CReleased/V2.20.00/TargetBase/Control/visTest/visTest.inf 1     28.02.07 19:14 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: visTest.inf $
+#                        $Logfile: /4CReleased/V2.20.00/TargetBase/Control/visTest/visTest.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 RunTime
+#
+# =COMPONENT            WinVisu
+#
+# =CURRENT      $Date: 28.02.07 19:14 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+
+
+
+#
+# ------------------------------------------------------------------------------
+#
+
+TARGET=$(TARGET_BASE)\bin\visTest.exe
+TARGETTYPE=con 
+UNICODE=0
+DEFINE=_AFXDLL
+PCHFILE=stdafx
+
+INCLUDE=..\inc
+INCLUDE=..\inc.vis
+INCLUDE=..\..\inc
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\res
+
+DEFLIB=ws2_32.lib
+
+LIBRARY=$(TARGET_BASE)\lib\visLib.lib
+LIBRARY=$(TARGET_BASE)\lib\osShared.lib
+
+USER=makefirst:$(TARGET_BASE)\bin
+USER=$(TARGET_BASE)\bin:
+USER=  -md $@
+
+# -------------------------------------------------------------------------------
+
+
+

@@ -1,0 +1,132 @@
+/*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/inc/CeExtract.idl 1     28.02.07 19:01 Ln $
+ *----------------------------------------------------------------------------*
+ *
+ * =FILENAME            $Workfile: CeExtract.idl $
+ *                       $Logfile: /4CReleased/V2.20.00/COM/softing/fc/inc/CeExtract.idl $
+ *
+ * =PROJECT             7VH102  ATCMControl
+ *
+ * =SWKE                4CE
+ *
+ * =COMPONENT           CEExtract: HeaderExtract Server
+ *
+ * =CURRENT      $Date: 28.02.07 19:01 $
+ *           $Revision: 1 $
+ *
+ * =ENVIRONMENT             Win32:
+ *                      MS Windows NT 4.0
+ *                      MSVC++ V6.0 / MFC 6.0 / ATL 3.0 / DAO 3.5
+ *                      MS Java 2.0
+ *                      MS Visual SourceSafe 5.0/6.0
+ *
+ * =REFERENCES
+ *==
+ *----------------------------------------------------------------------------*
+ *
+
+ *                http://www.4control.de
+
+ 
+
+ *==
+ *----------------------------------------------------------------------------*
+ * =DESCRIPTION
+ *    @DESCRIPTION@
+ *==
+ *----------------------------------------------------------------------------*
+ * =MODIFICATION
+ *==
+ *******************************************************************************
+ H<<*/
+
+// CeExtract.idl : IDL-Quellcode für CeExtract.dll
+//
+
+// Diese Datei wird mit dem MIDL-Tool bearbeitet,
+// um den Quellcode für die Typbibliothek (CeExtract.tlb)und die Abruffunktionen zu erzeugen.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(9CD54101-2505-11d5-A0CF-006008736ABF),
+		dual,
+		oleautomation,
+		helpstring("IExtract-Schnittstelle"),
+		pointer_default(unique)
+	]
+	interface IExtract : IDispatch
+	{
+		[id(1), helpstring("Method Extract: Extract the header portion of a file")] 
+		HRESULT Extract([in, string] BSTR sSrcFile, [out, string] BSTR * sHeaderFile);
+		[id(2), helpstring("Method Merge: Merges file as header section")] 
+		HRESULT Merge([in, string] BSTR sMergeFile, [in, string] BSTR sHeaderFile, [in] BOOL bDelHeaderFile);
+	};
+
+
+	[
+		object,
+		uuid(BB127CE1-2505-11d5-A0CF-006008736ABF),
+		dual,
+		oleautomation,
+		helpstring("IExtract2-Schnittstelle"),
+		pointer_default(unique)
+	]
+
+	interface IExtract2 : IDispatch
+	{
+		[id(1), helpstring("Method FindTaggedBlock: Find XML tagged block in file")] 
+		HRESULT FindTaggedBlock([in, string] BSTR sSrcFile, [in] long lOffset, [in, string] BSTR sTagName, 
+                                [in, string] BSTR sAttrName, [in, string] BSTR sAttrValue, 
+                                [out] long * plStartPos, [out] long * plLength);
+		[id(2), helpstring("Extract XML tagged block from a file")] 
+		HRESULT ExtractTaggedBlock([in, string] BSTR sSrcFile, [in] long lOffset, 
+		                           [in, string] BSTR sTagName, [in, string] BSTR sAttrName, 
+								   [in, string] BSTR sAttrValue, [in, string] BSTR sFileExt,
+								   [out, string] BSTR * sExtractedFile, [in] BOOL bCDataOnly);
+		[id(3), helpstring("Merge a file into an XML tagged block")] 
+		HRESULT MergeTaggedBlock([in, string] BSTR sSrcFile, [in] long lOffset, 
+								 [in, string] BSTR sTagName, [in, string] BSTR sAttrName, 
+								 [in, string] BSTR sAttrValue, [in, string] BSTR sMergeFile,
+								 [in] BOOL bAsCData, [in] BOOL bDelFile, [in] BOOL bRemoveXMLVersion);
+		[id(4), helpstring("Retrieves the attribute value of an XML element")] 
+		HRESULT  GetXMLAttributeValue([in, string] BSTR sSrcFile, [in] long lOffset, 
+		                              [in, string] BSTR sTagName, [in, string] BSTR sKeyAttrName, 
+							          [in, string] BSTR sKeyAttrValue, [in, string] BSTR sAttrName, 
+									  [out, string] BSTR * sAttrValue,
+	                                  [out] long * plPos);
+		[id(5), helpstring("Sets the attribute value of an XML element")] 
+		HRESULT  SetXMLAttributeValue([in, string] BSTR sSrcFile, [in] long lOffset, 
+		                              [in, string] BSTR sTagName, [in, string] BSTR sKeyAttrName, 
+							          [in, string] BSTR sKeyAttrValue, [in, string] BSTR sAttrName, 
+									  [in, string] BSTR sAttrValue);
+		[id(6), helpstring("Method FindTag: Find XML tagged block in file")] 
+		HRESULT FindTag([in, string] BSTR sSrcFile, [in] long lOffset, [in, string] BSTR sTagName, 
+                        [in, string] BSTR sAttrName, [in, string] BSTR sAttrValue, 
+                        [out] long * plStartPos, [out] long * plLength);
+		[id(7), helpstring("Method FindTag: Find XML tagged block in file")] 
+		HRESULT FindBeginTag([in, string] BSTR sSrcFile, [in] long lOffset, [in, string] BSTR sTagName, 
+                             [in, string] BSTR sAttrName, [in, string] BSTR sAttrValue, 
+                             [out] long * plStartPos, [out] long * plLength);
+	}
+
+[
+	uuid(E83D59DF-4DD2-4cf2-8F23-80743450A9BA),
+	version(1.0),
+	helpstring("CeExtract 1.0 Typbibliothek")
+]
+library CEEXTRACTLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(2D413C42-2431-11d5-A0CE-006008736ABF),
+		helpstring("Extract Class")
+	]
+	coclass Extract
+	{
+		[default] interface IExtract;
+		interface IExtract2;
+	};
+};

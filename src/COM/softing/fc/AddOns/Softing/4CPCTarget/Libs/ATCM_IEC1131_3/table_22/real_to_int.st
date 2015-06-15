@@ -1,0 +1,13 @@
+
+(*[[
+    UserURL= "ATCM:REAL_TO_INT.htm"
+]]*)
+
+FUNCTION REAL_TO_INT : INT
+VAR_INPUT 
+    IN : REAL; 
+END_VAR
+
+inline{VMOP}
+
+END_FUNCTION

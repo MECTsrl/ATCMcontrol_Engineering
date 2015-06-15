@@ -1,0 +1,12 @@
+(*[[
+    UserURL= "ATCMFile:BYTE_TO_DINT.htm"
+]]*)
+
+FUNCTION BYTE_TO_DINT : DINT
+VAR_INPUT 
+    IN : BYTE; 
+END_VAR
+
+inline{%1}
+
+END_FUNCTION

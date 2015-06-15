@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>USB Manager Library</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css">
+</head>
+<body bgcolor="#FFFFCC">
+<h2>Usb_status</h2>
+<p>Give the USB status array</p>
+<h3>Interface</h3>
+<pre class="preforma">
+FUNCTION Usb_status : UINT
+VAR_OUTPUT
+	USBstatus : ARRAY[0..5] of INT;
+END_VAR
+</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>UINT</b></i><br>
+<br>
+<table border="1">
+<tr>
+	<td>
+		1 :
+	</td>
+ 	<td>
+		<b>Success</b>
+ 	</td>
+ </tr>
+ </table>
+ </p>
+
+<h3>Parameter</h3>
+<h3>OUTPUT</h3>
+<dl>
+  <dt><b>USBstatus</b></dt>
+  <dd>Value of type <b><i>ARRAY[0..5] of INT</i></b><br>
+    Usb status array<br></dd>
+</dl>
+<h3>Description</h3>
+<p><b>Usb_status</b> Give the USB status array. See each funtion of USBManager library to have more info about the value assumed by the array</p>
+</body>
+</html>

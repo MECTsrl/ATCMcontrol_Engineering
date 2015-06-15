@@ -1,0 +1,37 @@
+#include "version.rc2"
+#include "ASMmessages.rc"
+#include "resource.h"
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    //these strings are used as positional arguments in
+    //generic error messages
+    ST_RES_STR_PROCEDURE      "Procedures"
+    ST_RES_STR_INPUT          "VAR_INPUT"
+    ST_RES_STR_OUTPUT         "VAR_OUTPUT"
+    ST_RES_STR_INOUT          "VAR_INOUT"
+
+    ST_RES_STR_VARREAD        "Var Read"
+    ST_RES_STR_VARWRITE       "Var Write"
+    ST_RES_STR_FEEDBACK       "Var Feedback"
+    ST_RES_STR_FEEDBACK_L     "Var Feedback (left pin)"
+    ST_RES_STR_FEEDBACK_R     "Var Feedback (right pin)"
+
+    ST_RES_STR_JUMPBOX        "Jump"
+    ST_RES_STR_RETURNBOX      "Return"
+    ST_RES_STR_NUMBER         "number"
+    
+
+    ST_RES_STR_IDENTIFIER     "identifier"
+    ST_RES_STR_VARIABLE       "variable"
+    ST_RES_STR_LABEL          "jump label"
+    ST_RES_STR_NAMED_CONST    "constant"
+    ST_RES_STR_FILENAME       "file name"
+    ST_RES_STR_CONF_NAME      "configuration name"
+    ST_RES_STR_LIB_NAME       "library name"
+  
+
+    //not supported messages:
+    ST_RES_STR_NSUB_ARRAY_AT_TYPE  "'ARRAY AT: only supported for array base type BOOL or BYTE'"
+    ST_RES_STR_NSUB_ARRAY_AT_ADDR  "'ARRAY AT: only supported for direct address size X or B'"
+END

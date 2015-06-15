@@ -1,0 +1,641 @@
+<!--ATCM. All rights reserved-->
+<HTML>
+<HEAD>
+<link rel=stylesheet href="CP_Style.css" type="text/css">
+
+<TITLE>
+Layout Editor
+</TITLE>
+
+<STYLE>
+.3DButtonNormal
+{
+   font-family:MS Sans Serif;
+   font-size:7pt;
+   text-align:center;
+   font-weight:normal;
+   border-left:   outset thin white;
+   border-top:    outset thin white;
+   border-right:  outset thin gray;
+   border-bottom: outset thin gray;
+   width: 18px;
+   height: 18px;
+}
+.3DButtonPressed
+{
+   font-family:MS Sans Serif;
+   font-size:7pt;
+   text-align:center;
+   font-weight:normal;
+   border-left:   inset thin gray;
+   border-top:    inset thin gray;
+   border-right:  inset thin white;
+   border-bottom: inset thin white;
+   width: 18px;
+   height: 18px;
+}
+.matrixElement
+{
+   font-family:MS Sans Serif;
+   font-size:10pt;
+   text-align:center;
+   font-weight:normal;
+   width: 75px;
+   height: 75px;
+}
+.matrixElementBold
+{
+   font-family:MS Sans Serif;
+   font-size:10pt;
+   text-align:center;
+   font-weight:bold;
+   width: 75px;
+   height: 75px;
+}
+.smallText
+{
+   font-family:MS Sans Serif;
+   font-size:9pt;
+   font-weight:normal;
+}
+.boldText
+{
+   font-family:MS Sans Serif;
+   font-size:9pt;
+   font-weight: bold;
+}
+.DialogButton
+{
+	font-family:MS Sans Serif;
+	font-size: 9pt;
+}
+</STYLE>
+
+<SCRIPT>
+var colors = new Array(16);
+var i = 0;
+
+colors[i++] = 0x999999;// 4c-yellow
+colors[i++] = 0x3399ff;// 4c-orange
+colors[i++] = 0x99ccff;// 4c-red
+colors[i++] = 0x9999cc;// 4c-blue
+colors[i++] = 0xffffcc;// 4c-green
+colors[i++] = 0xff99cc;// 4c-grey
+colors[i++] = 0xff0066;// white
+colors[i++] = 0xff9933;// 4c-middle-yellow
+colors[i++] = 0xffff00;// 4c-light-orange
+colors[i++] = 0xffff99;// 4c-light-red
+colors[i++] = 0xccff33;// 4c-middle-blue
+colors[i++] = 0xccffcc;// 4c-dark-green
+colors[i++] = 0x33ffff;// 4c-light-grey
+colors[i++] = 0xccffff;// 4c-light-blue
+colors[i++] = 0xcccccc;// 4c-dark-red
+colors[i++] = 0xffffff;// 4c-dark-yellow
+
+var viewMatrix = null;
+var URLList = null;
+var page_initialized = false;
+
+function init()
+{
+   viewMatrix = window.dialogArguments[0];
+   URLList    = window.dialogArguments[1];
+
+   initPalette();
+   initMatrix();
+   initStatus();
+   initButtons();
+
+   page_initialized = true;
+}
+
+function isInit()
+{
+	return page_initialized;
+}
+
+function initPalette()
+{
+
+   var palData = new Array(C00, C01, C02, C03, C04, C05, C06, C07, C08, C09, C10, C11, C12, C13, C14, C15);
+
+   for( i = 0; i < 16; i++ )
+   {
+      var color = parseInt("0x" + colors[i].toString);
+      palData[i].style.backgroundColor = colors[i];
+      palData[i].title = URLList[i];
+   }
+   selectedColorObj = palData[0];
+   selectColorObj(selectedColorObj);
+   
+	onPaletteBlur();
+
+   paletteContainer.vAlign = "top";
+}
+
+function initMatrix()
+{
+   for( i = 0; i < 4; i++ )
+   {
+      for( j = 0; j < 4; j++ )
+      {
+         var obj = matrix.rows(i).cells(j);
+         obj.style.backgroundColor = colors[viewMatrix.get(i,j)];
+         obj.innerText = "" + (viewMatrix.get(i,j) + 1);
+      }
+   }
+   matrixContainer.vAlign = "top";
+
+   selectedMatrixObj = M00;
+}
+
+function initStatus()
+{
+    computeStatus();
+}
+
+function computeStatus()
+{
+   var valid = viewMatrix.check();
+   statusLine.innerText = "Faceplate Layout: ";
+   statusLine.innerText += ( valid ? "Valid" : "Invalid" );
+   okbutton.disabled = ! valid;
+}
+
+function initButtons()
+{
+   okbutton.style.width     = "60pt";
+   cancelbutton.style.width = "60pt";
+}
+
+function cancel()
+{
+	if ( ! isInit() )
+		return;
+
+   window.returnValue = null;
+   window.close();
+}
+
+function ok()
+{
+	if ( ! isInit() )
+		return;
+
+   window.returnValue = viewMatrix.m_Matrix;
+   window.close();
+}
+
+function selectColorObj(obj)
+{
+   selectedColorObj.className = "3DButtonNormal";
+   getNumberObj(selectedColorObj).className = "smallText";
+   
+   obj.className = "3DButtonPressed";
+   getNumberObj(obj).className = "boldText";
+
+   selectedColorObj = obj;
+   var id = selectedColorObj.getAttribute("ID");
+   colorIndexStr = id.slice(1,3);
+   selectedColorIndex = parseInt(colorIndexStr, 10);
+}
+
+function onPaletteClick()
+{
+	if ( ! isInit() )
+		return;
+
+	window.event.returnValue = false;
+	window.event.cancelBubble = true;
+
+   var obj = window.event.srcElement;
+   selectColorObj(obj);
+}
+
+function onPaletteFocus()
+{
+	if ( ! isInit() )
+		return;
+
+	getNumberObj(selectedColorObj).className = "boldText";
+}
+
+function onPaletteBlur()
+{
+	if ( ! isInit() )
+		return;
+
+	getNumberObj(selectedColorObj).className = "smallText";
+}
+
+function onPaletteKeyDown()
+{
+	if ( ! isInit() )
+		return;
+
+	//= left arrow
+	if(isKeyCode(37))
+	{
+		gotoPrevColorObj();
+		return;
+	}
+	//= right arrow
+	if(isKeyCode(39))
+	{
+		gotoNextColorObj();
+		return;
+	}
+}
+
+function getNumberObj(obj)
+{	
+	var id = obj.getAttribute("ID");
+	id = id.slice(1,3);
+	id = "A" + id;
+	return document.all[id];
+}
+
+function getNextColorObj(obj)
+{
+	var id = selectedColorObj.getAttribute("ID");
+
+	if(parseInt(id.slice(1,2)) == 0)
+		id = parseInt(id.slice(2,3));
+	else
+		id = parseInt(id.slice(1,3));
+
+	id = (id + 1) % 16;
+
+	if (id.toString().length < 2)
+		id = "C0" + id;
+	else
+		id = "C" + id;
+
+	return document.all[id];
+}
+
+function getPrevColorObj(obj)
+{
+	var id = selectedColorObj.getAttribute("ID");
+
+	if(parseInt(id.slice(1,2)) == 0)
+		id = parseInt(id.slice(2,3));
+	else
+		id = parseInt(id.slice(1,3));
+
+	id = (id - 1 + 16) % 16;
+
+	if ( id.toString().length < 2 )
+		id = "C0" + id;
+	else
+		id = "C" + id;
+
+	return document.all[id];
+}
+
+function gotoNextColorObj()
+{
+   selectColorObj(getNextColorObj(selectedColorObj));   
+}
+
+function gotoPrevColorObj()
+{
+   selectColorObj(getPrevColorObj(selectedColorObj));   
+}
+
+function onMatrixClick()
+{
+	if ( ! isInit() )
+		return;
+
+   var obj = window.event.srcElement;
+
+   selectMatrixObj(obj);
+   setSelectedMatrixObj();
+}
+
+function onMatrixFocus()
+{
+	if ( ! isInit() )
+		return;
+
+	selectedMatrixObj.className = "matrixElementBold";
+}
+function onMatrixBlur()
+{
+	if ( ! isInit() )
+		return;
+
+	selectedMatrixObj.className = "matrixElement";
+}
+
+function selectMatrixObj(obj)
+{
+   selectedMatrixObj.className = "matrixElement";
+   obj.className = "matrixElementBold";
+    
+   selectedMatrixObj = obj;   
+}
+
+function setSelectedMatrixObj()
+{
+   selectedMatrixObj.style.backgroundColor = colors[selectedColorIndex];
+   selectedMatrixObj.innerText = selectedColorIndex + 1;
+
+   var id  = selectedMatrixObj.getAttribute("ID");
+   var row = parseInt(id.slice(1,2), 10);
+   var col = parseInt(id.slice(2,3), 10);
+   viewMatrix.set(row, col, selectedColorIndex);
+   computeStatus();
+}
+
+function onMatrixKeyDown()
+{
+	if ( ! isInit() )
+		return;
+
+	//= right arrow
+	if (isKeyCode(39))
+	{
+		moveMatrixSelectionRight();
+		return;
+	}
+	//= left arrow	
+	if (isKeyCode(37))
+	{
+		moveMatrixSelectionLeft();
+		return;
+	}
+	//= up arrow
+	if (isKeyCode(38))
+	{
+		moveMatrixSelectionUp();
+		return;
+	}
+	//= down arrow
+	if (isKeyCode(40))
+	{
+		moveMatrixSelectionDown();
+		return;
+	}
+	//= space
+	if (isKeyCode(32))
+	{
+		setSelectedMatrixObj();	
+		return;
+	}
+}	
+
+function moveMatrixSelectionUp()
+{
+   var obj = getMatrixObjUp(selectedMatrixObj);
+   selectMatrixObj(obj);
+}
+
+function moveMatrixSelectionDown()
+{
+   var obj = getMatrixObjDown(selectedMatrixObj);
+   selectMatrixObj(obj);
+}
+
+function moveMatrixSelectionRight()
+{
+   var obj = getMatrixObjRight(selectedMatrixObj);
+   selectMatrixObj(obj);
+}
+
+function moveMatrixSelectionLeft()
+{
+   var obj = getMatrixObjLeft(selectedMatrixObj);
+   selectMatrixObj(obj);
+}
+
+function getMatrixObjUp(obj)
+{
+   var id  = obj.getAttribute("ID");
+   var row = parseInt(id.slice(1,2), 10);
+   var col = parseInt(id.slice(2,3), 10);
+   row = (row - 1 + 4) % 4;
+   var objUp = document.all[("M" + row) + col];
+   return objUp;
+}
+
+function getMatrixObjDown(obj)
+{
+   var id  = obj.getAttribute("ID");
+   var row = parseInt(id.slice(1,2), 10);
+   var col = parseInt(id.slice(2,3), 10);
+   row = (row + 1) % 4;
+   var objDown = document.all[("M" + row) + col];
+   return objDown;
+}
+
+function getMatrixObjLeft(obj)
+{
+   var id  = obj.getAttribute("ID");
+   var row = parseInt(id.slice(1,2), 10);
+   var col = parseInt(id.slice(2,3), 10);
+   col = (col - 1 + 4) % 4;
+   var objLeft = document.all[("M" + row) + col];
+   return objLeft;
+}
+
+function getMatrixObjRight(obj)
+{
+   var id  = obj.getAttribute("ID");
+   var row = parseInt(id.slice(1,2), 10);
+   var col = parseInt(id.slice(2,3), 10);
+   col = (col + 1) % 4;
+   var objRight = document.all[("M" + row) + col];
+   return objRight;
+}
+
+function isKeyCode(key)
+{
+	var keyCode = window.event.keyCode;
+
+	if (key != null && keyCode != null)
+	{
+		if (key != keyCode) 
+		{
+			return false;
+		}
+	}
+	return true;	
+}
+
+function cancelDefaultAction()
+{
+	window.event.cancelBubble = true;
+	window.event.returnValue = false;
+}
+
+function onBodyKeyDown()
+{
+	if ( ! isInit() )
+		return;
+
+	//= ESC key
+	if (isKeyCode(27))
+	{ 
+		cancel();
+		return;
+	} 
+	if(window.event.srcElement.getAttribute("ID") != "cancelbutton")
+	{
+		if (isKeyCode(13) && okbutton.disabled == false) 
+		{ 
+			ok();
+			return;
+		}
+	}
+}
+
+</SCRIPT>
+
+</HEAD>
+
+<BODY class=DialogObject style="margin-left=10;margin-right=10;margin-top=10;margin-bottom=10" 
+	onload=init()
+	onkeydown=onBodyKeyDown()
+>
+<P>
+<TABLE WIDTH=100% BORDER=0>
+<TR><TD COLSPAN=2 class=smallText>
+Each color represents a faceplate.
+<BR>
+Click the color and insert it within the faceplate layout.
+<TR>
+<TD HEIGHT=10>
+<TR>
+<TD ID=paletteContainer>
+<TABLE WIDTH=100% ID=palette BORDER=0 ALIGN=LEFT>
+<TR>
+<TD ID=A00 CLASS=smallText><CENTER>1</TD>
+<TD ID=A01 CLASS=smallText><CENTER>2</TD>
+<TD ID=A02 CLASS=smallText><CENTER>3</TD>
+<TD ID=A03 CLASS=smallText><CENTER>4</TD>
+<TD ID=A04 CLASS=smallText><CENTER>5</TD>
+<TD ID=A05 CLASS=smallText><CENTER>6</TD>
+<TD ID=A06 CLASS=smallText><CENTER>7</TD>
+<TD ID=A07 CLASS=smallText><CENTER>8</TD>
+<TD ID=A08 CLASS=smallText><CENTER>9</TD>
+<TD ID=A09 CLASS=smallText><CENTER>10</TD>
+<TD ID=A10 CLASS=smallText><CENTER>11</TD>
+<TD ID=A11 CLASS=smallText><CENTER>12</TD>
+<TD ID=A12 CLASS=smallText><CENTER>13</TD>
+<TD ID=A13 CLASS=smallText><CENTER>14</TD>
+<TD ID=A14 CLASS=smallText><CENTER>15</TD>
+<TD ID=A15 CLASS=smallText><CENTER>16</TD>
+</TR>
+<A HREF=""
+	onclick="cancelDefaultAction()" 
+	onfocus="onPaletteFocus()"
+	onblur="onPaletteBlur()"
+	onkeydown="onPaletteKeyDown()"
+>
+<TR>
+<TD ID=C00 CLASS=3DButtonNormal onclick=onPaletteClick() onblur="onPaletteBlur()">&nbsp</TD>
+<TD ID=C01 CLASS=3DButtonNormal onclick=onPaletteClick() onblur="onPaletteBlur()">&nbsp</TD>
+<TD ID=C02 CLASS=3DButtonNormal onclick=onPaletteClick() onblur="onPaletteBlur()">&nbsp</TD>
+<TD ID=C03 CLASS=3DButtonNormal onclick=onPaletteClick() onblur="onPaletteBlur()">&nbsp</TD>
+<TD ID=C04 CLASS=3DButtonNormal onclick=onPaletteClick() onblur="onPaletteBlur()">&nbsp</TD>
+<TD ID=C05 CLASS=3DButtonNormal onclick=onPaletteClick() onblur="onPaletteBlur()">&nbsp</TD>
+<TD ID=C06 CLASS=3DButtonNormal onclick=onPaletteClick() onblur="onPaletteBlur()">&nbsp</TD>
+<TD ID=C07 CLASS=3DButtonNormal onclick=onPaletteClick() onblur="onPaletteBlur()">&nbsp</TD>
+<TD ID=C08 CLASS=3DButtonNormal onclick=onPaletteClick() onblur="onPaletteBlur()">&nbsp</TD>
+<TD ID=C09 CLASS=3DButtonNormal onclick=onPaletteClick() onblur="onPaletteBlur()">&nbsp</TD>
+<TD ID=C10 CLASS=3DButtonNormal onclick=onPaletteClick() onblur="onPaletteBlur()">&nbsp</TD>
+<TD ID=C11 CLASS=3DButtonNormal onclick=onPaletteClick() onblur="onPaletteBlur()">&nbsp</TD>
+<TD ID=C12 CLASS=3DButtonNormal onclick=onPaletteClick() onblur="onPaletteBlur()">&nbsp</TD>
+<TD ID=C13 CLASS=3DButtonNormal onclick=onPaletteClick() onblur="onPaletteBlur()">&nbsp</TD>
+<TD ID=C14 CLASS=3DButtonNormal onclick=onPaletteClick() onblur="onPaletteBlur()">&nbsp</TD>
+<TD ID=C15 CLASS=3DButtonNormal onclick=onPaletteClick() onblur="onPaletteBlur()">&nbsp</TD>
+</TR>
+</A>
+</TABLE>
+<TR>
+<TD HEIGHT=10></TD>
+<TR>
+<TD>
+<TABLE BORDER=1>
+<TR><TD BGCOLOR=#cccccc COLSPAN=2 HEIGHT=20>&nbsp</TD></TR>
+<TR>
+<TD BGCOLOR=#cccccc style="width=25%">&nbsp
+<TD ID=matrixContainer>
+<TABLE WIDTH=100% ID=matrix BORDER=1 ALIGN=LEFT>
+<A HREF="" 
+	onfocus=onMatrixFocus()
+	onblur=onMatrixBlur()
+	onclick=cancelDefaultAction()
+	onkeydown=onMatrixKeyDown()
+>
+<TR>
+<TD CLASS=matrixElement ID=M00 
+	onmousedown=onMatrixClick() 
+	onblur=onMatrixBlur()> 
+<TD CLASS=matrixElement ID=M01 
+	onmousedown=onMatrixClick()
+	onblur=onMatrixBlur()> 
+<TD CLASS=matrixElement ID=M02 
+	onmousedown=onMatrixClick()
+	onblur=onMatrixBlur()> 
+<TD CLASS=matrixElement ID=M03 
+	onmousedown=onMatrixClick()
+	onblur=onMatrixBlur()> 
+<TR>
+<TD CLASS=matrixElement ID=M10
+	onmousedown=onMatrixClick()
+	onblur=onMatrixBlur()>  
+<TD CLASS=matrixElement ID=M11
+	onmousedown=onMatrixClick()
+	onblur=onMatrixBlur()> 
+<TD CLASS=matrixElement ID=M12
+	onmousedown=onMatrixClick()
+	onblur=onMatrixBlur()> 
+<TD CLASS=matrixElement ID=M13
+	onmousedown=onMatrixClick()
+	onblur=onMatrixBlur()> 
+<TR>
+<TD CLASS=matrixElement ID=M20
+	onmousedown=onMatrixClick()
+	onblur=onMatrixBlur()>  
+<TD CLASS=matrixElement ID=M21
+	onmousedown=onMatrixClick()
+	onblur=onMatrixBlur()>  
+<TD CLASS=matrixElement ID=M22
+	onmousedown=onMatrixClick()
+	onblur=onMatrixBlur()> 
+<TD CLASS=matrixElement ID=M23
+	onmousedown=onMatrixClick()
+	onblur=onMatrixBlur()> 
+<TR>
+<TD CLASS=matrixElement ID=M30
+	onmousedown=onMatrixClick()
+	onblur=onMatrixBlur()> 
+<TD CLASS=matrixElement ID=M31
+	onmousedown=onMatrixClick()
+	onblur=onMatrixBlur()> 
+<TD CLASS=matrixElement ID=M32
+	onmousedown=onMatrixClick()
+	onblur=onMatrixBlur()> 
+<TD CLASS=matrixElement ID=M33
+	onmousedown=onMatrixClick()
+	onblur=onMatrixBlur()>
+</A>
+</TABLE>
+</TD>
+</TR>
+</TABLE>
+<TR><TD HEIGHT=10>
+<TR>
+<TD><TABLE WIDTH=100%>
+<TR>
+<TD width=50% ALIGN=left><DIV CLASS=smallText ID=statusLine></DIV>
+<TD width=25% ALIGN=right><BUTTON CLASS=DialogButton ID=okbutton onclick=ok() title="Activate Layout">OK</BUTTON>
+<TD width=25% ALIGN=right><BUTTON CLASS=DialogButton ID=cancelbutton onclick=cancel() title="Close Dialog">Cancel</BUTTON>
+</TABLE>
+</TABLE>
+
+</BODY>
+</HTML>

@@ -1,0 +1,104 @@
+<html>
+<head>
+<title>UDP_USEND</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>UDP_USEND </h2>
+<p>Sendet eine Botschaft an einen Kommunikationspartner.</p>
+<h3>Schnittstelle</h3>
+<pre class="preforma">FUNCTION_BLOCK UDP_USEND
+
+VAR_INPUT
+    REQ          : BOOL;             
+    PARTNER_ADDR : WSTRING;          
+    PARTNER_PORT : DINT;             
+    SD_1         : BYTE_STRING;     
+END_VAR
+
+VAR_IN_OUT
+    SOCKET_HANDLE : UDP_SOCKET_HANDLE; 
+END_VAR
+
+VAR_OUTPUT
+    ERROR        : BOOL;             
+    ERROR_NR     : DINT;
+    ERROR_STRING : WSTRING;
+END_VAR</pre>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>REQ</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i>.<br>
+    Initialisiert das Senden einer Botschaft<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Botschaft wird gesendet.<br>
+    <i><b>FALSE</b></i>: Botschaft wird nicht gesendet.</dd>
+  <dt><b>PARTNER_ADDR</b></dt>
+  <dd>Wert vom Typ <i><b>WSTRING</b></i>.<br>
+    Legt die Host-Adresse des Kommunikationspartners fest, an den die Botschaft 
+    gesendet werden soll. </dd>
+  <dt><b>PARTNER_PORT</b></dt>
+  <dd>Wert vom Typ <i><b>DINT</b></i>.<br>
+    Legt die Port-Adresse des Kommunikationspartners fest, an die die Botschaft 
+    gesendet werden soll. </dd>
+  <dt><b>SD_1</b></dt>
+  <dd>Instanz der Struktur <i><b><a href="BYTE_STRING.htm">BYTE_STRING</a></b></i>.<br>
+    Spezifiziert die zu versendenden Daten. Die Gr&ouml;&szlig;e des gesendeten 
+    Pakets entspricht der Gr&ouml;&szlig;e des gesendeten Bytestrings. Verwenden 
+    Sie die Funktion <i><b><a href="BYTE_STRING_INIT.htm">BYTE_STRING_INIT</a></b></i>, 
+    um den Bytestring zu intitialisieren.</dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl> 
+  <dt><b>SOCKET_HANDLE</b></dt>
+  <dd>Instanz der Struktur <a href="UDP_SOCKET_HANDLE.htm"><i><b>UDP_SOCKET_HANDLE</b></i></a>.<br>
+    Spezifiziert den Socket, &uuml;ber den die Daten gesendet werden. </dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b>ERROR</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i>.<br>
+    Signalisiert den Fehlerstatus.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Ein Fehler ist aufgetreten.<br>
+    <i><b>FALSE</b></i>: Es ist kein Fehler aufgetreten.</dd>
+  <dt><b>ERROR_NR</b></dt>
+  <dd>Wert vom Typ <i><b>DINT</b></i>.<br>
+    Enth&auml;lt eine Fehlernummer, falls ein Fehler aufgetreten ist. <br>
+    Ist kein Fehler aufgetreten, hat diese Variable den Wert 0.<br>
+    M&ouml;gliche Werte sind in den <a href="ConstUDPErr.htm">UDP-Fehlerkonstanten</a> 
+    definiert.</dd>
+  <dt><b>ERROR_STRING</b></dt>
+  <dd>Wert vom Typ <i><b>WSTRING</b></i>.<br>
+    Enth&auml;lt einen Fehlertext, falls ein Fehler aufgetreten ist. <br>
+    Ist kein Fehler aufgetreten, enth&auml;lt diese Variable einen Leerstring.</dd>
+</dl>
+<h3>Beschreibung</h3>
+<p>Der Aufruf einer Instanz von <i><b>UDP_USEND</b></i> sendet eine Botschaft 
+  an einen Kommunikationspartner. Um den gew&uuml;nschten Kommunikationspartner 
+  zu identifizieren, wird dessen Host-Adresse an <i><b>PARTNER_ADDR</b></i> und 
+  die Portnummer des Sockets, &uuml;ber den der Kommunikationspartner Nachrichten 
+  empf&auml;ngt, an <i><b>PARTNER_PORT</b></i> &uuml;bergeben. Wenn die Host-Adresse 
+  des Kommunikationspartners nicht bekannt ist, kann sie &uuml;ber den Funktionsbaustein 
+  <i><b><a href="UDP_LOOKUP.htm">UDP_LOOKUP</a></b></i> ermittelt werden. </p>
+<p>Um Botschaften versenden zu k&ouml;nnen, mu&szlig; der an <i><b>SOCKET_HANDLE</b></i> 
+  &uuml;bergebene Socket mit einer Instanz von <a href="UDP_CONNECT.htm"><i><b>UDP_CONNECT</b></i></a> 
+  initialisiert worden sein. </p>
+<p><b><i>UDP_USEND</i></b> unterst&uuml;tzt das Versenden von <i><b>Broadcasts</b></i>. 
+  Als Broadcast wird das Versenden einer Botschaft an alle per Socket miteinander 
+  kommunizierenden Rechner bezeichnet. Um das Versenden von Broadcasts zu erm&ouml;glichen, 
+  mu&szlig; der Parameter <i><b>BroadcastSocket</b></i> der Instanz von <i><b><a href="UDP_SOCKET_HANDLE.htm">UDP_SOCKET_HANDLE</a></b></i>, 
+  die den Socket repr&auml;sentiert, von dem der Broadcast gesendet wird, mit 
+  dem Wert <i><b>TRUE</b></i> initialisiert werden. Beim Aufruf einer Instanz 
+  von <i><b>UDP_USEND</b></i> wird dem Parameter <i><b>PARTNER_ADDR</b></i> die 
+  Adresse '255.255.255.255' &uuml;bergeben. Alle Kommunikationspartner, die den 
+  Broadcast empfangen sollen, m&uuml;ssen &uuml;ber initialisierte Sockets verf&uuml;gen, 
+  die Nachrichten &uuml;ber die gleiche Portnummer empfangen. Diese Nummer wird 
+  beim Aufruf einer Instanz von <i><b>UDP_USEND </b></i>an den Parameter <i><b>PARTNER_PORT</b></i> 
+  &uuml;bergeben. Es mu&szlig; daher vor dem Versenden von Broadcasts sichergestellt 
+  werden, da&szlig; alle Kommunikationspartner, die Broadcasts empfangen sollen, 
+  einen Socket mit jeweils identischer Portnummer verwenden. </p>
+</body>
+</html>

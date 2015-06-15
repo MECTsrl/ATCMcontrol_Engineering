@@ -1,0 +1,193 @@
+// CEMAIN.idl : type library source for CEMAIN.exe
+
+// This file will be processed by the MIDL compiler to produce the
+// type library (CEMAIN.tlb).
+
+
+[ uuid(E67994CD-4C00-490b-9BB4-8F5D73E04B12), version(2.0) ]
+library CEMAIN
+{
+	importlib("stdole32.tlb");
+	
+
+	//  Primary dispatch interface for COMApplication
+	
+	[ uuid(06B6E8C3-61CB-11D1-8A47-0060080993FF) ]
+	dispinterface ICEMAIN
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(COMApplication)
+			//}}AFX_ODL_PROP
+			
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(COMApplication)
+			[id(1)] SCODE NewProject(IDispatch** pProjectDispatch);
+			[id(2)] SCODE OpenProject(BSTR sName, IDispatch** pProjectDispatch);
+			[id(3)] SCODE GetProject(IDispatch** pProjectDispatch);
+			//}}AFX_ODL_METHOD
+
+	};
+
+	//  Class information for COMApplication
+	
+	[ uuid(F18F8F78-1F14-4cf2-93F3-5E5B804EA227) ]
+	coclass Document
+	{
+		[default] dispinterface ICEMAIN;
+	};
+
+
+	//  Primary dispatch interface for CPrjDoc
+	
+	[ uuid(CBBC4696-FEAB-11D1-B9A4-006008749B3D) ]
+	dispinterface ICEPrjDoc
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CPrjDoc)
+			//}}AFX_ODL_PROP
+			
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CPrjDoc)
+			//}}AFX_ODL_METHOD
+
+	};
+
+	//  Class information for CPrjDoc
+	
+	[ uuid(3135FF21-8CA6-4486-BEE3-21B9244D74A3) ]
+	coclass CEPrjDoc
+	{
+		[default] dispinterface ICEPrjDoc;
+	};
+
+	//  Primary dispatch interface for CGenEdCntrItem
+	
+	[uuid (9DBFD080-5875-11d2-B9C9-006008749B3D) ]
+	dispinterface ICEGenEdItem
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CGenEdCntrItem)
+			//}}AFX_ODL_PROP
+			
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CGenEdCntrItem)
+			[id(1)] SCODE GetDocument(IDispatch** pDocumentDispatch);
+			//}}AFX_ODL_METHOD
+	};
+
+	//  Class information for CGenEdCntrItem
+	
+	[uuid (9F12334A-9909-4958-9474-E20E7173DD44) ]
+	coclass GenEdCntrItem
+	{
+		[default] dispinterface ICEGenEdItem;
+	};
+
+	//  Primary dispatch interface for CGenEdDoc
+	
+	[uuid (D70D1414-EBBB-11D1-8825-006097E1BE6E) ]
+	dispinterface ICEGenEdDocument
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CGenEdDoc)
+			//}}AFX_ODL_PROP
+			
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CGenEdDoc)
+			[id(1)] SCODE GetContainer(IDispatch** pContainerDispatch);
+			[id(2)] SCODE SetBreakpoint(long lQualifier, long lX, long lY, long lCX, long lCY);
+			[id(3)] SCODE ClearBreakpoint(long lQualifier, long lX, long lY, long lCX, long lCY);
+			[id(4)] SCODE ActivateBreakpoint(long lQualifier, long lX, long lY, long lCX, long lCY);
+			[id(5)] SCODE DeactivateBreakpoint(long lQualifier, long lX, long lY, long lCX, long lCY);
+			[id(6)] SCODE ContinueTask();
+			[id(7)] SCODE StepTask(long mode);
+			[id(8)] SCODE ClearInstanceBreakpoints();
+			[id(9)] SCODE ClearAllBreakpoints();
+            [id(10)] SCODE OnEditEvent();
+			//}}AFX_ODL_METHOD
+	};
+
+
+	//  Class information for CGenEdDoc
+	
+	[uuid (692A8A7A-6A9B-4d67-BBE9-60FBB272C8FB) ]
+	coclass GenEdDoc
+	{
+		[default] dispinterface ICEGenEdDocument;
+	};
+
+
+	//  Primary dispatch interface for CGenEdCont
+	
+	[ uuid(43E307E3-D43E-47cd-9390-D88A7A392B43) ]
+	dispinterface ICEGenEdContainer
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CGenEdCont)
+			//}}AFX_ODL_PROP
+			
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CGenEdCont)
+			[id(1)] SCODE ShowURL(BSTR szURL);
+			[id(2)] SCODE ShowFile(BSTR szPOU);
+			[id(3)] SCODE SelectFBForCall();
+            [id(4)] SCODE ShowVarSelection(BSTR szPouName);
+            [id(5)] SCODE SetVarSelectionHint(BSTR szPouName,
+                                              BSTR szVarNamePrefix,
+                                              BSTR szDataType);
+            [id(6)] SCODE ShowHelp(BSTR szPOU);
+            [id(7)] SCODE ShowHeader(BSTR szPOU);
+            [id(8)] SCODE ShowHeaderFile(BSTR szFileName);
+
+            [id(9)] SCODE GetLRUPous(VARIANT* parrPous);
+            [id(10)] SCODE GetPouXML(BSTR szPouName, BSTR* pszPouDef);
+            [id(11)] SCODE GetVarList(VARIANT* parrVars);
+            [id(12)] SCODE GetPouList(VARIANT* parrPous);
+            [id(13)] SCODE GetPouDefinition(BSTR szPouName, BSTR* pszPouDef);
+            [id(14)] SCODE GetPouMember(BSTR szPouName, VARIANT* parrMembers);
+	        [id(15)] SCODE XRefChangeRefPosition(BOOL bForward);
+		    [id(16)] SCODE XRefSetActiveQuery(BSTR sVariableName);
+	        [id(17)] SCODE ShowVarSelectionBox(LONG lXPos, LONG lYPos,
+                                               BSTR szLine, LONG lColumn,
+                                               BSTR szTypeHint,
+                                               BSTR szPouName,
+                                               BSTR* pszSelection,
+                                               LONG* plStartColumn,
+                                               LONG* plEndColumn);
+            [id(18)] SCODE GetProjectManager(IUnknown** pProjManUnk);
+			//}}AFX_ODL_METHOD
+
+	};
+
+
+	//  Class information for CGenEdCont
+
+	[ uuid(1EE869B4-24DE-436a-87FF-E002459D9DCD) ]
+	coclass GenEdCont
+	{
+		[default] dispinterface ICEGenEdContainer;
+	};
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};

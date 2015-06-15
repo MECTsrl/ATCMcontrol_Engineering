@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<KADCGFRONT>
+    <TARGETS>
+        <TARGET EXT="4cpc" BACKEND="4cpc\4cpc.exe" BUILD_MULTIPLE="1"/>
+    </TARGETS>
+</KADCGFRONT>
+

@@ -1,0 +1,250 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "keyrc.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "keyrc.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_KEY_COMMENT         "(*"
+    IDS_KEY_ENDCOMMENT      "*)"
+    IDS_KEY_SYSCOMMENT      "[["
+    IDS_KEY_ENDSYSCOMMENT   "]]"
+    IDS_KEY_CREATEDATE      "DateOfCreation= %s"
+    IDS_KEY_MODIFYDATE      "DateOfLastModification= %s"
+    IDS_KEY_LASTUSR         "lastuser: "
+    IDS_KEY_NOTEDIT         "!!DO NOT EDIT THIS COMMENT!!"
+    IDS_PROJECT_COMMENT     " list of files that are in the project "
+    IDS_KEY_CONFIG          "CONFIGURATION %s"
+    IDS_KEY_ENDCONFIG       "END_CONFIGURATION"
+    IDS_KEY_RESOURCE        "RESOURCE %s"
+    IDS_KEY_ENDRESOURCE     "END_RESOURCE"
+    IDS_KEY_TASK            "TASK %s%s(%s);"
+    IDS_KEY_PRGINST         "PROGRAM %s "
+    IDS_KEY_PRGINSTTAIL     "WITH  %s: %s;"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_KEY_TASKLIST        "CE_TASK_LIST"
+    IDS_KEY_ENDTASKLIST     "CE_END_TASK_LIST"
+    IDS_KEY_PRGLIST         "CE_PRG_LIST"
+    IDS_KEY_ENDPRGLIST      "CE_END_PRG_LIST"
+    IDS_KEY_FILE            "file"
+    IDS_KEY_ENDPRG          "END_PROGRAM"
+    IDS_KEY_VARGLOBAL       "VAR_GLOBAL"
+    IDS_KEY_ENDVAR          "END_VAR"
+    IDS_KEY_IMPORT          "#IMPORT ""%s"" "
+    IDS_KEY_FBINST          "FUNCTION_BLOCK %s"
+    IDS_KEY_ENDFB           "END_FUNCTION_BLOCK"
+    IDS_KEY_TYPE            "TYPE"
+    IDS_KEY_ENDTYPE         "END_TYPE"
+    IDS_DUMMY_VARNAME       "Dummy"
+    IDS_DUMMY_VARDECL       "Dummy : BOOL;"
+    IDS_KEY_SEMICOL         ";"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_KEY_NOEDIT          "!! DO NOT EDIT !!"
+    IDS_KEY_STRUCT          "%s : STRUCT"
+    IDS_KEY_ENDSTRUCT       "END_STRUCT"
+    IDS_KEY_CONST           "CONST"
+    IDS_KEY_ENDCONST        "END_CONST"
+    IDS_KEY_CONSTDECL       "%s: %s:= %s;"
+    IDS_KEY_GUID            "GUID= ""%s"""
+    IDS_KEY_ALIAS           "Alias=%s"
+    IDS_KEY_GUNAME          "GUName= %s"
+    IDS_KEY_GUALIAS         "GUAlias= %s"
+    IDS_KEY_AUTHOR          "Author= %s"
+    IDS_KEY_AUTHOR_LASTMOD  "AuthorOfLastModification= %s"
+    IDS_KEY_USERTEXT        "UserText%d= %s"
+    IDS_KEY_USERTEXTPAIR    "UserTextPair%d= %s"
+    IDS_KEY_RES_ON          "ON %s"
+    IDS_KEY_FILES           "files"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_KEY_COMMA           ","
+    IDS_KEY_USRURL          "UserURL= %s"
+    IDS_KEY_VARDECL         "%s : %s ;"
+    IDS_KEY_VARLIST         "CE_VAR_LIST"
+    IDS_KEY_IDENT           "(%s)"
+    IDS_KEY_ENDVARLIST      "CE_END_VAR_LIST"
+    IDS_KEY_RESLIST         "CE_RES_LIST"
+    IDS_KEY_ENDRESLIST      "CE_END_RES_LIST"
+    IDS_KEY_TAGCOMMENT      "<<"
+    IDS_KEY_ENDTAGCOMMENT   ">>"
+    IDS_KEY_IMPORTLIST      "CE_IMP_LIST"
+    IDS_KEY_ENDIMPORTLIST   "CE_END_IMP_LIST"
+    IDS_KEY_IMPORTFILE      "#IMPORT ""%s"""
+    IDS_KEY_TYPEMEMBERDECL  "%s %s : %s;"
+    IDS_KEY_PC              "PC %s"
+    IDS_KEY_ENDPC           "END_PC"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_KEY_PCLIST          "CE_PC_LIST"
+    IDS_KEY_ENDPCLIST       "CE_END_PC_LIST"
+    IDS_KEY_HWDEF           "HW_DEFINITION"
+    IDS_KEY_ENDHWDEF        "END_HW_DEFINITION"
+    IDS_KEY_FBUSLIST        "CE_FIELDBUS_LIST"
+    IDS_KEY_ENDFBUSLIST     "CE_END_FIELDBUS_LIST"
+    IDS_KEY_FILESSECTION    "[FILES]"
+    IDS_KEY_MACHINES        "MACHINES"
+    IDS_KEY_PCID            "PC%d"
+    IDS_KEY_FBUS            "FIELDBUS %s"
+    IDS_KEY_ENDFBUS         "END_FIELDBUS"
+    IDS_KEY_ATTRIBSECTION   "[ATTRIBUTES]"
+    IDS_KEY_CONSTANT        "CONSTANT"
+    IDS_KEY_RETAIN          "RETAIN"
+    IDS_KEY_VAR             "VAR"
+    IDS_KEY_VARIN           "VAR_INPUT"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_KEY_VAROUT          "VAR_OUTPUT"
+    IDS_KEY_VARINOUT        "VAR_IN_OUT"
+    IDS_KEY_VAREXT          "VAR EXTERNAL"
+    IDS_KEY_COLON           ":"
+    IDS_KEY_DEFINSTANCE     "_Instance"
+    IDS_KEY_ASSIGN          ":="
+    IDS_KEY_TYPEMEMBERDECLWITHVAL "%s %s : %s := %s;"
+    IDS_KEY_NON_RETAIN      "NON_RETAIN"
+    IDS_KEY_TASK_INTERVAL   "INTERVAL"
+    IDS_KEY_TASK_PRIO       "PRIORITY"
+    IDS_KEY_VAR_RETAIN      "VAR RETAIN"
+    IDS_KEY_VARIN_RETAIN    "VAR_INPUT RETAIN"
+    IDS_KEY_VAROUT_RETAIN   "VAR_OUTPUT RETAIN"
+    IDS_KEY_VAR_NONRETAIN   "VAR NONRETAIN"
+    IDS_KEY_VARIN_NONRETAIN "VAR_INPUT NONRETAIN"
+    IDS_KEY_VAROUT_NONRETAIN "VAR_OUTPUT NONRETAIN"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_KEY_VAR_CONST       "VAR CONST"
+    IDS_KEY_OPENVARCOMMENT  "(*["
+    IDS_KEY_VARGLOBAL_RETAIN "VAR_GLOBAL RETAIN"
+    IDS_KEY_VARGLOBAL_NONRETAIN "VAR_GLOBAL NON_RETAIN"
+    IDS_KEY_VARGLOBAL_CONST "VAR_GLOBAL CONST"
+    IDS_KEY_GVLFILECOMMENT  "(* Global variable file *)"
+    IDS_KEY_OPCCONFIG       "OPC_CONFIG %s"
+    IDS_KEY_END_OPCCONFIG   "END_OPC_CONFIG"
+    IDS_KEY_XML_POU_PREHEADER 
+                            "<?xml version=""1.0"" encoding=""UTF-8""?>\r\n<FCPOU>\r\n\t<EDITINFO editname="""" editversion="""" editcatid=""""/>\r\n\t<HEADER>\r\n<![CDATA["
+    IDS_KEY_XML_POU_POSTHEADER 
+                            "]]>\r\n\t</HEADER>\r\n\r\n\t<BODY LANG=""fbd"">\r\n\t</BODY>\r\n</FCPOU>"
+    IDS_KEY_FUNCTION        "FUNCTION %s"
+    IDS_KEY_ENDFUNCTION     "END_FUNCTION"
+    IDS_KEY_VAR_INEXT       "VAR_IN_EXT"
+    IDS_KEY_VAR_TEMP        "VAR_TEMP"
+    IDS_KEY_PRJSETFILE      "file=CePrjSettings.4cs"
+    IDS_KEY_FEDGE           "F_EDGE"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_KEY_REDGE           "R_EDGE"
+    IDS_KEY_TASK_AUTOSTART  "AUTOSTART"
+	IDS_KEY_TASK_LOADED		"LOADED"
+    IDS_KEY_VERSION_SECTION "[FORMAT]"
+    IDS_KEY_FORMATVERSION   "version"
+    IDS_KEY_TASK_IOSYNC     "IOSYNC"
+    IDS_KEY_TASK_ATTR1      "INTERVAL:=%s, PRIORITY:=%s, AUTOSTART:=%s"
+    IDS_KEY_TASK_ATTR2      "IOSYNC:=%s"
+    IDS_KEY_TASK_ATTR3      "EVENT:='%s', PRIORITY:=%s, AUTOSTART:=%s"
+    IDS_KEY_XML_SFC_POSTHEADER1 
+                            "]]>\r\n\t</HEADER>\r\n\t<BODY LANG=""fbd_sfc"" SFC_MENU=""1"">\r\n\t\t<LINE ORIGIN=""6;4"" SIZE=""0;48"" />\r\n\t\t<TRANS ORIGIN=""18;10"" SIZE=""14;4"" NAME=""TRUE"">\r\n\t\t\t<PINLIST>\r\n\t\t\t\t<PIN CLASS=""input"" ORIGIN=""20;10"" />\r\n\t\t\t\t<PIN CLASS=""input"" ORIGIN=""18;12"" HIDDEN=""1"" />\r\n\t\t\t\t<PIN CLASS=""output"" ORIGIN=""20;14"" />\r\n\r\n\t\t\t</PINLIST>\r\n\r\n\t\t</TRANS>\r\n\t\t<LINE ORIGIN=""20;6"" SIZE=""0;-2"" />\r\n\t\t<STEP ORIGIN=""16;6"" SIZE=""8;4"" NAME=""Step0"" INITSTEP=""1"">\r\n\t\t\t<PINLIST>\r\n\t\t\t\t<PIN CLASS=""input"" ORIGIN=""20;6"" />\r\n\t\t\t\t<PIN CLASS=""output"" ORIGIN=""24;8"" HIDDEN=""1"" />\r\n\t\t\t\t<PIN CLASS=""output"" ORIGIN=""20;10"" />\r\n\r\n\t\t\t</PINLIST>\r\n\r\n\t\t</STEP>\r\n\t\t<LINE ORIGIN=""6;4"" SIZE=""14;0"" />\r\n\t\t<LINE ORIGIN=""24;32"" SIZE=""6;0"" />\r\n\t\t<STEP ORIGIN=""16;30"" SIZE=""8;4"" NAME=""Step1"">\r\n\t\t\t<PINLIST>\r\n\t\t\t\t<PIN CLASS=""input"" ORIGIN=""20;30"" />\r\n\t\t\t\t<PIN CLASS=""output"" ORIGIN=""24;32"" HIDDEN=""1"" />\r\n\t\t\t\t<PIN CLASS=""output"" ORIGIN=""20;34"" />\r\n\r\n\t\t\t</PINLIST>\r\n"
+    IDS_KEY_XML_SFC_POSTHEADER2 
+                            "\t\t</STEP>\r\n\t\t<LINE ORIGIN=""20;14"" SIZE=""0;16"" />\r\n\t\t<TRANS ORIGIN=""18;34"" SIZE=""14;4"" NAME=""TRUE"">\r\n\t\t\t<PINLIST>\r\n\t\t\t\t<PIN CLASS=""input"" ORIGIN=""20;34"" />\r\n\t\t\t\t<PIN CLASS=""input"" ORIGIN=""18;36"" HIDDEN=""1"" />\r\n\t\t\t\t<PIN CLASS=""output"" ORIGIN=""20;38"" />\r\n\r\n\t\t\t</PINLIST>\r\n\r\n\t\t</TRANS>\r\n\t\t<LINE ORIGIN=""20;38"" SIZE=""0;14"" />\r\n\t\t<LINE ORIGIN=""20;52"" SIZE=""-14;0"" />\r\n\t\t<LINE ORIGIN=""24;8"" SIZE=""6;0"" />\r\n\t\t<ACTBLCK NAME=""Action1"" ORIGIN=""30;31"" SIZE=""10;2"">\r\n\t\t\t<PINLIST>\r\n\t\t\t\t<PIN CLASS=""input"" ORIGIN=""30;32"" HIDDEN=""1"" />\r\n\r\n\t\t\t</PINLIST>\r\n\t\t\t<ACTQUAL QUALTYPE=""N"" />\r\n\r\n\t\t</ACTBLCK>\r\n\t\t<ACTBLCK NAME=""Action0"" ORIGIN=""30;7"" SIZE=""10;2"">\r\n\t\t\t<PINLIST>\r\n\t\t\t\t<PIN CLASS=""input"" ORIGIN=""30;8"" HIDDEN=""1"" />\r\n\r\n\t\t\t</PINLIST>\r\n\t\t\t<ACTQUAL QUALTYPE=""N"" />\r\n\r\n\t\t</ACTBLCK>\r\n\t\t<ACTION NAME=""Action1"" ORIGIN=""48;31"" SIZE=""28;16"" />\r\n\t\t<ACTION NAME=""Action0"" ORIGIN=""48;7"" SIZE=""28;16"" />\r\n\r\n\t</BODY>\r\n\r\n</FCPOU>\r\n"
+    IDS_KEY_LANGTYPE_ST     "ST"
+    IDS_KEY_LANGTYPE_FBD    "FBD"
+    IDS_KEY_LANGTYPE_SFC    "SFC"
+    IDS_KEY_LANGTYPE_LD     "LD"
+    IDS_KEY_GUID1           "GUID"
+    IDS_KEY_ALIAS1          "Alias"
+    IDS_KEY_USERTEXT1       "UserText1"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_KEY_USERTEXT2       "UserText2"
+    IDS_KEY_USERTEXT3       "UserText3"
+    IDS_KEY_CREATED         "Created"
+    IDS_KEY_MODEFIED        "Modified"
+    IDS_KEY_USRCREATED      "UserCreated"
+    IDS_KEY_USRMODIFIED     "UserModified"
+    IDS_KEY_URL             "UserURL"
+    IDS_KEY_HELPURL         "UserHelpURL"
+    IDS_KEY_HLPURL          "UserHelpURL= %s"
+    IDS_KEY_CLOSEVARCOMMENT "]*)"
+    IDS_KEY_VAR_EXTERNAL    "VAR_EXTERNAL"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

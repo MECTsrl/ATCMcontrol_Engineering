@@ -1,0 +1,2 @@
+USER=makelast: force
+USER= xcopy $(MAKEDIR)\*               $(EXE_DIR)\Engineering\bin\ /y

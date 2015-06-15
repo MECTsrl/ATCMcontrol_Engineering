@@ -1,0 +1,25 @@
+TARGET=$(EXE_DIR)\Engineering\bin\cg_iecfront.dll
+TARGETTYPE=DLL
+UNICODE=0
+
+yacc_lex_cg_style=1
+# do not 'exit' form lex/yacc
+DEFINE=YYEXIT
+
+INCLUDE=$(INCLUDE_DIR) 
+INCLUDE=$(RESOURCE_DIR)
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\ccg\inc
+
+# custom libs:
+LIBRARY=$(LIB_DIR)\fc_tools.lib 
+LIBRARY=$(LIB_DIR)\fc_todebug.lib 
+LIBRARY=$(LIB_DIR)\fc_baselib.lib
+LIBRARY=$(LIB_DIR)\fc_util.lib
+LIBRARY=$(LIB_DIR)\cg_tools.lib 
+
+# system libs:
+DEFLIB=ole32.lib 
+
+
+COPY=CG_Messages.h $(INCLUDE_DIR)\CG_Messages.h
+

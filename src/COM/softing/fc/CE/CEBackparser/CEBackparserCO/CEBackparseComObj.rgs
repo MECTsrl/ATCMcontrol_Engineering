@@ -1,0 +1,34 @@
+HKCR
+{
+	4C_20_CE.CEBackparseComObj.1 = s '4C_20: Backparser'
+	{
+		CLSID = s '{B2E9CA24-FC0B-11D4-A0A3-006008736ABF}'
+		'Index'
+		{
+			val Version = s '2.0'
+			val LCID = d '1033'
+		}
+	}
+	4C_20_CE.CEBackparseComObj = s '4C_20: Backparser'
+	{
+		CLSID = s '{B2E9CA24-FC0B-11D4-A0A3-006008736ABF}'
+		CurVer = s '4C_20_CE.CEBackparseComObj.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {B2E9CA24-FC0B-11D4-A0A3-006008736ABF} = s '4C_20: Backparser'
+		{
+			ProgID = s '4C_20_CE.CEBackparseComObj.1'
+			VersionIndependentProgID = s '4C_20_CE.CEBackparseComObj'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			'TypeLib' = s '{89E29AD1-FB59-11D4-A0A1-006008736ABF}'
+            'Implemented Categories'
+            {
+				{01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

@@ -1,0 +1,17 @@
+(* Constant file *)
+CONST
+(* file mode parameter values: *)
+XML_FMODE_READ			: word := 1;
+XML_FMODE_READ_WRITE	: word := 2;
+XML_FMODE_CREATE		: word := 3;
+
+XML_FMODE_ERR_IF_ENCODING_UNKN :  word := 16#10;
+
+(* write mode parameter values: *)
+XML_WMODE_ADD_MISSING	: int := 10;
+XML_WMODE_SKIP_MISSING	: int := 11;
+
+(* read mode parameter values: *)
+XML_RMODE_IGNORE_MISSING_ELEMENT :  word := 16#01;
+
+END_CONST

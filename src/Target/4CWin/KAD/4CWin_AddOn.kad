@@ -1,0 +1,186 @@
+<ADDON>
+   <PROPERTIES  FILEEXT             ="4cwin"
+                FILEPREFIX          ="win"
+                KADTYPE             ="WIN"
+
+                DESCRIPTION         ="4C Windows Target"
+
+                SUPPORTNCC          ="0"
+
+                WIZARDNAME          ="4C Windows Target Wizard"
+                WIZARDDESC          ="4C Windows Target Wizard"
+
+                CUSTOM_DOWNLOAD     ="1"
+                CUSTOM_DOWNLOAD_DIR ="Download"
+                CUSTOM_DOWNLOAD_GUI ="1"
+
+                ENDIAN              ="LITTLE"
+    />
+
+    <FIRMWARE VERSION="20000"
+             DESCRIPTION="Version 2.00"
+             CUSTOMCONNECT="126a81fd-4b8e-4a44-96cb-e78c0c741258"
+             DOWNLOAD="88AD4524-E2B2-4853-A081-5CDBF5732E09">
+             <COMMCHANNEL ID="TCP"
+                          PROTOCOL="BLOCK"
+                          PROTOCOLPAR="750"/>
+             <ONLSRV DEBUGDL="0"/>
+   </FIRMWARE>
+
+   <FIRMWARE VERSION="20300"
+             DESCRIPTION="Version 2.03"
+             CUSTOMCONNECT="126a81fd-4b8e-4a44-96cb-e78c0c741258"
+             DOWNLOAD="88AD4524-E2B2-4853-A081-5CDBF5732E09"
+             COMPILERKAD="4CWin_4CVM_20300.kad">
+             <COMMCHANNEL ID="TCP"
+                          PROTOCOL="BLOCK"
+                          PROTOCOLPAR="750"/>
+             <ONLSRV DEBUGDL="0"/>
+   </FIRMWARE>
+
+   <FIRMWARE VERSION="20500"
+             DESCRIPTION="Version 2.05"
+             CUSTOMCONNECT="126a81fd-4b8e-4a44-96cb-e78c0c741258"
+             DOWNLOAD="88AD4524-E2B2-4853-A081-5CDBF5732E09"
+             COMPILERKAD="4CWin_4CVM_20500.kad">
+             <COMMCHANNEL ID="TCP"
+                          PROTOCOL="SIMPLE"
+                          PROTOCOLPAR="1000"/>
+             <COMMCHANNEL ID="RS232"
+                          PROTOCOL="BLOCK"
+                          PROTOCOLPAR="1000"/>
+             <ONLSRV DEBUGDL="1"/>
+   </FIRMWARE>
+
+   <FIRMWARE VERSION="20600"
+             DESCRIPTION="Version 2.06"
+             CUSTOMCONNECT="126a81fd-4b8e-4a44-96cb-e78c0c741258"
+             DOWNLOAD="88AD4524-E2B2-4853-A081-5CDBF5732E09"
+             COMPILERKAD="4CWin_4CVM_20600.kad">
+             <COMMCHANNEL ID="TCP"
+                          PROTOCOL="SIMPLE"
+                          PROTOCOLPAR="1000"/>
+             <COMMCHANNEL ID="RS232"
+                          PROTOCOL="BLOCK"
+                          PROTOCOLPAR="1000"/>
+             <ONLSRV DEBUGDL="1"/>
+   </FIRMWARE>
+
+   <FIRMWARE VERSION="20700"
+             DESCRIPTION="Version 2.07"
+             CUSTOMCONNECT="126a81fd-4b8e-4a44-96cb-e78c0c741258"
+             DOWNLOAD="88AD4524-E2B2-4853-A081-5CDBF5732E09"
+             COMPILERKAD="4CWin_4CVM_20700.kad">
+             <COMMCHANNEL ID="TCP"
+                          PROTOCOL="SIMPLE"
+                          PROTOCOLPAR="1000"/>
+             <COMMCHANNEL ID="RS232"
+                          PROTOCOL="BLOCK"
+                          PROTOCOLPAR="1000"/>
+   </FIRMWARE>
+
+   <FIRMWARE VERSION="20800"
+             DESCRIPTION="Version 2.08"
+             CUSTOMCONNECT="126a81fd-4b8e-4a44-96cb-e78c0c741258"
+             DOWNLOAD="88AD4524-E2B2-4853-A081-5CDBF5732E09"
+             COMPILERKAD="4CWin_4CVM_20800.kad">
+             <COMMCHANNEL ID="TCP"
+                          PROTOCOL="SIMPLE"
+                          PROTOCOLPAR="1000"/>
+             <COMMCHANNEL ID="RS232"
+                          PROTOCOL="BLOCK"
+                          PROTOCOLPAR="1000"/>
+   </FIRMWARE>
+
+   <FIRMWARE VERSION="21000"
+             DESCRIPTION="Version 2.1.0"
+             CUSTOMCONNECT="126a81fd-4b8e-4a44-96cb-e78c0c741258"
+             DOWNLOAD="88AD4524-E2B2-4853-A081-5CDBF5732E09"
+             COMPILERKAD="4CWin_4CVM_21000.kad">
+             <COMMCHANNEL ID="TCP"
+                          PROTOCOL="SIMPLE"
+                          PROTOCOLPAR="1000"/>
+             <COMMCHANNEL ID="RS232"
+                          PROTOCOL="BLOCK"
+                          PROTOCOLPAR="1000"/>
+   </FIRMWARE>
+
+   <FIRMWARE VERSION="21001"
+             DESCRIPTION="Version 2.1.1"
+             CUSTOMCONNECT="126a81fd-4b8e-4a44-96cb-e78c0c741258"
+             DOWNLOAD="88AD4524-E2B2-4853-A081-5CDBF5732E09"
+             COMPILERKAD="4CWin_4CVM_21001.kad">
+             <COMMCHANNEL ID="TCP"
+                          PROTOCOL="SIMPLE"
+                          PROTOCOLPAR="1000"/>
+             <COMMCHANNEL ID="RS232"
+                          PROTOCOL="BLOCK"
+                          PROTOCOLPAR="1000"/>
+   </FIRMWARE>
+
+   <FIRMWARE VERSION="21020"
+             DESCRIPTION="Version 2.1.2"
+             CUSTOMCONNECT="126a81fd-4b8e-4a44-96cb-e78c0c741258"
+             DOWNLOAD="88AD4524-E2B2-4853-A081-5CDBF5732E09"
+             COMPILERKAD="4CWin_4CVM_21020.kad">
+             <COMMCHANNEL ID="TCP"
+                          PROTOCOL="SIMPLE"
+                          PROTOCOLPAR="25000"/>
+             <COMMCHANNEL ID="RS232"
+                          PROTOCOL="BLOCK"
+                          PROTOCOLPAR="1000"/>
+   </FIRMWARE>
+
+   <FIRMWARE VERSION="21030"
+             DESCRIPTION="Version 2.1.3"
+             CUSTOMCONNECT="126a81fd-4b8e-4a44-96cb-e78c0c741258"
+             DOWNLOAD="88AD4524-E2B2-4853-A081-5CDBF5732E09"
+             COMPILERKAD="4CWin_4CVM_21030.kad">
+             <COMMCHANNEL ID="TCP"
+                          PROTOCOL="SIMPLE"
+                          PROTOCOLPAR="25000"/>
+             <COMMCHANNEL ID="RS232"
+                          PROTOCOL="BLOCK"
+                          PROTOCOLPAR="1000"/>
+   </FIRMWARE>
+
+   <FIRMWARE VERSION="21040"
+             DESCRIPTION="Version 2.1.4"
+             CUSTOMCONNECT="126a81fd-4b8e-4a44-96cb-e78c0c741258"
+             DOWNLOAD="88AD4524-E2B2-4853-A081-5CDBF5732E09"
+             COMPILERKAD="4CWin_4CVM_21040.kad">
+             <COMMCHANNEL ID="TCP"
+                          PROTOCOL="SIMPLE"
+                          PROTOCOLPAR="25000"/>
+             <COMMCHANNEL ID="RS232"
+                          PROTOCOL="BLOCK"
+                          PROTOCOLPAR="1000"/>
+   </FIRMWARE>
+
+   <FIRMWARE VERSION="21050"
+             DESCRIPTION="Version 2.1.5"
+             CUSTOMCONNECT="126a81fd-4b8e-4a44-96cb-e78c0c741258"
+             DOWNLOAD="88AD4524-E2B2-4853-A081-5CDBF5732E09"
+             COMPILERKAD="4CWin_4CVM_21050.kad">
+             <COMMCHANNEL ID="TCP"
+                          PROTOCOL="SIMPLE"
+                          PROTOCOLPAR="25000"/>
+             <COMMCHANNEL ID="RS232"
+                          PROTOCOL="BLOCK"
+                          PROTOCOLPAR="1000"/>
+   </FIRMWARE>
+
+   <FIRMWARE VERSION="22000"
+             DESCRIPTION="Version 2.2"
+             CUSTOMCONNECT="126a81fd-4b8e-4a44-96cb-e78c0c741258"
+             DOWNLOAD="88AD4524-E2B2-4853-A081-5CDBF5732E09">
+             <COMMCHANNEL ID="TCP"
+                          PROTOCOL="SIMPLE"
+                          PROTOCOLPAR="25000"/>
+             <COMMCHANNEL ID="RS232"
+                          PROTOCOL="BLOCK"
+                          PROTOCOLPAR="1000"/>
+   </FIRMWARE>
+
+
+</ADDON>               

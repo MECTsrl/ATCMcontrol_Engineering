@@ -1,0 +1,9 @@
+; CeExtract.def : Deklariert die Parameter für das Modul.
+
+LIBRARY      "CeExtract.DLL"
+
+EXPORTS
+	DllCanUnloadNow     @1 PRIVATE
+	DllGetClassObject   @2 PRIVATE
+	DllRegisterServer   @3 PRIVATE
+	DllUnregisterServer	@4 PRIVATE

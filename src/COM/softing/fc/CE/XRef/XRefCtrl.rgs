@@ -1,0 +1,44 @@
+HKCR
+{
+	4C_20_CE.XRefCtrl.1 = s '4C_20: XRefCtrl Class'
+	{
+		CLSID = s '{ADC08007-5182-4324-939A-D773834FDE93}'
+        'Index' 
+        { 
+            val Version = s '2.0' 
+            val LCID = d '1033' 
+        } 
+	}
+	4C_20_CE.XRefCtrl = s '4C_20: XRefCtrl Class'
+	{
+		CLSID = s '{ADC08007-5182-4324-939A-D773834FDE93}'
+		CurVer = s '4C_20_CE.XRefCtrl.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {ADC08007-5182-4324-939A-D773834FDE93} = s '4C_20: XRefCtrl Class'
+		{
+			ProgID = s '4C_20_CE.XRefCtrl.1'
+			VersionIndependentProgID = s '4C_20_CE.XRefCtrl'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'Insertable'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 102'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '131473'
+			}
+			'TypeLib' = s '{A8028156-4FBB-4F89-B540-7CD4F5830FFE}'
+			'Version' = s '1.0'
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+
+            }
+		}
+	}
+}

@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>SignalError</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>SignalError</h2>
+<p>Transfers the current task into an error state.</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION_BLOCK SignalError
+
+VAR_INPUT
+    ENABLE     : BOOL:=TRUE;  
+    ERRNO      : DINT:=0;     
+END_VAR</pre>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>ENABLE</b></dt>
+  <dd>Value of type <i><b>BOOL</b></i><br>
+    Defines, together with the parameter <i><b>ERRNO</b></i>, whether the body 
+    of SignalError is to be executed. <b>ERRNO</b></dd>
+  <dd>Value of type <i><b>DINT</b></i></dd>
+  <dd>Defines the error number to be set for the calling task. </dd>
+</dl>
+<h3>Description</h3>
+<p><i><b>SignalError </b></i>transfers the current task into an error state if 
+  <i><b>ENABLE</b></i> has the value<i><b> TRUE</b></i> and <i><b>ERRNO</b></i> 
+  a value<b><i> &lt;&gt; 0</i></b>. If <i><b>ERRNO</b></i> has the value <b><i>0</i></b>, 
+  the task is not transferred into an error state, even when <b>ENABLE</b> has 
+  the value<i><b> TRUE</b></i>.The transfer of a task into an error state results 
+  in the task being stopped. The error number of the affected task is set to the 
+  value of <i><b>ERRNO</b></i> in that case.</p>
+</body>
+</html>

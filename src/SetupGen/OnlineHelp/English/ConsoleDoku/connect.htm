@@ -1,0 +1,222 @@
+<html>
+<head>
+<title>Starting ATCM Console \ Establishing and Interrupting a Connection to ATCM 
+Control </title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Manual_GE.css">
+</head>
+
+
+<body bgcolor="#FFFFFF" background="pic/backgrnd.jpg">
+<h1> Starting ATCM Console \ Establishing and Interrupting a Connection to ATCM Control 
+</h1>
+<hr>
+<h3><a name="overview"></a>Overview </h3>
+<ul>
+  <a href="#TwoFourC">Connecting Possibilities / Starting ATCM Console</a> 
+  <ul class="inul">
+    <a href="#byTray">Starting ATCM Console via the ATCM Tray</a><br>
+    <a href="#byEngineering">Starting ATCM Console from ATCM Engineering</a><br>
+    <a href="#byExplorer">Starting ATCM Console by Entering the Starting Address 
+    in the Internet Explorer</a> 
+  </ul>
+  <a href="#password">Password Protection</a><br>
+  <a href="#end">Interrupting a Connection to ATCM Control</a> 
+</ul>
+<hr style="margin-left: 44px">
+<h2><a name="TwoFourC"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Connecting Possibilities / Starting ATCM Console</h2>
+<p>In ATCM Engineering, a configuration cannot only be assigned to the local computer 
+  but also to a remote computer. In ATCMControl, configuration and PC are practically 
+  identical after a configuration has been assigned to a PC. For execution, a 
+  configuration is loaded in the control of the computer to which the corresponding 
+  configuration was assigned. In this way, it is possible, for example, to compile 
+  a project in ATCM Engineering on the local computer and execute it on a remote 
+  computer by loading it in the control located in the remote computer. If you 
+  have a license for multiple configurations, you can also create several configurations 
+  in one project each of which is assigned to a different PC and therefore executed 
+  in the control of the corresponding PC. </p>
+<p>In a started instance of ATCM Console, the process data of a specific configuration 
+  are visually displayed. For this purpose, ATCM Console establishes a connection, 
+  via the OPC interface, to the control of the computer assigned to the configuration. 
+  From the local computer, the configuration executed in the control of the local 
+  computer can be visually displayed and monitored in ATCM Console as well as a 
+  configuration which runs on a remote computer. It is also possible to monitor 
+  in ATCM Console, from several remote computers, the same configuration loaded 
+  on a ATCM Control. </p>
+<p>The configuration to be displayed and the corresponding control are already 
+  selected when ATCM Console is started, i.e. the context from which ATCM Console 
+  was started determines which control the displayed data come from. There are 
+  three possibilities for starting ATCM Console:</p>
+<ul>
+  <li><a href="#byTray">Starting via the ATCM Tray in the Windows Program Menu</a></li>
+  <li><a href="#byEngineering">Starting from ATCM Engineering</a></li>
+  <li><a href="#byExplorer">Starting by Entering the Starting Address in the Address 
+    Field of the Internet Explorer </a></li>
+</ul>
+<p> If there are several configurations in one single project, the configuration 
+  can still be changed after ATCM Console has been started.</p>
+<p>If ATCM Console is started via the ATCM Tray or by entry of a starting address 
+  in the address field of the Internet Explorer, all objects contained in the 
+  project can be loaded in a <a href="Faceplate.htm">Display</a> via 
+  the <a href="Interface.htm#NaviView">Navigator of ATCM Console</a> and be displayed 
+  there. The arrangement of the displays assigned to these objects can be changed 
+  via the <b>Context</b> menu or the Layout Editor (see section <a href="Layout.htm#Layout">Working 
+  with Layouts</a>). If, on the other hand, ATCM Console is started from ATCM Engineering, 
+  the selection of objects which can be loaded in a display depends on the calling 
+  position for ATCM Console (see <a href="#byEngineering">Starting ATCM Console from 
+  ATCM Engineering</a>). </p>
+<img src="pic/Note.gif"
+        width="32" height="32" align="left"> 
+<div style="margin-left: 5; position: relative; top: 0"> 
+  <table border="0" cellpadding="0" class="tabhinweis">
+    <tr> 
+      <td class="HinweisText"> Several instances of ATCM Console can be called at 
+        the same time, independent of the manner in which ATCM Console was started. 
+        To avoid problems when working with several instances of ATCM Console, you 
+        should check the check box <b>Open browser window in a separate process</b> 
+        in the <b>Internet options</b> of the Internet Explorer, in the <b>Extended</b> 
+        tab.</td>
+    </tr>
+  </table>
+</div>
+<h3><a name="byTray"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Starting ATCM Console via the ATCM Tray </h3>
+<p>If ATCM Console is started via the ATCM Tray, it is opened as a standalone application 
+  within the Internet Explorer. In a ATCM Console started via the ATCM Tray, the visualized 
+  process data always belong to the control on the local computer. </p>
+<p>To start ATCM Console via the ATCM Tray,</p>
+<p>double-click with the left mouse button on the ATCMControl icon on the right or 
+  bottom end of the Windows task menu <img src="pic/IcControlgreen.gif" width="16" height="16"><br>
+  <br>
+  - OR -<br>
+  <br>
+  click with the right mouse button on the ATCMControl icon <img src="pic/IcControlgreen.gif" width="16" height="16"> 
+  to open its <b>Context</b> menu and select <b>Open ATCM Console</b>.</p>
+<h3><a name="byEngineering"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Starting ATCM Console from ATCM Engineering</h3>
+<p>If ATCM Console is started from ATCM Engineering, it is opened as a window within 
+  ATCM Engineering, i.e. the ATCM Console window can only be displaced within ATCM Engineering. 
+  From ATCM Engineering, several instances of ATCM Console can be called. Each instance 
+  is displayed in a separate window within ATCM Engineering.</p>
+<p>Except for the <b>Context</b> menu, a Console window started from ATCM Engineering 
+  contains only the ATCM Control-specific operation and visualization elements. 
+  Part of the Internet Explorer functionality is replaced by a group of buttons 
+  with the most important navigation functions. For details on this group of buttons, 
+  see the section <a href="Interface.htm#IEPanel">Internet Navigation Menu 
+  in ATCM Engineering</a>. </p>
+<p>From ATCM Engineering, ATCM Console is started via the <b>Context</b> menu of the 
+  ATCM Engineering navigator.<br>
+  The <b>Context</b> menu of the Engineering Navigator with a menu item for opening 
+  ATCM Console can be called from the following positions:</p>
+<dl> 
+  <dt><b>in the Hardware view </b></dt>
+  <dd>from a PC icon <img src="pic/PCSymb.gif" width="22" height="18" align="top"></dd>
+  <dt><b>in the Instance view </b></dt>
+  <dd>from the icon of a configuration <img src="pic/ConfigSymb.gif" width="23" height="19" align="top">,<br>
+    a resource <img src="pic/ResourceSymb.gif" width="24" height="19" align="top"><br>
+    or a task<img src="pic/TaskSymb.gif" width="24" height="17" align="top">.</dd>
+</dl>
+<p>After selecting one of these icons, click on the right mouse button to call 
+  the <b>Context</b> menu and in this menu, select the option <b>Open ATCM Console</b>.</p>
+<p><a name="StartPosition"></a>The control with which ATCM Console is connected 
+  when started from ATCM Engineering, and the visualized object of the configuration 
+  depend on the calling position which was selected for opening the <b>Context</b> 
+  menu. </p>
+<p>If only one configuration has been generated in the project currently opened 
+  in ATCM Engineering, the visualized process data are always the ones loaded on 
+  the control which is located on the PC assigned to the configuration. This can 
+  be either the local PC or a remote computer. All objects in the configuration 
+  are available for selection in the Navigator of ATCM Console if the calling position 
+  for the <b>Context</b> menu is either the PC icon or the configuration icon. 
+  If the <b>Context</b> menu is called from the position of a resource icon, the 
+  <a href="faceplate.htm#TaskList">task list</a> of the configuration is displayed; 
+  if it is called from the position of a task icon, the <a href="faceplate.htm#TasksFP">faceplate 
+  of the previously selected task </a>is displayed (for more information on the 
+  Navigator and the faceplates in ATCM Console, see the sections <a href="Interface.htm">User 
+  Interface</a> and <a href="faceplate.htm">Displays</a>). If called from the 
+  last two positions, the Navigator is not shown; as a result of this the selection 
+  of objects is restricted. </p>
+<p>If you have a license for multiple configurations, you can also create several 
+  configurations in one project. In this case, ATCM Console is connected to the 
+  control on the PC whose assigned configuration (or an icon under this configuration) 
+  has been selected as calling position for the <b>Context</b> menu. If started 
+  from the calling position which is shown in the following figure, ATCM Console 
+  is connected to the control assigned to <i>Configuration2</i>, as an example. 
+</p>
+<img src="pic/CallConsole.gif" width="285" height="502" class="inP"> 
+<h3><a name="byExplorer"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Starting ATCM Console by Entering the Starting Address in the Internet Explorer</h3>
+<p>If ATCM Console is started from the Internet Explorer, the PC to whose control 
+  ATCM Console is to be connected can be indicated together with the starting address:</p>
+<ol>
+  <li>Start the Internet Explorer.</li>
+  <li>Enter the desired starting page in the <b>address</b> box. The address must 
+    have the following syntax:<br>
+    '<font face="Courier New, Courier, mono">http//&lt;PC name&gt;/4C</font>'. 
+    If your PC is called, for instance, <i>Automation1</i>, the address is '<font face="Courier New, Courier, mono">http//Automation1/4C</font>'.</li>
+  <li>Click on <b>Change to </b>or press the <b>Enter</b> key to call the entered 
+    address.</li>
+</ol>
+<h2><a name="Password"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Password Protection</h2>
+<p>In ATCM Engineering, a password for the currently loaded project can be entered 
+  (see also the section &quot;Project-specific password&quot;). This password 
+  becomes effective after compilation of the project. If a configuration contained 
+  in a password-protected project is loaded on a ATCM Control, a password inquiry 
+  is carried through when ATCM Console is started. For password-protected projects, 
+  a password must be entered independently of whether the control to be connected 
+  is on a local or a remote computer. However, the inquiry is only carried through 
+  if ATCM Console is started outside of ATCM Engineering, i.e. via the ATCM Tray or 
+  the address field of the Internet Explorer.</p>
+<p>The security check differentiates between two access levels:</p>
+<ul>
+  <li> <b>Read only access:</b> The console can be started and the process variables 
+    monitored. The restriction of the read only access is that values of process 
+    variables cannot be changed. Tasks and resources cannot be started or stopped, 
+    either. </li>
+  <li><b>Unlimited access:</b> Values of process variables can be read and changed 
+    if there is write access to the respective variable from the assigned display. 
+    Tasks and resources can be started and stopped. </li>
+</ul>
+<p>Which access level is valid for a configuration is determined when the password 
+  is assigned in ATCM Engineering (in the <b>Tools - Project Settings... </b> menu, 
+  <b>Console</b> tab).</p>
+<p>Please note that a password inquiry also takes place if, for example, you update 
+  the entire Visualization view of ATCM Console after a download via the <b>Update</b> 
+  button in the toolbar of the Internet Explorer or if you update a specific display 
+  via the Explorer <b>Context</b> menu of the display. If the latter is the case, 
+  the password dialog is only displayed in the updated display. </p>
+<h4><a name="login"></a>Logging in with ATCM Console<br>
+  <br>
+</h4>
+<img src="pic/LoginScreen2.gif" width="447" height="405" class="inP"> 
+<p>To log in with ATCM Console in case of a password protection, write the password 
+  in the input field and confirm with <b>Enter</b>.<br>
+  If you have misspelled the password, you can clear the input field by clicking 
+  on <b>Reset</b> and repeat the entry. </p>
+<p>If you enter an invalid password, access to the console is denied and the Login 
+  dialog box is restarted.<br>
+  If, on the other hand, you enter a valid password, a console session is started 
+  with all access rights which are made available by the entered password. </p>
+<h2><a name="end"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Interrupting a Connection to ATCM Control</h2>
+<p> An existing connection is interrupted if one of the following events occurs: 
+</p>
+<ul>
+  <li>The <b>Logout</b> button of the console is pressed. </li>
+  <li>A new project is loaded on the control connected to ATCM Console.</li>
+  <li> The connection is interrupted, for instance, by closing of the Internet 
+    Explorer, and not restarted within approx. 30 seconds. In this case, the data 
+    of the current connection, which have been stored on the server, are lost. 
+  </li>
+</ul>
+<p>The <b>Logout</b> button is located in the toolbar of ATCM Console. It is only 
+  displayed if the loaded configuration is protected by a password. If the currently 
+  loaded configuration has no password, this button is not visible. <br>
+  With a click on the <b>Logout</b> button, the existing connection is interrupted 
+  and the Login dialog redisplayed. <br>
+  If, after logging out, you log back in with the same password, you will reestablish 
+  a connection to the control to which you were connected before. </p>
+</body>
+</html>

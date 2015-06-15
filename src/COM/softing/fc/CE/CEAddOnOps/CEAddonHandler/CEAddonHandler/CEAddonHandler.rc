@@ -1,0 +1,178 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+#include "version.rc2"
+#include "keyrc.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "#include ""version.rc2""\r\n"
+    "#include ""keyrc.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1 TYPELIB ""CEAddonHandler.tlb""\r\n"
+    "#include ""key.rc""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_CEADDONACTIONCOMOBJ REGISTRY DISCARDABLE    "CEAddonActionComObj.rgs"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PROJNAME            "CEAddonHandler"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_REALLY_DELETE_FILE1 "Do you really want to delete %s and the\ncorresponding implementation file(s)?\n%s"
+    IDS_ERROR_TITLE         "ATCMControl Engineering"
+    IDS_FILE_ALREADY_REMOVED "File has already been removed!\n%s"
+    IDS_ERROR_DELETE_FILE   "Error: Could not delete file:\n%s"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_REALLY_DELETE_FILE2 "Do you really want to delete the ' %s ' Import"
+    IDS_REALLY_DELETE_FILE3 "Do you really want to delete the ' %s ' object"
+    IDS_RESOURCE_NOT_IN_CONF "The resource ' %s ' is not in the config file !"
+    IDS_IMPORT_EXISTS       "Import ' %s ' already exists"
+    IDS_INSNAME_EXISTS      "Instance name ' %s ' already exists"
+    IDS_TASK_EXISTS         "Task name ' %s ' already exists"
+    IDS_OVERWRITE_FILE      "File ' %s ' alreay exists\nDo you want to overwrite it !"
+    IDS_OBJECT_EXISTS       "Object name already exists"
+    IDS_CONSTNAME_EXISTS    "Constant name '%s' already extists"
+    IDS_GVARNAME_EXISTS     "Global variable name '%s' already extists"
+    IDS_SOFTING_ADDON1      "IEC 6 1131-3 Add On"
+    IDS_ERROR_IECSYNTAX     "Object name has a IEC Syntax error"
+    IDS_ERROR_KEYWORD       "Object name is a key word"
+    IDS_ERROR_TOOLONG       "Object name is too long"
+    IDS_ERROR_INVALID       "Object name '%s'  is invalid."
+    IDS_GLOB_VARSELEC       "Global variable file selection"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CONST_FILE          "Constant file"
+    IDS_GLOBVAR_FILE        "Global variable file"
+    IDS_FILE_ALREADY_EXISTS "Cannot rename or create the file.\nFile %s does already exist."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "ATCMControl Engineering"
+END
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_FILE_SELECT_DLG DIALOG DISCARDABLE  0, 0, 187, 146
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,68,125,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,130,125,50,14
+    LISTBOX         IDC_LIST1,7,7,173,113,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
+                    LBS_EXTENDEDSEL | WS_VSCROLL | WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_FILE_SELECT_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 139
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "CEAddonHandler.tlb"
+#include "key.rc"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

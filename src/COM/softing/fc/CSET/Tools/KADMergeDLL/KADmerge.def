@@ -1,0 +1,13 @@
+; KADmerge.def : Declares the module parameters for the DLL.
+
+LIBRARY      "KADmerge"
+DESCRIPTION  'KADmerge Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here
+    Get4CPath
+    GetKernelLanguageAttribute
+    Installed4CKernel
+    InstalledIECAddOn
+    MergeKAD
+    SetKernelLanguageAttribute

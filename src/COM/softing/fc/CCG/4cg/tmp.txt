@@ -1,0 +1,10 @@
+Debug Exe:
+C:\4c2\engineering\bin\4cg.exe
+
+Test lib create:
+C:\4c2\COM\softing\fc\CL\4C_System\*.4cp  -ml:4cpc x.4cl
+
+
+Test use:
+C:\4c2\COM\softing\fc\CCG\4cg\test\myFirst\*.4cp  -c prg1.st
+

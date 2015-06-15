@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>COPY_INT_TO_BYTE_ARRAY</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+
+<body bgcolor="#FFFFCC" link="#0000CE" vlink="#0000CE" alink="#0000CE">
+<h2>COPY_INT_TO_BYTE_ARRAY</h2>
+<p>Writes a value of the type <i><b>INT</b></i> at a specific position within a byte array.</p>
+<h3>Interface</h3>
+<pre class="preforma">FUNCTION COPY_INT_TO_BYTE_ARRAY
+VAR_INPUT
+    VALUE : INT;
+END_VAR
+VAR_IN_OUT
+    POS : DINT;
+    BYTES : ARRAY OF BYTE;
+END_VAR</pre>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl>
+
+ <dt><b>VALUE</b></dt>
+
+ <dd>Value of the type <i><b>INT</b></i><br> Value to be inserted at the byte array position passed in <i><b>POS</b></i>. Counting starts from 0 for the first position in the byte array and is performed in byte units.</dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl>
+
+ <dt><b>POS</b></dt>
+
+ <dd>Value of the type <i><b>DINT</b></i><br> Specifies at which position in the byte array the value passed to <i><b>VALUE</b></i> is to be inserted. Counting starts from 0 for the first position in the byte array and is performed in byte units.<br> After the successful execution of the function, <i><b>POS</b></i> is overwritten by the value of the first byte array position that follows the last byte written. If the execution of the function failed, <i><b>POS</b></i> receives the value -1. </dd>
+
+ <dt><b>BYTES</b></dt>
+
+ <dd>Array of the type <i><b>BYTE</b></i><br> Byte array in which a value is to be written.</dd>
+</dl>
+<h3>Description</h3>
+<p><b><i>COPY_INT_TO_BYTE_ARRAY </i></b>writes a value of the type <i><b>INT</b></i> in the byte array passed to <i><b>BYTES</b></i> at the position passed to <i><b>POS</b></i>. Values that are located in the byte array at the position specified in <i><b>POS</b></i> are overwritten by the value defined in <i><b>VALUE</b></i>. </p>
+</body>
+</html>

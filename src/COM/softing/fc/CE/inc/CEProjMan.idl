@@ -1,0 +1,461 @@
+
+// This file will be processed by the MIDL tool to
+// produce the type library (CEProjMan.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+import "CEProjInfo.idl";
+import "CEMsg.idl";
+import "CEContainer.idl";
+import "cecompmanev.idl";
+
+
+enum E_FV_FileCategory{
+    FV_FILE_UNKNOWN,
+    FV_FILE_SOURCE,
+    FV_FILE_HELP,
+    FV_FILE_ADDITIONAL
+};
+
+
+enum E_UPDATE_MODE
+{
+    eUpdateAll,             // 0: update attributes and children of node
+    eUpdateAttributes,      // 1: update attributes of node
+    eUpdateDelete,          // 2: delete node
+    eUpdateInsert,          // 3: insert node and children
+};
+
+
+
+[
+    object,
+    uuid(2BE32AC3-4A5D-476E-96F1-B3CF41720812),
+    dual,
+    helpstring("ICEProjectManager Interface"),
+    pointer_default(unique)
+]
+//------------------------------------------------------------------*
+/**
+ * The interface ICEProjectManager is the interface of the project manager
+ * for the cemain application, to open/close a project, and the navigator 
+ * to get the trees for class and target view
+ */
+interface ICEProjectManager : IDispatch
+{
+    //------------------------------------------------------------------*
+    /**
+     * OpenProject opens a project and initializes class and target view.
+     *
+     * @param   sProjectPath:   The file name of the project file to open
+     *                          with absolute path information
+     * @return    S_OK    : project has been opened
+     *            E_CEPROJMAN_NO_VALID_PROJ_FILE_NAME : project 
+     *                                                file name not valid
+     *            E_CEPROJMAN_NO_PROJ_FILE : project file does not exist
+     *            E_CEPROJMAN_KADMANAG_CREATE : KAD manager could not be 
+     *                                          created      
+     * @exception       -
+     * @see             
+    */
+    [id(1), helpstring("method OpenProject")] HRESULT OpenProject([in, string]BSTR sProject);
+    
+    //------------------------------------------------------------------*
+    /**
+     * CloseProject closes an open project.
+     *
+     * @param              
+     * @return          S_OK    : the project has been closed
+     *                  E_CEPROJMAN_NO_PROJECT_LOADED : no project opened
+     * @exception       -
+     * @see             
+    */
+    [id(2), helpstring("method CloseProject")] HRESULT CloseProject();
+    
+    //------------------------------------------------------------------*
+    /**
+     * ReparseCheck has to be called periodically by the engineering
+     * The project manager will check if source files relevant for the
+     * class or target view have changed and calls the backparser if
+     * necessary.
+     *
+     * @param           
+     * @return          S_OK    : the project has been closed
+     *                  E_CEPROJMAN_NO_PROJECT_LOADED : no project opened
+     * @exception       -
+     * @see             
+    */
+    [id(3), helpstring("method ReparseCheck")] HRESULT ReparseCheck();
+    
+    //------------------------------------------------------------------*
+    /**
+     * Get the XML string for the whole class view.
+     *
+     * @param   psClassViewXML: the string containing the xml text for the class view           
+     * @return  S_OK    : the project has been closed
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project opened
+     * @exception       -
+     * @see             
+    */
+    [id(4), helpstring("method GetClassViewXML")] HRESULT GetClassViewXML([out, string]BSTR* psClassViewXML);
+
+    //------------------------------------------------------------------*
+    /**
+     * Get a pointer to the DOMDocument of the class view XML DOM.
+     *
+     * @param   ppClassViewDOM: the pointer to DOMDocument interface of the XML DOM
+     * @return  S_OK    : the project has been closed
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project opened
+     *          E_FAIL  : other error, dom could not be obtained
+     * @exception       -
+     * @see             
+    */
+    [id(5), helpstring("method GetClassViewDOM")] HRESULT GetClassViewDOM([out]IUnknown** ppClassViewDOM);
+
+    //------------------------------------------------------------------*
+    /**
+     * Get the XML string for the whole target view.
+     *
+     * @param  psTargetViewXML: the string containing the xml text for the target view          
+     * @return  S_OK    : the project has been closed
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project opened
+     * @exception       -
+     * @see             
+    */
+    [id(6), helpstring("method GetTargetViewXML")] HRESULT GetTargetViewXML([out, string]BSTR* psTargetViewXML);
+    
+    //------------------------------------------------------------------*
+    /**
+     * Get a pointer to the DOMDocument of the target view XML DOM.
+     *
+     * @param   ppTargetViewDOM: the pointer to DOMDocument interface of the XML DOM
+     * @return  S_OK    : the project has been closed
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project opened
+     *          E_FAIL  : other error, dom could not be obtained
+     * @exception       -
+     * @see             
+    */
+    [id(7), helpstring("method GetTargetViewDOM")] HRESULT GetTargetViewDOM([out]IUnknown** ppTargetViewDOM);
+		
+    //------------------------------------------------------------------*
+    /**
+     * Save the tree view data files for class and target view.
+     *    
+     * @return     S_OK : ok
+     *             E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded 
+     * @exception       -
+     * @see             
+    */
+    [id(8), helpstring("method SaveViewData")] HRESULT SaveViewData();
+
+
+    //------------------------------------------------------------------*
+    /**
+     * Get all files of a special category, the navigator uses this function
+     * to determine if a file is a source file or a user help file.
+     *
+     * @param           eFileCat: the file category
+     * @param           parrFileNames: the list of file names of that category
+     * @return          S_OK : ok
+     *                  E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     * @exception       -
+     * @see             
+     */
+	[id(9), helpstring("method GetAllFilesOfCategory")] 
+    HRESULT GetAllFilesOfCategory([in] enum E_FV_FileCategory eFileCat, 
+                                  [out]SAFEARRAY(BSTR) *parrFileNames);
+
+    //------------------------------------------------------------------*
+    /**
+     * Return the category of a file.
+     *
+     * @param           sFileName: the name of the file
+     * @param           peFileCat: the category of the file
+     * @return          S_OK : ok
+     *                  E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     * @exception       -
+     * @see             
+     */
+    [id(10), helpstring("method GetFileCategory")]
+    HRESULT GetFileCategory([in,string]BSTR sFileName,
+                            [out] enum E_FV_FileCategory* peFileCat);
+
+    //------------------------------------------------------------------*
+    /**
+     * Add a new file to a file category, if cat == help, add in 4cp file,
+     * if cat == source, try to insert in class or target tree.
+     *
+     * @param           sFileName: the name of the file
+     * @param           peFileCat: the category of the file
+     * @param           bTry: only try to do but don't do?
+     * @return          S_OK : ok (try mode: add is possible)
+     *                  S_FALSE: not ok (try mode: add is not possible)
+     *                  E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *                  E_FAIL: the file could not be inserted
+     * @exception       -
+     * @see             
+     */
+    [id(11), helpstring("method AddFile")]
+    HRESULT AddFile([in,string]BSTR sFileName,
+                    [in] enum E_FV_FileCategory eFileCat,
+                    [in] BOOL bTry);
+
+    //------------------------------------------------------------------*
+    /**
+     * Remove a file from a file category, remove in 4cp file and reparse.
+     *
+     * @param           sFileName: the name of the file
+     * @param           peFileCat: the category of the file
+     * @param           bTry: only try to do but don't do?
+     * @return          S_OK : ok (try mode: remove is possible)
+     *                  S_FALSE: not ok (try mode: remove is not possible)
+     *                  E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *                  E_FAIL: the file could not be removed
+     * @exception       -
+     * @see             
+     */
+    [id(12), helpstring("method RemoveFile")]
+    HRESULT RemoveFile([in,string]BSTR sFileName,
+                       [in] enum E_FV_FileCategory eFileCat,
+                       [in] BOOL bTry);
+
+
+    //------------------------------------------------------------------*
+    /**
+    * CompileReady informs the project manager that a compilation has finished
+    * the project manager can update some things then
+    *
+    * @return           
+    * @exception        -
+    * @see              
+    */
+    [id(13), helpstring("method CompileReady")]
+    HRESULT CompileReady();
+    
+};
+
+
+
+[
+    uuid(96A22E5F-5BD1-4FA7-B72E-197C7716DCC6),
+    version(1.0),
+    helpstring("CEProjMan 1.0 Type Library")
+]
+library CEPROJMANLib
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+
+    [
+		uuid(CC803AC8-F8AB-42B3-BE56-82551872AFF0),
+        dual,
+		helpstring("_ICEProjectManagerEvents Interface")
+	]
+    /**
+     * The connection point interface to inform clients that 
+     * one of the trees (class or target tree) have changed
+     * Clients that want to get this information have to 
+     * implement this interface.
+     */
+	interface _ICEProjectManagerEvents : IDispatch
+	{
+        //------------------------------------------------------------------*
+        /**
+         * InitClassTree will be called after the class tree has been 
+         * initialized by the project manager.
+         *
+         * @param           pXMLDocument: a pointer to the xml document, this
+         *                                will be a IXMLDOMDocument pointer
+         * @return          
+         * @exception       -
+         * @see             
+        */    	
+		[id(1), helpstring("method InitClassTree")] 
+        HRESULT InitClassTree([in]IUnknown* pXMLDocument);
+		
+        //------------------------------------------------------------------*
+        /**
+         * InitTargetTree will be called after the target tree has been 
+         * initialized by the project manager.
+         *
+         * @param           pXMLDocument: a pointer to the xml document, this
+         *                                will be a IXMLDOMDocument pointer
+         * @return          
+         * @exception       -
+         * @see             
+        */
+        [id(2), helpstring("method InitTargetTree")] 
+        HRESULT InitTargetTree([in]IUnknown* pXMLDocument );
+		
+        //------------------------------------------------------------------*
+        /**
+         * UpdateClassTree will be called if the class tree has changed
+         * The project manager passes the ID-pathes to all nodes in the tree
+         * which have changed, the part of the tree under these nodes has to be
+         * updated in the tree view.
+         *
+         * @param           sChangedIdPath: the id-path of the changed node
+         * @param           eMode: update mode (all, attributes, delete, insert)
+         * @return          -
+         * @exception       -
+         * @see             E_UPDATE_MODE
+        */
+        [id(3), helpstring("method UpdateClassTree")] 
+        HRESULT UpdateClassTree([in,string] BSTR sChangedIdPath, enum E_UPDATE_MODE eMode);
+		
+        //------------------------------------------------------------------*
+        /**
+         * UpdateTargetTree will be called if the class tree has changed
+         * The project manager passes the ID-pathes to all nodes in the tree
+         * which have changed, the part of the tree under these nodes has to be
+         * updated in the tree view.
+         *
+         * @param           sChangedIdPath: the id-path of the changed node
+         * @param           eMode: update mode (all, attributes, delete, insert)
+         * @return          
+         * @exception       -
+         * @see             
+        */
+        [id(4), helpstring("method UpdateTargetTree")] 
+        HRESULT UpdateTargetTree([in,string] BSTR sChangedIdPath, enum E_UPDATE_MODE eMode);
+
+
+        //------------------------------------------------------------------*
+        /**
+         * This method will be called when a file has been added.
+         *
+         * @param           [in] sFilePath: file path of file to be added
+         * @param           [in] eFileCat: file category of file to be added
+         * @return          HRESULT
+         * @exception       -
+         * @see             OnFileDeleted()
+        */
+        [id(5), helpstring("method OnFileAdded")]
+        HRESULT OnFileAdded([in] BSTR sFilePath, [in] enum E_FV_FileCategory eFileCat);
+
+
+        //------------------------------------------------------------------*
+        /**
+         * This method will be called when a source file has been removed.
+         *
+         * @param           [in] sFilePath: file path of file to be removed
+         * @param           [in] eFileCat: file category of file to be removed
+         * @return          HRESULT
+         * @exception       -
+         * @see             OnFileAdded()
+        */
+        [id(6), helpstring("method OnFileRemoved")]
+        HRESULT OnFileRemoved([in] BSTR sFilePath, [in] enum E_FV_FileCategory eFileCat);
+        
+        //------------------------------------------------------------------*
+        /**
+         * InitInstanceTree will be called after the instance tree has been 
+         * initialized by the project manager.
+         *
+         * @param           pXMLDocument: a pointer to the xml document, this
+         *                                will be a IXMLDOMDocument pointer
+         * @return          
+         * @exception       -
+         * @see             
+        */
+        [id(7), helpstring("method InitInstanceTree")]
+        HRESULT InitInstanceTree([in]IUnknown* pXMLDocument);
+
+        //------------------------------------------------------------------*
+        /**
+         * UpdateInstanceTree will be called if the instance tree has changed
+         * The project manager passes the ID-pathes to all nodes in the tree
+         * which have changed, the part of the tree under these nodes has to be
+         * updated in the tree view.
+         *
+         * @param           sChangedIdPath: the id-path of the changed node
+         * @param           eMode: update mode (all, attributes, delete, insert)
+         * @return          
+         * @exception       -
+         * @see             
+        */
+        [id(8), helpstring("method UpdateInstanceTree")] 
+        HRESULT UpdateInstanceTree([in,string] BSTR sChangedIdPath, enum E_UPDATE_MODE eMode);
+
+        //------------------------------------------------------------------*
+        /**
+         * ShowContextHelp shows the context help for a dialog for example
+         *
+         * @param           dwContextId : The context id passed to the online help
+         * @return          
+         * @exception       -
+         * @see             
+        */
+        [id(9), helpstring("method ShowContextHelp")] 
+        HRESULT ShowContextHelp([in] DWORD dwContextId);
+
+        //------------------------------------------------------------------*
+        /**
+         * ProjectFileChanged() is called whenever the project file is changed
+         *
+         * @return          
+         * @exception       -
+         * @see             
+        */
+        [id(10), helpstring("method ProjectFileChanged")] 
+        HRESULT ProjectFileChanged();
+
+	};
+	
+    [
+		uuid(82D3B859-DC06-417f-9E6F-1EBD3A25D4E5),
+        dual,
+		helpstring("_ICEProjManInstanceEvents Interface")
+	]
+    /**
+     * The connection point interface to inform clients that 
+     * the instance tree has changed.
+     * Clients that want to get this information have to 
+     * implement this interface.
+     */
+	interface _ICEProjManInstanceEvents : IDispatch
+	{
+        //------------------------------------------------------------------*
+        /**
+         * TargetInstanceAdded will be called when a target node is appended 
+         * to the instance tree
+         *
+         * @param  sId: id of new target instance
+         * @param  sIdPath: id path of new target instance in inst tree
+        */    	
+		[id(1), helpstring("method TargetInstanceAdded")] 
+        HRESULT TargetInstanceAdded([in, string] BSTR sId, [in, string] BSTR sIdPath);
+		
+        //------------------------------------------------------------------*
+        /**
+         * TargetInstanceRemoved will be called when a target node is deleted
+         * from the instance tree
+         *
+         * @param           sId: id of target instance
+        */    	
+        [id(2), helpstring("method DeleteTargetInstance")] 
+        HRESULT TargetInstanceRemoved([in, string]BSTR sId);
+	};
+
+    [
+        uuid(2080E0DA-4A25-40C0-9444-65B74E6DDC9E),
+        helpstring("CEProjectManager Class")
+    ]
+    /**
+     * The CEProjectManager com object, implementing the interfaces
+     * ICEProjectManager and ICEProjInfo and the source for the 
+     * connection point ICEProjectManagerEvents
+     */
+    coclass CEProjectManager
+    {
+        [default] interface ICEProjectManager;
+        interface ICEProjInfo;
+        interface ICEContainer;
+        interface _ICEMessageEvent;
+        [default, source] interface _ICEProjectManagerEvents;
+        [source] interface _ICEProjManInstanceEvents;
+        [source] interface _ICEMessageEvent;
+        [source] interface ICECompManEvents;
+    };
+};

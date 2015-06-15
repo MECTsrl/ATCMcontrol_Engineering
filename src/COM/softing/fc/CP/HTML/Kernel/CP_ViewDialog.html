@@ -1,0 +1,237 @@
+<!--ATCM. All rights reserved-->
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Developer Studio">
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel=stylesheet href="CP_Style.css" type="text/css">
+<meta HTTP-EQUIV="Pragma" content="no-cache">
+<TITLE>Save Layout</Title>
+
+<style>
+.DialogButton
+{
+	font-family:MS Sans Serif;
+	font-size: 9pt;
+	width:80%;
+}
+</style>
+
+<script>
+var m_ConsoleWnd = null;
+
+function Init() 
+{    
+	if (window.dialogArguments != null)
+	{
+		m_ConsoleWnd = window.dialogArguments;
+//		IdViewDialog.value = m_ConsoleWnd.readViewName();
+
+		updateViewList();
+	}
+	IdViewDialog.focus();
+}
+
+function updateViewList() 
+{    
+	if (m_ConsoleWnd != null)
+	{
+		var OldLength = IdSelect.options.length;
+		for (var ii = OldLength-1; ii >= 0; ii--)
+			IdSelect.remove(ii);
+
+		var NameArray = m_ConsoleWnd.readViewList().split(";");
+		for (ii = 0; ii < NameArray.length; ii++)
+		{
+			if (NameArray[ii].length > 0 && NameArray[ii] != "_tmp281260")
+			{
+				var element = document.createElement("OPTION");
+				element.text = NameArray[ii];
+				IdSelect.add(element);
+			}
+		}
+		updateButtons();
+	}
+}
+
+function checkName()
+{
+	var name = IdViewDialog.value;
+	return 	!(name.length == 0        || 
+			  name.indexOf("[")  >= 0 || 
+			  name.indexOf("]")  >= 0 || 
+			  name.indexOf(";")  >= 0 || 
+			  name.indexOf("\"") >= 0 || 
+			  name.indexOf("\'") >= 0 || 
+			  name.indexOf("\\") >= 0 || 
+			  name.indexOf("?")  >= 0 || 
+			  name.indexOf("&")  >= 0 || 
+			  name.indexOf(">")  >= 0 || 
+			  name.indexOf("<")  >= 0 || 
+			  name.indexOf("|")  >= 0 || 
+			  name.indexOf(",")  >= 0 || 
+			  name.indexOf(".")  >= 0 || 
+			  name.indexOf("/")  >= 0 || 
+			  name.indexOf("\'") >= 0 || 
+			  name.indexOf("*")  >= 0 || 
+			  name.indexOf(":")  >= 0);
+}
+
+function updateButtons()
+{
+	if (m_ConsoleWnd != null)
+	{
+		// update copy button
+		if (checkName())
+			IdSave.disabled = false;
+		else
+			IdSave.disabled = true;
+		
+		// update delete button		
+		for (var ii = 0; ii < IdSelect.options.length; ii++)
+		{
+			if (IdSelect.options[ii].selected)
+			{
+				IdDelete.disabled = false;
+				break;
+			}
+		}
+		if (ii >= IdSelect.options.length)
+			IdDelete.disabled = true;
+	}
+}
+
+function doDelete()
+{
+	if (m_ConsoleWnd != null)
+	{
+		var count = 0;
+		var ViewNameList = "";
+		for (var ii = 0; ii < IdSelect.options.length; ii++)
+		{
+			if (IdSelect.options[ii].selected)
+			{
+				if (count > 0)
+					ViewNameList += ";";
+
+				ViewNameList += IdSelect.options[ii].text;
+				count++;
+			}
+		}
+		if (count > 0)
+		{
+			m_ConsoleWnd.onDeleteViews(ViewNameList);
+			updateViewList();
+		}
+	}
+}
+
+function doSave()
+{
+	if (checkName())
+	{
+		m_ConsoleWnd.onSaveView(IdViewDialog.value);
+		updateViewList();
+	}
+	else
+		alert("Invalid name !");
+}
+
+function doExit()
+{
+   window.returnValue = -1; 
+   window.close();
+}
+
+function updateSelection()
+{
+	if (IdSelect.selectedIndex >= 0)
+	{
+		IdViewDialog.value = IdSelect.options[IdSelect.selectedIndex].text;
+	}
+	updateButtons();
+}
+
+function onBodyKeyDown()
+{
+//	window.event.cancelBubble = true;
+//	event.returnValue=false;
+
+	var keyCode = window.event.keyCode
+			
+	//= ESC	key
+	if(keyCode == 27)
+	{
+		doExit();
+		return;
+	}
+
+	// exit if return key and no button has focus
+	var id = window.event.srcElement.getAttribute("ID");
+	if((id != "IdExit") && (id != "IdDelete") && (id != "IdSave"))
+	{
+		if (keyCode == 13) 
+		{ 
+			doExit();
+			return;
+		}
+	}		
+
+	// save ALT-S and delete ALT-D
+	if (window.event.altKey)
+	{
+		if(keyCode == "s".charCodeAt(0) || keyCode == "S".charCodeAt(0)) 
+		{
+			doSave();
+			return;
+		}
+
+		if(keyCode == "d".charCodeAt(0) || keyCode == "D".charCodeAt(0)) 
+		{
+			doDelete();
+			return;
+		}
+	}
+}
+
+</script>
+</HEAD>
+
+<BODY class=DialogObject 	onload="Init()"	onkeydown="onBodyKeyDown()">
+
+<table class=DialogObject border="0" cellspacing="0" width="100%" height="100%">
+    <tr>
+        <td valign="bottom">Available Layouts</td>
+    </tr>
+	<tr>
+		<td rowspan="6" >
+			<select MULTIPLE id=IdSelect size="8" style="width:100%;height:100%"  onchange="updateSelection()"> </select>
+	</td>
+		<td width=100 align="right" valign="top">
+			<button class=DialogButton id=IdDelete onclick="doDelete()" title="Delete selected Layouts"><u>D</u>elete</button>			
+		</td>
+	</tr>
+	<tr> <td>&nbsp;</td> </tr>
+	<tr> <td>&nbsp;</td> </tr>
+	<tr> <td>&nbsp;</td> </tr>
+	<tr> <td>&nbsp;</td> </tr>
+	<tr> <td>&nbsp;</td> </tr>
+
+	<tr>
+		<td valign="top" >
+			<input id=IdViewDialog onkeyup="updateButtons()" type=text style="width:100%">			
+		</td>
+		<td width=100 align="right" valign="top">
+			<button class=DialogButton id=IdSave onclick="doSave()" title="Save current Layout as"><u>S</u>ave as</button>
+		</td>
+	</tr>
+
+	<tr>
+		<td> Note: A layout named "start" will be loaded automatically on startup. </td>
+		<td width=100 align="right" valign="top">
+			<button class=DialogButton id=IdExit onclick="doExit()" title="Close Dialog">Exit</button>
+		</td>
+	</tr>
+
+</table>
+
+</BODY>

@@ -1,0 +1,195 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1 TYPELIB ""StandardProjectWizard.tlb""\r\n"
+    "#include ""version.rc2""\r\n"
+    "#include ""ProjectWizardRes.rc""\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_PROJECTWIZARDCOMOBJ REGISTRY DISCARDABLE    "ProjectWizardComObj.rgs"
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_4CWIZ_NAMES DIALOG DISCARDABLE  0, 0, 327, 161
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "ATCMControl Project Wizard - Step 3 / 4"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "ATCMControl Project Wizard generates a new project with the following names and properties",
+                    IDC_STATIC,20,20,292,8
+    CONTROL         "List1",IDC_4CWIZ_LCONFS,"SysListView32",LVS_SMALLICON | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | 
+                    WS_BORDER | WS_TABSTOP,20,35,290,50
+    LTEXT           "Resource",IDC_STATIC,20,95,32,8
+    EDITTEXT        IDC_4CWIZ_RESOURCE,60,95,55,12,ES_AUTOHSCROLL
+    LTEXT           "Target",IDC_STATIC,125,95,25,8
+    EDITTEXT        IDC_4CWIZ_TARGET,155,95,55,12,ES_AUTOHSCROLL
+    LTEXT           "Address",IDC_STATIC,220,95,27,8
+    EDITTEXT        IDC_4CWIZ_ADDRESS,255,95,55,12,ES_AUTOHSCROLL
+    LTEXT           "Task",IDC_STATIC,20,115,17,8
+    EDITTEXT        IDC_4CWIZ_TASK,60,115,55,12,ES_AUTOHSCROLL
+    LTEXT           "Program",IDC_STATIC,20,135,27,8
+    EDITTEXT        IDC_4CWIZ_PROGRAM,60,135,55,12,ES_AUTOHSCROLL
+    LTEXT           "in",IDC_STATIC,125,135,8,8
+    COMBOBOX        IDC_4CWIZ_LANGUAGE,155,135,55,70,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Names and Properties",IDC_STATIC,10,5,310,150
+END
+
+IDD_4CWIZ_RESOURCES DIALOG DISCARDABLE  0, 0, 327, 161
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "ATCMControl Project Wizard - Step 1 / 4"
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_4CWIZ_NUMBER_RESOURCES,65,50,111,65,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "PROFIBUS DP / DP-V1",IDC_4CWIZ_CHKPROFI,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,65,105,94,10
+    CONTROL         "Serial Communication",IDC_4CWIZ_CHKSCOM,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,65,121,83,10
+    CONTROL         "How many resources would you like to use in your project?",
+                    IDC_STATIC,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,15,25,
+                    245,9
+    GROUPBOX        "Resource Settings",IDC_STATIC,10,5,310,150
+    LTEXT           "What type of IO Subsystem would you like to use in your Project?",
+                    IDC_STATIC,15,85,206,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_4CWIZ_NAMES DLGINIT
+BEGIN
+    IDC_4CWIZ_LANGUAGE, 0x403, 3, 0
+0x5453, "\000" 
+    IDC_4CWIZ_LANGUAGE, 0x403, 4, 0
+0x4246, 0x0044, 
+    IDC_4CWIZ_LANGUAGE, 0x403, 4, 0
+0x4653, 0x0043, 
+    IDC_4CWIZ_LANGUAGE, 0x403, 3, 0
+0x444c, "\000" 
+    IDC_4CWIZ_LANGUAGE, 0x403, 3, 0
+0x4c49, "\000" 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_WIZARD_IMAGE_LIST   BITMAP  DISCARDABLE     "clvwimag.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_STD_TARGET          "PC%d"
+    IDS_STD_RESOURCE        "Resource%d"
+    IDS_STD_PROGRAM         "Program%d"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_STD_TASK            "Task%d"
+    IDS_4CWIZ_NTH_RESOURCE  "%d. Resource"
+    IDS_WIZARD_NAME         "4CPC Project Wizard"
+    IDS_WIZARD_DESCRIPTION  "This is the ATCMControl project wizard that can be used to create IEC projects."
+    IDS_LIBSPAGE_CAPTION    "ATCMControl Project Wizard - Step 2 / 4"
+    IDS_PROPSPAGE_CAPTION   "ATCMControl Project Wizard - Step 4 / 4"
+    IDS_STD_TARGET2         "PC%02d"
+    IDS_STD_RESOURCE2       "Resource%02d"
+    IDS_STD_PROGRAM2        "Program%02d"
+    IDS_STD_TASK2           "Task%02d"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "ATCMControl Engineering Project Wizard"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "StandardProjectWizard.tlb"
+#include "version.rc2"
+#include "ProjectWizardRes.rc"
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

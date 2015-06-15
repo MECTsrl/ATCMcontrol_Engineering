@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+		<title>ATCMControl Embedded v2.1 Demo Version</title>
+		<script language="javascript" type="text/javascript">
+
+
+	pic1 = new Image();
+	pic1.src = "../pic/nav1e.gif";
+	pic3 = new Image();
+	pic3.src = "../pic/nav3d.gif";
+	pic6 = new Image();
+	pic6.src = "../pic/nav6e.gif";
+	pic7 = new Image();
+	pic7.src = "../pic/nav7e.gif";
+
+	pic11 = new Image();
+	pic11.src = "../pic/nav11e.gif";
+	pic33 = new Image();
+	pic33.src = "../pic/nav33d.gif";
+	pic66 = new Image();
+	pic66.src = "../pic/nav66e.gif";
+	pic77 = new Image();
+	pic77.src = "../pic/nav77e.gif";
+
+function drauf(wert)
+{
+	switch (wert)
+	{
+		case 1:	document.nav1.src = pic11.src;
+		break;
+		case 3: document.nav3.src = pic33.src;
+		break;
+		case 6: document.nav6.src = pic66.src;
+		break;
+		case 7: document.nav7.src = pic77.src;
+		break;
+	}
+}
+function runter(wert)
+{
+	switch (wert)
+	{
+		case 1:document.nav1.src = pic1.src;
+		break;
+		case 3:document.nav3.src = pic3.src;
+		break;
+		case 6:document.nav6.src = pic6.src;
+		break;
+		case 7:document.nav7.src = pic7.src;
+		break;
+
+	}
+}
+</script>
+		<link rel="stylesheet" href="../text.css">
+	</head>
+
+	<body leftmargin="2" topmargin="2" marginwidth="2" marginheight="2" bgcolor="#CCCCCC" link="#003366" vlink="#003366" alink="#003366">
+		<!--hauptmenue-->
+		<table width="760" height="25" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="155" align="right" valign="bottom"><img src="../pic/4clogo.gif" width="14" height="16" alt="" border="0"><img src="../pic/clearpix.gif" width="2" height="1" alt="" border="0"></td>
+				<!--kurze laengsline-->
+				<td align="left" valign="bottom" colspan="5"><img src="../pic/linien.gif" width="2" height="25" alt="" border="0"></td>
+				<!--ende--></tr>
+		</table>
+		<!--querline-->
+		<table width="760" height="2" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><img src="../pic/linien.gif" width="760" height="2" alt="" border="0"></td>
+			</tr>
+		</table>
+		<!--ende-->
+		<table width="760" height="94%" border="0" cellpadding="0" cellspacing="0">
+			<tr><!--navigation-->
+				<td width="155" valign="top">
+					<table width="155" height="60" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="24" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td valign="center"><img src="../pic/4clayout-kl.jpg" width="152" height="134" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><img src="../pic/nav1e.gif" name="nav1" width="120" height="25" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="cinstall.html" onmouseover="drauf(3)" onmouseout="runter(3)"><img src="../pic/nav3d.gif" name="nav3" width="120" height="25" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="#" onmouseover="drauf(6)" onmouseout="runter(6)"><img src="../pic/nav6e.gif" name="nav6" width="120" height="25" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="contact.html" onmouseover="drauf(7)" onmouseout="runter(7)"><img src="../pic/nav7e.gif" name="nav7" width="120" height="25" border="0"></a></td>
+						</tr>
+					</table>
+				</td>
+				<!--navigation ende--><!--lange vertikalline-->
+				<td bgcolor="#999999">
+					<table width="2" height="94%" valign="top" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="1" alt="" border="0"></td>
+						</tr>
+					</table>
+				</td>
+				<!--ende--><!--inhalt-->
+				<td width="603" valign="top">
+					<table border="0" cellpadding="0" cellspacing="0" align="center" valign="middle" width="570">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="24" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td align="center"><span class="headblau">Registration of ATCMControl Embedded V2.1</span></td>
+						</tr>
+						<tr>
+							<td valign="top" align="center" colspan="2"><img src="../pic/clearpix.gif" width="1" height="20" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td>
+
+									<p><span class="text">After installation, all installed ATCMControl Embedded components are running in demo mode. This mode involves particular restrictions depending on the components you have installed. For instance, you cannot access the I/O addresses of field devices in demo mode. To use ATCMControl Embedded without restrictions, you need to register the installed components. Registering is machine-dependent. This means that the registration key created by ATCMControl Embedded for enabling the components is only valid on the PC for which you have requested the registration key.</span></p>
+									<p><span class="text"><b>There are two ways to register your ATCMControl Embedded components:</b></span></p>
+								<p><span class="textblau"><b>Temporary registration:</b></span><br>
+									<span class="text">Select this registration type to test ATCMControl Embedded for a specific time without restrictions of functionality. After a specific period of time, the registration key sent to you by ATCMControl expires and ATCMControl Embedded runs in demo mode again.</span></p>
+								<p><span class="textblau"><b>Permanent registration:</b></span><br>
+									<span class="text">If you have decided to use ATCMControl Embedded in your specific area of application in the long term, select this registration type. The registered components can be used without restrictions of functionality and without a time limit.</span></p>
+								<p><b><span class="textblau"><a href="register.html">Click here to go to the description of the registering procedure.</a></span></b></p>
+								<p><span class="text">Apart from a machine-dependent registering of ATCMControl Embedded components, you can also obtain a <b>hard key</b> for machine-independent registering. The hard key can be connected to the USB port. The ATCMControl Embedded components which you have installed in that PC and for which the hard key has been registered are then enabled for unlimited use. With the hard key, you can enable ATCMControl Embedded installations for unlimited use alternately on different PCs.<br>
+									</span></p>
+								<p><span class="text">To order a hard key, you do not have to create an installation key as described in the ATCMControl Embedded Registration section. Indicate the order number and license number in your order and send it to <a href="mailto:support@4control.de">support@4control.de.<br>
+											<br>
+										</a></span></p>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>

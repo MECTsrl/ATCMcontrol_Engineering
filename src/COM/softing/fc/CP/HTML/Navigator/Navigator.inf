@@ -1,0 +1,69 @@
+#H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CP/HTML/Navigator/Navigator.inf 1     28.02.07 19:00 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: Navigator.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CP/HTML/Navigator/Navigator.inf $
+#
+# =PROJECT             7VH102  ATCMControl
+#
+# =SWKE                XXX
+#
+# =COMPONENT           XXX
+#
+# =CURRENT             $Date: 28.02.07 19:00 $
+#                      $Revision: 1 $
+#
+# =ENVIRONMENT         perl5:
+#                      MS Windows NT 4.0
+#                      MSVC++ V5.0 / MFC 4.2 / ATL 2.0 / DAO 3.5
+#                      MS Java 2.0
+#                      MS Visual SourceSafe 5.0
+#
+# =REFERENCES
+#==
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+#==
+#----------------------------------------------------------------------------*
+# =MODIFICATIONS
+# $History: Navigator.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:00
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CP/HTML/Navigator
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:33
+# Created in $/4Control/COM/softing/fc/CP/HTML/Navigator
+# 
+# *****************  Version 1  *****************
+# User: Scd          Date: 19.03.01   Time: 14:05
+# Created in $/4Control/COM/softing/fc/CP/HTML/Navigator
+# 
+# *****************  Version 2  *****************
+# User: Mkr          Date: 20.10.99   Time: 15:56
+# Updated in $/4Control/COM/softing/fc/CP/HTML/Navigator
+##
+#*****************  Version 1  *****************#
+#User: Mkr          Date: 30.09.98   Time: 16:11#
+#Created in $/fc/CP/HTML/Navigator#
+#==
+#*****************************************************************************
+#H<<
+USER=SRC_DIR = $(PROJECT_ROOT)\Com\softing\fc\Cp\Html\Navigator
+USER=DES_DIR = $(EXE_DIR)\Console
+
+USER=makefirst: $(DES_DIR)\images
+USER=$(DES_DIR)\images:
+USER=	md $(DES_DIR)\images
+
+COPY=$(SRC_DIR)\CP_Navigator.asp	$(DES_DIR)\CP_Navigator.asp

@@ -1,0 +1,12 @@
+(*[[
+    UserURL= "ATCMFile:DWORD_TO_WORD.htm"
+]]*)
+
+FUNCTION DWORD_TO_WORD : WORD
+VAR_INPUT 
+    IN : DWORD; 
+END_VAR
+
+inline{%1&0xffff}
+
+END_FUNCTION

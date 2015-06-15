@@ -1,0 +1,43 @@
+# $Header: /4CReleased/V2.20.00/Target/4CWin/Control/WinVMM_Ext/WinVMM_Ext.inf 2     25.02.08 12:31 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: WinVMM_Ext.inf $
+#                        $Logfile: /4CReleased/V2.20.00/Target/4CWin/Control/WinVMM_Ext/WinVMM_Ext.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Targetbase / Control
+#
+# =COMPONENT            Adapt
+#
+# =CURRENT      $Date: 25.02.08 12:31 $
+#           $Revision: 2 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+TARGET=$(EXE_DIR)\Engineering\bin\4CWin\WinVMM.exe
+TARGETTYPE=con 
+UNICODE=0
+DEFINE=_AFXDLL
+DEFINE=_USE_EXTERN_
+PCHFILE=stdafx
+
+INCLUDE=..\inc
+INCLUDE=..\..\inc
+INCLUDE=..\..\res
+
+DEFLIB=ws2_32.lib
+
+LIBRARY=..\lib\osKernel.lib
+LIBRARY=..\lib\vmKernel.lib
+LIBRARY=..\lib\vmLib.lib
+LIBRARY=..\lib\ioTest.lib
+LIBRARY=..\lib\osShared.lib
+
+USER=makefirst:$(EXE_DIR)\Engineering\bin\4CWin
+USER=$(EXE_DIR)\Engineering\bin\4CWin:
+USER=  -md $@
+
+# -------------------------------------------------------------------------------

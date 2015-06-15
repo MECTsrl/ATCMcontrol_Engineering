@@ -1,0 +1,36 @@
+HKCR
+{
+	4C_20.LibAddOnHandler.1 = s '4C_20: LibAddOnHandler Class'
+	{
+		CLSID = s '{AA6A1A66-3AE2-49F2-9F9D-768B893A522A}'
+        'Index' 
+        { 
+            val Version = s '2.0' 
+            val LCID = d '1033' 
+        } 
+	}
+	4C_20.LibAddOnHandler = s '4C_20: LibAddOnHandler Class'
+	{
+		CLSID = s '{AA6A1A66-3AE2-49F2-9F9D-768B893A522A}'
+		CurVer = s '4C_20.LibAddOnHandler.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {AA6A1A66-3AE2-49F2-9F9D-768B893A522A} = s '4C_20: LibAddOnHandler Class'
+		{
+			ProgID = s '4C_20.LibAddOnHandler.1'
+			VersionIndependentProgID = s '4C_20.LibAddOnHandler'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			'TypeLib' = s '{4B8A9461-686D-43DF-896F-DE6037F9806F}'
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}
+
+

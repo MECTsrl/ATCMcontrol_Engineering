@@ -1,0 +1,251 @@
+ //----  Local Defines:   -------------------------------------------*
+ 
+ //----  Includes:   -------------------------------------------*
+ 
+ //----  Static Initializations:   ----------------------------------*
+ 
+ // BrkPtMan.idl : IDL source for BrkPtMan.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (BrkPtMan.tlb) and marshalling code.
+
+cpp_quote("#ifndef STDEDEDIPOS_H_")
+cpp_quote("#define STDEDEDIPOS_H_")
+#include "StdEdEdipos.h"
+cpp_quote("#endif")
+
+cpp_quote("//  state enumerator of Break Point Manager")
+typedef enum tagBPM_BREAKPOINT_STATE
+{ 
+    BPM_NOBP = 0,       // no BP at related location 
+	BPM_BPACTIVE,       // active BP at related location
+	BPM_BPINACTIVE,     // inactive BP at related location
+	BPM_BPACTIVEUNSET   // active BP that is not set at control
+} BPM_BRKPT_STATE;
+
+typedef enum tagBPM_STOPPOINT_STATE
+{
+	BPM_STOPPED,     // task is stopping at related position
+	BPM_CONTINUED    // task is continued from related position
+} BPM_STPPT_STATE;
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "CEMsg.idl";
+
+	[
+		object,
+		uuid(AF3FDA93-ACD3-4caa-AF21-2018A182E1C6),
+		dual,
+		helpstring("IBreakPointInfo Interface"),
+		pointer_default(unique)
+
+	]
+	interface IBreakPointInfo : IDispatch
+	{
+		[propget, id(1), helpstring("Property FileName")]
+			HRESULT FileName([out, retval] BSTR *pVal);
+		[propget, id(2), helpstring("Property Pos Qualifier")]
+			HRESULT PosQualifier([out, retval] EDP_POS_QUALIFIER *pVal);
+		[propget, id(3), helpstring("Property X")]
+			HRESULT X([out, retval] long *pVal);
+		[propget, id(4), helpstring("Property Y")]
+			HRESULT Y([out, retval] long *pVal);
+		[propget, id(5), helpstring("Property CX")]
+			HRESULT CX([out, retval] long *pVal);
+		[propget, id(6), helpstring("Property CY")]
+			HRESULT CY([out, retval] long *pVal);
+		[propget, id(7), helpstring("Property ClassName")]
+			HRESULT ClassName([out, retval] BSTR *pVal);
+		[propget, id(8), helpstring("Property Language")]
+			HRESULT Language([out, retval] BSTR *pVal);
+		[propget, id(9), helpstring("Property Quality")]
+			HRESULT Quality([out, retval] long *pVal);
+		[propget, id(10), helpstring("Property Instance")]
+			HRESULT Instance([out, retval] BSTR *pVal);
+		[propget, id(11), helpstring("Property Active")]
+			HRESULT Active([out, retval] BOOL *pVal);
+		[propget, id(12), helpstring("Property Number")]
+			HRESULT Number([out, retval] long *pVal);
+	};
+
+
+	[
+		object,
+		uuid(6B7DF13D-117E-4b85-A6E0-7A9C01E0285B),
+		dual,
+		helpstring("ICallStackEntry Interface"),
+		pointer_default(unique)
+	]
+	interface ICallStackEntry : IDispatch
+	{
+		[propget, id(1), helpstring("Property Instance")]
+			HRESULT Instance([out, retval] BSTR *pVal);
+	};
+
+
+	[
+		object,
+		uuid(A1E7E2A7-02E5-46cd-8ACB-60A0BF459F78),
+		dual,
+		helpstring("IBreakPoint Interface"),
+		pointer_default(unique)
+	]
+	interface IBreakPoint : IDispatch
+	{
+		[id(1), helpstring("method Init: initializes breakpoint manager")]
+			HRESULT Init([in, string] BSTR sProjectPath);
+		[id(2), helpstring("method Cleanup: cleanup breakpoint manager")]
+			HRESULT Cleanup();
+		[id(3), helpstring("method SetBP: tries to set a BP at the given position")] 
+			HRESULT SetBP(
+                            [in, string] BSTR      sInstanceName, 
+                            [in] EDP_POS_QUALIFIER PosQual, 
+                            [in] long              lX, 
+                            [in] long              lY, 
+                            [in] long              lCX, 
+                            [in] long              lCY, 
+                            [in] BOOL              bActive
+                        );
+		[id(4), helpstring("method ResetBP: tries to reset a BP at the given position")] 
+			HRESULT ResetBP(
+                             [in, string] BSTR      sInstanceName, 
+                             [in] EDP_POS_QUALIFIER PosQual, 
+                             [in] long              lX, 
+                             [in] long              lY,
+                             [in] long              lCX, 
+                             [in] long              lCY
+                        );
+		[id(5), helpstring("method ActivateBP: activates a BP at the given position")] 
+			HRESULT ActivateBP(
+                             [in, string] BSTR      sInstanceName, 
+                             [in] EDP_POS_QUALIFIER PosQual, 
+                             [in] long              lX, 
+                             [in] long              lY,
+                             [in] long              lCX, 
+                             [in] long              lCY
+                        );
+		[id(6), helpstring("method DeactivateBP: deactivates a PB at the given position")] 
+			HRESULT DeactivateBP(
+                             [in, string] BSTR      sInstanceName, 
+                             [in] EDP_POS_QUALIFIER PosQual, 
+                             [in] long              lX, 
+                             [in] long              lY,
+                             [in] long              lCX, 
+                             [in] long              lCY
+                        );
+		[id(7), helpstring("method UpdateAllBPs: notifies the actual state of all BPs for the given instance")] 
+			HRESULT UpdateAllBPs([in, string] BSTR sInstanceName);
+		[id(8), helpstring("method Attach: attaches external IBT session to BP Manager")] 
+			HRESULT Attach([in] BSTR sConfig, [in] LPUNKNOWN pUnk);
+		[id(9), helpstring("method Detach: detaches external IBT session from BP Manager")] 
+			HRESULT Detach([in, string] BSTR sConfig);
+		[id(10), helpstring("method Continue: continues task in BP: mode: 0=task continue 1=single step, 2=step over, 3=step out")]
+			HRESULT ContinueTask([in] BSTR sInstanceName, [in] long mode);
+		[id(11), helpstring("method GetCallStackEntry: gets call stack entry")]
+			HRESULT GetCallStackEntry([in, string] BSTR sInstanceName, [in] long lLevel, [out] LPUNKNOWN *pEntry);
+		[id(12), helpstring("method GetBPs: returns all BPs in a SAFEARRAY")]
+			HRESULT GetBPs([out] SAFEARRAY(IDispatch) *pBPInfos);
+		[id(13), helpstring("method ResetAllBPs: clears all breakpoints either of a specific instance or completely")]
+			HRESULT ResetAllBPs([in] BSTR sInstanceName);
+		[id(14), helpstring("method ShowBP: fire OnShowBP")]
+			HRESULT ShowBP([in] BSTR sInstanceName, [in] long lNumber);
+		[id(15), helpstring("method GetSyncMode: get mode of synchronization")]
+			HRESULT GetSyncMode([out] BOOL *pbSyncOnConnect, [out] BOOL *pbSyncOnStateChange);
+		[id(16), helpstring("method SetSyncMode: set mode of synchronization")]
+			HRESULT SetSyncMode([in] BOOL bSyncOnConnect, [in] BOOL bSyncOnStateChange);
+		[id(17), helpstring("method Synchronize: synchronize breakpoints")]
+			HRESULT Synchronize([in, string] BSTR sConfig);
+		[id(18), helpstring("method ActivateAllConfigBPs: activates all BPs belonging to a particular configuration")]
+			HRESULT ActivateAllConfigBPs([in, string] BSTR sConfig);
+		[id(19), helpstring("method DeactivateAllConfigBPs: deactivates all BPs belonging to a particular configuration")]
+			HRESULT DeactivateAllConfigBPs([in, string] BSTR sConfig);
+	};
+
+
+[
+	uuid(031D2BC7-1BA4-48d3-A088-F6E2243084D1),
+	version(1.0),
+	helpstring("4C_20 BrkPtMan 1.0 Type Library")
+]
+library BRKPTMANLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	interface IBreakPointInfo;
+
+	[
+		//dual,
+		//oleautomation,
+		uuid(79A2F383-2F26-4395-AF0A-6A03DE87B998),
+		helpstring("_IBreakPointNotify Interface")
+	]
+	interface _IBreakPointNotify : IUnknown
+	{
+		[id(1), helpstring("method OnBPStateChanged")] 
+			HRESULT OnBPStateChanged([in] BPM_BRKPT_STATE newState, [in, string] BSTR sInstance, [in] IUnknown *pBP, [in] BOOL bUpdate);
+		[id(2), helpstring("method OnSPStateChanged")]
+			HRESULT OnSPStateChanged([in] BPM_STPPT_STATE newState, [in, string] BSTR sInstance, [in] IUnknown *pSP, [in] BOOL bUpdate);
+		[id(3), helpstring("method OnShowBP")]
+			HRESULT OnShowBP([in] BSTR sInstance, [in] IUnknown *pBP);
+	};
+
+	[
+		object,
+		uuid(08E454CA-27C3-4e6c-9541-898B6E156494),
+		dual,
+		helpstring("IBreakPointView Interface"),
+		pointer_default(unique)
+	]
+	interface IBreakPointView : IDispatch
+	{
+		[id(1), helpstring("method AttachToBPMan: try to attach to the BP back end")] 
+			HRESULT AttachToBPMan(LPUNKNOWN pUnk);
+		[id(2), helpstring("method DetachFromBPMan: detaches from the BP back end")] 
+			HRESULT DetachFromBPMan();
+	};
+
+	[
+		object,
+		uuid(ECCD9252-3DCD-49b4-8373-6FC864E54A2F),
+		dual,
+		helpstring("ICallStackView Interface"),
+		pointer_default(unique)
+	]
+	interface ICallStackView : IDispatch
+	{
+		[id(1), helpstring("method ShowStackView: displays the CallStack")] HRESULT ShowCallStack();
+	};
+
+	[
+		uuid(0F1D9CA0-5AC4-421e-8425-D81DE02172CD),
+		helpstring("BreakPointMan Class")
+	]
+	coclass BreakPointMan
+	{
+		[default] interface IBreakPoint;
+		[default, source] interface _IBreakPointNotify;
+		[source] interface _ICEMessageEvent;
+	};
+
+	[
+		uuid(5ECE09E2-3DBA-419a-A63D-DCBD557DDB4F),
+		helpstring("BreakPointView Class")
+	]
+	coclass BreakPointView
+	{
+		[default] interface IBreakPointView;
+	};
+
+	[
+		uuid(E30C196A-56F0-4787-A0D8-91C804978675),
+		helpstring("CallStackView Class")
+	]
+	coclass CallStackView
+	{
+		[default] interface ICallStackView;
+	};
+
+};

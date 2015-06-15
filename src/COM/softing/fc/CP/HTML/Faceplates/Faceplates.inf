@@ -1,0 +1,100 @@
+#H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CP/HTML/Faceplates/Faceplates.inf 1     28.02.07 19:00 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: Faceplates.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CP/HTML/Faceplates/Faceplates.inf $
+#
+# =PROJECT             7VH102  ATCMControl
+#
+# =SWKE                XXX
+#
+# =COMPONENT           XXX
+#
+# =CURRENT             $Date: 28.02.07 19:00 $
+#                      $Revision: 1 $
+#
+# =ENVIRONMENT         perl5:
+#                      MS Windows NT 4.0
+#                      MSVC++ V5.0 / MFC 4.2 / ATL 2.0 / DAO 3.5
+#                      MS Java 2.0
+#                      MS Visual SourceSafe 5.0
+#
+# =REFERENCES
+#==
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+#==
+#----------------------------------------------------------------------------*
+# =MODIFICATIONS
+# $History: Faceplates.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:00
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CP/HTML/Faceplates
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:33
+# Created in $/4Control/COM/softing/fc/CP/HTML/Faceplates
+# 
+# *****************  Version 1  *****************
+# User: Scd          Date: 19.03.01   Time: 12:35
+# Created in $/4Control/COM/softing/fc/CP/HTML/Faceplates
+##
+#*****************  Version 7  *****************#
+#User: Mkr          Date: 23.06.99   Time: 17:17#
+#Updated in $/COM/softing/fc/CP/HTML/Faceplates#
+##
+#*****************  Version 6  *****************#
+#User: Mkr          Date: 18.11.98   Time: 10:03#
+#Updated in $/COM/softing/fc/CP/HTML/Faceplates#
+##
+#*****************  Version 5  *****************#
+#User: Mkr          Date: 18.11.98   Time: 9:47#
+#Updated in $/COM/softing/fc/CP/HTML/Faceplates#
+##
+#*****************  Version 4  *****************#
+#User: Mkr          Date: 17.11.98   Time: 20:22#
+#Updated in $/COM/softing/fc/CP/HTML/Faceplates#
+##
+#*****************  Version 3  *****************#
+#User: Mkr          Date: 17.11.98   Time: 19:51#
+#Updated in $/COM/softing/fc/CP/HTML/Faceplates#
+##
+#*****************  Version 2  *****************#
+#User: Mkr          Date: 20.10.98   Time: 13:33#
+#Updated in $/COM/softing/fc/CP/HTML/Faceplates#
+##
+#*****************  Version 1  *****************#
+#User: Mkr          Date: 30.09.98   Time: 16:10#
+#Created in $/fc/CP/HTML/Faceplates#
+#==
+#*****************************************************************************
+#H<<
+SUBPROJECT=MsgHistory\MsgHistory.mak
+
+USER=SRC_DIR = $(PROJECT_ROOT)\Com\softing\fc\Cp\Html\Faceplates
+USER=DES_DIR = $(EXE_DIR)\Console
+
+COPY=$(SRC_DIR)\CP_ConfigurationList.asp		$(DES_DIR)\CP_ConfigurationList.asp
+COPY=$(SRC_DIR)\CP_Resource.asp			$(DES_DIR)\CP_Resource.asp
+COPY=$(SRC_DIR)\CP_Task.asp				$(DES_DIR)\CP_Task.asp
+COPY=$(SRC_DIR)\CP_Sfc.asp				$(DES_DIR)\CP_Sfc.asp
+COPY=$(SRC_DIR)\CP_TaskList.asp			$(DES_DIR)\CP_TaskList.asp
+COPY=$(SRC_DIR)\CP_TuningDisplay.asp	$(DES_DIR)\CP_TuningDisplay.asp
+COPY=$(SRC_DIR)\CP_Empty.asp			$(DES_DIR)\CP_Empty.asp
+COPY=$(SRC_DIR)\CP_Error.asp			$(DES_DIR)\CP_Error.asp
+COPY=$(SRC_DIR)\CP_ObjNotFound.asp		$(DES_DIR)\CP_ObjNotFound.asp
+
+COPY=$(SRC_DIR)\CP_Start.gif			$(DES_DIR)\images\CP_Start.gif
+COPY=$(SRC_DIR)\CP_Stop.gif				$(DES_DIR)\images\CP_Stop.gif
+COPY=$(SRC_DIR)\CP_StartDisable.gif			$(DES_DIR)\images\CP_StartDisable.gif
+COPY=$(SRC_DIR)\CP_StopDisable.gif				$(DES_DIR)\images\CP_StopDisable.gif

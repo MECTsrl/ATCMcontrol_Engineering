@@ -1,0 +1,76 @@
+(* Constant file *)
+CONST
+
+(* constants definition for function Profibus_GetEmcyInfo *)
+
+(* constants for output parameter StationStatus_1 *)
+	ss1_STA_NON_EXIST : BYTE := 16#01; (* slave not responding *)
+	ss1_STA_NOT_RDY   : BYTE := 16#02; (* slave not ready *)
+	ss1_CFG_FAULT     : BYTE := 16#04; (* slave is wrongly parametrized *)
+	ss1_EXT_DIAG      : BYTE := 16#08; (* the area ExtendedDiagnostic is used *)
+	ss1_NOT_SUPP      : BYTE := 16#10; (* unknown command detected by the slave *)
+	ss1_INV_SL_RES    : BYTE := 16#20; (* inplausible response of the slave *)
+	ss1_PRM_FAULT     : BYTE := 16#40; (* last parameter telegram faulty *)
+	ss1_MASTER_LOCK   : BYTE := 16#80; (* slave is parametrized by another master *)
+
+(* constants for output parameter StationStatus_2 *)
+	ss2_PRM_REQ       : BYTE := 16#01; (* slave must be parametrized *)
+	ss2_STAT_DIAG     : BYTE := 16#02; (* get diagnostic from slave until bit is released *)
+	ss2_WD_ON         : BYTE := 16#08; (* watchdog activated *)
+	ss2_FREEZE_MODE   : BYTE := 16#10; (* freeze command active *)
+	ss2_SYNC_MODE     : BYTE := 16#20; (* sync command active *)
+	ss2_DEACTIVATED   : BYTE := 16#80; (* slave not projected *)
+
+(* constants for output parameter StationStatus_3 *)
+	ss3_EXT_DIAG_OVFL : BYTE := 16#80; (* slave has more diagnostic data available than it can send *)
+
+
+(* constants definition for function Profibus_GetEmcyInfoSlave *)
+
+(* constants for output parameter TaskState *)
+	ts_INITIALIZING  : WORD := 16#01; (* task is during initialization *)
+	ts_RUNNING       : WORD := 16#02; (* task running *)
+	ts_DIAGNOSIS     : WORD := 16#04; (* static diagnosis *)
+	ts_DATA_EXCHANGE : WORD := 16#08; (* data exchange *)
+
+
+(* constants definition for function Profibus_GetStatus *)
+
+(* GlobalBits *)
+	gb_CTRL   : BYTE := 16#01; (* control-error *)
+	gb_ACLR   : BYTE := 16#02; (* auto-clear-error *)
+	gb_NEXC   : BYTE := 16#04; (* non-exchange-error *)
+	gb_FAT    : BYTE := 16#08; (* fatal-error *)
+	gb_EVE    : BYTE := 16#10; (* event-error *)
+	gb_NRDY   : BYTE := 16#20; (* host-not-ready-notification *)
+	gb_TOUT   : BYTE := 16#40; (* timeout-error *)
+
+(* MasterState *)
+	pms_OFFLINE   : BYTE := 16#00;
+	pms_STOP      : BYTE := 16#40;
+	pms_CLEAR     : BYTE := 16#80;
+	pms_OPERATE   : BYTE := 16#C0;
+
+
+(* constants definition for function Profibus_ReceiveAlarms *)
+
+(* Mode *)
+	ram_RECEIVE_ALL_ALARMS       : INT := 1;
+	ram_RECEIVE_ALARMS_FROM_SLOT : INT := 2;
+
+(* Alarm Type *)
+	at_DIAGNOSIS_ALARM    : BYTE := 1;
+	at_PROCESS_ALARM      : BYTE := 2;
+	at_PULL_ALARM         : BYTE := 3;
+	at_PLUG_ALARM         : BYTE := 4;
+	at_STATUS_ALARM       : BYTE := 5;
+	at_UPDATE_ALARM       : BYTE := 6;
+
+(* Alarm Specifier *)
+	as_NO_DIFFERENTIATION          : BYTE := 0;
+	as_ALARM_APPEARS_MODULE_ERR    : BYTE := 1;
+	as_ALARM_DISAPPEARS_MODULE_OK  : BYTE := 2;
+	as_ALARM_DISAPPEARS_MODULE_ERR : BYTE := 3;
+
+
+END_CONST

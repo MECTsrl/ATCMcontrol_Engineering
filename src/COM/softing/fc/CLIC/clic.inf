@@ -1,0 +1,46 @@
+#H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CLIC/clic.inf 1     28.02.07 19:00 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: clic.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CLIC/clic.inf $
+#
+# =PROJECT             CAK1020  ATCMControl V2.0
+#
+# =SWKE                LIC
+#
+# =COMPONENT           master inf file
+#
+# =CURRENT             $Date: 28.02.07 19:00 $
+#                      $Revision: 1 $
+#
+# =ENVIRONMENT         MS Windows NT 4.0 / MS Windows 2000
+#                      MSVC++ V6.0
+#                      MS Java 3.2
+#                      MS Visual SourceSafe 6.0
+#                      Perl5
+#
+# =REFERENCES
+#==
+#----------------------------------------------------------------------------*
+#
+#==
+#
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+#==master inf file
+#----------------------------------------------------------------------------*
+# =MODIFICATIONS
+#==
+#*****************************************************************************
+#H<<
+
+SUBPROJECT=RemoveLic\Removlic.mak
+
+USER=makefirst:                    
+# USER=  xcopy \\Sfiler\IAD_Components\License_Manager\V2.10.0013\bin\hldinst.exe $(EXE_DIR)\Pub\*.*
+# USER=  xcopy \\Sfiler\IAD_Components\License_Manager\V2.10.0013\bin\inc\*.*     $(MAKEDIR)\inc\*.*  /s
+# USER=  xcopy \\Sfiler\IAD_Components\License_Manager\V2.10.0013\bin\lib\*.*     $(MAKEDIR)\lib\*.*  /s
+# USER=  xcopy \\Sfiler\IAD_Components\License_Manager\V2.10.0013\bin\lib\fc_slbase20.lib     $(PROJECT_ROOT)\com\softing\fc\lib\*.*
+# USER=  xcopy \\Sfiler\IAD_Components\License_Manager\V2.10.0013\bin\inc\*.*          $(PROJECT_ROOT)\com\softing\fc\inc\slic\*.*
+# USER=  xcopy \\Sfiler\IAD_Components\License_Manager\V2.10.0013\bin\inc\slic\*.*     $(PROJECT_ROOT)\com\softing\fc\inc\slic\*.*
+# USER=  xcopy \\Sfiler\IAD_Components\License_Manager\V2.10.0013\bin\inc\fclic\*.*    $(PROJECT_ROOT)\com\softing\fc\inc\fclic\*.*

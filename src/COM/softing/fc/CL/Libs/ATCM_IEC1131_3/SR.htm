@@ -1,0 +1,119 @@
+<html>
+<head>
+<title>SR</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>SR</h2>
+<p>preferrential set of Q.<br>
+</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION_BLOCK SR
+VAR_INPUT
+   S1 : BOOL;
+   R  : BOOL;
+END_VAR
+VAR_OUTPUT
+   Q1 : BOOL;
+END_VAR</pre>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>S1</b></dt>
+  <dd>Value of type <i><b>BOOL<br>
+    </b></i> Dominant input signal. If <i><b>TRUE</b></i>, <b><i>Q1</i></b> is 
+    also set to <i><b>TRUE</b></i>.</dd>
+  <dt><b>R</b></dt>
+  <dd>Value of type <i><b>BOOL</b></i><br>
+    Resets <b><i>Q1</i></b> to <i><b>FALSE</b></i> if <b><i>R = TRUE </i></b>and<b><i> 
+    S1 = FALSE.</i></b> </dd>
+  <dt><i><b> </b></i></dt>
+  <dd><b></b><i> </i></dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b></b><b>Q1</b></dt>
+  <dd>Value of type <b><i>BOOL</i></b><br>
+    Saves the state resulting from<i><b> S1</b></i> and <b><i>R</i></b>.</dd>
+  <dd>&nbsp; </dd>
+</dl>
+<h3>Description</h3>
+<p>The function block <b><i>SR</i></b> is used for the preferential setting of 
+  <b><i>Q</i></b> to <i><b>TRUE</b></i> if <i><b>S1 = TRUE</b></i>. Its over-all 
+  function can be taken from the following table: <b><br>
+  </b></p>
+<table border="2" cellpadding="2">
+  <tr> 
+    <td> 
+      <div align="center"><b>S1</b></div>
+    </td>
+    <td> 
+      <div align="center"><b>R</b></div>
+    </td>
+    <td> 
+      <div align="center"><b>State</b></div>
+    </td>
+    <td> 
+      <div align="center"><b>Q1</b></div>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <div align="center">FALSE</div>
+    </td>
+    <td> 
+      <div align="center">FALSE</div>
+    </td>
+    <td> 
+      <div align="center">Save</div>
+    </td>
+    <td> 
+      <div align="center">last set value</div>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <div align="center">FALSE</div>
+    </td>
+    <td> 
+      <div align="center">TRUE</div>
+    </td>
+    <td> 
+      <div align="center">Reset</div>
+    </td>
+    <td> 
+      <div align="center">FALSE</div>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <div align="center">TRUE</div>
+    </td>
+    <td> 
+      <div align="center">FALSE</div>
+    </td>
+    <td> 
+      <div align="center">Set</div>
+    </td>
+    <td> 
+      <div align="center">TRUE</div>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <div align="center">TRUE</div>
+    </td>
+    <td> 
+      <div align="center">TRUE</div>
+    </td>
+    <td> 
+      <div align="center">Set</div>
+    </td>
+    <td> 
+      <div align="center">TRUE</div>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

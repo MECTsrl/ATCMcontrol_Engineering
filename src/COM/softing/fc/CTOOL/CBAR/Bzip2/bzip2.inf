@@ -1,0 +1,69 @@
+#H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CTOOL/CBAR/Bzip2/bzip2.inf 1     28.02.07 19:01 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: bzip2.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CTOOL/CBAR/Bzip2/bzip2.inf $
+#
+# =PROJECT             CAK1020  ATCMControl V2.0
+#
+# =SWKE                CBAR
+#
+# =COMPONENT           bzip2
+#
+# =CURRENT             $Date: 28.02.07 19:01 $
+#                      $Revision: 1 $
+#
+# =ENVIRONMENT         MS Windows NT 4.0 / MS Windows 2000
+#                      MSVC++ V6.0
+#                      MS Java 3.2
+#                      MS Visual SourceSafe 6.0
+#                      Perl5
+#
+# =REFERENCES
+#==
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+#==
+#----------------------------------------------------------------------------*
+# =MODIFICATIONS
+# $History: bzip2.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:01
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CTOOL/CBAR/Bzip2
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:34
+# Created in $/4Control/COM/softing/fc/CTOOL/CBAR/Bzip2
+# 
+# *****************  Version 2  *****************
+# User: Jd           Date: 24.09.01   Time: 14:40
+# Updated in $/4Control/COM/softing/fc/AddOns/Softing/4CPCTarget/CBAR/Bzip2
+# 
+# *****************  Version 1  *****************
+# User: Kt           Date: 10.07.01   Time: 16:46
+# Created in $/4Control/COM/softing/fc/CBAR/Bzip2
+# first draft
+# 
+# *****************  Version 1  *****************
+# User: Kt           Date: 10.07.01    Time: 17:58
+# Created in $/4Control/COM/softing/fc/CBar/bzip2
+#==
+#*****************************************************************************
+#H<<
+
+TARGET=$(MAKEDIR)\..\lib\bzip2.lib
+TARGETTYPE=LIB
+
+UNICODE=0
+STATIC_RUNTIME=1
+

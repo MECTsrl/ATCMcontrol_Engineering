@@ -1,0 +1,24 @@
+# $Header: /4CReleased/V2.20.00/TargetBase/Control/Control.inf 1     1.03.07 15:10 Gen4c $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: Control.inf $
+#                        $Logfile: /4CReleased/V2.20.00/TargetBase/Control/Control.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Targetbase / Control
+#
+# =COMPONENT            Control
+#
+# =CURRENT      $Date: 1.03.07 15:10 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+SUBPROJECT=visLib\visLib.mak
+SUBPROJECT=osShared\osShared.mak
+SUBPROJECT=visTest\visTest.mak
+
+# -------------------------------------------------------------------------------

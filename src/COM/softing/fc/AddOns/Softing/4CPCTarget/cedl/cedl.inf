@@ -1,0 +1,28 @@
+
+TARGET=$(EXE_DIR)\Engineering\bin\4cpcdl.dll
+TARGETTYPE=DLL
+DEFINE=_ATL_STATIC_REGISTRY
+DEFINE=_ATL_NO_SECURITY
+DEFINE=_AFXDLL
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\CE\inc
+INCLUDE=$(INCLUDE_DIR)\opc
+IMPLIB=$(LIB_DIR)\cedl.lib
+LIBPATH=$(LIB_DIR)
+DEFLIB=ole32.lib
+DEFLIB=oleaut32.lib
+DEFLIB=uuid.lib
+DEFLIB=fc_baselib.lib
+DEFLIB=fc_tools.lib
+DEFLIB=fc_util.lib
+DEFLIB=fc_todebug.lib
+DEFLIB=csva.lib
+#DEFLIB=htmlhelp.lib
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\CE\lib\cesubscr.lib
+PCHFILE=stdafx
+MASTER_RC=cedl.rc
+
+COPY=CEDL_Base.MDB $(EXE_DIR)\Engineering\bin\CEDL_Base.MDB
+
+LATECOPY=$(INCLUDE_DIR)\cedl.tlb $(EXE_DIR)\Engineering\bin\cedl.tlb

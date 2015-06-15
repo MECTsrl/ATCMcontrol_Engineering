@@ -1,0 +1,204 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+table {margin-bottom: 0px}
+p {margin-top: 1px; margin-bottom: 5px; margin-left: 40px; font-family: "Arial,Helvetica";font-weight: bold; font-size: 70%}
+h4 {margin-top: 15px; margin-bottom: 5px; margin-left: 10px; font-size: 110% }
+</style>
+<SCRIPT LANGUAGE="VBScript">
+ 
+ Function showHide(listNum)
+      Dim whichList
+      Dim whichPicture
+      Set whichList = document.all.tags("div").item(listNum)
+	 If listNum < 4 Then
+	 	Set whichPicture = document.all.tags("IMG").item(listNum + 2)
+	 Else 
+          Set whichPicture = document.all.tags("IMG").item(listNum + 4)
+	 End If		
+      If whichList.style.display = "none" Then
+         whichList.style.display = ""
+	    whichPicture.src = "pic/Minus.gif"
+      Else
+         whichList.style.display = "none"
+	    whichPicture.src = "pic/Plus.gif"	 
+      End If
+   End Function
+  
+    Sub window_onload()
+     Dim counter
+	
+	For counter = 0 to 6 step 1
+         document.all.tags("div").item(counter).style.display = "none"
+	Next
+     
+   End Sub
+ 
+--></SCRIPT>
+</head>
+
+<body bgcolor="#99CCFF" text="#000000" link="#000000" vlink="#000000" alink="#000000">
+<h3><font face="Arial, Helvetica, sans-serif" font color=#000000><a href="start.htm" target="rechts"><img src="pic/Jump2.gif" width="11" height="9" border="0" alt="Home"></a>&nbsp;Overview</font></h3>
+<h4>ATCM Console</h4>
+<table width="253" border="0">
+  <tr> 
+    <td width="4%"><img src="pic/Dummy.gif" width="12" height="11"></td>
+    <td width="96%"><a href="Intro.htm" target="rechts"><b>Introduction</b></a></td>
+  </tr>
+</table>
+<table border="0" >
+  <tr> 
+    <td width="12" onclick="showHide(0)" valign="baseline"><img src="pic/Plus.gif" width="12" height="11"></td>
+    <td width="200" valign="top" ><b><a href="connect.htm" target="rechts" >Establishing 
+      and Interrupting a Connection to ATCM Control</a></b> </td>
+  </tr>
+</table>
+<div> 
+  <p> <a href="connect.htm#TwoFourC" target="rechts">Connecting Possibilities/ 
+    Starting ATCM Console</a></p>
+  <p><a href="connect.htm#password" target="rechts">Password Protection</a></p>
+  <p><a href="connect.htm#end" target="rechts">Interrupting a Connection to 
+    ATCM Control</a></p>
+</div>
+<table width="258" border="0">
+  <tr> 
+    <td width="4%" onclick="showHide(1)" valign="baseline"><img src="pic/Plus.gif" width="12" height="11"></td>
+    <td width="96%"><b><a href="Interface.htm" target="rechts">User Interface</a></b></td>
+  </tr>
+</table>
+<div> 
+  <p><a href="interface.htm#General" target="rechts">Structure</a></p>
+  <p><a href="interface.htm#VisuView" target="rechts">The Visualization View</a></p>
+  <p><a href="interface.htm#NaviView" target="rechts">The Navigator View</a></p>
+  <p><a href="interface.htm#Toolbar" target="rechts">The Toolbar</a></p>
+  <p><a href="interface.htm#Statusbar" target="rechts">The Status Bar</a></p>
+  <p><a href="interface.htm#IEPanel" target="rechts">The Internet Navigation 
+    Menu in ATCM Engineering</a></p>
+  <p><a href="interface.htm#InternetFunctions" target="rechts">The Internet 
+    Functions</a></p>
+</div>
+<table width="199" border="0">
+  <tr> 
+    <td width="4%" onClick="showHide(2)" valign="baseline"><img src="pic/Plus.gif" width="12" height="11"></td>
+    <td width="96%"><b><a href="faceplate.htm" target="rechts">Displays</a></b> 
+    </td>
+  </tr>
+</table>
+<div> 
+  <p><a href="faceplate.htm#Intro" target="rechts">Introduction</a></p>
+  <p><a href="faceplate.htm#ConfigurationList" target="rechts">The Configuration 
+    List </a></p>
+  <p><a href="faceplate.htm#Ressource" target="rechts">The Resource</a></p>
+  <p><a href="faceplate.htm#TaskList" target="rechts">The Task List</a></p>
+  <p><a href="faceplate.htm#MessageHistory" target="rechts">The Message History</a></p>
+  <p><a href="faceplate.htm#Tasks" target="rechts">Tasks</a></p>
+  <p><a href="faceplate.htm#FInst" target="rechts">Instances of Function Blocks</a></p>
+  <p><a href="faceplate.htm#SInst" target="rechts">Instances of Structures</a></p>
+  <p><a href="faceplate.htm#SFC" target="rechts">SFC Blocks in ATCM Console</a></p>
+  <p><a href="faceplate.htm#ChangeValue" target="rechts">Changing Variable 
+    Values on the Display</a></p>
+</div>
+<table width="199" border="0">
+  <tr> 
+    <td width="4%" onClick="showHide(3)" valign="baseline"><img src="pic/Plus.gif" width="12" height="11"></td>
+    <td width="96%"><b><a href="Layout.htm" target="rechts">Layouts</a></b> 
+    </td>
+  </tr>
+</table>
+<div> 
+  <p><a href="Layout.htm#Layout" target="rechts">Working with Layouts</a></p>
+  <p><a href="Layout.htm#EditLayout" target="rechts">Editing a Layout in the 
+    Layout Editor</a></p>
+  <p><a href="Layout.htm#OrderDisplay" target="rechts">Editing Layouts via 
+    the Context Menu of the Displays</a></p>
+  <p><a href="Layout.htm#SaveLayout" target="rechts">Saving Altered Layouts</a></p>
+  <p><a href="Layout.htm#LoadLayout" target="rechts">Loading a saved Layout</a></p>
+  <p><a href="Layout.htm#DeleteLayout" target="rechts">Deleting a Layout</a></p>
+  <p><a href="Faceplatelayoutexample.htm" target="rechts">Examples of Display 
+    Layouts</a></p>
+</div>
+<table width="253" border="0">
+  <tr> 
+    <td width="4%"><img src="pic/Dummy.gif" width="12" height="11"></td>
+    <td width="96%"><a href="VQuality.htm" target="rechts"><b>Variable quality</b></a></td>
+  </tr>
+</table>
+<table width="253" border="0">
+  <tr> 
+    <td width="4%"><img src="pic/Dummy.gif" width="12" height="11"></td>
+    <td width="96%"><a href="Win95.htm" target="rechts"><b>Using ATCM Console 
+      with Win 95/98 </b></a></td>
+  </tr>
+</table>
+<h4>Related Topics</h4>
+<table width="199" border="0">
+  <tr> 
+    <td width="4%" onClick="showHide(4)" valign="baseline"><img src="pic/Plus.gif" width="12" height="11"></td>
+    <td width="96%"><b><a href="managpro.htm" target="rechts">Project Management</a></b></td>
+  </tr>
+</table>
+<div> 
+  <p><a href="managpro.htm#create" target="rechts">Create a new Project</a> 
+  </p>
+  <p> <a href="managpro.htm#open" target="rechts"> Open a Project</a> </p>
+  <p> <a href="managpro.htm#close" target="rechts"> Close the Current Project</a></p>
+  <p> <a href="managpro.htm#save" target="rechts"> Save a Project</a> </p>
+  <p> <a href="managpro.htm#delete" target="rechts"> Delete the Current Project</a></p>
+  <p> <a href="managpro.htm#convert" target="rechts"> Convert Projects Created 
+    with an Earlier ATCMControl Version</a></p>
+  <p> <a href="managpro.htm#print" target="rechts"> Print the Project</a> </p>
+  <p> <a href="managpro.htm#generate" target="rechts"> Generate the Project</a> 
+  </p>
+  <p> <a href="managpro.htm#downloadconfig" target="rechts"> Download the Configuration 
+    of the Current Project</a></p>
+  <p><a href="managpro.htm#debug" target="rechts"> Debug the Project</a> </p>
+  <p> <a href="managpro.htm#exit" target="rechts"> Exit ATCM Engineering</a> 
+  </p>
+</div>
+<table width="199" border="0">
+  <tr> 
+    <td width="4%" onClick="showHide(5)" valign="baseline" height="22"><img src="pic/Plus.gif" width="12" height="11"></td>
+    <td width="96%" height="22"><b><a href="Control.htm" target="rechts">ATCM 
+      Control</a></b></td>
+  </tr>
+</table>
+<div> 
+  <p><a href="Control.htm#connect" target="rechts">Establishing and Interrupting 
+    a Connection/Enabling and Disabling a Debug Connection</a></p>
+  <p> <a href="Control.htm#start" target="rechts"> Starting/Stopping all Tasks 
+    </a> </p>
+  <p> <a href="Control.htm#run" target="rechts"> Running/Stopping ATCM Control</a> 
+  </p>
+  <p> <a href="Control.htm#warmcold" target="rechts"> Reset with Cold Start/Warm 
+    Start </a> </p>
+  <p> <a href="Control.htm#clear" target="rechts"> Initializing/Deleting</a> </p>
+  <p> <a href="Control.htm#menu" target="rechts"> Context Menu of ATCM Control </a> 
+  </p>
+</div>
+<table width="199" border="0">
+  <tr> 
+    <td width="4%" onClick="showHide(6)" valign="baseline"><img src="pic/Plus.gif" width="12" height="11"></td>
+    <td width="96%"><b><a href="Licence.htm" target="rechts">Licensing</a></b></td>
+  </tr>
+</table>
+<div> 
+  <p><a href="Licence.htm#bundle" target="rechts"> Registration of ATCMControl</a></p>
+  <p> <a href="Licence.htm#licensing" target="rechts"> Registering Procedure</a></p>
+  </div>
+<br>
+<table width="199" border="0">
+  <tr> 
+    <td width="4%"><img src="pic/Dummy.gif" width="12" height="11"></td>
+    <td width="96%"><b><a href="glossary.htm" target="rechts">Glossar</a>y</b></td>
+  </tr>
+</table>
+<table width="199" border="0">
+  <tr> 
+    <td width="4%"><img src="pic/Dummy.gif" width="12" height="11"></td>
+    <td width="96%"><b><a href="contact.htm" target="rechts">Contact</a></b></td>
+  </tr>
+</table>
+</body>
+</html>

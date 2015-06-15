@@ -1,0 +1,16 @@
+[Attributes]
+
+[Format]
+version=V2.0
+
+[Classes.Functions]
+file=SDORead.st
+file=SDOWrite.st
+file=SDOGetData.st
+file=SDOGetStatus.st
+
+[USER_HELP]
+file=SDORead.HTML
+file=SDOWrite.HTML
+file=SDOGetData.HTML
+file=SDOGetStatus.HTML

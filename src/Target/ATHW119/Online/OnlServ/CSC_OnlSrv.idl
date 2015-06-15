@@ -1,0 +1,70 @@
+/* $Header: /4CReleased/V2.20.00/Target/TEMPLATES/Online/OnlServ/CSC_OnlSrv.idl 1     28.02.07 18:54 Ln $
+ * ------------------------------------------------------------------------------
+ *
+ * =FILENAME			$Workfile: CSC_OnlSrv.idl $
+ *						 $Logfile: /4CReleased/V2.20.00/Target/TEMPLATES/Online/OnlServ/CSC_OnlSrv.idl $
+ *
+ * =PROJECT 			4CONTROL V2.x
+ *
+ * =SWKE				Target / Online
+ *
+ * =COMPONENT			OnlServ
+ *
+ * =CURRENT 	 $Date: 28.02.07 18:54 $
+ *			 $Revision: 1 $
+ *
+ * ------------------------------------------------------------------------------
+ */
+
+/* ------------------------------------------------------------------------------
+ * Change Log
+ *
+ * Ref.		Date	 Author	Comment
+ *
+ * ##
+ * ------------------------------------------------------------------------------
+ */
+
+
+cpp_quote("//+-------------------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  ATCMCONTROL 4CSC Server")
+cpp_quote("//  Copyright ATCM.")
+cpp_quote("//")
+cpp_quote("//--------------------------------------------------------------------------")
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+//----  OPC Interfaces:    ---------------------------------------------------*
+//----  CoClass:    OPCServer
+// standard OPC V1.0a and DA V2.0 interfaces
+import "opcDA.idl";
+
+//----  Type Library:    -----------------------------------------------------*
+[
+    uuid(D7508B45-4384-400c-8F7E-7EE3F9973616),
+    version(2.0),
+    helpstring("4C_20: 4CSC Server type library")
+]
+library CSC_Srv_Lib
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+    //interfaces of the coclasses are defined here to keep them
+    //separate from the target specific implementation of the CSC Online Server
+    importlib("CSC_OnlineServer.tlb");
+
+
+    //-------------------------------------------------------------------------
+    [
+        uuid(C31E31A7-567C-49a2-B393-CEC8F2E17F99),
+        helpstring("4C_20: 4CSC Server custom connect object"),
+    ]
+    coclass CustomConnect
+    {
+        [default] interface ICustomConnect;
+    };
+};
+
+

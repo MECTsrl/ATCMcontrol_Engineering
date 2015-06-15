@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>SHR</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>SHR</h2>
+<p>Rightshift of <i><b>IN </b></i>by <i><b>N </b></i>Bit.<br>
+</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION SHR : ANY_BIT
+VAR_INPUT 
+    IN : ANY_BIT; 
+    N  : ANY_INT; 
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>ANY_BIT</b></i><br>
+  Result of the shift operation.</p>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>IN</b></dt>
+  <dd>Value of type <i><b>ANY_BIT<br>
+    </b></i> The bit pattern of this value is shifted to the right.</dd>
+  <dt><b>N</b></dt>
+  <dd>Value of type <i><b>ANY_INT</b></i><br>
+    Specifies the number of bits by which the pattern of IN is to be shifted right.<i><b> 
+    </b></i></dd>
+  <dt><i><b> </b></i></dt>
+  <dd>&nbsp; </dd>
+</dl>
+<h3>Description</h3>
+<p>The function <i><b>SHR</b></i><b> </b>shifts the bit pattern of the value passed 
+  as a parameter to the right according to the specified number of places. On 
+  the left, the bits are filled with the value <i><b>0</b></i> by the number of 
+  shifted places. Bits that exceed the right boundary of the value range specified 
+  for the data type, are lost in a right shift. </p>
+</body>
+</html>

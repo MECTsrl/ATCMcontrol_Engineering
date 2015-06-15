@@ -1,0 +1,6 @@
+USER=libname=ATCM_System
+USER=make_lib: force
+
+USER= $(4CG) $(MAKEDIR)\$(libname).4cp  -ml:0 $(4CL_DIR)\$(libname).4cl
+
+# -------------------------------------------------------------------------------

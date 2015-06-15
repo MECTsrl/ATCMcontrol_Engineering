@@ -1,0 +1,117 @@
+
+cpp_quote("//+---------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  ATCMControl 4CE")
+cpp_quote("//  Copyright 2000 - 2002 SoftingAG.")
+cpp_quote("//")
+cpp_quote("//----------------------------------------------------------------")
+
+
+#ifndef DO_NO_IMPORTS
+import "unknwn.idl";
+#endif
+
+import "CEProjInfo.idl";
+
+//------------------------------------------------------------------*
+/**
+ * ICEIECOperation
+ * 
+ */
+
+cpp_quote("//+---------------------------------------------------------------")
+cpp_quote("// The interface to an variable declaration operation:")
+[
+    object,
+    oleautomation,
+    uuid(93C4FA4D-0A15-4c11-9E89-88938B8CD118)
+]
+interface ICEIECResourceOp : IUnknown
+{
+    HRESULT InsertGVLImport([in] ICEProjInfo* pProjInfo,
+                            [in, string] BSTR sResourceName,
+                            [in, string] BSTR sGVLName);
+    
+    HRESULT RemoveGVLImport([in] ICEProjInfo* pProjInfo,
+                            [in, string] BSTR sResourceName,
+                            [in, string] BSTR sGVLName);
+                            
+    HRESULT InsertProgramInstance([in] ICEProjInfo* pProjInfo,
+                                  [in, string] BSTR sResourceName,
+                                  [in, string] BSTR sTaskName,
+                                  [in, string] BSTR sProgClass,
+                                  [in, string] BSTR sProgInstName,
+                                  [in] BOOL bPosFirst);
+
+    HRESULT RemoveProgramInstance([in] ICEProjInfo* pProjInfo,
+                                  [in, string] BSTR sResourceName,
+                                  [in, string] BSTR sProgInstName);
+
+    HRESULT InsertTask([in] ICEProjInfo* pProjInfo,
+                       [in, string] BSTR sResourceName,
+                       [in, string] BSTR sTaskName,
+                       [in, string] BSTR sInterval,
+                       [in, string] BSTR sPriority,
+                       [in] BOOL bAutostart,
+                       [in] BOOL bLoaded,                       
+                       [in, string] BSTR sIOSync,
+                       [in] BOOL bPosFirst);
+
+    HRESULT RemoveTask([in] ICEProjInfo* pProjInfo,
+                       [in, string] BSTR sResourceName,
+                       [in, string] BSTR sTaskName);
+
+    HRESULT InsertTaskWithAttributes([in] ICEProjInfo* pProjInfo,
+                                     [in, string] BSTR sResourceName,
+                                     [in, string] BSTR sTaskName,
+                                     [in] SAFEARRAY(BSTR) *parrAttributes,
+                                     [in] BOOL bPosFirst);
+
+    HRESULT ModifyTask([in] ICEProjInfo* pProjInfo,
+                       [in, string] BSTR sResourceName,
+                       [in, string] BSTR sOldTaskName,
+                       [in, string] BSTR sTaskName,
+                       [in] SAFEARRAY(BSTR) *parrAttributes,
+                       [in, string] BSTR sAlias,
+                       [in, string] BSTR sUserText1,
+                       [in, string] BSTR sUserText2,
+                       [in, string] BSTR sUserText3,
+                       [in, string] BSTR sUserUrl,
+                       [in, string] BSTR sHelpUrl);
+
+
+    HRESULT ModifyProgramInstance([in] ICEProjInfo* pProjInfo,
+                                  [in, string] BSTR sResourceName,
+                                  [in, string] BSTR sOldProgInstName,
+                                  [in, string] BSTR sOldTaskName,
+                                  [in, string] BSTR sTaskName,
+                                  [in, string] BSTR sProgClass,
+                                  [in, string] BSTR sProgInstName);
+
+
+};
+
+
+
+
+//-----------------------------------------------------
+// This TYPELIB is generated as a convenience to users of high level tools
+// which are capable of using or browsing TYPELIBs. 
+// 'Smart Pointers' in VC6 is one example.
+//-----------------------------------------------------
+
+[
+    uuid(C65A7981-6B58-4a59-98C6-62832ACB6903),
+    version(2.0),
+    helpstring("4CONTROL: CEIECOperationLib 2.0 Type Library")
+]
+library CE_IECOperationLib
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+
+    interface ICEIECResourceOp;
+};
+
+
+

@@ -1,0 +1,75 @@
+// CeWatchView.odl : type library source for ActiveX Control project.
+
+// This file will be processed by the Make Type Library (mktyplib) tool to
+// produce the type library (CeWatchView.tlb) that will become a resource in
+// CeWatchView.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(7EDC277C-E64A-4518-AA34-FDCCED217770),
+  version(1.0),
+  helpstring("4C_20_CE: CeWatchView ActiveX Control module"),
+  control ]
+library CEWATCHVIEWLib
+{
+	importlib(STDOLE_TLB);
+	importlib(STDTYPE_TLB);
+
+	//  Primary dispatch interface for CCeWatchViewCtrl
+
+	[ uuid(B6FB4AD1-A1A7-47d0-B339-FCA0AF92F020),
+	  helpstring("4C_20_CE: Dispatch interface for WatchView Control"), hidden ]
+	dispinterface _DCeWatchView
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CCeWatchViewCtrl)
+			//}}AFX_ODL_PROP
+
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CCeWatchViewCtrl)
+			[id(1)] void SetProjectPath(BSTR path);
+			[id(2)] boolean Store(BSTR file);
+			[id(3)] boolean Load(BSTR file);
+			[id(4)] void ForceResubscribe();
+			[id(5)] SCODE SaveToXMLString(BSTR* psXMLString);
+			[id(6)] SCODE LoadFromXMLString(BSTR sXMLString);
+			[id(7)] SCODE LoadFromXMLString2(BSTR* psXMLString);
+			[id(8)] void Deactivate();
+			//}}AFX_ODL_METHOD
+	};
+
+	//  Event dispatch interface for CCeWatchViewCtrl
+
+	[ uuid(D40CB30D-80EB-4d27-827A-A650576FBABE),
+	  helpstring("4C_20_CE: Event interface for WatchView Control") ]
+	dispinterface _DCeWatchViewEvents
+	{
+		properties:
+			//  Event interface has no properties
+
+		methods:
+			// NOTE - ClassWizard will maintain event information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_EVENT(CCeWatchViewCtrl)
+			//}}AFX_ODL_EVENT
+	};
+
+	//  Class information for CCeWatchViewCtrl
+
+	[ uuid(D735F1A0-A452-4cde-835F-A808C1047A6A),
+	  helpstring("4C_20_CE: WatchView Control"), control ]
+	coclass CeWatchView
+	{
+		[default] dispinterface _DCeWatchView;
+		[default, source] dispinterface _DCeWatchViewEvents;
+	};
+
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};

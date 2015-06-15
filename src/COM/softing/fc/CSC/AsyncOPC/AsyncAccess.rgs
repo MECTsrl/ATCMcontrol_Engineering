@@ -1,0 +1,24 @@
+HKCR
+{
+	4C_20_CSC.AsyncOPC.1 = s '4C_20_CSC: Async OPC Access'
+	{
+		CLSID = s '{ACB9AA53-8B04-11d5-8796-00010209D2BC}'
+	}
+	4C_20_CSC.AsyncOPC = s '4C_20_CSC: Async OPC Access'
+	{
+		CLSID = s '{ACB9AA53-8B04-11d5-8796-00010209D2BC}'
+		CurVer = s '4C_20_CSC.AsyncOPC.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {ACB9AA53-8B04-11d5-8796-00010209D2BC} = s '4C_20_CSC: Async OPC Access'
+		{
+			ProgID = s '4C_20_CSC.AsyncOPC.1'
+			VersionIndependentProgID = s '4C_20_CSC.AsyncOPC'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '{6202D450-8BDF-11D5-A550-0008C779C600}'
+			'TypeLib' = s '{ACB9AA52-8B04-11d5-8796-00010209D2BC}'
+		}
+	}
+}

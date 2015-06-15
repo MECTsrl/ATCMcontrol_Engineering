@@ -1,0 +1,34 @@
+SUBPROJECT=ATCM_File\ATCM_File.mak
+SUBPROJECT=ATCM_System2\ATCM_System2.mak
+
+SUBPROJECT=ATCM_XMLfile\ATCM_XMLfile.mak
+SUBPROJECT=ATCM_Utility2\ATCM_Utility2.mak
+SUBPROJECT=ATCM_CANopen\ATCM_CANopen.mak
+SUBPROJECT=ATCM_ProfibusDP\ATCM_ProfibusDP.mak
+SUBPROJECT=ATCM_SerialComm\ATCM_SerialComm.mak
+
+#create stubs in to order of lowest level lib to higher level lib:
+USER=make_lib: force
+
+USER= cd $(MAKEDIR)\ATCM_File
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_File.mak        make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_System2
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_System2.mak     make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_XMLfile
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_XMLfile.mak     make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_Utility2
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_Utility2.mak     make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_CANopen
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_CANopen.mak     make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_ProfibusDP
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_ProfibusDP.mak     make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_SerialComm
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_SerialComm.mak     make_lib DEBUG=$(DEBUG)
+
+# ------------------------------------------------------------------------------

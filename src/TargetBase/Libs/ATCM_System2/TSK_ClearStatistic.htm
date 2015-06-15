@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>TSK_ClearStatistic</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>TSK_ClearStatistic</h2>
+<p>Clears the statistic information of the corresponding task.</p>
+<h3>Interface</h3>
+<pre class="preforma">FUNCTION TSK_ClearStatistic : WORD
+
+VAR_INPUT
+    sTask : STRING;
+END_VAR
+</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>WORD</b></i><br>
+<br>OK if successful, else error number. (See
+  <a href="Const_Errno.htm"><strong><em>ErrNo.cst</em></strong></a> for details.)</p>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl>
+  <dt><b>sTask</b></dt>
+  <dd>Value of type <b><i>STRING</i></b><br>
+      Task name.<br></dd>
+</dl>
+<h3>Description</h3>
+<p><b>TSK_ClearStatistic</b> clears the statistic information of the task specified by <i><b>sTask</b></i>.</p>
+</body>
+</html>

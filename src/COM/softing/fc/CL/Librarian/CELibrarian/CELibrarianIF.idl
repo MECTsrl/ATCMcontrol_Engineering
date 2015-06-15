@@ -1,0 +1,44 @@
+// CELibrarian.odl : Quellcode der Typbibliothek für CELibrarian.exe
+
+// Diese Datei wird vom MIDL-Compiler bearbeitet, um die
+// Typbibliothek zu erzeugen (CELibrarian.tlb).
+
+[ uuid(9BC93A1F-EBE2-44b9-BE14-7A5E8375277F), version(1.0) ]
+library CELibrarian
+{
+	importlib("stdole32.tlb");
+	
+
+	//  Primäre Dispatch-Schnittstelle für CELibrarianDoc
+	
+	[ uuid(FEF0D652-5C50-4733-A9DF-1988BDFBC920) ]
+	dispinterface ICELibrarian
+	{
+		properties:
+			// HINWEIS - Der Klassen-Assistent verwaltet hier Informationen über die Eigenschaften.
+			//    Lassen Sie äußerste Vorsicht walten, falls Sie diesen Abschnitt bearbeiten.
+			//{{AFX_ODL_PROP(CELibrarianDoc)
+			//}}AFX_ODL_PROP
+			
+		methods:
+			// HINWEIS - Der Klassen-Assistent verwaltet hier Informationen über die Methoden.
+			//    Lassen Sie äußerste Vorsicht walten, falls Sie diesen Abschnitt bearbeiten.
+			//{{AFX_ODL_METHOD(CELibrarianDoc)
+			//}}AFX_ODL_METHOD
+
+	};
+
+#include "StdEditorIF.idl"
+#include "CELibrarianUserIF.idl"
+
+	//  Klassen-Informationen für CELibrarianDoc
+	[ uuid(49070009-D886-4491-8574-70E98FAB8C6B) ]
+	coclass Document
+	{
+		[default] dispinterface ICELibrarian;
+		interface ICEEdit;
+	};
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};

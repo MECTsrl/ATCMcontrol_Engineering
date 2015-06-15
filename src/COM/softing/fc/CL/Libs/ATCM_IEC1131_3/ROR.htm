@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>ROR</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>ROR</h2>
+<p>Rotation of <i><b>IN</b></i> by<i><b> N</b></i> bit to the right.<br>
+</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION ROR : ANY_BIT
+VAR_INPUT 
+    IN : ANY_BIT; 
+    N  : ANY_INT; 
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>ANY_BIT</b></i><br>
+  Result of the rotation</p>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>IN</b></dt>
+  <dd>Value of type <i><b>ANY_BIT<br>
+    </b></i> The bit pattern of this value is rotated to the right.</dd>
+  <dt><b>N</b></dt>
+  <dd>Value of type <i><b>ANY_INT</b></i><br>
+    Specifies the number of bits by which the pattern of <i><b>IN </b></i>is to 
+    be rotated right.<i><b> </b></i></dd>
+  <dt><i><b> </b></i></dt>
+  <dd>&nbsp; </dd>
+</dl>
+<h3>Description</h3>
+<p>The function<b> <i>ROR</i> </b>rotates the bit pattern of the value passed 
+  as a parameter to the right by the specified number of places. This means that 
+  all bits are shifted to the right by the specified number of places; bits that 
+  are located at the right boundary of the data type's value range are re-inserted 
+  at the left boundary of the data type. </p>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>FA_SYNC_RENAMEFILE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+
+<body bgcolor="#FFFFCC">
+<h2>FA_SYNC_RENAMEFILE</h2>
+<p>Renames a file.</p>
+<h3>Interface</h3>
+<pre class="preforma">FUNCTION FA_SYNC_RENAMEFILE:BOOL
+VAR_INPUT
+    EXEC        : BOOL;
+    NEWNAME     : WSTRING;
+END_VAR
+VAR_IN_OUT
+    FILE        : FA_SYNC_FILE;
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of the type <i><b>BOOL</b></i><br> Signalizes the error status.<br> Possible values:<br> <i><b>TRUE</b></i>: An error has occurred.<br> <i><b>FALSE</b></i>: No error has occurred.</p>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+
+ <dt><b>EXEC</b></dt>
+
+ <dd>Value of the type <i><b>BOOL</b></i><br> Starts the operation.</dd>
+
+ <dt><b>NEWNAME</b></dt>
+
+ <dd>Value of the type <i><b>WSTRING</b></i><br> Name to which the file is to be renamed. <br> The file name can be indicated by a fully qualified path (for example, <font face="Courier New, Courier, mono"> C:\Projects\Test.txt</font>). If no path is specified, the standard working directory of ATCMControl is internally added as the path.<br>
+    If the entered path differs from the path specified in the parameter <i><b>FILENAME</b></i> 
+    of the structure instance of <i><b><a href="FA_SYNC_FILE.htm">FA_SYNC_FILE</a></b></i> 
+    which is passed to <i><b>FILE</b></i>, the renamed file is moved to the directory 
+    indicated in <i><b>NEWNAME</b></i>. <br>
+     If the file specified in <i><b>NEWNAME</b></i> already exists, the operation is aborted and an error is output. <br> The compiler does not check whether the syntax of the file name and path information is correct or whether they are plausible. </dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl> 
+
+ <dt><b><a name="File"></a>FILE</b></dt>
+
+  <dd>Instance of the <a href="FA_SYNC_FILE.htm"><i><b>FA_SYNC_FILE</b></i></a> 
+    structure<br>
+     File object on which the operation is performed.</dd>
+</dl>
+<h3>Description</h3>
+<p><b><i>FA_SYNC_RENAMEFILE</i></b> renames a file the name specified in the parameter 
+  <i><b>NEWNAME</b></i>. The file to be renamed is given in the parameter <i><b>FILENAME</b></i> 
+  of the instance of <a href="FA_SYNC_FILE.htm"><i><b>FA_SYNC_FILE</b></i></a> 
+  passed to <i><b>FA_SYNC_RENAMEFILE</b></i>. After the file has been renamed, 
+  this parameter receives the new file name.</p>
+<p><i><b>FA_SYNC_RENAMEFILE</b></i> constitutes an exception among the group of 
+  blocks for elementary synchronous file operations. In contrast to most other 
+  functions of this group, an instance of <i><b>FA_SYNC_RENAMEFILE</b></i> must 
+  not be called within an access cycle since only files that are currently not 
+  accessed by another process may be renamed. The file passed to <i><b>FA_SYNC_RENAMEFILE</b></i> 
+  therefore must not be currently open due to <i> <b><a href="FA_SYNC_OPENFILE.htm">FA_SYNC_OPENFILE</a></b></i> 
+  or due to an external program.</p>
+
+
+</body>
+</html>

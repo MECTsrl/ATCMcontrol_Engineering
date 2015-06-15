@@ -1,0 +1,68 @@
+SUBPROJECT=ATCM_System\ATCM_System.mak
+SUBPROJECT=ATCM_IEC1131_3\ATCM_IEC1131_3.mak
+SUBPROJECT=ATCM_Utility\ATCM_Utility.mak
+SUBPROJECT=4CPC_System\4CPC_System.mak
+SUBPROJECT=4CFPC_System\4CFPC_System.mak
+SUBPROJECT=ATCM_Profibus_IO\ATCM_Profibus_IO.mak
+SUBPROJECT=ATCM_Communication\ATCM_Communication.mak
+SUBPROJECT=ATCM_Database\ATCM_Database.mak
+SUBPROJECT=ATCM_Database2\ATCM_Database2.mak
+SUBPROJECT=ATCM_Flib\ATCM_Flib.mak
+SUBPROJECT=ATCM_ControlLoop\ATCM_ControlLoop.mak
+SUBPROJECT=ATCM_Sample\ATCM_Sample.mak
+SUBPROJECT=ATCM_JAVAControlExtension\ATCM_JAVAControlExtension.mak
+SUBPROJECT=ATCM_CANopen_IO\ATCM_CANopen_IO.mak
+SUBPROJECT=ATCM_OPC_IO\ATCM_OPC_IO.mak
+SUBPROJECT=ATCM_ACyclicTask\ATCM_ACyclicTask.mak
+
+
+
+USER=make_lib: force
+USER= cd $(MAKEDIR)\ATCM_System
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_System.mak make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_IEC1131_3
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_IEC1131_3.mak make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_Utility
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_Utility.mak make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\4CPC_System
+USER= $(MAKE) -$(MAKEFLAGS) -f 4CPC_System.mak make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\4CFPC_System
+USER= $(MAKE) -$(MAKEFLAGS) -f 4CFPC_System.mak make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_Profibus_IO
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_Profibus_IO.mak make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_Communication
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_Communication.mak make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_Database
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_Database.mak make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_Database2
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_Database2.mak make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_Flib
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_Flib.mak make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_ControlLoop
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_ControlLoop.mak make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_Sample
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_Sample.mak make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_JAVAControlExtension
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_JAVAControlExtension.mak make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_CANopen_IO
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_CANopen_IO.mak make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_OPC_IO
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_OPC_IO.mak make_lib DEBUG=$(DEBUG)
+
+USER= cd $(MAKEDIR)\ATCM_ACyclicTask
+USER= $(MAKE) -$(MAKEFLAGS) -f ATCM_ACyclicTask.mak make_lib DEBUG=$(DEBUG)
+

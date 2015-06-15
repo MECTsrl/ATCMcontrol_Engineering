@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>R_TRIG</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>R_TRIG</h2>
+<p>Detects rising edges.<br>
+</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION_BLOCK R_TRIG
+VAR_INPUT
+	CLK: BOOL;
+END_VAR
+VAR_OUTPUT
+	Q: BOOL;
+END_VAR</pre>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>CLK</b></dt>
+  <dd>Value of type <i><b>BOOL<br>
+    </b></i> Input signal for edge detection.</dd>
+  <dt><i><b> </b></i></dt>
+  <dd><b></b><i> </i></dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b></b><b>Q</b></dt>
+  <dd>Value of type <b><i>BOOL</i></b><br>
+    Detects rising edges. Is <i><b>TRUE</b></i> for one execution of the function 
+    block if the input signal <i><b>CLK</b></i> changes from <i><b>FALSE</b></i><b> 
+    </b>to <i><b>TRUE</b></i>.</dd>
+  <dd>&nbsp; </dd>
+</dl>
+<h3>Description</h3>
+<p>The function block<i> <b>R_TRIG</b></i> detects rising edges. Every time the 
+  input variable <i><b>CLK</b></i> changes from<b> <i>FALSE</i></b> to <i><b>TRUE</b></i>, 
+  the output <i><b>Q</b></i> is set to <i><b>TRUE</b></i> for the execution of 
+  a function block call. The next time the function block is called, <i><b>Q</b></i> 
+  is reset to <i><b>FALSE</b></i> again.</p>
+</body>
+</html>

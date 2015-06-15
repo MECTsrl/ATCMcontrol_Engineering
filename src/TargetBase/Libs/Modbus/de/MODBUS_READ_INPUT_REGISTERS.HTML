@@ -1,0 +1,67 @@
+<html>
+
+<head>
+<title>FNC_Sceleton</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Help.css">
+</head>
+
+<body bgcolor="#FFFFCC">
+<BLOCKQUOTE> 
+  <h2>Function Name</h2>
+  <p> modbus_read_input_registers - read many input registers</p>
+  <h3>Interface</h3>
+  <p class="interface">FUNCTION MODBUS_READ_INPUT_REGISTERS : UINT</p>
+  <p class="interface">&nbsp;</p>
+  
+  <p class="interface">VAR_INPUT </p>
+  <BLOCKQUOTE class="structinterface"> 
+    <p class="interface">ctx:STRING;</p>
+  </BLOCKQUOTE>
+   <BLOCKQUOTE class="structinterface"> 
+    <p class="interface">addr:UINT;</p>
+  </BLOCKQUOTE>
+  <BLOCKQUOTE class="structinterface"> 
+    <p class="interface">nb_regs:UINT;</p>
+  </BLOCKQUOTE>  
+  <p class="interface">END_VAR</p>
+  
+  <p class="interface">VAR_OUTPUT </p>
+  <BLOCKQUOTE class="structinterface"> 
+    <p class="interface">data : ARRAY[0..259] of UINT;</p>
+  </BLOCKQUOTE>
+  <p class="interface">END_VAR</p>
+  
+  <h3>Return value</h3>
+  <p>Value of type <i><b>UINT</b></i> </p>
+  <p>0 for success 1 for error </p>
+  
+  <h3>Parameters </h3>
+  <h3>INPUT </h3>
+  <p><strong>ctx</strong></p>
+  <p class="indent"> Value of type <i><b>STRING</b></i> </p>
+  <p class="indent">Context for the current connection. Valid values are RTU, TCP, TCPRTU</p>
+  <p><strong>addr</strong></p>
+  <p class="indent"> Value of type <i><b>UINT</b></i> </p>
+  <p class="indent">Remote device address to be read</p>
+  <p><strong>nb_regs</strong></p>
+  <p class="indent"> Value of type <i><b>UINT</b></i> </p>
+  <p class="indent">Number of registers to be read</p>  
+  <h3>OUTPUT </h3>
+   <p><strong>data</strong></p>
+  <p class="indent"> Value of type <i><b>ARRAY[0..259] of UINT</b></i> </p>
+  <p class="indent">Array where retrieven registers are stored</p>
+  
+  <h3>Description </h3>
+  <p>The MODBUS_READ_INPUT_REGISTERS function shall read the content of the 'nb_regs'
+input registers to address 'addr' of the remote device. The result of the
+reading is stored in 'data' array as word values (16 bits).
+
+'data' must be at least 'nb_regs' * sizeof(uint16_t) to store the results 
+
+The function uses the Modbus function code 0x04 (read input registers). 
+
+ </p>
+</BLOCKQUOTE>
+</body>
+</html>

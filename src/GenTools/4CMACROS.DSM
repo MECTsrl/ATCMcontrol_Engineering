@@ -1,0 +1,502 @@
+'------------------------------------------------------------------------------
+'FILE DESCRIPTION: General ATCMControl V2.0 Tool macros for VC++ 6.0
+'------------------------------------------------------------------------------
+const sThisVersion = "Version 2.0/SU"
+
+const sAuthor = "SU"		' change author to proper user name !!!!!!!!!!!!!!
+const sDefSWKE = ""
+
+dim sPrevComp, sPrevSWKE, sPrevClass, sPrevParentClass
+
+Dim ParamArr ()  ' Dynamic array to store function arguments.
+
+Sub FunctionHeaderSelect( )
+'DESCRIPTION: Creates a comment block for the currently selected C/C++ function prototype
+
+	'Throughout this file, ActiveDocument.Selection is used in place 
+	'of ActiveDocument.Selection.Text.  The two are equivalent, and can 
+	'be used interchangeably. The reason for the equivalence is that
+	'Text is regarded as the default property to use. All uses of
+	'ActiveDocument.Selection without any other property default to the Text
+	'property.
+	if ActiveDocument.Language = dsCPP Then
+		Header = StripTabs(Trim(ActiveDocument.Selection))
+
+		'Get the function return type.
+		if Header <> "" then
+			Reti = InStr(Header, " ")
+			Loc = InStr(Header, "(")
+			if Reti < Loc Then
+			  RetTp = Left(Header, Reti)
+			  Header = Right(Header, Len(Header) - Reti)
+			End If
+
+			'Get the function name.
+			Loc = InStr(Header, "(") - 1
+			Loc2 = InStr(Header, ")")
+			if Loc > 0 And Loc2 > 0 then 'make sure there is a '(' and a ')'
+				fcName = Left(Header, Loc)
+				Header = Right(Header, Len(Header) - Len(fcName))
+
+				'Do we have storage type on the return type?
+				Trim (fcName)
+				If InStr(fcName," ") <> 0 Then
+					retTp = retTp + Left(fcName,InStr (fcName," "))
+					fcName = Right(fcName, Len(fcName) - InStr(fcName," "))
+				End If
+
+				'Get the function parameters.
+				iPrm = 0
+				iPrmA = 0
+				prms = Header 
+
+				'Count the number of parameters. 
+				Do While InStr(prms, ",") <> 0
+					iPrm = iPrm + 1
+					prms = Right(prms, Len(prms) - InStr(prms, ",")) 
+				Loop 
+				
+				'Store the parameter list in the array.
+				If iPrm > 0 Then  ' If multiple params.
+					iPrm = iPrm + 1
+					iPrmA = iPrm
+					Redim ParamArr(iPrm)
+					Do While InStr(header, ",") <> 0
+						ParamArr(iPrm) = Left(Header, InStr (Header, ",") - 1)
+						'Remove brace from first parameter.
+						If InStr(ParamArr(iPrm), " (") <> 0 Then
+							ParamArr(iPrm) = Right(ParamArr(iPrm), _
+									Len(ParamArr(iPrm))-InStr(ParamArr(iPrm)," ("))
+							Trim(ParamArr(iPrm))
+						End If
+						Header = Right(Header, Len(Header) - InStr(Header,","))
+						iPrm = iPrm - 1 
+						Loop 
+					ParamArr(iPrm) = Header 
+					'Remove trailing brace from last parameter.
+					If InStr(ParamArr(iPrm), ")") <> 0 Then
+						ParamArr(iPrm) = Left(ParamArr(iPrm), _
+								InStr(ParamArr(iPrm), ")") - 1)
+						Trim(ParamArr(iPrm))
+					End If
+				Else 'Possibly one param.
+					Redim ParamArr(1)
+					Header = Right(Header, Len(Header) - 1) ' Strip the first brace.
+					Trim(Header)
+					ParamArr(1) = StripTabs(Header)
+					If InStr(ParamArr(1), ")") <> 1 Then
+						ParamArr(1) = Left(ParamArr(1), InStr(ParamArr(1), ")") - 1)
+						Trim(ParamArr(1))
+						iPrmA = 1
+					End If
+				End If
+
+				'Position the cursor one line above the selected text.
+				ActiveDocument.Selection.LineUp
+				ActiveDocument.Selection.LineDown
+				ActiveDocument.Selection.StartOfLine
+				ActiveDocument.Selection = vbLf
+
+				Descr = "//------------------------------------------------------------------*" + vbLf + "/**" + vbLf
+				Descr = Descr + " * %function." + vbLf 
+				
+				'Print the parameter list. 
+				Last = iPrmA
+				Do While iPrmA <> 0
+					'Remove a line feed from any of the arguments.
+					If InStr(ParamArr(iPrmA), vbLf) <> 0 Then
+						ParamArr(iPrmA) = Right(ParamArr(iPrmA), _
+								(Len(ParamArr(iPrmA)) - _
+								InStr(ParamArr(iPrmA), vbLf)))
+						Trim(ParamArr(iPrmA))
+					End If
+					ParamArr(iPrmA) = StripTabs(ParamArr(iPrmA))
+					'If there are 2+ parameters, the first parameter will 
+					'have a '(' prepended to it, remove it here:
+					if iPrmA = Last AND Last <> 1 then
+					  ParamArr(iPrmA) = Right(ParamArr(iPrmA), _
+							Len(ParamArr(iPrmA)) - 1)
+					End If
+					Descr = Descr + " * @param			" + _
+							ParamArr(iPrmA) + vbLf
+					iPrmA = iPrmA - 1
+				Loop
+				Descr = Descr +  " * @return			" + RetTp + vbLf + " * @exception			" + vbLf + _
+				 " * @see			" + vbLf + "*/" + vbLf
+				ActiveDocument.Selection = Descr
+			Else
+				MsgBox("It is possible that the function you are trying to"+_
+						" work with has a syntax error.")
+			End if
+		End If
+	Else
+		MsgBox("You need to have an active C/C++ document open"+ _
+				vbLF+"with the function prototype selected.")
+	End If
+End Sub
+
+Sub FunctionHeaderSimple()
+'DESCRIPTION: add function header comment; key: Ctrl+Shift+H
+
+
+'Begin Recording
+	ActiveDocument.Selection = "//------------------------------------------------------------------*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "/**"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = " * %function%."
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "* @param"
+	ActiveDocument.Selection.Indent
+	ActiveDocument.Selection.Indent
+	ActiveDocument.Selection.Indent
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "* @return"
+	ActiveDocument.Selection.Indent
+	ActiveDocument.Selection.Indent
+	ActiveDocument.Selection.Indent
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "* @exception"
+	ActiveDocument.Selection.Indent
+	ActiveDocument.Selection.Indent
+	ActiveDocument.Selection = "-"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "* @see"
+	ActiveDocument.Selection.Indent
+	ActiveDocument.Selection.Indent
+	ActiveDocument.Selection.Indent
+	ActiveDocument.Selection.Indent
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.Backspace
+	ActiveDocument.Selection = "*/"
+	ActiveDocument.Selection.NewLine
+'End Recording
+End Sub
+
+Sub AddParam()
+'DESCRIPTION: add parameter description line to function header; key: Ctrl+Shift+A
+'Begin Recording
+	ActiveDocument.Selection.StartOfLine dsFirstColumn
+	ActiveDocument.Selection = " * @param"
+	ActiveDocument.Selection.Indent
+	ActiveDocument.Selection.Indent
+	ActiveDocument.Selection.Indent
+	ActiveDocument.Selection.NewLine
+'End Recording
+End Sub
+
+
+'Strips the leading tab spaces. 
+Function StripTabs (ByVal MyStr)
+	Do While InStr(MyStr, vbTab) <> 0
+		MyStr = Right(MyStr, Len(MyStr) - InStr(MyStr, vbTab)) 
+	Loop 
+	StripTabs = Trim(MyStr)
+End Function
+
+
+
+Sub FileHeader()
+'DESCRIPTION: add 4C file header for (*.h,*.cpp,*.idl) and tail to currently open file; key: Ctrl+Shift+N
+
+	dim dtNow
+	dim sNow
+	dim sSWKE
+	dim sComp
+    dim ext, sGuard
+    dim bHeader
+
+	sNow = FormatDateTime(Date(), vbShortDate)
+	if len(sPrevSWKE) = 0 then sPrevSWKE = sDefSWKE
+	sSWKE = InputBox("name of SWKE", "Add File Header", sPrevSWKE)
+	if len(sSWKE) = 0 then
+		MsgBox "Missing SWKE name, macro aborted!", vbOKOnly, "Add File Header"
+		exit sub	' no answer, quit this macro
+	end if
+	sPrevSWKE = sSWKE
+
+	sComp = InputBox("component name", "Add File Header", sPrevComp)
+	if len(sComp) = 0 then
+		MsgBox "Missing component name, macro aborted!", vbOKOnly, "Add File Header"
+		exit sub	' no answer, quit this macro
+	end if
+	sPrevComp = sComp
+
+	ext = ActiveDocument.Name
+	If ext = "" Then
+		If MsgBox("The file you are working with does not have a file extension." + _
+				vbLF + "Are you sure this is a C/C++ header file?", 4) = vbCancel Then
+			Exit Sub
+		End If
+		ext = "nofilenamegiven.h"
+	End If
+	DocName = UCase(ext)
+	pos = Instr(ext, ".")
+	Do While pos <> 1
+		ext = Mid(ext, pos, (Len(ext) - pos + 1))
+		pos = Instr(ext, ".")
+	Loop
+	ext = LCase(ext)
+	pos = Instr(DocName, ".")
+	If ext = ".h" Or ext = ".hpp" Then
+        sGuard = Replace(DocName, ".", "_")
+        sGuard = "__" + sGuard + "_"
+        bHeader = true
+    else
+        bHeader = false
+    end if
+
+	' this is the file header itself at top of file
+	ActiveDocument.Selection.StartOfDocument
+	ActiveDocument.Selection.StartOfLine dsFirstText
+	ActiveDocument.Selection = "/*H>> $Header$"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = " *----------------------------------------------------------------------------*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "* =FILENAME            $Workfile$"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*                      $Logfile$"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "* =PROJECT             CAK1020 ATCMControlV2.0"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "* =SWKE                " + sSWKE
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "* =COMPONENT           " + sComp
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "* =CURRENT      $Date$"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*               $Revision$"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "* =REFERENCES"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*"					
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*----------------------------------------------------------------------------*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = ""
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = ""
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "* =COPYRIGHT"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*  All Rights Reserved"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*=="
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*----------------------------------------------------------------------------*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "* =DESCRIPTION"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*    @DESCRIPTION@"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*=="
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*----------------------------------------------------------------------------*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "* =MODIFICATION"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*  " + sNow + "  " + sAuthor + "      File created"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*  see history at end of file !"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*=="
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*******************************************************************************"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.StartOfLine dsFirstText
+	ActiveDocument.Selection = "H<<*/"
+	ActiveDocument.Selection.NewLine
+
+    if bHeader then
+	    ActiveDocument.Selection.NewLine
+    	ActiveDocument.Selection.StartOfLine dsFirstText
+    	ActiveDocument.Selection = "#ifndef " + sGuard
+	    ActiveDocument.Selection.NewLine
+    	ActiveDocument.Selection.StartOfLine dsFirstText
+    	ActiveDocument.Selection = "#define " + sGuard
+	    ActiveDocument.Selection.NewLine
+	    ActiveDocument.Selection.NewLine
+    	ActiveDocument.Selection.StartOfLine dsFirstText
+        ActiveDocument.Selection = "#if _MSC_VER >= 1000"
+	    ActiveDocument.Selection.NewLine
+    	ActiveDocument.Selection.StartOfLine dsFirstText
+        ActiveDocument.Selection = "#pragma once"
+	    ActiveDocument.Selection.NewLine
+    	ActiveDocument.Selection.StartOfLine dsFirstText
+        ActiveDocument.Selection = "#endif // _MSC_VER >= 1000"
+	    ActiveDocument.Selection.NewLine
+    	ActiveDocument.Selection.StartOfLine dsFirstText
+    end if
+    
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.NewLine
+    ActiveDocument.Selection.StartOfLine dsFirstText
+    if bHeader then
+        call CppHeaderIntro
+    else
+        call CppSourceIntro
+    end if
+
+
+	' this is the file tail at end of file
+	ActiveDocument.Selection.EndOfDocument
+    if bHeader then
+	    ActiveDocument.Selection.NewLine
+    	ActiveDocument.Selection.StartOfLine dsFirstText
+    	ActiveDocument.Selection = "#endif // " + sGuard
+	    ActiveDocument.Selection.NewLine
+	    ActiveDocument.Selection.StartOfLine dsFirstText
+    end if
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.StartOfLine dsFirstText
+	ActiveDocument.Selection = "/*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = " *----------------------------------------------------------------------------*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*  $History$"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*=="
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection = "*----------------------------------------------------------------------------*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.StartOfLine dsFirstText
+	ActiveDocument.Selection = "*/"
+	ActiveDocument.Selection.NewLine
+End Sub
+
+
+Sub CppSourceIntro()
+'DESCRIPTION: add intro section of CPP source files at current insertion point
+
+	ActiveDocument.Selection.StartOfLine dsFirstText
+	ActiveDocument.Selection = "static char szVersioninfo[] = ""$Header$"";"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.StartOfLine dsFirstText
+	ActiveDocument.Selection = "//----  Local Defines:   -------------------------------------------*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.StartOfLine dsFirstText
+	ActiveDocument.Selection = "//----  Includes:   -------------------------------------------*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.StartOfLine dsFirstText
+	ActiveDocument.Selection = "//----  Static Initializations:   ----------------------------------*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.StartOfLine dsFirstText
+	ActiveDocument.Selection.NewLine
+End Sub
+
+
+
+Sub CppHeaderIntro()
+'DESCRIPTION: add intro section of CPP header files at current insertion point
+
+	ActiveDocument.Selection.StartOfLine dsFirstText
+	ActiveDocument.Selection = "//----  Aggregate Includes:   --------------------------------------*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.StartOfLine dsFirstText
+	ActiveDocument.Selection = "//----  Forward Class Definitions:   -------------------------------*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.StartOfLine dsFirstText
+	ActiveDocument.Selection = "//----  Defines:    ------------------------------------------------*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.StartOfLine dsFirstText
+	ActiveDocument.Selection = "//----  Globals:    ------------------------------------------------*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.StartOfLine dsFirstText
+	ActiveDocument.Selection = "//----  Prototypes:    ---------------------------------------------*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.NewLine
+
+End Sub
+
+
+Sub ClassDeclaration()
+'DESCRIPTION: add class declaration at current insertion point; key: Ctrl+Shift+C
+
+	dim sClass, sParent
+	sClass = InputBox("Klassenname", "ClassDeclaration", sPrevClass)
+	if len(sClass) = 0 then
+		MsgBox "Macro aborted!", vbOKOnly, "ClassDeclaration"
+		exit sub	' no answer, quit this macro
+	end if
+	sPrevClass = sClass
+
+
+	sParent = InputBox("Vater-Klassenname", "ClassDeclaration", sPrevParentClass)
+	sPrevParentClass = sParent
+
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.StartOfLine dsFirstText
+	ActiveDocument.Selection = "//------------------------------------------------------------------*"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.StartOfLine dsFirstText
+	ActiveDocument.Selection = "/**"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.StartOfLine dsFirstText
+ 	ActiveDocument.Selection = " *  class " + sClass
+	ActiveDocument.Selection.NewLine
+ 	ActiveDocument.Selection = "*"
+	ActiveDocument.Selection.NewLine
+ 	ActiveDocument.Selection = "*  @see    ...."
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.StartOfLine dsFirstText
+	ActiveDocument.Selection = "*/"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.StartOfLine dsFirstText
+	ActiveDocument.Selection = "class "+ sClass
+	if len(sParent) > 0 then
+		ActiveDocument.Selection = " :"
+		ActiveDocument.Selection = " public " + sParent
+	end if
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.StartOfLine dsFirstText
+	ActiveDocument.Selection = "{"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.StartOfLine dsFirstText
+	ActiveDocument.Selection = "public:"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.StartOfLine dsFirstText
+	ActiveDocument.Selection = "};"
+	ActiveDocument.Selection.NewLine
+	ActiveDocument.Selection.StartOfLine dsFirstText
+End Sub
+
+Sub CommentOut()
+'DESCRIPTION: insert // at the beginning of line
+
+	ActiveDocument.Selection.ReplaceText "^", "//", dsMatchRegExp
+End Sub
+
+Sub CommentIn()
+'DESCRIPTION: remove // at the beginning of line
+
+	ActiveDocument.Selection.ReplaceText "^//", "", dsMatchRegExp
+End Sub
+
+
+

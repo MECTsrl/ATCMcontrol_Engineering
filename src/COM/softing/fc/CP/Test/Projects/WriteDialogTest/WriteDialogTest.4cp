@@ -1,0 +1,14 @@
+[attributes]
+GUID= "{D0A956B7-262A-11D2-9F4B-006008736585}"
+
+[files]
+file=Resource1.gvl
+file=Configuration1.con
+file=WriteDialogTest.4ch
+file=Program1.st
+file=ValueTypes.ST
+[libs]
+lib=4C_Application.4cl
+lib=4C_IEC1131_3.4cl
+lib=4C_System.4cl
+[MACHINES]

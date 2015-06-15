@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>FA_SYNC_CLOSEFILE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+
+<body bgcolor="#FFFFCC">
+<h2>FA_SYNC_CLOSEFILE</h2>
+<p>Closes an open file.</p>
+<h3>Interface</h3>
+<pre class="preforma">FUNCTION FA_SYNC_CLOSEFILE:BOOL
+VAR_INPUT
+    EXEC        : BOOL;
+END_VAR
+VAR_IN_OUT
+    FILE        : FA_SYNC_FILE;
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of the type <i><b>BOOL</b></i><br> Signalizes the error status.<br> Possible values:<br> <i><b>TRUE</b></i>: An error has occurred.<br> <i><b>FALSE</b></i>: No error has occurred.</p>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+
+ <dt><b>EXEC</b></dt>
+
+ <dd>Value of the type <i><b>BOOL</b></i><br> Starts the operation.<br>
+
+ </dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl> 
+
+ <dt><b><a name="File"></a>FILE</b></dt>
+
+  <dd>Instance of the <a href="FA_SYNC_FILE.htm"><i><b>FA_SYNC_FILE</b></i></a> 
+    structure<br>
+     File object on which the operation is performed.</dd>
+</dl>
+<h3>Description</h3>
+<p><i><b>FA_SYNC_CLOSEFILE </b></i>closes the file passed to <i><b>FILE</b></i>. 
+  <i><b>FA_SYNC_CLOSEFILE </b></i>must always be called to terminate an access 
+  cycle. The file to be closed is represented by an instance of the <a href="FA_SYNC_FILE.htm"><i><b>FA_SYNC_FILE</b></i></a> 
+  structure.</p>
+</body>
+</html>

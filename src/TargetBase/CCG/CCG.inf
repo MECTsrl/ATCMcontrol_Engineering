@@ -1,0 +1,26 @@
+# $Header: /4CReleased/V2.20.00/TargetBase/CCG/CCG.inf 1     28.02.07 19:04 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: CCG.inf $
+#                        $Logfile: /4CReleased/V2.20.00/TargetBase/CCG/CCG.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Targetbase / AddOnHandler
+#
+# =COMPONENT            AddOnBase
+#
+# =CURRENT      $Date: 28.02.07 19:04 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+SUBPROJECT=asm\asm.mak
+SUBPROJECT=4CVMlib\4cvmlib.mak
+SUBPROJECT=4CVM\4CVM.mak
+# TODO consider to remove if really not used !!! SUBPROJECT=AutoDecl\AutoDecl.mak
+SUBPROJECT=NCCBase\NCCBase.mak
+
+# -------------------------------------------------------------------------------

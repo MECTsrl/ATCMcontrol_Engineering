@@ -1,0 +1,107 @@
+<html>
+<head>
+<title>UDP_URCV</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>UDP_URCV </h2>
+<p>Reads a message sent by a communication partner.</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION_BLOCK UDP_URCV
+
+VAR_INPUT
+    EN_R     : BOOL;  
+    DATA_LEN : DINT; 
+END_VAR
+
+VAR_IN_OUT
+    SOCKET_HANDLE : UDP_SOCKET_HANDLE;  
+END_VAR
+
+VAR_OUTPUT
+    RD_1         : BYTE_STRING;  
+    PARTNER_ADDR : WSTRING;      
+    PARTNER_PORT : DINT;         
+    NDR          : BOOL;         
+    ERROR        : BOOL;         
+    ERROR_NR     : DINT;
+    ERROR_STRING : WSTRING;
+END_VAR</pre>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>EN_R</b></dt>
+  <dd>Value of type <i><b>BOOL</b></i>.<br>
+    Initializes the reading of a new message.<br>
+    Possible values:<br>
+    <i><b>TRUE</b></i>: The new message is received and read.<br>
+    <i><b>FALSE</b></i>: The new message is not received and read.</dd>
+  <dt><b>DATA_LEN</b></dt>
+  <dd>Value of type <i><b>DINT</b></i>.<br>
+    Defines the maximum number of bytes that are read from a packet. If the packet 
+    received is greater than the number of bytes specified, the bytes located 
+    behind the last byte read are lost. </dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl> 
+  <dt><b>SOCKET_HANDLE</b></dt>
+  <dd>Instance of the structure <a href="UDP_SOCKET_HANDLE.htm"><i><b>UDP_SOCKET_HANDLE</b></i></a>.<br>
+    Specifies the socket, by which the data to be received is delivered. </dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b>RD_1</b></dt>
+  <dd>Value of type <i><b><a href="BYTE_STRING.htm">BYTE_STRING</a></b></i>.<br>
+    Contains the data received.</dd>
+  <dt><b>PARTNER_ADDR</b></dt>
+  <dd>Value of type <i><b>WSTRING</b></i>.<br>
+    Contains the host name of the communication partner that sent the message 
+    last received. </dd>
+  <dt><b>PARTNER_PORT</b></dt>
+  <dd>Value of type <i><b>DINT</b></i>.<br>
+    Contains the port number of the socket by which the message last received 
+    was sent. </dd>
+  <dt><b>NDR</b></dt>
+  <dd>Value of type <i><b>BOOL</b></i>.<br>
+    Signals the reception of a new message.<br>
+    Possible values:<br>
+    <i><b>TRUE:</b></i> A new message was received.<br>
+    <i><b>FALSE:</b></i> No new message was received.<br>
+    <i><b>NDR</b></i> has the value <i><b>TRUE </b></i>as long as there are messages 
+    within the read buffer. Only when all messages located in the buffer have 
+    been read, the value is reset to <i><b>FALSE</b></i>. </dd>
+  <dt><b>ERROR</b></dt>
+  <dd>Value of type <i><b>BOOL</b></i>.<br>
+    Signals the error state.<br>
+    Possible values:<br>
+    <i><b>TRUE</b></i>: An error occurred.<br>
+    <i><b>FALSE</b></i>: No error occurred.</dd>
+  <dt><b>ERROR_NR</b></dt>
+  <dd>Value of type <i><b>DINT</b></i>.<br>
+    Contains an error number if an error occurred. <br>
+    If no error ocurred, this variable has the value 0.<br>
+    Possible values are defined within the <a href="ConstUDPErr.htm">UDP-error 
+    constants</a>.</dd>
+  <dt><b>ERROR_STRING</b></dt>
+  <dd>Value of type <i><b>WSTRING</b></i>.<br>
+    Contains an error text in case of an error. <br>
+    this variable contains an empty string if no error occurred. </dd>
+</dl>
+<h3>Description</h3>
+<p>The call of an instance of <i><b>UDP_URCV </b></i>reads messages by a communication 
+  partner that have been sent to the socket specified in the parameter <i><b>SOCKET_HANDLE</b></i>. 
+  The socket must exist on the receiving computer. <i> <b>UDP_URCV </b></i>is 
+  only responsible for reading messages, not for receiving them. Messages are 
+  received and saved in a buffer automatically when the socket, to which the messages 
+  are sent, was initialized with <a href="UDP_CONNECT.htm"><i><b>UDP_CONNECT</b></i></a>. 
+</p>
+<p>Message are placed in the buffer packetwise and can also only be read packetwise. 
+  A packet complies to the length of the bytestring sent by <i><b><a href="UDP_USEND.htm">UDP_USEND</a></b></i>. 
+  Each time an instance of <i><b>UDP_URCV</b></i> is called, a packet is read 
+  from the buffer. The maximum number of bytes to be read from the packet is is 
+  specified in the parameter <i><b>DATA_LEN</b></i>. If the packet received is 
+  greater than the number of bytes specified, the bytes located behind the last 
+  byte read are lost. </p>
+</body>
+</html>

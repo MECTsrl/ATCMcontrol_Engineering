@@ -1,0 +1,613 @@
+/*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/inc/DbgInfo.idl 1     28.02.07 19:01 Ln $
+ *----------------------------------------------------------------------------*
+ *
+ * =FILENAME            $Workfile: DbgInfo.idl $
+ *                       $Logfile: /4CReleased/V2.20.00/COM/softing/fc/inc/DbgInfo.idl $
+ *
+ * =PROJECT				CAK1020  ATCMControl V2.0
+ *
+ * =SWKE                4CE
+ *
+ * =COMPONENT           DbgInfo: Debug Info Server
+ *
+ * =CURRENT      $Date: 28.02.07 19:01 $
+ *           $Revision: 1 $
+ *
+ * =REFERENCES
+ *
+ *----------------------------------------------------------------------------*
+ *
+
+ 
+
+
+
+ *==
+ *----------------------------------------------------------------------------*
+ * =DESCRIPTION
+ *    @DESCRIPTION@
+ *==
+ *----------------------------------------------------------------------------*
+ * =MODIFICATION
+ *  31.01.01  SU      File created
+ *  see history at end of file !
+ *==
+ *******************************************************************************
+H<<*/
+
+// DbgInfo.idl : IDL source for DbgInfo.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (DbgInfo.tlb) and marshalling code.
+
+cpp_quote("#ifndef STDEDEDIPOS_H_")
+cpp_quote("#define STDEDEDIPOS_H_")
+#include "StdEdEdipos.h"
+cpp_quote("#endif")
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+
+typedef enum tagDBIVariableKind
+{
+	DBIVar,
+	DBIVarInput,
+	DBIVarOutput,
+	DBIVarInOut,
+	DBIVarGlobal,
+	DBIVarExternal,
+	DBIConst
+} DBIVariableKind;
+
+
+typedef enum tagDBITypeKind
+{
+	DBIAliasType,
+	DBISimpleType,
+	DBIArrayType,
+	DBIProgramType,
+	DBIFunctionBlockType,
+	DBIStructType,
+	DBIResourceType,
+	DBIConfigurationType,
+	DBIStepType,
+	DBIActionType,
+	DBITransitionType
+} DBITypeKind;
+
+
+typedef enum tagDBILanguage
+{
+	DBIST,
+	DBIFBD
+} DBILanguage;
+
+
+//----  CoClass:    DebugInfoServer
+//-------------------------------------------------------------------------
+	[
+		object,
+		uuid(7A83B89E-CE8D-4f23-9C2C-4D2F17522CF7),
+		dual,
+		helpstring("IDebugInfo Interface"),
+		pointer_default(unique)
+	]
+	interface IDebugInfo : IDispatch
+	{
+		[id(1), helpstring("method Init: initializes debug info server")]
+			HRESULT Init([in, string] BSTR sDebugInfoPath);
+		[id(2), helpstring("method Cleanup: cleanup debug info server")]
+			HRESULT Cleanup();
+		[propget, id(3), helpstring("property ProjectDBI: get project DBI object")]
+			HRESULT Project ([out] IUnknown **ppProject);
+		[id(4), helpstring("method GetSimpleType")]
+			HRESULT GetSimpleType([in] short sIECType, [out] IUnknown **ppType);
+		[id(5), helpstring("method GetConfigurationType")]
+			HRESULT GetConfigurationType([out] IUnknown **ppType);
+		[id(6), helpstring("method IsCorrupt")]
+			HRESULT IsCorrupt([out] BOOL *pbCorrupt);
+	};
+
+	[
+		object,
+		uuid(FEDABB14-9C0C-4a4f-8E9E-5B4AEB2F5B3F),
+		dual,
+		helpstring("IProjectDBI Interface"),
+		pointer_default(unique)
+	]
+	interface IProjectDBI : IDispatch
+	{
+		[propget, id(1), helpstring("property Name")]
+			HRESULT Name([out, string, retval] BSTR *psName);
+		[propget, id(2), helpstring("property ConfigurationCount")]
+			HRESULT ConfigurationCount([out, retval] unsigned long *pulCount);
+		[propget, id(3), helpstring("property ConfigurationByIndex")]
+			HRESULT ConfigurationByIndex([in] unsigned long ulIndex, [out, retval] IUnknown **ppConfiguration);
+		[propget, id(4), helpstring("property ConfigurationByName")]
+			HRESULT ConfigurationByName([in, string] BSTR sName, [out, retval] IUnknown **ppConfiguration);
+		[propget, id(5), helpstring("property ConfigurationByMachine")]
+			HRESULT ConfigurationByMachine([in, string] BSTR sMachine, [out, retval] IUnknown **ppConfiguration);
+		[propget, id(6), helpstring("property ConfigurationByAddress")]
+			HRESULT ConfigurationByAddress([in, string] BSTR sAddress, [out, retval] IUnknown **pConfiguration);
+		[propget, id(7), helpstring("property InstanceByPath")]
+			HRESULT InstanceByPath(BSTR sPath, [out, retval] IUnknown **ppInstance);
+        [id(8), helpstring("method GetInstancesForDataType")]
+            HRESULT GetInstancesForDataType([in, string] BSTR sDataType, [out] SAFEARRAY(BSTR) *parrInstancePaths);
+	};
+
+	[
+		object,
+		uuid(C947E663-AC9F-4b2f-AF8F-182B74CD520A),
+		dual,
+		helpstring("IConfigurationDBI Interface"),
+		pointer_default(unique)
+	]
+	interface IConfigurationDBI : IDispatch
+	{
+		[propget, id(1), helpstring("method Name")]
+			HRESULT Name([out, string, retval] BSTR *psName);
+		[propget, id(2), helpstring("property Type")]
+			HRESULT Type([out, retval] IUnknown **ppType);
+		[propget, id(3), helpstring("property MachineName")]
+			HRESULT MachineName([out, string, retval] BSTR *psName);
+		[propget, id(4), helpstring("property MachineAddress")]
+			HRESULT MachineAddress([out, string, retval] BSTR *psAddress);
+		[propget, id(5), helpstring("property ResourceCount")]
+			HRESULT ResourceCount([out, retval] unsigned long *pulCount);
+		[propget, id(6), helpstring("property ResourceByIndex")]
+			HRESULT ResourceByIndex([in] unsigned long ulIndex, [out, retval] IUnknown **ppResource);
+		[propget, id(7), helpstring("method ResourceByName")]
+			HRESULT ResourceByName([in, string] BSTR sName, [out, retval] IUnknown **ppResource);
+		[propget, id(8), helpstring("property InstanceByPath")]
+			HRESULT InstanceByPath([in, string] BSTR sPath, [out, retval] IUnknown **ppInstance);
+	};
+
+	[
+		object,
+		uuid(D2F4DA6E-2222-47c7-94CB-E127DECF4FC3),
+		dual,
+		helpstring("IResourceDBI Interface"),
+		pointer_default(unique)
+	]
+	interface IResourceDBI : IDispatch
+	{
+		[propget, id(1), helpstring("property Name")]
+			HRESULT Name([out, string, retval] BSTR *psName);
+		[propget, id(2), helpstring("property Type")]
+			HRESULT Type([out, retval] IUnknown **ppType);
+		[propget, id(3), helpstring("property VariableCount")]
+			HRESULT VariableCount([out, retval] unsigned long *pulCount);
+		[propget, id(4), helpstring("property VariableByIndex")]
+			HRESULT VariableByIndex([in] unsigned long ulIndex, [out, retval] IUnknown **ppVariable);
+		[propget, id(5), helpstring("property VariableByName")]
+			HRESULT VariableByName([in, string] BSTR sName, [out, retval] IUnknown **ppVariable);
+		[propget, id(6), helpstring("property InstanceCount")]
+			HRESULT InstanceCount([in] IUnknown *pType, [out, retval] unsigned long *pulCount);
+		[propget, id(7), helpstring("property InstanceByIndex")]
+			HRESULT InstanceByIndex([in] IUnknown *pType, [in] unsigned long ulIndex, [out, retval] IUnknown **ppInstance);
+		[propget, id(8), helpstring("property InstanceByPath")]
+			HRESULT InstanceByPath([in, string] BSTR sPath, [out, retval] IUnknown **ppInstance);
+        [id(9), helpstring("method GetInstancesForDataType")]
+            HRESULT GetInstancesForDataType([in, string] BSTR sDataType, [out] SAFEARRAY(BSTR) *parrInstancePaths);
+	};
+
+	[
+		object,
+		uuid(CC5304A7-FDEF-415f-BA12-E329A635215B),
+		dual,
+		helpstring("IGvlFileDBI Interface"),
+		pointer_default(unique)
+	]
+	interface IGvlFileDBI : IDispatch
+	{
+		[propget, id(1), helpstring("property FileName")]
+			HRESULT FileName([out, string, retval] BSTR *psFileName);
+		[propget, id(2), helpstring("property Id")]
+			HRESULT Id([out, string, retval] BSTR *psId);
+        }
+
+
+	[
+		object,
+		uuid(658A6C32-B5E5-41a4-8598-D84E5D4F6AE2),
+		dual,
+		helpstring("IVariableDBI Interface"),
+		pointer_default(unique)
+	]
+	interface IVariableDBI : IDispatch
+	{
+		[propget, id(1), helpstring("property Name")]
+			HRESULT Name([out, string, retval] BSTR *psName);
+		[propget, id(2), helpstring("property Type")]
+			HRESULT Type([out, retval] IUnknown **ppType);
+		[propget, id(3), helpstring("property Kind")]
+			HRESULT Kind([out, retval] DBIVariableKind *pKind);
+		[propget, id(4), helpstring("property Value")]
+			HRESULT Value([out, retval] VARIANT *pvarValue);
+		[propget, id(5), helpstring("property OnlString")]
+			HRESULT OnlString([out, string, retval] BSTR *psOnlString);
+	};
+
+	[
+		object,
+		uuid(6830C321-8EE3-4aa9-90FD-511EF3F100C1),
+		dual,
+		helpstring("IInstanceDBI Interface"),
+		pointer_default(unique)
+	]
+	interface IInstanceDBI : IDispatch
+	{
+		[propget, id(1), helpstring("property Type")]
+			HRESULT Type([out, retval] IUnknown **ppType);
+		[propget, id(2), helpstring("property Path")]
+			HRESULT Path([out, string, retval] BSTR *psPath);
+	};
+
+	[
+		object,
+		uuid(1CD42545-3F0C-45d5-B0B5-20E3D0D6D465),
+		dual,
+		helpstring("ITypeDBI Interface"),
+		pointer_default(unique)
+	]
+	interface ITypeDBI : IDispatch
+	{
+		[propget, id(1), helpstring("property Kind")]
+			HRESULT Kind([out, retval] DBITypeKind *pKind);
+		[propget, id(2), helpstring("property Source")]
+			HRESULT Source([out, retval] BSTR *psSource);
+		[propget, id(3), helpstring("property TypeName")]
+			HRESULT TypeName([out, retval] BSTR *psTypeName);
+		[propget, id(4), helpstring("property IECType")]
+			HRESULT IECType([out, retval] short *psIECType);
+		[propget, id(5), helpstring("property ElementType")]
+			HRESULT ElementType([out, retval] IUnknown **ppElementType);
+		[propget, id(6), helpstring("property LowerBound")]
+			HRESULT LowerBound([out, retval] long *plLowerBound);
+		[propget, id(7), helpstring("property UpperBound")]
+			HRESULT UpperBound([out, retval] long *plUpperBound);
+
+		[propget, id(8), helpstring("property VariableCount")]
+			HRESULT VariableCount([out, retval] unsigned long *pulCount);
+		[propget, id(9), helpstring("property VariableByIndex")]
+			HRESULT VariableByIndex([in] unsigned long ulIndex, [out, retval] IUnknown **ppVariable);
+		[propget, id(10), helpstring("property VariableByName")]
+			HRESULT VariableByName([in, string] BSTR sName, [out, retval] IUnknown **ppVariable);
+
+		[propget, id(11), helpstring("property BreakpointByNumber")]
+			HRESULT BreakpointByNumber([in] long lNumber, [out, retval] IUnknown **ppBreakpoint);
+		[propget, id(13), helpstring("property BreakpointByPositionEx to be used if 4gr st-action or region")]
+			HRESULT BreakpointByPositionEx(
+                                    [in] EDP_POS_QUALIFIER qualifier,
+                                    [in] long lX,  [in] long lY, 
+                                    [in] long lCX, [in] long lCY,
+                                    [out, retval] IUnknown **ppBreakpoint);
+
+		[propget, id(14), helpstring("property InstanceCount")]
+			HRESULT InstanceCount([in] IUnknown *pType, [out, retval] unsigned long *pulCount);
+		[propget, id(15), helpstring("property InstanceByIndex")]
+			HRESULT InstanceByIndex([in] IUnknown *pType, [in] unsigned long ulIndex, [out, retval] IUnknown **ppInstance);
+		[propget, id(16), helpstring("property InstanceByPath")]
+			HRESULT InstanceByPath([in, string] BSTR sPath, [out, retval] IUnknown **ppInstance);
+		[propget, id(17), helpstring("property Text")]
+			HRESULT Text([out, retval] BSTR *psText);
+
+		[propget, id(18), helpstring("property StepCount")]
+			HRESULT StepCount([out, retval] unsigned long *pulCount);
+		[propget, id(19), helpstring("property StepByIndex")]
+			HRESULT StepByIndex([in] unsigned long ulIndex, [out, retval] IUnknown **ppStep);
+		[propget, id(20), helpstring("property StepByName")]
+			HRESULT StepByName([in, string] BSTR sName, [out, retval] IUnknown **ppStep);
+		[propget, id(21), helpstring("property StepByNumber")]
+			HRESULT StepByNumber([in] long lNumber, [out, retval] IUnknown **ppStep);
+		[propget, id(22), helpstring("property StepByPosition")]
+			HRESULT StepByPosition([in] long lX, [in] long lY, [out, retval] IUnknown **ppStep);
+
+		[propget, id(23), helpstring("property ActionCount")]
+			HRESULT ActionCount([out, retval] unsigned long *pulCount);
+		[propget, id(24), helpstring("property ActionByIndex")]
+			HRESULT ActionByIndex([in] unsigned long ulIndex, [out, retval] IUnknown **ppAction);
+		[propget, id(25), helpstring("property ActionByName")]
+			HRESULT ActionByName([in, string] BSTR sName, [out, retval] IUnknown **ppAction);
+		[propget, id(26), helpstring("property ActionByNumber")]
+			HRESULT ActionByNumber([in] long lNumber, [out, retval] IUnknown **ppAction);
+		[propget, id(27), helpstring("property ActionByPosition")]
+			HRESULT ActionByPosition([in] long lX, [in] long lY, [out, retval] IUnknown **ppAction);
+
+		[propget, id(28), helpstring("property TransitionCount")]
+			HRESULT TransitionCount([out, retval] unsigned long *pulCount);
+		[propget, id(29), helpstring("property TransitionByIndex")]
+			HRESULT TransitionByIndex([in] unsigned long ulIndex, [out, retval] IUnknown **ppTransition);
+		[propget, id(30), helpstring("property TransitionByName")]
+			HRESULT TransitionByName([in, string] BSTR sName, [out, retval] IUnknown **ppTransition);
+		[propget, id(31), helpstring("property TransitionByNumber")]
+			HRESULT TransitionByNumber([in] long lNumber, [out, retval] IUnknown **ppTransition);
+		[propget, id(32), helpstring("property TransitionByPosition")]
+			HRESULT TransitionByPosition([in] long lX, [in] long lY, [out, retval] IUnknown **ppTransition);
+
+		[propget, id(33), helpstring("property Language")]
+			HRESULT Language([out, retval] DBILanguage *pLanguage);
+	};
+
+
+	[
+		object,
+		uuid(C31A3758-9331-4f5d-94B0-49E7A5A7649D),
+		dual,
+		helpstring("IBreakpointDBI Interface edipos for all BP kinds also ST-Action"),
+		pointer_default(unique)
+	]
+	interface IBreakpointDBI : IDispatch
+	{
+		[propget, id(1), helpstring("property Number")]
+			HRESULT Number([out, retval] long *plNumber);
+		[propget, id(2), helpstring("property Qualifier")]
+			HRESULT Qualifier([out, retval] EDP_POS_QUALIFIER *pQualifier);
+		[propget, id(3), helpstring("property X")]
+			HRESULT X([out, retval] long *plX);
+		[propget, id(4), helpstring("property Y")]
+			HRESULT Y([out, retval] long *plY);
+		[propget, id(5), helpstring("property CX: height of region")]
+			HRESULT CX([out, retval] long *plCX);
+		[propget, id(6), helpstring("property CY: widht of region or ST line inside ST box")]
+			HRESULT CY([out, retval] long *plCY);
+	};
+
+
+	[
+		object,
+		uuid(47B904DC-6116-4df4-8683-F86BE9A4FEE2),
+		dual,
+		helpstring("IStepDBI Interface"),
+		pointer_default(unique)
+	]
+	interface IStepDBI : IDispatch
+	{
+		[propget, id(1), helpstring("property Name")]
+			HRESULT Name([out, string, retval] BSTR *psName);
+		[propget, id(2), helpstring("property Type")]
+			HRESULT Type([out, retval] IUnknown **ppType);
+		[propget, id(3), helpstring("property Number")]
+			HRESULT Number([out, retval] long *plNumber);
+		[propget, id(4), helpstring("property X")]
+			HRESULT X([out, retval] long *plX);
+		[propget, id(5), helpstring("property Y")]
+			HRESULT Y([out, retval] long *plY);
+	};
+
+	[
+		object,
+		uuid(07226393-EFB3-4b2f-9213-B23FECC58718),
+		dual,
+		helpstring("IActionDBI Interface"),
+		pointer_default(unique)
+	]
+	interface IActionDBI : IDispatch
+	{
+		[propget, id(1), helpstring("property Name")]
+			HRESULT Name([out, string, retval] BSTR *psName);
+		[propget, id(2), helpstring("property Type")]
+			HRESULT Type([out, retval] IUnknown **ppType);
+		[propget, id(3), helpstring("property Number")]
+			HRESULT Number([out, retval] long *plNumber);
+		[propget, id(4), helpstring("property X")]
+			HRESULT X([out, retval] long *plX);
+		[propget, id(5), helpstring("property Y")]
+			HRESULT Y([out, retval] long *plY);
+	};
+
+	[
+		object,
+		uuid(9C46DD32-9BCA-4489-9120-7ABDFEF18787),
+		dual,
+		helpstring("ITransitionDBI Interface"),
+		pointer_default(unique)
+	]
+	interface ITransitionDBI : IDispatch
+	{
+		[propget, id(1), helpstring("property Name")]
+			HRESULT Name([out, string, retval] BSTR *psName);
+		[propget, id(2), helpstring("property Type")]
+			HRESULT Type([out, retval] IUnknown **ppType);
+		[propget, id(3), helpstring("property Number")]
+			HRESULT Number([out, retval] long *plNumber);
+		[propget, id(4), helpstring("property X")]
+			HRESULT X([out, retval] long *plX);
+		[propget, id(5), helpstring("property Y")]
+			HRESULT Y([out, retval] long *plY);
+	};
+
+	[
+		object,
+		uuid(A21078B9-D401-48e1-AD64-99DA996E0B5E),
+		dual,
+		helpstring("IDebugInfoNotify Interface"),
+		pointer_default(unique)
+	]
+	interface IDebugInfoNotify : IDispatch
+	{
+		[id(1), helpstring("method OnDebugInfoModified")] HRESULT OnDebugInfoModified();
+	};
+
+//----  Type Library:    -----------------------------------------------------*
+[
+	uuid(43FE0D78-D58F-463b-A5B2-B051711FB4FC),
+	version(1.0),
+	helpstring("DbgInfo 1.0 Type Library")
+]
+library DBGINFOLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+//----  Component Classes:    ------------------------------------------------*
+	[
+		uuid(B0B1A8AD-9B4F-4d2b-9581-58CBB619924C),
+		helpstring("4CONTROL: DebugInfo Server")
+	]
+	coclass DebugInfoServer
+	{
+		[default] interface IDebugInfo;
+		[default, source] interface IDebugInfoNotify;
+	};
+
+	[
+		uuid(87B95DFE-64E9-4cba-8D97-B55A6E30816F),
+		helpstring("4CONTROL: Project DBI")
+	]
+	coclass ProjectDBI
+	{
+		[default] interface IProjectDBI;
+	};
+
+	[
+		uuid(750CFE55-E4A8-456b-8374-FB3AF1B5A3B6),
+		helpstring("4CONTROL: Configuration DBI")
+	]
+	coclass ConfigurationDBI
+	{
+		[default] interface IConfigurationDBI;
+	};
+
+	[
+		uuid(5DE4897D-EFEE-415b-BDE2-65ADE2529142),
+		helpstring("4CONTROL: Resource DBI")
+	]
+	coclass ResourceDBI
+	{
+		[default] interface IResourceDBI;
+	};
+
+
+	[
+		uuid(600E1AC4-6456-45ff-BC8D-C714C6F745F9),
+		helpstring("4CONTROL: GvlFile DBI")
+	]
+	coclass GvlFileDBI
+	{
+		[default] interface IGvlFileDBI;
+	};
+
+
+	[
+		uuid(02876F4D-1A09-41e4-9A59-9B22D3FEB47C),
+		helpstring("4CONTROL: Variable DBI")
+	]
+	coclass VariableDBI
+	{
+		[default] interface IVariableDBI;
+	};
+
+	[
+		uuid(29F16D3D-F05F-4e5c-9212-D50B03074813),
+		helpstring("4CONTROL: Instance DBI")
+	]
+	coclass InstanceDBI
+	{
+		[default] interface IInstanceDBI;
+	};
+
+	[
+		uuid(BC8C3766-3795-4c83-BA63-D6A0ED11FF32),
+		helpstring("4CONTROL: Type DBI")
+	]
+	coclass TypeDBI
+	{
+		[default] interface ITypeDBI;
+	};
+
+	[
+		uuid(E87879CB-32A9-41f6-A8E8-C66AFD445680),
+		helpstring("4CONTROL: Breakpoint DBI")
+	]
+	coclass BreakpointDBI
+	{
+		[default] interface IBreakpointDBI;
+	};
+
+	[
+		uuid(E16B92F3-F8C7-4c2d-BDA4-8CEC29CC36DF),
+		helpstring("4CONTROL: Step DBI")
+	]
+	coclass StepDBI
+	{
+		[default] interface IStepDBI;
+	};
+
+	[
+		uuid(ABA07370-FD02-4200-A03E-163D7B887CFC),
+		helpstring("4CONTROL: Action DBI")
+	]
+	coclass ActionDBI
+	{
+		[default] interface IActionDBI;
+	};
+
+	[
+		uuid(1C1353A0-00D7-4535-B911-4061A558F5DC),
+		helpstring("4CONTROL: Transition DBI")
+	]
+	coclass TransitionDBI
+	{
+		[default] interface ITransitionDBI;
+	};
+};
+
+
+/*
+ *----------------------------------------------------------------------------*
+ *  $History: DbgInfo.idl $
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.02.07   Time: 19:01
+ * Created in $/4CReleased/V2.20.00/COM/softing/fc/inc
+ * 
+ * *****************  Version 2  *****************
+ * User: Ef           Date: 12.02.04   Time: 19:30
+ * Updated in $/4Control/COM/softing/fc/inc
+ * osai: watch auto globals
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.08.03   Time: 16:34
+ * Created in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 8  *****************
+ * User: Ef           Date: 22.10.01   Time: 23:26
+ * Updated in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 7  *****************
+ * User: Sis          Date: 8.10.01    Time: 18:03
+ * Updated in $/4Control/COM/softing/fc/inc
+ * gvl file instances
+ * 
+ * *****************  Version 6  *****************
+ * User: Sis          Date: 18.09.01   Time: 17:27
+ * Updated in $/4Control/COM/softing/fc/inc
+ * instances from DebugInfo
+ * 
+ * *****************  Version 5  *****************
+ * User: Ef           Date: 5.09.01    Time: 11:12
+ * Updated in $/4Control/COM/softing/fc/inc
+ * global change: all editor positions have now EDP_POS_QUALIFIER,
+ * x,y,cx,cy
+ * 
+ * *****************  Version 4  *****************
+ * User: Ef           Date: 28.08.01   Time: 16:00
+ * Updated in $/4Control/COM/softing/fc/inc
+ * BPs in 4GR ST Actions  Part I: compiler & debug info server
+ * 
+ * *****************  Version 3  *****************
+ * User: Sis          Date: 30.03.01   Time: 9:12
+ * Updated in $/4Control/COM/softing/fc/inc
+ * changed uuids
+ * 
+ * *****************  Version 2  *****************
+ * User: Scd          Date: 31.01.01   Time: 12:23
+ * Updated in $/4Control/COM/softing/fc/inc
+ * new headers added
+ *==
+ *----------------------------------------------------------------------------*
+*/
+

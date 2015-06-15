@@ -1,0 +1,4 @@
+cd /local/root
+chmod +x hmi
+tar cf /local/root/control.tar /local/control
+/sbin/reboot

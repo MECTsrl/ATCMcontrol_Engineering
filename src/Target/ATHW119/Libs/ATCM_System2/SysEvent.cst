@@ -1,0 +1,88 @@
+(*
+ * ATCMControl Embedded - System Library
+ * ----------------------------------------------------------------------------
+ *
+ 
+ *)
+
+CONST
+    (* System Events
+     * ------------------------------------------------------------------------------------
+     *)
+    EVT_IO_DRIVER_ERROR     : INT :=  1;    (* General IO driver error                      *)    
+    EVT_POWER_FAIL          : INT :=  2;    (* Power fail                                   *)
+    EVT_EXCEPTION           : INT :=  3;    (* General IEC task exception                   *)
+    EVT_BOOTED              : INT :=  4;    (* System has booted                            *)
+
+    EVT_RESERVED_00         : INT :=  5;    (* --- Reserved                                 *)
+    EVT_RESERVED_01         : INT :=  6;    (* --- Reserved                                 *)
+    EVT_RESERVED_02         : INT :=  7;    (* --- Reserved                                 *)
+    EVT_RESERVED_03         : INT :=  8;    (* --- Reserved                                 *)
+    EVT_RESERVED_04         : INT :=  9;    (* --- Reserved                                 *)
+    EVT_RESERVED_05         : INT := 10;    (* --- Reserved                                 *)
+
+    (* Engineering command events
+     * ------------------------------------------------------------------------------------
+     *)
+    EVT_DOWNLOAD_BEGIN      : INT := 11;    (* Download command received                    *)
+    EVT_DOWNLOAD_END        : INT := 12;    (* Download finished, resource started          *)
+    EVT_ONLCHG_BEGIN        : INT := 13;    (* Online Change command received               *)
+    EVT_ONLCHG_END          : INT := 14;    (* Online Change finished, resource started     *)
+    EVT_BEFORE_COLDSTART    : INT := 15;    (* Coldstart command received                   *)
+    EVT_BEFORE_WARMSTART    : INT := 16;    (* Warmstart command received                   *)
+    EVT_AFTER_COLDSTART     : INT := 17;    (* Coldstart executed                           *)
+    EVT_AFTER_WARMSTART     : INT := 18;    (* Warmstart executed                           *)
+    EVT_START_RESOURCE      : INT := 19;    (* Start Resource command received              *)
+    EVT_STOP_RESOURCE       : INT := 20;    (* Stop Resource command received               *)
+    EVT_START_TASK          : INT := 21;    (* Start Task command executed                  *)
+    EVT_STOP_TASK           : INT := 22;    (* Stop Task command executed                   *)
+    EVT_INITIALIZE          : INT := 23;    (* Initialize/Clear command received            *)
+	EVT_BACNET_EVENT        : INT := 24;    (* BACnet Event received                        *)
+	EVT_BACNET_DEVICE_STATE : INT := 25;    (* BACnet device state change event received    *)
+	EVT_BACNET_CONFIG_RESULT: INT := 26;    (* BACnet configuration finished                *)
+
+    EVT_RESERVED_10         : INT := 27;    (* --- Reserved                                 *)
+    EVT_RESERVED_11         : INT := 28;    (* --- Reserved                                 *)
+    EVT_RESERVED_12         : INT := 29;    (* --- Reserved                                 *)
+    EVT_RESERVED_13         : INT := 30;    (* --- Reserved                                 *)
+    EVT_RESERVED_14         : INT := 31;    (* --- Reserved                                 *)
+    EVT_RESERVED_15         : INT := 32;    (* --- Reserved                                 *)
+
+    (* User events (target dependent interpretation)
+     * ------------------------------------------------------------------------------------
+     *)
+    EVT_USER_01             : INT := 33;    (* --- User Event                               *)
+    EVT_USER_02             : INT := 34;    (* --- User Event                               *)
+    EVT_USER_03             : INT := 35;    (* --- User Event                               *)
+    EVT_USER_04             : INT := 36;    (* --- User Event                               *)
+    EVT_USER_05             : INT := 37;    (* --- User Event                               *)
+    EVT_USER_06             : INT := 38;    (* --- User Event                               *)
+    EVT_USER_07             : INT := 39;    (* --- User Event                               *)
+    EVT_USER_08             : INT := 40;    (* --- User Event                               *)
+    EVT_USER_09             : INT := 41;    (* --- User Event                               *)
+    EVT_USER_10             : INT := 42;    (* --- User Event                               *)
+    EVT_USER_11             : INT := 43;    (* --- User Event                               *)
+    EVT_USER_12             : INT := 44;    (* --- User Event                               *)
+    EVT_USER_13             : INT := 45;    (* --- User Event                               *)
+    EVT_USER_14             : INT := 46;    (* --- User Event                               *)
+    EVT_USER_15             : INT := 47;    (* --- User Event                               *)
+    EVT_USER_16             : INT := 48;    (* --- User Event                               *)
+    EVT_USER_17             : INT := 49;    (* --- User Event                               *)
+    EVT_USER_18             : INT := 50;    (* --- User Event                               *)
+    EVT_USER_19             : INT := 51;    (* --- User Event                               *)
+    EVT_USER_20             : INT := 52;    (* --- User Event                               *)
+    EVT_USER_21             : INT := 53;    (* --- User Event                               *)
+    EVT_USER_22             : INT := 54;    (* --- User Event                               *)
+    EVT_USER_23             : INT := 55;    (* --- User Event                               *)
+    EVT_USER_24             : INT := 56;    (* --- User Event                               *)
+    EVT_USER_25             : INT := 57;    (* --- User Event                               *)
+    EVT_USER_26             : INT := 58;    (* --- User Event                               *)
+    EVT_USER_27             : INT := 59;    (* --- User Event                               *)
+    EVT_USER_28             : INT := 60;    (* --- User Event                               *)
+    EVT_USER_29             : INT := 61;    (* --- User Event                               *)
+    EVT_USER_30             : INT := 62;    (* --- User Event                               *)
+    EVT_USER_31             : INT := 63;    (* --- User Event                               *)
+    EVT_USER_32             : INT := 64;    (* --- User Event                               *)
+
+END_CONST
+

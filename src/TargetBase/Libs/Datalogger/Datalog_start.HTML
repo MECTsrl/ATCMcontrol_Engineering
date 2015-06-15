@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>Datalog Library</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css">
+</head>
+
+<body bgcolor="#FFFFCC">
+<h2>Datalog_start</h2>
+<p>Start the datalogging.</p>
+<h3>Interface</h3>
+<pre class="preforma">
+FUNCTION Datalog_start : INT
+VAR_INPUT
+        buffer_lenght : UDINT;
+        buffer_number : UINT;
+        index : UINT;
+END_VAR
+</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>INT</b></i><br>
+<br>
+<table border="1">
+<tr>
+	<td>
+		> 0 :
+	</td>
+ 	<td>
+		actually the available space for log on the usbkey, if the requested buffer is bigger
+then currently available space
+ 	</td>
+ </tr>
+<tr>
+	<td>
+		-1 :
+	</td>
+ 	<td>
+		<b>Succes</b>
+ 	</td>
+ </tr>
+<tr>
+	<td>
+		-2 :
+	</td>
+ 	<td>
+		usb device cannot be mounted
+ 	</td>
+ </tr>
+<tr>
+	<td>
+		-3 :
+	</td>
+ 	<td>
+		cannot grab free space on the usbkey
+ 	</td>
+ </tr>
+ <tr>
+	<td>
+		-4 :
+	</td>
+ 	<td>
+		cannot create directory to store datalog results
+ 	</td>
+ </tr>
+ </table>
+ </p>
+
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl>
+  <dt><b>buffer_lenght</b></dt>
+  <dd>Value of type <b><i>UDINT</i></b><br>
+    lenght of the buffer for a single kind of data<br></dd>
+</dl>
+<dl>
+  <dt><b>buffer_number</b></dt>
+  <dd>Value of type <b><i>UINT</i></b><br>
+     number of buffer that shoud be allocated (1 for each kind of data to be recorded)<br></dd>
+</dl>
+<dl>
+  <dt><b>index</b></dt>
+  <dd>Value of type <b><i>UINT</i></b><br>
+     index to access the usbkey on which the data should be stored
+                                        if set to 0 allow datalogging on the internal flash with a max allowed buffer
+                                        of 512 kb.<br></dd>
+</dl>
+<h3>Description</h3>
+<p><b>Datalog_start</b> Initialize datalog infrastructure.</p>
+</body>
+</html>

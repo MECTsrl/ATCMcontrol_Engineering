@@ -1,0 +1,46 @@
+// FcHtmlEd.odl : type library source for FcHtmlEd.exe
+
+// This file will be processed by the MIDL compiler to produce the
+// type library (FcHtmlEd.tlb).
+
+[ uuid(8B6D0FD9-8E2D-482b-A8D5-B1D057034C9B), version(1.0) ]
+library FcHtmlEd
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+
+	//  Primary dispatch interface for CFcHtmlEdDoc
+	
+	[ uuid(A04CED76-B51D-11D2-9FD9-00A024363DFC) ]
+	dispinterface IFcHtmlEd
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CFcHtmlEdDoc)
+			//}}AFX_ODL_PROP
+			
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CFcHtmlEdDoc)
+			//}}AFX_ODL_METHOD
+
+	};
+	
+	#include "StdEditorIF.idl"
+
+	//  Class information for CFcHtmlEdDoc
+	
+	[ uuid(FC41A9DA-8EA2-423e-A6C7-0075880EB896) ]
+	coclass Document
+	{
+		[default] dispinterface IFcHtmlEd;
+		interface ICEEdit;
+        interface ICEPrint;
+	};
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};

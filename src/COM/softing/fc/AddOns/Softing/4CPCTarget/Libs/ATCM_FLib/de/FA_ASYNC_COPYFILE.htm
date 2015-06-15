@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>FA_ASYNC_COPYFILE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>FA_ASYNC_COPYFILE </h2>
+<p>Kopiert eine Datei in das angegebene Zielverzeichnis.</p>
+<h3>Schnittstelle</h3>
+<pre class="preforma">FUNCTION_BLOCK FA_ASYNC_COPYFILE
+
+VAR_INPUT
+    EXEC        : BOOL;             
+    DESTNAME    : WSTRING;          
+    OVERWRITE   : BOOL := TRUE;     
+END_VAR
+VAR_IN_OUT
+    FILE        : FA_ASYNC_FILE;    
+END_VAR
+VAR_OUTPUT
+    DONE        : BOOL;             
+    ERROR       : BOOL;             
+    ERRCD       : DINT;             
+    ERRTXT      : WSTRING;          
+END_VAR</pre>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>EXEC</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Startet die Operation bei steigender Flanke.</dd>
+  <dt><b>DESTNAME</b></dt>
+  <dd>Wert vom Typ <b><i>WSTRING</i></b><br>
+    Spezifiziert das Zielverzeichnis und den Namen, den die kopierte Datei erhalten 
+    soll. Wird kein Zielverzeichnis angegeben, wird die Datei unter dem spezifizierten 
+    Namen in das Standard-Arbeitsverzeichnis von ATCMControl kopiert. Dieses Verzeichnis 
+    hat den Namen <font face="Courier New, Courier, mono">data</font> und befindet 
+    sich direkt unter dem ATCMControl-Installationsverzeichnis.</dd>
+  <dt><b>OVERWRITE</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Legt fest, ob eine Datei &uuml;berschrieben wird, wenn sie bereits existiert.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Eine bereits existierende Datei wird &uuml;berschrieben.<br>
+    <i><b>FALSE</b></i>: Eine bereits existierende Datei wird nicht &uuml;berschrieben. 
+    Der Vorgang wird abgebrochen, falls eine Datei gleichen Namens im angegebenen 
+    Zielverzeichnis bereits existiert.<br>
+    Standardwert ist <i><b>TRUE</b></i>.</dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl> 
+  <dt><b>FILE</b></dt>
+  <dd>Instanz der Struktur <a href="FA_ASYNC_FILE.htm"><i><b>FA_ASYNC_FILE</b></i></a><br>
+    Spezifiziert die Datei, die kopiert werden soll.</dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b>DONE</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Signalisiert den (erfolgreichen oder gescheiterten) Abschlu&szlig; der Operation.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Operation ist abgeschlossen.<br>
+    <i><b>FALSE</b></i>: Operation ist noch nicht abgeschlossen.</dd>
+  <dt><b>ERROR</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Signalisiert den Fehlerstatus.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Ein Fehler ist aufgetreten.<br>
+    <i><b>FALSE</b></i>: Es ist kein Fehler aufgetreten.</dd>
+  <dt><b>ERRCD</b></dt>
+  <dd>Wert vom Typ <i><b>DINT</b></i><br>
+    Enth&auml;lt eine Fehlernummer, falls ein Fehler aufgetreten ist. <br>
+    Ist kein Fehler aufgetreten, hat <i><b>ERRCD</b></i> den Wert <b>0</b>.<br>
+  </dd>
+  <dd>M&ouml;gliche Werte sind in den <a href="Const_Error.htm">Fehlerkonstanten</a> 
+    definiert. </dd>
+  <dt><b>ERRTXT</b></dt>
+  <dd>Wert vom Typ <i><b>WSTRING</b></i><br>
+    Enth&auml;lt einen Fehlertext, falls ein Fehler aufgetreten ist. <br>
+    Ist kein Fehler aufgetreten, enth&auml;lt <i><b>ERRTXT</b></i> einen Leerstring.</dd>
+</dl>
+<h3>Beschreibung</h3>
+<p><b><i>FA_ASYNC_COPYFILE</i></b> kopiert die im Parameter <i><b>FILE</b></i> 
+  angegebene Datei in das in <i> <b>DESTNAME</b></i> spezifizierte Zielverzeichnis 
+  und benennt die Datei gegebenenfalls um. Die Quelldatei mu&szlig; vor dem Kopieren 
+  nicht ge&ouml;ffnet werden, d.h. die Ausf&uuml;hrung von <i><b>FA_ASYNC_COPYFILE 
+  </b></i> ist unabh&auml;ngig von einem Zugriffszyklus. </p>
+</body>
+</html>

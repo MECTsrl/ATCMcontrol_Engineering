@@ -1,0 +1,26 @@
+TARGETTYPE=DLL
+TARGET=$(EXE_DIR)\Engineering\bin\KadManager.dll
+DEFINE=_ATL_STATIC_REGISTRY
+DEFINE=_ATL_NO_SECURITY
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\CE\inc
+INCLUDE=$(MAKEDIR)
+INCLUDE=$(MAKEDIR)\Inc
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+LIBPATH=$(LIB_DIR)
+DEFLIB=fc_xml.lib
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\lib\KADMergeDLL.lib
+
+MASTER_RC=KadManager.RC
+PCHFILE=stdafx
+
+USER=makefirst:$(MAKEDIR)\Lib
+USER=$(MAKEDIR)\Lib:
+USER=  -md $@
+
+USER=precompile:
+USER=  $(CP) CEKadMan.h ..\inc\CEKadMan.h
+USER=  $(CP) CEKadMan_i.c ..\inc\CEKadMan_i.c
+USER=  $(CP) KADManager.h ..\inc\KADManager.h
+USER=  $(CP) KADManager_i.c ..\inc\KADManager_i.c
+

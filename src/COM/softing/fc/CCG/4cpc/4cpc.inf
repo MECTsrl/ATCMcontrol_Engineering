@@ -1,0 +1,31 @@
+TARGET=$(EXE_DIR)\Engineering\bin\4cpc\4cpc.exe
+TARGETTYPE=con
+UNICODE=0
+
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\ccg\inc
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\addons\softing\4CPCTarget\inc
+
+
+#static libs:
+LIBRARY=$(LIB_DIR)\fc_tools.lib 
+LIBRARY=$(LIB_DIR)\cg_tools.lib 
+
+#own dlls:
+LIBRARY=$(LIB_DIR)\fc_todebug.lib 
+LIBRARY=$(LIB_DIR)\fc_baselib.lib 
+LIBRARY=$(LIB_DIR)\fc_util.lib
+
+#system dlls:
+DEFLIB=ole32.lib oleaut32.lib
+
+#object for expanding *? in command line
+OBJECT=setargv.obj
+
+USER=makefirst:$(EXE_DIR)\Engineering\bin\4cpc
+USER=$(EXE_DIR)\Engineering\bin\4cpc:
+USER=  -md $@
+
+LATECOPY=$(INCLUDE_DIR)\io_config.tlb $(EXE_DIR)\Engineering\bin\4cpc\io_config.tlb
+ 

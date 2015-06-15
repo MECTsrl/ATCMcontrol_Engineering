@@ -1,0 +1,73 @@
+#*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CSC/opcAutoDA/opcAutoDA.inf 1     28.02.07 19:00 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: opcAutoDA.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CSC/opcAutoDA/opcAutoDA.inf $
+#
+# =PROJECT             CAK1020 ATCMControlV2.0
+#
+# =SWKE                4CSC
+#
+# =COMPONENT           OPC Automation
+#
+# =CURRENT      $Date: 28.02.07 19:00 $
+#               $Revision: 1 $
+#
+# =REFERENCES
+#
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+#    @DESCRIPTION@
+#== OPC DataAccess Automation/IDispatch Wrapper
+#----------------------------------------------------------------------------*
+# =MODIFICATION
+#  20.03.2001  SU      File created
+#  see history at end of file !
+#==
+#******************************************************************************
+#H<<*/
+
+TARGET=$(EXE_DIR)\pub\opcAutoDA.dll
+TARGETTYPE=DLL
+UNICODE=0
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+INCLUDE=$(INCLUDE_DIR)\opc
+DEFLIB=ole32.lib
+DEFLIB=oleaut32.lib
+DEFLIB=uuid.lib
+PCHFILE=stdafx
+DEFINE=_AFXDLL
+DEFINE=_ATL_STATIC_REGISTRY
+
+
+#----------------------------------------------------------------------------*
+# =MODIFICATIONS
+# $History: opcAutoDA.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:00
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CSC/opcAutoDA
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:33
+# Created in $/4Control/COM/softing/fc/CSC/opcAutoDA
+# 
+# *****************  Version 1  *****************
+# User: Su           Date: 20.03.01   Time: 14:06
+# Created in $/4Control/COM/softing/fc/CSC/opcAutoDA
+# 
+# *****************  Version 2  *****************
+# User: Ed           Date: 27.09.99   Time: 13:58
+# Updated in $/4Control/COM/softing/fc/CSC/opcAutoDA
+# changes done by RT:  times with odd seconds...
+#==
+#----------------------------------------------------------------------------*

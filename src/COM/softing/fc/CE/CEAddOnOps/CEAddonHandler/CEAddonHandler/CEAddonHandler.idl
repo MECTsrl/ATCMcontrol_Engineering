@@ -1,0 +1,52 @@
+
+// CEAddonHandler.idl : IDL source for CEAddonHandler.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (CEAddonHandler.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+import "CEAddonActionEvents.idl";
+
+/*
+	[
+		object,
+		uuid(EB0423F0-F5DC-11D4-B8EE-002018641833),
+	
+		helpstring("ICEAddonAction Interface"),
+		pointer_default(unique)
+	]
+	interface ICEAddonAction : IUnknown
+	{
+	};
+*/
+[
+	uuid(EB0423E1-F5DC-11D4-B8EE-002018641833),
+	version(1.0),
+	helpstring("CEAddonHandler 1.0 Type Library")
+]
+library CEADDONHANDLERLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+    importlib("..\..\..\inc\CEAddonAction.tlb");
+    importlib("..\..\..\inc\CEVarDecl.tlb");
+    importlib("..\..\..\inc\CEDragDrop.tlb");
+    importlib("..\..\..\inc\CEIECOperation.tlb");
+
+	[
+		uuid(C2EED755-E717-11D4-B8D2-002018641833),
+		helpstring("CEAddonActionComObj Class")
+	]
+	coclass CEAddonActionComObj
+	{
+		[default] interface ICEAddonAction;
+        interface ICEVarDecl;
+        interface ICEDragDrop;
+        interface ICEIECResourceOp;
+        [default, source] interface ICEAddonActionEvents;
+	};
+};
+

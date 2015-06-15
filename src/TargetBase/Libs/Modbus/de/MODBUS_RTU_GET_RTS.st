@@ -1,0 +1,10 @@
+(*[[
+    UserText1= "mb_rtu_get_rts",
+    UserHelpURL= "ATCMfile:MODBUS_RTU_GET_RTS.HTML",
+]]*)
+FUNCTION MODBUS_RTU_GET_RTS : UINT
+VAR_OUTPUT
+    rts : UINT; (*[rtu rts]*)
+END_VAR
+INLINE {STDLIB(MODBUS_RTU_GET_RTS)}
+END_FUNCTION

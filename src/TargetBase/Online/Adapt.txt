@@ -1,0 +1,19 @@
+
+Files to be adapted (branched!) in order to create 
+a new OPC server for a target adaptation:
+
+
+CommissioningMgt.rgs
+ControlMgt.rgs
+CSC_OnlSrv.rgs
+CustomConnect.rgs
+OPCServer.rgs
+
+Globals.h
+(Note: The OPC library (OnlLibServ.lib) uses a seperate, 
+local copy of this file but only the corresponding 
+external declarations.)
+
+Version.h
+
+CSC_OnlSrv.idl

@@ -1,0 +1,11 @@
+#ifndef __CMNVER_RC__
+#define __CMNVER_RC__
+
+#include "osc_cmnres.h"
+
+#include "Foundation\sfl.rc"
+
+#endif // __CMNVER_RC__
+
+
+

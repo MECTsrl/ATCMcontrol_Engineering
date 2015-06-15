@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>TSK_STAT</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1"><LINK
+href="Lib.css" rel=stylesheet>
+<META content="MSHTML 6.00.2800.1458" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffcc>
+  <H2>TSK_STAT</H2>
+  <P>Structure representing a task state.</P>
+  <H3>Interface</H3>
+  <pre class="preforma">TYPE
+  TSK_STAT : STRUCT
+    TaskState      : UDINT;
+    CycleTime      : UDINT;
+    ExecMax        : UDINT;
+    ExecMin        : UDINT;
+    ExecAverage    : UDINT;
+    ExecCount      : UDINT;
+    WDogCounter    : UDINT;
+    WDogTrigger    : UDINT;
+  END_STRUCT;
+END_TYPE
+</pre>
+  <H3>Parameters </H3>
+
+  <H3><STRONG><FONT size=3>TaskState</FONT></STRONG></H3>
+  <P>Value of type&nbsp;<I><B>UDINT.</B></I> </P>
+  <P>Task state. (See task state values in
+  <a href="Const_System2.htm"><strong><em>System2.cst</em></strong></a>.)</P>
+  <H3><STRONG><FONT size=3>CycleTime</FONT></STRONG></H3>
+  <P>Value of type&nbsp;<I><B>UDINT.</B></I> </P>
+  <P>Task cycle time for cyclic tasks.</P>
+  <H3><STRONG><FONT size=3>ExecMax</FONT></STRONG></H3>
+  <P>Value of type&nbsp;<STRONG><EM>UDINT.</EM></STRONG> </P>
+  <P>Maximum task execution time in us.</P>
+  <H3><STRONG><FONT size=3>ExecMin</FONT></STRONG></H3>
+  <P>Value of type&nbsp;<STRONG><EM>UDINT.</EM></STRONG> </P>
+  <P>Minimum task execution time in us.</P>
+  <H3><STRONG><FONT size=3>ExecAverage</FONT></STRONG></H3>
+  <P>Value of type&nbsp;<I><B>UDINT.</B></I> </P>
+  <P>Average task execution time in us.</P>
+  <H3><STRONG><FONT size=3>ExecCount</FONT></STRONG></H3>
+  <P>Value of type&nbsp;<I><B>UDINT.</B></I> </P>
+  <P>Task execution counter.</P>
+  <H3><STRONG><FONT size=3>WDogCounter</FONT></STRONG></H3>
+  <P>Value of type&nbsp;<I><B>UDINT.</B></I> </P>
+  <P>Watchdog counter.</P>
+  <H3><STRONG><FONT size=3>WDogTrigger</FONT></STRONG></H3>
+  <P>Value of type&nbsp;<I><B>UDINT.</B></I> </P>
+  <P>Watchdog trigger level.</P>
+  <H3>Description </H3>
+  <P>Provides information about task state, execution and cycle timing and about the watchdog. <br>The statistic informations can be retrieved for a specific task by calling the function <a href="TSK_GetStatistic.htm"><b><i>TSK_GetStatistic</i></b></a>. <br>They can be reset by calling the function <a href="TSK_ClearStatistic.htm"><b><i>TSK_ClearStatistic</i></b></a>.</P></BODY></HTML>

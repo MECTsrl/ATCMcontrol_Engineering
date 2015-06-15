@@ -1,0 +1,233 @@
+/*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/inc/io_config.idl 1     28.02.07 19:01 Ln $
+ *----------------------------------------------------------------------------*
+ *
+ * =FILENAME            $Workfile: io_config.idl $
+ *                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/inc/io_config.idl $
+ *
+ * =PROJECT             CAK1020 ATCMControlV2.0
+ *
+ * =SWKE                4CIO
+ *
+ * =COMPONENT           IO-Configurator (general)
+ *
+ * =CURRENT      $Date: 28.02.07 19:01 $
+ *               $Revision: 1 $
+ *
+ * =REFERENCES
+ *
+ *----------------------------------------------------------------------------*
+ *
+
+
+
+
+
+ *==
+ *----------------------------------------------------------------------------*
+ * =DESCRIPTION
+ *    @DESCRIPTION@
+ *== IDL file for integration of IO-Layers into SW-Units 4CCG/4CE
+ *== see 4CIO_Architecture(V2.0).doc section 4.1.1.1
+ *----------------------------------------------------------------------------*
+ * =MODIFICATION
+ *  07.03.2001  SU      File created
+ *  see history at end of file !
+ *==
+ *******************************************************************************
+H<<*/
+//----  Local Defines:   -------------------------------------------*
+//----  Includes:   -------------------------------------------*
+import "oaidl.idl";
+import "ocidl.idl";
+
+//------------------------------------------------------------------*
+/**
+ * @file io_config.idl common interface(s) between SW-Unit 4CE/4CCG and 
+ * the IO-Configurators.
+ * <b>Usage:</b><br> contains <b>NO</b> coclass, create your own IDL for each configurator
+ * and insert <b>import "io_config.idl";</b> in the library section, before you 
+ * actually define your coclass.
+ * 
+*/
+//interface predeclarations
+interface ICompile;
+
+//----  ICompile Interface:    -----------------------------------------------*
+	[
+		object,
+		uuid(F96C6ACF-6CA1-4c79-8CEC-2529EA567D18),
+		oleautomation,
+		helpstring("ICompile Interface called by SW-Unit 4CCG"),
+		pointer_default(unique)
+	]
+	//------------------------------------------------------------------*
+	/**
+	 *  interface ICompile - 
+	 *	Denotes the interface to the SW-Unit 4CCG. 
+	 *  The interface methods should be called in the order as shown with 
+	 *  figure 2 on p. 9
+	 *  <b>NOTE:<br></b>
+	 *  References mentioned in interface method descriptions refer to
+	 *	the document 4CIO_Architecture(V2.0).doc
+	 *  @see    4CIO_Architecture(V2.0).doc section 4.1.1.1
+	*/
+	interface ICompile : IUnknown
+	{
+        //------------------------------------------------------------------*
+        /**
+         * Opens and loads the IO configuration file maintained by the 
+         * IO-Configurator for an IO-Layer. The full path to the IO configuration
+         * file has to be specified. This method should be called prior to calling 
+         * the interface methods Compile() (see section 4.1.1.1.2) and CheckAddress() 
+         * (see section 4.1.1.1.3).
+         * 
+         * @param       locale - Indicates that the parameter is a locale ID. 
+         *              Set the locale for error messages etc.
+         * @param       sSrcFile - Full path to the IO-Configurators IO 
+         *              configuration file . (see also section 3.2.4.4)
+         * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+         *              S_OK - success<br>
+         *              E_POINTER - sSrcFile argument invalid.
+         * @see         Compile(), CheckAddress()
+        */
+		[helpstring("Opens and loads the IO configuration file into IO-Configurator")]
+		HRESULT Load([in, string] BSTR sSrcFile,[in,lcid] LCID locale);
+		
+        //------------------------------------------------------------------*
+        /**
+         * Compile IO configuration domains and info from IO-Configurator.
+         * During the compile process (see configuration cycle flow chart figure 5) 
+         * for each resource a root __.init domain will be generated. This initialization 
+         * domain contains an configuration line for the IO-Manager. The SW-Unit 4CCG 
+         * will gather the information for the configuration line from the IO-Configurator
+         * by calling Compile(). The configuration line for the IO-Manager contains also 
+         * the configuration domains for the IO-Layers. Each entry of the configuration line 
+         * for an specific IO-Layer is separated by an '|' character. Hence a configuration 
+         * entry for one IO-Layer in the configuration line for the IO-Manager could look 
+         * like this:<br>
+         * <b>{88EF2AA1BF1011D1B14C06097E1BE2F },4,opcserv.data,opcgrp.data</b><br>
+         * The first comma separated value is the CLSID of the IO-Layer, the second comma
+         * separated value is the channel number and the subsequent values are the 
+         * configuration domains (1 ..n).<br>
+         * The SW-Unit 4CCG will query all this information from the IO-Configurator 
+         * for the corresponding IO-Layer by invoking Compile() and use the information 
+         * returned to build the configuration line for the IO-Manager 
+         * (see also sections 3.2.1.3 and 3.2.1.5 for details). The method Load() 
+         * should be called prior to calling Compile().
+         * 
+         * @param       sDestDir - Directory path where the configuration domains 
+         *              will be stored. Shall not be NULL.
+         * @param       pDomainFiles - reference to a safe array of BSTR. The array 
+         *              contains the names of the created configuration domain files. 
+         *              Shall not be NULL.
+         * @param       plChannelNum - reference to a long. Compile will safe the 
+         *              assigned Channel number of the IO-Layer there. Shall not be NULL.
+         * @param       psIOLayerRef - Reference to a BSTR. The IO-Configurators Compile() 
+         *              method will return the CLSID of the corresponding IO-Layer executable 
+         *              there. Shall not be NULL.
+         * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+         *              S_OK - success<br>
+         *              E_FAIL - failure<br>
+         *              E_POINTER - Invalid argument for one of the parameters sDestDir,
+         *              pDomainFiles, plChannelNum, psIOLayerRef.
+         * @see         sections 3.2.1.3 and 3.2.1.5,Load()
+        */
+		[helpstring("Compile IO configuration domains and info from IO-Configurator")]
+        HRESULT Compile([in, string] BSTR sDestDir, [out] SAFEARRAY(BSTR) *pDomainFiles,
+            [out] long* plChannelNum,[out,string] BSTR* psIOLayerRef);
+		
+        //------------------------------------------------------------------*
+        /**
+         * Check direct % address and obtain IO-Layer initialization data.
+         * The compiler/code generator 4CCG will analyze the GVL file returned 
+         * by the IO-Layers IO-Configurator. 4CCG will also analyze variables 
+         * with direct addresses declared within the source code of a POU. 
+         * 4CCG will call the IO-Configurators ICompile::CheckAddress() method 
+         * during the compilation process to validate the direct address and to 
+         * obtain an initialization string for each IO-Variable. CheckAddress will 
+         * return the initialization string and additionally a Java class. The compiler
+         * in turn will write the initialization string and the Java class for instantiation
+         * of the IO-Variable in one of it's initialization domains. The Java class shall 
+         * be provided by CheckAddress() to allow IO-Layers implementing different Java 
+         * classes for access to IO-Variables. Several predefined Java classes already 
+         * exist in 4CC, hence an IO-Layer is not forced to provide it's own Java classes 
+         * (that have to be installed by the Setup IO-S). Rather an IO-Layer can reuse the 
+         * existing Java classes. The process mentioned above is also shown with the 
+         * configuration cycle flow chart (see figure 5 on p.12).The method Load() should 
+         * be called prior to calling CheckAddress()
+         * 
+         * @param       sAddress - Direct address of an IO-Variable. Direct address will
+         *              be validated with CheckAddress(). Shall not be NULL.
+         * @param       sIECType - String denoting the IEC datatype of the IO-Variable. 
+         *              Refer to 4CCG Architecture section 4.1.2.3.1 for details of the 
+         *              "mangled names". Shall not be NULL.
+         * @param       sInstancePath - Instance path of the IO-Variable. Shall not be NULL. 
+         * @param       psJavaClass - Class identifier of the Java class representing the 
+         *              IO variable in 4CC. Pointer shall not be NULL.
+         * @param       psInitString - Initialization string that will be returned by 
+         *              CheckAddress(). Will be written by 4CCG into one of it’s 
+         *              initialization domains. Pointer shall not be NULL..
+         * @param       psDiagMsg - An additional diagnostic message will be returned with
+         *              this BSTR in case of an error. The diagnostic message shall contain 
+         *              a unique identifier for the IO-System type (e.g. DP,FF). 
+         *              Pointer shall not be NULL.
+         * @param       plErrorPos - Additional error information. Denotes the character
+         *              offset in the direct address that caused the error. Returnded position
+         *              shall be >= 0. Pointer shall not be NULL.
+         * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+         *              S_OK - success<br>
+         *              E_FAIL - failure<br>
+         *              E_POINTER - one of the pointer arguments specified an invalid argument.<br>
+         *              SW-Unit 4CCG will examine the severity code of HRESULT returned.
+         * @see         4CCG Architecture sections 2.3,2.4 ,4.1.2.3.1
+         * @see         4CIO Architecture section 3.2.1.6, Load()
+        */
+		[helpstring("Check direct % address and obtain IO-Layer initialization data")] 
+        HRESULT CheckAddress([in, string] BSTR sAddress, [in, string] BSTR sIECType,
+            [in, string] BSTR sInstancePath,[out, string] BSTR * psJavaClass,
+            [out, string] BSTR * psInitString,[out, string] BSTR * psDiagMsg,
+            [out] long * plErrorPos);
+		
+	};
+
+//-----------------------------------------------------
+// This TYPELIB is generated as a convenience to users of high level tools
+// which are capable of using or browsing TYPELIBs. 
+// 'Smart Pointers' in VC6 is one example.
+//-----------------------------------------------------
+
+[
+    uuid(8B751B86-98C1-456f-A36D-2DD65DF8C903),
+    version(2.0),
+    helpstring("4CONTROL: IO-Configurator 2.0 Type Library")
+]
+library IO_Config
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+    interface ICompile;
+};
+
+/*
+ *----------------------------------------------------------------------------*
+ *  $History: io_config.idl $
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.02.07   Time: 19:01
+ * Created in $/4CReleased/V2.20.00/COM/softing/fc/inc
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.08.03   Time: 16:34
+ * Created in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 1  *****************
+ * User: Wi           Date: 29.03.01   Time: 10:47
+ * Created in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 1  *****************
+ * User: Su           Date: 12.03.01   Time: 11:02
+ * Created in $/4Control/COM/softing/fc/AddOns/Softing/4CPCTarget/inc
+ * Initial rev.
+ *==
+ *----------------------------------------------------------------------------*
+*/

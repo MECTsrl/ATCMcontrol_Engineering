@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>CONNECT</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css">
+</head>
+
+<body bgcolor="#FFFFCC">
+<h2>CONNECT</h2>
+<p>Dient dem Auf- und Abbau einer seriellen Verbindung.</p>
+<h3>Schnittstelle</h3>
+<pre class="preforma">FUNCTION_BLOCK CONNECT      
+VAR_INPUT
+	EN_C    : BOOL := FALSE;   
+	PARTNER : COMM_PARTNER;    
+END_VAR
+VAR_OUTPUT
+	VALID  : BOOL := FALSE;    
+	ERROR  : BOOL := FALSE;    
+        STATUS : DINT := CFB_NoError;   
+	ID     : COMM_CHANNEL;     
+END_VAR</pre>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>EN_C</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Legt fest, ob eine Verbindung hergestellt oder beendet werden soll.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Verbindung wird hergestellt.<br>
+    <i><b>FALSE</b></i>: Verbindung wird beendet.</dd>
+  <dt><b>PARTNER</b></dt>
+  <dd>Instanz der Struktur <a href="COMM_PARTNER.htm"><i><b>COMM_PARTNER</b></i></a><br>
+    Repr&auml;sentiert die herzustellende Verbindung. </dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b>VALID</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Signalisiert den Verbindungsstatus.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Verbindung ist hergestellt.<br>
+    <i><b>FALSE</b></i>: Verbindung ist nicht hergestellt.</dd>
+  <dt><b>ERROR</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Signalisiert den Fehlerstatus.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Ein Fehler ist aufgetreten.<br>
+    <i><b>FALSE</b></i>: Es ist kein Fehler aufgetreten.</dd>
+  <dt><b>STATUS</b></dt>
+  <dd>Wert vom Typ <i><b>DINT</b></i>.<br>
+    Enth&auml;lt einen Statuscode. <br>
+    M&ouml;gliche Werte sind in den <a href="ConstState.htm">Statuskonstanten</a> 
+    definiert.<br>
+    Standardwert ist <i><b>CFB_NoError</b></i>.</dd>
+  <dt><b>ID</b></dt>
+  <dd>Instanz der Struktur <i><b><a href="COMM_CHANNEL.htm">COMM_CHANNEL</a></b></i>.<br>
+    Repr&auml;sentiert die mit <i><b>CONNECT</b></i> hergestellte Verbindung. 
+    Eine Instanz von <i><b>COMM_CHANNEL</b></i> wird beim Herstellen einer Verbindung 
+    automatisch erzeugt und mit Werten initialisiert. Um den zu verwendenden Kommunikationskanal 
+    zu identifizieren, wird bei Read- und Write-Requests mit Instanzen von <a href="SER_READ.htm"><i><b>SER_READ</b></i></a> 
+    und <a href="SER_WRITE.htm"><i><b>SER_WRITE</b></i></a> die beim Herstellen 
+    der Verbindung generierte Instanz von <i><b>COMM_CHANNEL</b></i> an deren 
+    Parameter <i> <b>ID</b></i> &uuml;bergeben. </dd>
+</dl>
+<h3>Beschreibung</h3>
+<p>Mit dem Aufruf einer Instanz von <b><i>CONNECT</i></b> wird ein Verbindung 
+  auf- oder abgebaut. Ob eine Verbindung auf- oder abgebaut werden soll, wird 
+  im Parameter <i><b>EN_C</b></i> festgelegt. Die Eigenschaften einer Verbindung 
+  werden &uuml;ber die an den Parameter <i><b>PARTNER</b></i> &uuml;bergebene 
+  Strukturinstanz von <a href="COMM_PARTNER.htm"><i><b>COMM_PARTNER </b></i></a>definiert. 
+  Vor dem Aufruf von <i><b>CONNECT</b></i> mu&szlig; daher eine Instanz dieser 
+  Struktur erzeugt und mit Werten initialisert werden. Zentrale Verbindungseigenschaften 
+  werden im Verbindungsstring <b><i>sParam</i></b> von <i><b>COMM_PARTNER</b></i> 
+  definiert. </p>
+<p>Bei erfolgreicher Herstellung der Verbindung wird automatisch eine Instanz 
+  der Struktur <i><b><a href="COMM_CHANNEL.htm">COMM_CHANNEL</a></b></i> erzeugt 
+  und mit den Verbindungswerten initialisiert. Diese Instanz dient f&uuml;r folgende 
+  Read- und Write-Requests als Handle auf die Verbindung und wird am Ausgang <i><b>ID</b></i> 
+  abgelegt. Die Instanz von <b><i>COMM_CHANNEL</i></b> wird an den Parameter <i> 
+  <b>ID</b></i> der Funktionsbausteinen <a href="SER_READ.htm"><b><i>SER_READ</i></b></a> 
+  und <a href="SER_WRITE.htm"><b><i>SER_WRITE</i></b></a> &uuml;bergeben, um die 
+  zu verwendende Verbindung zu identifizieren. </p>
+<p>Beim Abbau der Verbindung werden alle Read- und Write-Requests abgebrochen. 
+</p>
+</body>
+</html>

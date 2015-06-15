@@ -1,0 +1,55 @@
+# $Header: /4CReleased/V2.20.00/Target/TEMPLATES/AddOnHandler/AddOnHandler.inf 1     28.02.07 18:54 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: AddOnHandler.inf $
+#                        $Logfile: /4CReleased/V2.20.00/Target/TEMPLATES/AddOnHandler/AddOnHandler.inf $
+#
+# =PROJECT              4CONTROL V2.x
+#
+# =SWKE                 Target
+#
+# =COMPONENT            AddOnHandler
+#
+# =CURRENT      $Date: 28.02.07 18:54 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+
+
+TARGET=$(EXE_DIR)\Engineering\bin\ATHW119\AddonHandler.dll
+
+TARGETTYPE=DLL
+
+DEFINE=_ATL_STATIC_REGISTRY
+DEFINE=_ATL_NO_SECURITY
+DEFINE=_AFXDLL
+DEFINE=_MRCEXT_NOFORCELIBS
+
+PCHFILE=stdafx
+
+INCLUDE=..\inc
+INCLUDE=..\res
+
+INCLUDE=$(TARGET_BASE)\AddonHandler\inc
+INCLUDE=$(TARGET_BASE)\AddonHandler\AddonBase
+INCLUDE=$(TARGET_BASE)\Kernel\inc
+INCLUDE=$(TARGET_BASE)\Kernel\CE\inc
+INCLUDE=$(TARGET_BASE)\ProjectWizardBase
+
+LIBPATH=$(TARGET_BASE)\Kernel\lib
+LIBPATH=$(TARGET_BASE)\Kernel\CE\lib
+
+LIBRARY=$(TARGET_BASE)\Kernel\CE\Lib\CEUtil_XML.lib
+LIBRARY=$(TARGET_BASE)\lib\AddonBase.lib
+LIBRARY=$(TARGET_BASE)\lib\ProjectWizardBase.lib
+LIBRARY=$(TARGET_BASE)\Kernel\lib\fc_util.lib
+LIBRARY=$(TARGET_BASE)\Kernel\lib\fc_tools.lib
+LIBRARY=$(TARGET_BASE)\Kernel\CE\Lib\CEUTIL.lib
+
+MASTER_RC=AddonHandler.RC
+
+USER=makefirst:$(EXE_DIR)\Engineering\bin\ATHW119
+USER=$(EXE_DIR)\Engineering\bin\ATHW119:
+USER=  -md $@
+
+# -------------------------------------------------------------------------------

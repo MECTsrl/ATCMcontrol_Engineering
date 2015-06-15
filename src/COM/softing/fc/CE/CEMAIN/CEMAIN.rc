@@ -1,0 +1,1473 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+#include "toolkit\secres.h"
+#include "inc\panelrc.h"
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "#include ""toolkit\\secres.h""\r\n"
+    "#include ""inc\\panelrc.h""\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\CEMAIN.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#include ""afxprint.rc""       // printing/print preview resources\r\n"
+    "#include ""afxolecl.rc""       // OLE container resources\r\n"
+    "#include ""toolkit\\secres.rc""\r\n"
+    "#include ""..\\CEMsgVw\\CEMsgVw.rc""\r\n"
+    "#include ""..\\inc\\Watch.rc""\r\n"
+    "#include ""GenEdDoc\\GenEd.rc""\r\n"
+    "#include ""PanelDoc\\PanelDoc.rc""\r\n"
+    "#include ""..\\inc\\CEUTILrc.h""\r\n"
+    "#include ""..\\inc\\CEUTIL.rc""\r\n"
+    "#include ""cemainerror.rc"" //main error messages\r\n"
+    "#endif\r\n"
+    "#include ""version.rc2""\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_COVER_PAGE_DATA DIALOG DISCARDABLE  0, 0, 255, 222
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Cover Page Data"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_COVPAG_BITMAP_EDIT,19,58,217,14,ES_CENTER | 
+                    ES_AUTOHSCROLL
+    EDITTEXT        IDC_COVPAG_PRJNAME_EDIT,19,97,217,14,ES_CENTER | 
+                    ES_AUTOHSCROLL
+    EDITTEXT        IDC_COVPAG_PRJNO_EDIT,95,123,141,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_COVPAG_PRJMAN_EDIT,95,139,141,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_COVPAG_COMMENT_EDIT,95,155,141,30,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,139,201,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,198,201,50,14
+    PUSHBUTTON      "Project Bitmap",IDC_COVPAG_BITMAP_SEL_BTN,80,17,94,36
+    PUSHBUTTON      "ProjNamCap",IDC_COVPAG_PRJNAMCAP_BTN,84,79,87,14,
+                    BS_FLAT
+    PUSHBUTTON      "ProjNoCap",IDC_COVPAG_PRJNOCAP_BTN,19,123,62,14,BS_FLAT
+    PUSHBUTTON      "ProjManCap",IDC_COVPAG_PRJMANCAP_BTN,19,139,62,14,
+                    BS_FLAT
+    PUSHBUTTON      "CommentCap",IDC_COVPAG_COMMENTCAP_BTN,19,155,62,14,
+                    BS_FLAT
+    GROUPBOX        "",IDC_STATIC,7,7,241,187
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_COVER_PAGE_DATA, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 248
+        VERTGUIDE, 19
+        VERTGUIDE, 95
+        VERTGUIDE, 236
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 215
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_SETTINGS_LIBRARY DIALOG DISCARDABLE  0, 0, 210, 125
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Library Settings"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Library &Name:",IDC_STATIC,17,20,50,11
+    EDITTEXT        IDC_LIB_NAME,67,20,105,12,ES_AUTOHSCROLL
+    LTEXT           "Library &Path:",IDC_STATIC,17,40,50,11
+    CONTROL         "Use standard library path",IDC_LIB_STANDARD_PATH,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,67,40,93,13
+    EDITTEXT        IDC_LIB_PATH,67,56,105,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_NEW_BT_LIBRARY_PATH,178,55,17,12
+    LTEXT           "&Target Type:",IDC_STATIC,17,81,50,11
+    COMBOBOX        IDC_LIB_TARGET,67,81,105,62,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,93,104,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,153,104,50,14
+    GROUPBOX        "Library",IDC_STATIC,7,7,196,92
+END
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About CEMAIN"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,10,10,21,20
+    LTEXT           "ATCMControl V2.0 ",IDC_STATIC,45,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2000 .. 2001",IDC_STATIC,45,20,119,8
+    DEFPUSHBUTTON   "OK",IDOK,180,35,50,14,WS_GROUP
+END
+
+IDD_NAVIGATOR DIALOG DISCARDABLE  0, 0, 160, 327
+STYLE WS_CHILD | WS_CAPTION
+CAPTION "Navigator"
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_FILTER_CAT,11,18,108,58,CBS_DROPDOWNLIST | 
+                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_FILTER_NAME,11,36,108,60,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Tab1",IDC_TAB_NAVIGATOR,"SysTabControl32",TCS_TOOLTIPS | 
+                    WS_TABSTOP,7,58,146,259
+    CONTROL         "Tree1",IDC_INSTTREE,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_EDITLABELS | TVS_SHOWSELALWAYS | 
+                    WS_BORDER | WS_TABSTOP,7,74,146,241
+    GROUPBOX        "Filter",IDC_FILTER_FRAME,7,7,146,46
+    CONTROL         "Tree1",IDC_FlTREE,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_SHOWSELALWAYS | WS_BORDER | 
+                    WS_TABSTOP,7,74,146,241
+    CONTROL         "Tree1",IDC_HWTREE,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_EDITLABELS | TVS_SHOWSELALWAYS | 
+                    WS_BORDER | WS_TABSTOP,7,74,146,241
+    CONTROL         "Tree1",IDC_ClTREE,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_EDITLABELS | TVS_SHOWSELALWAYS | 
+                    WS_BORDER | WS_TABSTOP,7,74,146,241
+END
+
+IDD_NEW_DLG DIALOG DISCARDABLE  0, 0, 248, 153
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "New Project"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Project name",IDC_NEW_ST_FILE,124,18,41,8
+    EDITTEXT        IDC_NEW_ED_FILE,124,29,98,12,ES_AUTOHSCROLL
+    LTEXT           "&Location:",IDC_NEW_ST_PATH,125,55,28,8
+    EDITTEXT        IDC_NEW_ED_PATH,124,66,98,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_NEW_BT_PATH,226,66,12,12
+    DEFPUSHBUTTON   "OK",IDOK,121,132,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,191,132,50,14
+    GROUPBOX        "&Wizards:",IDC_NEW_ST_GRP,5,4,237,120
+    CONTROL         "List1",IDC_NEW_WIZLIST,"SysListView32",LVS_LIST | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_SORTASCENDING | 
+                    WS_BORDER | WS_TABSTOP,11,18,105,100
+END
+
+IDD_FILE_STATUS DIALOG DISCARDABLE  0, 0, 214, 188
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "File Properties"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,156,167,50,14
+    LTEXT           "Name:",IDC_STATIC,15,22,22,8
+    EDITTEXT        IDC_FILE_PROP_NAME,44,19,153,14,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    GROUPBOX        "",IDC_STATIC,7,7,199,70
+    GROUPBOX        "",IDC_STATIC,7,79,199,47
+    LTEXT           "Path:",IDC_STATIC,15,39,18,8
+    EDITTEXT        IDC_FILE_PROP_PATH,44,36,153,14,ES_MULTILINE | 
+                    ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Size:",IDC_STATIC,15,57,16,8
+    EDITTEXT        IDC_FILE_PROP_SIZE,44,57,153,12,ES_AUTOHSCROLL | 
+                    ES_READONLY | NOT WS_BORDER
+    LTEXT           "Created:",IDC_STATIC,15,89,28,8
+    EDITTEXT        IDC_FILE_PROP_CREATED,53,90,144,12,ES_AUTOHSCROLL | 
+                    ES_READONLY | NOT WS_BORDER
+    LTEXT           "Last\nModified:",IDC_STATIC,15,100,31,17
+    EDITTEXT        IDC_FILE_PROP_LAST_MOD,53,108,144,12,ES_AUTOHSCROLL | 
+                    ES_READONLY | NOT WS_BORDER
+    GROUPBOX        "",IDC_STATIC,7,127,199,34
+    CONTROL         "Read Only",IDC_FILE_PROP_READ_ONLY,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,54,141,49,10
+    LTEXT           "Attributes:",IDC_STATIC,15,141,32,8
+END
+
+IDD_CONNECT DIALOG DISCARDABLE  0, 0, 256, 34
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Connect to Control"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Progress1",IDC_CONNECT_PROGRESS,"msctls_progress32",
+                    PBS_SMOOTH | WS_BORDER,4,4,187,10
+    LTEXT           "State:",IDC_STATIC,4,23,20,8
+    LTEXT           "Static",IDC_CONNECT_STATE,36,23,220,8
+    PUSHBUTTON      "&Cancel",IDCANCEL,199,2,54,15
+END
+
+IDD_CONNECT_ERROR DIALOG DISCARDABLE  0, 0, 210, 79
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Connection Error"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "&Yes",IDOK,39,62,50,14
+    PUSHBUTTON      "&No",IDCANCEL,120,62,50,14
+    LTEXT           "Another user has already established a debug connection to this control.",
+                    IDC_STATIC,4,4,202,36
+    LTEXT           "Do you want to try to disconnect the other user?",
+                    IDC_STATIC,4,46,202,10
+END
+
+IDD_MULTI_SELECT_DLG DIALOG DISCARDABLE  0, 0, 186, 149
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,65,130,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,130,130,50,14
+    LISTBOX         IDC_MULTI_SEL_LIST,7,7,172,110,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | LBS_EXTENDEDSEL | WS_VSCROLL | 
+                    WS_TABSTOP
+END
+
+IDD_FINDFILE_DLG DIALOG DISCARDABLE  0, 0, 278, 77
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Find In Files"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Find Text:",IDC_STATIC,17,10,32,8
+    COMBOBOX        FIF_IDC_FINDTEXT,59,7,128,69,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",FIF_IDC_INSERT_RE,"Button",BS_OWNERDRAW | WS_TABSTOP,
+                    191,6,12,14
+    CONTROL         "&Whole words only",FIF_IDC_WHOLE_WORDS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,17,27,72,10
+    CONTROL         "&Case sensitive",FIF_IDC_CASE_SENSITIVE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,17,43,61,10
+    CONTROL         "&Regular expression",FIF_IDC_REGULAR_EXP,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,17,59,76,10
+    DEFPUSHBUTTON   "&Search",IDOK,221,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,221,24,50,14
+END
+
+IDD_SETTINGS_PASSWORD DIALOG DISCARDABLE  0, 0, 208, 118
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Password Settings"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,94,98,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,151,98,50,14
+    GROUPBOX        "Passwords",IDC_STATIC,7,7,194,86
+    LTEXT           "&Read only access:",IDC_STATIC,17,23,57,11
+    LTEXT           "&Full access:",IDC_STATIC,17,46,57,11
+    EDITTEXT        IDC_SET_PWD_READ,90,23,73,12,ES_PASSWORD | 
+                    ES_AUTOHSCROLL
+    EDITTEXT        IDC_SET_PWD_FULL,90,44,73,12,ES_PASSWORD | 
+                    ES_AUTOHSCROLL
+    LTEXT           "Please re-compile and download the project after changing these settings.",
+                    IDC_STATIC,44,67,115,18
+END
+
+IDD_SETTINGS_ENGINEERING DIALOG DISCARDABLE  0, 0, 153, 94
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Extras"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,37,73,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,96,73,50,14
+    CONTROL         "Disable &Cross Reference",IDC_SET_ENG_XREF,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,13,22,124,11
+    CONTROL         "Disable Console &Information",IDC_SET_ENG_CONSOLE_INF,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,44,124,11
+    GROUPBOX        "Engineering",IDC_STATIC,7,7,139,56
+END
+
+IDD_PROJECT_SAVE_AS DIALOG DISCARDABLE  0, 0, 187, 76
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Save Project As"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "New Project Name:",IDC_STATIC,7,14,63,9
+    EDITTEXT        IDC_PROJ_SAVE_AS_NAME,72,13,88,12,ES_AUTOHSCROLL
+    LTEXT           "Location:",IDC_STATIC,7,33,49,10
+    EDITTEXT        IDC_PROJ_SAVE_AS_LOCATION,72,32,88,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_PROJ_SAVE_AS_BROWSE,165,30,15,13
+    DEFPUSHBUTTON   "OK",IDOK,67,55,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,130,55,50,14
+END
+
+IDD_PRINT_SETTINGS DIALOG DISCARDABLE  0, 0, 214, 238
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Print Settings"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Cover Page",IDC_COVER_PAGE_CHECK,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,23,19,53,10
+    CONTROL         "Contents",IDC_CONTENTS_CHECK,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,23,30,44,10
+    CONTROL         "File Tree",IDC_PS_FILE_VIEW_CHECK,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,23,75,43,10
+    CONTROL         "Class Tree",IDC_PS_CLASS_VIEW_CHECK,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,23,86,49,10
+    CONTROL         "Instance Tree",IDC_PS_INST_VIEW_CHECK,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,23,97,60,10
+    CONTROL         "Hardware Tree",IDC_PS_HW_VIEW_CHECK,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,23,108,63,10
+    CONTROL         "Header",IDC_PS_GRED_HEADER_CHECK,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,23,144,39,10
+    PUSHBUTTON      "Cover Page",IDC_COVPAGE_BTN,23,184,51,14
+    PUSHBUTTON      "Header",IDC_HEADER_BTN,82,184,51,14
+    PUSHBUTTON      "Footer",IDC_FOOTER_BTN,141,184,51,14
+    DEFPUSHBUTTON   "OK",IDOK,97,217,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,157,217,50,14
+    GROUPBOX        "General",IDC_STATIC,7,5,200,53
+    GROUPBOX        "Navigator",IDC_STATIC,7,62,200,63
+    GROUPBOX        "Grafic Editor",IDC_STATIC,7,129,200,34
+    GROUPBOX        "Documentation Data",IDC_STATIC,7,166,200,44
+    CONTROL         "Cross Reference",IDC_CROSS_REF_CHECK,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,23,41,69,10
+END
+
+IDD_CHANGE_CAPTION DIALOG DISCARDABLE  0, 0, 186, 95
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Change Caption"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,72,74,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,74,50,14
+    GROUPBOX        "",IDC_STATIC,7,7,172,57
+    EDITTEXT        IDC_CAPTION_EDIT,21,29,142,14,ES_AUTOHSCROLL
+END
+
+IDD_PRINT_HEADER DIALOG DISCARDABLE  0, 0, 357, 138
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Print Header Data"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_HEADER_TITLE_EDIT,123,33,112,14,ES_CENTER | 
+                    ES_AUTOHSCROLL
+    EDITTEXT        IDC_HEADER_LBITMAP_EDIT,74,73,266,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_HEADER_RBITMAP_EDIT,74,89,266,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Choose Left Bitmap",IDC_HEADER_LBITMAP_SEL_BTN,19,23,96,
+                    35
+    PUSHBUTTON      "Choose Right Bitmap",IDC_HEADER_RBITMAP_SEL_BTN,244,23,
+                    96,35
+    DEFPUSHBUTTON   "OK",IDOK,237,117,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,300,117,50,14
+    GROUPBOX        "",IDC_STATIC,7,7,343,60
+    LTEXT           "Left Bitmap",IDC_STATIC,21,76,36,8
+    LTEXT           "Right Bitmap",IDC_STATIC,21,92,41,8
+    GROUPBOX        "Title",IDC_STATIC,114,19,130,39,BS_CENTER | BS_FLAT
+END
+
+IDD_PRINT_FOOTER DIALOG DISCARDABLE  0, 0, 390, 215
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Print Footer Data"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_FOOTER_REVNO3_EDIT,15,45,20,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_CHDESCR3_EDIT,34,45,73,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_CHDATE3_EDIT,105,45,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_CHNAME3_EDIT,143,45,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_REVNO2_EDIT,15,32,20,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_CHDESCR2_EDIT,34,32,73,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_CHDATE2_EDIT,105,32,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_CHNAME2_EDIT,143,32,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_REVNO1_EDIT,15,19,20,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_CHDESCR1_EDIT,34,19,73,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_CHDATE1_EDIT,105,19,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_CHNAME1_EDIT,143,19,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_DATE_EDIT,210,19,54,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_DRAWN_EDIT,210,32,54,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_APPROVED_EDIT,210,45,54,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_RELEASED_EDIT,210,58,54,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Choose Bitmap",IDC_FOOTER_CBITMAP_SEL_BTN,264,19,78,54
+    EDITTEXT        IDC_FOOTER_DATETIME_EDIT,163,96,79,27,ES_MULTILINE | 
+                    ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_PRJPATH_EDIT,241,96,130,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_OBJNAME_EDIT,241,109,130,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_INFO1_EDIT,163,122,80,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_INFO2_EDIT,163,135,80,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_INFO3_EDIT,241,122,87,27,ES_MULTILINE | 
+                    ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_PAGECNT_EDIT,327,122,44,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_INFO4_EDIT,327,135,44,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FOOTER_CBITMAP_EDIT,55,165,316,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Rev",IDC_FOOTER_REVNO_BTN,15,58,20,14,BS_FLAT
+    PUSHBUTTON      "Change",IDC_FOOTER_CHDESCR_BTN,34,58,72,14,BS_FLAT
+    PUSHBUTTON      "Date",IDC_FOOTER_CHDATE_BTN,105,58,39,14,BS_FLAT
+    PUSHBUTTON      "Name",IDC_FOOTER_CHNAME_BTN,143,58,40,14,BS_FLAT
+    PUSHBUTTON      "Date",IDC_FOOTER_DATE_BTN,182,19,29,14,BS_FLAT
+    PUSHBUTTON      "Drawn",IDC_FOOTER_DRAWN_BTN,182,32,29,14,BS_FLAT
+    PUSHBUTTON      "Appr.",IDC_FOOTER_APPR_BTN,182,45,29,14,BS_FLAT
+    PUSHBUTTON      "Rel.",IDC_FOOTER_REL_BTN,182,58,29,14,BS_FLAT
+    DEFPUSHBUTTON   "OK",IDOK,270,194,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,333,194,50,14
+    GROUPBOX        "",IDC_STATIC,7,7,376,75
+    LTEXT           "Bitmap:",IDC_STATIC,19,167,24,8
+    CONTROL         138,IDC_STATIC,"Static",SS_BITMAP,350,42,21,9
+    GROUPBOX        "",IDC_STATIC,7,85,376,72
+    CONTROL         138,IDC_STATIC,"Static",SS_BITMAP,125,118,21,9
+END
+
+IDD_PRINT_OPTIONS DIALOG DISCARDABLE  0, 0, 186, 90
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Print Options"
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_PO_MODULE_COMBO,26,25,132,30,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,71,69,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,69,50,14
+    GROUPBOX        "Selection",IDC_STATIC,7,7,172,53
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_SETTINGS_LIBRARY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 203
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 118
+    END
+
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_NAVIGATOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 153
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 320
+    END
+
+    IDD_NEW_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 241
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 146
+    END
+
+    IDD_FILE_STATUS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 206
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 181
+    END
+
+    IDD_CONNECT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 249
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 27
+    END
+
+    IDD_CONNECT_ERROR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 203
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 72
+    END
+
+    IDD_MULTI_SELECT_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 142
+    END
+
+    IDD_SETTINGS_PASSWORD, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 201
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 112
+    END
+
+    IDD_SETTINGS_ENGINEERING, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 146
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 87
+    END
+
+    IDD_PROJECT_SAVE_AS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 69
+    END
+
+    IDD_PRINT_SETTINGS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 207
+        VERTGUIDE, 23
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 231
+    END
+
+    IDD_CHANGE_CAPTION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 88
+    END
+
+    IDD_PRINT_HEADER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 350
+        VERTGUIDE, 21
+        VERTGUIDE, 74
+        VERTGUIDE, 340
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 131
+    END
+
+    IDD_PRINT_FOOTER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 383
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 208
+    END
+
+    IDD_PRINT_OPTIONS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 83
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\CEMAIN.ico"
+IDI_ADDVAR              ICON    DISCARDABLE     "res\\addvar.ico"
+IDR_CEMAINTYPE          ICON    DISCARDABLE     "res\\CEMAINDoc.ico"
+IDI_REMOVEALL           ICON    DISCARDABLE     "res\\removeal.ico"
+IDI_REMOVEVAR           ICON    DISCARDABLE     "res\\removeva.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
+IDB_4CONTROL            BITMAP  DISCARDABLE     "res\\log4ctr1small.bmp"
+IDB_4CONTROLPRINT       BITMAP  DISCARDABLE     "res\\log4ctrlprint.bmp"
+IDB_NAVIMAGELIST        BITMAP  DISCARDABLE     "res\\clvwimag.bmp"
+IDB_TABIMAGELIST        BITMAP  DISCARDABLE     "res\\tabimage.bmp"
+IDB_WIZIMAGELIST        BITMAP  DISCARDABLE     "res\\wizimage.bmp"
+IDR_VIEWTOOLBAR         BITMAP  DISCARDABLE     "res\\viewtool.bmp"
+IDR_IETOOLBAR           BITMAP  DISCARDABLE     "res\\ietoolba.bmp"
+IDR_HELPTOOLBAR         BITMAP  DISCARDABLE     "res\\helptool.bmp"
+IDB_CONTINUE            BITMAP  DISCARDABLE     "res\\continue.bmp"
+IDB_STATEIMAGELIST      BITMAP  DISCARDABLE     "res\\stateimagelist.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      IDM_FILE_NEW
+    BUTTON      IDM_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    BUTTON      IDM_PROJECT_SAVE
+    SEPARATOR
+    BUTTON      IDM_PRJFILE_PRINT
+END
+
+IDR_VIEWTOOLBAR TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_VIEW_FULLSCREEN
+    BUTTON      ID_TOGGLE_NAVIGATOR
+    BUTTON      ID_TOGGLE_MSG_VIEW
+    BUTTON      ID_TOGGLE_POU_SELECTION
+    BUTTON      ID_TOGGLE_WATCH_VIEW
+    BUTTON      ID_TOGGLE_BREAKPT_VIEW
+    BUTTON      ID_TOGGLE_XREF
+END
+
+IDR_IETOOLBAR TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      IDM_GO_BACK
+    BUTTON      IDM_GO_FORWARD
+    BUTTON      IDM_GO_STOP
+    BUTTON      IDM_GO_REFRESH
+    BUTTON      IDM_GO_START_PAGE
+    BUTTON      IDM_GO_SEARCH_THE_WEB
+END
+
+IDR_HELPTOOLBAR TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_CONTEXT_HELP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New Project\tCtrl+N",        IDM_PROJECT_NEW
+        MENUITEM "&Open Project\tCtrl+O",       IDM_PROJECT_OPEN
+        MENUITEM SEPARATOR
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "...",                         ID_FILE
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM SEPARATOR
+        MENUITEM "&Full Screen\tAlt+0",         ID_VIEW_FULLSCREEN, INACTIVE
+        MENUITEM SEPARATOR
+        MENUITEM "&Navigator\tAlt+1",           ID_TOGGLE_NAVIGATOR
+        MENUITEM "&Messages\tAlt+2",            ID_TOGGLE_MSG_VIEW
+    END
+    POPUP "&Tools"
+    BEGIN
+        MENUITEM "...",                         ID_TOOLS
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+        MENUITEM SEPARATOR
+        POPUP "ATCMControl on the &Web"
+        BEGIN
+            MENUITEM "&Home Page",                  ID_SOFT_HOMEPAGE
+        END
+        MENUITEM "...",                         ID_APP_ABOUT
+        MENUITEM SEPARATOR
+        MENUITEM "&About ATCMControl Engineering...", ID_APP_ABOUT
+    END
+END
+
+IDR_CEMAINTYPE_CNTR_IP MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                IDM_FILE_NEW
+        MENUITEM SEPARATOR
+        MENUITEM "&Open...\tCtrl+O",            IDM_FILE_OPEN
+        MENUITEM "&Close",                      IDM_FILE_CLOSE
+        MENUITEM "&Save\tCtrl+S",               IDM_FILE_SAVE
+        MENUITEM "Save &As...",                 IDM_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "...",                         ID_FILE
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    MENUITEM SEPARATOR
+    MENUITEM SEPARATOR
+    POPUP "&Tools"
+    BEGIN
+        MENUITEM "...",                         ID_TOOLS
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "&Tile",                       ID_WINDOW_TILE_HORZ
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+        MENUITEM SEPARATOR
+        MENUITEM "Cl&ose All",                  ID_CLOSE_ALL_WINDOWS
+    END
+END
+
+IDR_CEMAINTYPE MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                IDM_FILE_NEW
+        MENUITEM SEPARATOR
+        MENUITEM "&Open...\tCtrl+O",            IDM_FILE_OPEN
+        MENUITEM "&Close",                      IDM_FILE_CLOSE
+        MENUITEM "&Save\tCtrl+S",               IDM_FILE_SAVE
+        MENUITEM "Save &As...",                 IDM_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "Op&en Project",               IDM_PROJECT_OPEN
+        MENUITEM "C&lose Project",              IDM_PROJECT_CLOSE
+        MENUITEM "Sa&ve Project",               IDM_PROJECT_SAVE
+        MENUITEM "Sa&ve Project As...",         IDM_PROJECT_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "...",                         ID_FILE
+        MENUITEM SEPARATOR
+        MENUITEM "&Find in Files\tCtrl+I",      ID_FINDINFILES
+        MENUITEM SEPARATOR
+        MENUITEM "Prin&t Project...\tCtrl+Shift+P", IDM_PROJECT_PRINT
+        MENUITEM "&Print File...\tCtrl+P",      IDM_PRJFILE_PRINT
+        MENUITEM "Print Cross &Reference",      IDM_XREF_PRINT
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM SEPARATOR
+        MENUITEM "&Full Screen\tAlt+0",         ID_VIEW_FULLSCREEN, INACTIVE
+        MENUITEM SEPARATOR
+        MENUITEM "&Navigator\tAlt+1",           ID_TOGGLE_NAVIGATOR
+        MENUITEM "&Messages\tAlt+2",            ID_TOGGLE_MSG_VIEW
+        MENUITEM "&POU/Variable Selection\tAlt+3", ID_TOGGLE_POU_SELECTION
+        MENUITEM "&Watch\tAlt+4",               ID_TOGGLE_WATCH_VIEW
+        MENUITEM "&Breakpoints\tAlt+5",         ID_TOGGLE_BREAKPT_VIEW
+        MENUITEM "&Cross Reference\tAlt+6",     ID_TOGGLE_XREF
+    END
+    MENUITEM "...",                         65535
+    POPUP "&Tools"
+    BEGIN
+        MENUITEM "...",                         ID_TOOLS
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "&Tile",                       ID_WINDOW_TILE_HORZ
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+        MENUITEM SEPARATOR
+        MENUITEM "Cl&ose All",                  ID_CLOSE_ALL_WINDOWS
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+        MENUITEM SEPARATOR
+        POPUP "ATCMControl on the &Web"
+        BEGIN
+            MENUITEM "&Home Page",                  ID_SOFT_HOMEPAGE
+        END
+        MENUITEM "...",                         ID_APP_ABOUT
+        MENUITEM SEPARATOR
+        MENUITEM "&About ATCMControl Engineering...", ID_APP_ABOUT
+    END
+END
+
+FIF_POPUP_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "Popup"
+    BEGIN
+        MENUITEM "Any Character",               FIF_IDM_ANY_CHAR
+        MENUITEM "Character in Range",          FIF_IDM_CHAR_IN_RANGE
+        MENUITEM "Character Not in Range",      FIF_IDM_CHAR_NOT_IN_RANGE
+        MENUITEM "Beginning of Line",           FIF_IDM_BEGIN_OF_LINE
+        MENUITEM "End of Line",                 FIF_IDM_END_OF_LINE
+        MENUITEM "Or",                          FIF_IDM_OR
+        MENUITEM "0 or More Matches",           FIF_IDM_0_OR_MORE
+        MENUITEM "1 or More Matches",           FIF_IDM_1_OR_MORE
+        MENUITEM "Group",                       FIF_IDM_GROUP
+        MENUITEM SEPARATOR
+        MENUITEM "Whitespace",                  FIF_IDM_WHITESPACE
+        MENUITEM "Alphanumeric Character",      FIF_IDM_ALPHANUM_CHAR
+        MENUITEM "Alphabetic Character",        FIF_IDM_ALPHABET_CHAR
+        MENUITEM "Decimal Digit",               FIF_IDM_DECIMAL_DIGIT
+        MENUITEM "Hexadecimal Number",          FIF_IDM_HEX_NUMBER
+        MENUITEM "Number",                      FIF_IDM_NUMBER
+        MENUITEM "Integer",                     FIF_IDM_INTEGER
+        MENUITEM "Identifier",                  FIF_IDM_IDENTIFIER
+        MENUITEM "Alphabetic String",           FIF_IDM_ALPHABET_STRING
+        MENUITEM "Quoted String",               FIF_IDM_QUOTED_STRING
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_DEBUGACCEL ACCELERATORS DISCARDABLE 
+BEGIN
+    VK_F10,         IDM_DEBUG_CONTEXT_MENU, VIRTKEY, SHIFT, NOINVERT
+END
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "0",            ID_VIEW_FULLSCREEN,     VIRTKEY, ALT, NOINVERT
+    "1",            ID_TOGGLE_NAVIGATOR,    VIRTKEY, ALT, NOINVERT
+    "2",            ID_TOGGLE_MSG_VIEW,     VIRTKEY, ALT, NOINVERT
+    "3",            ID_TOGGLE_POU_SELECTION, VIRTKEY, ALT, NOINVERT
+    "4",            ID_TOGGLE_WATCH_VIEW,   VIRTKEY, ALT, NOINVERT
+    "5",            ID_TOGGLE_BREAKPT_VIEW, VIRTKEY, ALT, NOINVERT
+    "6",            ID_TOGGLE_XREF,         VIRTKEY, ALT, NOINVERT
+    "I",            ID_FINDINFILES,         VIRTKEY, CONTROL, NOINVERT
+    "N",            IDM_FILE_NEW,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_NEXT_ERROR,          VIRTKEY, CONTROL, ALT, NOINVERT
+    "O",            IDM_FILE_OPEN,          VIRTKEY, CONTROL, NOINVERT
+    "P",            IDM_PRJFILE_PRINT,      VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_PREVIOUS_ERROR,      VIRTKEY, CONTROL, ALT, NOINVERT
+    "P",            IDM_PROJECT_PRINT,      VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    "S",            IDM_FILE_SAVE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_ESCAPE,      ID_BREAK,               VIRTKEY, NOINVERT
+    VK_F1,          ID_HELP,                VIRTKEY, NOINVERT
+    VK_F1,          ID_CONTEXT_HELP,        VIRTKEY, SHIFT, NOINVERT
+    VK_F10,         IDM_CONTEXT_MENU,       VIRTKEY, SHIFT, NOINVERT
+    VK_F5,          IDM_CONTINUE_TASK,      VIRTKEY, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+END
+
+IDR_WATCHACCEL ACCELERATORS DISCARDABLE 
+BEGIN
+    VK_F10,         IDM_WATCH_CONTEXT_MENU, VIRTKEY, SHIFT, NOINVERT
+END
+
+IDR_NAVACCEL ACCELERATORS DISCARDABLE 
+BEGIN
+    "V",            ID_NAV_PASTE,           VIRTKEY, CONTROL, NOINVERT
+    VK_F10,         IDM_NAV_CONTEXT_MENU,   VIRTKEY, SHIFT, NOINVERT
+    VK_LEFT,        ID_COLLAPSE_ALL,        VIRTKEY, CONTROL, NOINVERT
+    VK_RIGHT,       ID_EXPAND_ALL,          VIRTKEY, CONTROL, NOINVERT
+    "X",            ID_NAV_CUT,             VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_NAVIGATOR DLGINIT
+BEGIN
+    IDC_FILTER_CAT, 0x403, 1, 0
+"\000" 
+    IDC_FILTER_NAME, 0x403, 1, 0
+"\000" 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDD_NAVIGATOR           "Show/Hide Navigator\nShow/Hide Navigator"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "ATCMControl Engineering"
+    IDR_CEMAINTYPE          "\n\nProject\nProject Files (*.4cp)\n.4cp\nCEMAIN.Document\nATCMControl Project"
+    IDP_OLE_INIT_FAILED     "OLE initialization failed.  Make sure that the OLE libraries are the correct version."
+    IDP_FAILED_TO_CREATE    "Failed to create object.  Make sure the object is entered in the system registry."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_VIEW_POUVARSEL      "POU/Variable Selection"
+    IDS_VIEW_BREAKPOINT     "Breakpoints"
+    IDS_VIEW_XREF           "Cross Reference"
+    IDS_4CCG_RUNNING        "ATCM code generator is running!"
+    IDS_LIB_PATH_NOT_FOUND  """Library path %s not found, create path?"""
+    IDS_FOOTER_PAGENUM      "Page %d"
+    IDS_FORMATVERSION_ERR   "The project '%s' is of an unsupported version (%s). To be opened it must be converted to the current version."
+    IDS_SAVE_PROJECT_AS     "Save Project As"
+    IDS_CLOSE_CURRENT_PROJECT 
+                            "Please close the currently opened project first."
+    IDS_WARNING_PROJ_EXISTS "Folder already exists:\n%s"
+    IDS_PROJ_SAVE_AS        "Save Project As"
+    IDS_KAD_HELPER_FILTER_ALL "All"
+    IDS_KAD_HELPER_FILTER_SOURCE_FILES "Source Files"
+    IDS_START_TASK          "StartTask"
+    IDS_STOP_TASK           "Stop task"
+    IDS_ADD_TAB_TOOLTIP     "Add instance"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_GOTO_BREAKPOINT_NO_SOURCE "Source code unavailable"
+    IDS_ENABLEDEBUG         "Download requires a debug connection.\nTarget %s will be connected to %s\n\nProceed?"
+    IDS_NO_COMPONENT        "Failed to create component %s"
+    IDS_NO_PART             "Failed to create %s part."
+    IDS_STRING1460          "test String"
+    IDS_FOLDER_EXISTING     "Folder %s already exists.\nPlease choose another name."
+    IDS_NEW_FOLDER          "NewFolder"
+    IDS_DATE_TIME_FORMAT    "%d. %B %Y, %H:%M:%S"
+    IDS_NAV_FILEVIEW_TITLE  "File"
+    IDS_NAV_CLASSVIEW_TITLE "Class"
+    IDS_NAV_TARGETVIEW_TITLE "Target"
+    IDS_NAV_INSTANCEVIEW_TITLE "Instance"
+    IDS_EXPAND_ALL          "Expand All"
+    IDS_COLLAPSE_ALL        "Collapse All"
+    IDS_COL_PRJLIST         "Object Name              ,Class                     ,Date of Creation        ,Date of Last Modification ,URL                       ,Text 1     ,Text 2     ,Text3     ,Alias             "
+    IDS_DENY_DEBUG_WITHOUT_ASSIGN 
+                            "Cannot establish debug connection on target '%s' without assigned resource"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_DENY_DEBUG_WITH_DUPLICATE_ASSIGN 
+                            "Debug session for resource '%s' already established on target '%s'.\nRelease debug session on target '%s' and establish on target '%s'?"
+    IDS_FILE_NOT_EXISTING   "File %s is not existing!"
+    IDS_CANNOT_OPEN_FILE    "Cannot open file!"
+    IDS_FILE_ALREADY_IN_PROJECT "File %s is already in project!"
+    IDS_FILE_NOT_COPIED     "File %s could not be copied!"
+    IDS_TARGET_SELECTION    "Target Selection"
+	IDS_TARGETTYPE_SELECTION "Target Type Selection"
+    IDS_FILE_REMOVED        "File %s was removed from outside!"
+    IDS_FV_DEL_FILE         "Do you really want to delete\n%s?"
+    IDS_FV_DEL_FILE_WARN    "Do you really want to delete\n%s from the project?\nThis may render the project unusable!"
+    IDS_FV_REFUSE_DEL_FILE  "Deletion of %s refused!"
+    IDS_FILE_EXISTING       "File %s\nalready exists!\nOverwrite?"
+    IDS_RENAME_FILE_WARN    "Warning:\nRenaming of files does not change class names!\nUse renaming functions in class view context menus!\n\nDo you really want to rename project file %s?\nThis may render the project unusable!"
+    IDS_RENAME_FILE_DENIED  "Renaming of project file\n%s denied!"
+    IDS_FILE_OPEN_TITLE     "Open"
+    IDS_PP_PROJECT          "Project"
+    IDS_PLV_MENU_ITEM_DELETE "Delete"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_FV_MENU_OPEN        "&Open"
+    IDS_FV_MENU_CUT         "C&ut"
+    IDS_FV_MENU_PROPERTIES  "&Properties"
+    IDS_FV_MENU_ADD_FILE    "&Add File(s)"
+    IDS_FV_MENU_PASTE       "P&aste"
+    IDS_FV_MENU_DELETE      "&Delete"
+    IDS_FV_MENU_RENAME      "&Rename"
+    IDS_FV_MENU_CREATE_FOLDER "&Create Folder"
+    IDS_PLV_MENU_GOTO_NAVIGATOR "Goto Navigator"
+    IDS_WARN_SAVE_INCOMPLETE 
+                            "Warning: Not all files have been saved.\nExit anyway?"
+    IDS_NO_DDE_DURING_SHUTDOWN 
+                            "ATCMControl Engineering is not able to execute\nDDE commands during shutdown.\nPlease wait a few seconds and retry."
+    IDS_WARNING_ADDRESS_CHANGED 
+                            "Warning: Control address is changed while connected!\nConnection to old address remains intact"
+    IDS_ASK_DELETE_FILE_ERRNODE 
+                            "Delete error node: Delete corresponding file also?\n%s"
+    IDS_CANNOT_DELETE_ERRNODE 
+                            "This error node cannot be deleted.\nPlease check syntax"
+    IDS_ASK_DISCONNECT_TARGET 
+                            "Target %s has to be disconnected now.\nProceed?"
+    IDS_REBUILD_HINT        "Properties of %s changed.\nRebuild required."
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "ATCMControl Engineering"
+    AFX_IDS_IDLEMESSAGE     "For Help, press F1"
+    AFX_IDS_HELPMODEMESSAGE "Select an object on which to get Help"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+    ID_HELP_INDEX           "Opens Help\nHelp Topics"
+    ID_HELP_FINDER          "List Help topics\nHelp Topics"
+    ID_HELP_USING           "Display instructions about how to use help\nHelp"
+    ID_CONTEXT_HELP         "Display help for clicked on buttons, menus and windows\nHelp"
+    ID_HELP                 "Display help for current task or command\nHelp"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WINDOW_NEW           "Open another window for the active document\nNew Window"
+    ID_WINDOW_ARRANGE       "Arrange icons at the bottom of the window\nArrange Icons"
+    ID_WINDOW_CASCADE       "Arrange windows so they overlap\nCascade Windows"
+    ID_WINDOW_TILE_HORZ     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_TILE_VERT     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_PASTE_LINK      "Insert Clipboard contents and a link to its source\nPaste Link"
+    ID_EDIT_PASTE_SPECIAL   "Insert Clipboard contents with options\nPaste Special"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_OLE_INSERT_NEW       "Insert new embedded object\nNew Object"
+    ID_OLE_EDIT_LINKS       "Edit linked objects\nEdit Links"
+    ID_OLE_EDIT_CONVERT     "Convert object to different type\nConvert Object"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_OLE_VERB_FIRST       "Activate embedded or linked object"
+    57873                   "Activate embedded or linked object"
+    57874                   "Activate embedded or linked object"
+    57875                   "Activate embedded or linked object"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+    AFX_IDS_MDICHILD        "Activate this window"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_RS_ERROR            "Resource Error"
+    IDS_RS_STOPPED          "Resource Stopped"
+    IDS_RS_RUNNING          "Resource Running"
+    IDS_FIF_MATCH           "Number of matches: %d"
+    IDS_FIF_ABORT           "Search aborted."
+    IDS_USER_BREAKPOINT_REACHED "User breakpoint reached in instance '%s'"
+    IDS_TASK_STOPPED_NO_BPINFO 
+                            "Task stopped in instance '%s' at unknown location"
+    IDS_USER_BREAKPOINT_NO_SOURCE 
+                            "User breakpoint reached in instance '%s' with unavailable source code"
+    IDS_TASK_STOPPED_NO_SOURCE 
+                            "Task stopped in instance '%s' with unavailable source code"
+    IDS_CONNECT_ABORTED     "Connection to target %s aborted."
+    IDS_CONNECT_TIMEOUT     "Connection to target %s timed out."
+    IDS_CONNECT_INTERRUPT   "Connection to target %s interrupted."
+    IDS_CONNECT_CONNECT     "Connecting..."
+    IDS_CONNECT_TO_CONTROL  "Connect to %s"
+    IDS_REALLY_CLOSE_PROJECT "Do you really want to close the project?"
+    IDS_GOTO_BREAKPOINT_NO_BPINFO "Unknown breakpoint location"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDM_FILE_NEW            "Create new project / document\nNew"
+    IDM_FILE_OPEN           "Open project / document\nOpen"
+    IDM_FILE_CLOSE          "Close active document\nClose"
+    IDM_FILE_SAVE           "Save active document\nSave"
+    IDM_FILE_SAVE_AS        "Save active document as\nSave as"
+    IDM_PROJECT_NEW         "Creates a new project\nCreates a new project"
+    IDM_PROJECT_OPEN        "Open project\nOpen project"
+    IDM_PROJECT_CLOSE       "Close project\nClose project"
+    IDM_PROJECT_SAVE        "Save project and all documents\nSave project"
+    IDM_PROJECT_PRINT       "Print project\nPrint project"
+    IDM_PRJFILE_PRINT       "Print active document\nPrint active document"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ERROR_STARTTASK     "Start task error"
+    IDS_ERROR_STOPTASK      "Stop task error"
+    IDS_ERROR_COLDSTART     "Coldstart error"
+    IDS_ERROR_WARMSTART     "Warmstart error"
+    IDS_COLDSTART           "Do you really want to coldstart reset %s?"
+    IDS_RESOURCECLEAR       "Do you really want to initialize / clear %s?"
+    IDS_WARMSTART           "Do you really want to warmstart reset %s?"
+    IDS_STARTALLTASKS       "Do you really want to start all tasks on %s?"
+    IDS_STOPALLTASKS        "Do you really want to stop all tasks on %s?"
+    IDS_ERROR_STARTALLTASKS "Tasks could not be started."
+    IDS_ERROR_STOPALLTASKS  "Tasks could not be stopped."
+    IDS_ERROR_CLEAR         "Initialize error"
+    IDS_RUNCONTROL          "Do you really want to start control %s?"
+    IDS_STOPCONTROL         "Do you really want to stop control %s?"
+    IDS_TOCS_EXCEPTION      "Exception State"
+    IDS_TOCS_TARG_CON_EX_ERR "Connected, Debug Enabled"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TOCS_TARG_CON_ERR   "Connected"
+    IDS_TOCS_CSC_CON_EX_ERR "Debug Connection Interrupted"
+    IDS_TOCS_CSC_CON_ERR    "Connection Interrupted"
+    IDS_TOCS_NOT_CON        "Not Connected"
+    IDS_TOCS_CON            "Connected"
+    IDS_TOCS_CON_EX         "Connected, Debug Enabled"
+    IDS_CSC_NOT_CON         "Not Connected"
+    IDS_CSC_WAIT_CON        "Waiting for Connection"
+    IDS_CSC_CON             "Connection Established"
+    IDS_CSC_INTERRUPTED     "Interrupted"
+    IDS_CSC_WAIT_CON_EX     "Waiting for Debug Connection"
+    IDS_CSC_CON_EX          "Debug Connection Established"
+    IDS_CSC_SHUTDOWN        "Regular Shutdown"
+    IDS_RS_NOT_CON          "No Target Connection"
+    IDS_RS_VERSION_CONFLICT "Project Conflict"
+    IDS_RS_SERVICE_STOPPED  "Service Stopped"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_EDITPOS             "Ln %ld, Col %ld"
+    IDS_PP_TARGETS          "Targets"
+    IDS_PP_CONTENTS         "CONTENTS:"
+    IDS_ERROR_CONNECT       "Connect error"
+    IDS_ERR_EXECUTE         "Execution error!"
+    IDS_ERROR_DISCONNECT    "Disconnect error"
+    IDS_ERROR_STARTRESOURCE "Start configuration error"
+    IDS_ERROR_STOPRESOURCE  "Stop configuration error"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INDICATOR_EDITPOS    "Ln 9999, Col 9999"
+    ID_INDICATOR_MODE       "Temporary: 99 days, 23 hours"
+    ID_FINDINFILES          "Find text in project files\nFind text in project files"
+    ID_VIEW_FULLSCREEN      "View full screen\nView full screen"
+    ID_TOGGLE_NAVIGATOR     "Toggle Navigator\nToggle Navigator"
+    ID_TOGGLE_MSG_VIEW      "Toggle Message View\nToggle Message View"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_TOGGLE_POU_SELECTION "Toggle POU Selection\nToggle POU Selection"
+    ID_TOGGLE_WATCH_VIEW    "Toggle Watch View\nToggle Watch View"
+    ID_TOGGLE_BREAKPT_VIEW  "Toggle Breakpoint View\nToggle Breakpoint View"
+    ID_TOGGLE_LIB           "Toggle Librarian View\nToggle Librarian View"
+    IDM_PROJECT_SAVE_AS     "Save project as\nSave project as"
+    ID_TOGGLE_XREF          "Toggle XRef Tool\nToggle XRef Tool"
+    ID_CLOSE_ALL_WINDOWS    "Close all windows\nClose all Windows"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_REALLY_DELETE_SEL_FILES 
+                            "Do you really want to delete all selected items\nand the corresponding files?"
+    IDS_PROJECT_IS_OPEN     "The project\n%s\nis used by %s.\nLast Access: %s"
+    IDS_DL_ERROR            "Error during download.\nDetails see message view."
+    IDS_DL_ERROR_CONTINUE   "Error during download.\nDetails see message view.\n\nContinue with other targets?"
+    IDS_NO_DOWNLOAD_POSSIBLE "No download possible for target %s"
+    IDS_DL_ERR_NO_CONN      "Error: could not establish debug connection to target %s\nDownload is not possible now."
+    IDS_DL_ERR_NO_CONN_CONTINUE 
+                            "Error: Could not establish debug connection to target %s\nDownload is not possible now.\n\nContinue with other targets?"
+    IDS_DL_ERR_DISCONN      "Error: could not disconnect target %s.\nDownload not possible now."
+    IDS_DL_ERR_DISCONN_CONTINUE 
+                            "Error: could not disconnect target %s.\nDownload not possible now.\n\nContinue with other targets?"
+    IDS_DL_DISCONN_OLD      "Target %s is still connected to old control address.\nTarget will be disconnected now.\n\nProceed?"
+    IDS_ERROR_PRINT_FILE    "Error during print project\nFile %s could not be printed\n\nContinue?"
+    IDS_DEBUG_WITHOUT_PROJECT 
+                            "You have opened a debug connection to Target %s %s\nwhere no project is downloaded.\nDebugging will not work properly."
+    IDS_DEBUG_ON_DIFFERENT_PROJECT 
+                            "You have opened a debug connection to Target %s %s\nwhere a project different from your current project is downloaded.\nDebugging may not work properly.\nBreakpoints belonging to this Target are disabled.\n\nThe project downloaded to this Target has the following properties:\n\n\tProject Name: %s\n\tDownload Date: %s\n\tDownload Host: %s"
+    IDS_DEBUG_WITHOUT_BUILD "You have opened a debug connection to Target %s %s\nwithout having built your project.\nDebugging will not work properly."
+    IDS_DEBUG_UNKNOWN_DLSTATE 
+                            "You have opened a debug connection to Target %s %s\n and ATCMControl Engineering could not detect if the downloaded project\nis identical with the current project. Debugging may not work properly.\nBreakpoints belonging to this Target are disabled."
+    IDS_VIEW_WATCH          "Watch"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDM_SAVE_ALL            "Save all documents\nSave all"
+    ID_PRINT_SETTINGS       "Print Settings Dialog\nPrint Settings Dialog"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_LOAD_PROJECT_INIT   "Start loading project"
+    IDS_LOAD_PROJECT_CONVERT "Converting ..."
+    IDS_LOAD_PROJECT_CONVERT_DONE "Converting done."
+    IDS_LOAD_PROJECT_LOAD   "Loading ..."
+    IDS_LOAD_PROJECT_LOAD_DONE "Loading done."
+    IDS_STATUS_ADD_TARGET   "Adding target %s"
+    IDS_CHECKING_SOURCE_FILES "Checking source files ..."
+    IDS_CHECKING_HELP_FILES "Checking help files ..."
+    IDS_CHECKING_ADDITIONAL_FILES "Checking additional files ..."
+    IDS_CHECKING_REST_FILES "Checking remaining files ..."
+    IDS_CHECKING_DONE       "Checking done."
+    IDS_STATUS_REMOVE_TARGET "Removing target %s"
+    IDS_ADD_FILE_TITLE      "Add File(s)"
+    IDS_ALLFILTER           "All files (*.*)"
+    IDS_OVERWRITE_DOUBLE_FILES 
+                            "The following files will be overwritten:%s\nProceed?"
+    IDS_CAN_NOT_ADD_FILES   "The following files can not be added to the project:%s\nAbort!"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_COULD_NOT_COPY_FILES 
+                            "The following files could not be copied into\nthe project directory:%s"
+    IDS_PROJ_SAVE_AS_FOLDER_EXISTS "Project folder %1!s! does already exist."
+    IDS_PROJ_SAVE_AS_CREATE_FOLDER_FAILED 
+                            "Creating new project folder %1!s! failed."
+    IDS_PROJ_SAVE_AS_RENAME_4CP "Rename project file failed."
+    IDS_PROJECT_SAVE_AS_RENAME_CON_FILE "Rename configuration file failed."
+    IDS_ERR_PROJECT_FILE_DROP "Project file cannot be added to project:\n%s"
+    IDS_WARN_DL_DURING_BPHOLD 
+                            "Warning: There are tasks in breakpoint mode.\nThese tasks will be reinitialized and set into error mode and must be restarted manually.\nContinue Download Changes?"
+    IDS_SOFING_HOMEADDR     "http://www.mect.it\n"
+    IDS_WARN_DISCONNECT_IN_BP 
+                            "Warning: There are stopped tasks.\nOn disconnect these tasks will get into error state.\nManual restart is needed after reconnect.\n\nProceed anyway?"
+    IDS_CLASS               "Class"
+    IDS_BUILD_PLV           "Building Project List View ..."
+    IDS_DONE                "Done."
+    IDS_SET_RWPWD_NO_RWPWD  "A password for full access must be specified\nif a password for read access is specified!"
+    IDS_PAGE_NUM_INCORRECT  "Warning: Error occurred during page count.\nPage numbers may be incorrect."
+    IDS_ERR_NO_TARGET_TYPE  "No target type specified.\nPlease choose target type in library settings."
+    IDS_COVPAG_PRJNAMCAP    "Project"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_COVPAG_PRJNOCAP     "Project Number"
+    IDS_COVPAG_PRJMANCAP    "Project Manager"
+    IDS_COVPAG_COMMENTCAP   "Comment"
+    IDS_FOOTER_REVNOCAP     "Rev"
+    IDS_FOOTER_REVCHDESCCAP "Change"
+    IDS_FOOTER_REVDATECAP   "Date"
+    IDS_FOOTER_REVNAMECAP   "Name"
+    IDS_FOOTER_REVDRAWNCAP  "Drawn"
+    IDS_FOOTER_REVAPPRCAP   "Appr."
+    IDS_FOOTER_REVRELCAP    "Rel."
+    IDS_BMPFILTER           "Bitmap Files (*.bmp)"
+    IDS_DATE_TIME_FORMAT_SHORT_ENG "%m/%d/%y %H:%M:%S"
+    IDS_DATE_TIME_FORMAT_SHORT_GER "%d.%m.%y %H:%M:%S"
+    IDS_PP_PAGE_COUNT       "Page Count"
+    IDS_PP_TREE_VIEWS       "Tree Views"
+    IDS_PP_PAGE_NUMBER      "Page Number"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PP_COVERPAGE        "Cover Page"
+    IDS_PP_FILE_VIEW        "File View"
+    IDS_PP_CLASS_VIEW       "Class View"
+    IDS_PP_INST_VIEW        "Instance View"
+    IDS_PP_HW_VIEW          "Hardware View"
+    IDS_PRINT_FAILED        "Error occurred during printing!\nAborted."
+    IDS_PP_PROGRAM_NAME     "ATCMControl V2.0"
+    IDS_PP_COPYRIGHT        "Copyright DIN 34"
+    IDS_DOWNLOAD_ERROR      "Error during download.\nSee message view for details."
+    IDS_CANNOT_MOVE_NODE    "Insert operation not allowed!\n\nProbably an inserted file is corrupt or\ncontains an object already present in the project."
+    IDS_NO_PROJECT_OPEN     "Error: Add file to project:\nNo project open!"
+    IDS_PROJ_READ_ONLY      "Warning: The project file is read only!\nAdding or removing files will fail."
+    IDS_TARGET_NOT_COMPILED "Target %s not yet built.\nDownload is not possible."
+    IDS_DEBUG_WITHOUT_DOWNLOAD 
+                            "You have opened a debug connection to Target %s %s\nwithout having downloaded your project.\nDebugging will not work properly."
+    IDS_TARGET_NOT_COMPILED2 
+                            "Target %s not yet built.\nDownload is not possible.\nContinue anyway?"
+    IDS_READ_ONLY           "read only"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_LOAD_KAD_FAILED     "Fatal error: Loading engineering KAD failed"
+    IDS_FV_MENU_CLOSE       "&Close"
+    IDS_FV_MENU_OPEN_FILE   "Open as Text"
+    IDS_FORCED_DEBUG_DISCONNECT 
+                            """Some other client forced disconnect of debug connection to %s : %s."""
+    IDS_NOT_COMPILED_WARNING 
+                            "Target %s not yet built.\nUpdate flash uses image of last download.\nContinue?"
+    IDS_ERROR_DOACTION      "Action could not be performed.\nMaybe file is missing, corrupt or read only."
+    IDS_PP_CROSS_REF        "Cross Reference"
+    IDS_CONNECTION_REQUIRED "Connection for target %s will be established now.\nProceed?"
+    IDS_CONNECTION_EX_REQUIRED 
+                            "Debug connection for target %s will be established now.\nProceed?"
+    IDS_MAXDOCCOUNTREACHED  "Maximum number of open documents reached.\nAction is aborted.\n\nPlease close some editor windows."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDM_XREF_PRINT          "Print Cross Reference\nPrint Cross Reference"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\CEMAIN.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#include "afxprint.rc"       // printing/print preview resources
+#include "afxolecl.rc"       // OLE container resources
+#include "toolkit\secres.rc"
+#include "..\CEMsgVw\CEMsgVw.rc"
+#include "..\inc\Watch.rc"
+#include "GenEdDoc\GenEd.rc"
+#include "PanelDoc\PanelDoc.rc"
+#include "..\inc\CEUTILrc.h"
+#include "..\inc\CEUTIL.rc"
+#include "cemainerror.rc" //main error messages
+#endif
+#include "version.rc2"
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,25 @@
+
+
+
+import "CG_AutoDecl.idl";
+
+
+[
+    uuid(AF69A703-4874-11D5-8546-009027A31158),
+    version(1.0),
+    helpstring("VM_AutoDecl 1.0 Type Library")
+]
+library VM_AUTODECLLib
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+
+    [
+        uuid(AF69A710-4874-11D5-8546-009027A31158),
+        helpstring("VM_AutoDecl Class")
+    ]
+    coclass VM_AutoDecl
+    {
+        [default] interface ICG_AutoDecl;
+    };
+};

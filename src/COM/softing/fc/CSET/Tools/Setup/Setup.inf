@@ -1,0 +1,27 @@
+TARGET=$(EXE_DIR)\Setup\Setup.exe
+TARGETTYPE=GUI
+
+UNICODE=0
+
+MASTER_RC=Setup.rc
+
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+
+PCHFILE=stdafx
+
+DEFLIB=version.lib
+
+STATIC_RUNTIME=1
+
+USER=LFLAGS        = $(LFLAGS) -SWAPRUN:CD
+
+USER=makefirst:$(EXE_DIR)\Setup
+USER=$(EXE_DIR)\Setup:
+USER=  -md $@
+
+USER=makelast:
+USER=  @xcopy $(MAKEDIR)\License\*.rtf $(EXE_DIR)\Setup\Setup\*.rtf /S /Y /Q 
+USER=  @xcopy $(MAKEDIR)\ini\*.ini $(EXE_DIR)\Setup\*.ini /S /Y /Q 
+
+# -------------------------------------------------------------------------------

@@ -1,0 +1,1067 @@
+/*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/inc/CSC_OnlineServer.idl 1     28.02.07 19:01 Ln $
+ *----------------------------------------------------------------------------*
+ *
+ * =FILENAME            $Workfile: CSC_OnlineServer.idl $
+ *                               $Logfile: /4CReleased/V2.20.00/COM/softing/fc/inc/CSC_OnlineServer.idl $
+ *
+ * =PROJECT             CAK1020  ATCMControl V2.0
+ *
+ * =SWKE                  4CSC
+ *
+ * =COMPONENT       CSC Online Server
+ *
+ * =CURRENT            $Date: 28.02.07 19:01 $
+ *                              $Revision: 1 $
+ *
+ * =ENVIRONMENT    Win32:
+ *                               MS Windows NT 4.0
+ *                               MSVC++ V6.0
+ *                               MS Java 3.2
+ *                               MS Visual SourceSafe 6.0
+ *
+ * =REFERENCES
+ *==
+ *----------------------------------------------------------------------------*
+ *
+ 
+ 
+
+ 
+
+ *==
+ *
+ *----------------------------------------------------------------------------*
+ * =DESCRIPTION
+ *== This IDL file defines the interfaces that in turn have to be implemented by the
+ *== vendor of the target specific CSC Online server. The interfaces are grouped together
+ *== in different coclasses. (see also 4CSC_Architecture(2.0).doc for details regarding 
+ *== the proposed structure of coclasses).
+ *----------------------------------------------------------------------------*
+ * =MODIFICATIONS
+ * $History: CSC_OnlineServer.idl $
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.02.07   Time: 19:01
+ * Created in $/4CReleased/V2.20.00/COM/softing/fc/inc
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.08.03   Time: 16:34
+ * Created in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 5  *****************
+ * User: Su           Date: 13.07.01   Time: 11:45
+ * Updated in $/4Control/COM/softing/fc/inc
+ * Added documentation
+ * 
+ * *****************  Version 4  *****************
+ * User: Su           Date: 10.07.01   Time: 12:09
+ * Updated in $/4Control/COM/softing/fc/inc
+ * Revised interfaces for Version 2.0
+ * 
+ * *****************  Version 3  *****************
+ * User: Su           Date: 27.03.01   Time: 15:57
+ * Updated in $/4Control/COM/softing/fc/inc
+ * Changed Inteface IDs
+ * 
+ * *****************  Version 2  *****************
+ * User: Su           Date: 14.03.01   Time: 19:16
+ * Updated in $/4Control/COM/softing/fc/inc
+ * Added typelib statement
+ * 
+ * *****************  Version 1  *****************
+ * User: Su           Date: 14.03.01   Time: 18:12
+ * Created in $/4Control/COM/softing/fc/inc
+ *==
+ ******************************************************************************
+H<<*/
+
+//------------------------------------------------------------------*
+/**
+ * @file CSC_OnlineServer.idl - This IDL file defines the interfaces that in 
+ * turn have to be implemented by the vendor of the target specific CSC Online server. 
+ * The interfaces are grouped together	in different coclasses. 
+ * The structure of coclasses in CSC Online server is shown below<br>
+ * 
+ * 
+ * 	    ---------------						------------------<br>
+ * 	 (1)|CustomConnect|                     | OPCServer      |<br>
+ * 	 ---|		      |---------------------|				 |<br>
+ * 	    |			  |---------|			|				 |<br>
+ * 	    |			  |------|	|			|				 |<br>
+ * 	    ---------------		 |	|			------------------<br>
+ * 							 |	|<br>
+ * 							 |	|<br>
+ * 							 |	|			---------------------			 ----------------------<br>
+ * 							 |	------------| CommissioningMgt	|------------|CommissioningSession|<br>
+ * 							 |				|					|			 |					  |<br>
+ * 							 |				|					|			 |(noncreatable)	  |<br>
+ * 							 |				|					|			 |					  |<br>
+ * 							 |				---------------------			 ----------------------<br>
+ * 							 |<br>
+ * 							 |       		---------------------<br>
+ * 							 ---------------| ControlMgt		|<br>
+ * 											|					|<br>
+ * 											|					|<br>
+ * 											|					|<br>
+ * 											---------------------<br>
+ * <br>
+ * 	The coclass CustomConnect implements the interface ICustomConnect. This interface
+ * 	provides for the creation of the other coclasses with the addition of a target specific
+ * 	initialization string that can be passed with the corresponding creation method of the 
+ * 	interface (for example ICustomConnect::CreateVarSession(BSTR sInit, [out] IUnknown** ppOPCServer);<br>
+ * 
+ * 	CreateVarSession serves for the creation of the coclass OPCServer, CreateCommissioningMgt for
+ * 	the creation of the coclass CommissioningMgt and CreateControlManagement for the creation of 
+ * 	the coclass ControlMgt.<br>
+ * 
+ * 	Any of the target specific CSC Online servers shall implement the proposed structure, although
+ * 	another grouping of coclasses is possible.<br>
+ * 
+ * 	Any of the coclasses OPCServer,CommissioningMgt,ControlMgt can also be created seperately, i.e. if
+ * 	no target specific initialization string is required. The coclass CommissioningSession will be
+ * 	created on behalf of the interface method ICommissioningMgt::Login and is itself noncreatable.<br>
+ * 
+ * 	Each of the coclasses implements a set of interfaces summarized below with the forward 
+ * 	declarations.<br>
+*/
+
+// guard against multiple inclusion
+cpp_quote("#ifndef CSC_ONLINESERVER_IDL")
+cpp_quote("#define CSC_ONLINESERVER_IDL")
+
+cpp_quote("//+-------------------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  ATCMControl 4CSC")
+cpp_quote("//  ATCM.")
+cpp_quote("//")
+cpp_quote("//--------------------------------------------------------------------------")
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+cpp_quote("#ifndef __CSC_TRANSFER_TARGET__DEFINED__")
+cpp_quote("#define __CSC_TRANSFER_TARGET__DEFINED__")
+cpp_quote("//  enumerator for transfer target: either W3-Server or Control")
+typedef enum tagCSC_TRANSFER_TARGET
+{ 
+    ProgramDomains = 0,     // transfer program domains to/from control
+    VisualDomains           // transfer visualization domains to/from WebServer
+} CSC_TRANSFER_TARGET;
+cpp_quote("#endif // __CSC_TRANSFER_TARGET__DEFINED__")
+
+//----	Predefinitions of Interfaces
+//interface to check the connection, shall be implemented on coclass ControlMgt, CommissioningMgt.
+interface IConnection;
+//coclass ControlMgt------------------------------------------------------------------------------//
+interface IControlMgt;			
+interface IMessages;
+interface ILicenseMgt;
+interface _ICERemoteMessageEvent; //outgoing
+
+//coclass CommissioningMgt------------------------------------------------------------------------//
+interface ICommissioningMgt;	
+interface _FCCommissioningMgtNotification; //outgoing
+
+//coclass CommissioningSession (noncreatable)-----------------------------------------------------//
+interface ITransfer;			
+interface IBreakpoint;
+interface _FCRemoteBreakpointNotification; //outgoing
+interface IForceManagement;
+//coclass CustomConnect---------------------------------------------------------------------------//
+//(1)
+interface ICustomConnect;
+//global Interfaces implemented on multiple coclasses
+
+    [
+        object,
+        uuid(08C2E9E3-AB62-47b1-956C-9DC1479988C7),
+        dual,
+        oleautomation,
+        helpstring("IConnection interface"),
+        pointer_default(unique)
+    ]
+	//------------------------------------------------------------------*
+	/**
+	 *  interface IConnection - Interface for connection management.
+	 *	Shall be implemented on coclass ControlMgt, CommissioningMgt.
+	*/
+    interface IConnection : IDispatch
+    {
+        //------------------------------------------------------------------*
+        /**
+         * Call this method to check the connection. Call it from an own thread
+         * context, because in case of a broken connection the method will block
+         * for a considerable amount of time. Check the return value for errors
+         * of the facility RPC and Win32 (see below).
+         *
+         * @return          HRESULT - RPC errors will be returned in case of a broken
+         *                  connection. Recent versions of the COM libraries may also
+         *                  return error codes of the Win32 facility. Check these as
+         *                  well. S_OK will be returned in case of a "good" connection.
+        */
+        [id(1), helpstring("Check connection")]
+        HRESULT CheckConnection();
+    }
+
+//----  coclass:    ControlMgt
+    [
+        object,
+        uuid(092CA1FD-2A47-4f66-8E34-8563882D4872),
+        dual,
+        oleautomation,
+        helpstring("IControlMgt Interface"),
+        pointer_default(unique)
+    ]
+	//------------------------------------------------------------------*
+	/**
+	 *  interface IControlMgt - Interface for control/resource management.
+     *  Used to control the current state of the resource and the tasks
+     *  running on the specific resource.
+	 *	Shall be implemented on coclass ControlMgt.
+	*/
+    interface IControlMgt : IDispatch
+    {
+        //------------------------------------------------------------------*
+        /**
+         * Login for a control management session. Login has to be called prior
+         * to the invocation of any other method of this interface. Otherwise
+         * an invalid session key will be provided that leads to an error code
+         * E_INVALIDARG or E_ACCESSDENIED.
+         *  
+         * @param       sUser - User name
+         * @param       sPassword - Engineering master password.
+         * @param       plKey - Reference to a session key. The session key 
+         *              will be returned upon a successful login. In case of
+         *              an error the session key returned is 0.           
+         *              
+         * @return      HRESULT: E_POINTER - one of the arguments sPassword,
+         *              sUser or plKey refers to a NULL pointer.<br>
+         *              E_OUTOFMEMORY - Out of memory situation.<br>
+         *              E_ACCESSDENIED - Invalid password provided.<br>
+         *              S_OK - Success.
+         * @see         Logout()
+        */
+        [id(1), helpstring("Login to control management")]
+            HRESULT Login([in,string] BSTR sUser, [in,string] BSTR sPassword, [out,retval] long* plKey); 
+        //------------------------------------------------------------------*
+        /**
+         * Logout from a control management session. A valid session key has
+         * to be provided with invocation of this method. Hence the method
+         * Login() has to be called successfully prior to a call of Logout().
+         *
+         * @param       Valid session key returned from a call to Login().
+         * @return      HRESULT: E_INVALIDARG or E_ACCESSDENIED if an invalid
+         *              session key is provided.<br>
+         *              S_OK - Success.
+         * @see         Login()
+        */
+        [id(2), helpstring("Logout from control management")]
+            HRESULT Logout([in] long lKey);
+        //------------------------------------------------------------------*
+        /**
+         * Perform a cold start operation with the control/resource.
+         * A valid session key has to be provided with invocation of this method. 
+         * Hence the method Login() has to be called successfully prior to a call
+         * of ColdStartResource(). The coldstart operation initializes all objects
+         * (variables etc.) with it's initial (download) values. Retain objects
+         * will loose their retain values.
+         *
+         * @param       Valid session key returned from a call to Login().
+         * @return      HRESULT: E_INVALIDARG or E_ACCESSDENIED if an invalid
+         *              session key is provided.<br>
+         *              E_NOINTERFACE - Interface to resource object could not
+         *              be obtained.<br>
+         *              S_OK - Success.
+         * @see         Login(), WarmStartResource()
+        */
+        [id(3), helpstring("Cold start of resource on control")]
+            HRESULT ColdStartResource([in] long lKey);
+
+        //------------------------------------------------------------------*
+        /**
+         * Perform a warm start operation with the control/resource.
+         * A valid session key has to be provided with invocation of this method. 
+         * Hence the method Login() has to be called successfully prior to a call
+         * of WarmStartResource(). The coldstart operation initializes all non 
+         * retain objects (variables etc.) with it's initial (download) values. 
+         * Retain objects will retain their (last stored) retain values.
+         *
+         * @param       Valid session key returned from a call to Login().
+         * @return      HRESULT: E_INVALIDARG or E_ACCESSDENIED if an invalid
+         *              session key is provided.<br>
+         *              E_NOINTERFACE - Interface to resource object could not
+         *              be obtained.<br>
+         *              S_OK - Success.
+         * @see         Login(), ColdStartResource()
+        */
+        [id(4), helpstring("Warm start of resource on control")]
+            HRESULT WarmStartResource([in] long lKey);
+
+        //------------------------------------------------------------------*
+        /**
+         * Pause the control respectively resource. The execution of the 
+         * resource will stop. Call ContinueResource() to start execution of
+         * the resource.
+         * A valid session key has to be provided with invocation of this method. 
+         * Hence the method Login() has to be called successfully prior to a call
+         * of PauseResource().
+         *
+         * @param       Valid session key returned from a call to Login().
+         * @return      HRESULT: E_INVALIDARG or E_ACCESSDENIED if an invalid
+         *              session key is provided.<br>
+         *              E_NOINTERFACE - Interface to resource object could not
+         *              be obtained.<br>
+         *              Additional error codes that are implementation specific
+         *              may occur.<br>
+         *              S_OK - Success.
+         * @see         Login(), ContinueResource()
+        */
+        [id(5), helpstring("Pause resource on control")]
+            HRESULT PauseResource([in] long lKey);
+        //------------------------------------------------------------------*
+        /**
+         * Continue execution of a paused the control respectively resource. 
+         * Call PauseResource() to stop execution of the resource.
+         * A valid session key has to be provided with invocation of this method. 
+         * Hence the method Login() has to be called successfully prior to a call
+         * of ContinueResource().
+         *
+         * @param       Valid session key returned from a call to Login().
+         * @return      HRESULT: E_INVALIDARG or E_ACCESSDENIED if an invalid
+         *              session key is provided.<br>
+         *              E_NOINTERFACE - Interface to resource object could not
+         *              be obtained.<br>
+         *              Additional error codes that are implementation specific
+         *              may occur.<br>
+         *              S_OK - Success.
+         * @see         Login(), PauseResource()
+        */
+        [id(6), helpstring("Continue resource on control")]
+            HRESULT ContinueResource([in] long lKey);
+
+        //------------------------------------------------------------------*
+        /**
+         * Start a specific task on the resource. The task will be identified
+         * by the parameter sTask.
+         * A valid session key has to be provided with invocation of this method. 
+         * Hence the method Login() has to be called successfully prior to a call
+         * of StartTaskOnResource().
+         *
+         * @param       lKey - Valid session key returned from a call to Login().
+         * @param       sTask - Indentifier of the task to start.
+         * @return      HRESULT: E_INVALIDARG or E_ACCESSDENIED if an invalid
+         *              session key is provided.<br>
+         *              E_NOINTERFACE - Interface to task object could not
+         *              be obtained.<br>
+         *              E_POINTER - argument sTask refers to a NULL pointer.<br>
+         *              Additional error codes that are implementation specific
+         *              may occur.<br>
+         *              S_OK - Success.
+         * @see         Login(), StopTaskOnResource()
+        */
+        [id(7), helpstring("Start task on given resource on control")]
+            HRESULT StartTaskOnResource([in] long lKey, [in, string] BSTR sTask);
+
+        //------------------------------------------------------------------*
+        /**
+         * Stop a specific task on the resource. The task will be identified
+         * by the parameter sTask.
+         * A valid session key has to be provided with invocation of this method. 
+         * Hence the method Login() has to be called successfully prior to a call
+         * of StopTaskOnResource().
+         *
+         * @param       lKey - Valid session key returned from a call to Login().
+         * @param       sTask - Indentifier of the task to stop.
+         * @return      HRESULT: E_INVALIDARG or E_ACCESSDENIED if an invalid
+         *              session key is provided.<br>
+         *              E_NOINTERFACE - Interface to task object could not
+         *              be obtained.<br>
+         *              E_POINTER - argument sTask refers to a NULL pointer.<br>
+         *              Additional error codes that are implementation specific
+         *              may occur.<br>
+         *              S_OK - Success.
+         * @see         Login(), StartTaskOnResource()
+        */
+        [id(8), helpstring("Stop task on given resource on control")]
+            HRESULT StopTaskOnResource([in] long lKey, [in, string] BSTR sTask);
+
+        //------------------------------------------------------------------*
+        /**
+         * Start all tasks on the resource.
+         * A valid session key has to be provided with invocation of this method. 
+         * Hence the method Login() has to be called successfully prior to a call
+         * of StartAllTasksOnResource().
+         *
+         * @param       lKey - Valid session key returned from a call to Login().
+         * @return      HRESULT: E_INVALIDARG or E_ACCESSDENIED if an invalid
+         *              session key is provided.<br>
+         *              E_NOINTERFACE - Interface to resource object could not
+         *              be obtained.<br>
+         *              Additional error codes that are implementation specific
+         *              may occur.<br>
+         *              S_OK - Success.
+         * @see         Login(), StopAllTasksOnResource()
+        */
+        [id(9), helpstring("Start all tasks on resource")]
+            HRESULT StartAllTasksOnResource([in] long lKey);
+        //------------------------------------------------------------------*
+        /**
+         * Stop all tasks on the resource.
+         * A valid session key has to be provided with invocation of this method. 
+         * Hence the method Login() has to be called successfully prior to a call
+         * of StartAllTasksOnResource().
+         *
+         * @param       lKey - Valid session key returned from a call to Login().
+         * @return      HRESULT: E_INVALIDARG or E_ACCESSDENIED if an invalid
+         *              session key is provided.<br>
+         *              E_NOINTERFACE - Interface to resource object could not
+         *              be obtained.<br>
+         *              Additional error codes that are implementation specific
+         *              may occur.<br>
+         *              S_OK - Success.
+         * @see         Login(), StartAllTasksOnResource()
+        */
+        [id(10), helpstring("Stop all tasks on resource")]
+            HRESULT StopAllTasksOnResource([in] long lKey);
+    };
+
+    //-------------------------------------------------------------------------
+    [
+        object,
+        uuid(74D30907-795D-4c5d-AD77-FE3EA0551544),
+        dual,
+        oleautomation,
+        helpstring("IMessages Interface"),
+        pointer_default(unique)
+    ]
+	//------------------------------------------------------------------*
+	/**
+	 *  interface IMessages - Interface for message related operations.
+     *  Used mainly to retrieve messages from the controls history buffer or
+     *  log file. The target/control maintains a buffer for history/log 
+     *  messages of a fixed length. If the history buffer gets full older 
+     *  messages will be overwritten. Each message will be identified by an 
+     *  identifier (id). The length of the history buffer can be manipulated and the 
+     *  history buffer can be cleared via this interface. 
+	 *	Shall be implemented on coclass ControlMgt.
+	*/
+    interface IMessages : IDispatch
+    {
+        //------------------------------------------------------------------*
+        /**
+         * Retrieves the unique identifiers (id) of the first and the last history
+         * respectively log message. For a description of the history buffer see
+         * the interface description above. To get the range of message ids call this
+         * method. To retrieve the history messages call GetHistoryMessage() 
+         * with the ids returned with the method.
+         * A valid session key has to be provided with invocation of this method. 
+         * Hence the method IControlMgt::Login() has to be called successfully 
+         * prior to a call of this method.
+         *
+         * @param       lKey - Valid session key returned from a call to Login().
+         * @param       pFirst - reference to the first history message id of 
+         *              the messages stored in the history buffer.
+         * @param       pFirst - reference to the last history message id.
+         * @return      HRESULT: E_POINTER - one of the arguments pFirst
+         *              pLast refers to a NULL pointer.<br>
+         *              E_INVALIDARG or E_ACCESSDENIED if an invalid
+         *              session key is provided.<br>
+         *              E_CSC_NO_CONNECT_TO_CONTROL - No connection to target system.<br>
+         *              Additional error codes that are implementation specific
+         *              may occur.<br>
+         *              S_OK - Success.
+         * @see         GetHistoryMessage(), interface IMessages   
+        */
+        [id(1), helpstring("method GetMinMaxHistoryIDs")]
+            HRESULT GetMinMaxHistoryIDs([in] long lKey,[out] long *pFirst, [out] long *pLast);
+
+        //------------------------------------------------------------------*
+        /**
+         * Retrieve a history/log message. The message will be identified by an 
+         * identifier (id) passed with the argument idHistory. Call GetMinMax-
+         * HistoryIDs to get the valid range of history id's. For a description 
+         * of the history buffer see the interface description above.
+         * A valid session key has to be provided with invocation of this method. 
+         * Hence the method IControlMgt::Login() has to be called successfully 
+         * prior to a call of this method.
+         *
+         * @param       lKey - Valid session key returned from a call to Login().
+         * @param       idHistory - Valid identifier of history message demanded.    
+         * @param       sMessage - pointer to a BSTR to receive the message content.
+         * @param       dt - pointer to a DATE datatype to receive the time stamp of
+         *              the history message.
+         * @return      HRESULT: E_POINTER - one of the arguments sMessage, dt
+         *              refers to a NULL pointer.<br>
+         *              E_INVALIDARG or E_ACCESSDENIED if an invalid
+         *              session key is provided.<br>
+         *              E_CSC_NO_CONNECT_TO_CONTROL - No connection to target system.<br>
+         *              Additional error codes that are implementation specific
+         *              may occur.<br>
+         *              S_OK - Success.
+         * @see         GetMinMaxHistoryIDs(), interface IMessages
+         */
+        [id(2), helpstring("method GetHistoryMessage")]
+            HRESULT GetHistoryMessage([in] long lKey, [in] long idHistory, [out] BSTR *sMessage, [out] DATE *dt);
+        //------------------------------------------------------------------*
+        /**
+         * Get the length of the history buffer. For a description 
+         * of the history buffer see the interface description above.
+         * Call put_MaxHistoryLength() to change the length of the buffer.
+         * A valid session key has to be provided with invocation of this method. 
+         * Hence the method IControlMgt::Login() has to be called successfully 
+         * prior to a call of this method.
+         *
+         * @param       lKey - Valid session key returned from a call to Login().
+         * @param       pVal - pointer to long to receive the number of entries of
+         *              the history buffer.
+         * @return      HRESULT: E_POINTER - argument pVal refers to a NULL pointer.<br>
+         *              E_INVALIDARG or E_ACCESSDENIED if an invalid session key
+         *               is provided.<br>
+         *              E_CSC_NO_CONNECT_TO_CONTROL - No connection to target system.<br>
+         *              Additional error codes that are implementation specific
+         *              may occur.<br>
+         *              S_OK - Success.
+         * @see         put_MaxHistoryLength(), interface IMessages
+        */
+        [propget, id(3), helpstring("property MaxHistoryLength")]
+            HRESULT MaxHistoryLength([in] long lKey, [out, retval] long *pVal);
+
+        //------------------------------------------------------------------*
+        /**
+         * Write the length of the history buffer. For a description 
+         * of the history buffer see the interface description above.
+         * Call get_MaxHistoryLength() to get the actual length of the buffer.
+         * A valid session key has to be provided with invocation of this method. 
+         * Hence the method IControlMgt::Login() has to be called successfully 
+         * prior to a call of this method.
+         *
+         * @param       lKey - Valid session key returned from a call to Login().
+         * @param       newVal - new number of entries for the history buffer.
+         * @return      HRESULT: E_INVALIDARG - argument newVal <= 0.<br>
+         *              E_INVALIDARG or E_ACCESSDENIED if an invalid session key
+         *               is provided.<br>
+         *              E_CSC_NO_CONNECT_TO_CONTROL - No connection to target system.<br>
+         *              Additional error codes that are implementation specific
+         *              may occur.<br>
+         *              S_OK - Success.
+         * @see         get_MaxHistoryLength(), interface IMessages
+        */
+        [propput, id(3), helpstring("property MaxHistoryLength")]
+            HRESULT MaxHistoryLength([in] long lKey,[in] long newVal);
+        [id(4), helpstring("method ClearHistoryBuffer")]
+
+        //------------------------------------------------------------------*
+        /**
+         * Clears the content of the history buffer. For a description 
+         * of the history buffer see the interface description above.
+         * A valid session key has to be provided with invocation of this method. 
+         * Hence the method IControlMgt::Login() has to be called successfully 
+         * prior to a call of this method.
+         *
+         * @param       lKey - Valid session key returned from a call to Login().
+         * @return      HRESULT: E_INVALIDARG or E_ACCESSDENIED if an invalid 
+         *              session key is provided.<br>
+         *              E_CSC_NO_CONNECT_TO_CONTROL - No connection to target system.<br>
+         *              Additional error codes that are implementation specific
+         *              may occur.<br>
+         *              S_OK - Success.
+         * @see         interface IMessages
+        */
+            HRESULT ClearHistoryBuffer([in] long lKey);
+
+        //------------------------------------------------------------------*
+        /**
+         *  Connect to a message session in order to receive messages during
+         *  an active connection of a client to the target server.
+	     *	Clients have to advise an object implementing the interface 
+         *  _ICERemoteMessageEvent via the connection point mechanism 
+         *  and have to call Connect() in order to receive messages from the 
+         *  target system properly.
+         *
+         * @param       lKey - Valid session key returned from a call to Login().
+         * @return      HRESULT: E_INVALIDARG or E_ACCESSDENIED if an invalid 
+         *              session key is provided.<br>
+         *              Additional error codes that are implementation specific
+         *              may occur.<br>
+         *              S_OK - Success.
+         * @see         interface _ICERemoteMessageEvent, Disconnect()
+        */
+        [id(5), helpstring("method Connect")]
+            HRESULT Connect([in] long lKey);
+
+        //------------------------------------------------------------------*
+        /**
+         *  Disconnect from a message session to stop receiving messages during
+         *  an active connection of a client to the target server. Further
+         *  details see Connect()
+         *
+         * @param       lKey - Valid session key returned from a call to Login().
+         * @return      HRESULT: E_INVALIDARG or E_ACCESSDENIED if an invalid 
+         *              session key is provided.<br>
+         *              Additional error codes that are implementation specific
+         *              may occur.<br>
+         *              S_OK - Success.
+         * @see         interface _ICERemoteMessageEvent, Connect()
+        */
+        [id(6), helpstring("method Disconnect")]
+            HRESULT Disconnect([in] long lKey);
+    };
+
+    //-------------------------------------------------------------------------
+    [
+        object,
+        uuid(7B3E7997-0DD5-41a2-8CB2-87443F0846D9),
+        dual,
+        oleautomation,
+        helpstring("ILicenseMgt Interface"),
+        pointer_default(unique)
+    ]
+	//------------------------------------------------------------------*
+	/**
+	 *  interface ILicenseMgt - Interface for license management.
+	 *	Can be implemented on coclass ControlMgt. Is not mandatory for all
+     *  target system types.
+	*/
+    interface ILicenseMgt : IDispatch
+    {
+        //------------------------------------------------------------------*
+        /**
+         * Get the serial number respectively installation key from the control.
+         * 
+         * @param       pVal - reference to BSTR that receives the serial number.
+         * @return      HRESULT : E_ACCESSDENIED - Remote access to serial number
+         *              is not permitted.<br>
+         *              E_POINTER - arguments pVal refers to a NULL pointer.<br>
+         *              S_OK - Success.
+         * @see         interface ILicenseMgt. 
+        */
+        [propget, id(1), helpstring("get serial number")]
+            HRESULT SerialNo([out, retval] BSTR *pVal);
+
+        //------------------------------------------------------------------*
+        /**
+         * Write the enable code to the target/control.
+         * 
+         * @param       newVal - BSTR that contains the enable code.
+         * @return      HRESULT : E_ACCESSDENIED - Remote setting of enable code
+         *              is not permitted.<br>
+         *              Additional error codes raised by license management
+         *              may occur.<br>
+         *              S_OK - Success.
+         * @see         interface ILicenseMgt. 
+        */
+        [propput, id(2), helpstring("put the Enable code")]
+            HRESULT EnableCode([in] BSTR newVal);
+
+        //------------------------------------------------------------------*
+        /**
+         * Get the encrypted license information from the control.
+         * 
+         * @param       pVal - reference to BSTR that receives the license info.
+         * @return      HRESULT : E_ACCESSDENIED - Remote access to license info
+         *              is not permitted.<br>
+         *              E_POINTER - argument pVal refers to a NULL pointer.<br>
+         *              S_OK - Success.
+         * @see         interface ILicenseMgt. 
+        */
+        [propget, id(3), helpstring("get the scrambled License information")]
+            HRESULT ScrambledLicInfo([out, retval] BSTR *pVal);
+    };
+
+
+    //-------------------------------------------------------------------------
+    [
+        uuid(0F01D071-00FD-4686-BEC3-81E8A77B2575),
+        dual,
+        oleautomation,
+        helpstring("Outgoing event interface for receiving messages")
+    ]
+	//------------------------------------------------------------------*
+	/**
+	 *  interface _ICERemoteMessageEvent - Outgoing (event) interface for receiving messages.
+	 *	Clients have to advise an object implementing this interface via the connection 
+     *  point mechanism (see below) and have to call IMessages::Connect() in order to 
+     *  receive messages from the target system properly.
+     *  @see        Connection point interfaces: IConnectionPointContainer, IConnectionPoint.
+	*/
+    interface _ICERemoteMessageEvent: IDispatch
+    {
+    //------------------------------------------------------------------*
+    /**
+     * The target specific server invokes this method if a message is 
+     * raised by the underlying target system and the message session
+     * is opened by a call to IMessages::Connect(). See also description
+     * of the interface _ICERemoteMessageEvent. The message occurred will
+     * not be forwarded to any client if no client has been advised using
+     * the connection point mechanism.
+     *
+     * @param       BSTR sMessage - Message content.           
+     * @return      HRESULT: shall always be S_OK except for connection
+     *              failures.    
+     * @see         IMessages::Connect(), interface _ICERemoteMessageEvent 
+    */
+		[id(1), helpstring("Notify client that a new Message has arrived")] 
+			HRESULT OnNewMessage([in] BSTR sMessage);
+    };
+
+//----  coclass:    CommissioningMgt
+    [
+        object,
+        uuid(BC62E932-1E49-4d0a-BA75-C413B9F6CB30),
+        dual,
+        oleautomation,
+        helpstring("ICommissioningMgt Interface"),
+        pointer_default(unique)
+    ]
+	//------------------------------------------------------------------*
+	/**
+	 *  interface ICommissioningMgt - Interface for commissioning management.
+     *  Interface is used to initiate a exclusive commissioning session. Only one
+     *  commissioning session can be opened to a specific target and the session
+     *  is exclusive. Hence no further commissioning sessions can be opened if 
+     *  a session is already open. To enforce another commissioning session 
+     *  ICommissioningMgt::ForceLogout() shall be called prior to invoke 
+     *  ICommissioningMgt::Login().
+	 *	shall be implemented on coclass CommissioningMgt.
+	*/
+    interface ICommissioningMgt : IDispatch
+    {
+        //------------------------------------------------------------------*
+        /**
+         * Get the user of a currently opened exclusive commissioning session.
+         * Refer to the interface description of ICommissioningMgt (above)
+         * for a description of exclusive commissioning sessions.
+         *
+         * @param      BSTR pVal - BSTR receiving the user who has logged in.
+         *             Maybe empty if no user has been logged in.    
+         * @return     HRESULT: E_POINTER - argument pVal refers to a NULL 
+         *             pointer.<br>
+         *             S_FALSE - No user has been logged in.<br>
+         *             S_OK - Success.
+         * @see        Login()
+        */
+        [propget, id(1), helpstring("get the current User")]
+            HRESULT CurrentUser([out, retval] BSTR *pVal);
+
+        //------------------------------------------------------------------*
+        /**
+         * Login for a commissioning management session. Login has to be called
+         * prior to the invocation of any other method of the interfaces ITransfer,
+         * IBreakpoint and IForceManagement. Otherwise an invalid session key will 
+         * be provided that leads to an error code. Login creates
+         * the exclusive commissioning session and returns this session with the
+         * argument pUnkSession. Refer also to the interface description of 
+         * ICommissioningMgt (above). An error code will be returned if there is
+         * already an exclusive session opened.
+         *  
+         * @param       sUser - User name
+         * @param       sPassword - Engineering master password.
+         * @param       sEngMachineName - Host name that opens the session.
+         * @param       plKey - Reference to a session key. The session key 
+         *              will be returned upon a successful login. In case of
+         *              an error the session key returned is 0.
+         * @param       Reference to an IUnknown pointer. The IUnknown interface
+         *              of the created commissioning session object will be returned
+         *              with this argument. Shall not be NULL. The returned 
+         *              IUnknown pointer is NULL in case of an error.
+         *              
+         * @return      HRESULT: E_POINTER - one of the arguments sPassword,
+         *              sUser or plKey, pUnkSession refers to a NULL pointer.<br>
+         *              E_OUTOFMEMORY - Out of memory situation.<br>
+         *              E_ACCESSDENIED - Invalid password provided.<br>
+         *              E_CSC_TRANSFER_SINGLE_DOWNLOADER_ALLOWED - Another user
+         *              has already opened an exclusive commissioning session.<br>
+         *              S_OK - Success.
+         * @see         Logout(), ForceLogout()
+        */
+         [id(2), helpstring("Login for commissioning management")]
+            HRESULT Login([in, string] BSTR sUser, [in,string] BSTR sPassword, [in, string] BSTR sEngMachineName, [out] long *plKey, [out, retval] LPUNKNOWN *pUnkSession);
+
+        //------------------------------------------------------------------*
+        /**
+         * Logout from a commissioning management session. A valid session key has
+         * to be provided with invocation of this method. Hence the method
+         * Login() has to be called successfully prior to a call of Logout().
+         * After a logout operation no method of the Interfaces ITransfer, 
+         * IBreakpoint and IForceManagement can be invoked because the session key
+         * is no longer valid and the session is closed.
+         *
+         * @param       Valid session key returned from a call to Login().
+         * @return      HRESULT: E_INVALIDARG if an invalid session key 
+         *              is provided.<br>
+         *              S_FALSE - lKey is 0.<br>
+         *              S_OK - Success.
+         * @see         Login()
+        */
+        [id(3), helpstring("Logout from commissioning management")]
+            HRESULT Logout([in] long lKey);
+
+        //------------------------------------------------------------------*
+        /**
+         * Forces a logout of another user that owns a exclusive commissioning
+         * session. The session will be closed independent from the user that
+         * has opened the session and hence owns the actual session. The user
+         * will be notified via the interface _FCCommissioningMgtNotification
+         * that a logout of the current user has been enforced. In order to 
+         * receive the event via the interface mentioned above clients have to
+         * advise an object implementing this interface via the connection 
+         * point mechanism.
+         *
+         * @param       sUser - User name
+         * @param       sPassword - Engineering master password.
+         * @param       sEngMachineName - Host name of the invoking host.
+         * @return      HRESULT: E_POINTER - one of the arguments sPassword,
+         *              sUser or sEngMachineName refers to a NULL pointer.<br>
+         *              E_OUTOFMEMORY - Out of memory situation.<br>
+         *              E_ACCESSDENIED - Invalid password provided.<br>
+         *              S_OK - Success.
+         * @exception       -
+         * @see     interface _FCCommissioningMgtNotification
+        */
+        [id(4), helpstring("Force a logout from commissioning management")]
+            HRESULT ForceLogout([in, string] BSTR sUserName, [in,string] BSTR sPassword, [in, string] BSTR sEngMachineName);
+    };
+
+    //-------------------------------------------------------------------------
+    [
+        uuid(4E348888-2A49-4fef-9934-E2D57C5D638C),
+        dual,
+        oleautomation,
+        helpstring("Event interface for commissioning management notifications")
+    ]
+	//------------------------------------------------------------------*
+	/**
+	 *  interface _FCCommissioningMgtNotification - Outgoing (event) interface
+     *  for receiving login/or logout information raised by the interface methods
+     *  of the interface ICommissioningMgt.
+	 *	Clients have to advise an object implementing this interface via the connection 
+     *  point mechanism (see below).
+     *  @see        Connection point interfaces: IConnectionPointContainer, IConnectionPoint.
+	*/
+    interface _FCCommissioningMgtNotification : IDispatch
+    {
+        //------------------------------------------------------------------*
+        /**
+         * The target specific server invokes this method if a user performs
+         * a login, logout, or force logout operation via the corresponding
+         * interface methods of the interface ICommissioningMgt. 
+         * The notification will not be forwarded to any client if no client 
+         * has been advised using the connection point mechanism.
+         *
+         * @param       sUser - User name
+         * @param       sEngMachineName - Host name of the invoking host.
+         * @param       bLoggingIn: true - login operation, false - logout
+         *              operation or force logout operation. 
+         * @return      HRESULT: shall always be S_OK except for connection
+         *              failures.    
+         * @see         interface _FCCommissioningMgtNotification (above). 
+        */
+        [id(1), helpstring("Notify client that a user has logged in or out commissioning management")] 
+            HRESULT OnUserLoggedin([in, string] BSTR sUserName, [in, string] BSTR sEngMachineName, BOOL bLoggingIn);
+    };
+
+
+//----  coclass:    CommissioningSession (noncreatable)
+    [
+        object,
+        uuid(5C5D0124-1D7D-4bf2-87A7-226D609238EE),
+        dual,
+        oleautomation,
+        helpstring("ITransfer Interface"),
+        pointer_default(unique)
+    ]
+	//------------------------------------------------------------------*
+	/**
+	 *  interface ITransfer - Interface for download/Upload operations.
+     *  Interface should be implemented to allow for download and upload
+     *  operations. A transacted mechanism shall be realized to deploy the
+     *  download/upload functionality. Hence each download/upload operation
+     *  shall be initiated by ITransfer::StartOnlineChange() and confirmed by
+     *  ITransfer::CommitOnlineChange() or aborted by CancelOnlineChange().
+	 *	Shall be implemented on coclass CommissioningSession.
+	*/
+    interface ITransfer : IDispatch
+    { 
+        [id(1), helpstring("Start online change operation")]
+            HRESULT StartOnlineChange([in] long lKey, [in] CSC_TRANSFER_TARGET src);
+        [id(2), helpstring("Commit actual online change operation")]
+            HRESULT CommitOnlineChange([in] long lKey, [in] CSC_TRANSFER_TARGET src, [in, string] BSTR sResource, [in,string] BSTR sProjectName, [in, string] BSTR sProjectGUID, [in, string] BSTR sDownloadGUID);
+        [id(3), helpstring("Cancel actual online change operation")]
+            HRESULT CancelOnlineChange([in] long lKey, [in] CSC_TRANSFER_TARGET src);
+        [id(4), helpstring("Download one domain")]
+            HRESULT DownloadDomain([in] long lKey, [in] CSC_TRANSFER_TARGET src, [in, string] BSTR sDomainName, [in] SAFEARRAY(unsigned char) *content);
+        [id(5), helpstring("Upload one domain")]
+            HRESULT UploadDomain([in] long lKey, [in] CSC_TRANSFER_TARGET src, [in, string] BSTR sDomainName, [out, retval] SAFEARRAY(unsigned char) *content);
+        [id(6), helpstring("Delete all domains")]
+            HRESULT DeleteAllDomains([in] long lKey, [in] CSC_TRANSFER_TARGET src);
+        [id(7), helpstring("Delete specific domain")]
+            HRESULT DeleteDomain([in] long lKey, [in] CSC_TRANSFER_TARGET src, [in, string] BSTR sDomainName);
+        [id(8), helpstring("Get the domain directory")]
+            HRESULT GetDomainList([in] long lKey, [in] CSC_TRANSFER_TARGET src, [out, retval] SAFEARRAY(BSTR) *listDomainNames);
+        [propget, id(9), helpstring("get download attributes")]
+            HRESULT DLoadAttribute([in] long lKey, [in] CSC_TRANSFER_TARGET src, [in, string] BSTR sAtributeName, [out, retval] VARIANT *pVal);
+		[id(10), helpstring("Clear out given resource on control")]
+            HRESULT ClearResource([in] long lKey, [in] CSC_TRANSFER_TARGET src);
+        [id(11), helpstring("Flash data after download operation")]
+            HRESULT FlashResource([in] long lKey);
+    };
+
+    //-------------------------------------------------------------------------
+    [
+      odl,
+      uuid(779A4012-481C-45fe-9324-3172A65BE7A9),
+      helpstring("Interface to set/reset breakpoints in 4C control"),
+      dual,
+      oleautomation
+    ]
+	//------------------------------------------------------------------*
+	/**
+	 *  interface IBreakpoint - Interface for breakpoint management.
+     *  Interface should be implemented to allow for breakpoint operations
+     *  e.g. set or clear a breakpoint, clear all breakpoints etc.
+     *  The event that the target execution has reached a breakpoint will
+     *  be notified facilitating the outgoing (event) interface 
+     *  _FCRemoteBreakpointNotification.
+	 *	shall be implemented on coclass CommissioningSession.
+     *  @see Interface _FCRemoteBreakpointNotification
+	*/
+     interface IBreakpoint : IDispatch
+    {   //ED: in Breakpoint Notifications wird immer ConfigName.Resource.instance verwendent.
+        //aus diesem Grund wird der ConfigName&ResourceName wohl überhaupt so oft referenziert.
+        //alles wäre glaub ich einfacer, wenn in dem Breakpoint Notify nur der InstanceName übergeben wird.
+        //offen: Function-Breakpoints (sollten Task-spezifisch sein)
+        [id(1), helpstring("Set a breakpoint")]
+            HRESULT SetBreakpoint([in] long lKey, [in, string] BSTR sInstanceName, 
+                        [in] long lBreakpointNumber, [out, retval] long* hBP);
+        [id(2), helpstring("Clear a breakpoint")]
+            HRESULT ClearBreakpoint([in] long lKey, [in] long hBP);
+        [id(3), helpstring("Clear all breakpoints")]
+            HRESULT ClearAllBreakpoints([in] long lKey);
+        [id(4), helpstring("Continue task after breakpoint has been reached")]
+            HRESULT ContinueTask([in] long lKey, [in, string] BSTR sTaskName);
+        [id(5), helpstring("Perform a single step")]
+            HRESULT SingleStep([in] long lKey, [in, string] BSTR sTaskName);
+        [id(6), helpstring("Step over call")]
+            HRESULT StepOver([in] long lKey, [in, string] BSTR sTaskName);
+        [id(7), helpstring("Step out one call context")]
+            HRESULT StepOut([in] long lKey, [in, string] BSTR sTaskName);
+    };
+
+    //-------------------------------------------------------------------------
+    [
+        uuid(147E5B29-26A5-40d1-A70F-57274B518F4F),
+        dual,
+        oleautomation,
+        helpstring("Event interface for 4C breakpoint notifications")
+    ]
+	//------------------------------------------------------------------*
+	/**
+	 *  interface _FCRemoteBreakpointNotification - Outgoing (event) interface
+     *  for receiving breakpoint notifications raised by target system when the 
+     *  execution has reached a breakpoint or leaves a breakpoint.
+	 *	Clients have to advise an object implementing this interface via the connection 
+     *  point mechanism (see below).
+     *  @see        Connection point interfaces: IConnectionPointContainer, IConnectionPoint.
+	*/
+    interface _FCRemoteBreakpointNotification : IDispatch
+    {
+        [id(1), helpstring("Notification breakpoint reached - bpQuality: 0=user bp, 1=single step -1= breakpoint left")]
+            HRESULT OnBreakpointReached([in] BSTR sTaskName, [in] long bpQuality,
+            /*arrsInstances indicates the call stack arrlBreakpointNumber the associated breakpoint numbers*/
+            [in] SAFEARRAY(BSTR) arrsInstances, [in] SAFEARRAY(long) arrlBreakpointNumber);
+		[id(2), helpstring("Notification configuration changed")]
+            HRESULT OnConfigurationChanged();
+    };
+
+    [
+        uuid(52282971-AD8A-4b97-8DC7-2547C822BE4E),
+        dual,
+        oleautomation,
+        helpstring("Force management")
+    ]
+	//------------------------------------------------------------------*
+	/**
+	 *  interface IForceManagement - Interface for force management.
+     *  Interface can be implemented to allow for forcing of variables 
+     *  resp. OPC items. The variables/OPC Items will be identified by 
+     *  the OPC item path. The object implementing the interface will
+     *  maintain a list of forced variables that can be manipulated with
+     *  the interface methods of this interface.
+	 *	shall be implemented on coclass CommissioningSession.
+	*/
+    interface IForceManagement : IDispatch
+    {
+        [id(1), helpstring("Get the actual force list")]
+            HRESULT GetForceList([in] long lKey, [out] SAFEARRAY(BSTR) * psItemList, [out] SAFEARRAY(VARIANT) * psValues);
+        [id(2), helpstring("Add a force list to the actual force list")]
+            HRESULT AddForceList([in] long lKey, [in] SAFEARRAY(BSTR) sItemList, [in] SAFEARRAY(VARIANT) sValues);
+        [id(3), helpstring("Remove a force list from the actual force list")]
+            HRESULT RemoveForceList([in] long lKey, [in] SAFEARRAY(BSTR) sItemList);
+        [id(4), helpstring("Clear the whole force list")]
+            HRESULT ClearForceList([in] long lKey);
+    };
+
+//----  coclass:    CustomConnect
+    //-------------------------------------------------------------------------
+    [
+      odl,
+      uuid(20B477C8-4957-43e4-B07F-02B47C3B34A3),
+      helpstring("Interface ICustomConnect to create the other coclasses resp. sessions"),
+      oleautomation
+    ]
+	//------------------------------------------------------------------*
+	/**
+	 *  interface ICustomConnect - Interface for custom object creation.
+     *  This interface provides for the creation of the other coclasses 
+     *  with the addition of a target specific initialization string that
+     *  can be passed with the corresponding creation method of the interface.
+     * 	CreateVarSession serves for the creation of the coclass OPCServer, 
+     * 	CreateCommissioningMgt for the creation of the coclass CommissioningMgt 
+     * 	and CreateControlManagement for the creation of the coclass ControlMgt.
+	 *	shall be implemented on coclass CustomConnect.
+	*/
+	interface ICustomConnect : IDispatch
+	{
+		[id(1), helpstring("Create session with OPC server -> interface IOPCServer")]
+			HRESULT CreateVarSession(BSTR sInit, [out,retval] IUnknown** ppOPCServer);
+
+		[id(2), helpstring("Create commissioning management session -> interface ICommissioningMgt")]
+			HRESULT CreateCommissioningMgt(BSTR sInit, [out,retval] IUnknown** ppCommissionMgt);
+
+		[id(3), helpstring("Create control management session -> interface IControlMgt")]
+			HRESULT CreateControlManagement(BSTR sInit, [out,retval] IUnknown** ppControlMgt);
+	};
+
+
+//-----------------------------------------------------
+// This TYPELIB is generated as a convenience to users of high level tools
+// which are capable of using or browsing TYPELIBs. 
+// 'Smart Pointers' in VC6 is one example.
+//-----------------------------------------------------
+
+[
+    uuid(FABA6F94-012B-4247-B892-9A8839379AA1),
+    version(2.0),
+    helpstring("4CONTROL: CSC Online Server 2.0 Type Library")
+]
+library CSC_OnlineServer
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+
+    interface IConnection;
+    interface IControlMgt;			
+    interface IMessages;
+    interface ILicenseMgt;
+    interface _ICERemoteMessageEvent; //outgoing
+    interface ICommissioningMgt;	
+    interface _FCCommissioningMgtNotification; //outgoing
+    interface ITransfer;			
+    interface IBreakpoint;
+    interface IForceManagement;
+    interface _FCRemoteBreakpointNotification; //outgoing
+    interface ICustomConnect;
+};
+
+
+cpp_quote("#endif //CSC_ONLINESERVER_IDL")

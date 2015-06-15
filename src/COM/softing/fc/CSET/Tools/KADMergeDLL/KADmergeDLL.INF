@@ -1,0 +1,86 @@
+#H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CSET/Tools/KADMergeDLL/KADmergeDLL.INF 1     28.02.07 19:01 Ln $
+# ----------------------------------------------------------------------------*
+# 
+#  =FILENAME            $Workfile: KADmergeDLL.INF $
+#                       $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CSET/Tools/KADMergeDLL/KADmergeDLL.INF $
+# 
+#  =PROJECT             CAK1020    ATCMControl V2.0
+# 
+#  =SWKE                CE
+# 
+#  =COMPONENT           CSET
+# 
+#  =CURRENT      $Date: 28.02.07 19:01 $
+#                $Revision: 1 $
+# 
+#  =REFERENCES
+# 
+# ----------------------------------------------------------------------------*
+# 
+# ==
+# ----------------------------------------------------------------------------*
+#  =DESCRIPTION
+#     stdafx.h
+# ==
+# ----------------------------------------------------------------------------*
+#  =MODIFICATION
+#   15.03.01  KT      File created
+#   see history at end of file !
+# ==
+# ******************************************************************************
+#H<<
+
+TARGETTYPE=DLL
+TARGET=$(EXE_DIR)\KADmerge.dll
+IMPLIB=$(PROJECT_ROOT)\COM\softing\fc\lib\KADmergeDLL.lib
+#LINK MFC42 and MSVCRT statically is intentional, do not change
+STATIC_RUNTIME=1
+DEFINE=_WINDLL
+DEFINE=_USRDLL
+DEFINE=_ATL_STATIC_REGISTRY
+DEFINE=_ATL_NO_SECURITY
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\CE\Inc
+INCLUDE=$(MAKEDIR)
+INCLUDE=$(MAKEDIR)\Inc
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+LIBPATH=$(LIB_DIR)
+
+PCHFILE=stdafx
+
+USER=makefirst:$(MAKEDIR)\Lib
+USER=$(MAKEDIR)\Lib:
+USER=  -md $@
+
+#
+#----------------------------------------------------------------------------*
+#   $History: KADmergeDLL.INF $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:01
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CSET/Tools/KADMergeDLL
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:33
+# Created in $/4Control/COM/softing/fc/CSET/Tools/KADmergeDLL
+# 
+# *****************  Version 4  *****************
+# User: Jd           Date: 8.04.02    Time: 16:03
+# Updated in $/4Control/COM/softing/fc/CSET/Tools/KADmergeDLL
+# 
+# *****************  Version 3  *****************
+# User: Su           Date: 15.11.01   Time: 10:35
+# Updated in $/4Control/COM/softing/fc/CSET/Tools/KADmergeDLL
+# 
+# *****************  Version 2  *****************
+# User: Kt           Date: 21.03.01   Time: 13:58
+# Updated in $/4Control/COM/softing/fc/CSET/KADmergeDLL
+# 
+# *****************  Version 1  *****************
+# User: Kt           Date: 15.03.01   Time: 14:16
+# Created in $/4Control/COM/softing/fc/CSET/KADmergeDLL
+# New Project
+# 
+#==
+#----------------------------------------------------------------------------*
+#

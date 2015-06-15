@@ -1,0 +1,25 @@
+# $Header: /ATCMReleased/V2.20.00/TargetBase/LIBS/ATCM_ProfibusDP/ATCM_ProfibusDP.inf 1     28.02.07 19:05 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: ATCM_ProfibusDP.inf $
+#                        $Logfile: /ATCMReleased/V2.20.00/TargetBase/LIBS/ATCM_ProfibusDP/ATCM_ProfibusDP.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Targetbase / Libs
+#
+# =COMPONENT            ATCM_ProfibusDP
+#
+# =CURRENT      $Date: 28.02.07 19:05 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+USER=libname=ATCM_ProfibusDP
+USER=make_lib: force
+
+USER= $(4CG) $(MAKEDIR)\$(libname).4cp  -ml:0 $(4CL_DIR)\$(libname).4cl
+
+# -------------------------------------------------------------------------------

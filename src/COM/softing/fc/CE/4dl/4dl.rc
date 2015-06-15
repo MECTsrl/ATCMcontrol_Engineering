@@ -1,0 +1,11 @@
+// short description of component
+#define APP_FILEDESCRIPTION     "ATCMControl 2.0 Command Line Download Application"
+// used trademarks in component
+//#define APP_TRADEMARKS          ""
+// internal name of component (i.e. LIBRARY name of DLLs etc.)
+#define APP_INTERNALNAME        "4dl"
+// build file name of component
+#define APP_ORIGINALFILENAME    "4dl.exe"
+//we support -RegServer -UnregServer
+//#define APP_SELFREGISTER
+#include "version.rc2"

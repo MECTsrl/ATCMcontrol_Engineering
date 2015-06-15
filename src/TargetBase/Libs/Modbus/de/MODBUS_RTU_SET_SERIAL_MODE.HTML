@@ -1,0 +1,62 @@
+<html>
+
+<head>
+<title>FNC_Sceleton</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Help.css">
+</head>
+
+<body bgcolor="#FFFFCC">
+<BLOCKQUOTE> 
+  <h2>Function Name</h2>
+  <p> modbus_rtu_set_serial_mode - set the current serial mode</p>
+  <h3>Interface</h3>
+  <p class="interface">FUNCTION MODBUS_RTU_SET_SERIAL_MODE : UINT</p>
+  <p class="interface">&nbsp;</p>
+  
+ 
+  <p class="interface">VAR_INPUT </p>
+  <BLOCKQUOTE class="structinterface"> 
+    <p class="interface">mode : UINT;</p>
+  </BLOCKQUOTE>
+  <p class="interface">END_VAR</p>
+  
+  <h3>Return value</h3>
+  <p>Value of type <i><b>UINT</b></i> </p>
+  <p>0 for success 1 for error </p>
+  
+  <h3>Parameters </h3>
+  <h3>INPUT </h3>
+   <p><strong>mode</strong></p>
+  <p class="indent"> Value of type <i><b>UINT</b></i> </p>
+  <p class="indent">current serial mode to be set</p>
+  
+  <h3>Description </h3>
+  <p>The MODBUS_RTU_SET_SERIAL_MODE function shall set the selected serial mode:
+</p>
+<p>
+*MODBUS_RTU_RS232*:: the serial line is set for RS232 communication. RS-232
+ (Recommended Standard 232) is the traditional name for a series of standards
+ for serial binary single-ended data and control signals connecting between a
+ DTE (Data Terminal Equipment) and a DCE (Data Circuit-terminating
+ Equipment). It is commonly used in computer serial ports.
+ </p>
+<p>
+*MODBUS_RTU_RS485*:: the serial line is set for RS485 communication. EIA-485,
+ also known as TIA/EIA-485 or RS-485, is a standard defining the electrical
+ characteristics of drivers and receivers for use in balanced digital multipoint
+ systems. This standard is widely used for communications in industrial
+ automation because it can be used effectively over long distances and in
+ electrically noisy environments.
+ </p>
+<p>
+This function is only available on Linux kernels 2.6.28 onwards and can only be
+used with a context using a RTU backend.
+
+
+
+
+ </p>
+</BLOCKQUOTE>
+</body>
+</html>

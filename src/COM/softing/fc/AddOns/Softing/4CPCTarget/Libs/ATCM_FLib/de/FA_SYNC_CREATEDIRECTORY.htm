@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>FA_SYNC_CREATEDIRECTORY</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>FA_SYNC_CREATEDIRECTORY </h2>
+<p>Erzeugt ein neues Verzeichnis.</p>
+<h3>Schnittstelle</h3>
+<pre class="preforma">FUNCTION FA_SYNC_CREATEDIRECTORY:BOOL
+VAR_INPUT
+    EXEC        : BOOL;             
+END_VAR
+VAR_IN_OUT
+    FILE        : FA_SYNC_FILE;     
+END_VAR</pre>
+<h3>Rückgabewert</h3>
+
+<p>Wert vom Typ <i><b>BOOL</b></i><br>
+    Signalisiert den Fehlerstatus.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Ein Fehler ist aufgetreten.<br>
+  <i><b>FALSE</b></i>: Es ist kein Fehler aufgetreten.</p>
+
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>EXEC</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Startet die Operation. </dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl> 
+  <dt><b>FILE</b></dt>
+  <dd>Instanz der Struktur <a href="FA_SYNC_FILE.htm"><i><b>FA_SYNC_FILE</b></i></a><br>
+    Im Gegensatz zu den anderen Funktionen der Bausteingruppe f&uuml;r elementare 
+    synchrone Dateioperationen repr&auml;sentiert die an <i><b>FILE</b></i> &uuml;bergebene 
+    Strukturinstanz nicht ein Dateiobjekt, auf das die betreffenden Dateioperation 
+    ausgef&uuml;hrt wird. Stattdessen wird das Element <i><b>FILENAME</b></i> 
+    der Struktur <i><b>FA_SYNC_FILE</b></i> f&uuml;r die Definition des Verzeichnisnamens 
+    genutzt. </dd>
+</dl>
+<h3>Beschreibung</h3>
+<p>Mit <i><b>FA_SYNC_CREATEDIRECTORY</b></i> wird ein neues Verzeichnis angelegt. 
+  Eine neue Datei kann mit der Funktion <i><b><a href="Sync_OpenFile.htm">FA_SYNC_OPENFILE</a></b></i> 
+  nur in einem bereits existierenden Verzeichnis generiert werden. Verwenden Sie 
+  die Funktion <i><b>FA_SYNC_CREATEDIRECTORY</b></i>, wenn Sie eine neue Datei 
+  in einem noch nicht existierenden Verzeichnis generieren wollen, um dieses Verzeichnis 
+  zu erzeugen. </p>
+<p>Der Name des neu anzulegenden Verzeichnisses wird <i><b>FA_SYNC_CREATEDIRECTORY 
+  </b></i>&uuml;ber den Parameter <b><i>FILE</i></b> &uuml;bergeben. <i><b>FILE</b></i> 
+  erwartet eine Instanz der Struktur <a href="FA_SYNC_FILE.htm"><i><b>FA_SYNC_FILE</b></i></a>. 
+  Diese Struktur enth&auml;lt das Strukturelement <b><i>FILENAME</i></b>, das 
+  einen Verzeichnis- oder Dateinamen spezifiziert und vor &Uuml;bergabe der Strukturinstanz 
+  an <i><b>FA_SYNC_CREATEDIRECTORY</b></i> initialisiert werden mu&szlig;. </p>
+<p>Bei der Initialisierung des Strukturelements <i><b>FILENAME</b></i> f&uuml;r 
+  das Erzeugen eines neuen Verzeichnisses darf nur das Verzeichnis <u>ohne</u> 
+  Dateinamen angegeben werden. Der Pfad, in dem das Verzeichnis angelegt werden 
+  soll, mu&szlig; voll qualifiziert sein. Die korrekte Syntax von Pfad- und Verzeichnisangabe 
+  wird vom Compiler nicht &uuml;berpr&uuml;ft. Existiert das Verzeichnis bereits, 
+  oder ist die Pfad- oder Verzeichnisangabe nicht korrekt, wird zur Laufzeit ein 
+  Fehler ausgel&ouml;st.</p>
+<p>Der Aufruf von <i><b>FA_SYNC_CREATEDIRECTORY</b></i> ist unabh&auml;ngig von 
+  einem Zugriffszyklus, d.h. es mu&szlig; kein vorhergehender Aufruf von <i><b>FA_SYNC_OPENFILE 
+  </b></i>erfolgen. </p>
+</body>
+</html>

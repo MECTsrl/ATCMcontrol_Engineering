@@ -1,0 +1,10 @@
+<NODE TEXT="myDP1 (IO_DP)" ID="myDP1"
+      TYPE="IODP" SOURCE="myDP1.iodp">
+   <NODE TEXT="Master0" ID="Master0"
+         TYPE="DP_MASTER">
+	<NODE TEXT="Slave1" ID="Slave1"
+ 	      TYPE="DP_SLAVE"/>
+	<NODE TEXT="Slave2" ID="Slave2"
+ 	      TYPE="DP_SLAVE"/>
+   </NODE>
+</NODE>

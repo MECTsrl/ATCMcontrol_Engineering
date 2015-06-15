@@ -1,0 +1,35 @@
+HKCR
+{
+	4C_20_CSC.Session.1 = s '4C_20: Online sessions to control'
+	{
+		CLSID = s '{1A992907-8F0E-42f9-A247-E424C98394D6}'
+		'Index' 
+        { 
+            val Version = s '2.0' 
+            val LCID = d '1033' 
+        } 
+	}
+	4C_20_CSC.Session = s '4C_20: Online sessions to control'
+	{
+		CurVer = s '4C_20_CSC.Session.1'
+		CLSID = s '{1A992907-8F0E-42f9-A247-E424C98394D6}'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {1A992907-8F0E-42f9-A247-E424C98394D6} = s '4C_20: Online sessions to control'
+		{
+			ProgID = s '4C_20_CSC.Session.1'
+			VersionIndependentProgID = s '4C_20_CSC.Session'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

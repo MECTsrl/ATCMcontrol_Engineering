@@ -1,0 +1,59 @@
+/* $Header: /4CReleased/V2.20.00/Target/TEMPLATES/AddOnHandler/AddOnHandler.idl 1     28.02.07 18:54 Ln $
+ * ------------------------------------------------------------------------------
+ *
+ * =FILENAME			$Workfile: AddOnHandler.idl $
+ *						 $Logfile: /4CReleased/V2.20.00/Target/TEMPLATES/AddOnHandler/AddOnHandler.idl $
+ *
+ * =PROJECT 			4CONTROL V2.x
+ *
+ * =SWKE				Target
+ *
+ * =COMPONENT			AddOnHandler
+ *
+ * =CURRENT 	 $Date: 28.02.07 18:54 $
+ *			 $Revision: 1 $
+ *
+ * ------------------------------------------------------------------------------
+ */
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+
+import "CEMsg.idl";
+import "CEAddOnActionEvents.idl";
+import "cecompmanev.idl";
+import "CEProjWiz.idl";
+
+
+[
+	uuid(E07E1A27-8A91-46c1-A4CD-F46D1AC4CAE0),
+	version(1.0),
+	helpstring("AddonHandler 1.0 Type Library")
+]
+library ADDONHANDLERLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+    importlib("..\..\..\TargetBase\Kernel\CE\inc\CEAddonAction.tlb");
+    importlib("..\..\..\TargetBase\Kernel\CE\inc\CEBackparse.tlb");   
+
+
+	[
+		uuid(BEAEB7F7-3B03-477c-989A-A31A04E00494),
+		helpstring("HW119AddonObject Class")
+	]
+	coclass HW119AddonObject
+	{
+		[default] interface ICEAddonAction;
+        interface ICEBackparse;
+        interface ICEProjectWizard;
+        [default, source] interface _ICEMessageEvent;
+        [source] interface ICEAddOnActionEvents;
+        [source] interface ICEAddOnActionEvents2;
+        [source] interface ICECompManEvents;
+	};
+};
+
+/* ---------------------------------------------------------------------------- */

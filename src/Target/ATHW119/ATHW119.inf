@@ -1,0 +1,32 @@
+SUBPROJECT=Online\Online.mak
+SUBPROJECT=KAD\KAD.mak
+SUBPROJECT=AddonHandler\AddonHandler.mak
+SUBPROJECT=CCG\CCG.mak
+SUBPROJECT=Libs\Libs.mak
+
+USER=makefirst:$(EXE_DIR)\Engineering\bin\ATHW119
+USER=$(EXE_DIR)\Engineering\bin\ATHW119:
+USER=  -md $@
+
+USER=makefirst: $(EXE_DIR)\Engineering\bin\ATHW119\4asm.exe 
+USER=$(EXE_DIR)\Engineering\bin\ATHW119\4asm.exe:
+USER=	$(CP) $(TARGET_BASE)\bin\4asm.exe $(EXE_DIR)\Engineering\bin\ATHW119\4asm.exe
+
+
+#register some components needed to build libs:
+USER=postmake: make_lib
+USER=make_lib: force
+USER=     regsvr32 /s $(EXE_DIR)\Engineering\bin\cg_4claccess.dll
+USER=     regsvr32 /s $(EXE_DIR)\Engineering\bin\cg_iecfront.dll
+USER=     $(CP) $(EXE_DIR)\Pub\fc_baselib.dll $(WINDIR)\system32\fc_baselib.dll
+USER=     $(CP) $(EXE_DIR)\Pub\fc_todebug.dll $(WINDIR)\system32\fc_todebug.dll
+USER=     $(CP) $(EXE_DIR)\Pub\fc_util.dll    $(WINDIR)\system32\fc_util.dll
+
+
+USER=     cd $(MAKEDIR)\Libs
+USER=     $(MAKE) -$(MAKEFLAGS) -f Libs.mak make_lib DEBUG=$(DEBUG)
+
+USER=     cd $(MAKEDIR)
+
+
+# -------------------------------------------------------------------------------

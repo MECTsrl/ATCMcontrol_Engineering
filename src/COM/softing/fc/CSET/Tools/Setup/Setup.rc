@@ -1,0 +1,404 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\Setup.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\Setup.ico"
+IDI_INST_4CKERN         ICON    DISCARDABLE     "res\\inst_4ck.ico"
+IDI_INST_4CADDON        ICON    DISCARDABLE     "res\\inst_4ca.ico"
+IDI_INST_OS             ICON    DISCARDABLE     "res\\inst_os.ico"
+IDI_INST_IE             ICON    DISCARDABLE     "res\\inst_ie.ico"
+IDI_INST_MSI            ICON    DISCARDABLE     "res\\inst_sp.ico"
+IDI_INST_C1             ICON    DISCARDABLE     "res\\inst_c1.ico"
+IDI_INST_C2             ICON    DISCARDABLE     "res\\inst_c2.ico"
+IDI_INST_C3             ICON    DISCARDABLE     "res\\inst_c3.ico"
+IDI_INST_C4             ICON    DISCARDABLE     "res\\inst_c4.ico"
+IDI_INST_C5             ICON    DISCARDABLE     "res\\inst_c5.ico"
+IDI_INST_4CLM           ICON    DISCARDABLE     "res\\inst_lm.ico"
+IDI_INST_IIS            ICON    DISCARDABLE     "res\\inst_iis.ico"
+IDI_INST_J              ICON    DISCARDABLE     "res\\inst_j.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_SETUP4CE            BITMAP  DISCARDABLE     "res\\Setup.bmp"
+IDB_WELCOME             BITMAP  DISCARDABLE     "res\\welcome.bmp"
+IDB_S1_WELCOME          BITMAP  DISCARDABLE     "res\\S1.bmp"
+IDB_S2_LICENSE          BITMAP  DISCARDABLE     "res\\S2.bmp"
+IDB_S3_LANGPATH         BITMAP  DISCARDABLE     "res\\S3.bmp"
+IDB_S4_COMPONENTS       BITMAP  DISCARDABLE     "res\\S4.bmp"
+IDB_S5_EXECUTE          BITMAP  DISCARDABLE     "res\\S5.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_OK                  "OK"
+    IDS_INSTALL             "Install"
+    IDS_REINSTALL           "Reinstall"
+    IDS_DEINSTALL           "Deinstall"
+    IDS_OS_WINNT            "Windows NT4.0"
+    IDS_OS_WIN2K            "Windows 2000"
+    IDS_OS_WINXP            "Windows XP"
+    IDS_OS_WIN95            "Windows 95"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_OS_WIN98            "Windows 98"
+    IDS_OS_WIN98SE          "Windows 98 SE"
+    IDS_OS_WINME            "Windows ME"
+    IDS_OS_WIN95A           "Windows 95(a)"
+    IDS_OS_WIN95B           "Windows 95 OSR2"
+    IDS_OS_WINNT3           "Windows NT 3.51"
+    IDS_OS_WINNT_SP6        "NT 4.0 SP6a"
+    IDS_OS_UNKNOWN          "Unknown"
+    IDS_MSG_MS_FAILED       "Could not execute setup for %s.\n%s\nError Code: %d"
+    IDS_MSG_NO_MSI          "Microsoft Installer is not installed or can not be loaded. Please install Microsoft Installer first.\nIt can be found on the CD in the directory Redist\\Microsoft Installer\\."
+    IDS_MSG_MSI_FAILED      "Failed to install %s:\n%sErrorCode: %d"
+    IDS_MSG_OSVERSION       "ATCMControl is not released for the operating system %s and may not work properly on this operating system.\n\nDo you want to continue the Installation?"
+    IDS_MSG_OSSP            "%s can not be installed on %s. Please install %s before installing %s."
+    IDS_MSG_LANGUAGE        "The Microsoft product '%s' is not included on this ATCMControl installation CD in the language of your operating system.\n\nPlease download and install this update directly from Microsoft (www.microsoft.com)."
+    IDS_MSG_MSU_FAILED      "Failed to uninstall %s:\n%s\nErrorCode: %d"
+    IDS_MSG_INVALID_DIR     "The directory %s is not a valid ATCMControl installation folder. Please select a valid directory."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_MSG_NO_ADMIN        "ATCMControl requires administrator rights for the current user to be installed properly.\n\nPlease contact your System Administrator."
+    IDS_MSG_OSVERSION2      "ATCMControl is not released for the operating system %s and may not work properly on this operating system.\n\nAt least %s is required in order to install ATCMControl."
+    IDS_LB_IIS              "Internet Information Server"
+    IDS_LB_MSIE             "Microsoft Internet Explorer"
+    IDS_LB_MSI              "Microsoft Installer"
+    IDS_LB_JDK              "Microsoft Java SDK"
+    IDS_LB_JVM              "Microsoft Java Virtual Machine"
+    IDS_LB_LM               "License Manager"
+    IDS_OSVERSION           "Operating System"
+    IDS_LBC_ACTION          "Action"
+    IDS_LBC_EXPECTED_VERSION "Expected Version"
+    IDS_LBC_VERSION         "Installed Version"
+    IDS_LBC_PRODUCT         "Product"
+    IDS_MSG_NOT_A_DIR       "The directory '%s' doesn't exist. Do you want to create it?"
+    IDS_MSG_CREATEDIR_ERR   "Failed to create the directory '%s'."
+    IDS_MSG_NOT_ON_CD       "The Microsoft product '%s' is not included on this ATCMControl installation CD.\n\nPlease download and install this update directly from Microsoft (www.microsoft.com)."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_OS_WIN2K3           "Windows 2003"
+    IDS_OS_WINVI            "Windows Vista or Windows 7"
+    IDS_MSG_UNI_ALL         "You are going to uninstall all ATCMControl components. Do you want to continue?"
+END
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_PP_LICENSE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 406
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 253
+    END
+
+    IDD_PP_LANGPATH, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 406
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 253
+    END
+
+    IDD_PP_SEL_PC, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 406
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 253
+    END
+
+    IDD_PP_SEL_EMB, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 406
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 253
+    END
+
+    IDD_PP_INSTALL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 406
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 253
+    END
+
+    IDD_PP_WELCOME, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 406
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 253
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_PP_LICENSE DIALOG DISCARDABLE  0, 0, 413, 260
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "ATCMControl Installation Wizard - License Agreement"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         145,IDC_STATIC,"Static",SS_BITMAP | SS_REALSIZEIMAGE,0,0,
+                    413,36
+    GROUPBOX        "",IDC_RADIO_LIC,5,225,400,34,NOT WS_VISIBLE
+    CONTROL         "I do not accept the therms in the license agreement.",
+                    IDC_RADIO_NO_ACCEPT,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,10,235,175,8
+    CONTROL         "I accept the terms in the license agreement.",
+                    IDC_RADIO_ACCEPT,"Button",BS_AUTORADIOBUTTON,10,250,175,
+                    8
+    CONTROL         "",IDC_RICHEDIT,"RICHEDIT",ES_MULTILINE | ES_NOHIDESEL | 
+                    ES_READONLY | WS_BORDER | WS_VSCROLL | WS_TABSTOP,5,45,
+                    400,175
+END
+
+IDD_PP_LANGPATH DIALOG DISCARDABLE  0, 0, 413, 260
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "ATCMControl Installation Wizard - Help Language and Installation Path"
+
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         146,IDC_STATIC,"Static",SS_BITMAP | SS_REALSIZEIMAGE,0,0,
+                    413,30
+    GROUPBOX        "Help Language: ",IDC_BOX_LANGUAGE,10,135,395,39
+    COMBOBOX        IDC_LANGUAGE,15,155,385,105,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Installation Path: ",IDC_BOX_PATH,10,200,395,39
+    EDITTEXT        IDC_PATH,15,220,330,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Change",IDC_CHANGEPATH,355,215,45,17
+END
+
+IDD_PP_SEL_PC DIALOG DISCARDABLE  0, 0, 413, 260
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "ATCMControl Installation Wizard - Components to be Installed"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "ATCMControl PC-Based: ",IDC_STATIC,10,70,395,75
+    CONTROL         "ATCMControl Engineering",IDC_CHECK_PC_ENG,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,25,86,94,10
+    CONTROL         "ATCMControl PC-Based Control",IDC_CHECK_PC_CTL,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,25,100,112,10
+    CONTROL         "ATCMControl PC-Based Console",IDC_CHECK_PC_CONS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,45,116,115,10
+    CONTROL         "Real Time Clock Extension (RTCE)",IDC_CHECK_PC_RTCE,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,45,129,126,10
+    CONTROL         "ATCMControl Database Library",IDC_CHECK_PC_DBL,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,225,116,110,10
+    CONTROL         "ATCMControl Control Loop Library",IDC_CHECK_PC_CLL,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,225,129,119,10
+    GROUPBOX        "ATCMControl Embedded AddOn's: ",IDC_STATIC,10,160,395,90
+    CONTROL         "ATCMControl EthernetController",IDC_CHECK_PC_EC,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,25,175,175,10
+    CONTROL         "ATCMControl FieldController",IDC_CHECK_PC_FC,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,25,190,175,10
+    CONTROL         "ATCMControl BuildingController",IDC_CHECK_PC_BC,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,225,175,175,10
+    CONTROL         "ATCMControl FieldController (V2.05)",IDC_CHECK_PC_XC,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,225,190,175,10
+    CONTROL         "ATCMControl Embedded Demo Version",IDC_CHECK_PC_DEMO,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,25,230,137,10
+    CONTROL         147,IDC_STATIC,"Static",SS_BITMAP | SS_REALSIZEIMAGE,0,0,
+                    413,36
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME | SS_SUNKEN,210,76,
+                    1,69
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME | SS_SUNKEN,10,220,
+                    395,1
+END
+
+IDD_PP_SEL_EMB DIALOG DISCARDABLE  0, 0, 413, 260
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "ATCMControl Installation Wizard - Components to be Installed"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         147,IDC_STATIC,"Static",SS_BITMAP | SS_REALSIZEIMAGE,0,0,
+                    413,36
+    GROUPBOX        "ATCMControl Embedded: ",IDC_STATIC,10,125,395,65
+    CONTROL         "ATCMControl Engineering",IDC_CHECK_EMB_ENG,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,25,140,94,10
+    CONTROL         "ATCM Cust1 AddOn",IDC_CHECK_EMB_AO1,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,45,155,175,10
+    CONTROL         "ATCM Cust2 AddOn",IDC_CHECK_EMB_AO2,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,45,170,175,10
+    CONTROL         "ATCM Cust3 AddOn",IDC_CHECK_EMB_AO3,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,225,155,175,10
+    CONTROL         "ATCM Cust4 AddOn",IDC_CHECK_EMB_AO4,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,225,170,175,10
+    GROUPBOX        "ATCMControl Embedded Demo Version: ",IDC_STATIC,10,210,395,
+                    35
+    CONTROL         "ATCM Embedded Demo Version AddOn",IDC_CHECK_EMB_DEMO,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,25,225,131,10
+END
+
+IDD_PP_INSTALL DIALOG DISCARDABLE  0, 0, 413, 260
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "ATCMControl Installation Wizard - Execute Installation"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         148,IDC_STATIC,"Static",SS_BITMAP | SS_REALSIZEIMAGE,0,0,
+                    413,36
+    CONTROL         "List2",IDC_LISTINFOBOX,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_NOSORTHEADER | 
+                    WS_BORDER | WS_TABSTOP,5,50,400,170
+    GROUPBOX        "Uninstall: ",IDC_STATIC,95,230,150,30
+    PUSHBUTTON      "Selected",IDC_UNINSTALL,105,240,60,14
+    PUSHBUTTON      "All",IDC_UNINSTALL_ALL,175,240,60,14
+    GROUPBOX        "Install: ",IDC_STATIC,260,230,150,30
+    PUSHBUTTON      "Selected",IDC_INSTALL,270,240,60,14
+    PUSHBUTTON      "All",IDC_INSTALL_ALL,340,240,60,14
+END
+
+IDD_PP_WELCOME DIALOG DISCARDABLE  0, 0, 413, 260
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "ATCMControl Installation Wizard"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         144,IDC_STATIC,"Static",SS_BITMAP | SS_REALSIZEIMAGE,0,0,
+                    413,30
+    CONTROL         138,IDC_STATIC,"Static",SS_BITMAP | SS_REALSIZEIMAGE,10,
+                    45,100,209
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_PP_LANGPATH DLGINIT
+BEGIN
+    IDC_LANGUAGE, 0x403, 8, 0
+0x6e45, 0x6c67, 0x7369, 0x0068, 
+    IDC_LANGUAGE, 0x403, 7, 0
+0x6547, 0x6d72, 0x6e61, "\000" 
+    0
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\Setup.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

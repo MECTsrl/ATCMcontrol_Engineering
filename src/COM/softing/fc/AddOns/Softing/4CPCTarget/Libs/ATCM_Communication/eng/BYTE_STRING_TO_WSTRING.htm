@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>BYTE_STRING_TO_WSTRING</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>BYTE_STRING_TO_WSTRING </h2>
+<p>Converts a bytestring into a WSTRING.</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION BYTE_STRING_TO_WSTRING : WSTRING
+VAR_INPUT 
+    BSTR  : BYTE_STRING;
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>WSTRING</b></i>.<br>
+  Contains the bytestring converted into a WSTRING.</p>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>BSTR</b></dt>
+  <dd>Instance of the structure <a href="BYTE_STRING.htm"><i><b>BYTE_STRING</b></i></a>.<br>
+    Bytestring that is to be converted into a WSTRING.</dd>
+</dl>
+<h3>Description</h3>
+<p>Converts the byte string stored in the<i><b> BYTE_STRING</b></i> instance that 
+  is passed as a parameter into a <i><b>WSTRING</b></i>. The function returns 
+  the converted bytestring. </p>
+<p><b><i>BYTE_STRING_TO_WSTRING</i></b> is not suitable for reading non-ASCII 
+  characters like i.e. umlauts. Because of this, use this function only for reading 
+  out bytestrings at serial communication and at communication via <i><b>UDP</b></i>. 
+  For reading textfiles with function blocks of the <b><i>4C_FileAccess</i></b> 
+  library, the function <i><b><a href="COPY_WSTRING_FROM_BYTE_STRING.htm">COPY_WSTRING_FROM_BYTE_STRING</a></b></i> 
+  stands by for the conversion of bytestrings to WSTRINGs.</p>
+</body>
+</html>

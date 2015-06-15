@@ -1,0 +1,88 @@
+cpp_quote("//+---------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  ATCMControl 4CE")
+cpp_quote("//  Copyright 2000 - 2001 SoftingGmbH.")
+cpp_quote("//")
+cpp_quote("//----------------------------------------------------------------")
+
+
+#ifndef DO_NO_IMPORTS
+import "unknwn.idl";
+#endif
+
+//interface ICEProjInfo;
+import "CEProjInfo.idl";
+
+//------------------------------------------------------------------*
+/**
+ * ICEAddonAction
+ * This is the interface for an AddOn-Operation.
+ * Each AddOn Operation has to implement this interface.
+ * This implementation is referenced in the xml-files for the view
+ * as the HANDLER attribute in a MENUITEM node.
+ */
+
+cpp_quote("//+---------------------------------------------------------------")
+cpp_quote("// The interface to an addon operation:")
+[
+    object,
+    oleautomation,
+    uuid(1a7e1f60-abd2-11d4-94f6-0008c779d265)
+]
+interface ICEAddonAction : IUnknown
+{
+    //------------------------------------------------------------------*
+    /**
+     * doAction
+     * This method is called when a context menu entry is selected.
+     *
+     * @param   sMethodName - The name of the handler to be called. This
+     *                        is the string in the DISPID attribute of a 
+     *                        MENUENTRY in a MENU of a view.
+     * @param   sSourceFile - The source file corresponding to the node 
+     *                        in the view on which the action has been 
+     *                        performed. The SOURCE attribute of a node 
+     *                        in the view description of the back parser is 
+     *                        used for this
+     * @param   sId         - The ID of the node in the tree view on which 
+     *                        the action has been performed. This ID comes 
+     *                        also from the back parser's output for the view
+     * @param   pIProjectInfo - A pointer to the IProjectInfo interface 
+     *                          implemented by the ProjectManager to get 
+     *                          additional information to fulfill the action.
+     *         
+     * @return          
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT doAction ([in, string] BSTR         sMethodName, 
+                      [in, string] BSTR         sSourceFile,
+                      [in, string] BSTR         sId,
+                      [in]         ICEProjInfo* pICEProjectInfo,   
+                      [in, string] BSTR         sAdditionalInfo);
+};
+
+
+
+
+//-----------------------------------------------------
+// This TYPELIB is generated as a convenience to users of high level tools
+// which are capable of using or browsing TYPELIBs. 
+// 'Smart Pointers' in VC6 is one example.
+//-----------------------------------------------------
+
+[
+    uuid(9F9DBC02-83D3-4251-9A0A-AA6538AA7E9E),
+    version(2.0),
+    helpstring("4CONTROL: CEAddonAction 2.0 Type Library")
+]
+library CE_AddonActionLib
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+
+    interface ICEAddonAction;
+};
+

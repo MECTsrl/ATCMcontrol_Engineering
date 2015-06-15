@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>F_SYNC_READCSVFILE</title>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="stylesheet" href="Lib.css">
+</head>
+<body style="background-color: rgb(255, 255, 204);">
+<h2>F_SYNC_READCSVFILE</h2>
+<p>Reads data from &nbsp; a CSV file into an array of bytes.</p>
+<h3>Interface</h3>
+<pre class="preforma">FUNCTION F_SYNC_READCSVFILE : BOOL<br><br>VAR_IN_OUT<br>    FILE        : F_SYNC_FILE;<br>END_VAR<br>VAR_INPUT<br>    FIELDSTRUCT : ARRAY OF BYTE;<br>    ACTRECORD   : DINT;<br>END_VAR<br>VAR_OUTPUT<br>    DATA        : ARRAY OF BYTE;<br>END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of the type <i><b>BOOL</b></i><br>
+Signalizes the error status.<br>
+Possible values:<br>
+<i><b>TRUE</b></i>: An error has occurred.<br>
+<i><b>FALSE</b></i>: No error has occurred.</p>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl>
+  <dt><br>
+  </dt>
+  <dt><b>FIELDSTRUCT</b></dt>
+  <dd>A variable of type<i><b> ARRAY[...] OF BYTE</b></i>.<br>
+Specifies the maximum record field number and record field format for all file records.</dd>
+<h3>
+<table border="1">
+  <tbody>
+    <tr>
+      <td valign="top"><b>Type</b> </td>
+      <td valign="top"><b>Value</b></td>
+      <td valign="top"><b>Number of bytes</b></td>
+    </tr>
+    <tr>
+      <td valign="top">BYTE</td>
+      <td valign="top" align="center">1<br></td>
+      <td valign="top" align="center">1</td>
+    </tr>    
+    <tr>
+      <td valign="top">INT</td>
+      <td valign="top" align="center">2<br></td>
+      <td valign="top" align="center">2</td>
+    </tr>
+    <tr>
+      <td valign="top">WORD</td>
+      <td valign="top" align="center">3<br></td>
+      <td valign="top" align="center">2</td>
+    </tr>
+    <tr>
+      <td valign="top">DINT</td>
+      <td valign="top" align="center">4<br></td>
+      <td valign="top" align="center">4</td>
+    </tr>
+    <tr>
+      <td valign="top">DWORD</td>
+      <td valign="top" align="center">5<br></td>
+      <td valign="top" align="center">4</td>
+    </tr>
+    <tr>
+      <td valign="top">REAL</td>
+      <td valign="top" align="center">6<br></td>
+      <td valign="top" align="center">4</td>
+    </tr>
+    <tr>
+      <td valign="top">LREAL</td>
+      <td valign="top" align="center">7<br></td>
+      <td valign="top" align="center">8</td>
+    </tr>
+    <tr>
+      <td valign="top">STRING</td>
+      <td valign="top" align="center">8<br></td>
+      <td valign="top" align="center">16</td>
+    </tr>
+  </tbody>
+</table>
+</h3>
+Every CSV file has one or more records.<br>
+Every file records has from 1 to 16 fields.<br>
+Every file record fields has the format specified in the list of the FieldStruct parameter.<br>
+The record fields are separated with “;”.  <br>
+Each record is terminated with CR-LF.<br>
+In the following table there is record fields format array example
+<h3>
+<table border="1">
+  <tbody>
+    <tr>
+      <td valign="top"><b>FieldStruct[0]</b> </td>
+      <td valign="top">MAX record field number for every file record 
+(5)</td>
+    </tr>
+    <tr>
+      <td valign="top"><b>FieldStruct[1]</b> </td>
+      <td valign="top">First record field format for every file record 
+(1 for BYTE)</td>
+    </tr>    
+    <tr>
+      <td valign="top"><b>FieldStruct[2]</b></td>
+      <td valign="top">Second record field format for every file record 
+(5 for DWORD)
+<br></td>
+    </tr>    
+    <tr>
+      <td valign="top"><b>FieldStruct[3]</b></td>
+      <td valign="top">Third record field format for every file record 
+(4 for DINT)
+<br></td>
+    </tr>
+    <tr>
+      <td valign="top"><b>FieldStruct[4]</b></td>
+      <td valign="top">Fourth record field format for every file record 
+(7 for LREAL)
+<br></td>
+    </tr>
+    <tr>
+      <td valign="top"><b>FieldStruct[5]</b></td>
+      <td valign="top">Last record field format for every file record 
+(8 for STRING)
+<br></td>
+    </tr>
+  </tbody>
+</table>
+</h3>
+</dl>
+<dl>
+  <dt><b>ACTRECORD</b></dt>
+  <dd>Value of type <b>DINT</b>. <br>Record to read.</dd>
+</dl>
+<dl>
+  <dt><b>DATA</b></dt>
+  <dd>A variable of type<i><b> ARRAY[...] OF BYTE</b></i>.<br>
+Contains the read bytes on conclusion of the reading operation.</dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl>
+  <dt><b><a name="File"></a>FILE</b></dt>
+  <dd>Instance of the <a href="F_SYNC_FILE.htm"><i><b>F_SYNC_FILE</b></i></a>
+structure<br>
+File object on which the operation is performed.</dd>
+  <dt><br>
+  </dt>
+</dl>
+<h3>Description</h3>
+<p><b><i>F_SYNC_READCSVFILE</i></b> reads a records from the ASCII in the CSV format
+passed to <i><b>FILE</b></i>. Before reading in a file,
+the file must be opened with <i><b><a href="F_SYNC_OPENFILE.htm">F_SYNC_OPENFILE</a></b></i>.
+To allow read access, the access mode must be set to <i><b><a
+ href="Const_Mode.htm#Append">CF_APPEND</a></b></i>
+or <a href="Const_Mode.htm#Read"><b><i>CF_READ</i></b></a>
+in the <a href="F_SYNC_FILE.htm#Mode"><i><b>MODE</b></i></a>
+parameter of the structure instance of <i><b><a href="F_SYNC_FILE.htm">F_SYNC_FILE</a></b></i>
+passed to <i> <b>F_SYNC_OPENFILE</b></i> before you open the file.
+</p>
+<p>The file pointer which indicates the current record position(starting from 0) is
+represented by the structure variable <a
+ href="F_SYNC_FILE.htm#Position">
+<i> <b>POSITION</b></i></a> of the
+structure instance of <i><b>F_SYNC_FILE</b></i> passed to <i><b>FILE</b></i>.
+The first read access following the opening of a file is always
+performed at the position defined by the access mode unless the <i><b>ACTRECORD</b></i>
+input has been explicitly set to a specific value (see below). 
+</p>
+<p>The record to read can be explicitly set by assigning a value to the structure variable <i><b>ACTRECORD</b></i>. For this
+purpose, the file must be opened in <i><b><a
+ href="Const_Mode.htm#Read">CF_READ</a></b></i> or <i><b><a
+ href="Const_Mode.htm#Append">CF_APPEND</a></b></i> mode and the <i><b>ACTRECORD</b></i> must be set to the
+desired record number(Ex: <i><b>ACTRECORD</b></i> = 1 -> reads the first record). 
+</p>
+<p>To convert data of type <i><b>ANY_TYPE</b></i> into an <i><b>ARRAY OF BYTE</b></i> you can use
+the <i><b>COPY_XXXX_TO_BYTE ARRAY</b></i> functions located in the <i><b>ATCM Utility</b></i> library.
+</p>
+</body>
+</html>

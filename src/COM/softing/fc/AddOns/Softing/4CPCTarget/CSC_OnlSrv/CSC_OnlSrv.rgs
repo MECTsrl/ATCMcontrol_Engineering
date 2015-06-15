@@ -1,0 +1,14 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		{4849089A-8BE5-4c5b-B37C-C003DBA0BAC7} = s 'ATCMControl 2: PC Online Server'
+        {
+            val LocalService = s '4CSCS'
+        }
+		'4CSCS.EXE'
+		{
+			val AppID = s {4849089A-8BE5-4c5b-B37C-C003DBA0BAC7}
+		}
+	}
+}

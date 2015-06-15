@@ -1,0 +1,18 @@
+TARGET=$(EXE_DIR)\Pub\fc_todebug.dll
+TARGETTYPE=DLL
+UNICODE=0
+
+
+INCLUDE=$(INCLUDE_DIR) 
+INCLUDE=$(RESOURCE_DIR) 
+
+IMPLIB=$(LIB_DIR)\fc_todebug.lib
+
+DEFLIB=Ole32.lib
+# DEFINE=INSTALL_MALLOC_SPY
+DEFINE=REALLOC_STATISTICS
+
+LATECOPY=$(EXE_DIR)\Pub\fc_todebug.dll $(EXE_DIR)\Engineering\bin\fc_todebug.dll
+LATECOPY=$(EXE_DIR)\Pub\fc_todebug.dll $(EXE_DIR)\Control\bin\fc_todebug.dll
+LATECOPY=$(EXE_DIR)\Pub\fc_todebug.dll $(EXE_DIR)\Engineering\bin\4cpc\fc_todebug.dll
+LATECOPY=$(EXE_DIR)\Pub\fc_todebug.dll $(EXE_DIR)\Engineering\bin\4cec\fc_todebug.dll

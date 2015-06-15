@@ -1,0 +1,752 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<Title>Glossar</Title>
+</HEAD>
+<body background="pic/backgrnd.jpg" bgproperties="fixed">
+
+<!--<p align="center"><marquee height=60 direction="up" scrollamount=4><Font color="red" size=7><b>NON AUTORIZED PREVIEW</B></font></marquee></p>
+!-->
+
+<font face=arial>
+<h1> Glossar</h1>
+</font><hr>
+
+<font face="Arial">
+
+
+<table>
+  <tr> 
+    <td valign=top align=right> <font face=arial> 
+      <h4><a name="overview"></a>&Uuml;bersicht </h4>
+      </font> </td>
+    <td> 
+      <table cellpadding=20>
+        <td valign=top align=left height="711"> 
+          <P><b>A</b><br>
+            <a href="#initial value">Anfangswert</a><br>
+            <A HREF="#array">Array</A><br>
+            <a href="#call">Aufruf</a><br>
+            <a href="#output parameter">Ausgabe-Parameter (output)</a><br>
+          <P><b>B</b><br>
+            <A HREF="#build">Build</A><br>
+          <P><b>C</b><br>
+            <a href="#control">ATCM Control</a><br>
+            <a href="#compile">Compilieren</a><br>
+            <br>
+          <P><b>D</b><br>
+            <A HREF="#data type">Datentyp</A><br>
+            <a href="#declaration">Deklaration</a><br>
+            <a href="#definition">Definition</a><br>
+              <a href="#domain">Domain</a><br>
+            <a href="#download">Download</a><br>
+            <br>
+            <b>E</b> <br>
+            <a href="#input parameter">Eingabe-Parameter (input)</a><br>
+          <P><b>F</b><br>
+            <a href="#file tree">File-Baum</a><br>
+            <A HREF="#function">Funktion</A><br>
+            <a href="#functionblockclass">Funktionsbaustein</a><br>
+            <a href="#functionblockinstance">Funktionsbaustein-Instanz</a><br>
+          <P><b>G</b><br>
+            <A HREF="#globalvar">Globale Variable</A><br>
+          <P><b>H</b><br>
+            <a href="#hardware tree">Hardware-Baum</a><br>
+          <P><b>I</b><br>
+            <a href="#instance">Instanz</a><br>
+            <a href="#instance tree">Instanz-Baum</a><br>
+          <p>&nbsp; 
+        </td>
+        <td valign=top align=left height="711" > 
+          <P><b>K</b><br>
+            <a href="#class">Klasse</a><br>
+            <a href="#class tree">Klassen-Baum</a><br>
+            <a href="#comment">Kommentar</a><br>
+            <a href="#configuration">Konfiguration</a><br>
+            <a href="#controlmenu">Kontext-Men&uuml;</a><br>
+            <br>
+            <b>L</b><br>
+            <A HREF="#local var">Lokale Variable</A><br>
+          <P><b>N</b><br>
+            <a href="#native">Native</a><br>
+          <P><b>O</b><br>
+            <a href="#object">Objekt</a><br>
+            <a href="#object list">Objekt-Liste</a><br>
+            <A HREF="#name">Objektname und Alias</A><br>
+            <A HREF="#operand">Operand</A><br>
+            <A HREF="#operator">Operator</A><br>
+          <P><b>P-Q</b><br>
+            <a href="#program class">Programm</a><br>
+            <a href="#programinstance">Programm-Instanz</a><br>
+          <P><b>R</b><br>
+            <a href="#resource">Ressource</a><br>
+          <P><b>S</b><br>
+            <A HREF="#step">Step</A><br>
+            <A HREF="#structured data type">Strukturierter Datentyp</A><br>
+            <A HREF="#subscripting">Subscripting</A><br>
+          <P><b>T</b><br>
+            <a href="#task">Task</a><br>
+            <A HREF="#task status">Task-Status-Meldung</A><br>
+            <A HREF="#tcpip">TCP/IP</A><br>
+            <A HREF="#temp var">Tempor&auml;re Variable</A><br>
+          <P><b>U</b><br>
+            <A HREF="#url">URL</A><br>
+          <P>&nbsp; 
+        </td>
+      </table>
+      <hr>
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="initial value"></a><b>Anfangswert</b></h3>
+      </font></td>
+    <td valign="top"> 
+      <p>Der Wert, der einer Variable beim Systemstart zugewiesen wird. 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="array"></a><b>Array </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Eine Zusammenfassung von Variablen mit identischen Datentypen, von denen 
+        auf jede einzelne durch Indizierung eindeutig Bezug genommen werden kann. 
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial> 
+      <h3><a name="call"></a>Aufruf</h3>
+      </font> </td>
+    <td valign="top"> 
+      <p>Ein Sprachkonstrukt zum Aufrufen der Ausführung eines Funktionsbausteins.<br>
+        Parameter sind obligatorisch. 
+      <font face=arial> 
+      <h5>Beispiel</h5>
+      </font> 
+      <p>aTEST(aIN1 := 2, aIN2 := 3);<br>
+        aDBG(str := CONCAT("2*3=",<br>
+        DINT_TO_WSTRING(aTEST.aOUT1))); 
+      <p> 
+      <p> 
+      <p> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="output parameter"></a><b>Ausgabe-Parameter (output)</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <p>Ein Parameter, der dazu dient, das Ergebnis bzw. die Ergebnisse der Auswertung 
+        einer Programmorganisationseinheit zurückzugeben. 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="build"></a><b>Build All</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Das gesamte Projekt wird kompiliert und so organisiert, da&szlig; es 
+        nach der Kompilierung auf ATCM Control geladen werden kann. 
+    </td>
+  <tr> 
+    <td valign=top height="176" > <font face=arial > 
+      <h3><a name="control"></a><b>ATCM Control </b></h3>
+      </font> </td>
+    <td valign="top" height="176"> 
+      <P>ATCM Control ist der Teil von ATCMControl, der im Hintergrund der Software 
+        arbeitet. Es ist das "Kernstück" von ATCMControl und besitzt keine Benutzerschnittstelle.<br>
+        Um arbeiten zu können, müssen alle Projekte an ATCM Control hinuntergeladen 
+        werden. ATCM Control steuert Ihre Produktionsanlagen, mit denen es verbunden 
+        ist. <br>
+        Es läuft automatisch ohne Benutzerüberwachung in der Echtzeitumgebung 
+        ab. ATCM Control wird als Windows NT-Dienst unmittelbar nach dem Booten 
+        des Computers gestartet.<br>
+        <br>
+        Nach dem Hinunterladen des Projekts startet ATCM Control automatisch, falls 
+        es nicht schon läuft. 
+      </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="compile"></a><b>Compilieren </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <p>Eine Programmorganisationseinheit oder Datentypspezifikation wird auf 
+        korrekte Syntax gepr&uuml;ft und in Maschinensprache oder in ein maschinennahes 
+        Format übersetzt. 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="data type"></a><b>Datentyp </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Repr&auml;sentiert einen Wertebereich, den eine Variable annehmen kann 
+        und die Weise, wie Werte einer Variable gespeichert werden. Der Datentyp, 
+        dem eine Variable angeh&ouml;rt, definiert die Operationen, die auf eine 
+        Variable ausgef&uuml;hrt werden k&ouml;nnen. 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="definition"></a><b>Definition </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <p>Legt die abstrakte Struktur eines Datenobjekts fest. Bspw. werden bei 
+        der Definition eines Funktionsbausteins die Variablen festgelegt, mit 
+        denen der Funktionsbaustein arbeitet. Gegebenenfalls kann den Variablen 
+        auch ein Anfangswert zugewiesen werden. 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="declaration"></a><b>Deklaration </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Der Mechanismus, mit dem im Quellcode f&uuml;r eine bereits in einer 
+        Definition festgelegten abstrakten Datenstruktur eine konkrete Instanz 
+        angelegt wird. Von einem Funktionsbaustein lassen sich beispielsweise 
+        mehrere Instanzen erzeugen. Im Gegensatz zu einer abstrakten Datenstruktur 
+        reserviert der Compiler bei der Kompilation f&uuml;r eine im Quellcode 
+        deklarierte Instanz Speicherplatz. 
+    </td>
+  <tr> 
+    <td valign=top> 
+      <h3><a name="Domain"></a>Domain</h3>
+    </td>
+    <td valign="top">Ladbare Einheit von Programmen oder Daten, die beim Laden 
+      eines Projekts auf ATCM Control zur Ausf&uuml;hrung &uuml;bergeben wird. </td>
+  
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="download"></a><b>Download </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Der Downloadvorgang verschiebt die Programme zum angegebenen PC. (Dazu 
+        muß der ATCM Control-Teil von ATCMControl auf diesem PC vorhanden sein) <br>
+        Die Standardeinstellung ist so eingerichtet, daß das Programm unmittelbar 
+        nach dem Download startet. 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="input parameter"></a><b>Eingabe- Parameter (input) </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <p>Ein Parameter, der dazu dient, ein Argument an eine Programmorganisationseinheit 
+        zu liefern. 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="file tree"></a><b>File-Baum</b></h3>
+      </font></td>
+    <td valign="top"> 
+      <P>Ist Teil der Navigator-Ansicht in ATCM Engineering. Er zeigt alle Dateien 
+        des Projekts an. 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="function"></a><b>Funktion </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Eine Programmorganisationseinheit, die keine statischen Variablen besitzt 
+        und bei denselben Eingabeparametern immer dasselbe Ergebnis zur&uuml;ckgibt. 
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="functionblockclass"></a><b>Funktions-<br>
+        baustein </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Ein Sprachelement, das aus folgenden Elementen besteht: 
+      <ul>
+        <li>der Definition einer Datenstruktur, die in Eingabe- (VAR_INPUT), Ausgabe- 
+          (VAR_OUTPUT) bzw. I/O-Variablen (VAR_IN_OUT) und interne Variablen (VAR) 
+          unterteilt ist 
+        <li>Operationen, die mit Elementen einer Datenstruktur vorgenommen werden, 
+          wenn eine Instanz . 
+      </ul>
+      Ein Funktionsbaustein ist ein ST-codiertes Unterprogramm. ATCMControl verwendet 
+      vordefinierte Funktionsbausteine, wie beispielsweise CTUD, CTUD_EX, MEAN, 
+      FC_DEBUG, und stellt benutzerdefinierte Funktionsbausteine zur Verfügung. 
+      <font face=arial> 
+      <h5>Beispiel f&uuml;r einen benutzerdefinierten Funktionsbaustein</h5>
+      </font> 
+      <P>(*[[<br>
+        GUID= "{5BE0F862-B821-11D1-B290-00600857CC2E}",<br>
+        UserText1= TEXT1,<br>
+        UserText2= TEXT2,<br>
+        UserText3= TEXT3,<br>
+        UserURL= "http://www.4control.de"<br>
+        ]]*)<br>
+        <br>
+        FUNCTION_BLOCK TEST1<br>
+        VAR_INPUT<br>
+        aIN1 : DINT;<br>
+        aIN2 : DINT;<br>
+        END_VAR<br>
+        VAR_OUTPUT<br>
+        aOUT1 : DINT;<br>
+        END_VAR<br>
+        aOUT1 := aIN1 * aIN2;<br>
+        END_FUNCTION_BLOCK 
+      <P> 
+      <P> 
+      <P> 
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="functionblockinstance"></a><b>Funktions-<br>
+        baustein-<br>
+        Instanz </b></h3>
+      </font></td>
+    <td valign="top"> 
+      <P>Die Definition eines Funktionsbausteins ist eine abstrakte Datenstruktur, 
+        die die grundlegenden Eigenschaften und Verhaltenweisen einer Funktionsbaustein-Instanz 
+        festlegt. Erst mit dem Anlegen einer Funktionsbaustein-Instanz werden 
+        die abstrakten Eigenschaften und Verhaltensweisen des Funktionsbausteins 
+        in konkrete Werte und Aktionen umgesetzt. Von einem Funktionsbaustein 
+        k&ouml;nnen mehrere Instanzen deklariert werden, die alle dieselben im 
+        Funktionsbaustein definierten Eigenschaften und Verhaltensweisen besitzen. 
+        Im Gegensatz zur Definition eines Funktionsbausteins wird f&uuml;r jede 
+        deklarierte Funktionsbaustein-Instanz vom Kompiler Speicher reserviert.<br>
+        Der Name der Funktionsbaustein-Instanz kann genauso lauten wie der Klassen-Name, 
+        muß aber nicht. 
+      <font face=arial> 
+      <h5>Beispiel:</h5>
+      </font> 
+      <P>VAR<br>
+        aTEST: TEST1;<br>
+        aDBG: FC_DEBUG;<br>
+        END_VAR<br>
+        <br>
+      <P>Dieses Beispiel deklariert eine Instanz &quot;aTEST&quot; des benutzerdefinierten 
+        Funktionsbausteins "TEST1" und eine Instanz "aDBG" und des Standard-Funktionsbausteins 
+        "FC_DEBUG" aus der 4C-System-Bibliothek. 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="globalvar"></a><b>Globale Variable </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Eine Variable, die über einen globalen Geltungsbereich verfügt 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="hardware tree"></a><b>Hardware-Baum</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Der Hardware-Baum ist Teil der Navigator-Ansicht in ATCM Engineering. Er 
+        zeigt die hierarchische Struktur aller Hardwarekomponenten an, die in 
+        einem Projekt verwendet werden. 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="instance"></a><b>Instanz</b></h3>
+      </font></td>
+    <td valign="top"> 
+      <P>Eine einzelne, benannte Kopie der Datenstruktur (Class), die zu einem 
+        Funktionsbaustein oder einem Programm gehört, und die von einem Aufruf 
+        der dazugehörigen Programmoperationen zum nächsten fortbesteht. Beim Anlegen 
+        einer Instanz wird f&uuml;r diese im Gegensatz zur abstrakten Datenstruktur 
+        Speicher reserviert. 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="instance tree"></a><b>Instanz-Baum</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Teil der Navigator-Ansicht in ATCM Engineering. Er zeigt die hierarchische 
+        Struktur aller Instanzen an, die Teil des Projekts sind. 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="class"></a><b>Klasse</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <p>Eine Klasse enthält den Quellcode eines Objekts. 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="class tree"></a><b>Klassen-Baum</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <p>Der Klassen-Baum ist Teil der Navigator-Ansicht in ATCM Engineering. Er 
+        zeigt die hierarchische Struktur aller Klassen an, die Quellcodes der 
+        einzelnen Objekte repr&auml;sentieren, welche in einem Projekt verwendet 
+        werden. 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="comment"></a><b>Kommentar </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <p>Ein Sprachkonstrukt für die Einbindung von Text in ein Programm, der 
+        keine Auswirkungen auf die Programmausführung hat. 
+    </td>
+  <tr> 
+    <td valign=top height="67" > <font face=arial > 
+      <h3><a name="configuration"></a><b>Konfiguration </b></h3>
+      </font> </td>
+    <td valign="top" height="67"> 
+      <p>In einer Konfiguration werden die Ressourcen eines Projekts zusammengefa&szlig;t.<br>
+        In der vorliegenden Version von ATCMControl wird nur die Zuordnung von <u>einer</u> 
+        Ressource zu <u>einer</u> Konfiguration unterst&uuml;tzt. Ressource und 
+        Konfiguration sind also faktisch identisch. Globale Deklarationen und 
+        ACCESS-Deklarationen in Konfigurationen werden deshalb in ATCMControl nicht 
+        unterst&uuml;tzt. Die Definition von projektglobalen Variablen kann in 
+        der zugeordneten Ressource erfolgen. <br>
+        Demselben PC kann nur eine Konfiguration zugeordnet werden. 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="local var"></a><b>Lokale Variable</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Eine Variable, deren Geltungsbereich auf die Programmorganisationseinheit 
+        beschränkt ist, in der sie verwendet wird. Die Variable ist au&szlig;erhalb 
+        der Programmorganisationseinheit, in der sie definiert wurde, f&uuml;r 
+        andere Programmorganisationseinheiten nicht sichtbar, und kann daher von 
+        diesen werder geschrieben nocht gelesen werden. 
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="native"></a><b>Native </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Das Schlüsselwort NATIVE bietet Ihnen die Möglichkeit, JAVA-Code in Ihren 
+        ST-Code einzubinden. 
+      <font face=arial> 
+      <h5>Beispiel</h5>
+      </font> 
+      <pre>
+<P>FUNCTION_BLOCK TEST1
+VAR_INPUT
+  aIN1 : DINT;
+  aIN2 : DINT;
+END_VAR
+VAR_OUTPUT
+  aOUT1 : DINT;
+END_VAR
+
+NATIVE
+_aout1.putInt(_ain1.getInt() * _ain2.getInt());
+END_NATIVE;
+
+END_FUNCTION_BLOCK
+</pre>
+      <P> 
+    </td>
+  <tr> 
+    <td valign=top align=right> <img src="pic/note.gif"> </td>
+    <td valign="top"> <font color=red> 
+      <P>Aufgrund der Echtzeitumgebung können beim Booten Ihres Computers Endlosschleifen 
+        innerhalb der Programme Ihr System abstürzen lassen. Sollte das passieren, 
+        gehen Sie bitte wie folgt vor: 
+      </font> 
+      <ol>
+        <li>Booten Sie bitte Ihren Computer im Status "Letzte Ihnen als funktionierend 
+          bekannte Konfiguration".</li>
+        <li>Öffnen Sie die <strong>Systemsteuerung</strong>.</li>
+        <li> Gehen Sie dort auf <strong>Dienste</strong>. </li>
+        <li>Überprüfen Sie den Startparameter<strong> ATCMControl:Control Service</strong>. 
+          Er sollte auf <strong>Paused</strong> eingestellt sein. </li>
+        <li>Stellen Sie den Startparameter von <strong>4CONTROL:Control Service</strong> 
+          und <strong>4CONTROL:CSC Online Server</strong> auf <strong>Manual</strong>.</li>
+        <li> Sollte das nicht möglich sein, gehen Sie in Ihrem Explorer auf <strong>Programme/4Control/config</strong> 
+          und löschen Sie die Konfigurationsdatei.</li>
+        <li> Gehen Sie zurück in die <strong>Systemsteuerung</strong> und starten 
+          Sie den Startparameter <strong>4CONTROL:Control Service</strong><em> 
+          </em>erneut. </li>
+        <li>Testen Sie die neue Konfiguration. </li>
+        <li> Sie sollten den Startparameter erst dann wieder auf <strong>Autostart</strong> 
+          zurückstellen, wenn Sie die neue Konfiguration getestet haben. </li>
+      </ol>
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="object"></a><b>Objekt </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Jede Programmorganisationseinheit, jede Funktion bzw. jeder Funktionsbaustein 
+        sowie seine bzw. ihre Instanz ist ein Objekt. <br>
+        In der objektorientierten Programmierung handelt es sich um eine Variable, 
+        die sowohl Routinen als auch Daten enthält und die eine diskrete Einheit 
+        bildet. Ein Objekt basiert auf einem spezifischen Modell, bei dem ein 
+        Client, der die Dienste eines Objekts nutzt, Zugriff auf die Daten des 
+        Objekts über eine Schnittstelle erhält, die aus einem Satz Methoden oder 
+        zugehöriger Funktionen besteht. Der Client kann diese Methoden dann aufrufen, 
+        um die gewünschten Operationen auszuführen. 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="object list"></a><b>Objektliste</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Ist Teil des Projekts und zeigt alle Objekte im aktuellen Projekt an. 
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="name"></a><b>Objektname and Alias </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Jedes Objekt läßt sich durch einen eindeutigen Namen identifizierten. 
+        Wenn Sie ein neues Objekt hinzufügen, müssen Sie einen Namen für das Objekt 
+        eingeben.<br>
+        Mit der Aliasfunktion unterstützt Sie ATCMControl bei der Realisierung zweisprachiger 
+        Projekte. Sie können beispielsweise jedem Objekt einen Namen in Ihrer 
+        eigenen Sprache vergeben, was Ihnen die Behandlung aller enthaltenen Objekte 
+        erleichtert. Wenn Sie jedoch ein Projekt für einen Kunden kompilieren, 
+        der nicht Ihre Sprache spricht oder dessen Mitarbeiter Ihrer Sprache nicht 
+        mächtig sind, können Sie für jedes Objekt einen Alias eingeben.<br>
+        Tragen Sie den Alias für das Objekt ein, während Sie das Objekt erstellen.<br>
+        Er wird in der Objektliste angezeigt, um den Zusammenhang zwischen dem 
+        Namen und dem Objekt zu verdeutlichen. <br>
+        Wenn Sie den Alias nutzen wollen, gehen Sie in ATCM Console und klicken 
+        Sie auf der Werkzeugleiste auf <strong>Alias</strong>.<br>
+        Die ursprünglichen Namen, die in der Standardeinstellung angezeigt werden, 
+        wechseln auf die Aliasnamen, damit Mitarbeiter, die eine andere Sprache 
+        sprechen, Ihr Projekt nutzen können. 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="operand"></a><b>Operand </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Ein Sprachelement, auf dem eine Operation durchgeführt wird. 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="operator"></a><b>Operator</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Ein Symbol, das die Aktion darstellt, die in einer Operation durchgeführt 
+        werden soll. 
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="program class"></a><b>Programm </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Ein Programm ist der von ATCM Control verwendete ST-Quellcode. Um ein Programm 
+        nutzen zu können, müssen Sie es durch einen Task aufrufen.<br>
+        Programme können Funktionsbausteine oder Funktionen aufrufen und Berechnungen 
+        durchführen.</p>
+      <h5><font face="arial">Beispiel:</font></h5>
+      <P>(*[[<br>
+        GUID= "{A9E2F134-B75F-11D1-B28F-00600857CC2E}",<br>
+        ]]*)<br>
+        PROGRAM Program1<br>
+        VAR<br>
+        ADINT : DINT;<br>
+        END_VAR<br>
+        ADINT := ADINT + 1;<br>
+        END_PROGRAM 
+      <P> 
+      <P> 
+      <P> 
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="programinstance"></a><b>Programm- Instanz </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Die Definition eines Programm ist eine abstrakte Datenstruktur, die die 
+        grundlegenden Eigenschaften und Verhaltenweisen einer Programm-Instanz 
+        festlegt. Erst mit dem Anlegen einer Programm-Instanz werden die abstrakten 
+        Eigenschaften und Verhaltensweisen des Programms in konkrete Werte und 
+        Aktionen umgesetzt. Von einem Programm k&ouml;nnen mehrere Instanzen deklariert 
+        werden, die alle dieselben im Programm definierten Eigenschaften und Verhaltensweisen 
+        besitzen. Im Gegensatz zur Definition eines Programms wird f&uuml;r jede 
+        deklarierte Programm-Instanz vom Kompiler Speicher reserviert.<br>
+      <font face=arial> 
+      <h5>Beispiel: </h5>
+      </font> 
+      <P>PROGRAM Program1 (* instance name *)<br>
+        WITH Task1: Program1 (* class name *); 
+    </td>
+  <tr> 
+    <td valign=top align=right> <img src="pic/note.gif"> </td>
+    <td> <font color=red> 
+      <P>Der Name der Programminstanz kann genauso lauten wie der des Programms, 
+        muß aber nicht. 
+      </font></td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="resource"></a><b>Ressource </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Eine Ressource hat die Funktion, die Zuordnung von Tasks und Programmen 
+        und die Taskattribute der in der Ressource definierten Task festzulegen. 
+        Ebenso erfolgt die Deklaration von projektglobalen Variablen in der Ressource. 
+        Durch die Zuordnung von Programmen zu Tasks und die Definition der Tasattribute 
+        definiert die Ressource quasi das Laufzeitverhalten des Projekts. <br>
+        Da in der vorliegenden Version von ATCMControl nur die Zuordnung einer einzigen 
+        Ressource zu einer Konfiguration unterst&uuml;tzt wird, und einem PC nur 
+        eine Konfiguration zugeordnet werden kann, entspricht die Ressource dem 
+        zugeordneten PC. 
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="step"></a><b>Step</b></h3>
+      </font> </td>
+    <td> 
+      <P>Verarbeitungsschritt; eine Situation, in der das Verhalten einer Programmorganisationseinheit 
+        in bezug auf ihre Ein- und Ausgaben einem Satz Richtlinien folgt, die 
+        durch die zugehörigen Aktionen des Schritts definiert sind. 
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="structured data type"></a><b>Strukturierter Datentyp</b></h3>
+      </font></td>
+    <td valign="top"> 
+      <P>Eine Zusammenfassung von auch unterschiedlichen Datenobjekten, die mit 
+        einer STRUCT-Deklaration vereinbart wurden. 
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="subscripting"></a><b>Subscripting</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Indizierung; ein Mechanismus zum Verweis auf ein Arrayelement mittels 
+        eines Arrayverweises und einem oder mehrerer Ausdrücke, die bei ihrer 
+        Auswertung die Position des Elements angeben. 
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="task"></a><b>Task </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Tasks haben die Aufgabe, Laufzeiteigenschaften von Programmen und deren 
+        zugeordneten Funktionsbausteinen festzulegen. Programme werden in Abh&auml;ngigkeit 
+        von den definiertenTaskeigenschaften periodisch aufgerufen. Die Task fungiert 
+        dabei quasi als Taktgeber f&uuml;r die Ausf&uuml;hrung eines Programms. 
+        Bei einem Aufruf eines Programms durch die zugeordnete Task wird ein Taskzyklus 
+        ausgef&uuml;hrt, d.h. es werden alle im Programm enthaltenen Anweisungen 
+        genau einmal ausgef&uuml;hrt. Addieren Sie bspw. zu einer Variablen den 
+        Wert <i>1</i>, wird bei jedem Taskzyklus der Wert dieser Variablen um 
+        den Wert 1 erh&ouml;ht 
+      <P> 
+      <P> 
+      <P> 
+    </td>
+  <tr> 
+    <td></td>
+    <td valign="top"> 
+      <h4><a name="priority"></a>Priorit&auml;t</h4>
+      <P>Innerhalb eines Projekts k&ouml;nnen mehrere Tasks simultan ausgef&uuml;hrt 
+        werden. Werden diese Tasks allerdings von derselben CPU ausgef&uuml;hrt, 
+        ist die Simultanit&auml;t nur eine scheinbare. Eine CPU kann immer nur 
+        sukzessiv einen Befehl nach dem anderen ausf&uuml;hren. Der Schein der 
+        Simultanit&auml;t entsteht nur durch die hohe Abarbeitungsgeschwindigkeit 
+        der Befehle und Verteilung mehrerer Aufgaben auf Zeitscheiben, die gew&auml;hrleistet, 
+        da&szlig; eine Befehlsfolge zugunsten einer anderen Befehlsfolge unterbrochen, 
+        und an der Stelle der Unterbrechung sp&auml;ter wieder fortgef&uuml;hrt 
+        werden kann. Fordern mehrere Tasks die Ausf&uuml;hrung einer Befehlsfolge 
+        von der CPU, wird ein m&ouml;glicher Laufzeitkonflikt durch eine sogenanntes 
+        premptives Scheduling verhindert. Dieses steuert nach Ma&szlig;gabe der 
+        f&uuml;r die Tasks festgelegten Priorit&auml;ten, wann eine Task, die 
+        in Konkurrenz zu einer anderen Task steht, ausgef&uuml;hrt wird. Wird 
+        eine Task aktiviert, die eine h&ouml;here Priorit&auml;t als die aktuell 
+        ausgef&uuml;hrte Task besitzt, wird die laufende Task unterbrochen und 
+        durch die h&ouml;herpriore Task ersetzt. Erst nach der Abarbeitung der 
+        h&ouml;herprioren Task wird die niederpriore Task wieder abgearbeitet. 
+        <br>
+        <br>
+      <P> 
+      <table cellpadding=8 border bgcolor=white width="364">
+        <tr > 
+          <td colspan=3> <i><b>IEC 1131-Priorit&auml;tsbereich <br>
+            von 0 bis 9 (am niedrigsten):</b></i> </td>
+        <tr> 
+          <td  align=right width="54">0</td>
+          <td width="72">Echtzeit</td>
+          <td width="174">Windows NT Priorit&auml;t 31</td>
+        <tr> 
+          <td  align=right width="54">1</td>
+          <td width="72">h&ouml;chste</td>
+          <td width="174">Windows NT Priorit&auml;t 26</td>
+        <tr> 
+          <td width="54">2 und 3</td>
+          <td width="72">hoch</td>
+          <td width="174">Windows NT Priorit&auml;t 25</td>
+        <tr> 
+          <td width="54">4 und 5</td>
+          <td width="72">normal</td>
+          <td width="174">Windows NT Priorit&auml;t 24</td>
+        <tr> 
+          <td width="54">6 und 7</td>
+          <td width="72">niedrig</td>
+          <td width="174">Windows NT Priorit&auml;t 23</td>
+        <tr> 
+          <td width="54">8 und 9</td>
+          <td width="72">niedrigste</td>
+          <td width="174">Windows NT Priorit&auml;t 22</td>
+      </table>
+      <P> 
+      <P>Die Priorität ist nur dann von Bedeutung, wenn zwei oder mehr Tasks sich 
+        gegenseitig verdrängen würden. 
+    </td>
+  <tr> 
+    <td valign=top align=right> <img src="pic/note.gif"> </td>
+    <td valign="top"> <font color=red> 
+      <P>Alle ATCMControl-Tasks haben weit höhere Prioritäten als Windows-Applikationen 
+        wie z. B. der Windows Explorer und sogar die meisten System-Tasks. 
+      </font></td>
+  <tr> 
+    <td valign=top> <font face=arial> 
+      <h3><a name="task status"></a>Task-Status- Meldung</h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Alle 15 Sekunden gibt jeder laufende Task eine Meldung an die Message-Ansicht, 
+        um zu zeigen, daß er noch läuft. Zusätzlich erscheint eine Meldung, wenn 
+        ein Task gestartet oder gestoppt wird oder wenn ein Fehler auftritt. 
+      <font face=arial> 
+      <h5>Beispiel:</h5>
+      </font> 
+      <P>Task: task1 dTmin=87 dTmax=105 eTMax=13 ol/cyc=0/150 mem=201832<br>
+        dTmin=min. sleep time<br>
+        dTmax=max. sleep time<br>
+        eTmax=max. exec. time<br>
+        ol/cyc=overload/total cycles<br>
+        mem=used memory (total) 
+      <P> 
+      <P> 
+      <P> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="tcpip"></a><b> TCP/IP</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Transmission Control Protocol/Internet Protocol. TCP/IP ist ein kombinierter 
+        Satz von Protokollen, die die Übertragung von Daten zwischen zwei Computern 
+        durchführen. Das TCP überwacht und gewährleistet die korrekte Übertragung 
+        von Daten. Das IP erhält die Daten vom TCP, unterteilt sie in Pakete und 
+        sendet sie an ein Netzwerk innerhalb des Internet. 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="temp var"></a><b>Tempor&auml;re Variable</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P>Eine Variable, deren Gültigkeit sich auf die Programmorganisationseinheit 
+        beschränkt, in der sie verwendet wird. Die temporäre Variable wird nach 
+        ihrer Verwendung zurückgesetzt 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="url"></a><b>URL </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><b>U</b>niform <b>R</b>esource <b>L</b>ocator. Eine Adresse, mit der 
+        eine Website im World Wide Web eindeutig identifiziert wird. Sie besitzt 
+        im allgemeinen ein vorangestelltes <i>http:// </i>wie in diesem fiktiven 
+        URL <i>http://www.example.4Control.de/.</i> Ein URL kann noch weitere 
+        Details enthalten, wie beispielsweise den Namen einer Hypertextseite, 
+        die im allgemeinen durch die Endung .html oder .htm gekennzeichnet wird. 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name=""></a><b> </b></h3>
+      </font> </td>
+    <td> 
+      <P> 
+      <P> 
+      <P> 
+      <P> 
+    </td>
+</table>
+</font></BODY></HTML>

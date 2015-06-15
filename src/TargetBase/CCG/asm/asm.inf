@@ -1,0 +1,56 @@
+# $Header: /4CReleased/V2.20.00/TargetBase/CCG/asm/asm.inf 1     28.02.07 19:04 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: asm.inf $
+#                        $Logfile: /4CReleased/V2.20.00/TargetBase/CCG/asm/asm.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Targetbase / CCG
+#
+# =COMPONENT            ASM
+#
+# =CURRENT      $Date: 28.02.07 19:04 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+TARGET=$(TARGET_BASE)\bin\4asm.exe 
+TARGETTYPE=con 
+
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\res
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\inc
+
+INCLUDE=..\inc
+INCLUDE=..\..\inc
+
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\ccg\inc
+
+LIBPATH=$(LIB_DIR)
+DEFLIB=oleaut32.lib ole32.lib
+DEFLIB=fc_todebug.lib fc_tools.lib fc_baselib.lib
+OBJECT=setargv.obj
+
+UNICODE=0
+YACC_LEX_CG_STYLE=1
+
+# do not 'exit' form lex/yacc
+DEFINE=YYEXIT
+
+#used for including from vmm headers
+DEFINE=INC_4C
+
+USER=makefirst:$(TARGET_BASE)\bin
+USER=$(TARGET_BASE)\bin:
+USER=  -md $@
+
+
+#only for development:
+#USER=makelast:
+#USER= @if exist $(EXE_DIR)\Engineering\bin\4cwin copy $(PROJECT_ROOT)\TargetBase\bin\4asm.exe $(EXE_DIR)\Engineering\bin\4cwin\4asm.exe
+#USER= @if exist $(EXE_DIR)\Engineering\bin\4cec  copy $(PROJECT_ROOT)\TargetBase\bin\4asm.exe $(EXE_DIR)\Engineering\bin\4cec\4asm.exe
+#USER= @if exist $(EXE_DIR)\Engineering\bin\4cbc  copy $(PROJECT_ROOT)\TargetBase\bin\4asm.exe $(EXE_DIR)\Engineering\bin\4cbc\4asm.exe
+
+# -------------------------------------------------------------------------------

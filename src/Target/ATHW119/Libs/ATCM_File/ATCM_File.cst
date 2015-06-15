@@ -1,0 +1,36 @@
+CONST
+    CF_BOF : DINT             := 0;           (* Begin Of File     *)
+    CF_EOF : DINT             := -1;          (* End Of File       *)
+    CF_EOL : DINT             := -2;          (* End Of Line       *)
+
+    CF_READ                   : DINT  := 2;   (* read file         *)
+    CF_READ_WRITE             : DINT  := 6;   (* read and write    *)
+    CF_APPEND                 : DINT  := 7;   (* append to file    *)
+
+    CF_CommonError            : DINT  := 10;
+    CF_InternalError          : DINT  := 11;
+    CF_InvalidArgument        : DINT  := 20;
+    CF_FileNotOpenError       : DINT  := 30;
+    CF_Timeout                : DINT  := 40;
+    CF_FileAlreadyOpen        : DINT  := 50;
+    CF_InvalidFieldFormat     : DINT  := 60;
+    CF_FileCsvTooManyField    : DINT  := 70;
+    CF_ErrReadFileorFileEmpty : DINT  := 80;
+    CF_NumFieldsNotEqual      : DINT  := 90;
+    CF_ErrCopyFile            : DINT  := 100;
+
+    CF_BYTE_FRMT              : BYTE  :=  1;
+    CF_INT_FRMT               : BYTE  :=  2;
+    CF_WORD_FRMT              : BYTE  :=  3;
+    CF_DINT_FRMT              : BYTE  :=  4;
+    CF_DWORD_FRMT             : BYTE  :=  5;
+    CF_REAL_FRMT              : BYTE  :=  6;
+    CF_LREAL_FRMT             : BYTE  :=  7;
+    CF_STRING_FRMT            : BYTE  :=  8;
+
+END_CONST
+
+
+
+
+

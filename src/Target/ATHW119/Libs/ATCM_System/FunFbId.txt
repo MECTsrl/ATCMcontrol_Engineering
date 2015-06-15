@@ -1,0 +1,25 @@
+
+; FUN       SYSTEM      120 -   131 -   134
+; FB        SYSTEM       25 -    25 -   29
+; -----------------------------------------------------------------------
+
+; FUNCTIONs
+; -----------------------------------------------------------------------
+ClearLocalTaskErrno             120     0   99999
+ClearTaskErrno                  121     0   99999
+EnableWatchdog                  122     0   99999
+GetLocalTaskErrno               123     0   99999
+GetLocalTaskInfo                124     0   99999
+GetLocalTaskState               125     0   99999
+GetTaskErrno                    126     0   99999
+GetTimeSinceSystemBoot          127     0   99999
+OutputDebugString               128     0   99999
+StartLocalTask                  129     0   99999
+StopLocalTask                   130     0   99999
+_ThrowException                 131     0   99999
+
+
+; FUNCTION BLOCKs
+; -----------------------------------------------------------------------
+SignalError                     25      0   99999
+    

@@ -1,0 +1,18 @@
+SUBPROJECT=fc_todebug\fc_todebug.mak
+SUBPROJECT=fc_tools\fc_tools.mak
+SUBPROJECT=fc_tools\fc_toolsw\fc_toolsw.mak
+SUBPROJECT=fc_util\fc_util.mak
+SUBPROJECT=fc_baselib\fc_baselib.mak
+SUBPROJECT=fc_baselib\fc_baselib.mak
+SUBPROJECT=fc_xml\fc_xml.mak
+SUBPROJECT=XML_Wrapper\XML_Wrapper.mak
+SUBPROJECT=trace\tracea\tracea.mak
+SUBPROJECT=trace\tracew\tracew.mak
+SUBPROJECT=csv\csva\csva.mak
+SUBPROJECT=csv\csvw\csvw.mak
+SUBPROJECT=PatchVer\PatchVer.mak
+
+USER=makefirst:$(MAKEDIR)\Lib
+USER=$(MAKEDIR)\Lib:
+USER=  -md $@
+

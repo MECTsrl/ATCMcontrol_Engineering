@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>NOT</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>NOT</h2>
+<p>Sets every bit of the value passed as the actual parameter to its complementary 
+  value.<br>
+</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION NOT : ANY_BIT
+VAR_INPUT
+    IN : ANY_BIT;
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>ANY_BIT</b></i><br>
+  Yields the complement of the value passed as a parameter.</p>
+
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>IN</b></dt>
+  <dd>Value of type <b><i>ANY_BIT</i></b><br>
+    Value to be inverted.</dd>
+</dl>
+<h3>Description</h3>
+<p>The function<b> <i>NOT</i> </b>corresponds to the operator for the bitwise 
+  <i><b>NOT</b></i>. All bits of the passed value are set to their complementary 
+  value, i.e. if a bit of passed value has the value 1, the bit at the same bit 
+  position of the result value receives the value 0, and vice versa. The function 
+  <i><b>NOT</b></i> accepts only one parameter; it is thus not extensible, in 
+  contrast to all other bitwise boolean standard functions.</p>
+</body>
+</html>

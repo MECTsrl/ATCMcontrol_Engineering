@@ -1,0 +1,13 @@
+(*[[
+]]*)
+TYPE
+    Profibus_StatusType  : STRUCT
+        GlobalBits       : BYTE;
+        MasterState      : BYTE;
+		ErrRemoteAddress : BYTE;
+		ErrNumber        : BYTE;
+		ConfgNode        : ARRAY [0..15] of BYTE;
+		ActivNode        : ARRAY [0..15] of BYTE;
+		DiagnNode        : ARRAY [0..15] of BYTE;
+	END_STRUCT;
+END_TYPE

@@ -1,0 +1,13 @@
+
+(*[[
+    UserURL= "ATCM:LWORD_TO_DWORD.htm"
+]]*)
+
+FUNCTION LWORD_TO_DWORD : DWORD
+VAR_INPUT 
+    IN : LWORD; 
+END_VAR
+
+inline{(int)%1}
+
+END_FUNCTION

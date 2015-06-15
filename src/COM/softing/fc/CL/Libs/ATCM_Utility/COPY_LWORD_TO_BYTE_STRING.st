@@ -1,0 +1,18 @@
+(*[[
+    UserURL= "ATCMFile:COPY_LWORD_TO_BYTE_STRING.htm"
+]]*)
+
+(* copies the value VALUE to the byte string BSTR at the position POS *)
+
+FUNCTION COPY_LWORD_TO_BYTE_STRING
+VAR_INPUT
+    VALUE : LWORD;
+END_VAR
+VAR_IN_OUT
+    POS : DINT;
+    BSTR : BYTE_STRING;
+END_VAR
+
+    COPY_NUMERIC_TO_BYTE_STRING(VALUE,8,POS,BSTR);
+
+END_FUNCTION

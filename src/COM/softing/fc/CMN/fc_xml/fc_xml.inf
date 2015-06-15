@@ -1,0 +1,8 @@
+TARGET=$(LIB_DIR)\fc_xml.lib
+TARGETTYPE=lib
+UNICODE=0
+
+INCLUDE=$(INCLUDE_DIR) 
+
+USER=precompile:
+USER=  $(CP) fc_xml_Error.h $(INCLUDE_DIR)\fc_xml_Error.h

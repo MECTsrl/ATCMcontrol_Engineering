@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>TOF_EX</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>TOF_EX</h2>
+<p>Delayed reaction to an input signal with additional visualization functionality.<br>
+</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION_BLOCK TOF_EX
+
+VAR_INPUT   
+    IN : BOOL := FALSE; 
+    PT : TIME := T#0s;  
+END_VAR
+
+VAR_INPUT 
+    SCALEMIN : DINT := 0;   
+    SCALEMAX : DINT := 100; 
+END_VAR
+
+VAR_OUTPUT  
+    Q  : BOOL := TRUE; 
+    ET : TIME := T#0s; 
+    ERROR : DINT;      
+END_VAR</pre>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>IN</b></dt>
+  <dd>Value of type<i> <i><b>BOOL<br>
+    </b></i></i>Input signal<i><i><b> <br>
+    </b></i></i>The default value is<b></b><i><i><b> </b></i><b><i>FALSE</i></b></i><i>.</i></dd>
+  <dt><b>PT</b></dt>
+  <dd>Value of type <i><b>TIME<br>
+    </b></i>Determines the duration of the delay after which<i><b> Q</b></i> is 
+    set to <i><b>FALSE</b></i> if <i><b>IN = FALSE</b></i>.<i><b> <br>
+    </b></i>The default value is<i><b> T#0s</b></i>.</dd>
+  <dt><b>SCALEMIN</b></dt>
+  <dd>Value of type<b> <i>DINT</i></b><i><br>
+    </i><i></i>Determines the lower value for the visualization scale. The default 
+    value is <i><b>0</b></i>.</dd>
+  <dt><b>SCALEMAX</b></dt>
+  <dd>Value of type <i><b>DINT</b></i><b><i><br>
+    </i></b>Determines the upper value for the visualization scale. The default 
+    value is <i><b>100</b></i>.<i><b></b></i><i></i></dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b></b><b>Q</b></dt>
+  <dd>Value of type <b><i>BOOL</i></b><br>
+    Signalizes by the value <b><i>FALSE</i></b> that the time specified in <b><i>PT</i></b> 
+    has expired after <b><i>IN</i></b> changed to <i><b>FALSE</b></i>. <b><i>Q</i></b> 
+    is <i><b>FALSE</b></i> if <i><b>ET &gt;= PT</b></i>.</dd>
+  <dt><b>ET</b></dt>
+  <dd>Value of type <b><i>TIME<br>
+    </i></b> Is incremented time-dependent after counting has started, provided 
+    <i><b>IN = FALSE</b> </i>; incrementing is carried out until <i><b>ET &gt;= 
+    PT</b></i>. </dd>
+  <dt><b>ERROR</b></dt>
+  <dd>Value of type <b><i>DINT</i></b>. <br>
+    Yields the value <i><b>0</b></i><b> </b>if no error occurred. An error number 
+    <b><i>&lt;&gt; 0</i></b> is returned if an error occurred during visualization. 
+    In the current version of <i><b>4CONTROL</b></i>, only the event that the 
+    current value of <i><b>SCALEMIN</b> <b>&gt;= SCALEMAX</b></i> is encountered 
+    is evaluated as a visualization error.<br>
+  </dd>
+</dl>
+<h3>Description</h3>
+<p>The function block <b><i>TOF_EX</i></b> is used for delaying the response to 
+  the input signal<i> <b>IN</b></i>. The length of the delay is determined in<i> 
+  <b>PT</b></i>. If<i> <b>IN</b></i> changes to <i><b>FALSE</b></i>, <b><i>Q</i></b> 
+  is also set to <i><b>FALSE</b></i> as soon as the length of time specified in 
+  <b><i>PT</i></b> expires. <br>
+  After reaching the target value in the counting process <i><b>(ET &gt;= PT)</b></i>, 
+  <b><i>Q</i></b> will remain<b><i> FALSE</i></b> until <b><i>ET</i></b> is reset 
+  to <i><b>0</b></i>. This is achieved by setting the input <b><i>IN</i></b> to 
+  <i><b>TRUE</b></i>. </p>
+<p> <b><i>TOF_EX</i></b> is the extended version of the function block <b><i>TOF</i></b>. 
+  As additional parameters, this function block features the two inputs<i><b> 
+  SCALEMIN</b></i> and <b><i>SCALEMAX</i></b>, which can be used for setting the 
+  scale of values of a bar chart represented in the faceplate, and the output 
+  <b><i>ERROR</i></b>, which returns an error code if a visualization error occurred. 
+</p>
+</body>
+</html>

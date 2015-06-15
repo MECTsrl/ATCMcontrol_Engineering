@@ -1,0 +1,229 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_SELUPDATE DIALOG DISCARDABLE  0, 0, 322, 281
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Selective Download"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "List1",IDC_UPDATE_LIST,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | 
+                    WS_TABSTOP,20,44,285,150
+    PUSHBUTTON      "Start &Download",IDC_UPDATE_DOWNLOAD,20,220,70,15
+    PUSHBUTTON      "&Select all",IDC_UPDATE_SELECTALL,20,201,70,15
+    DEFPUSHBUTTON   "&Close",IDOK,265,260,50,14
+    CONTROL         "Progress1",IDC_UPDATE_PROGRESS,"msctls_progress32",
+                    WS_BORDER,170,220,135,15
+    LTEXT           "Otto",IDC_UPDATE_DOMNAME,170,201,135,10
+    GROUPBOX        " Selective Update for Control ",IDC_STATIC,5,6,310,244
+    LTEXT           "Control:",IDC_STATIC,20,21,30,10
+    LTEXT           "..",IDC_UPDATE_CONTROLNAME,66,21,227,10
+    LTEXT           "Control state:",IDC_STATIC,20,33,42,10
+    LTEXT           "?",IDC_UPDATE_STATE,66,33,125,8
+END
+
+IDD_DOWNLOADSTATE DIALOG DISCARDABLE  0, 0, 362, 146
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Download Overview"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Close",IDCANCEL,305,125,50,14
+    CONTROL         "List1",IDC_CONTROLS,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | WS_BORDER | 
+                    WS_TABSTOP,15,20,330,85
+    GROUPBOX        "Control information",IDC_STATIC,5,5,350,110
+    PUSHBUTTON      "Details...",IDC_CONTROL_DETAILS,240,125,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_SELUPDATE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 315
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 274
+    END
+
+    IDD_DOWNLOADSTATE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 355
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 139
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_DOMIMAGELIST        BITMAP  DISCARDABLE     "domimage.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_DOM_POPUP MENU DISCARDABLE 
+BEGIN
+    POPUP "PopUp"
+    BEGIN
+        MENUITEM "&Ignore",                     IDM_DOMPOPUP_NOTHING
+        MENUITEM "&Delete always",              IDM_DOMPOPUP_DEL
+        MENUITEM "Down&load always",            IDM_DOMPOPUP_DOWN
+    END
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1 TYPELIB ""dl.tlb""\r\n"
+    "2 TYPELIB ""cedl.tlb""\r\n"
+    "#include ""cedlerror.rc""\r\n"
+    "#include ""version.rc2""\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_DOWNLOAD            REGISTRY DISCARDABLE    "Download.rgs"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PROJNAME            "Download"
+    IDS_CEDL_DEFERROR       "System error hr = 0x%x"
+    IDS_CEDL_MSGHEADER      "Downloader[%s]: "
+    IDS_COL_DOMAINLIST      "Domain Name             , Type        , Original action to do   "
+    IDS_DOMTYPE_CODE        "Code Domain"
+    IDS_DOMTYPE_VIS         "Visualization Domain"
+    IDS_DOMACTION_CHANGED   "domain changed: download the newer version to control"
+    IDS_DOMACTION_NEW       "new domain: download to control"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_DOMACTION_DELETE    "unnecessary domain: delete on control"
+    IDS_DOMACTION_NOTHING   "correct domain: nothing to do"
+    IDS_COLUMNS             "Control     |Project Name|Last Download                     |Download Machine|Control state                "
+    IDS_OC_IMPOSSIBLE       "Computation of Online Change data failed.\n\nReason: %s"
+    IDS_OC_NOCHANGE         "No changes detected."
+    IDS_NOT_CONNECTED       "not connected"
+    IDS_CSC_OUTOFMEM        "Out of memory"
+    IDS_CSC_SINGLE_DL_ALLOWED 
+                            "Only a single download session at the same time allowed to ATCM control."
+    IDS_CSC_NO_VALID_LIC    "Cannot access license info for CSC_Online server"
+    IDS_CSC_NO_REMOTE_DLOAD_FOR_BUNDLE 
+                            "This bundled license allows no remote download"
+    IDS_CSC_UNKNOWN_CONFIGURATION "Unknown configuration name"
+    IDS_CSC_CONFIGURATION_UNREACHABLE 
+                            "No connection to configuration possible"
+    IDS_CSC_SESSION_ALREADY_CONNECTED "Session is already connected"
+    IDS_DOWNLD              "Download : "
+    IDS_UPLD                "Upload: "
+    IDS_CONN                "Connecting ..."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_COMPAREDOM          "Compare: "
+    IDS_QUERY_NEW_PROJECT   "New project detected. Do you want to perform a full download?"
+    IDS_CONN_INTR           "Connection interrupted"
+    IDS_CSC_NO_CONNECT_TO_CONTROL "COM Connection to control failed"
+    IDS_CSC_NO_FTP_SESSION  "Connection to Web server for transfer of visualization domains failed"
+    IDS_DIFF_PRJ            "Different project"
+    IDS_DIFF_CLEARED        "Cleared"
+    IDS_DIFF_SYNC           "Identical"
+    IDS_DIFF_UNSYNC         "Different version"
+    IDS_DL_CAPTION          "Download to %s"
+    IDS_DL_DONE             "Done"
+    IDS_QUERY_FRMWARE_CHANGES 
+                            "Control service requires a restart.\nCancel to abort the download.\nOk will stop and restart the control service, that will take some time.  "
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDM_DOMPOPUP_NOTHING    "Do no action on this domain"
+    IDM_DOMPOPUP_DEL        "Delete this domain"
+    IDM_DOMPOPUP_DOWN       "Download this domain"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "dl.tlb"
+2 TYPELIB "cedl.tlb"
+#include "cedlerror.rc"
+#include "version.rc2"
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

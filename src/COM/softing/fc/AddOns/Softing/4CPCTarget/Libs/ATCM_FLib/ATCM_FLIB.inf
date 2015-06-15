@@ -1,0 +1,30 @@
+
+SUBPROJECT=java\java.mak
+
+USER=libname=ATCM_FileAccess
+USER=targettype=4CPC
+
+USER=make_lib: force
+USER= xcopy $(MAKEDIR)\*.*     $(MAKEDIR)\de\*.*  /Y
+USER= xcopy $(MAKEDIR)\*.*     $(MAKEDIR)\eng\*.* /Y
+
+USER= $(4CG) $(MAKEDIR)\de\$(libname).4cp   -ml:$(targettype) $(ENGBIN_DIR)\$(targettype)\libs\de\$(libname).4cl
+USER= $(4CG) $(MAKEDIR)\eng\$(libname).4cp  -ml:$(targettype) $(ENGBIN_DIR)\$(targettype)\libs\eng\$(libname).4cl
+
+USER= $(4CG) -al $(ENGBIN_DIR)\$(targettype)\libs\eng\$(libname).4cl  $(4CL_DIR)\$(libname).4cl
+
+# -------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+

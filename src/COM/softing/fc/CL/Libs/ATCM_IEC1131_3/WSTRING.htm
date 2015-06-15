@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>WSTRING_Error_Handling</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>Error handling with WSTRING-conversion functions </h2>
+<p>&nbsp;</p>
+<p>When you use the conversion functions from data type<b> <i>WSTRING (WSTRING_TO_**)</i></b>, 
+  the result depends on the <i><b>correct syntax</b></i> of the value to be converted 
+  from the passed string; this applies particularly if complex data are represented 
+  as strings, such as the data format <i><b>DT</b></i>. </p>
+<p>The compiler only checks whether the value passed to a conversion function 
+  is compatible with the <i><b>formal parameters</b></i> of the corresponding 
+  function, but does <b>not</b> check <i><b>the value itself</b></i> that is passed 
+  as a parameter. For this reason, <i><b>no compiler error will be output</b></i> 
+  if the representation of the value of the string to be converted does not comply 
+  with the target data format into which the string is to be converted. </p>
+<p> If you, for example, want to convert a <i><b>WSTRING</b></i> into the data 
+  type<b> <i>DATE</i></b>, you will only receive the desired result if the value 
+  represented in the string corresponds to the external representation of the 
+  data type <i><b>DATE</b></i>. The function <i><b>WSTRING_TO_DATE</b></i> expects 
+  the passed parameter to contain a string of the format <i><b>DATE#Year-Month-Day</b></i>. 
+  If a nonsensical literal is entered instead of the year, for example, or if 
+  one of these entries exceeds the valid range of values, the string cannot be 
+  successfully converted. </p>
+<p>To catch such cases, all <i><b>WSTRING </b></i>conversion functions feature 
+  an internal error handling routine:</p>
+<ul>
+  <li>If a string passed as an actual parameter contains invalid data, a standard 
+    value is returned in the external representation of the target data format. 
+    With <i><b>WSTRING_TO_DATE</b></i>, for example, the value returned would 
+    be <i><b>d#0001-01-01</b></i>.</li>
+  <li>An internal error number is set. In the case of an error, this value is 
+    <i><b>&lt;&gt; 0</b></i>. If conversion was successful, the error number is 
+    set to the value <i><b>0</b></i>. You can interrogate the error numbers with 
+    the function <i><b>GetTaskErrno</b></i> from the <i><b>ATCM_System</b></i> library.</li>
+</ul>
+</body>
+</html>

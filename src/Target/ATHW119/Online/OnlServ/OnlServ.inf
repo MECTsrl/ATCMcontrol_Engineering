@@ -1,0 +1,62 @@
+# $Header: /4CReleased/V2.20.00/Target/TEMPLATES/Online/OnlServ/OnlServ.inf 1     28.02.07 18:54 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: OnlServ.inf $
+#                        $Logfile: /4CReleased/V2.20.00/Target/TEMPLATES/Online/OnlServ/OnlServ.inf $
+#
+# =PROJECT              4CONTROL V2.x
+#
+# =SWKE                 Target / Online
+#
+# =COMPONENT            OnlServ
+#
+# =CURRENT      $Date: 28.02.07 18:54 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+TARGET=$(EXE_DIR)\Engineering\bin\ATHW119\OnlServATHW119.exe
+TARGETTYPE=GUI
+STATIC_RUNTIME=0
+UNICODE=0
+
+INCLUDE=..\..\inc
+INCLUDE=..\..\res
+INCLUDE=$(TARGET_BASE)\online\inc
+INCLUDE=$(TARGET_BASE)\inc
+INCLUDE=$(TARGET_BASE)\kernel\inc
+INCLUDE=$(TARGET_BASE)\kernel\inc\opc
+INCLUDE=$(TARGET_BASE)\kernel\CSC\opcEngine\include
+
+DEFLIB=ole32.lib
+DEFLIB=oleaut32.lib
+DEFLIB=uuid.lib
+DEFLIB=version.lib
+
+LIBRARY=$(TARGET_BASE)\kernel\lib\opcEngine.lib
+LIBRARY=$(TARGET_BASE)\kernel\lib\fc_todebug.lib
+LIBRARY=$(TARGET_BASE)\kernel\lib\fc_baselib.lib
+LIBRARY=$(TARGET_BASE)\kernel\lib\fc_tools.lib
+LIBRARY=$(TARGET_BASE)\lib\OnlLibServ.lib
+LIBRARY=$(TARGET_BASE)\kernel\ce\lib\CEUtil_XML.lib
+
+PCHFILE=stdafx
+
+DEFINE=_USRDLL
+DEFINE=_AFXDLL
+DEFINE=_ATL_STATIC_REGISTRY
+
+#copy the CSC_OnlineServer.tlb to controls exe directory
+LATECOPY=$(TARGET_BASE)\kernel\inc\CSC_OnlineServer.tlb $(EXE_DIR)\Engineering\bin\ATHW119\CSC_OnlineServer.tlb
+
+LATECOPY=who.list $(EXE_DIR)\Engineering\bin\ATHW119\who.list
+
+#used for including vm headers
+DEFINE=INC_4C
+
+USER=makefirst:$(EXE_DIR)\Engineering\bin\ATHW119
+USER=$(EXE_DIR)\Engineering\bin\ATHW119:
+USER=  -md $@
+
+# -------------------------------------------------------------------------------

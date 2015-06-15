@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<KAD4CPC> 
+    <IOCOMPONENTS>
+        <!-- these IOcomponents are installed by default -->
+        <FBUS EXT="iodp"  CONFIGURATOR="{F90AD5F6-F39D-4f5a-9301-19A57C5FA767}" />
+        <FBUS EXT="ioopc" CONFIGURATOR="{33146a06-b51c-4267-9864-c040778c849a}" />
+        <FBUS EXT="iocan" CONFIGURATOR="{90E93DAE-B56B-4899-9FAA-2A42C83EFC28}" />
+        <FBUS EXT="iomodbus" CONFIGURATOR="{A8958A71-663A-4b0e-844A-7F2F08A43947}" />
+    </IOCOMPONENTS>
+</KAD4CPC>

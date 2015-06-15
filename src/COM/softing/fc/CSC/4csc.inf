@@ -1,0 +1,76 @@
+#*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CSC/4csc.inf 1     28.02.07 19:00 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: 4csc.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CSC/4csc.inf $
+#
+# =PROJECT             CAK1020 ATCMControlV2.0
+#
+# =SWKE                4CSC
+#
+# =COMPONENT           4CSC
+#
+# =CURRENT      $Date: 28.02.07 19:00 $
+#               $Revision: 1 $
+#
+# =REFERENCES
+#
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+#    @DESCRIPTION@
+#==
+#----------------------------------------------------------------------------*
+# =MODIFICATION
+#  19.03.2001  SU      File created
+#  see history at end of file !
+#==
+#******************************************************************************
+#H<<*/
+
+
+SUBPROJECT=opcEngine\engine\opcEngine.mak
+SUBPROJECT=CSC_ONLINE\CSC_Online.mak
+SUBPROJECT=csc_simpleOPC\csc_simpleOPC.mak
+SUBPROJECT=AsyncOPC\AsyncOPC.mak
+
+SUBPROJECT=opcComn_PS\opcComn_PS.mak
+SUBPROJECT=opcProxy\opcProxy.mak
+SUBPROJECT=opcAutoDA\opcAutoDA.mak
+
+
+#----------------------------------------------------------------------------*
+# =MODIFICATIONS
+# $History: 4csc.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:00
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CSC
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:33
+# Created in $/4Control/COM/softing/fc/CSC
+# 
+# *****************  Version 3  *****************
+# User: Ef           Date: 8.08.01    Time: 20:37
+# Updated in $/4Control/COM/softing/fc/CSC
+# simple OPC / Async OPC
+# 
+# *****************  Version 2  *****************
+# User: Su           Date: 21.03.01   Time: 16:43
+# Updated in $/4Control/COM/softing/fc/CSC
+# 
+# *****************  Version 1  *****************
+# User: Su           Date: 19.03.01   Time: 19:16
+# Created in $/4Control/COM/softing/fc/CSC
+# Initial Rev.
+# 
+#==
+#----------------------------------------------------------------------------*

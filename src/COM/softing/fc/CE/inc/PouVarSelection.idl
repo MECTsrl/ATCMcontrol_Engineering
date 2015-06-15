@@ -1,0 +1,109 @@
+// This file will be processed by the MIDL tool to
+// produce the type library (PouVarSelection.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+#include "olectl.h"
+
+import "CEMsg.idl";
+
+	[
+		object,
+		uuid(708132EA-D024-46DD-9319-F887204DA8C1),
+		dual,
+		helpstring("IPouVarSelCtrl Interface"),
+		pointer_default(unique)
+	]
+	interface IPouVarSelCtrl : IDispatch
+	{
+		[id(1), helpstring("method ShowPouSelection")] 
+            HRESULT ShowPouSelection();
+		[id(2), helpstring("method ShowVarSelection")] 
+            HRESULT ShowVarSelection([in, string]BSTR sPouName);
+		[id(3), helpstring("method InitPouVarSelection")] 
+            HRESULT InitPouVarSelection();
+        [id(4), helpstring("method SetVarSelectionHint")] 
+            HRESULT SetVarSelectionHint([in, string] BSTR sPouName,
+                                        [in, string] BSTR sVarNamePrefix,
+                                        [in, string] BSTR sDataType);
+        [id(5), helpstring("method LookupUserHelp")]
+            HRESULT LookupUserHelp([in, string]  BSTR sPou,
+                                   [out, string] BSTR* psFileName);
+        [id(6), helpstring("method LookupHeader")]
+            HRESULT LookupHeader([in, string]  BSTR sPou,
+                                 [out, string] BSTR* psHeaderFile);
+        [id(7), helpstring("method GetLRUPous")] 
+            HRESULT GetLRUPous([out]SAFEARRAY(BSTR)* parrPous);
+        [id(8), helpstring("method GetPouXML")] 
+            HRESULT GetPouXML([in, string]  BSTR szPouName, 
+                              [out, string] BSTR* pszPouDef);
+        [id(9), helpstring("method GetVarList")] 
+            HRESULT GetVarList([out] SAFEARRAY(BSTR)* parrVars);
+        [id(10), helpstring("method GetPouList")] 
+            HRESULT GetPouList([out] SAFEARRAY(BSTR)* parrPous);
+        [id(11), helpstring("method GetPouDefinition")] 
+            HRESULT GetPouDefinition([in, string] BSTR szPouName, 
+                                     [out, string] BSTR* pszPouDef);
+        [id(12), helpstring("method GetPouMember")] 
+            HRESULT GetPouMember([in, string] BSTR szPouName, 
+                                 [out] SAFEARRAY(BSTR)* parrMembers);
+        [id(13), helpstring("method ShowVarSelectionBox")] 
+            HRESULT ShowVarSelectionBox([in]LONG lXPos, [in]LONG lYPos,
+                                        [in, string]BSTR szLine, [in]LONG lColumn,
+                                        [in, string]BSTR szTypeHint,
+                                        [in, string]BSTR szPouName,
+                                        [out, string]BSTR* pszSelection,
+                                        [out]LONG* plStartColumn,
+                                        [out]LONG* plEndColumn);
+        [id(14), helpstring("method DisablePouVarSelction")] 
+            HRESULT DisablePouVarSelection([in]BOOL bDisable);
+	};
+
+[
+	uuid(C8983993-8560-4BD1-8D29-598D0E90436A),
+	version(1.0),
+	helpstring("PouVarSelection 1.0 Type Library")
+]
+library POUVARSELECTIONLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(055941CF-6813-4611-97E7-C208D0FDEE85),
+        dual,
+		helpstring("_IPouVarSelCtrlEvents Interface")
+	]
+	interface _IPouVarSelCtrlEvents : IDispatch
+	{
+		[id(1), helpstring("method GetProjectManager")] 
+            HRESULT GetProjectManager([out]IUnknown** ppUnk);
+		[id(2), helpstring("method GetKadManager")] 
+            HRESULT GetKadManager([out]IUnknown** ppUnk);
+		[id(3), helpstring("method InsertFBCall")] 
+            HRESULT InsertFBCall([in, string]BSTR sFB);
+		[id(4), helpstring("method InsertVariable")] 
+            HRESULT InsertVariable([in, string]BSTR sVar);
+        [id(5), helpstring("method ShowHelp")]
+            HRESULT ShowHelpFile([in, string] BSTR sHelpFile);
+        [id(6), helpstring("method ShowHeader")]
+            HRESULT ShowHeaderFile([in, string] BSTR sHeaderFile);
+        [id(7), helpstring("method SaveEditorFile")]
+            HRESULT SaveEditorFile([in, string] BSTR sEditorFile);
+        [id(8), helpstring("method ReloadEditorFile")]
+            HRESULT ReloadEditorFile([in, string] BSTR sEditorFile);
+        [id(9), helpstring("method ShowPouVarSelection")]
+            HRESULT ShowPouVarSelection();
+	};
+
+	[
+		uuid(7AF62965-DB27-4AC9-8351-D71F0A839639),
+		helpstring("PouVarSelCtrl Class")
+	]
+	coclass PouVarSelCtrl
+	{
+		[default] interface IPouVarSelCtrl;
+		[default, source] dispinterface _IPouVarSelCtrlEvents;
+        [source] interface _ICEMessageEvent;
+	};
+};

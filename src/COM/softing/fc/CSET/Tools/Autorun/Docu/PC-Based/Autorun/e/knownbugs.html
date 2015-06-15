@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+		<title>ATCMControl v2.1</title>
+		<script language="javascript" type="text/javascript">
+
+	pic1 = new Image();
+	pic1.src = "../pic/nav1e.gif";
+	pic2 = new Image();
+	pic2.src = "../pic/nav2e.gif";
+	pic3 = new Image();
+	pic3.src = "../pic/nav3d.gif";
+	pic6 = new Image();
+	pic6.src = "../pic/nav6e.gif";
+	pic8 = new Image();
+	pic8.src = "../pic/nav5d.gif";
+	pic7 = new Image();
+	pic7.src = "../pic/nav7e.gif";
+	pic9 = new Image();
+	pic9.src = "../pic/nav9e.gif";
+
+	pic11 = new Image();
+	pic11.src = "../pic/nav11e.gif";
+	pic22 = new Image();
+	pic22.src = "../pic/nav22e.gif";
+	pic33 = new Image();
+	pic33.src = "../pic/nav33d.gif";
+	pic66 = new Image();
+	pic66.src = "../pic/nav66e.gif";
+	pic88 = new Image();
+	pic88.src = "../pic/nav55d.gif";
+	pic77 = new Image();
+	pic77.src = "../pic/nav77e.gif";
+	pic99 = new Image();
+	pic99.src = "../pic/nav99e.gif";
+
+function drauf(wert)
+{
+	switch (wert)
+	{
+		case 1:	document.nav1.src = pic11.src;
+		break;
+		case 2: document.nav2.src = pic22.src;
+		break;
+		case 3: document.nav3.src = pic33.src;
+		break;
+		case 6: document.nav6.src = pic66.src;
+		break;
+		case 8: document.nav8.src = pic88.src;
+		break;
+		case 7: document.nav7.src = pic77.src;
+		break;
+		case 9: document.nav9.src = pic99.src;
+		break;
+	}
+}
+function runter(wert)
+{
+	switch (wert)
+	{
+		case 1:document.nav1.src = pic1.src;
+		break;
+		case 2:document.nav2.src = pic2.src;
+		break;
+		case 3:document.nav3.src = pic3.src;
+		break;
+		case 6:document.nav6.src = pic6.src;
+		break;
+		case 8:document.nav8.src = pic8.src;
+		break;
+		case 7:document.nav7.src = pic7.src;
+		break;
+		case 9: document.nav9.src = pic9.src;
+		break;
+
+	}
+}
+</script>
+
+</script>
+		<link rel="stylesheet" href="../text.css">
+	</head>
+
+	<body leftmargin="2" topmargin="2" marginwidth="2" marginheight="2" bgcolor="#CCCCCC" link="#003366" vlink="#003366" alink="#003366">
+		<!--hauptmenue-->
+		<table width="760" height="25" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="155" align="right" valign="bottom"><img src="../pic/4clogo.gif" width="14" height="16" alt="" border="0"><img src="../pic/clearpix.gif" width="2" height="1" alt="" border="0"></td>
+				<!--kurze laengsline-->
+				<td align="left" valign="bottom" colspan="5"><img src="../pic/linien.gif" width="2" height="25" alt="" border="0"></td>
+				<!--ende--></tr>
+		</table>
+		<!--querline-->
+		<table width="760" height="2" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><img src="../pic/linien.gif" width="760" height="2" alt="" border="0"></td>
+			</tr>
+		</table>
+		<!--ende-->
+		<table width="760" height="94%" border="0" cellpadding="0" cellspacing="0">
+			<tr><!--navigation-->
+				<td width="155" valign="top">
+					<table width="155" height="60" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="24" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td valign="center"><img src="../pic/4clayout-kl.jpg" width="152" height="134" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><img src="../pic/nav1e.gif" name="nav1" width="120" height="25" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="thiscd.html" onmouseover="drauf(2)" onmouseout="runter(2)"><img src="../pic/nav2e.gif" name="nav2" width="120" height="25" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="cinstall.html" onmouseover="drauf(3)" onmouseout="runter(3)"><img src="../pic/nav3d.gif" name="nav3" width="120" height="25" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="license.html" onmouseover="drauf(6)" onmouseout="runter(6)"><img src="../pic/nav6e.gif" name="nav6" width="120" height="25" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="#" onmouseover="drauf(8)" onmouseout="runter(8)"><img src="../pic/nav5d.gif" name="nav8" width="120" height="25" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="contact.html" onmouseover="drauf(7)" onmouseout="runter(7)"><img src="../pic/nav7e.gif" name="nav7" width="120" height="25" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="60" valign="center"><a href="readme_dep.htm" onmouseover="drauf(9)" onmouseout="runter(9)"><img src="../pic/nav9e.gif" name="nav9" width="120" height="50" border="0"></a></td>
+						</tr>
+					</table>
+				</td>
+				<!--navigation ende--><!--lange vertikalline-->
+				<td bgcolor="#999999">
+					<table width="2" height="94%" valign="top" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="1" alt="" border="0"></td>
+						</tr>
+					</table>
+				</td>
+				<!--ende--><!--inhalt-->
+				<td width="603" valign="top">
+					<table border="0" cellpadding="0" cellspacing="0" align="center" valign="middle" width="570">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="24" alt="" border="0"></td>
+						</tr>
+						<tr height="30">
+							<td align="center"  height="30"><span class="headblau">Release Notes</span></td>
+						</tr>
+						<tr>
+							<td valign="middle" align="left" >
+								<p class="text">This chapter lists some problems wich in some cases may occur while working with ATCMControl and presents measures to avoid or solve these problems.<br>
+								</p><p><img src="../pic/clearpix.gif" width="1" height="10" alt="" border="0"></p>
+
+							</td>
+						</tr>
+						<tr>
+							<td align="center">
+								<table border="1" cellpadding="0" cellspacing="2" width="500">
+									<tr valign="top" align="left">
+										<td valign="top" align="left"><span class="textblaubold">Problem Description</span></td>
+										<td valign="top" align="left"><span class="textblaubold">Solution</span></td>
+									</tr>
+									<tr valign="top" align="left">
+										<td valign="top" align="left"><span class="text">Reinstallation of Peer Web Services changes ASP installation. Consequence is that ATCM Console cannot display ASP pages correctly anymore.</span></td>
+										<td valign="top" align="left"><span class="text">Reinstall ASP support.</span></td>
+									</tr>
+									<tr valign="top" align="left">
+										<td valign="top" align="left"><span class="text">If a Pipe (|) symbol is used in a WSTRING variable this symbol is displayed as blank when the string is watched in ATCM Engineering or ATCM Console.</span></td>
+										<td valign="top" align="left"><span class="text">Do not use the <b>Pipe</b> (|) symbol for variable contents.</span></td>
+									</tr>
+									<tr valign="top" align="left">
+										<td valign="top" align="left"><span class="text">In case of working with a very large project (more than 5000 variables) the the online change could last long and the system seems to be not responding.</span></td>
+										<td valign="top" align="left"><span class="text">There is no problem, it just takes some time. You can reduce this time by increasing your system memory on your ATCM Control PC.</span></td>
+									</tr>
+									<tr valign="top" align="left">
+										<td valign="top" align="left"><span class="text">Menu command &quot;Print&quot; of ATCM Console (Internet Explorer 4) does not work.</span></td>
+										<td valign="top" align="left"><span class="text">This function isn't supported. If you want to make a ATCM Console print, use the Windows hard copy function.</span></td>
+									</tr>
+									<tr valign="top" align="left">
+										<td valign="top" align="left"><span class="text">If a project is downloaded on ATCM Control while the PROFIbus configurator is opened, the download process fails.</span></td>
+										<td valign="top" align="left"><span class="text">Close the PROFIbus configurator, before you begin with the download of a project.</span></td>
+									</tr>
+									<tr valign="top" align="left">
+										<td valign="top" align="left"><span class="text">Even if the ressource is stopped any existing RTCE tasks will start running when the DP configurator is opened and the configuration is downloaded on ATCM Control.</span></td>
+										<td valign="top" align="left"><span class="text">In case you are using RTCE tasks in your project, you should start the DP configurator only when the project isn't currently downloaded.</span></td>
+									</tr>
+									<tr valign="top" align="left">
+										<td valign="top" align="left"><span class="text">When trying to open more then one instance of ATCM Console in some cases you may get an error of the kind &quot;Proxy error..&quot;.</span></td>
+										<td valign="top" align="left"><span class="text">To avoid this problem you should select <b>Launch browser windows in a separate process</b> in the <b>Advanced</b>-tab of the <b>Internet Options</b> in your Internet Explorer.</span></td>
+									</tr>
+									<tr valign="top" align="left">
+										<td valign="top" align="left"><span class="text">In some cases script errors may occur when loading or performing a project on ATCM Console.</span></td>
+										<td valign="top" align="left"><span class="text">The script errors do not occur with the newest release of the Internet Explorer which is contained in the ATCMControl CD. Install this version to avoid script errors.</span></td>
+									</tr>
+								</table>
+								<br>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>

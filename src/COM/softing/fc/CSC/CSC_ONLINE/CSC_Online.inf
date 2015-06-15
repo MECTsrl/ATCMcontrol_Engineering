@@ -1,0 +1,79 @@
+#/*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CSC/CSC_ONLINE/CSC_Online.inf 1     28.02.07 19:00 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: CSC_Online.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CSC/CSC_ONLINE/CSC_Online.inf $
+#
+# =PROJECT             CAK1020 ATCMControlV2.0
+#
+# =SWKE                4CSC
+#
+# =COMPONENT           CSC Online Control
+#
+# =CURRENT      $Date: 28.02.07 19:00 $
+#               $Revision: 1 $
+#
+# =REFERENCES
+#
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+#    @DESCRIPTION@
+#==
+#----------------------------------------------------------------------------*
+# =MODIFICATION
+#  14.03.2001  SU      File created
+#  see history at end of file !
+#==
+#******************************************************************************
+#H<<*/
+
+TARGET=$(EXE_DIR)\Engineering\bin\CSC_Online.dll
+TARGETTYPE=DLL
+STATIC_RUNTIME=0
+UNICODE=0
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(INCLUDE_DIR)\opc
+INCLUDE=$(RESOURCE_DIR)
+LIBPATH=$(LIB_DIR)
+DEFLIB=ole32.lib
+DEFLIB=oleaut32.lib
+DEFLIB=uuid.lib
+DEFLIB=mpr.lib
+DEFLIB=fc_baselib.lib
+DEFLIB=tracea.lib
+PCHFILE=stdafx
+DEFINE=_AFXDLL
+DEFINE=_ATL_STATIC_REGISTRY
+
+#
+#----------------------------------------------------------------------------*
+#  $History: CSC_Online.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:00
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CSC/CSC_ONLINE
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:33
+# Created in $/4Control/COM/softing/fc/CSC/CSC_ONLINE
+# 
+# *****************  Version 3  *****************
+# User: Su           Date: 15.03.01   Time: 19:46
+# Updated in $/4Control/COM/softing/fc/CSC/CSC_Online
+# removed private trace files, replaced by tracea.lib. Not neccessary
+# defines are removed as well.
+# 
+# *****************  Version 2  *****************
+# User: Su           Date: 14.03.01   Time: 19:43
+# Updated in $/4Control/COM/softing/fc/CSC/CSC_Online
+#==
+#----------------------------------------------------------------------------*
+#

@@ -1,0 +1,10 @@
+; Library USB
+; <Funzione> <id> <versione min> <versione max>
+Usb_on       240 0 99999
+Usb_off      241 0 99999
+Usb_copy     242 0 99999
+Usb_diskcopy 243 0 99999
+Usb_delete   244 0 99999
+Usb_mkdir    245 0 99999
+Usb_status   246 0 99999
+Usb_feedback 247 0 99999

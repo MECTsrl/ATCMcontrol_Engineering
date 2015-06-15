@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>CPStdOut</title>
+
+<script language="JavaScript">
+var count = 10000;
+function Init()
+{
+	CPStdOut1.setEventWriteValue("handleEventWriteValue");
+
+ 	CPStdOut1.AddLine("w-mkr.test.SehrLangerNameNameNameName","LREAL","rw", 0, 1+32);
+    CPStdOut1.AddLine("w-mkr.test.var", "REAL"  , "rw", 1, 0);
+    CPStdOut1.AddLine("w-mkr.test.var", "DINT"  , "rw", 2, 0);
+    CPStdOut1.AddLine("w-mkr.test.var", "INT"   , "rw", 3, 0);
+    CPStdOut1.AddLine("w-mkr.test.var", "BOOL"  , "rw", 0, 0);
+    CPStdOut1.AddLine("w-mkr.test.var", "STRING", "rw", 1, 0);
+    CPStdOut1.AddLine("w-mkr.test.var", "WORD"  , "rw", 2, 0);
+    CPStdOut1.AddLine("w-mkr.test.var", "DWORD" , "rw", 3, 0);
+
+    CPStdOut1.AddLine("w-mkr.test.var", "LREAL" , "r" , 0, 0);
+    CPStdOut1.AddLine("w-mkr.test.var", "REAL"  , "rw", 1, 0);
+    CPStdOut1.AddLine("w-mkr.test.var", "DINT"  , "r" , 2, 0);
+    CPStdOut1.AddLine("w-mkr.test.var", "INT"   , "rw", 3, 0);
+    CPStdOut1.AddLine("w-mkr.test.var", "BOOL"  , "r" , 0, 0);
+    CPStdOut1.AddLine("w-mkr.test.var", "STRING", "rw", 1, 0);
+    CPStdOut1.AddLine("w-mkr.test.var", "WORD"  , "r" , 2, 0);
+    CPStdOut1.AddLine("w-mkr.test.var", "DWORD" , "rw", 3, 2+ 16);
+    CPStdOut1.AddLine("w-mkr.test.var", "TIME"  , "rw", 1, 4+2+16);
+	Update();
+}
+
+function Update()
+{
+	var bLed = count % 2 != 0;
+	
+	CPStdOut1.SetValue(0 , bLed, 0, count.toString(), 0);
+	CPStdOut1.SetValue(1 , !bLed, 0, count.toString(), 0);
+	CPStdOut1.SetValue(2 , bLed, 0, count.toString(), 0);
+	CPStdOut1.SetValue(3 , !bLed, 0, count.toString(), 0);
+	CPStdOut1.SetValue(4 , bLed, 0, bLed.toString(), 0);
+	CPStdOut1.SetValue(5 , !bLed, 0, count.toString(), 0);
+	CPStdOut1.SetValue(6 , bLed, 0, count.toString(), 0);
+	CPStdOut1.SetValue(7 , !bLed, 0, count.toString(), 0);
+
+	CPStdOut1.SetValue(8 , bLed, 0, count.toString(), 0);
+	CPStdOut1.SetValue(9 , !bLed, 0, count.toString(), 0);
+	CPStdOut1.SetValue(10, bLed, 0, count.toString(), 0);
+	CPStdOut1.SetValue(11, !bLed, 0, count.toString(), 0);
+	CPStdOut1.SetValue(12, bLed, 0, bLed.toString(), 0);
+	CPStdOut1.SetValue(13, !bLed, 1, count.toString(), 0);
+	CPStdOut1.SetValue(14, bLed, !bLed, count.toString(), bLed);
+	CPStdOut1.SetValue(15, !bLed, 0, "ungültiger String", 0);
+	CPStdOut1.SetValue(16, !bLed, 0, count.toString(), 0);
+
+	setTimeout("Update()", 1000);
+	count++;
+}
+
+function handleEventWriteValue(ValuePath, ValueType)
+{
+	alert(ValuePath + "  " + ValueType );
+}
+</script>
+</head>
+
+<body onload="Init()" onresize="CPStdOut1.Refresh()">
+<hr>
+<applet
+    code=CPStdOut.class
+    name=CPStdOut1 MAYSCRIPT
+    width="100%"
+    height=400 >
+    <param name=BackgroundColor value="#C0C0FF">
+    <param name=BackgroundColorValue value="#C0FFC0">
+    <param name=HyperlinkColor value="#C0FFFF">
+</applet>
+<hr>
+
+</body>
+</html>

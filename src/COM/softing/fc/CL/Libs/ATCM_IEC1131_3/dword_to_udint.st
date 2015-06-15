@@ -1,0 +1,11 @@
+(*[[
+    UserURL= "ATCMFile:DWORD_TO_UDINT.htm"
+]]*)
+FUNCTION DWORD_TO_UDINT : UDINT
+VAR_INPUT
+    IN : DWORD;
+END_VAR
+
+inline{NOOP}
+
+END_FUNCTION

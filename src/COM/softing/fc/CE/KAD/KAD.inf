@@ -1,0 +1,12 @@
+USER=makefirst:$(EXE_DIR)\Engineering\bin\images
+USER=$(EXE_DIR)\Engineering\bin\images:
+USER=  -md $@
+
+
+
+USER=makelast: force
+#USER=  xcopy $(MAKEDIR)\Kernel_4ceng.kad $(EXE_DIR)\Engineering\bin\*.*
+USER=  xcopy $(MAKEDIR)\Kernel_IEC_4ceng.kad $(EXE_DIR)\Engineering\bin\*.*
+USER=  xcopy $(MAKEDIR)\Kernel_4cg.kad $(EXE_DIR)\Engineering\bin\*.*
+USER=  xcopy $(MAKEDIR)\images\*.* $(EXE_DIR)\Engineering\bin\images\*.*
+USER=  del $(EXE_DIR)\Engineering\bin\images\vssver.scc

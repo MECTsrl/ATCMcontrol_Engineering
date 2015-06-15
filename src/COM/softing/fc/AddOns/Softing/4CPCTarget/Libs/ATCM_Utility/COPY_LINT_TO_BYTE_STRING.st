@@ -1,0 +1,19 @@
+
+(*[[
+    UserURL= "ATCM:COPY_LINT_TO_BYTE_STRING.htm"
+]]*)
+
+(* copies the value VALUE to the byte string BSTR at the position POS *)
+
+FUNCTION COPY_LINT_TO_BYTE_STRING
+VAR_INPUT
+    VALUE : LINT;
+END_VAR
+VAR_IN_OUT
+    POS : DINT;
+    BSTR : BYTE_STRING;
+END_VAR
+        
+    COPY_NUMERIC_TO_BYTE_STRING(LINT_TO_LWORD(VALUE),8,POS,BSTR);
+
+END_FUNCTION

@@ -1,0 +1,21 @@
+/* $Header: /4CReleased/V2.20.00/Target/TEMPLATES/CCG/4CVM/4CVMResource.rc 1     28.02.07 18:54 Ln $
+ * ------------------------------------------------------------------------------
+ *
+ * =FILENAME			$Workfile: 4CVMResource.rc $
+ *						 $Logfile: /4CReleased/V2.20.00/Target/TEMPLATES/CCG/4CVM/4CVMResource.rc $
+ *
+ * =PROJECT 			4CONTROL V2.x
+ *
+ * =SWKE				Target / CCG
+ *
+ * =COMPONENT			4CVM
+ *
+ * =CURRENT 	 $Date: 28.02.07 18:54 $
+ *			 $Revision: 1 $
+ *
+ * ------------------------------------------------------------------------------
+ */
+
+#include "version.rc2"
+#include "4CVMResource.h"
+#include "resource.rc"

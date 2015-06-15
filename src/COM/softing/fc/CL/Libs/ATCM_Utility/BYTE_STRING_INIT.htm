@@ -1,0 +1,147 @@
+<html>
+<head>
+<title>BYTE_STRING_INIT</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>BYTE_STRING_INIT </h2>
+<p>Initializes a bytestring with a value.</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION BYTE_STRING_INIT
+VAR_IN_OUT
+    BSTR  : BYTE_STRING;
+END_VAR
+VAR_INPUT
+    VALUE : WSTRING; 
+END_VAR</pre>
+<h3>Parameters</h3>
+<h3>IN_OUT</h3>
+<dl> 
+  <dt><b>BSTR</b></dt>
+  <dd>Instance of the structure <i><b><a href="BYTE_STRING.htm">BYTE_STRING</a></b></i><br>
+    Bytestring to be initialized.</dd>
+</dl>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>VALUE</b></dt>
+  <dd>Value of type <i><b>WSTRING</b></i>.<br>
+    Value, with which the bytestring passed in <i><b>BSTR</b></i> is to be initialized. 
+    <br>
+    This parameter must contain only <i><b>ASCII</b></i> characters. Characters 
+    that are not included in the <i><b>ASCII</b></i> character set, must be initiated 
+    by the Escape sequence '<b>\</b>'. Example: "<b><i>abc\x00\x01</i></b>" </dd>
+</dl>
+<h3>Description</h3>
+<p>Initializes the instance of <a href="BYTE_STRING.htm"><b>BYTE_STRING</b></a> 
+  passed in <i><b>BSTR</b></i> with the string specified in <i><b>VALUE</b></i>.</p>
+<p><b><i>BYTE_STRING_INIT</i></b> is designed for bytestring initializiation at 
+  serial communication and should be used in this context only. In order to initialize 
+  a bytestring for writing strings into a textfile using function blocks of the 
+  <i><b><i>ATCM_FileAccess</i></b></i> library, you should use the function <a href="COPY_WSTRING_TO_BYTE_STRING.htm"><b><i>COPY_WSTRING_TO_BYTE_STRING</i></b></a>, 
+  as this function was specially developed for working with textfiles.</p>
+<p><b><i>BYTE_STRING_INIT</i></b> enables the initialization of bytestrings with 
+  coherent strings which may also contain protocol specific command characters 
+  and saves the user from having to initialize each byte of a bytestring with 
+  the function <a href="BYTE_STRING_SET.htm"><i><b>BYTE_STRING_SET</b></i></a>, 
+  to initialize them one by one and from having to specify the position in the 
+  bytestring. </p>
+<p>The WSTRING to be converted into a bytestring may contain two types of characters:</p>
+<ul>
+  <li>Characters whose binary value is to be written into a single byte of the 
+    bytestring. Such characters are mostly used for placing orders for the protocol 
+    used with serial communication. Each sign, whose binary value is to be written 
+    into the bytestring, has to be inserted into the WSTRING using an escape sequence. 
+    The escape sequence is introduced by a backslash ' \' . After the backslash, 
+    two notations are possible:<br>
+    <br>
+  </li>
+  <ul>
+    <li><b>Hexadecimal notation</b><br>
+      An 'x' has to follow the backslash. The next two characters following the 
+      'x' are interpreted as a hexadecimal value. Single character hexadecimal 
+      values have to be prefixed by a 0.<br>
+      <br>
+    </li>
+    <li><b>Octal notation</b> <br>
+      The backslash has to be followed by a digit between 0 and 7. The next three 
+      digits following the backslash are interpreted as an octal value. The first 
+      digit following the backslash is used as indicator for an octal value as 
+      well as for the octal value itself. If fewer than three digits are needed 
+      to represent the octal value, the value has to be filled with 0&acute;s 
+      from the left side on until 3 digits are reached.</li>
+      </ul>
+<br>  
+  <li>Characters that are to be interpreted as text. Such characters can be inserted 
+    into the WSTRING as letters or digits. All characters, that do not meet one 
+    of previously quoted criterias regarding the interpretation as a binary value, 
+    are interpreted as text characters. Please notice that only characters that 
+    don&acute;t belong the extend ASCII character set may be used. Umlauts, however, 
+    shouldn&acute;t be used.<br>
+    Special characters can be inserted into the WSTRING using the backslash just 
+    like binary values. If the character following the backslash doesn&acute;t 
+    match one of the previously mentioned indicators for hexadecimal or octal 
+    notation, only the first character following the backslash is interpreted 
+    as a special character. The following table summarizes all characters that 
+    are interpreted as non binary escape sequences:<br>
+    <br>
+    <table border="1" width="452">
+      <tr> 
+        <td align="center"><b>Escape sequence</b></td>
+        <td><b>Meaning</b></td>
+      </tr>
+      <tr> 
+        <td align="center">\n</td>
+        <td>New line</td>
+      </tr>
+      <tr> 
+        <td align="center" height="2">\t</td>
+        <td height="2">Horizontal tabulator</td>
+      </tr>
+      <tr> 
+        <td align="center">\v</td>
+        <td>Vertical tabulator</td>
+      </tr>
+      <tr> 
+        <td align="center">\b</td>
+        <td>Backspace</td>
+      </tr>
+      <tr> 
+        <td align="center">\r</td>
+        <td>Carriage return</td>
+      </tr>
+      <tr> 
+        <td align="center">\f</td>
+        <td>Page change</td>
+      </tr>
+      <tr> 
+        <td align="center" height="15">\a</td>
+        <td height="15">Alarm (Output by PC-Speaker)</td>
+      </tr>
+      <tr> 
+        <td align="center">\\</td>
+        <td>Backslash</td>
+      </tr>
+      <tr> 
+        <td align="center">\?</td>
+        <td>Question mark</td>
+      </tr>
+      <tr> 
+        <td align="center">\'</td>
+        <td>Single quote</td>
+      </tr>
+      <tr> 
+        <td align="center">\&quot;</td>
+        <td>Double quote</td>
+      </tr>
+    </table>
+  </li>
+</ul>
+<p>When initializing an instance of <i><b>BYTE_STRING</b></i> with <i><b>BYTE_STRING_INIT</b></i>, 
+  the length of the bytestring administrated by the <i><b>BYTE_STRING</b></i> 
+  instance is automatically adjusted to the size that is neccessary to save the 
+  string passed to <i><b>VALUE</b></i>. The instance variable <i><b>size</b></i> 
+  of the passed instance <i><b>BYTE_STRING</b></i> is accordingly set to the length 
+  of the bytestring. </p>
+</body>
+</html>

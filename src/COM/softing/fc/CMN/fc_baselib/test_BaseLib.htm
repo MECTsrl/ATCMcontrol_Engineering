@@ -1,0 +1,143 @@
+<html>
+
+<head>
+<title>Test Subscribe and Read as StringList</title>
+</head>
+<!--
+<body onload="Init()">
+-->
+
+<body>
+
+<h1>Test Subscribe and Read as StringList</h1>
+
+<p>
+<object id="Baselib" classid="CLSID:7DA70DD0-E942-11d3-B8D1-00600857CC2E"
+codebase="http://localhost/4c/BaseLib.cab" border="0" width="0" height="0">
+</object>
+</p>
+<script language="JavaScript">
+<!--
+var iTest = 0;
+function TestToString()
+{
+    var valIn;
+    var valOut;
+    var useFormat = 2;      // use IEC format
+    var type;
+
+//	onerror = errortrap;
+
+    switch (iTest) {
+    case 0:
+        // Test bad/unknown IEC datatype
+        type = "LUMPI";
+        valIn = 1234567;
+        valOut = document.Baselib.CheckString(valIn, type, "", useFormat);
+        document.lblShowValue.caption = type + ":  " + valIn + " = " + valOut;
+        break;
+
+    case 1:
+        // Test DINT
+        type = "DINT";
+        valIn = 1234567;
+        valOut = document.Baselib.VariantToString(valIn, type, "", useFormat, 0);
+        document.lblShowValue.caption = type + ":  " + valIn + " = " + valOut;
+        valIn = "89012345";
+        valOut = document.Baselib.StringToVariant(valIn, "DWORD", "", useFormat);
+        document.lblShowValue.caption = type + ":  " + valIn + " = " + valOut;
+        break;
+
+    case 2:
+        // Test LREAL
+        type = "LREAL";
+        valIn = 12.70012345678;
+        valOut = document.Baselib.VariantToString(valIn, type, "", useFormat, 0);
+        document.lblShowValue.caption = type + ":  " + valIn + " = " + valOut;
+        break;
+
+    case 3:
+        // Test DATE
+        type = "DATE";
+        valIn = 89999;  // days sincs 1.1.70
+        valOut = document.Baselib.VariantToString(valIn, type, "", useFormat, 0);
+        document.lblShowValue.caption = type + ":  " + valIn + " = " + valOut;
+        break;
+
+    case 4:
+        // Test TIME_OF_DAY
+        // Test TOD
+        // Test DATE_AND_TIME
+        // Test DT
+        // Test WSTRING
+        // Test TIME      
+        // Test BOOL      
+        // Test BYTE      
+        type = "BYTE";
+        valIn = 123;
+        valOut = document.Baselib.VariantToString(valIn, type, "", useFormat, 0);
+        document.lblShowValue.caption = type + ":  " + valIn + " = " + valOut;
+        break;
+
+    case 5:
+        // Test WORD      
+        type = "WORD";
+        valIn = 34567;
+        valOut = document.Baselib.VariantToString(valIn, type, "", useFormat, 0);
+        document.lblShowValue.caption = type + ":  " + valIn + " = " + valOut;
+        break;
+
+    case 6:
+        // Test DWORD
+        type = "DWORD";
+        valIn = 1234567890;
+        valOut = document.Baselib.VariantToString(valIn, type, "", useFormat, 0);
+        document.lblShowValue.caption = type + ":  " + valIn + " = " + valOut;
+        break;
+
+    case 7:
+        // Test QVT_BOOL
+        type = "QVT_BOOL";
+        valIn = true;
+        valOut = document.Baselib.VariantToString(valIn, type, "", useFormat, 0);
+        document.lblShowValue.caption = type + ":  " + valIn + " = " + valOut;
+        break;
+
+        // Test QVT_BYTE
+        // Test QVT_WORD
+        // Test QVT_DWORD
+        // Test QVT_DINT
+        // Test QVT_LREAL
+    default:
+        iTest = -1;
+        break;
+    }
+    iTest = iTest + 1;
+
+}
+
+function errortrap(msg, url, line)
+{
+	alert("ErrorTrap: " + msg + " at " + url + " in line: " + line);
+	return true;
+//	return false;
+}
+
+// -->
+</script>
+
+
+<p><input type="submit"
+value="        T e s t V a r i a n t   T o    S t r i n g         " language="JavaScript"
+onclick="TestToString();"> </p>
+
+<p>Current value</p>
+
+<p>
+<object ID="lblShowValue" WIDTH="1000" HEIGHT="48"
+CLASSID="CLSID:99B42120-6EC7-11CF-A6C7-00AA00A47DD2">
+  <param name="Caption" value="- - - - - - ????">
+</object>
+</p>
+</body>
+</html>

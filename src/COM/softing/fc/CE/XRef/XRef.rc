@@ -1,0 +1,160 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1 TYPELIB ""XRef.tlb""\r\n"
+    "#include ""version.rc2""\r\n"
+    "#include ""CEXref_Error.rc""\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_XREFCTRL            BITMAP  DISCARDABLE     "xrefctrl.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_XREFCTRL            REGISTRY DISCARDABLE    "XRefCtrl.rgs"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_XREFCTRL DIALOGEX 0, 0, 178, 233
+STYLE WS_CHILD
+EXSTYLE WS_EX_CONTROLPARENT
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Variable",IDC_STATIC,13,10,43,11
+    COMBOBOX        IDC_XREF_NAME_SCOPE,66,9,86,80,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Storage &Class",IDC_STATIC,13,24,48,11
+    COMBOBOX        IDC_XREF_DECL_SCOPE,66,23,86,80,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Type",IDC_STATIC,13,38,43,11
+    COMBOBOX        IDC_XREF_TYPE_SCOPE,66,37,86,80,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&File Scope",IDC_STATIC,13,52,43,11
+    COMBOBOX        IDC_XREF_FILE_SCOPE,66,51,86,80,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&Search",IDC_BUTTON_SEARCH,66,72,48,14
+    LTEXT           "0 hits",IDC_STATIC_INFO,3,74,50,10,0,WS_EX_RIGHT
+    LISTBOX         IDC_LIST_NAMES,2,92,88,126,LBS_SORT | LBS_USETABSTOPS | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL | 
+                    WS_TABSTOP
+    LISTBOX         IDC_LIST_REFERENCES,95,116,76,102,LBS_USETABSTOPS | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL | 
+                    WS_TABSTOP
+    CONTROL         "&read",IDC_ACCESS_READ,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,101,99,30,10
+    CONTROL         "&write",IDC_ACCESS_WRITE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,133,99,31,10
+    PUSHBUTTON      "&Print",IDC_BUTTON_PRINT,116,72,48,14
+    GROUPBOX        "Access",IDC_STATIC_ACCESS,95,89,76,23
+    GROUPBOX        "Filter",IDC_STATIC_FILTER,2,0,168,69
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PROJNAME            "XRef"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_HIT_COUNT           "%i hits"
+    IDS_COL_VARIABLE        "VARIABLE"
+    IDS_COL_TYPE            "TYPE"
+    IDS_COL_REFERENCES      "REFERENCES"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_COL_ACCESS          "ACCESS"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "ATCMControl Engineering"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "XRef.tlb"
+#include "version.rc2"
+#include "CEXref_Error.rc"
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

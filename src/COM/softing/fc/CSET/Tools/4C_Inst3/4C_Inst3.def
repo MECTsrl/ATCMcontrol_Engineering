@@ -1,0 +1,45 @@
+; 4C_Inst3.def : Declares the module parameters for the DLL.
+
+LIBRARY      "4C_Inst3"
+DESCRIPTION  '4C_Inst3 Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here
+    ;Installed4Control
+    ;InstalledAsp
+    ;InstalledIEVersion
+    ;InstalledJavaVM
+    ;InstalledJavaSDK
+    ;InstalledOSVersion
+    ;InstalledWWW
+    ModifyEnvironmentVariable
+    ModifyFileSecurity
+    StartExecutable
+    
+    ExistSrv
+    StartSrv
+    StopSrv
+    AskIfStopService
+    SelfregDLL
+    UnregDLL
+    SelfregExe
+    UnregExe
+    
+    GetProductVersionNumber
+    CheckForInstalledMFC
+
+    CreateVirtualConsoleDir
+    DeleteVirtualConsoleDir
+    StartConsoleServices
+    StopConsoleServices
+    GetIEInstallDir
+
+    CheckForOldProfiboard
+    InstallRTCESrv
+    UninstallRTCESrv
+
+
+    RemoveBRShare
+    ShareBRDir
+
+    SetOPCServerRunAs

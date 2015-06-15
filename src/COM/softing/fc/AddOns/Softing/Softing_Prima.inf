@@ -1,0 +1,6 @@
+SUBPROJECT=4CPCTarget\4CPCTarget_Prima.mak
+#SUBPROJECT=4CECTarget\4CECTarget.mak
+#SUBPROJECT=4CVXWorksTarget\4CVXWorksTarget.mak
+#SUBPROJECT=4COSAITarget\4COSAITarget.mak
+#SUBPROJECT=4CWinTarget\4CWinTarget.mak
+#SUBPROJECT=VMGeneric\VMGeneric.mak

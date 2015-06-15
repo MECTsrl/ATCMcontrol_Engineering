@@ -1,0 +1,5 @@
+cd /local/root 
+lcd C:\SVN\coel-atcmcontrol\trunk\Desenvolvimento\Codigo\UploadRelease\release\FCTPAC020_01\Hmi\FCTPAC020_HMIv1\bin 
+put hmi 
+ren hmi hmi 
+bye 

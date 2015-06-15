@@ -1,0 +1,7 @@
+<NODE TEXT="FunctionBlock1 [FBD]" ID="FunctionBlock1"
+      TYPE="FunctionBlock" SOURCE="FunctionBlock1.4gr">
+   <NODE TEXT="var1 : BOOL" ID="var1"
+         TYPE="Variable"/>
+   <LINK SOURCE="VarLinkFB1.st"/>
+</NODE>
+   

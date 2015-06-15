@@ -1,0 +1,5 @@
+USER=link: $(EXE_DIR)\engineering\bin\4C13to20.exe
+USER=$(EXE_DIR)\engineering\bin\4C13to20.exe: 4C13to20.pl
+USER=    perl2exe $**
+USER=    copy 4C13to20.exe $@
+USER=    del 4C13to20.exe

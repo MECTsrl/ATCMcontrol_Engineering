@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>BYTE_STRING_APPEND</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>BYTE_STRING_APPEND</h2>
+<p>H&auml;ngt <i><b></b></i>einen Bytestring an einen anderen Bytestring an.</p>
+<h3>Schnittstelle</h3>
+<pre class="preforma">FUNCTION BYTE_STRING_APPEND
+    VAR_IN_OUT
+        BSTR1 : BYTE_STRING;
+    END_VAR
+    VAR_INPUT
+        BSTR2 : BYTE_STRING;
+    END_VAR</pre>
+<h3>Parameter</h3>
+<h3>IN_OUT</h3>
+<dl> 
+  <dt><b>BSTR1</b></dt>
+  <dd>Instanz von <i><b><a href="BYTE_STRING.htm">BYTE_STRING</a></b></i><br>
+    Bytestring, an den der an <i><b>BSTR2</b></i> &uuml;bergebene Bytestring angeh&auml;ngt 
+    wird.</dd>
+</dl>
+<h3>INPUT</h3>
+<dl>
+  <dt><b>BSTR2</b></dt>
+  <dd>Instanz von <a href="BYTE_STRING.htm"><b><i>BYTE_STRING</i></b></a><br>
+    Bytestring, der an den an <i><b>BSTR1</b></i> &uuml;bergebenen Bytestring 
+    angeh&auml;ngt wird.</dd>
+</dl>
+<h3>Beschreibung</h3>
+<p><i><b>BYTE_STRING_APPEND </b></i>h&auml;ngt den an <i><b>BSTR2</b></i> &uuml;bergebenen 
+  Bytestring an den an <i><b>BSTR1</b></i> &uuml;bergebenen Bytestring an. Die 
+  Gr&ouml;&szlig;e des an <i><b>BSTR1</b></i> &uuml;bergebenen Bytestrings wird 
+  an die f&uuml;r das Anh&auml;ngen erforderliche Gr&ouml;&szlig;e angepa&szlig;t.</p>
+</body>
+</html>

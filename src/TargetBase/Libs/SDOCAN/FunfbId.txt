@@ -1,0 +1,6 @@
+; Libray SDOCAN
+; <Funzione> <id> <versione min> <versione max>
+SDORead			250 0 99999
+SDOWrite		251 0 99999
+SDOGetData		252 0 99999
+SDOGetStatus	253 0 99999

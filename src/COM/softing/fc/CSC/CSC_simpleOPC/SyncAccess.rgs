@@ -1,0 +1,30 @@
+HKCR
+{
+	4C_20_CSC.simpleOPC.1 = s 'ATCMControl 2: simple sync access to OPC'
+	{
+		CLSID = s '{D8BA2C14-8B10-11d5-8798-00010209D2BC}'
+	}
+	4C_20_CSC.simpleOPC = s 'ATCMControl 2: simple sync access to OPC'
+	{
+		CLSID = s '{D8BA2C14-8B10-11d5-8798-00010209D2BC}'
+		CurVer = s '4C_20_CSC.simpleOPC.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {D8BA2C14-8B10-11d5-8798-00010209D2BC} = s 'ATCMControl 2: simple sync access to OPC'
+		{
+			ProgID = s '4C_20_CSC.simpleOPC.1'
+			VersionIndependentProgID = s '4C_20_CSC.simpleOPC'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			'TypeLib' = s '{D8BA2C13-8B10-11d5-8798-00010209D2BC}'
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

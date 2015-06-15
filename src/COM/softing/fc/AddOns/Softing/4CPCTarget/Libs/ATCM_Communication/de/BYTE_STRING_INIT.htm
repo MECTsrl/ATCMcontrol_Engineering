@@ -1,0 +1,157 @@
+<html>
+<head>
+<title>BYTE_STRING_INIT</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>BYTE_STRING_INIT </h2>
+<p>Initialisiert einen Bytestring mit einem Wert.</p>
+<h3>Schnittstelle</h3>
+<pre class="preforma">FUNCTION BYTE_STRING_INIT
+VAR_IN_OUT
+    BSTR  : BYTE_STRING;
+END_VAR
+VAR_INPUT
+    VALUE : WSTRING; 
+END_VAR</pre>
+<h3>Parameter</h3>
+<h3>IN_OUT</h3>
+<dl> 
+  <dt><b>BSTR</b></dt>
+  <dd>Instanz der Struktur <i><b><a href="BYTE_STRING.htm">BYTE_STRING</a></b></i><br>
+    Bytestring, der initialisiert werden soll.</dd>
+</dl>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>VALUE</b></dt>
+  <dd>Wert vom Typ <i><b>WSTRING</b></i>.<br>
+    Wert, mit dem der an <i><b>BSTR</b></i> &uuml;bergebene Bytestring initialisiert 
+    werden soll. <br>
+    Dieser Parameter darf nur ASCII-Zeichen enthalten. Zeichen, die nicht im ASCII-Zeichensatz 
+    enthalten sind, müssen mit der Escape-Sequenz '\' eingeleitet werden. Beispiel: 
+    "abc\x00\x01" </dd>
+</dl>
+<h3>Beschreibung</h3>
+<p><b><i>BYTE_STRING_INIT</i></b> initialisiert die an <i><b>BSTR</b></i> übergebene 
+  Instanz von <a href="BYTE_STRING.htm"><i><b>BYTE_STRING</b></i></a> mit dem 
+  an <i><b>VALUE</b></i> &uuml;bergebenen Wert.</p>
+<p><b><i>BYTE_STRING_INIT</i></b> ist zur Bytestring-Initialisierung bei der seriellen 
+  Kommunikation vorgesehen und sollte auch nur in diesem Kontext verwendet werden. 
+  Um einen Bytestring f&uuml;r das Schreiben von Strings in eine Textdatei mit 
+  den Bausteinen der Bibliothek <i><b><i>4C_FileAccess</i></b></i> zu initialisieren, 
+  sollten Sie die Funktion <a href="COPY_WSTRING_TO_BYTE_STRING.htm"><b><i>COPY_WSTRING_TO_BYTE_STRING</i></b></a> 
+  verwenden, da diese Funktion speziell f&uuml;r die Arbeit mit Textdateien entwickelt 
+  wurde.</p>
+<p><b><i>BYTE_STRING_INIT</i></b> erm&ouml;glicht die Initialisierung von Bytestrings 
+  mit zusammenh&auml;ngenden Zeichenketten, die auch protokollspezifische Anweisungszeichen 
+  enthalten k&ouml;nnen und erspart dem Benutzer damit, jedes Byte eines Bytestrings 
+  mit der Funktion <a href="BYTE_STRING_SET.htm"><i><b>BYTE_STRING_SET</b></i></a> 
+  einzeln initialisieren, die Position im Bytestring angeben und f&uuml;r die 
+  Textzeichen den entsprechenden ASCII-Code suchen und eingeben zu m&uuml;ssen. 
+</p>
+<p>Der in einen Bytestring zu konvertierende WSTRING kann zwei Arten von Zeichen 
+  enthalten:</p>
+<ul>
+  <li>Zeichen, deren Bin&auml;rwert in ein einzelnes Byte des Bytestrings geschrieben 
+    werden sollen. Solche Zeichen werden meist verwendet, um Anweisungen f&uuml;r 
+    das bei der seriellen Kommunikation verwendete Protokoll abzusetzen. Jedes 
+    Zeichen, dessen Bin&auml;rwert in den Bytestring geschrieben werden soll, 
+    mu&szlig; in Form einer Escape-Sequenz in den WSTRING eingef&uuml;gt werden. 
+    Die Escape-Sequenz wird von dem Backslash ' \' eingeleitet. Nach dem Backslash 
+    sind zwei Schreibweisen m&ouml;glich:<br>
+    <br>
+  </li>
+  <ul>
+    <li><b>Hexadezimalschreibweise</b><br>
+      Nach dem Backslash mu&szlig; ein 'x' folgen. Nach dem 'x' werden die n&auml;chsten 
+      beiden Zeichen als Hexadezimalwert interpretiert. Besteht ein Hexadezimalwert 
+      nur aus einem Hexadezimalzeichen, mu&szlig; dem Wert eine 0 vorangestellt 
+      werden.<br>
+      <br>
+    </li>
+    <li><b>Oktalschreibweise</b> <br>
+      Nach dem Backslash mu&szlig; eine Ziffer zwischen 0 und 7 folgen. Ab dem 
+      Backslash werden die n&auml;chsten 3 Ziffern als Oktalwert interpretiert. 
+      Die erste auf den Backslash folgende Ziffer wird also als Indikator f&uuml;r 
+      einen Oktalwert und gleichzeitig zur Bildung des oktalen Werts verwendet. 
+      Sind zur Darstellung des Oktalwerts weniger als 3 Ziffern notwendig, mu&szlig; 
+      der Wert auf der linken Seite mit Nullen aufgef&uuml;llt werden, bis 3 Ziffern 
+      erreicht sind.<br>
+      <br>
+    </li>
+  </ul>
+  <li>Zeichen, die als Text interpretiert werden sollen. Solche Zeichen k&ouml;nnen 
+    als Buchstaben oder Ziffern in den WSTRING eingef&uuml;gt werden. Alle Zeichen, 
+    die nicht einem der oben angef&uuml;hrten Kriterien f&uuml;r die Interpretation 
+    als Bin&auml;rwert entsprechen, werden als Textzeichen interpretiert. Beachten 
+    Sie, da&szlig; nur Zeichen, die dem nicht erweiterten ASCII-Zeichensatz angeh&ouml;ren, 
+    verwendet werden d&uuml;rfen. Umlaute sollten dagegen nicht verwendet werden.<br>
+    Sonderzeichen k&ouml;nnen ebenso wie Bin&auml;rwerte mit Hilfe des Backslashs 
+    in den WSTRING eingef&uuml;gt werden. Entspricht das auf einen Backslash folgende 
+    Zeichen nicht einem der oben aufgef&uuml;hrten Indikatoren f&uuml;r Hexadezimal- 
+    oder Oktalschreibweise, wird nur das erste auf den Backslash folgende Zeichen 
+    zusammen mit dem Backslash als Sonderzeichen interpretiert. Die folgende Tabelle 
+    fa&szlig;t alle als nicht bin&auml;re Escape-Sequenzen interpretierbaren Zeichen 
+    zusammen:<br>
+    <br>
+    <table border="1">
+      <tr> 
+        <td align="center"><b>Escape-Sequenz</b></td>
+        <td><b>Bedeutung</b></td>
+      </tr>
+      <tr> 
+        <td align="center">\n</td>
+        <td>Neue Zeile</td>
+      </tr>
+      <tr> 
+        <td align="center">\t</td>
+        <td>Horizontaler Tabulator</td>
+      </tr>
+      <tr> 
+        <td align="center">\v</td>
+        <td>Vertikaler Tabulator</td>
+      </tr>
+      <tr> 
+        <td align="center">\b</td>
+        <td>Backspace</td>
+      </tr>
+      <tr> 
+        <td align="center">\r</td>
+        <td>Zeilenumbruch</td>
+      </tr>
+      <tr> 
+        <td align="center">\f</td>
+        <td>Seitenvorlauf</td>
+      </tr>
+      <tr> 
+        <td align="center">\a</td>
+        <td>Alarm (Ausgabe durch PC-Speaker)</td>
+      </tr>
+      <tr> 
+        <td align="center">\\</td>
+        <td>Backslash</td>
+      </tr>
+      <tr> 
+        <td align="center">\?</td>
+        <td>Fragezeichen</td>
+      </tr>
+      <tr> 
+        <td align="center">\'</td>
+        <td>Einfaches Anf&uuml;hrungszeichen</td>
+      </tr>
+      <tr> 
+        <td align="center">\&quot;</td>
+        <td>Doppeltes Anf&uuml;hrungszeichen</td>
+      </tr>
+    </table>
+  </li>
+</ul>
+<p>Bei der Initialisierung einer Instanz von <i><b>BYTE_STRING</b></i> mit <i><b>BYTE_STRING_INIT</b></i> 
+  wird die Länge des von der <i><b>BYTE_STRING</b></i>-Instanz verwalteten Bytestrings 
+  automatisch an die Größe angepaßt, die notwendig ist, um den an <i><b>VALUE</b></i> 
+  übergebenen String zu speichern. Die Instanzvariable <i><b>size</b></i> der 
+  &uuml;bergebenen Instanz von <i><b>BYTE_STRING</b></i> wird entsprechend auf 
+  die Länge des Bytestrings gesetzt. </p>
+</body>
+</html>

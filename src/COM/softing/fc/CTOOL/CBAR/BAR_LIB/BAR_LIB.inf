@@ -1,0 +1,97 @@
+#H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CTOOL/CBAR/BAR_LIB/BAR_LIB.inf 1     28.02.07 19:01 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: BAR_LIB.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CTOOL/CBAR/BAR_LIB/BAR_LIB.inf $
+#
+# =PROJECT             CAK1020  ATCMControl V2.0
+#
+# =SWKE                CBar
+#
+# =COMPONENT           bar
+#
+# =CURRENT             $Date: 28.02.07 19:01 $
+#                      $Revision: 1 $
+#
+# =ENVIRONMENT         MS Windows NT 4.0 / MS Windows 2000
+#                      MSVC++ V6.0
+#                      MS Java 3.2
+#                      MS Visual SourceSafe 6.0
+#                      Perl5
+#
+# =REFERENCES
+#==
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+#==
+#----------------------------------------------------------------------------*
+# =MODIFICATIONS
+# $History: BAR_LIB.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:01
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CTOOL/CBAR/BAR_LIB
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:34
+# Created in $/4Control/COM/softing/fc/CTOOL/CBAR/BAR_LIB
+# 
+# *****************  Version 5  *****************
+# User: Jd           Date: 18.09.02   Time: 8:50
+# Updated in $/4Control/COM/softing/fc/CTOOL/CBAR/BAR_LIB
+# 
+# *****************  Version 4  *****************
+# User: Jd           Date: 26.09.01   Time: 8:55
+# Updated in $/4Control/COM/softing/fc/AddOns/Softing/4CPCTarget/CBAR/BAR_LIB
+# Fixed some path errors during generation.
+# 
+# *****************  Version 3  *****************
+# User: Jd           Date: 24.09.01   Time: 14:40
+# Updated in $/4Control/COM/softing/fc/AddOns/Softing/4CPCTarget/CBAR/BAR_LIB
+# 
+# *****************  Version 2  *****************
+# User: Jd           Date: 24.09.01   Time: 12:01
+# Updated in $/4Control/COM/softing/fc/CBAR/BAR_LIB
+# Adapted to new CSC_Online.
+# 
+# *****************  Version 1  *****************
+# User: Kt           Date: 10.07.01   Time: 16:35
+# Created in $/4Control/COM/softing/fc/CBAR/BAR_LIB
+# first draft
+# 
+# *****************  Version 1  *****************
+# User: Kt           Date: 10.07.01    Time: 17:58
+# Created in $/4Control/COM/softing/fc/CBar/BAR_LIB
+#==
+#*****************************************************************************
+#H<<
+
+
+#TARGET=$(PROJECT_ROOT)\com\softing\fc\cbar\lib\bar.lib
+TARGET=$(MAKEDIR)\..\lib\bar.lib
+TARGETTYPE=LIB
+
+UNICODE=0
+STATIC_RUNTIME=1
+
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\res
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\inc
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\CSC\CSC_ONLINE
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\CTOOL\inc
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\CTOOL\cbar\inc
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\CTOOL\cbar\bzip2
+
+
+USER=clean::
+#USER=   @IF EXIST debug\4cl.exe $(RM) debug\4clc.exe
+#USER=   @IF EXIST debug\4cl.tlb $(RM) debug\4clc.tlb

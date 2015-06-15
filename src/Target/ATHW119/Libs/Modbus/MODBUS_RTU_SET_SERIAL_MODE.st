@@ -1,0 +1,10 @@
+(*[[
+    UserText1= "mb_rtu_set_serial_mode",
+    UserHelpURL= "ATCMfile:MODBUS_RTU_SET_SERIAL_MODE.HTML",
+]]*)
+FUNCTION MODBUS_RTU_SET_SERIAL_MODE : UINT
+VAR_INPUT
+    mode : UINT; (*[mode]*)
+END_VAR
+INLINE {STDLIB(MODBUS_RTU_SET_SERIAL_MODE)}
+END_FUNCTION

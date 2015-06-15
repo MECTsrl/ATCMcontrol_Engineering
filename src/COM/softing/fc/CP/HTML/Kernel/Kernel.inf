@@ -1,0 +1,194 @@
+#H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CP/HTML/Kernel/Kernel.inf 1     28.02.07 19:00 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: Kernel.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CP/HTML/Kernel/Kernel.inf $
+#
+# =PROJECT             7VH102  ATCMControl
+#
+# =SWKE                XXX
+#
+# =COMPONENT           XXX
+#
+# =CURRENT             $Date: 28.02.07 19:00 $
+#                      $Revision: 1 $
+#
+# =ENVIRONMENT         perl5:
+#                      MS Windows NT 4.0
+#                      MSVC++ V5.0 / MFC 4.2 / ATL 2.0 / DAO 3.5
+#                      MS Java 2.0
+#                      MS Visual SourceSafe 5.0
+#
+# =REFERENCES
+#==
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+#==
+#----------------------------------------------------------------------------*
+# =MODIFICATIONS
+# $History: Kernel.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:00
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CP/HTML/Kernel
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:33
+# Created in $/4Control/COM/softing/fc/CP/HTML/Kernel
+# 
+# *****************  Version 1  *****************
+# User: Scd          Date: 19.03.01   Time: 13:57
+# Created in $/4Control/COM/softing/fc/CP/HTML/Kernel
+# 
+# *****************  Version 10  *****************
+# User: Mkr          Date: 27.09.99   Time: 15:50
+# Updated in $/4Control/COM/softing/fc/CP/HTML/Kernel
+# 
+# *****************  Version 9  *****************
+# User: So           Date: 7.09.99    Time: 10:56
+# Updated in $/4Control/COM/softing/fc/CP/HTML/Kernel
+##
+#*****************  Version 15  *****************#
+#User: Mkr          Date: 27.01.99   Time: 16:46#
+#Updated in $/COM/softing/fc/CP/HTML/Kernel#
+##
+#*****************  Version 14  *****************#
+#User: Mkr          Date: 7.12.98    Time: 19:24#
+#Updated in $/COM/softing/fc/CP/HTML/Kernel#
+##
+#*****************  Version 13  *****************#
+#User: Mkr          Date: 18.11.98   Time: 18:58#
+#Updated in $/COM/softing/fc/CP/HTML/Kernel#
+##
+#*****************  Version 12  *****************#
+#User: Mkr          Date: 6.11.98    Time: 19:41#
+#Updated in $/COM/softing/fc/CP/HTML/Kernel#
+##
+#*****************  Version 11  *****************#
+#User: Mkr          Date: 5.11.98    Time: 19:39#
+#Updated in $/COM/softing/fc/CP/HTML/Kernel#
+##
+#*****************  Version 10  *****************#
+#User: Sn           Date: 3.11.98    Time: 18:19#
+#Updated in $/COM/softing/fc/CP/HTML/Kernel#
+##
+#*****************  Version 9  *****************#
+#User: Mkr          Date: 29.10.98   Time: 14:02#
+#Updated in $/COM/softing/fc/CP/HTML/Kernel#
+##
+#*****************  Version 8  *****************#
+#User: Ct           Date: 10/27/98   Time: 1:23p#
+#Updated in $/COM/softing/fc/CP/HTML/Kernel#
+##
+#*****************  Version 7  *****************#
+#User: Ct           Date: 10/20/98   Time: 3:42p#
+#Updated in $/COM/softing/fc/CP/HTML/Kernel#
+##
+#*****************  Version 6  *****************#
+#User: Mkr          Date: 13.10.98   Time: 12:13#
+#Updated in $/COM/softing/fc/CP/HTML/Kernel#
+##
+#*****************  Version 5  *****************#
+#User: Mkr          Date: 2.10.98    Time: 18:21#
+#Updated in $/COM/softing/fc/CP/HTML/Kernel#
+##
+#*****************  Version 4  *****************#
+#User: Mkr          Date: 2.10.98    Time: 16:00#
+#Updated in $/COM/softing/fc/CP/HTML/Kernel#
+##
+#*****************  Version 3  *****************#
+#User: Mkr          Date: 1.10.98    Time: 14:48#
+#Updated in $/COM/softing/fc/CP/HTML/Kernel#
+##
+#*****************  Version 2  *****************#
+#User: Mkr          Date: 1.10.98    Time: 12:58#
+#Updated in $/COM/softing/fc/CP/HTML/Kernel#
+##
+#*****************  Version 1  *****************#
+#User: Mkr          Date: 30.09.98   Time: 16:10#
+#Created in $/fc/CP/HTML/Kernel#
+#==
+#*****************************************************************************
+#H<<
+
+USER=SRC_DIR = $(PROJECT_ROOT)\Com\softing\fc\Cp\Html\Kernel
+USER=DES_DIR = $(EXE_DIR)\Console
+
+USER=makefirst: $(DES_DIR)\images
+USER=$(DES_DIR)\images:
+USER=	md $(DES_DIR)\images
+
+COPY=$(SRC_DIR)\CP_HttpServerCheck.asp		$(DES_DIR)\CP_HttpServerCheck.asp
+COPY=$(SRC_DIR)\CP_Style.css				$(DES_DIR)\CP_Style.css
+COPY=$(SRC_DIR)\default.htm					$(DES_DIR)\default.htm
+COPY=$(SRC_DIR)\CP_Main.asp					$(DES_DIR)\CP_Main.asp
+COPY=$(SRC_DIR)\CP_Login.asp				$(DES_DIR)\CP_Login.asp
+COPY=$(SRC_DIR)\CP_Logout.asp				$(DES_DIR)\CP_Logout.asp
+COPY=$(SRC_DIR)\CP_KeepAlive.asp			$(DES_DIR)\CP_KeepAlive.asp
+COPY=$(SRC_DIR)\CP_FPHeader.asp				$(DES_DIR)\CP_FPHeader.asp
+COPY=$(SRC_DIR)\CP_Loader.asp				$(DES_DIR)\CP_Loader.asp
+COPY=$(SRC_DIR)\CP_StatusLine.asp			$(DES_DIR)\CP_StatusLine.asp
+COPY=$(SRC_DIR)\CP_FaceplateHeader.html		$(DES_DIR)\CP_FaceplateHeader.html
+COPY=$(SRC_DIR)\CP_FpContainer.asp			$(DES_DIR)\CP_FpContainer.asp
+COPY=$(SRC_DIR)\CP_EmptyContainer.asp			$(DES_DIR)\CP_EmptyContainer.asp
+COPY=$(SRC_DIR)\CP_ValOutScriplet.html		$(DES_DIR)\CP_ValOutScriplet.html
+COPY=$(SRC_DIR)\CP_LeftLedButtonScriplet.html $(DES_DIR)\CP_LeftLedButtonScriplet.html
+COPY=$(SRC_DIR)\CP_Header.asp				$(DES_DIR)\CP_Header.asp
+COPY=$(SRC_DIR)\CP_ViewDialog.html			$(DES_DIR)\CP_ViewDialog.html
+
+COPY=$(SRC_DIR)\CP_WriteBoolDialog.asp		$(DES_DIR)\CP_WriteBoolDialog.asp   
+COPY=$(SRC_DIR)\CP_WriteDialog.asp			$(DES_DIR)\CP_WriteDialog.asp    
+COPY=$(SRC_DIR)\CP_WriteDialogTitle.asp		$(DES_DIR)\CP_WriteDialogTitle.asp    
+
+COPY=$(SRC_DIR)\CP_Layouts.asp				$(DES_DIR)\CP_Layouts.asp    
+
+COPY=$(SRC_DIR)\CP_LibAspParam.asp			$(DES_DIR)\CP_LibAspParam.asp    
+COPY=$(SRC_DIR)\CP_LibFaceplate.asp			$(DES_DIR)\CP_LibFaceplate.asp    
+COPY=$(SRC_DIR)\CP_LibSecurity.asp			$(DES_DIR)\CP_LibSecurity.asp    
+COPY=$(SRC_DIR)\CP_LibButton.asp			$(DES_DIR)\CP_LibButton.asp 
+
+COPY=$(SRC_DIR)\CP_Inst.inc  $(DES_DIR)\CP_Inst.inc
+COPY=$(SRC_DIR)\CP_Inst2.inc $(DES_DIR)\CP_Inst2.inc
+COPY=$(SRC_DIR)\CP_FPLib.asp $(DES_DIR)\CP_FPLib.asp
+COPY=$(SRC_DIR)\CP_FPLib.inc $(DES_DIR)\CP_FPLib.inc
+COPY=$(SRC_DIR)\CP_FPLib.js  $(DES_DIR)\CP_FPLib.js
+
+COPY=$(SRC_DIR)\CP_View.js   $(DES_DIR)\CP_View.js
+COPY=$(SRC_DIR)\CP_Panel.js  $(DES_DIR)\CP_Panel.js
+
+COPY=$(SRC_DIR)\CP_LayoutEdit.gif			$(DES_DIR)\images\CP_LayoutEdit.gif
+COPY=$(SRC_DIR)\CP_LayoutSave.gif			$(DES_DIR)\images\CP_LayoutSave.gif
+COPY=$(SRC_DIR)\CP_Help.gif					$(DES_DIR)\images\CP_Help.gif
+COPY=$(SRC_DIR)\CP_Navigator.gif			$(DES_DIR)\images\CP_Navigator.gif
+COPY=$(SRC_DIR)\FC_Logo.gif					$(DES_DIR)\images\FC_Logo.gif          
+COPY=$(SRC_DIR)\CP_Logout.gif				$(DES_DIR)\images\CP_Logout.gif          
+COPY=$(SRC_DIR)\CP_Login.jpg				$(DES_DIR)\images\CP_Login.jpg          
+COPY=$(SRC_DIR)\CP_LogoAndText.gif			$(DES_DIR)\images\CP_LogoAndText.gif
+COPY=$(SRC_DIR)\CP_LoginBackground.gif		$(DES_DIR)\images\CP_LoginBackground.gif          
+COPY=$(SRC_DIR)\CP_LoginClearPixel.gif		$(DES_DIR)\images\CP_LoginClearPixel.gif          
+     
+USER=makelast: $(DES_DIR)\CP_About.html $(DES_DIR)\CP_BrowserCheck.htm $(DES_DIR)\CP_LibHtml.asp $(DES_DIR)\CP_View.asp
+USER=$(DES_DIR)\CP_About.html: $(SRC_DIR)\CP_About.html
+USER=	$(EXE_DIR)\pub\patchver $** $@
+USER=$(DES_DIR)\CP_BrowserCheck.htm: $(SRC_DIR)\CP_BrowserCheck.htm
+USER=	$(EXE_DIR)\pub\patchver $** $@
+USER=$(DES_DIR)\CP_LibHtml.asp: $(SRC_DIR)\CP_LibHtml.asp
+USER=	$(EXE_DIR)\pub\patchver $** $@
+USER=$(DES_DIR)\CP_View.asp: $(SRC_DIR)\CP_View.js
+USER=	type  $(SRC_DIR)\CP_AspScriptPrefix.txt >  $(DES_DIR)\CP_View.asp
+USER=	type  $(SRC_DIR)\CP_View.js             >> $(DES_DIR)\CP_View.asp
+USER=	type  $(SRC_DIR)\CP_AspScriptSuffix.txt >> $(DES_DIR)\CP_View.asp
+USER=clean::
+USER=	-$(RM) $(DES_DIR)\CP_About.html
+USER=	-$(RM) $(DES_DIR)\CP_BrowserCheck.htm
+USER=	-$(RM) $(DES_DIR)\CP_LibHtml.asp
+USER=	-$(RM) $(DES_DIR)\CP_View.asp

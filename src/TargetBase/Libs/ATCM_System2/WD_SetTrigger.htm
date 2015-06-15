@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>WD_SetTrigger</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1"><LINK
+href="Lib.css" rel=stylesheet>
+<META content="MSHTML 6.00.2800.1458" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffcc>
+  <H2>WD_SetTrigger</H2>
+  <P>Sets the watchdog trigger level of the corresponding task.</P>
+  <H3>Interface</H3><pre class="preforma">FUNCTION WD_SetTrigger : WORD
+VAR_INPUT
+    sTask        : STRING;
+    WDTrigger    : UDINT;
+END_VAR
+</pre>
+  <H3>Return value</H3>
+  <P>Value of type&nbsp;<b><i>WORD</i></b> </P>
+  <P>&nbsp;OK if successful, else error number. (See
+  <a href="Const_Errno.htm"><strong><em>ErrNo.cst</em></strong></a> for details.)</P>
+  <H3>Parameters </H3>
+  <h3>INPUT</h3>
+  <dl>
+  <dt><b>sTask</b></dt>
+  <dd>Value of type <b><i>STRING</i></b><br>
+    Corresponding task name.<br></dd>
+  </dl>
+  <dl>
+  <dt><b>WDTrigger</b></dt>
+  <dd>Value of type <b><i>UDINT</i></b><br>
+    Watchdog trigger level to be set.<br></dd>
+  </dl>
+  <dl>
+  <H3>Description </H3>
+  <P>Sets the watchdog trigger level of the corresponding task.</P></BODY></HTML>

@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>FA_SYNC_EXISTSFILE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>FA_SYNC_EXISTSFILE</h2>
+<p>Pr&uuml;ft, ob eine Datei existiert.</p>
+<h3>Schnittstelle</h3>
+<pre class="preforma">FUNCTION FA_SYNC_EXISTSFILE:BOOL
+VAR_INPUT
+    EXEC        : BOOL;             
+END_VAR
+VAR_IN_OUT
+    FILE        : FA_SYNC_FILE;     
+END_VAR
+VAR_OUTPUT
+    EXISTS      : BOOL;             
+END_VAR</pre>
+<h3>Rückgabewert</h3>
+
+<p>Wert vom Typ <i><b>BOOL</b></i><br>
+    Signalisiert den Fehlerstatus.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Ein Fehler ist aufgetreten.<br>
+  <i><b>FALSE</b></i>: Es ist kein Fehler aufgetreten.</p>
+
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>EXEC</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Startet die Operation. </dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl> 
+  <dt><b>FILE</b></dt>
+  <dd>Instanz der Struktur <a href="FA_SYNC_FILE.htm"><i><b>FA_SYNC_FILE</b></i></a><br>
+    Im Gegensatz zu den meisten anderen Funktionen der Bausteingruppe f&uuml;r 
+    elementare synchrone Dateioperationen repr&auml;sentiert die an <i><b>FILE</b></i> 
+    &uuml;bergebene Strukturinstanz nicht ein Dateiobjekt, auf das die betreffenden 
+    Dateioperation ausgef&uuml;hrt wird. Stattdessen wird das Element <i><b>FILENAME</b></i> 
+    der Struktur <i><b>FA_SYNC_FILE</b></i> f&uuml;r die Definition des Dateinamens 
+    der zu suchenden Datei genutzt. </dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b>EXISTS</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Zeigt nach Ausf&uuml;hrung der Operation an, ob die im Element <i><b>FILENAME</b></i> 
+    der an <i><b>FILE</b></i> &uuml;bergebenen Strukturinstanz von <i><b>FA_SYNC_FILE</b></i> 
+    spezifizierte Datei existiert. <br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Die Datei existiert.<br>
+    <i><b>FALSE</b></i>: Die Datei existiert nicht.</dd>
+</dl>
+<h3>Beschreibung</h3>
+<p> <i><b>FA_SYNC_EXISTSFILE </b></i> &uuml;berpr&uuml;ft, ob eine Datei existiert.</p>
+<p>Der Name der zu suchenden Datei wird <i><b>FA_SYNC_EXISTSFILE </b></i>&uuml;ber 
+  den Parameter <b><i>FILE</i></b> &uuml;bergeben. <i><b>FILE</b></i> erwartet 
+  eine Instanz der Struktur <a href="FA_SYNC_FILE.htm"><i><b>FA_SYNC_FILE</b></i></a>. 
+  Diese Struktur enth&auml;lt das Strukturelement <b><i>FILENAME</i></b>, das 
+  einen Dateinamen spezifiziert und vor &Uuml;bergabe der Strukturinstanz an <i><b>FA_SYNC_EXISTSFILE 
+  </b></i> initialisiert werden mu&szlig;. </p>
+<p>Der Aufruf von <i><b>FA_SYNC_EXISTSFILE </b></i> ist unabh&auml;ngig von einem 
+  Zugriffszyklus, d.h. es mu&szlig; kein vorhergehender Aufruf von <i><b>FA_SYNC_OPENFILE 
+  </b></i>erfolgen. </p>
+</body>
+</html>

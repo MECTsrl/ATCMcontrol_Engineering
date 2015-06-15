@@ -1,0 +1,9 @@
+(*Constant file*)
+(*[[
+]]*)
+CONST
+	(* DB types: *)
+	dbRetainMemory     : INT := 0;
+	dbMemoryMappedFile : INT := 1;
+
+END_CONST

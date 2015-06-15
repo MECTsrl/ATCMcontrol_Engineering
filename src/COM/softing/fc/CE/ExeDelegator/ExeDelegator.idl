@@ -1,0 +1,146 @@
+// ExeDelegator.idl : IDL source for ExeDelegator.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (ExeDelegator.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+import "CEProjInfo.idl";
+import "CEMsg.idl";
+	[
+		object,
+		uuid(78E1DC09-A826-458A-BAD0-558E80CD9701),
+		dual,
+		helpstring("ICEExecute Interface"),
+		pointer_default(unique)
+	]
+	interface ICEExecute : IUnknown
+	{
+
+    //------------------------------------------------------------------*
+    /**
+     * execution of a single exe command.
+     * returns when process is ready or timeout occurred
+     *
+     * @param   sCommand: single exe command to be executed
+     * @param   pICEProjectInfo: pointer to project info interface
+     * @param   dwTimeout: timeout for execution (0 means infinite)
+     * @param   bSynchronous: synchronous call?
+     * @param   bShowWindow: show process window?
+     * @param   pdwReturnValue: return value of process or 0xFFFFFFFF when
+     *                          timeout occurred
+     *         
+     * @return  S_OK :      process returned without error
+     *          S_FALSE:    process returned with error or timeout occurred
+     *          E_FAIL :    process could not be executed
+     *
+    */
+    HRESULT ExecuteCommand( [in,string] BSTR            sCommand,
+                            [in]        ICEProjInfo*    pICEProjectInfo,
+                            [in]        DWORD           dwTimeout,
+                            [in]        BOOL            bSynchronous,
+                            [in]        BOOL            bShowWindow,
+                            [out]       DWORD*          pdwReturnValue);
+
+    //------------------------------------------------------------------*
+    /**
+     *
+     * @param   pdwSessionId: session id (to be used to identify a session
+     *          writing commands or closing)
+     * @param   pICEProjectInfo: pointer to project info interface
+     * @param   bAutoClose: if true, the session is closed automatically when
+     *                      an empty command is encountered.
+     *
+     * @return  S_OK : ok
+     *          E_FAIL : open session failed
+    */
+    HRESULT OpenExeSession( [out]   DWORD*          pdwSessionId,
+                            [in]    ICEProjInfo*    pICEProjectInfo,
+                            [in]    BOOL            bAutoClose);
+
+    //------------------------------------------------------------------*
+    /**
+     *
+     * @param   dwSessionId: session id from OpenExeSession()
+     * @param   sCommand: single exe command to be executed
+     *                  may be empty to trigger auto close
+     * @param   dwTimeout: timeout for execution (0 means infinite)
+     *         
+     * @return  S_OK : ok
+     *          E_FAIL : write failed
+     *
+    */
+    HRESULT WriteExeCommand([in]        DWORD       dwSessionId,
+                            [in,string] BSTR        sCommand,
+                            [in]        DWORD       dwTimeout);
+
+    
+    //------------------------------------------------------------------*
+    /**
+     *
+     * @param   dwSessionId: session id from OpenExeSession()
+     * @param   bKill: if true, current process will be killed
+     *         
+     * @return  S_OK : ok
+     *          E_FAIL : close failed (never should occur)
+     *
+    */
+    HRESULT CloseExeSession([in]        DWORD       dwSessionId,
+                            [in]        BOOL        bKill);
+
+    //------------------------------------------------------------------*
+    /**
+     *
+     * @param   bKill: if true, all running processes will be killed
+     *         
+     * @return  S_OK : ok
+     *          E_FAIL : close failed (never should occur)
+     *
+    */
+    HRESULT CloseAllExeSessions( [in]     BOOL        bKill);
+
+	};
+	[
+		object,
+		uuid(A59021FA-13F1-444a-B234-2141A1B42F33),
+		dual,
+		helpstring("IExeMsgInternal Interface"),
+		pointer_default(unique)
+	]
+	interface IExeMsgInternal : IUnknown
+    {
+    //------------------------------------------------------------------*
+    /**
+     *
+     * @param   sMessage: new exe message
+     *         
+     * @return  S_OK : ok
+     *
+    */
+    HRESULT NewExeMessage([in,string] BSTR  sMessage);
+    HRESULT OnReady();
+    };
+
+[
+	uuid(A2B3990B-FE1D-4A6F-9291-A43FC232972B),
+	version(1.0),
+	helpstring("ExeDelegator 1.0 Type Library")
+]
+library EXEDELEGATORLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(F1F501D1-38D1-478B-B536-46609BD39366),
+		helpstring("CEExecute Class")
+	]
+	coclass CEExecute
+	{
+		[default] interface ICEExecute;
+        interface IExeMsgInternal;
+        [default, source] interface _ICEMessageEvent;
+	};
+};

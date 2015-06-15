@@ -1,0 +1,74 @@
+#H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CP/Java/Graphic/CpScale/CPScale.inf 1     28.02.07 19:00 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: CPScale.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CP/Java/Graphic/CpScale/CPScale.inf $
+#
+# =PROJECT             7VH102  ATCMControl
+#
+# =SWKE                XXX
+#
+# =COMPONENT           XXX
+#
+# =CURRENT             $Date: 28.02.07 19:00 $
+#                      $Revision: 1 $
+#
+# =ENVIRONMENT         perl5:
+#                      MS Windows NT 4.0
+#                      MSVC++ V5.0 / MFC 4.2 / ATL 2.0 / DAO 3.5
+#                      MS Java 2.0
+#                      MS Visual SourceSafe 5.0
+#
+# =REFERENCES
+#==
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+#==
+#----------------------------------------------------------------------------*
+# =MODIFICATIONS
+# $History: CPScale.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:00
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CP/Java/Graphic/CpScale
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:33
+# Created in $/4Control/COM/softing/fc/CP/Java/Graphic/CpScale
+# 
+# *****************  Version 1  *****************
+# User: Scd          Date: 19.03.01   Time: 16:00
+# Created in $/4Control/COM/softing/fc/CP/Java/Graphic/CpScale
+##
+#*****************  Version 2  *****************#
+#User: Mkr          Date: 23.06.99   Time: 17:50#
+#Updated in $/COM/softing/fc/CP/Java/Graphic/CpScale#
+##
+#*****************  Version 1  *****************#
+#User: Mkr          Date: 30.09.98   Time: 16:13#
+#Created in $/fc/CP/Java/Graphic/CpScale#
+#==
+#*****************************************************************************
+#H<<
+
+USER=CLASSES_ROOT = $(PROJECT_ROOT)\com\softing\fc\cp\Java\Graphic\class
+USER=SRC_ROOT     = $(PROJECT_ROOT)\COM\softing\fc\CP\Java\Graphic\CpScale
+
+USER=JFLAGS = $(JFLAGS);.
+
+USER=makefirst: $(CLASSES_ROOT) javaclasses
+
+USER=$(CLASSES_ROOT):
+USER= md $(CLASSES_ROOT)
+
+USER=javaclasses: 
+USER=	$(JAVAC) $(JFLAGS) $(SRC_ROOT)\*.java

@@ -1,0 +1,9 @@
+(*[[
+]]*)
+TYPE
+    CANopen_EmcyType : STRUCT
+        ErrorCode         : WORD;
+        ErrorRegister     : BYTE;
+        ManufacturerError : DWORD;
+    END_STRUCT;
+END_TYPE

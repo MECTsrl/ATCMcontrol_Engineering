@@ -1,0 +1,163 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "WatchRC.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_WATCH_RENAME DIALOG DISCARDABLE  0, 0, 186, 46
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Rename Watch Tab"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,24,50,14
+    EDITTEXT        IDC_NAME_EDIT,14,14,101,14,ES_AUTOHSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_WATCH_RENAME, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 39
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "WatchRC.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDM_WATCH_TABMENU MENU DISCARDABLE 
+BEGIN
+    POPUP "Context Menu"
+    BEGIN
+        MENUITEM "&Add Pane",                   ID_WATCH_ADD_PANE
+        MENUITEM "&Remove Pane",                ID_WATCH_REMOVE_PANE
+        MENUITEM SEPARATOR
+        MENUITEM "&Import",                     ID_WATCH_IMPORT
+        MENUITEM "&Export",                     ID_WATCH_EXPORT
+        MENUITEM SEPARATOR
+        MENUITEM "Re&name",                     ID_WATCH_RENAME_TAB
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WATCH_ADD_PANE       "Adds another pane to the watch window.\nAdd Pane"
+    ID_WATCH_REMOVE_PANE    "Removes a pane from the watch window.\nRemove Pane"
+    ID_WATCH_EXPORT         "Export variable / expression list to file\nExport pane"
+    ID_WATCH_IMPORT         "Import variable / expression list\nImport variable"
+    ID_WATCH_RENAME_TAB     "Rename Watch Tab\nRename Tab"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_WATCH_CUSTOM_PANE_CAPTION "Watch %d"
+    IDS_WATCH_FORCED_PANE_CAPTION "Forced"
+    IDS_STORE_WATCH_TITLE   "Export Variable / Expression List"
+    IDS_LOAD_WATCH_TITLE    "Import Variable / Expression List"
+    IDS_WATCH_FILE_FILTERNAME1 "Watch list files (*.4cw)"
+    IDS_WATCH_FILE_FILTEREXT1 "4cw"
+    IDS_WATCH_FILE_FILTERNAME2 "All files (*.*)"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_WATCH_FILE_FILTEREXT2 "*"
+    IDS_ERR_TABNAME_INVALID "Tab name is invalid!"
+    IDS_ERR_NOWATCH         "Error: could not create watch control.\nProbably not registered."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,57 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<html>
+<head>
+<title>TaskInfo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="lib.css"></head>
+
+
+<body bgcolor="#FFFFCC" link="#0000CE" vlink="#0000CE" alink="#0000CE">
+<h2>TaskInfo</h2>
+<p>Contains information on the task status of a task. </p>
+<h3>Interface</h3>
+<pre class="preforma">TYPE
+     TaskInfo : STRUCT
+         STATE    : DINT;
+         PRIORITY : DINT;
+         CYCLE    : TIME;
+         ETMAX    : TIME;
+         ERRNO    : DINT;
+     END_STRUCT;
+END_TYPE
+</pre>
+<dl> 
+
+ <h3>Structure Elements</h3>
+
+ <p><b>STATE</b></p>
+
+ <p> Value of the type <i><b>DINT</b></i><br> Delivers the task status<br> Possible return values:<br> <b>-1</b>&nbsp;&nbsp;&nbsp;<b><i>STATE_ERROR</i></b> Task is in error status<br> &nbsp;<b>0</b>&nbsp;&nbsp;&nbsp;<b><i>STATE_ONCREATION</i></b> Task is being newly created (e.g in the case of an incremental download)<br> &nbsp;<b>1&nbsp;</b>&nbsp;&nbsp;<b><i>STATE_STOPPED</i></b> Task was stopped<br> &nbsp;<b>2</b>&nbsp;&nbsp;&nbsp;<b><i>STATE_RUNNING</i></b> Task is running<br> <b>&nbsp;3</b> &nbsp;&nbsp;<b><i>STATE_BREAK</i></b> Task was interrupted by breakpoint <br>
+
+ </p>
+
+ <p><b>PRIORITY</b></p>
+
+ <p>Value of the type <b><i>DINT</i></b><br> Delivers the task priority. </p>
+
+ <p><b>CYCLE</b></p>
+
+ <p>Value of the type <b><i>TIME</i></b><br> Delivers the task cycle time in milliseconds.</p>
+
+ <p><b>ETMAX</b></p>
+
+ <p>Value of the type <b><i>TIME</i></b><br> Delivers the maximum execution time in milliseconds. </p>
+
+ <p><b>ERROR</b></p>
+
+ <p>Value of the type <b><i>DINT</i></b><br> Delivers an error number if an error has occurred.<br> The possible values are defined in the
+ <i><b>error constants</b></i>.</p>
+
+ <h3>Description</h3>
+
+ <p>In an instance of the <i><b>TaskInfo</b></i> structure, information on the current status of a task is stored. The structure instance must be passed to the <i> <b>INFO</b></i> parameter of the <a href="GetLocalTaskInfoEC.htm"><b><i>GetLocalTaskInfo</i></b></a> function.</p>
+
+ <dt>&nbsp;</dt>
+</dl>
+</body>
+</html>

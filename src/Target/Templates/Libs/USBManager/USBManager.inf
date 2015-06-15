@@ -1,0 +1,11 @@
+USER=libname=USBManager
+USER=make_lib: force
+
+USER= xcopy $(MAKEDIR)\*.*     $(MAKEDIR)\de\*.*	/Y
+USER= xcopy $(MAKEDIR)\*.*     $(MAKEDIR)\eng\*.*	/Y
+
+USER= $(4CG) $(MAKEDIR)\de\$(libname).4cp   -ml:0 $(4CL_DIR)\de\$(libname).4cl
+USER= $(4CG) $(MAKEDIR)\eng\$(libname).4cp  -ml:0 $(4CL_DIR)\eng\$(libname).4cl
+
+#copy the english stup to $(libdir)
+USER= copy  $(4CL_DIR)\eng\$(libname).4cl    $(4CL_DIR)\$(libname).4cl	/Y

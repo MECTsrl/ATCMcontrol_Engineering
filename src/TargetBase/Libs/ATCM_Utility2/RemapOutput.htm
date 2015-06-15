@@ -1,0 +1,1002 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<title>AX_ReadParameter</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Courier;
+	panose-1:2 7 4 9 2 2 5 2 4 4;}
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"MS Mincho";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:"Arial Narrow";
+	panose-1:2 11 6 6 2 2 2 3 2 4;}
+@font-face
+	{font-family:"\@MS Mincho";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoList, li.MsoList, div.MsoList
+	{margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-autospace:ideograph-numeric;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:382.75pt;
+	margin-bottom:.0001pt;
+	text-autospace:ideograph-numeric;
+	font-size:18.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+span.RTFNum21
+	{mso-style-name:"RTF_Num 2 1";}
+span.DefaultParagraphFont
+	{mso-style-name:"Default Paragraph Font";}
+p.Intestazione1, li.Intestazione1, div.Intestazione1
+	{mso-style-name:Intestazione1;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	page-break-after:avoid;
+	text-autospace:ideograph-numeric;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";}
+p.Didascalia1, li.Didascalia1, div.Didascalia1
+	{mso-style-name:Didascalia1;
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-autospace:ideograph-numeric;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+p.Indice, li.Indice, div.Indice
+	{mso-style-name:Indice;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.heading1, li.heading1, div.heading1
+	{mso-style-name:"heading 1";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:144.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	page-break-after:avoid;
+	text-autospace:ideograph-numeric;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;
+	font-weight:bold;}
+p.heading2, li.heading2, div.heading2
+	{mso-style-name:"heading 2";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	page-break-after:avoid;
+	text-autospace:ideograph-numeric;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;
+	font-weight:bold;}
+p.heading3, li.heading3, div.heading3
+	{mso-style-name:"heading 3";
+	margin-top:24.0pt;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	page-break-after:avoid;
+	text-autospace:ideograph-numeric;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.heading4, li.heading4, div.heading4
+	{mso-style-name:"heading 4";
+	margin-top:18.0pt;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	page-break-after:avoid;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.heading5, li.heading5, div.heading5
+	{mso-style-name:"heading 5";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	text-indent:0cm;
+	page-break-after:avoid;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+p.header, li.header, div.header
+	{mso-style-name:header;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial Narrow","sans-serif";}
+p.END, li.END, div.END
+	{mso-style-name:END;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:center;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;
+	font-weight:bold;}
+p.List-var-1, li.List-var-1, div.List-var-1
+	{mso-style-name:List-var-1;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:3.0cm;
+	text-align:justify;
+	text-indent:-3.0cm;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.List-var-2, li.List-var-2, div.List-var-2
+	{mso-style-name:List-var-2;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:4.0cm;
+	text-align:justify;
+	text-indent:-4.0cm;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.footer, li.footer, div.footer
+	{mso-style-name:footer;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.Lista-bullet, li.Lista-bullet, div.Lista-bullet
+	{mso-style-name:Lista-bullet;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:14.15pt;
+	text-align:justify;
+	text-indent:-14.15pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.AGG-TXT, li.AGG-TXT, div.AGG-TXT
+	{mso-style-name:AGG-TXT;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.ListNumber, li.ListNumber, div.ListNumber
+	{mso-style-name:"List Number";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:14.2pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.TableTitle, li.TableTitle, div.TableTitle
+	{mso-style-name:"Table Title";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:12.0pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.Lista-bullet-indent, li.Lista-bullet-indent, div.Lista-bullet-indent
+	{mso-style-name:Lista-bullet-indent;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:28.4pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.ListNumberCont, li.ListNumberCont, div.ListNumberCont
+	{mso-style-name:"List Number Cont";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:14.2pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.Picture, li.Picture, div.Picture
+	{mso-style-name:Picture;
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:center;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.toc1, li.toc1, div.toc1
+	{mso-style-name:"toc 1";
+	margin-top:18.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-autospace:ideograph-numeric;
+	border:none;
+	padding:0cm;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;
+	font-weight:bold;}
+p.toc2, li.toc2, div.toc2
+	{mso-style-name:"toc 2";
+	margin-top:0cm;
+	margin-right:70.9pt;
+	margin-bottom:0cm;
+	margin-left:1.0cm;
+	margin-bottom:.0001pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;
+	font-weight:bold;}
+p.toc3, li.toc3, div.toc3
+	{mso-style-name:"toc 3";
+	margin-top:0cm;
+	margin-right:70.9pt;
+	margin-bottom:0cm;
+	margin-left:2.0cm;
+	margin-bottom:.0001pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.Normal-retro, li.Normal-retro, div.Normal-retro
+	{mso-style-name:Normal-retro;
+	margin-top:0cm;
+	margin-right:62.35pt;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-autospace:ideograph-numeric;
+	font-size:7.0pt;
+	font-family:"Arial","sans-serif";}
+p.ListNumber-N, li.ListNumber-N, div.ListNumber-N
+	{mso-style-name:"List Number-N";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:14.2pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.NormalIndent, li.NormalIndent, div.NormalIndent
+	{mso-style-name:"Normal Indent";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:14.2pt;
+	text-align:justify;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.NOTA, li.NOTA, div.NOTA
+	{mso-style-name:NOTA;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;
+	font-weight:bold;}
+p.Courier, li.Courier, div.Courier
+	{mso-style-name:Courier;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-autospace:ideograph-numeric;
+	font-size:12.0pt;
+	font-family:Courier;}
+p.TableText, li.TableText, div.TableText
+	{mso-style-name:"Table Text";
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.ListLettera, li.ListLettera, div.ListLettera
+	{mso-style-name:"List Letter a";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:14.2pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.Listatrattino, li.Listatrattino, div.Listatrattino
+	{mso-style-name:"Lista trattino";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:14.15pt;
+	text-align:justify;
+	text-indent:-14.15pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.Listatrattinoindent, li.Listatrattinoindent, div.Listatrattinoindent
+	{mso-style-name:"Lista trattino indent";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:28.4pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.ListNumberindent, li.ListNumberindent, div.ListNumberindent
+	{mso-style-name:"List Number indent";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:28.4pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.Listabc, li.Listabc, div.Listabc
+	{mso-style-name:"List a\.b\.c\.\.\.";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:42.5pt;
+	text-align:justify;
+	text-indent:-14.15pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.ListLettera-indent, li.ListLettera-indent, div.ListLettera-indent
+	{mso-style-name:"List Letter a-indent";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:28.4pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.List-var-3, li.List-var-3, div.List-var-3
+	{mso-style-name:List-var-3;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:3.0cm;
+	text-align:justify;
+	text-indent:-3.0cm;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.ListLetterAB, li.ListLetterAB, div.ListLetterAB
+	{mso-style-name:"List Letter A\)\.B\)\.\.\.";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:14.2pt;
+	text-indent:-14.2pt;
+	line-height:12.0pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.ListNumberindentN, li.ListNumberindentN, div.ListNumberindentN
+	{mso-style-name:"List Number indent N";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:28.4pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.Funzione, li.Funzione, div.Funzione
+	{mso-style-name:Funzione;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	text-autospace:ideograph-numeric;
+	border:none;
+	padding:0cm;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.caption, li.caption, div.caption
+	{mso-style-name:caption;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:center;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.STOPNUMBERING, li.STOPNUMBERING, div.STOPNUMBERING
+	{mso-style-name:"STOP NUMBERING";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-autospace:ideograph-numeric;
+	font-size:5.0pt;
+	font-family:"Arial","sans-serif";}
+p.List-Bullet-IND2, li.List-Bullet-IND2, div.List-Bullet-IND2
+	{mso-style-name:List-Bullet-IND2;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:42.55pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.Normal2RID, li.Normal2RID, div.Normal2RID
+	{mso-style-name:"Normal 2 RID";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-autospace:ideograph-numeric;
+	font-size:2.0pt;
+	font-family:"Arial","sans-serif";}
+p.TIT-INDEX, li.TIT-INDEX, div.TIT-INDEX
+	{mso-style-name:TIT-INDEX;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:144.0pt;
+	margin-left:0cm;
+	page-break-after:avoid;
+	text-autospace:ideograph-numeric;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;
+	font-weight:bold;}
+p.List-var-LCD, li.List-var-LCD, div.List-var-LCD
+	{mso-style-name:List-var-LCD;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:42.55pt;
+	text-align:justify;
+	text-indent:-42.55pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.List-var-LCD-cont, li.List-var-LCD-cont, div.List-var-LCD-cont
+	{mso-style-name:List-var-LCD-cont;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:42.55pt;
+	text-align:justify;
+	text-indent:-42.55pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.retino, li.retino, div.retino
+	{mso-style-name:retino;
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:18.0pt;
+	margin-left:0cm;
+	text-autospace:ideograph-numeric;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.EL, li.EL, div.EL
+	{mso-style-name:EL;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	font-variant:small-caps;
+	font-weight:bold;
+	font-style:italic;}
+p.TA, li.TA, div.TA
+	{mso-style-name:TA;
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	text-align:center;
+	text-autospace:ideograph-numeric;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";
+	text-transform:uppercase;}
+p.LI, li.LI, div.LI
+	{mso-style-name:LI;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:2.0cm;
+	margin-bottom:.0001pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	color:black;}
+p.List-var-4, li.List-var-4, div.List-var-4
+	{mso-style-name:List-var-4;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:12.0pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.TB, li.TB, div.TB
+	{mso-style-name:TB;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-autospace:ideograph-numeric;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.toc4, li.toc4, div.toc4
+	{mso-style-name:"toc 4";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:70.9pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.ListaFunzioni, li.ListaFunzioni, div.ListaFunzioni
+	{mso-style-name:"Lista Funzioni";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.Listatrattinoindent2, li.Listatrattinoindent2, div.Listatrattinoindent2
+	{mso-style-name:"Lista trattino indent 2";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:42.55pt;
+	text-align:justify;
+	text-indent:-14.2pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.TitoloFlow, li.TitoloFlow, div.TitoloFlow
+	{mso-style-name:"Titolo Flow";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:center;
+	page-break-after:avoid;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.toc6, li.toc6, div.toc6
+	{mso-style-name:"toc 6";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:4.0pt;
+	margin-left:0cm;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.Titolocodice, li.Titolocodice, div.Titolocodice
+	{mso-style-name:"Titolo codice";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.listfunct, li.listfunct, div.listfunct
+	{mso-style-name:list_funct;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.nextpagefunc, li.nextpagefunc, div.nextpagefunc
+	{mso-style-name:next_page_func;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:center;
+	text-autospace:ideograph-numeric;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.TOC2-LISTA, li.TOC2-LISTA, div.TOC2-LISTA
+	{mso-style-name:TOC2-LISTA;
+	margin-top:0cm;
+	margin-right:42.55pt;
+	margin-bottom:0cm;
+	margin-left:73.7pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:-73.7pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.Normal-indent, li.Normal-indent, div.Normal-indent
+	{mso-style-name:Normal-indent;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:14.2pt;
+	text-align:justify;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.toc5, li.toc5, div.toc5
+	{mso-style-name:"toc 5";
+	margin-top:0cm;
+	margin-right:2.0cm;
+	margin-bottom:0cm;
+	margin-left:3.0cm;
+	margin-bottom:.0001pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.DocumentMap, li.DocumentMap, div.DocumentMap
+	{mso-style-name:"Document Map";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Tahoma","sans-serif";}
+p.PlainText, li.PlainText, div.PlainText
+	{mso-style-name:"Plain Text";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+p.BodyText3, li.BodyText3, div.BodyText3
+	{mso-style-name:"Body Text 3";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+p.BodyText2, li.BodyText2, div.BodyText2
+	{mso-style-name:"Body Text 2";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.Contenutotabella, li.Contenutotabella, div.Contenutotabella
+	{mso-style-name:"Contenuto tabella";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+p.Intestazionetabella, li.Intestazionetabella, div.Intestazionetabella
+	{mso-style-name:"Intestazione tabella";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:center;
+	text-autospace:ideograph-numeric;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+span.RTFNum351
+	{mso-style-name:"RTF_Num 35 1";
+	font-family:Symbol;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.25pt 841.85pt;
+	margin:99.25pt 2.0cm 99.25pt 99.25pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body bgcolor="#FFFFCC" lang=IT style='line-break:strict'>
+
+<div class=WordSection1>
+
+<p class=retino style='background:silver'>RemapOutput</p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'>La funzione
+RemapOutput esegue il remapping degli output digitali.</p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=heading4 style='margin:0cm;margin-bottom:.0001pt'><span lang=EN-US>Sintassi</span></p>
+
+<div style='border:none;border-bottom:solid windowtext 1.5pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;border:none;
+padding:0cm'><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><i>ret_code</i>&nbsp;:=
+RemapOutput ()&nbsp;;</p>
+
+<div style='border:none;border-bottom:solid windowtext 1.5pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;border:none;
+padding:0cm'>&nbsp;</p>
+
+</div>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=TableTitle style='margin:0cm;margin-bottom:.0001pt;line-height:normal'>Modalità
+di esecuzione</p>
+
+<p class=TableTitle style='margin:0cm;margin-bottom:.0001pt;line-height:normal'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'>Wait </p>
+
+<p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:left'>&nbsp;</p>
+
+<p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:left'>&nbsp;</p>
+
+<p class=TableTitle style='margin:0cm;margin-bottom:.0001pt;line-height:normal'>Uso</p>
+
+<p class=TableTitle style='margin:0cm;margin-bottom:.0001pt;line-height:normal'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'>La funzione
+RemapOutput esegue il remapping degli output digitali; in particolare rimappa
+automaticamente output digitali logici (variabili MW) su output digitali fisici
+(variabili OW).</p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'>La funzione
+applica le definizioni di remap degli output digitali precedentemente caricate
+in memoria. Le definizioni di remap degli output digitali possono essere caricate
+in memoria nei modi seguenti:</p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'>tramite la
+     funzione ReadRemapOutputCFG, che legge un insieme di definizioni da un
+     file</li>
+ <li class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'>tramite la
+     funzione ForceRemapOutput, che carica in memoria una definizione di remap
+     di un output digitale</li>
+</ul>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'>Per una
+descrizione dei diversi tipi di remapping utilizzabili si veda la
+documentazione delle funzioni ReadRemapOutputCFG e ForceRemapOutput</p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><b><u><span
+ style='text-decoration:none'>&nbsp;</span></u></b></p>
+
+<p class=TableTitle style='margin:0cm;margin-bottom:.0001pt;line-height:150%'>Valori
+di ritorno</p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+150%'>Nella successiva tabella sono riportati i possibili valori assunti dalla
+variabile <i><span lang=FR>ret_code</span></i><span lang=FR>.</span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='margin-left:.05pt;border-collapse:collapse'>
+ <tr>
+  <td width=142 valign=top style='width:106.3pt;border:solid black 1.0pt;
+  border-right:none;padding:0cm 0cm 0cm 0cm'>
+  <p class=TableTitle style='margin-left:3.6pt'><i><span lang=FR>ret_code</span></i><span
+  lang=FR> </span>(HEX)</p>
+  </td>
+  <td width=397 valign=top style='width:297.7pt;border:solid black 1.0pt;
+  padding:0cm 0cm 0cm 0cm'>
+  <p class=TableTitle align=left style='margin-top:0cm;margin-right:0cm;
+  margin-bottom:0cm;margin-left:3.6pt;margin-bottom:.0001pt;text-align:left'>Descrizione</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=142 valign=top style='width:106.3pt;border-top:none;border-left:
+  solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:none;
+  padding:0cm 0cm 0cm 0cm'>
+  <p class=TableText style='margin-left:3.6pt'>0x00000000</p>
+  </td>
+  <td width=397 valign=top style='width:297.7pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 0cm 0cm 0cm'>
+  <p class=TableText style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+  margin-left:3.6pt;margin-bottom:.0001pt'>Funzione eseguita senza errori</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=142 valign=top style='width:106.3pt;border-top:none;border-left:
+  solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:none;
+  padding:0cm 0cm 0cm 0cm'>
+  <p class=TableText style='margin-left:3.6pt'>0X001500B1</p>
+  </td>
+  <td width=397 valign=top style='width:297.7pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 0cm 0cm 0cm'>
+  <p class=TableText style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+  margin-left:3.6pt;margin-bottom:.0001pt'>In memoria non è presente nessuna
+  definizione di remap degli output digitali</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt'><b>&nbsp;</b></p>
+
+<p class=TableTitle style='margin:0cm;margin-bottom:.0001pt;line-height:150%'>&nbsp;</p>
+
+<p class=TableTitle style='margin:0cm;margin-bottom:.0001pt;line-height:150%'>Esempio</p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+150%'><span lang=FR style='font-family:"Courier New"'>Ret : </span><span
+style='font-family:"Courier New"'>dword;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+150%'><span style='font-family:"Courier New"'>Ret := </span><span
+style='font-family:"Courier New"'>RemapOutput </span><span style='font-family:
+"Courier New"'>();</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+150%'>&nbsp;</p>
+
+<p class=TableTitle style='margin:0cm;margin-bottom:.0001pt;line-height:150%'>Vedere
+anche</p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+150%'><span lang=EN-US>ReadRemapOutputCFG(), ForceRemapOutput()</span></p>
+
+</div>
+
+</body>
+
+</html>

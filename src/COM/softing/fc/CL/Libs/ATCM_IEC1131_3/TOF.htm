@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>TOF</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>TOF</h2>
+<p>Delayed reaction to an input signal.<br>
+</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION_BLOCK TOF
+
+VAR_INPUT   
+    IN : BOOL := FALSE; 
+    PT : TIME := T#0s;  
+END_VAR
+
+VAR_OUTPUT  
+    Q  : BOOL := TRUE; 
+    ET : TIME := T#0s; 
+END_VAR</pre>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>IN</b></dt>
+  <dd>Value of type<i> <i><b>BOOL<br>
+    </b></i></i>Input signal<i><i><b> <br>
+    </b></i></i>The default value is<b></b><i><i><b> </b></i><b><i>FALSE</i></b>.</i></dd>
+  <dt><b>PT</b></dt>
+  <dd>Value of type <i><b>TIME<br>
+    </b></i>Determines the duration of the delay after which<i><b> Q</b></i> is 
+    set to <i><b>FALSE</b></i> if <i><b>IN = FALSE</b></i>.<i><b> <br>
+    </b></i>The default value is<i><b> T#0s</b></i>.<i><b><br>
+    </b></i></dd>
+  <dd><b></b><i> </i></dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b></b><b>Q</b></dt>
+  <dd>Value of type <b><i>BOOL</i></b><br>
+    Signalizes by the value <b><i>FALSE</i></b> that the time specified in <b><i>PT</i></b> 
+    has expired after <b><i>IN</i></b> changed to <i><b>FALSE</b></i>. <b><i>Q</i></b> 
+    is <i><b>FALSE</b></i> if <i><b>ET &gt;= PT</b></i>.</dd>
+  <dt><b>ET</b></dt>
+  <dd>Value of type <b><i>TIME<br>
+    </i></b> Is incremented time-dependent after counting has started, provided 
+    <i><b>IN = FALSE</b> </i>; incrementing is carried out until <i><b>ET &gt;= 
+    PT</b></i>. <br>
+  </dd>
+</dl>
+<h3>Description</h3>
+<p>The function block <b><i>TOF</i></b> is used for delaying the response to the 
+  input signal<i> <b>IN</b></i>. The length of the delay is determined in<i> <b>PT</b></i>. 
+  If<i> <b>IN</b></i> changes to <i><b>FALSE</b></i>, <b><i>Q</i></b> is also 
+  set to <i><b>FALSE</b></i> as soon as the length of time specified in <b><i>PT</i></b> 
+  expires. <br>
+  After reaching the target value in the counting process <i><b>(ET &gt;= PT)</b></i>, 
+  <b><i>Q</i></b> will remain<b><i> FALSE</i></b> until <b><i>ET</i></b> is reset 
+  to <i><b>0</b></i>. This is achieved by setting the input <b><i>IN</i></b> to 
+  <i><b>TRUE</b></i>. </p>
+</body>
+</html>

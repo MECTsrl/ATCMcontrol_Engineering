@@ -1,0 +1,43 @@
+
+// CEBackparserCO.idl : IDL source for CEBackparserCO.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (CEBackparserCO.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+/*
+	[
+		object,
+		uuid(89E29ADE-FB59-11D4-A0A1-006008736ABF),
+	
+		helpstring("ICEBackparse Interface"),
+		pointer_default(unique)
+	]
+	interface ICEBackparse : IUnknown
+	{
+		[helpstring("method doBackparse")] HRESULT doBackparse([in, string] BSTR sFileName, [in] ICEProjInfo* pICEProjInfo, [out, string] BSTR* psXmlText);
+	};
+*/
+[
+	uuid(89E29AD1-FB59-11D4-A0A1-006008736ABF),
+	version(1.0),
+	helpstring("CEBackparserCO 1.0 Type Library")
+]
+library CEBACKPARSERCOLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+    importlib("..\..\inc\CEBackparse.tlb");
+	[
+		uuid(B2E9CA24-FC0B-11D4-A0A3-006008736ABF),
+		helpstring("CEBackparseComObj Class")
+	]
+	coclass CEBackparseComObj
+	{
+		[default] interface ICEBackparse;
+	};
+};
+

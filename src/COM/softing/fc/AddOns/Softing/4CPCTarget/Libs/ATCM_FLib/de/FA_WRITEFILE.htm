@@ -1,0 +1,112 @@
+<html>
+<head>
+<title>FA_WRITEFILE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css">
+</head>
+
+<body bgcolor="#FFFFCC">
+<h2>FA_WRITEFILE </h2>
+<p>Schreibt einen Bytestring in eine Datei.</p>
+<h3>Schnittstelle</h3>
+<pre class="preforma">FUNCTION_BLOCK FA_WRITEFILE
+VAR_INPUT
+    EXEC        : BOOL;         
+    FILENAME    : WSTRING;      
+    TOUT        : TIME;         
+    DATA        : BYTE_STRING;  
+END_VAR
+VAR_IN_OUT
+    POSITION    : DINT;         
+END_VAR
+VAR_OUTPUT
+    DONE        : BOOL;         
+    ERROR       : BOOL;
+    ERRCD       : DINT;
+    ERRTXT      : WSTRING;
+END_VAR</pre>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>EXEC</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Startet die Operation bei steigender Flanke.</dd>
+  <dt><b>FILENAME</b></dt>
+  <dd>Wert vom Typ <i><b>WSTRING</b></i><br>
+    Spezifiziert den Namen der Datei, auf die ein Schreibzugriff erfolgen soll. 
+    Der Dateiname kann einschlie&szlig;lich des voll qualifizierten Pfads angegeben 
+    werden, z.B. &quot;<font face="Courier New, Courier, mono">D:\Projects\Tests</font>&quot;. 
+    Wird kein Pfad spezifiziert, wird intern das Standard-Arbeitsverzeichnis von 
+    ATCMControl als Pfad erg&auml;nzt. Das Standard-Arbeitsverzeichnis ist das Verzeichnis 
+    <font face="Courier New, Courier, mono">data</font> direkt unterhalb des ATCMControl-Installationsverzeichnisses. 
+  </dd>
+  <dt><b>TOUT</b></dt>
+  <dd>Wert vom Typ <i><b>TIME</b></i><br>
+    Definiert die Zeitdauer, w&auml;hrend der die Ausf&uuml;hrung des Schreibvorgangs 
+    versucht wird. Nach Ablauf dieses Zeitraums, wird der Versuch, in die Datei 
+    zu schreiben, abgebrochen. <br>
+    Standartwert ist T#0ms. Bei einer Initialisierung mit diesem Wert wird kein 
+    Timeout gesetzt, d.h. der Zeitraum, w&auml;hrend dessen versucht wird, eine 
+    Dateioperation auszuf&uuml;hren, wird nicht &uuml;berwacht.</dd>
+  <dt><b>DATA</b></dt>
+  <dd>Instanz der Struktur <i><b>BYTE_STRING</b></i><br>
+  </dd>
+  <dd>Spezifiziert den zu schreibenden Wert.<br>
+    Verwenden Sie die Funktion <b><i>COPY_WSTRING_TO_BYTE_STRING</i></b>, um den 
+    Bytestring mit einem Wert zu initialisieren. <br>
+    Zur Konvertierung eines Bytestrings in einen <i><b>WSTRING</b></i> k&ouml;nnen 
+    Sie die Funktion <b><i>COPY_WSTRING_FROM_BYTE_STRING</i></b> aus der Bibliothek 
+    <i><b>4C_Communication</b></i> verwenden.</dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl> 
+  <dt><b>POSITION</b></dt>
+  <dd>Wert vom Typ <i><b>DINT</b></i><br>
+    Startposition f&uuml;r den Schreibzugriff. Nach Beendigung der Schreiboperation 
+    wird <i><b>POSITION</b></i> ein Byte hinter den zuletzt geschriebenen Wert 
+    gesetzt. Die erste g&uuml;ltige Schreibposition ist 0. <br>
+    F&uuml;r Beginn und Ende einer Datei sowie das Ende einer Zeile sind <a href="Const_Pos.htm">Positions-Konstanten</a> 
+    definiert. </dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b>DONE</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Signalisiert den (erfolgreichen oder gescheiterten) Abschlu&szlig; der Operation.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Operation ist abgeschlossen.<br>
+    <i><b>FALSE</b></i>: Operation ist noch nicht abgeschlossen.</dd>
+  <dt><b>ERROR</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Signalisiert den Fehlerstatus.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Ein Fehler ist aufgetreten.<br>
+    <i><b>FALSE</b></i>: Es ist kein Fehler aufgetreten.</dd>
+  <dt><b>ERRCD</b></dt>
+  <dd>Wert vom Typ <i><b>DINT</b></i><br>
+    Enth&auml;lt eine Fehlernummer, falls ein Fehler aufgetreten ist. <br>
+    Ist kein Fehler aufgetreten, hat <i><b>ERRCD</b></i> den Wert <b>0</b>.</dd>
+  <dt><b>ERRTXT</b></dt>
+  <dd>Wert vom Typ <i><b>WSTRING</b></i><br>
+    Enth&auml;lt einen Fehlertext, falls ein Fehler aufgetreten ist. <br>
+    Ist kein Fehler aufgetreten, enth&auml;lt <i><b>ERRTXT</b></i> einen Leerstring.</dd>
+</dl>
+<h3>Beschreibung</h3>
+<p><b><i>FA_WRITEFILE</i></b> schreibt den an <i><b>DATA</b></i> &uuml;bergebenen 
+  Wert in die an <i><b>FILE</b></i> &uuml;bergebene Datei. W&auml;hrend des Schreibzugriffs 
+  wird ein kompletter Zugriffszyklus durchlaufen. </p>
+<p> Die Startposition des Schreibzugriffs wird in <i><b>POSITION</b></i> festgelegt. 
+  <i> <b>POSITION</b></i> repr&auml;sentiert den Dateizeiger, der die aktuelle 
+  Schreibposition markiert. </p>
+<p>Nach dem Abschlu&szlig; einer Schreiboperation wird <i><b>POSITION</b></i> 
+  automatisch auf ein Byte hinter der zuletzt gelesenen Zeile gesetzt. Es ist 
+  auf diese Weise m&ouml;glich mehrere sequentielle Schreibzugriffe durchzuf&uuml;hren, 
+  ohne <i> <b>POSITION</b></i> jedesmal neu zu initialisieren. Dazu wird <i><b>POSITION</b></i> 
+  beim ersten Aufruf von <i><b>FA_WRITEFILE</b></i> eine Variable zugewiesen, 
+  die bei jedem folgenden Aufruf von <i><b>FA_WRITEFILE</b></i> wieder an deren 
+  Instanzvariable <i> <b>POSITION</b></i> zugewiesen wird. Die Endposition des 
+  vorausgehenden Schreibzugriffs wird dadurch zur Startposition des folgenden 
+  Schreibzugriffs.</p>
+<p>Die zu schreibende Datei wird im Bin&auml;rmodus ge&ouml;ffnet. </p>
+</body>
+</html>

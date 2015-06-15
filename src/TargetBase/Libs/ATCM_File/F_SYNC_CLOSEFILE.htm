@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>F_SYNC_CLOSEFILE</title>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="stylesheet" href="Lib.css">
+</head>
+<body bgcolor="#ffffcc">
+<h2>F_SYNC_CLOSEFILE</h2>
+<p>Closes an open file.</p>
+<h3>Interface</h3>
+<pre class="preforma">FUNCTION F_SYNC_CLOSEFILE:BOOL<br>VAR_IN_OUT<br>    FILE        : F_SYNC_FILE;<br>END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of the type <i><b>BOOL</b></i><br>
+Signalizes the error status.<br>
+Possible values:<br>
+<i><b>TRUE</b></i>: An error has occurred.<br>
+<i><b>FALSE</b></i>: No error has occurred.</p>
+<h3>Parameter</h3>
+<h3>IN_OUT</h3>
+<dl>
+  <dt><b><a name="File"></a>FILE</b></dt>
+  <dd>Instance of the <a href="F_SYNC_FILE.htm"><i><b>F_SYNC_FILE</b></i></a>
+structure<br>
+File object on which the operation is performed.</dd>
+</dl>
+<h3>Description</h3>
+<p><i><b>FA_SYNC_CLOSEFILE </b></i>closes the file passed to <i><b>FILE</b></i>.
+<i><b>FA_SYNC_CLOSEFILE </b></i>must always be called to terminate an
+access cycle. The file to be closed is represented by an instance of
+the <a href="F_SYNC_FILE.htm"><i><b>F_SYNC_FILE</b></i></a> structure.</p>
+</body>
+</html>

@@ -1,0 +1,32 @@
+# $Header: /ATCMReleased/V2.20.00/TargetBase/LIBS/ATCM_XMLfile/ATCM_XMLfile.inf 1     28.02.07 19:05 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: ATCM_File.inf $
+#                        $Logfile: /ATCMReleased/V2.20.00/TargetBase/LIBS/ATCM_XMLfile/ATCM_XMLfile.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Targetbase / Libs
+#
+# =COMPONENT            ATCM_XMLfile
+#
+# =CURRENT      $Date: 28.02.07 19:05 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+USER=libname=ATCM_XMLfile
+USER=make_lib: force
+
+USER= xcopy $(MAKEDIR)\*.*     $(MAKEDIR)\de\*.*	/Y
+USER= xcopy $(MAKEDIR)\*.*     $(MAKEDIR)\eng\*.*	/Y
+
+USER= $(4CG) $(MAKEDIR)\de\$(libname).4cp   -ml:0 $(4CL_DIR)\de\$(libname).4cl
+USER= $(4CG) $(MAKEDIR)\eng\$(libname).4cp  -ml:0 $(4CL_DIR)\eng\$(libname).4cl
+
+#copy the english stup to $(libdir)
+USER= copy  $(4CL_DIR)\eng\$(libname).4cl    $(4CL_DIR)\$(libname).4cl	/Y
+
+# -------------------------------------------------------------------------------

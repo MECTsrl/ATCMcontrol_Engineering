@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>COMM_PARTNER</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>COMM_PARTNER </h2>
+<p>Repr&auml;sentiert eine Verbindung.</p>
+<h3>Schnittstelle</h3>
+<pre class="preforma">TYPE
+     COMM_PARTNER : STRUCT
+        iCommType   : DINT := CFB_Serial;   
+        iTimeout    : DINT := 0;            
+        sParam      : WSTRING;              
+     END_STRUCT;
+END_TYPE</pre>
+<h3>Parameter</h3>
+<p><b>iCommType</b></p>
+<p>Wert vom Typ <i><b>DINT</b></i>. <br>
+  Definiert die zu verwendende Kommunikationsart. Derzeit wird nur serielle Kommunikation 
+  unterst&uuml;tzt. Einziger g&uuml;ltiger Wert ist deshalb die Konstante <i><b>CFB_Serial</b></i> 
+  oder der entsprechende Wert 0. Dieser Wert ist der Standardinitialwert.</p>
+<p><b>iTimeout</b></p>
+<p>Wert vom Typ <i><b>DINT</b></i>. <br>
+  Definiert den Timeout f&uuml;r Read- und Write-Requests und das Herstellen einer 
+  Verbindung in Millisekunden. Bei Initialisierung mit dem Wert 0 wird kein Timeout 
+  &uuml;berwacht. <br>
+  Standardwert ist 0.<br>
+  &Uuml;ber den Timeout wird festgelegt, wie lange versucht wird, einen Read- 
+  oder Write-Request durchzuf&uuml;hren oder eine Verbindung herzugstellen, bevor 
+  der Versuch abgebrochen wird. Der in <i><b>iTimeout</b></i> festgelegte Wert 
+  gilt f&uuml;r alle Funktionsbausteine, die eine Operation auf eine Instanz von 
+  <i><b>COMM_PARTNER</b></i> ausf&uuml;hren. </p>
+<p><b>sParam</b></p>
+<p>Wert vom Typ <i><b>WSTRING</b></i>. <br>
+  String, der die Verbindungsparameter spezifiziert. Beim Öffnen einer neuen Verbindung 
+  werden mit Hilfe des in <i><b>sParam</b></i> übergebenen Verbindungsstrings 
+  die Parameter der Schnittstelle definiert. Zu Syntax und m&ouml;glichen Einstellungen 
+  im Verbindungsstring siehe Abschnitt <a href="CommParam.htm">Verbindungsparameter</a>.</p>
+<h3>Beschreibung</h3>
+<p><b><i>COMM_PARTNER</i></b> repr&auml;sentiert eine Verbindung. Eine Instanz 
+  von <i><b>COMM_PARTNER </b></i>wird an eine Instanz von <i><b><a href="CONNECT.htm">CONNECT</a></b></i> 
+  &uuml;bergeben, um eine Verbindung herzustellen. Vor der &Uuml;bergabe an <i><b>CONNECT</b></i> 
+  m&uuml;ssen die Strukturelemente der entsprechenden Instanz von<i><b> COMM_PARTNER</b></i> 
+  initialisiert werden. </p>
+<p>Zentrale Eigenschaften der Verbindung werden im Verbindungsstring des Elements 
+  <i><b>sParam</b></i> festgelegt. Die Verbindungseigenschaften sind vom &Ouml;ffnen 
+  bis zum Schlie&szlig;en einer Verbindung g&uuml;ltig. &Auml;nderungen der Werte 
+  einer Instanz von <i><b>COMM_PARTNER</b></i> werden nur beim &Ouml;ffnen einer 
+  Verbindung wirksam. Auf eine bereits ge&ouml;ffnete Verbindung haben &Auml;nderungen 
+  an Werten der Strukturelemente keine Auswirkung. </p>
+</body>
+</html>

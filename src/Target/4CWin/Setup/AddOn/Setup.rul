@@ -1,0 +1,435 @@
+
+// ATCMControl 4CWinVMMAddOn InstallShield Scripts
+// ----------------------------------------------------------------------------
+
+#include "isrt.h"
+#include "iswi.h"     
+
+#include "I:\4Control_R\Target\4CWIN\res\BuildNr.h"     
+#include "I:\4Control_R\Target\4CWIN\res\Product.h"
+
+#include "I:\4Control_R\TargetBase\rul\common.rul"
+
+export prototype CheckRequirements(HWND);  
+export prototype CheckInstallPath(HWND);
+export prototype GetInstallDir(HWND);
+export prototype ProcessAfterDataMove(HWND);
+export prototype CheckRemoveRequest(HWND);
+export prototype RenameLib(HWND);  
+export prototype UnMergeLib(HWND);  
+
+
+function CheckRequirements(hMSI)   
+    // To Do:  Declare local variables.
+    STRING svErrorText, svRet;
+    NUMBER nvSize;
+    STRING sv4CKernelRet; 
+    NUMBER nv4CKernelRet;
+begin             
+
+    // To Do:  Write script that will be executed when MyFunction is called.
+    
+    // Check required installations
+	svRet = "0";
+	svErrorText = "";
+	                                                
+	// Check 4C Kernel
+	nvSize = 10;	
+	MsiGetProperty(hMSI, "_FC_INST_4CKERNEL_RET", sv4CKernelRet, nvSize);
+	StrToNum(nv4CKernelRet, sv4CKernelRet);
+	if nv4CKernelRet <= 0 then 
+		// Error
+		nvSize = 20;	
+		svErrorText = svErrorText + "4C Kernel ";
+	endif;
+	                                                
+	// Set MSI properties	                                                
+	if nv4CKernelRet > 0  then
+		// Ok
+		svRet = "1";
+	else
+		svRet = "0";
+		MsiSetProperty(hMSI, "_FC_REQUIREMENTS_MSG", svErrorText);
+	endif;		                      
+	MsiSetProperty(hMSI, "_FC_REQUIREMENTS", svRet);	
+	
+// Debug:
+	// INSTALLDIR
+	nvSize = 100;	
+	MsiGetProperty(hMSI, "INSTALLDIR", sv4CKernelRet, nvSize);
+	StrToNum(nv4CKernelRet, sv4CKernelRet);
+	if nv4CKernelRet <= 0 then 
+		// Error
+		nvSize = 20;	
+		svErrorText = svErrorText + "4C Kernel ";
+	endif;
+	                                                
+end;
+
+
+
+
+function CheckInstallPath(hMSI)   
+    STRING szKey, svErrorText, szName, svValue, svRet;
+    NUMBER nvType, nvSize, nv4cKernelRet;
+begin
+
+	svRet = "0";
+	svErrorText = "";
+	
+	// Retrieve 4C Kernel install path	                      
+	szKey = "SOFTWARE\\Softing\\4ControlV2\\2.0";
+	szName = "Path";
+	nvType = REGDB_STRING;
+	RegDBSetDefaultRoot (HKEY_LOCAL_MACHINE);	
+	if RegDBGetKeyValueEx (szKey, szName, nvType, svValue, nvSize) = 0 then
+		// Ok
+		nv4cKernelRet = 1;
+	else
+		// Error
+		nv4cKernelRet = 0;
+		svErrorText = svErrorText + "4C Kernel";
+	endif;
+	
+	// Set MSI properties	                                                
+	if nv4cKernelRet > 0 then
+		// Ok
+		svRet = "1";
+	else
+		svRet = "0";
+		MsiSetProperty(hMSI, "_FC_REQUIREMENTS_MSG", svErrorText);
+	endif;		                      
+	MsiSetProperty(hMSI, "_FC_REQUIREMENTS", svRet);	
+	MsiSetProperty(hMSI, "INSTALLDIR", svValue);
+end;
+
+function GetInstallDir(hMSI)   
+    // To Do:  Declare local variables.
+    STRING szKey, szName, svValue;
+    NUMBER nvType, nvSize, nv4cPathRet;   
+begin             
+	// Set the 'INSTALLDIR' property at the begin of the sequences !!!
+	
+	// Retrieve ATCMControl V2 install path	                      
+	szKey = "SOFTWARE\\Softing\\4ControlV2\\2.0";
+	szName = "Path";
+	nvType = REGDB_STRING;
+	RegDBSetDefaultRoot (HKEY_LOCAL_MACHINE);	
+	if RegDBGetKeyValueEx (szKey, szName, nvType, svValue, nvSize) = 0 then
+		// Ok
+		nv4cPathRet = 1;
+	else
+		// 
+		nv4cPathRet = 0;
+	endif;
+	
+	// Set MSI properties
+	// INSTALLDIR:
+	if nv4cPathRet > 0 then
+		// Set 'INSTALLDIR' property
+		MsiSetProperty(hMSI, "INSTALLDIR", svValue);
+	endif;
+end;
+
+function ProcessAfterDataMove(hMSI)
+	NUMBER nvSize, nvItem, nv4cPathRet, nvComponentsListID, nvType, nvComponentsCnt;
+	STRING svFCRemove, sv4cPath, szComponentsKey;
+	STRING szPathKey, szPathName, szPathValue;   
+begin
+             
+	// Retrieve ATCMControl V2 install path	                      
+	szPathKey = "SOFTWARE\\Softing\\4ControlV2\\2.0";
+	szPathName = "Path";
+	nvType = REGDB_STRING;
+	RegDBSetDefaultRoot (HKEY_LOCAL_MACHINE);	
+	if RegDBGetKeyValueEx(szPathKey, szPathName, nvType, sv4cPath, nvSize) = 0 then
+		// Ok
+		nv4cPathRet = 1;
+	else
+		// Show 'DestinationFolder' dialog
+		nv4cPathRet = 0;
+	endif;
+	
+	// Retrieve installed components from registry
+	szComponentsKey = "SOFTWARE\\Softing\\4ControlV2\\2.0\\Components";
+	nvItem = REGDB_KEYS;
+	RegDBSetDefaultRoot(HKEY_LOCAL_MACHINE);
+	nvComponentsListID = ListCreate(STRINGLIST);
+	if nvComponentsListID != LIST_NULL then
+		if RegDBQueryKey(szComponentsKey, nvItem, nvComponentsListID) = 0 then
+			// Ok
+			nvComponentsCnt = ListCount(nvComponentsListID);
+		endif;
+	endif;
+    ListDestroy(nvComponentsListID);
+	
+	// Add / Remove installpath value in the registry 
+	if nvComponentsCnt > 0 & 
+		nv4cPathRet = 0 then 
+		// Create installpath value in the registry
+		nvSize = 100;	
+		MsiGetProperty(hMSI, "INSTALLDIR", sv4cPath, nvSize);
+		
+		nvType = REGDB_STRING;
+		nvSize = -1;
+		RegDBSetKeyValueEx(szPathKey, szPathName, nvType, sv4cPath, nvSize);
+	elseif nvComponentsCnt = 0 & 
+		nv4cPathRet > 0 then 
+		// Remove installpath value in the registry
+		RegDBDeleteValue(szPathKey, szPathName);
+		szPathKey = "SOFTWARE\\Softing\\4ControlV2";
+		RegDBDeleteKey(szPathKey);
+	endif;	
+end;
+
+function CheckRemoveRequest(hMSI)   
+	STRING svRemove;
+    NUMBER nvSize;
+begin             
+	// Check if remove is selected
+	nvSize = 10;	
+	MsiGetProperty(hMSI, "REMOVE", svRemove, nvSize);
+
+	if svRemove = "ALL" then
+		// Set '_FC_KADMERGE_REMOVE' property
+		MsiSetProperty(hMSI, "_FC_KADMERGE_REMOVE", "1");
+ 	endif;
+end;
+        
+        
+function RenameLib(hMSI)   
+    STRING svInstalldir;
+    STRING szProgram;  
+    STRING szPath;
+    STRING szCmdLine;
+    STRING szSrcFile;
+	STRING szTargetFile;   
+	STRING svRemove;
+	NUMBER nvSize;
+    NUMBER nvRet;
+    NUMBER lWait;
+begin
+	// wait for the launched application to terminate before continuing
+	lWait = WAIT;
+	
+	nvSize = 80;	
+	MsiGetProperty(hMSI, "INSTALLDIR", svInstalldir, nvSize);
+	szPath = svInstalldir + "Engineering\\bin\\";
+	szProgram = "4cg.exe";   
+	
+	MsiSetProperty(hMSI, "_FC_STARTEXE_PATH", szPath);
+	MsiSetProperty(hMSI, "_FC_STARTEXE_EXE", szProgram);
+	
+	// 4C_IEC1131_3.4cl  --------------------------------------------------------------
+	szSrcFile = svInstalldir + "Engineering\\bin\\4CWin\\libs\\ATCM_IEC1131_3.4CWin.4cl";
+	LongPathToQuote (szSrcFile, TRUE);
+	szTargetFile = svInstalldir + "Engineering\\lib\\ATCM_IEC1131_3.4cl"; 
+	LongPathToQuote (szTargetFile, TRUE);
+	
+	szCmdLine = " -al " + szSrcFile + " " + szTargetFile;
+	MsiSetProperty(hMSI, "_FC_STARTEXE_PARAM", szCmdLine);
+	
+	nvRet = MsiDoAction(hMSI, "_4C_StartExecutable");
+                             	
+	// 4C_System.4cl	---------------------------------------------------------------
+	szSrcFile = svInstalldir + "Engineering\\bin\\4CWin\\libs\\ATCM_System.4CWin.4cl";
+	LongPathToQuote (szSrcFile, TRUE);
+	szTargetFile = svInstalldir + "Engineering\\lib\\ATCM_System.4cl"; 
+	LongPathToQuote (szTargetFile, TRUE);
+	
+	szCmdLine = " -al " + szSrcFile + " " + szTargetFile;
+	MsiSetProperty(hMSI, "_FC_STARTEXE_PARAM", szCmdLine);
+	
+	nvRet = MsiDoAction(hMSI, "_4C_StartExecutable");
+	
+	// 4C_System2.4cl	---------------------------------------------------------------
+	szSrcFile = svInstalldir + "Engineering\\bin\\4CWin\\libs\\ATCM_System2.4CWin.4cl";
+	LongPathToQuote (szSrcFile, TRUE);
+	szTargetFile = svInstalldir + "Engineering\\lib\\ATCM_System2.4cl"; 
+	LongPathToQuote (szTargetFile, TRUE);
+	
+	szCmdLine = " -al " + szSrcFile + " " + szTargetFile;
+	MsiSetProperty(hMSI, "_FC_STARTEXE_PARAM", szCmdLine);
+	
+	nvRet = MsiDoAction(hMSI, "_4C_StartExecutable");
+	
+	// 4C_Utility.4cl	---------------------------------------------------------------
+	szSrcFile = svInstalldir + "Engineering\\bin\\4CWin\\libs\\ATCM_Utility.4CWin.4cl";
+	LongPathToQuote (szSrcFile, TRUE);
+	szTargetFile = svInstalldir + "Engineering\\lib\\ATCM_Utility.4cl"; 
+	LongPathToQuote (szTargetFile, TRUE);
+	
+	szCmdLine = " -al " + szSrcFile + " " + szTargetFile;
+	MsiSetProperty(hMSI, "_FC_STARTEXE_PARAM", szCmdLine);
+	
+	nvRet = MsiDoAction(hMSI, "_4C_StartExecutable");
+
+	// 4C_File.4cl	-------------------------------------------------------------------
+	szSrcFile = svInstalldir + "Engineering\\bin\\4CWin\\libs\\ATCM_File.4CWin.4cl";
+	LongPathToQuote (szSrcFile, TRUE);
+	szTargetFile = svInstalldir + "Engineering\\lib\ATCM_File.4cl"; 
+	LongPathToQuote (szTargetFile, TRUE);
+	
+	szCmdLine = " -al " + szSrcFile + " " + szTargetFile;
+	MsiSetProperty(hMSI, "_FC_STARTEXE_PARAM", szCmdLine);
+	
+	nvRet = MsiDoAction(hMSI, "_4C_StartExecutable");
+     
+	// 4C_ModbusRTU.4cl	---------------------------------------------------------------
+	
+	// 4C_ProfiDP.4cl	---------------------------------------------------------------
+	
+	// 4C_SerialComm.4cl	-----------------------------------------------------------
+	
+	// 4C_Time.4cl	-------------------------------------------------------------------
+	
+	// 4C_UDPComm.4cl	---------------------------------------------------------------
+	
+	// 4C_MBus.4cl	-------------------------------------------------------------------
+	
+	// 4C_BACnet.4cl	---------------------------------------------------------------
+//	szSrcFile = svInstalldir + "Engineering\\bin\\4CWin\\libs\\4C_BACnet.4CWin.4cl";
+//	LongPathToQuote (szSrcFile, TRUE);
+//	szTargetFile = svInstalldir + "Engineering\\lib\\4C_BACnet.4cl"; 
+//	LongPathToQuote (szTargetFile, TRUE);
+//	
+//	szCmdLine = " -al " + szSrcFile + " " + szTargetFile;
+//	MsiSetProperty(hMSI, "_FC_STARTEXE_PARAM", szCmdLine);
+//	
+//	nvRet = MsiDoAction(hMSI, "_4C_StartExecutable");     
+	
+	// 4C_BACnet_IEC.4cl	-----------------------------------------------------------
+//	szSrcFile = svInstalldir + "Engineering\\bin\\4CWin\\libs\\4C_BACnet_IEC.4CWin.4cl";
+//	LongPathToQuote (szSrcFile, TRUE);
+//	szTargetFile = svInstalldir + "Engineering\\lib\\4C_BACnet_IEC.4cl"; 
+//	LongPathToQuote (szTargetFile, TRUE);
+//	
+//	szCmdLine = " -al " + szSrcFile + " " + szTargetFile;
+//	MsiSetProperty(hMSI, "_FC_STARTEXE_PARAM", szCmdLine);
+//	
+//	nvRet = MsiDoAction(hMSI, "_4C_StartExecutable");     
+	
+	// 4C_MBus2.4cl		---------------------------------------------------------------
+//	szSrcFile = svInstalldir + "Engineering\\bin\\4CWin\\libs\\4C_MBus2.4CWin.4cl";
+//	LongPathToQuote (szSrcFile, TRUE);
+//	szTargetFile = svInstalldir + "Engineering\\lib\\4C_MBus2.4cl"; 
+//	LongPathToQuote (szTargetFile, TRUE);
+//	
+//	szCmdLine = " -al " + szSrcFile + " " + szTargetFile;
+//	MsiSetProperty(hMSI, "_FC_STARTEXE_PARAM", szCmdLine);
+	
+//	nvRet = MsiDoAction(hMSI, "_4C_StartExecutable");     
+	
+end;
+          
+function UnMergeLib(hMSI)   
+    STRING svInstalldir;
+    STRING szProgram;  
+    STRING szPath;
+    STRING szCmdLine;
+    STRING szSrcFile;
+	STRING szTargetFile;   
+	STRING svRemove;
+	NUMBER nvSize;
+    NUMBER nvRet;
+    NUMBER lWait;
+begin
+	// wait for the launched application to terminate before continuing
+	lWait = WAIT;
+	
+	nvSize = 80;	
+	MsiGetProperty(hMSI, "INSTALLDIR", svInstalldir, nvSize);
+	szPath = svInstalldir + "Engineering\\bin\\";
+	szProgram = "4cg.exe";   
+	
+	MsiSetProperty(hMSI, "_FC_STARTEXE_PATH", szPath);
+	MsiSetProperty(hMSI, "_FC_STARTEXE_EXE", szProgram);
+	
+	szSrcFile = "4CWin";
+
+	// 4C_IEC1131_3.4cl  --------------------------------------------------------------
+	szTargetFile = svInstalldir + "Engineering\\lib\\ATCM_IEC1131_3.4cl"; 
+	LongPathToQuote (szTargetFile, TRUE);
+	
+	szCmdLine = " -rl:" + szSrcFile + " " + szTargetFile;
+	MsiSetProperty(hMSI, "_FC_STARTEXE_PARAM", szCmdLine);
+	
+	nvRet = MsiDoAction(hMSI, "_4C_StartExecutable");
+                             	
+	// 4C_System.4cl	---------------------------------------------------------------
+	szTargetFile = svInstalldir + "Engineering\\lib\\ATCM_System.4cl"; 
+	LongPathToQuote (szTargetFile, TRUE);
+	
+	szCmdLine = " -rl:" + szSrcFile + " " + szTargetFile;
+	MsiSetProperty(hMSI, "_FC_STARTEXE_PARAM", szCmdLine);
+	
+	nvRet = MsiDoAction(hMSI, "_4C_StartExecutable");
+	
+	// 4C_System2.4cl	---------------------------------------------------------------
+	szTargetFile = svInstalldir + "Engineering\\lib\\ATCM_System2.4cl"; 
+	LongPathToQuote (szTargetFile, TRUE);
+	
+	szCmdLine = " -rl:" + szSrcFile + " " + szTargetFile;
+	MsiSetProperty(hMSI, "_FC_STARTEXE_PARAM", szCmdLine);
+	
+	nvRet = MsiDoAction(hMSI, "_4C_StartExecutable");
+	
+	// 4C_Utility.4cl	---------------------------------------------------------------
+	szTargetFile = svInstalldir + "Engineering\\lib\\ATCM_Utility.4cl"; 
+	LongPathToQuote (szTargetFile, TRUE);
+	
+	szCmdLine = " -rl:" + szSrcFile + " " + szTargetFile;
+	MsiSetProperty(hMSI, "_FC_STARTEXE_PARAM", szCmdLine);
+	
+	nvRet = MsiDoAction(hMSI, "_4C_StartExecutable");
+
+	// 4C_File.4cl	-------------------------------------------------------------------
+	szTargetFile = svInstalldir + "Engineering\\lib\\ATCM_File.4cl"; 
+	LongPathToQuote (szTargetFile, TRUE);
+	
+	szCmdLine = " -rl:" + szSrcFile + " " + szTargetFile;
+	MsiSetProperty(hMSI, "_FC_STARTEXE_PARAM", szCmdLine);
+	
+	nvRet = MsiDoAction(hMSI, "_4C_StartExecutable");
+     
+	// 4C_ModbusRTU.4cl	---------------------------------------------------------------
+	
+	// 4C_ProfiDP.4cl	---------------------------------------------------------------
+	
+	// 4C_SerialComm.4cl	-----------------------------------------------------------
+	
+	// 4C_Time.4cl	-------------------------------------------------------------------
+	
+	// 4C_UDPComm.4cl	---------------------------------------------------------------
+	
+	// 4C_MBus.4cl	-------------------------------------------------------------------
+
+	// 4C_BACnet.4cl	---------------------------------------------------------------
+//	szTargetFile = svInstalldir + "Engineering\\lib\\4C_BACnet.4cl"; 
+//	LongPathToQuote (szTargetFile, TRUE);
+//	
+//	szCmdLine = " -rl:" + szSrcFile + " " + szTargetFile;
+//	MsiSetProperty(hMSI, "_FC_STARTEXE_PARAM", szCmdLine);
+//	
+//	nvRet = MsiDoAction(hMSI, "_4C_StartExecutable");     
+	
+	// 4C_BACnet_IEC.4cl	-----------------------------------------------------------
+//	szTargetFile = svInstalldir + "Engineering\\lib\\4C_BACnet_IEC.4cl"; 
+//	LongPathToQuote (szTargetFile, TRUE);
+//	
+//	szCmdLine = " -rl:" + szSrcFile + " " + szTargetFile;
+//	MsiSetProperty(hMSI, "_FC_STARTEXE_PARAM", szCmdLine);
+//	
+//	nvRet = MsiDoAction(hMSI, "_4C_StartExecutable");     
+	
+	// 4C_MBus2.4cl		---------------------------------------------------------------
+//	szTargetFile = svInstalldir + "Engineering\\lib\\4C_MBus2.4cl"; 
+//	LongPathToQuote (szTargetFile, TRUE);
+//	
+//	szCmdLine = " -rl:" + szSrcFile + " " + szTargetFile;
+//	MsiSetProperty(hMSI, "_FC_STARTEXE_PARAM", szCmdLine);
+//	
+//	nvRet = MsiDoAction(hMSI, "_4C_StartExecutable");     
+	
+end;
+          

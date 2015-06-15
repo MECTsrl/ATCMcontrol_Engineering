@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>CONCAT</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>CONCAT</h2>
+<p>Joins the strings passed as parameters together to make up one complete string.<br>
+</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION CONCAT : ANY_STRING
+VAR_INPUT  
+    IN1 : ANY_STRING; 
+END_VAR
+VAR_IN_EXT 
+    IN2 : ANY_STRING; 
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>ANY_STRING</b></i><br>
+  Complete string from the joined strings.</p>
+
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>IN1</b></dt>
+  <dd>Value of type <b><i>ANY_STRING</i></b><br>
+    String to which another string is to be added.</dd>
+  <dt><b>IN2 </b>(IN_EXT)</dt>
+  <dd>Value of type <b><i>ANY_STRING</i></b><br>
+    String to be added.<br>
+    <b><i>IN_EXT</i></b>-variables are extensible, i.e. in addition to <i><b>IN2</b></i>, 
+    further strings can be passed for joining.<br>
+  </dd>
+</dl>
+<h3>Description</h3>
+<p>Joins the strings passed as parameters together to make up one complete string. 
+</p>
+</body>
+</html>

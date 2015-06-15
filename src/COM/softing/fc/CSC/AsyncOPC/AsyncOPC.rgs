@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		{6202D450-8BDF-11D5-A550-0008C779C600} = s 'ATCMControl 2: AsyncOPC'
+		'AsyncOPC.EXE'
+		{
+			val AppID = s {6202D450-8BDF-11D5-A550-0008C779C600}
+		}
+	}
+}

@@ -1,0 +1,22 @@
+# $Header: /4CReleased/V2.20.00/TargetBase/TOOLS/Tools.inf 1     28.02.07 19:07 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: Tools.inf $
+#                        $Logfile: /4CReleased/V2.20.00/TargetBase/TOOLS/Tools.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 TargetBase
+#
+# =COMPONENT            Tools
+#
+# =CURRENT      $Date: 28.02.07 19:07 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+SUBPROJECT=SPKonvert\SPKonvert.mak
+
+# -------------------------------------------------------------------------------

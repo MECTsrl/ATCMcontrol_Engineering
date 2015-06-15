@@ -1,0 +1,61 @@
+<html>
+
+<head>
+<title>FNC_Sceleton</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Help.css">
+</head>
+
+<body bgcolor="#FFFFCC">
+<BLOCKQUOTE> 
+  <h2>Function Name</h2>
+  <p> modbus_set_slave - set slave number in the context</p>
+  
+  <h3>Interface</h3>
+  <p class="interface">FUNCTION MODBUS_SET_SLAVE : UINT</p>
+  <p class="interface">VAR_INPUT </p>
+  <BLOCKQUOTE class="structinterface"> 
+    <p class="interface">ctx : STRING;</p>
+  </BLOCKQUOTE>
+   <BLOCKQUOTE class="structinterface"> 
+    <p class="interface">slave : BYTE;</p>
+  </BLOCKQUOTE> 
+  <p class="interface">END_VAR</p>
+  
+  <h3>Return value</h3>
+  <p>Value of type <i><b>UINT</b></i> </p>
+  <p>0 of success 1 for ERROR </p>
+  
+  <h3>Parameters </h3>
+  <h3>INPUT </h3>
+  <p><strong>ctx</strong></p>
+  <p class="indent"> Value of type <i><b>STRING</b></i> </p>
+  <p class="indent">Context for the connection to be closed. Valid values are RTU, TCP, TCPRTU</p>
+  <p><strong>slave</strong></p>
+  <p class="indent"> Value of type <i><b>BYTE</b></i> </p>
+  <p class="indent">Slave id to be set. Valid value are 1-254 </p>
+
+  
+  <h3>Description </h3>
+  <p> The MODBUS_SET_SLAVE function shall set the slave number in the libmodbus
+context. The behavior depends of network and the role of the device:
+</p>
+<p>
+*RTU* or *TCPRTU*
+Define the slave ID of the remote device to talk in master mode or set the
+internal slave ID in slave mode. According to the protocol, a Modbus device must
+only accept message holing its slave number or the special broadcast number.
+</p>
+<p>
+*TCP*
+The slave number is only required in TCP if the message must reach a device
+on a serial network. The special value 'MODBUS_TCP_SLAVE' (0xFF) can be used in TCP mode to restore
+the default value.
+</p>
+<p>
+The broadcast address is 'MODBUS_BROADCAST_ADDRESS' (0x0). This special value must be
+use when you want all Modbus devices of the network receive the request.
+</p>
+</BLOCKQUOTE>
+</body>
+</html>

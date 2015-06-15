@@ -1,0 +1,29 @@
+// TestProjectWizard.idl : IDL source for TestProjectWizard.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (TestProjectWizard.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "CEProjWiz.idl";
+
+[
+	uuid(D7A9EACA-E537-11D4-B368-0008C77981F8),
+	version(1.0),
+	helpstring("TestProjectWizard 1.0 Type Library")
+]
+library TESTPROJECTWIZARDLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(D7A9EADA-E537-11D4-B368-0008C77981F8),
+		helpstring("WizardComObj Class")
+	]
+	coclass WizardComObj
+	{
+		[default] interface ICEProjectWizard;
+	};
+};

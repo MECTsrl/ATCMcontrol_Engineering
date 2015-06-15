@@ -1,0 +1,140 @@
+// CEEdit.idl : IDL source for ATCM standard editor
+//
+
+// This file will be processed by the MIDL tool.
+
+// This file will be included into the odl files of the editor local servers.
+
+// You must add the following lines of code into the 'coclass'-section of your editors
+// odl file to expose the interfaces by your local server:
+// 		interface ICEEdit;
+
+// The base GUID for all standard editor interfaces is {17297FB0-F487-11d1-8831-006097E1BE6E}.
+// Increment the first block of this GUID to add a new GUID to this file ({17297FB1- ..}).
+
+import "docobj.idl";
+
+
+/////////////////////////////////////////////////////////////////////
+// Type Definitions
+/////////////////////////////////////////////////////////////////////
+cpp_quote("#ifndef STDEDEDIPOS_H_")
+cpp_quote("#define STDEDEDIPOS_H_")
+#include "StdEdEdipos.h"
+cpp_quote("#endif")
+
+
+/////////////////////////////////////////////////////////////////////
+// Interface Definitions
+/////////////////////////////////////////////////////////////////////
+
+
+    [
+		object,
+		uuid(C2E05480-C701-445a-8E9A-053D856D8C9C),
+		dual,
+		helpstring("ICEEdit Interface"),
+		pointer_default(unique)
+	]
+	interface ICEEdit : IUnknown
+	{
+		[id(1), helpstring("method LoadDocument")] 
+            HRESULT LoadDocument([in] BSTR szDocName);
+		[id(2), helpstring("method SaveDocument")] 
+            HRESULT SaveDocument([in] BSTR szDocName);
+		[id(3), helpstring("method GetModified")]
+			HRESULT GetModified();
+		[id(4), helpstring("method SetModified")]
+			HRESULT SetModified([in] BOOL bModified);
+		[id(5), helpstring("method GetPosition")]
+			HRESULT GetPosition([out]EDP_POS_QUALIFIER* lPosQual, [out]long* lX, [out]long* lY, [out]long* lCX, [out]long* lCY);
+		[id(6), helpstring("method GotoPosition")]
+			HRESULT GotoPosition([in]EDP_POS_QUALIFIER lPosQual, [in]long lX, [in]long lY, [in]long lCX, [in]long lCY);
+		[id(7), helpstring("method ForceReadOnly")]
+			HRESULT ForceReadOnly([in] BOOL bOn);
+		[id(8), helpstring("method SetLogicalColor")]
+			HRESULT SetLogicalColor([in] unsigned int iKind, [in] OLE_COLOR color);
+		[id(9), helpstring("method SetFont")]
+			HRESULT SetFont([in] BSTR font, [in] int iSize, [in] int iFlags);
+		[id(10), helpstring("method SetClientExtent")]
+			HRESULT SetClientExtent ([in] long lWidth, [in] long lHeight);
+		[id(11), helpstring("method GotoLocation")]
+			HRESULT GotoLocation([in] BSTR szLocation);
+		[id(12), helpstring("method FindFirst")]
+			HRESULT FindFirst([in, string] BSTR sStringToSearch, [in] UINT uiOption, [out, string] BSTR* psLocation);
+		[id(13), helpstring("method FindNext")]
+			HRESULT FindNext([out, string] BSTR* psLocation);
+		[id(14), helpstring("method SetPrintInfo: sets the name of the printer and the visible area of a page (not including header and footer)")]
+			HRESULT SetPrintInfo([in, string] BSTR sPrinterName, [in] long lWidth, [in] long lHeight);
+		[id(15), helpstring("method GetPageCnt: delivers the page count")]
+			HRESULT GetPageCount([out] long *lCount);
+		[id(16), helpstring("method GetPages: prints all pages as separate metafiles")]
+			HRESULT GetPages([out] SAFEARRAY(BSTR) *pPages);
+		[id(17), helpstring("method SetBaseFile: set the file the editor load file was extracted from")]
+			HRESULT SetBaseFile ([in, string] BSTR szBaseFile);
+		[id(18), helpstring("method Lock: keep server running")]
+			HRESULT Lock ([in] BOOL bLock);
+		[id(19), helpstring("method GetSelectedText: get selected text")]
+			HRESULT GetSelectedText([out, string] BSTR* psText);
+	};
+
+    [
+		object,
+		uuid(835DDE69-7980-4268-B4A7-0918D17AB5A8),
+		dual,
+		helpstring("ICEPrint Interface"),
+		pointer_default(unique)
+	]
+	interface ICEPrint : IUnknown
+	{
+		[id(1), helpstring("method PRLoadDocument: load document for printing (previously loaded documents are unloaded)")]
+            HRESULT PRLoadDocument([in] BSTR sFilePathName);
+		[id(2), helpstring("method PRSetPrintInfo: sets the name of the printer and the visible area of a page (not including header and footer)")]
+            HRESULT PRSetPrintInfo([in, string] BSTR sPrinterName, [in] long lWidth, [in] long lHeight);
+		[id(3), helpstring("method PRModuleName: returns module name for print options dialog")]
+            HRESULT PRGetModuleName([out, string] BSTR* psModuleName);
+		[id(4), helpstring("method PRGetPrintOptions: returns print options in form of a string")]
+            HRESULT PRGetPrintOptions([out, string] BSTR* psOptions);
+		[id(5), helpstring("method PRSetPrintOptions: set print options in form of a string")]
+            HRESULT PRSetPrintOptions([in, string] BSTR sOptions);
+		[id(6), helpstring("method PRShowPrintOptionsDialog: show print options dialog")]
+            HRESULT PRShowPrintOptionsDialog([out,string] BSTR* psOptions);
+		[id(7), helpstring("method PRGetPageCount: get number of pages for document")]
+            HRESULT PRGetPageCount([out] long *lCount);
+		[id(8), helpstring("method PRGetPages: get array of meta file names for all printed pages")]
+            HRESULT PRGetPages([out] SAFEARRAY(BSTR)* psaPages);
+		[id(9), helpstring("method PRGetXMLString: get print contents in form of an xml string")]
+            HRESULT PRGetXMLString([out, string] BSTR* psXMLString);
+	};
+
+    [
+		object,
+		uuid(C2E05481-C701-445a-8E9A-053D856D8C9C),
+		oleautomation,
+		helpstring("ICEEditNotify Interface"),
+		pointer_default(unique)
+	]
+	interface ICEEditNotify : IUnknown
+	{
+		[id(1), helpstring("method OnPositionChanged")]
+			HRESULT OnPositionChanged([in]EDP_POS_QUALIFIER lPosQual, [in]long lX, [in]long lY, [in]long lCX, [in]long lCY);
+	};
+
+//-----------------------------------------------------
+// ATTN: Type library should be imported by all editors using
+// the statement: importlib(StdEditorIF.tlb);
+//-----------------------------------------------------
+[
+    uuid(189AD7E5-A23C-4585-B946-40C87665880B),
+    version(2.0),
+    helpstring("4C_20: Standard Editor type library")
+]
+library StdEditorLib
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+
+    interface ICEEditNotify;
+    interface ICEEdit;
+    interface ICEPrint;
+};

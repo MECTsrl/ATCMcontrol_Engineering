@@ -1,0 +1,59 @@
+Functionblock Name
+
+Short description
+
+Interface
+
+FUNCTION_BLOCK FBName   
+
+VAR_INPUT
+    ...
+
+END_VAR
+
+VAR_OUTPUT
+    ...
+
+END_VAR
+
+VAR_IN_OUT
+    ...
+
+END_VAR
+
+
+Parameters 
+
+INPUT
+
+ParameterName 
+
+	Value of type datatype
+	Description
+
+	... 
+
+
+OUTPUT
+
+ParameterName 
+
+	Value of type datatype
+	Description
+
+... 
+
+
+IN_OUT
+
+ParameterName 
+
+	Value of type datatype
+	Description
+
+	... 
+
+
+Description
+
+Text

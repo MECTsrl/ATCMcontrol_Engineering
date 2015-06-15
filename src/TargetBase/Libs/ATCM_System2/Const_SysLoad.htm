@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Systemload constants</title>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="stylesheet" href="Lib.css">
+</head>
+<body bgcolor="#ffffcc">
+<h2>Load constants</h2>
+<h3><a name="LoadTypes">Load Types</a></h3>
+<table border="1">
+  <tbody>
+    <tr>
+      <td align="center"><b>Constant</b></td>
+      <td align="center"><b>Value</b></td>
+      <td align="center"><b>Description</b></td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>LOAD_LOAD_AVERAGE</b></i></td>
+      <td align="center">1</td>
+      <td align="left">System load average.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>LOAD_MEM_OVERAL</b></i></td>
+      <td align="center">2</td>
+      <td align="left">Memory usage whole FC/BC.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>LOAD_CPU_SYSTEM</b></i></td>
+      <td align="center">3</td>
+      <td align="left">CPU usage whole FC/BC.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>LOAD_CPU_TASK</b></i></td>
+      <td align="center">4</td>
+      <td align="left">CPU usage of a spec. task.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>LOAD_MEM_TASK</b></i></td>
+      <td align="center">5</td>
+      <td align="left">Memory usage of a spec. task.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>LOAD_CPU_IEC</b></i></td>
+      <td align="center">6</td>
+      <td align="left">CPU - All VM/IEC tasks.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>LOAD_CPU_IO_BAC</b></i></td>
+      <td align="center">7</td>
+      <td align="left">CPU - BACnet IO layer.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>LOAD_CPU_IO_PDP</b></i></td>
+      <td align="center">8</td>
+      <td align="left">CPU - Profibus DP IO layer.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>LOAD_CPU_SYS</b></i></td>
+      <td align="center">9</td>
+      <td align="left">CPU - System tasks.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>LOAD_CPU_BAC</b></i></td>
+      <td align="center">10</td>
+      <td align="left">CPU - BACnet Driver.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>LOAD_CPU_RTS</b></i></td>
+      <td align="center">11</td>
+      <td align="left">CPU - Whole Run Time System.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Maximum number of tasks</h3>
+<table border="1">
+  <tbody>
+    <tr>
+      <td align="center"><b>Constant</b></td>
+      <td align="center"><b>Value</b></td>
+      <td align="center"><b>Description</b></td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>MAX_COMM_TASKS</b></i></td>
+      <td align="center">5</td>
+      <td align="left">Max. no. of COMM_WORK tasks.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>MAX_VM_TASKS</b></i></td>
+      <td align="center">25</td>
+      <td align="left">Max. no. of VM/IEC Tasks.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3><a name="TaskID">Task ID's</a> to be used with LOAD_CPU_TASK and LOAD_MEM_TASK</h3>
+<table border="1">
+  <tbody>
+    <tr>
+      <td align="center"><b>Constant</b></td>
+      <td align="center"><b>Value</b></td>
+      <td align="center"><b>Description</b></td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TASK_SYS_VMM</b></i></td>
+      <td align="center">0</td>
+      <td align="left">Virtual Machine Manager.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TASK_SYS_TIM</b></i></td>
+      <td align="center">1</td>
+      <td align="left">Timer.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TASK_SYS_OCH</b></i></td>
+      <td align="center">2</td>
+      <td align="left">Online Change.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TASK_SYS_RET</b></i></td>
+      <td align="center">3</td>
+      <td align="left">Retain handling.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TASK_SYS_LED</b></i></td>
+      <td align="center">4</td>
+      <td align="left">LED handling.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TASK_COMM_LIS</b></i></td>
+      <td align="center">5</td>
+      <td align="left">Communication listening.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TASK_IOL_BAC</b></i></td>
+      <td align="center">6</td>
+      <td align="left">BACnet IO Layer.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TASK_IOL_TST</b></i></td>
+      <td align="center">7</td>
+      <td align="left">Test IO Layer.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TASK_IOL_PDP</b></i></td>
+      <td align="center">8</td>
+      <td align="left">Profibus DP IO Layer.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TASK_BAC_DEV</b></i></td>
+      <td align="center">9</td>
+      <td align="left">BACnet Device Handling.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TASK_BAC_SCN</b></i></td>
+      <td align="center">10</td>
+      <td align="left">BACnet IEC Scanner.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TASK_BAC_COV</b></i></td>
+      <td align="center">11</td>
+      <td align="left">BACnet Change Of Value Handling.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TASK_BAC_MGT</b></i></td>
+      <td align="center">12</td>
+      <td align="left">BACnet Driver Main Task.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TASK_BAC_COMM</b></i></td>
+      <td align="center">13</td>
+      <td align="left">BACnet/IP Communication task.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TASK_PDP_WRK</b></i></td>
+      <td align="center">14</td>
+      <td align="left">Profibus DP Handling.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TASK_PDP_MGT</b></i></td>
+      <td align="center">15</td>
+      <td align="left">Profibus Driver Main Task.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TASK_COM_WRK</b></i></td>
+      <td align="center">16</td>
+      <td align="left">Communication handling. <br>(Valid ID range from TASK_COM_WRK up to TASK_COM_WRK + MAX_COMM_TASKS)</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TASK_IEC_VM</b></i></td>
+      <td align="center">21</td>
+      <td align="left">VM/IEC Tasks. <br>(Valid ID range from TASK_IEC_VM to TASK_IEC_VM + MAX_VM_TASKS)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Description</h3>
+<p>Load constants to be used with the function <b><i>LD_Get()</i></b>.
+</p>
+<p>&nbsp; </p>
+</body>
+</html>

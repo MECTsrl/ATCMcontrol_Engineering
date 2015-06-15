@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FCPOU>
+    <EDITINFO EDITNAME="" EDITVERSION="" EDITCATID="" EDITCLASSID="" />
+    <HEADER>
+<![CDATA[ (*&#91;&#91; GUID= &#34;{42376323-2E16-11D3-A039-00A024363DFC}&#34; &#93;&#93;*) PROGRAM SfcFbd VAR_EXTERNAL VarGlobal5 : BOOL; VarGlobal4 : DINT; END_VAR ]]>
+    </HEADER>
+    <BODY LANG="fbd_sfc">
+        <LINE ORIGIN="90;32" SIZE="-20;-10" RUBBERLINE="1" />
+        <LINE ORIGIN="90;34" SIZE="-20;-10" RUBBERLINE="1" />
+        <LINE ORIGIN="90;36" SIZE="-20;-10" RUBBERLINE="1" />
+        <LINE ORIGIN="90;38" SIZE="-20;-10" RUBBERLINE="1" />
+        <LINE ORIGIN="70;28" SIZE="0;-2" />
+        <LINE ORIGIN="70;26" SIZE="0;-2" />
+        <LINE ORIGIN="70;24" SIZE="0;-2" />
+        <LINE ORIGIN="70;22" SIZE="0;-6" />
+        <SIMDIV ORIGIN="14;26" SIZE="12;0" />
+        <ALTDIV ORIGIN="14;6" SIZE="12;0" />
+        <ACTION NAME="Action3" ORIGIN="56;7" SIZE="10;8" />
+        <TRANS ORIGIN="12;10" SIZE="20;4" NAME="VarGlobal5">
+            <PINLIST>
+                <PIN CLASS="input" ORIGIN="14;10" />
+                <PIN CLASS="input" ORIGIN="12;12" HIDDED="1" />
+                <PIN CLASS="output" ORIGIN="14;14" />
+
+            </PINLIST>
+
+        </TRANS>
+        <STEP ORIGIN="10;22" SIZE="8;4" NAME="Step3">
+            <PINLIST>
+                <PIN CLASS="input" ORIGIN="14;22" />
+                <PIN CLASS="output" ORIGIN="18;24" HIDDED="1" />
+                <PIN CLASS="output" ORIGIN="14;26" />
+
+            </PINLIST>
+
+        </STEP>
+        <STEP ORIGIN="10;14" SIZE="8;4" NAME="Step2">
+            <PINLIST>
+                <PIN CLASS="input" ORIGIN="14;14" />
+                <PIN CLASS="output" ORIGIN="18;16" HIDDED="1" />
+                <PIN CLASS="output" ORIGIN="14;18" />
+
+            </PINLIST>
+
+        </STEP>
+        <STEP ORIGIN="10;6" SIZE="8;4" NAME="Step1" INITSTEP="1">
+            <PINLIST>
+                <PIN CLASS="input" ORIGIN="14;6" />
+                <PIN CLASS="output" ORIGIN="18;8" HIDDED="1" />
+                <PIN CLASS="output" ORIGIN="14;10" />
+
+            </PINLIST>
+
+        </STEP>
+        <ACTBLCK NAME="Action2" ORIGIN="70;7" SIZE="10;8">
+            <PINLIST>
+                <PIN CLASS="input" ORIGIN="70;8" HIDDED="1" />
+
+            </PINLIST>
+            <ACTQUAL QUALTYPE="N" />
+
+        </ACTBLCK>
+        <LINE ORIGIN="56;24" SIZE="-10;0" />
+        <LINE ORIGIN="56;36" SIZE="-2;0" />
+        <LINE ORIGIN="54;36" SIZE="0;-6" />
+        <JUMP ORIGIN="10;39" SIZE="10;2" NAME="Jump" INORIGIN="10;40" />
+        <VARWRITE ORIGIN="40;33" SIZE="12;2" NAME="Var_Write" INORIGIN="40;34" />
+        <RETURN ORIGIN="24;39" SIZE="12;2" INORIGIN="24;40" />
+        <TRANS ORIGIN="12;18" SIZE="12;4" NAME="VarGlobal4 &gt; 0">
+            <PINLIST>
+                <PIN CLASS="input" ORIGIN="14;18" />
+                <PIN CLASS="input" ORIGIN="12;20" HIDDED="1" />
+                <PIN CLASS="output" ORIGIN="14;22" />
+
+            </PINLIST>
+
+        </TRANS>
+        <VARREAD ORIGIN="6;33" SIZE="10;2" NAME="Var_Read" OUTORIGIN="16;34" />
+        <LINE ORIGIN="16;34" SIZE="8;0" />
+        <LINE ORIGIN="76;22" SIZE="4;0" />
+        <LABEL ORIGIN="32;45" SIZE="28;2" NAME="Label1" BORDER="1" />
+        <CONTINUATION ORIGIN="40;39" SIZE="14;2" NAME="Continuation" OUTORIGIN="54;40" />
+        <CONNECTOR ORIGIN="58;39" SIZE="14;2" NAME="Connector" INORIGIN="58;40" />
+        <LINE ORIGIN="10;40" SIZE="-6;0" />
+        <LINE ORIGIN="24;40" SIZE="-2;0" />
+        <LINE ORIGIN="54;40" SIZE="4;0" />
+        <LINE ORIGIN="40;34" SIZE="-4;0" />
+        <FNC TYPENAME="AND" ORIGIN="80;19" SIZE="10;6">
+            <PINLIST>
+                <PIN CLASS="input" NAME="IN1" ORIGIN="80;22" />
+                <PIN CLASS="inext" NAME="IN2" ORIGIN="80;24" />
+                <PIN CLASS="output" ORIGIN="90;22" />
+
+            </PINLIST>
+
+        </FNC>
+        <ACTBLCK NAME="Action4" ORIGIN="12;1" SIZE="10;2">
+            <PINLIST>
+                <PIN CLASS="input" ORIGIN="12;2" HIDDED="1" />
+
+            </PINLIST>
+            <ACTQUAL QUALTYPE="N" />
+
+        </ACTBLCK>
+        <ACTION NAME="Agtion1" ORIGIN="34;7" SIZE="18;14" />
+        <COMMENT ORIGIN="40;12" SIZE="10;8">
+            <OBJCOMMENT>
+<![CDATA[test test2 test3]]>
+            </OBJCOMMENT>
+
+        </COMMENT>
+        <LINE ORIGIN="24;28" SIZE="18;0" />
+        <LINE ORIGIN="42;28" SIZE="0;-6" />
+        <LINE ORIGIN="80;30" SIZE="-10;0" />
+        <LINE ORIGIN="70;30" SIZE="0;-2" />
+        <VARFEEDBACK ORIGIN="36;1" SIZE="12;2" NAME="Var_Feedback" INORIGIN="36;2" OUTORIGIN="48;2" />
+        <FB NAME="csaxcas" TYPENAME="CTUD_DINT_EX" ORIGIN="80;27" SIZE="10;18">
+            <PINLIST>
+                <PIN CLASS="input" NAME="CU" ORIGIN="80;32" R_EDGE="1" />
+                <PIN CLASS="input" NAME="CD" ORIGIN="80;34" R_EDGE="1" />
+                <PIN CLASS="input" NAME="R" ORIGIN="80;36" />
+                <PIN CLASS="input" NAME="LD" ORIGIN="80;38" />
+                <PIN CLASS="input" NAME="PV" ORIGIN="80;40" />
+                <PIN CLASS="input" NAME="SCALEMIN" ORIGIN="80;42" />
+                <PIN CLASS="input" NAME="SCALEMAX" ORIGIN="80;44" />
+                <PIN CLASS="output" NAME="QU" ORIGIN="90;32" />
+                <PIN CLASS="output" NAME="QD" ORIGIN="90;34" />
+                <PIN CLASS="output" NAME="CV" ORIGIN="90;36" />
+                <PIN CLASS="output" NAME="ERROR" ORIGIN="90;38" />
+
+            </PINLIST>
+
+        </FB>
+        <LINE ORIGIN="48;2" SIZE="-12;32" RUBBERLINE="1" />
+        <LINE ORIGIN="36;2" SIZE="-12;32" RUBBERLINE="1" />
+        <LINE ORIGIN="80;44" SIZE="-24;-8" RUBBERLINE="1" />
+        <LINE ORIGIN="80;32" SIZE="-24;-8" RUBBERLINE="1" />
+        <LINE ORIGIN="90;32" SIZE="-14;-10" RUBBERLINE="1" />
+
+    </BODY>
+
+</FCPOU>

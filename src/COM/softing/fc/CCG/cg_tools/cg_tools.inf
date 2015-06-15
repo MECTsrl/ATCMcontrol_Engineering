@@ -1,0 +1,12 @@
+
+TARGET=$(LIB_DIR)\cg_tools.lib
+TARGETTYPE=lib
+UNICODE=0
+
+INCLUDE=$(INCLUDE_DIR) 
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\ccg\inc
+
+
+
+
+

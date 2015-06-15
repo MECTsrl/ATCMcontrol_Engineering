@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>SEL</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>SEL</h2>
+<p>Selects one of two parameters based on a third parameter.</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION SEL : ANY
+VAR_INPUT 
+    G   : BOOL; 
+    IN0 : ANY; 
+    IN1 : ANY; 
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>ANY</b></i><br>
+  Either<i><b> IN0</b></i> or <i><b>IN1</b></i>.</p>
+
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>G</b></dt>
+  <dd>Value of type <b><i>BOOL</i></b><br>
+    Selects <i><b>IN1</b></i> if <i><b>TRUE</b></i> and <i><b>IN0</b></i> if <i><b>FALSE</b></i>.</dd>
+  <dt><b>IN0</b></dt>
+  <dd>Value of type <i><b>ANY</b></i><br>
+    Returned if<i><b> <i>G = FALSE</i>.</b></i></dd>
+  <dt><b>IN1</b></dt>
+  <dd>Value of type <i><b>ANY</b></i><br>
+    Returned if<b><i> G = TRUE</i></b><i><b> </b></i></dd>
+</dl>
+<h3>Description</h3>
+<p>Used for choosing between the values passed as the second and third parameters. 
+  Which of the two values is selected depends on whether the first parameter yields 
+  <i><b>TRUE</b></i> or <i><b>FALSE</b></i>. If the first parameter is <i><b>TRUE</b></i>, 
+  the second value (<i><b>IN1</b></i>) is returned whereas, if the first parameter 
+  is <i><b>FALSE</b></i>, the first value (<i><b>IN0</b></i>) is returned. </p>
+</body>
+</html>

@@ -1,0 +1,644 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_CL_CONSTANTS DIALOG DISCARDABLE  0, 0, 398, 206
+STYLE WS_MAXIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Constants"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "List1",IDC_CL_LIST1,"SysListView32",LVS_REPORT | 
+                    WS_BORDER,7,7,384,192
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_CL_CONSTANTS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 391
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 199
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_CL_PASSWORD DIALOG DISCARDABLE  0, 0, 200, 85
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ATCMControl Librarian Password"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_CL_PASSWORD,49,35,116,14,ES_PASSWORD | 
+                    ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,34,64,50,14
+    PUSHBUTTON      "Abbrechen",IDCANCEL,101,64,50,14
+    LTEXT           "This library is protected by a password.",IDC_STATIC,30,
+                    7,125,15,SS_CENTERIMAGE
+    LTEXT           "Password",IDC_STATIC,13,37,32,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_CL_PASSWORD, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 193
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 78
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif\r\n"
+    "#include ""res\\CELibrarian.rc2""  // Nicht mit Microsoft Visual C++ bearbeitete Ressourcen\r\n"
+    "#include ""afxres.rc""         // Standardkomponenten\r\n"
+    "#include ""afxprint.rc""       // Ressourcen für Drucken/Seitenansicht\r\n"
+    "#include ""afxolecl.rc""       // OLE-Container-Ressourcen\r\n"
+    "#include ""version.rc2""\r\n"
+    "#include ""afxolesv.rc""\r\n"
+    "#endif\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 217, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About ATCMControl Librarian"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    DEFPUSHBUTTON   "OK",IDOK,178,7,32,14,WS_GROUP
+    LTEXT           "",IDC_VERSIONTITLE,49,16,116,8
+    LTEXT           "",IDC_VERSIONNUMBER,48,31,122,8
+END
+
+IDD_CL_FBSTVIEW DIALOG DISCARDABLE  0, 0, 290, 177
+STYLE WS_MAXIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "POU Header"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_CL_FBSTVIEW_EDIT,1,2,288,175,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_NOHIDESEL | 
+                    ES_READONLY | WS_VSCROLL | WS_HSCROLL
+END
+
+IDD_ABOUT_GENERAL DIALOG DISCARDABLE  0, 0, 405, 253
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About ATCMControl Librarian"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "",IDC_LOGO,"Button",BS_OWNERDRAW | WS_TABSTOP,102,7,200,
+                    47
+    CTEXT           "ATCMControl M3",ID_VERSION_TITLE,7,59,391,15,
+                    SS_CENTERIMAGE
+    CTEXT           "Version 0.70 (<BI>)",ID_VERSION_NUMBER,7,80,391,15,
+                    SS_CENTERIMAGE
+    CTEXT           "IDS_ADDRESS\nsd",ID_ADDRESS,115,103,174,40
+    GROUPBOX        "Disclaimer",-1,7,166,391,78
+    EDITTEXT        ID_DISCLAIMER,13,177,379,61,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_READONLY | WS_VSCROLL
+    CTEXT           "Copyright",IDC_COPYRIGHT,9,150,389,11
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\CELibrarian.ico"
+IDR_4CLTYPE             ICON    DISCARDABLE     "res\\CELibrarianDoc.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
+IDB_NAVMAGELIST         BITMAP  DISCARDABLE     "res\\navmagel.bmp"
+IDB_4CONTROL            BITMAP  DISCARDABLE     "res\\log4ctr1small.bmp"
+IDR_SRVR_INPLACE        BITMAP  MOVEABLE PURE   "res\\IToolbar.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_CL_LIBRARY_NEW
+    BUTTON      ID_CL_LIBRARY_OPEN
+    BUTTON      ID_CL_LIBRARY_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    SEPARATOR
+    BUTTON      ID_CL_LIBRARY_PRINT
+    BUTTON      ID_APP_ABOUT
+END
+
+IDR_SRVR_INPLACE TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_CL_BUTTON40008
+    BUTTON      ID_CL_BUTTON40008
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_CL_LIBRARY_NEW, INACTIVE
+        MENUITEM "&Open...\tCtrl+O",            ID_CL_LIBRARY_OPEN
+        MENUITEM "&Save\tCtrl+S",               ID_CL_LIBRARY_SAVE, INACTIVE
+        MENUITEM "Save &As...",                 ID_CL_LIBRARY_SAVEAS
+        , INACTIVE
+        MENUITEM SEPARATOR
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM "&Print...\tCtrl+P",           ID_CL_LIBRARY_PRINT
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY, INACTIVE
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM "Constants",                   ID_CL_VIEW_CONSTANTS
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+        MENUITEM SEPARATOR
+        MENUITEM "&About ATCMControl Librarian...", ID_APP_ABOUT
+    END
+END
+
+IDR_CL_FBCONTEXT MENU DISCARDABLE 
+BEGIN
+    POPUP "Actions"
+    BEGIN
+        MENUITEM "&View Header",                IDR_CL_FBCONTEXT_VIEW
+        MENUITEM "View &User Help",             IDR_CL_FBCONTEXT_SHOWHELP
+    END
+END
+
+IDR_SRVR_EMBEDDED MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&FileEmbedded"
+    BEGIN
+        MENUITEM "&Update\tCtrl+S",             ID_FILE_UPDATE
+        MENUITEM "Save Copy &As...",            ID_FILE_SAVE_COPY_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About CELibrarian...",       ID_APP_ABOUT
+    END
+END
+
+IDR_SRVR_INPLACE MENU PRELOAD DISCARDABLE 
+BEGIN
+    MENUITEM SEPARATOR
+    MENUITEM SEPARATOR
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_CL_LIBRARY_NEW,      VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_CL_LIBRARY_OPEN,     VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_CL_LIBRARY_PRINT,    VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_CL_LIBRARY_SAVE,     VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_ESCAPE,      ID_CANCEL_EDIT_CNTR,    VIRTKEY, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+IDR_CNTR_INPLACE ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+    VK_ESCAPE,      ID_CANCEL_EDIT_CNTR,    VIRTKEY, NOINVERT
+END
+
+IDR_SRVR_EMBEDDED ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "S",            ID_FILE_UPDATE,         VIRTKEY, CONTROL
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+END
+
+IDR_SRVR_INPLACE ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_ESCAPE,      ID_CANCEL_EDIT_SRVR,    VIRTKEY, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDP_OLE_INIT_FAILED     "OLE initialization failed.  Make sure that the OLE libraries are the correct version."
+    IDP_FAILED_TO_CREATE    "Failed to create object.  Make sure the object is entered in the system registry."
+    IDS_CE_FBNAME           "Name"
+    IDS_CE_FBTYPE           "Type"
+    IDS_CE_FBFILE           "Target"
+    IDS_CE_QDELETE          "Do you really want to delete the selected items ?"
+    IDS_CE_ERR_ADDFB        "Error while adding item to library"
+    IDS_CE_ERR_NOWRITEACCESS "library is read only"
+    IDS_CE_ERR_FBALREADYEXIST "item already exists in library"
+    IDS_CE_ERR_FBNOTEXIST   "item does not exist in library"
+    IDS_CE_ERR_FILENOTFOUND "file not found"
+    IDS_CE_ERR_NONAME       "Name of item is missing."
+    IDS_CE_ERR_NOTYPE       "Type information of object is missing."
+    IDS_CE_ERR_NOFILE       "File information of item is missing."
+    IDS_CE_INF_READONLY     "The ATCMControl library has Read Only attribute set."
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "ATCMControl Librarian\n\n4CL\nATCMControl Library (*.4cl)\n.4cl\nCELibrarian.Document\nATCMControl Library"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "ATCMControl Librarian"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+    ID_HELP_FINDER          "Opens the Help System\nHelp"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy Selected Text\nCopy"
+    ID_EDIT_CUT             "Delete POU\nDelete"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Paste\nPaste"
+    ID_EDIT_PASTE_LINK      "Insert Clipboard contents and a link to its source\nPaste Link"
+    ID_EDIT_PASTE_SPECIAL   "Insert Clipboard contents with options\nPaste Special"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_OLE_INSERT_NEW       "Insert new embedded object\nNew Object"
+    ID_OLE_EDIT_LINKS       "Edit linked objects\nEdit Links"
+    ID_OLE_EDIT_CONVERT     "Convert object to different type\nConvert Object"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_OLE_VERB_FIRST       "Activate embedded or linked object"
+    57873                   "Activate embedded or linked object"
+    57874                   "Activate embedded or linked object"
+    57875                   "Activate embedded or linked object"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDR_CL_FBCONTEXT_VIEW   "View Header"
+    IDR_CL_FBCONTEXT_DELETE "Delete Item"
+    ID_CL_FILE_IMPORT       "Import library from directory structure\nImport"
+    ID_CL_LIBRARY_OPEN      "Open an existing library\nOpen"
+    ID_CL_LIBRARY_SAVE      "Save the active library\nSave"
+    ID_CL_LIBRARY_SAVEAS    "Save the active library with a new name\nSave As"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CE_ERR_CREATETEMPFILE "Can't create temporary library."
+    IDS_CE_ERR_OPENLIB      "Can't open library."
+    IDS_CE_ERR_FILEFORMAT   "Wrong file format. This is not an ATCMControl library."
+    IDS_CE_ERR_WRITELIBLIST "Can't write into library. Information may be lost. "
+    IDS_CE_ERR_SAVE         "Error while saving library. Information may be lost."
+    IDS_CE_ERR_READITEM     "Can't read item file."
+    IDS_CE_ERR_DELETEFB     "Error while deleting item."
+    IDS_CE_ERR_UNKNOWN      "An unknown library exception occurred."
+    IDS_CE_ERR_FBFILENOTEXIST "File does not exist for library item."
+    IDS_CE_ERR_CLOSELIB     "Error while closing library."
+    IDS_CE_SAVEDIFFERENT    "The library is read only. Chose other file name !"
+    IDS_CE_ERR_NOHEADER     "No header information available."
+    IDS_CE_ERR_PASSWORD     "Invalid password."
+    IDS_ADDRESS             "ATCMControl"
+    IDS_DISCLAIMER          "COMPANY DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, WITHOUT LIMITATION, ANY WARRANTIES AGAINST INFRINGEMENT OF THIRD PARTY RIGHTS, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. COMPANY MAKES NO WARRANTY TO ANY PERSON RELATING TO THE SOFTWARE, ITS USE OR ANY INABILITY TO USE THE SOFTWARE, THE RESULTS OF ITS USE, THAT ERRORS IN THE SOFTWARE WILL BE CORRECTED, OR THAT THE SOFTWARE WILL EVER BE COMPLETED OR COMMERCIALLY AVAILABLE."
+    IDS_DISCLAIMER1         "ATCM\r\n\r\nLICENSE AGREEMENT FOR SOFTWARE PRODUCTS\r\n\r\n\r\nSUBJECT MATTER OF AGREEMENT\r\n\r\nSUBJECT MATTER OF AGREEMENT is the computer program stored on the disk and the corresponding program documentation.  (Hereinafter referred to as ""SOFTWARE"".)\r\n\r\nATCM points out that it is not possible, at the state of the art, to produce computer programs with high complexity which work free of errors in all applications and combinations.\r\n\r\n\r\n"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_CL_LIBRARY_NEW       "Create a new library\nNew"
+    ID_CL_LIBRARY_PRINT     "Print Library Files\nPrint"
+    ID_CL_VIEW_CONSTANTS    "Show constants of library\nShow Constants"
+    IDR_CL_FBCONTEXT_SHOWHELP "View User Help"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_DISCLAIMER2         "RIGHTS OF USE\r\n\r\nDuring the term of this Agreement, ATCM grants the non-exclusive right to use the SOFTWARE only on a single computer and only at one place.  The LICENSEE may transfer the SOFTWARE from one computer to another at any time, provided that the use of the SOFTWARE on the original computer was terminated.\r\n\r\nThe privilege to use the SOFTWARE is not permissible for applications in nuclear power stations, aircrafts or airplanes and vehicles, for navigation and for production of weapons of any kind, as well as for applications involving production, processing, storage and conveyance of water damaging materials and installations in accordance with the environmental liability law as well as in medical applications in which injury to human beings may be caused. Any exceptions require our express written approval.\r\n\r\n"
+    IDS_DISCLAIMER3         "If the single computer is a multi-user system, the SOFTWARE can be used by all users of this system.\r\r\n\r\r\nWithout prior written permission of ATCM it is not allowed to transfer the rights of use the software to third parties, to grant sublicenses, to submit or make the SOFTWARE accessible in any other way to third parties.\r\r\n\r\r\n\r\r\n"
+    IDS_DISCLAIMER4         "If the single computer is a multi-user system, the SOFTWARE can be used by all users of this system.\r\n\r\nWithout prior written permission of ATCM it is not allowed to transfer the rights of use the software to third parties, to grant sublicenses, to submit or make the SOFTWARE accessible in any other way to third parties.\r\n\r\n\r\nSpecial Restrictions\r\n\r\nThe LICENSEE agrees not\r\n\r\na) without the prior written consent of ATCM to change, to compile, to reverse develop, to decompile, to disassemble the SOFTWARE, to produce derived products.\r\n\r\nb) without the prior written consent of ATCM to loan, rent, sub-license, grant any rights or otherwise transfer the SOFTWARE in any form\r\n\r\nc) to remove any proprietary, originator or copyright notices, labels or marks on the SOFTWARE or the documentation.\r\n\r\n"
+    IDS_DISCLAIMER5         "PROPERTY RIGHTS\r\n\r\nWith the purchase of the product the LICENSEE acquires only property of the medium on which the SOFTWARE is stored.\r\n\r\nATCM retains all ownership rights in and to the SOFTWARE and any copies thereof.  All rights not specifically granted herein are retained by ATCM.\r\n\r\n"
+    IDS_DISCLAIMER6         "REPRODUCTION\r\n\r\nThe SOFTWARE an all associated documentation are protected by the copyright law.\r\n\r\nThe LICENSEE may duplicate/copy the SOFTWARE only as far as this is necessary for the intended use of the SOFTWARE (e.g.  installation of the SOFTWARE and loading into the memory) and/or for the production of a backup copy.  Other duplications, including printing the program code and copying the documentation, are only allowed with the prior written consent of ATCM.\r\n\r\nOn all complete or partial reproductions of the SOFTWARE (including data medium), die LICENSEE shall attach the copyright notice and all other remarks concerning commercial protection rights in the same manner as these are contained in the original version of the SOFTWARE.\r\n\r\n\r\n"
+    IDS_DISCLAIMER7         "RECORDS\r\n\r\nThe LICENSEE is obligated to maintain accurate records which document the SOFTWARE including the current version, the place where it is installed or located and the number of produced copies.  The LICENSEE will submit the record to ATCM on request.\r\n\r\n\r\n"
+    IDS_DISCLAIMER8         "TERM OF AGREEMENT\r\n\r\nThe rights to use the SOFTWARE are granted for an indefinite term.\r\n\r\nThe LICENSE and the LICENSEE's right to use the SOFTWARE is valid until terminated by the LICENSEE, but is automatically terminated if the LICENSEE fails to comply with any provision of this Agreement.  In this case, ATCM will cancel this agreement by written notice.  In less severe cases, ATCM will send a written notice to the LICENSEE describing the breach and asking to cure the cause and possible consequences.  In case of a repetition, ATCM will declare the termination without granting any term.\r\n\r\nUpon termination, the LICENSEE is obligated to destroy all copies of the SOFTWARE being in his possession, including all documentation, disks and copies thereof.\r\n\r\n\r\n"
+    IDS_DISCLAIMER9         "WARRANTY OF SOFTING\r\n\r\nThe period of warranty is six (6) months from the date of delivery.\r\n\r\nATCM warrants that the SOFTWARE will operate in substantial conformance with ATCM's published specifications.  The SOFTWARE was designed and produced carefully and with professional knowledge.  The specifications and details about the SOFTWARE do not represent warranted quantities, unless ATCM has confirmed them as such in writing.\r\n\r\nThe responsibility for the selection and the use of the SOFTWARE and of the documentation as well as the results achieved herewith is assumed by the LICENSEE.\r\n\r\nIf the software has a defect which does not insignificantly impair the intended use of the SOFTWARE, ATCM will, at its choice, provide a rectification of the defect, when applicable, by providing a new version of the SOFTWARE or repurchase the SOFTWARE against refund of payment.\r\n\r\n"
+    IDS_DISCLAIMER10        "The warranty is excluded if the SOFTWARE was modified by the LICENSEE or a third party, or was improperly installed, maintained, repaired or used, unless the LICENSEE proves that these circumstances are not caused by the reprehended defect.\r\n\r\nIf the review of a notice of defect shows that a warranty situation does not exist, ATCM will charge the costs for the review and rectification according to its currently prevailing hourly rates.\r\n\r\n\r\n"
+    IDS_DISCLAIMER11        "LIABILITY OF SOFTING\r\n\r\nATCM does not know any rights of third parties that could be an obstacle for the contractual use of the development results.\r\n\r\nATCM will assist the LICENSEE with the judicial defense against claims arisen by third parties and, if necessary, will release the LICENSEE from existing claims of third parties.  Further claims of the LICENSEE are dependent on the following rules of this section 0.\r\n\r\nATCM is liable - independent of the grounds - without limitations, if guaranteed qualities are missing as well as for intend and gross negligence.\r\n\r\n"
+    IDS_DISCLAIMER12        "ATCM is liable for slight negligence insofar an obligation is broken, the obedience of which is of particular significance to the achievement of the aim of the contract (cardinal obligation).  The liability is limited to five times of the reimbursement and to those damages on which emergence ATCM has to reckon in the content of a software license agreement.  The same limitation shall be in force for initial inability.\r\n\r\nFurthermore, ATCM is liable if damages are covered by ATCM's liability insurance.\r\n\r\nClaims for damages - independent of the grounds - shall be time-barred twelve (12) months after the damage becomes known, except there exist a shorter legal period of prescription.\r\n\r\nClaims resulting from the product liability law are not affected.\r\n\r\n\r\n"
+    IDS_DISCLAIMER13        "MISCELLANEOUS\r\n\r\nThe SOFTWARE is delivered exclusively in accordance with the terms of this License Agreement.  Any purchase conditions of the LICENSEE are not applicable, even if the LICENSEE refers to it in its order.  Place of jurisdiction shall be Munich; place of performance shall be Haar. German law shall apply.  The Hague convention on contracts for international sale of good (UNICITARL) is excluded.\r\n\r\nPlease address questions regarding this Agreement to the address above.\r\n\r\n"
+    IDS_FOOTER_PAGENUM      "Page %d"
+    IDS_CE_ERR_RECOMPILE    "Check if POU is compiled or project is built."
+    IDS_CE_ERR_REPLACEFILE  "Library already contains the file %s.\nReplace the file?"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif
+#include "res\CELibrarian.rc2"  // Nicht mit Microsoft Visual C++ bearbeitete Ressourcen
+#include "afxres.rc"         // Standardkomponenten
+#include "afxprint.rc"       // Ressourcen für Drucken/Seitenansicht
+#include "afxolecl.rc"       // OLE-Container-Ressourcen
+#include "version.rc2"
+#include "afxolesv.rc"
+#endif
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

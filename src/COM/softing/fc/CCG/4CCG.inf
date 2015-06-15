@@ -1,0 +1,12 @@
+
+SUBPROJECT=LibAccess\LibAccess.mak
+SUBPROJECT=cg_tools\cg_tools.mak
+SUBPROJECT=CG_IECFront\CG_IECFront.mak
+SUBPROJECT=4cg\4cg.mak
+SUBPROJECT=4cpc\4cpc.mak
+SUBPROJECT=SFCPatch\SFCPatch.mak
+SUBPROJECT=cg_console\cg_console.mak
+SUBPROJECT=AutoDecl\AutoDecl.mak
+
+
+

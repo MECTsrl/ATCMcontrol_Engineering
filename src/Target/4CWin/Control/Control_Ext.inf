@@ -1,0 +1,29 @@
+# $Header: /4CReleased/V2.20.00/Target/4CWin/Control/Control_Ext.inf 5     24.02.08 18:37 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: Control_Ext.inf $
+#                        $Logfile: /4CReleased/V2.20.00/Target/4CWin/Control/Control_Ext.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 RunTime
+#
+# =COMPONENT            Control
+#
+# =CURRENT      $Date: 24.02.08 18:37 $
+#           $Revision: 5 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+SUBPROJECT=ioTest\ioTest.mak
+SUBPROJECT=vmKernel\vmKernel.mak
+SUBPROJECT=vmLib\vmLib.mak
+SUBPROJECT=osKernel\osKernel.mak
+SUBPROJECT=osShared\osShared.mak
+SUBPROJECT=visLib\visLib.mak
+SUBPROJECT=WinVMM_Ext\WinVMM_Ext.mak
+SUBPROJECT=WinVisu\WinVisu.mak
+
+# -------------------------------------------------------------------------------

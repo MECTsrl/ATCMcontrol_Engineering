@@ -1,0 +1,69 @@
+<!--    Styles for ToF Tool DoxyGen Code documentation
+        05.02.00 / Je
+-->
+<STYLE TYPE="text/css">
+<!--
+
+body        { margin-left:0.5cm; margin-top:0; margin-bottom:.7cm; width:640; 
+              font-family:Verdana,Trebuchet MS,Arial,Helvetica,sans-serif;font-size:0.8em;}
+
+h1          { font-size:2em;  }
+h2          { font-size:1.5em;  }
+h3          { font-size:1.58em; font-weight:bold; }
+h4          { font-size:1.33em; font-weight:bold; }
+h5          { font-size:1.17em; font-weight:bold; }
+h6          { font-size:1em; font-weight:bold; }
+
+TD          { font-size:0.8em; }
+EM          { font-size:1.0em; }
+
+
+/* ---------        DoxyGen specific styles: */
+H1          { text-align: center }
+A.qindex    { background:#FFC; }
+A.qindexRef {}
+A.el        { text-decoration:none; font-weight:normal; }
+A.elRef     { font-weight: bold; }
+A.code      { text-decoration: none; font-weight: normal; color: #4444ee; }
+A.codeRef   { font-weight: normal; color: #4444ee; }
+A.gl:link   { color: #ffffff; }
+A.gl:visited    { color: #ffffff; }
+A.gl        { text-decoration: none; font-weight: bold; background-color:#ffffff; }
+DL.el       { margin-left: -1cm; }
+DIV.fragment    { width: 100%; border: none; background-color: #eeeeee; }
+DIV.in      { margin-left: 16; }
+DIV.ah      { background-color: black; margin-bottom: 3; margin-top: 3; }
+TD.md       { background-color: #f2f2ff; }
+
+
+
+CODE        { font-family:Courier New,Courier,monospace; color:#0000C0; }
+pre         { font-family:Courier New,Courier,monospace; color:#0000C0; background-color:#FFFFE0; margin-left:.5cm; }
+
+OL LI       { list-style-type: decimal; }
+
+OL OL LI    { list-style-type: lower-alpha; }	
+
+OL OL OL LI { list-style-type: lower-roman; }	
+
+A:link      { color:#C00; text-decoration: none; font-weight: bold; }
+A:visited   { color:#C00; text-decoration: none; font-weight: bold; }
+A:active    { color:#C00; text-decoration: none; font-weight: bold; }
+A:hover     { color:#C00; text-decoration: underline; font-weight: bold; background: #FFC;}
+A:an        { color:#000000; text-decoration:none; }
+
+
+.sidebar    { padding:1.4em;border:1px solid black;background:#FFC} 
+.exhibit    { margin: 1em 1em 1em 3em }
+
+.detail     {color:000000; font-size:.70em}
+.intro      {color:999999; line-height: 1.75; font-size:.85em; font-weight: bold}
+.footer     {color:000000; font-size:.75em}
+
+td          { vertical-align:top; }
+td.header,tr.header
+            { background-color="#4284ff";font-size:1.60cm; }
+td.header   { padding:.3cm;padding-left:.5cm; }
+
+-->
+</STYLE>

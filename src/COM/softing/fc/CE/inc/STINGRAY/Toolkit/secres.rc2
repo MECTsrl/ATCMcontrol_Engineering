@@ -1,0 +1,78 @@
+//
+// SecRes.RC2 - resources Microsoft Visual C++ does not edit directly
+//
+
+#ifdef APSTUDIO_INVOKED
+	#error this file is not editable by Microsoft Visual C++
+#endif //APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Add manually edited resources here...
+
+#ifdef _WIN32
+IDD_COMDLG32 DIALOG DISCARDABLE  0, 0, 335, 54
+STYLE DS_3DLOOK | DS_CONTROL | WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "",1119,0,0,204,31
+    LTEXT           "Preview:",123,205,10,65,8
+END
+#endif
+
+#ifdef _WIN32
+IDD_OPEN_WORKSPACE DIALOG DISCARDABLE  0, 0, 215, 146
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Workspace Manager"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_WORKSPACE_LIST,14,28,136,104,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Active Workspace:",IDC_STATIC,15,13,61,8
+    LTEXT           "<<workspace here>>",IDC_WORKSPACE_MGR_STATIC,80,13,113,
+                    8
+    DEFPUSHBUTTON   "&Open",ID_OPEN_WORKSPACE,158,28,50,14
+    PUSHBUTTON      "&Save",ID_SAVE_WORKSPACE,158,44,50,14
+    PUSHBUTTON      "&Cancel",IDCANCEL,158,88,50,14
+#if(WINVER >= 0x0400)
+    PUSHBUTTON      "&Help",9,158,104,50,14
+#endif
+    PUSHBUTTON      "&Done",ID_DONE,158,72,50,14
+END
+#endif
+
+#ifdef _WIN32
+IDD_TOOLBARS DIALOGEX 0, 0, 158, 145
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Toolbars"
+#ifndef UNDER_CE
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+#else
+FONT 8, "System"
+#endif
+BEGIN
+    LTEXT           "Toolbars:",IDC_STATIC,7,7,30,8
+    LISTBOX         IDC_TOOLBAR_LIST,7,17,86,64,LBS_OWNERDRAWFIXED | 
+                    LBS_HASSTRINGS | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
+                    WS_TABSTOP
+    DEFPUSHBUTTON   "&Close",IDOK,101,7,50,14
+    PUSHBUTTON      "&New...",IDC_TOOLBAR_NEW,101,24,50,14
+    PUSHBUTTON      "C&ustomize...",IDC_TOOLBAR_CUSTOMIZE,101,41,50,14
+    PUSHBUTTON      "&Reset",IDC_TOOLBAR_RESET,101,58,50,14
+    PUSHBUTTON      "&Help",ID_HELP,101,75,50,14
+    LTEXT           "Toolbar name:",IDC_TOOLBAR_STATIC,7,84,46,8,WS_DISABLED
+    EDITTEXT        IDC_TOOLBAR_NAME,7,94,86,13,ES_AUTOHSCROLL | WS_DISABLED
+    LTEXT           "",IDC_STATIC,7,112,144,1,0,WS_EX_STATICEDGE
+    CONTROL         "&Show Tooltips",IDC_TOOLBAR_TOOLTIPS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,8,117,61,10
+    CONTROL         "C&ool Look",IDC_TOOLBAR_COOLLOOK,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,88,117,61,10
+    CONTROL         "&Large Buttons",IDC_TOOLBAR_LARGEBTNS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,8,129,61,10
+END
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+
+		

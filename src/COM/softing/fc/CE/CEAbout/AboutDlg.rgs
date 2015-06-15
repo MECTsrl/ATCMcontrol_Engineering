@@ -1,0 +1,35 @@
+HKCR
+{
+	4C_20_CECEAbout.AboutDlg.1 = s '4C_20: AboutDlg Class'
+	{
+		CLSID = s '{8CFC6369-0596-498E-B7CA-4BC7EE0C5BC7}'
+        'Index' 
+        { 
+            val Version = s '2.0' 
+            val LCID = d '1033' 
+        } 
+	}
+	4C_20_CE.AboutDlg = s '4C_20: AboutDlg Class'
+	{
+		CLSID = s '{8CFC6369-0596-498E-B7CA-4BC7EE0C5BC7}'
+		CurVer = s '4C_20_CE.AboutDlg.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {8CFC6369-0596-498E-B7CA-4BC7EE0C5BC7} = s '4C_20: AboutDlg Class'
+		{
+			ProgID = s '4C_20_CE.AboutDlg.1'
+			VersionIndependentProgID = s '4C_20_CE.AboutDlg'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{699836E6-434A-444B-A56F-6E227374EF06}'
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+
+            }
+		}
+	}
+}

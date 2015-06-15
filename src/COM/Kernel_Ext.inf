@@ -1,0 +1,63 @@
+SUBPROJECT=softing\fc\EXT\EXT.mak
+SUBPROJECT=softing\fc\inc\inc.mak
+SUBPROJECT=softing\fc\CMN\4CMN.mak
+SUBPROJECT=softing\fc\CE\4CE.mak
+SUBPROJECT=softing\fc\CCG\4CCG.mak
+SUBPROJECT=softing\fc\CSC\4CSC.mak
+SUBPROJECT=softing\fc\CP\4CP.mak
+SUBPROJECT=softing\fc\CL\4CL.mak
+SUBPROJECT=softing\fc\CLIC\CLIC.mak
+SUBPROJECT=softing\fc\AddOns\AddOns_Ext.mak
+SUBPROJECT=softing\fc\CTOOL\CTOOL.mak
+SUBPROJECT=softing\fc\CONV\4c13to20.mak
+SUBPROJECT=softing\fc\CSET\CSet.mak
+
+USER=makefirst: $(EXE_DIR)
+USER=makefirst: $(EXE_DIR)\Engineering
+USER=makefirst: $(EXE_DIR)\Engineering\bin
+USER=makefirst: $(EXE_DIR)\Engineering\pub
+USER=makefirst: $(EXE_DIR)\Engineering\Help
+USER=makefirst: $(EXE_DIR)\Engineering\Lib
+USER=makefirst: $(EXE_DIR)\Engineering\Templates
+USER=makefirst: $(EXE_DIR)\Control
+USER=makefirst: $(EXE_DIR)\Control\bin
+USER=makefirst: $(EXE_DIR)\Console
+USER=makefirst: $(EXE_DIR)\Pub
+USER=makefirst: $(EXE_DIR)\Pub\LicAppV2
+USER=makefirst: $(EXE_DIR)\Demo
+USER=makefirst: $(INCLUDE_DIR)
+USER=makefirst: $(LIB_DIR)
+USER=makefirst: $(CLASSES_DIR)
+USER=$(EXE_DIR) $(EXE_DIR)\Engineering $(EXE_DIR)\Engineering\bin $(EXE_DIR)\Engineering\pub $(EXE_DIR)\Engineering\Help \
+USER=$(EXE_DIR)\Engineering\Lib $(EXE_DIR)\Engineering\Templates \
+USER=$(EXE_DIR)\Control $(EXE_DIR)\Control\bin $(EXE_DIR)\Console \
+USER=$(EXE_DIR)\Pub $(EXE_DIR)\Pub\LicAppV2 $(EXE_DIR)\Demo $(INCLUDE_DIR) $(LIB_DIR) $(CLASSES_DIR):
+USER=	- md $@
+
+
+#register some components needed to build libs:
+USER=postmake: make_lib
+USER=make_lib: force
+USER=     regsvr32 /s $(EXE_DIR)\Engineering\bin\cg_4claccess.dll
+USER=     regsvr32 /s $(EXE_DIR)\Engineering\bin\cg_iecfront.dll
+USER=     regsvr32 /s $(EXE_DIR)\Engineering\bin\cg_console.dll
+USER=     $(CP) $(EXE_DIR)\Pub\fc_baselib.dll $(WINDIR)\system32\fc_baselib.dll
+USER=     $(CP) $(EXE_DIR)\Pub\fc_todebug.dll $(WINDIR)\system32\fc_todebug.dll
+USER=     $(CP) $(EXE_DIR)\Pub\fc_util.dll    $(WINDIR)\system32\fc_util.dll
+
+
+#create all stup libs first, they are stored in engineering\libs\[de|eng]
+#english stups will be copied into engineering\libs to be merged and used later for other targets:
+USER=     cd $(MAKEDIR)\softing\fc\CL\Libs
+USER=     $(MAKE) -$(MAKEFLAGS) -f Libs.mak make_lib DEBUG=$(DEBUG)
+
+
+#create all target libs, doing so the stubs in engineering\lib gets updated for XXX target
+#4CPC:
+#USER=     cd $(MAKEDIR)\softing\fc\AddOns\Softing\4CPCTarget\Libs
+#USER=     $(MAKE) -$(MAKEFLAGS) -f Libs.mak make_lib DEBUG=$(DEBUG)
+
+
+USER=     cd $(MAKEDIR)
+
+# -------------------------------------------------------------------------------

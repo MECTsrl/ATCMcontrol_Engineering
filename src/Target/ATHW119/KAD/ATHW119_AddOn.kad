@@ -1,0 +1,30 @@
+<ADDON>
+   <PROPERTIES  FILEEXT="ATHW119"
+                FILEPREFIX="HW119"
+                KADTYPE="HW119"
+
+                DESCRIPTION="AT HW119 Target"
+
+                SUPPORTNCC="FALSE"
+
+                WIZARDNAME="AT HW119 Project Wizard"
+                WIZARDDESC="Creates a new HW119 project"
+
+                CUSTOM_DOWNLOAD="1"
+                CUSTOM_DOWNLOAD_DIR="Download"
+                CUSTOM_DOWNLOAD_GUI="1"
+
+                ENDIAN="0"
+    />
+
+    <FIRMWARE VERSION="22000"
+             DESCRIPTION="Version 2.2.0"
+             CUSTOMCONNECT="C31E31A7-567C-49a2-B393-CEC8F2E17F99"
+             DOWNLOAD="88AD4524-E2B2-4853-A081-5CDBF5732E09">
+             <COMMCHANNEL ID="TCP"
+                          PROTOCOL="SIMPLE"
+                          PROTOCOLPAR="1000"/>
+   </FIRMWARE>
+
+
+</ADDON>               

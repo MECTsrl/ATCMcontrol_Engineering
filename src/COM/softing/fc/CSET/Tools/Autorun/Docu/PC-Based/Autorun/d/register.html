@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+		<title>ATCMControl V2.1</title>
+                 <script language="javascript" type="text/javascript">
+
+	pic1 = new Image();
+	pic1.src = "../pic/nav1d.gif";
+	pic2 = new Image();
+	pic2.src = "../pic/nav2d.gif";
+	pic3 = new Image();
+	pic3.src = "../pic/nav3d.gif";
+	pic6 = new Image();
+	pic6.src = "../pic/nav6d.gif";
+	pic8 = new Image();
+	pic8.src = "../pic/nav8d.gif";
+	pic7 = new Image();
+	pic7.src = "../pic/nav7d.gif";
+	pic9 = new Image();
+	pic9.src = "../pic/nav9d.gif";
+
+	pic11 = new Image();
+	pic11.src = "../pic/nav11d.gif";
+	pic22 = new Image();
+	pic22.src = "../pic/nav22d.gif";
+	pic33 = new Image();
+	pic33.src = "../pic/nav33d.gif";
+	pic66 = new Image();
+	pic66.src = "../pic/nav66d.gif";
+	pic88 = new Image();
+	pic88.src = "../pic/nav88d.gif";
+	pic77 = new Image();
+	pic77.src = "../pic/nav77d.gif";
+	pic99 = new Image();
+	pic99.src = "../pic/nav99d.gif";
+
+function drauf(wert)
+{
+	switch (wert)
+	{
+		case 1:	document.nav1.src = pic11.src;
+		break;
+		case 2: document.nav2.src = pic22.src;
+		break;
+		case 3: document.nav3.src = pic33.src;
+		break;
+		case 6: document.nav6.src = pic66.src;
+		break;
+		case 8: document.nav8.src = pic88.src;
+		break;
+		case 7: document.nav7.src = pic77.src;
+		break;
+		case 9: document.nav9.src = pic99.src;
+		break;
+	}
+}
+function runter(wert)
+{
+	switch (wert)
+	{
+		case 1:document.nav1.src = pic1.src;
+		break;
+		case 2:document.nav2.src = pic2.src;
+		break;
+		case 3:document.nav3.src = pic3.src;
+		break;
+		case 6:document.nav6.src = pic6.src;
+		break;
+		case 8:document.nav8.src = pic8.src;
+		break;
+		case 7:document.nav7.src = pic7.src;
+		break;
+		case 9: document.nav9.src = pic9.src;
+		break;
+
+	}
+}
+</script>
+		<link rel="stylesheet" href="../text.css">
+	</head>
+
+	<body leftmargin="2" topmargin="2" marginwidth="2" marginheight="2" bgcolor="#CCCCCC" link="#003366" vlink="#003366" alink="#003366">
+		<!--hauptmenue-->
+		<table width="760" height="25" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="155" align="right" valign="bottom"><img src="../pic/4clogo.gif" width="14" height="16" alt="" border="0"><img src="../pic/clearpix.gif" width="2" height="1" alt="" border="0"></td>
+				<!--kurze laengsline-->
+				<td align="left" valign="bottom"><img src="../pic/linien.gif" width="2" height="25" alt="" border="0"></td>
+				<!--ende-->
+				<td colspan="4">&nbsp;</td>
+			</tr>
+		</table>
+		<!--querline-->
+		<table width="760" height="2" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><img src="../pic/linien.gif" width="760" height="2" alt="" border="0"></td>
+			</tr>
+		</table>
+		<!--ende-->
+		<table width="760" height="94%" border="0" cellpadding="0" cellspacing="0">
+			<tr><!--navigation-->
+				<td width="155" valign="top">
+					<table width="155" height="60" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="24" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td valign="center"><img src="../pic/4clayout-kl.jpg" width="152" height="134" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><img src="../pic/nav1d.gif" name="nav1" width="120" height="25" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="thiscd.html" onmouseover="drauf(2)" onmouseout="runter(2)"><img src="../pic/nav2d.gif" name="nav2" width="120" height="25" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="cinstall.html" onmouseover="drauf(3)" onmouseout="runter(3)"><img src="../pic/nav3d.gif" name="nav3" width="120" height="25" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="license.html" onmouseover="drauf(6)" onmouseout="runter(6)"><img src="../pic/nav6d.gif" name="nav6" width="120" height="25" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="knownbugs.html" onmouseover="drauf(8)" onmouseout="runter(8)"><img src="../pic/nav8d.gif" name="nav8" width="150" height="25" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="contact.html" onmouseover="drauf(7)" onmouseout="runter(7)"><img src="../pic/nav7d.gif" name="nav7" width="120" height="25" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="60" valign="center"><a href="readme_dep.htm" onmouseover="drauf(9)" onmouseout="runter(9)"><img src="../pic/nav9d.gif" name="nav9" width="120" height="50" border="0"></a></td>
+						</tr>
+					</table>
+				</td>
+				<!--navigation ende--><!--lange vertikalline-->
+				<td bgcolor="#999999">
+					<table width="2" height="94%" valign="top" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="1" alt="" border="0"></td>
+						</tr>
+					</table>
+				</td>
+				<!--ende--><!--inhalt-->
+				<td width="603" valign="top">
+					<table border="0" cellpadding="0" cellspacing="0" align="center" valign="middle" width="570">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="24" alt="" border="0"></td>
+						</tr>
+						<tr height="55">
+							<td align="center" valign="top" height="55"><span class="headblau">ATCMControl lizensieren </span></td>
+						</tr>
+						<td class="text">
+							<ol>
+								<li><span class="text">Rufen Sie den Softing License Manager auf, indem Sie im Windows Start-Men&uuml; auf <b>Programme \Softing AG \Softing License Manager</b> klicken.<br>
+										<br>
+									</span>
+								<li><span class="text">Der Softing License Manager Ihnen in der Spalte <b>Product Name</b> alle installierbaren ATCMControl-Komponenten an. In den weiteren Spalten werden Informationen zum Lizenz- und Installationsstatus angezeigt:<br>
+										<br>
+									</span>
+							</ol>
+						</td>
+					</table>
+						<img src="../pic/License1.gif" width="794" height="490">
+
+						<table border="0" cellpadding="0" cellspacing="0" align="center" valign="middle" width="570">
+							<tr>
+								<td class="text">
+								<br>
+									<span class="text">
+										Um Ihre ATCMControl-Komponenten zu lizensieren, klicken sie im Softing License Manager auf <b>Erzeuge Installkey</b>.<br>
+									</span><br>
+								<ol start=3>
+									<li><span class="text">Im nun folgenden Dialog geben Sie den Hostnamen des Rechners, auf dem die zu lizensierenden Komponenten installiert sind, und den Namen Ihrer Firma ein. Diese Angaben werden f&uuml;r die Erzeugung des Installationssschl&uuml;ssels ben&ouml;tigt. Im Feld <b>Arbeitsplatz</b> wird standardm&auml;&szlig;ig der Hostname des Rechners, auf dem Sie den Softing License Manager gestartet haben, und im Feld <b>Firma</b> der in der Windows-Registrierungsdatenbank gefundene Name Ihrer Firma angezeigt. Wenn Sie ATCMControl-Komponenten, die auf einem anderen Rechner installiert sind, lizensieren wollen, k&ouml;nnen Sie diese Felder &uuml;berschreiben. Die L&auml;nge der zul&auml;ssigen Zeichen in beiden Felder zusammen ist auf 24 begrenzt.<br>
+										</span>
+										</ol><br>
+										<img src="../pic/License2.gif" width="462" height="247"><br>
+								<br>
+								<span class="text">
+										Klicken Sie auf <b>Weiter</b>, um die Angaben zu best&auml;tigen</span>.<br>
+								<br>
+								<ol start=4>
+									<li><span class="text">In einem weiteren Dialog werden noch einmal die Angaben im vorhergehenden Dialog angezeigt. Vergewissern Sie sich, da&szlig; diese Angaben korrekt sind, und klicken Sie auf <b>OK</b>.<br>
+											<br>
+										</span><img src="../pic/License3.gif" width="354" height="243"><br>
+										<br>
+										<span class="text">Wollen Sie die Angaben noch korrigieren, klicken Sie auf <b>Wiederholung</b>. Sie gelangen dann wieder zum vorigen Dialog</span>.<br>
+										<br>
+								</ol>
+								<ol start=5>
+									<li><span class="text">Nachdem Sie die Angaben mit <b>Weiter</b> best&auml;tigt haben, wird ein Installationsschl&uuml;ssel f&uuml;r den Rechner mit dem angegebenen Hostnamen erzeugt. Diesen Schl&uuml;ssel schicken Sie an ATCMControl, damit dort der endg&uuml;ltige Registrierschl&uuml;ssel erzeugt werden kann.<br>
+											<br>
+										</span>
+
+									<li><span class="text">Klicken Sie dazu auf <b>Installationkey in Zwischenablage kopieren</b>, um den Installationsschl&uuml;ssel in die Windows-Zwischenablage zu kopieren. Der Installationsschl&uuml;ssel kann nun aus der Windows-Zwischenanlage in Notepad oder in Ihr Mailprogramm eingef&uuml;gt werden.<br>
+											<br>
+										</span>
+
+									<li><span class="text">Senden Sie den Installationsschl&uuml;ssel <b>zusammen mit der Bestellnummer und der Lizenznummer</b> an <a href="mailto:support@4control.de">support@4control.de</a>. Die Angabe der Bestellnummer und der Lizenznummer sind unbedingt erforderlich, damit ihnen m&ouml;glichst schnell ein endg&uuml;ltiger Registrierschl&uuml;ssel zugesandt werden kann.<br>
+											<br>
+										</span>
+
+									<li><span class="text">Sie bekommen den endg&uuml;ltigen Registrierschl&uuml;ssel schnellstm&ouml;glich per E-Mail. Wenn Sie den endg&uuml;ltigen Registrierschl&uuml;ssel erhalten haben, &ouml;ffnen Sie wieder den Softing License Manager und geben den Schl&uuml;ssel im Feld <b>Registrierschl&uuml;ssel</b> <b>eingeben</b> ein.<br>
+											<br>
+										</span>
+
+									<li><span class="text">Klicken Sie dann auf <b>Enable</b>. Die lizensierten ATCMControl-Komponenten werden nun registriert, und der Lizensierungsstatus in der Liste der ATCMControl-Komponenten angezeigt. Sie k&ouml;nnen jetzt mit den lizensierten ATCMControl-Komponenten ohne Einschr&auml;nkungen arbeiten.</span><br>
+										<br>
+
+								</ol>
+							</td>
+							</tr>
+						</table>
+<table><tr height="505"  align="top"><td><img src="../pic/License5.gif" width="794" height="490" border="0"></td></tr></table>
+
+					</table>
+	</body>
+
+</html>

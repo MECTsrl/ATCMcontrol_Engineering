@@ -1,0 +1,208 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 7, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\OnlTest.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.deu\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "#include ""version.rc2""\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\OnlTest.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ONLCOMMTEST_DIALOG DIALOGEX 0, 0, 368, 366
+STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "ATCMControl Online Test Utility"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Connection Type: ",IDC_STATIC,10,5,350,25
+    CONTROL         "Connect via OnlComm DLL",IDC_RADIO_ONLCOMM,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,95,15,101,10
+    CONTROL         "Connect via VisuComm Library",IDC_RADIO_VISUCOMM,"Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,235,15,111,10
+    GROUPBOX        "Connection (OnlComm DLL): ",IDC_STATIC,10,35,350,45
+    LTEXT           "DLL:",IDC_STATIC,15,45,25,12,SS_CENTERIMAGE | NOT 
+                    WS_GROUP
+    EDITTEXT        IDC_COMM_DLL,45,45,240,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BTN_SELCOMMDLL,290,45,16,14
+    PUSHBUTTON      "Load",IDC_BTN_LOAD,320,45,35,14
+    LTEXT           "Param.:",IDC_STATIC,15,60,25,12,SS_CENTERIMAGE | NOT 
+                    WS_GROUP
+    EDITTEXT        IDC_CONNEC_PARAM,45,60,225,12,ES_AUTOHSCROLL
+    CONTROL         "Swap",IDC_CHECK_SWAP,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,275,60,31,12
+    PUSHBUTTON      "Unload",IDC_BTN_UNLOAD,320,60,35,14
+    GROUPBOX        "Connection (VisuComm Library): ",IDC_STATIC,10,85,350,
+                    30
+    LTEXT           "TCP/IP Address: ",IDC_STATIC,15,95,55,12,SS_CENTERIMAGE | 
+                    NOT WS_GROUP
+    EDITTEXT        IDC_TCPIP_ADDR,75,95,110,12,ES_AUTOHSCROLL
+    CONTROL         "Scan Port",IDC_CHECK_PORT,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,215,95,47,12
+    LTEXT           "Port:",IDC_STATIC,275,95,16,12,SS_CENTERIMAGE | NOT 
+                    WS_GROUP
+    COMBOBOX        IDC_CB_PORT,295,95,59,80,CBS_DROPDOWNLIST | 
+                    CBS_AUTOHSCROLL | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Connect",IDC_BTN_CONNECT,10,125,45,14
+    PUSHBUTTON      "Disconnect",IDC_BTN_DISCONNECT,60,125,45,14
+    PUSHBUTTON      "Login",IDC_BTN_LOGIN,115,125,45,14
+    PUSHBUTTON      "Logout",IDC_BTN_LOGOUT,165,125,45,14
+    LTEXT           "Connection State",IDC_STATE,230,125,130,15,
+                    SS_CENTERIMAGE | SS_SUNKEN | NOT WS_GROUP,WS_EX_RIGHT
+    GROUPBOX        "Address: ",IDC_STATIC,10,150,110,100
+    LTEXT           "Segment:",IDC_STATIC,15,160,36,12,SS_CENTERIMAGE | NOT 
+                    WS_GROUP
+    EDITTEXT        IDC_SEGMENT,55,160,59,12,ES_AUTOHSCROLL
+    LTEXT           "Offset",IDC_STATIC,15,177,36,12,SS_CENTERIMAGE | NOT 
+                    WS_GROUP
+    EDITTEXT        IDC_OFFSET,55,177,59,12,ES_AUTOHSCROLL
+    LTEXT           "BitOffset:",IDC_STATIC,15,194,36,12,SS_CENTERIMAGE | 
+                    NOT WS_GROUP
+    EDITTEXT        IDC_BITOFF,55,194,59,12,ES_AUTOHSCROLL
+    LTEXT           "DataType:",IDC_STATIC,15,211,36,12,SS_CENTERIMAGE | NOT 
+                    WS_GROUP
+    COMBOBOX        IDC_CB_DATATYPE,56,211,59,88,CBS_DROPDOWNLIST | 
+                    CBS_AUTOHSCROLL | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Length:",IDC_STATIC,15,228,36,12,SS_CENTERIMAGE | NOT 
+                    WS_GROUP
+    EDITTEXT        IDC_LENGTH,55,228,59,12,ES_AUTOHSCROLL
+    GROUPBOX        "Get/SetValue: ",IDC_STATIC,125,150,236,50
+    EDITTEXT        IDC_EDIT_GETSET,130,161,225,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "State",IDC_BTN_STATE,130,180,50,14
+    PUSHBUTTON      "Get",IDC_BTN_GET,245,180,50,14
+    PUSHBUTTON      "Set",IDC_BTN_SET,305,180,50,14
+    GROUPBOX        "Debug Info: ",IDC_STATIC,125,201,236,49
+    EDITTEXT        IDC_EDIT_DBI,130,209,225,16,ES_AUTOHSCROLL | ES_READONLY,
+                    WS_EX_DLGMODALFRAME | WS_EX_CLIENTEDGE | 
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "Children",IDC_BTN_DBI_GETCHILD,130,230,50,14
+    PUSHBUTTON      "Reset",IDC_BTN_DBI_RES,245,230,50,14
+    PUSHBUTTON      "Get Address",IDC_BTN_DBI_GETADDR,305,230,50,14
+    LISTBOX         IDC_LIST,10,255,350,106,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Parent",IDC_BTN_DBI_GETPARENT,185,230,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ONLCOMMTEST_DIALOG, DIALOG
+    BEGIN
+        VERTGUIDE, 9
+        VERTGUIDE, 14
+        VERTGUIDE, 26
+        VERTGUIDE, 111
+        VERTGUIDE, 124
+        VERTGUIDE, 331
+        VERTGUIDE, 353
+        VERTGUIDE, 360
+        HORZGUIDE, 15
+        HORZGUIDE, 35
+        HORZGUIDE, 70
+        HORZGUIDE, 103
+        HORZGUIDE, 116
+        HORZGUIDE, 148
+        HORZGUIDE, 220
+        HORZGUIDE, 226
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE 7, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\OnlTest.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.deu\afxres.rc"          // Standard components
+#endif
+#include "version.rc2"
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

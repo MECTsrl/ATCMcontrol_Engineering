@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>SER_READ</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>SER_READ</h2>
+<p>Liest Daten vom Remote-Partner.</p>
+<h3>Schnittstelle</h3>
+<pre class="preforma">FUNCTION_BLOCK SER_READ           
+VAR_INPUT                                                  
+    REQ      : BOOL R_EDGE := FALSE;                         
+    ID       : COMM_CHANNEL;            
+    RD_LEN_1 : DINT;                  
+    READ_ALL : BOOL := FALSE;    
+END_VAR                                                    
+                                                        
+VAR_OUTPUT                                                 
+    NDR    : BOOL;                     
+    ERROR  : BOOL;               
+    STATUS : DINT;                       
+    RD_1   : BYTE_STRING;       
+END_VAR</pre>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>REQ</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Initialisiert das Lesen einer Nachricht.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Nachricht wird gelesen.<br>
+    <i><b>FALSE</b></i>: Nachricht wird nicht gelesen.<br>
+    Nach dem Lesen einer Nachricht muß <i><b>REQ</b></i> auf <i><b>FALSE</b></i> 
+    gesetzt werden, bevor eine weitere Nachricht mit <font face="Courier New, Courier, mono">REQ 
+    := TRUE</font> gelesen werden kann. </dd>
+  <dt><b>ID</b></dt>
+  <dd>Instanz der Struktur <a href="COMM_CHANNEL.htm"><i><b>COMM_CHANNEL</b></i></a><br>
+    Identifiziert die Verbindung, aus der eine Nachricht gelesen werden soll. 
+  </dd>
+  <dt><b>RD_LEN_1</b></dt>
+  <dd>Wert vom Typ <i><b>DINT</b></i><br>
+    Definiert die L&auml;nge der zu lesenden Daten in Bytes.<br>
+    Wenn der Parameter <i><b>READ_ALL</b></i> auf <i><b>TRUE</b></i> gesetzt wird, 
+    wird der in <i><b>RD_LEN_1</b></i> gesetzte Wert ignoriert, und alle im Bytestring 
+    enthaltenen Bytes werden gelesen. </dd>
+  <dt><b>READ_ALL</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Legt fest, ob alle in einem Bytestring abgelegten Bytes, oder nur bis zu der 
+    in <i><b>RD_LEN_1</b></i> definierten L&auml;nge gelesen werden soll. <br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Es werden alle im Bytestrings abgelegten Bytes gelesen. 
+    Ein in <i><b>RD_LEN_1</b></i> gesetzter Wert wird ignoriert.<br>
+    <i><b>FALSE</b></i>: Im Bytestring abgelegte Bytes werden bis zur in <i><b>RD_LEN_1</b></i> 
+    definierten L&auml;nge gelesen. <br>
+    Standardwert ist <i><b>FALSE</b></i>.</dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b>NDR</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Signalisiert den Empfang einer neuen Nachricht.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE:</b></i> Eine neue Nachricht wurde empfangen<br>
+    <i><b>FALSE:</b></i> Es wurde keine neue Nachricht empfangen. </dd>
+  <dt><b>ERROR</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Signalisiert den Fehlerstatus.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Ein Fehler ist aufgetreten.<br>
+    <i><b>FALSE</b></i>: Es ist kein Fehler aufgetreten.</dd>
+  <dt><b>STATUS</b></dt>
+  <dd>Wert vom Typ <i><b>DINT</b></i><br>
+    Enth&auml;lt einen Statuscode. <br>
+    M&ouml;gliche Werte sind in den <a href="ConstState.htm">Statuskonstanten</a> 
+    definiert. </dd>
+  <dt><b>RD_1</b></dt>
+  <dd>Instanz der Struktur <a href="BYTE_STRING.htm"><i><b>BYTE_STRING</b></i></a><br>
+    Enth&auml;lt die gelesenen Bytes im Format eines Bytestrings, falls <font face="Courier New, Courier, mono">NDR 
+    = TRUE</font>. </dd>
+</dl>
+<h3>Beschreibung</h3>
+<p>Der Aufruf einer Instanz von <i><b>SER_READ</b></i> liest eine Nachricht &uuml;ber 
+  die an <i> <b>ID</b></i> &uuml;bergebene Verbindung aus dem Nachrichtenpuffer. 
+  Die Verbindung wird durch eine Instanz der Struktur <i><b>COMM_PARTNER</b></i> 
+  repr&auml;sentiert. Diese Instanz wird automatisch beim Herstellen einer Verbindung 
+  mit <a href="CONNECT.htm"><i><b>CONNECT</b></i></a> erzeugt und mit den entsprechenden 
+  Verbindungswerten initialisiert. </p>
+<p>Die Nachricht hat das Format eines Bytestrings. Die gelesene Nachricht wird 
+  ebenfalls als Bytestring in der OUTPUT-Variable <i><b>RD_1 </b></i>abgelegt. 
+</p>
+<p>Falls ein Timeout &uuml;berschritten wird, werden sowohl Write-Requests als 
+  auch Read-Requests abgebrochen. Der Timeout kann vor dem Herstellen einer Verbindung 
+  mit einer Instanz von <i><b>CONNECT</b></i> im Parameter <i><b>iTimeout</b></i> 
+  der an <i><b>CONNECT</b></i> &uuml;bergebenen Instanz von <a href="COMM_PARTNER.htm"><b><i> 
+  COMM_PARTNER</i></b></a> gesetzt werden. </p>
+</body>
+</html>

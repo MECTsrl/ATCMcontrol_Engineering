@@ -1,0 +1,11 @@
+
+(*[[
+    UserURL= "ATCM:BYTE_STRING.htm",
+    javaclass = "utility.ByteString"
+]]*)
+
+TYPE
+    BYTE_STRING : STRUCT
+        size  : DINT := 0;   (* length of byte string *)
+    END_STRUCT;
+END_TYPE

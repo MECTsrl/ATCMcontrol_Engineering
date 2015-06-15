@@ -1,0 +1,342 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_EXT_USER_PRM_VALUES DIALOGEX 0, 0, 254, 143
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Extended User Parameter Values"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "",IDC_STATIC,4,0,245,139
+    LTEXT           "Description:",IDC_STATIC,16,8,41,8
+    EDITTEXT        IDC_EXT_PRM_DESCRIPTION,16,18,222,12,ES_AUTOHSCROLL | 
+                    WS_DISABLED | NOT WS_BORDER | NOT WS_TABSTOP,
+                    WS_EX_CLIENTEDGE
+    LTEXT           "Offset:",IDC_STATIC,32,48,22,8
+    EDITTEXT        IDC_EXT_PRM_OFFSET,55,46,33,12,ES_AUTOHSCROLL | 
+                    WS_DISABLED | NOT WS_BORDER | NOT WS_TABSTOP,
+                    WS_EX_CLIENTEDGE
+    LTEXT           "Min:",IDC_STATIC,100,48,14,8
+    EDITTEXT        IDC_EXT_PRM_MIN,115,46,33,12,ES_AUTOHSCROLL | 
+                    WS_DISABLED | NOT WS_BORDER | NOT WS_TABSTOP,
+                    WS_EX_CLIENTEDGE
+    LTEXT           "Max:",IDC_STATIC,160,48,16,8
+    EDITTEXT        IDC_EXT_PRM_MAX,177,46,33,12,ES_AUTOHSCROLL | 
+                    WS_DISABLED | NOT WS_BORDER | NOT WS_TABSTOP,
+                    WS_EX_CLIENTEDGE
+    LTEXT           "Values:",IDC_STATIC,16,68,28,8
+    COMBOBOX        IDC_EXT_PRM_VALUES,16,79,222,68,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_EXT_PRM_VALUES1,16,79,222,68,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    RTEXT           "Bits:",IDC_STATIC,57,99,17,12,SS_CENTERIMAGE
+    CTEXT           "",IDC_PARAM_BITS,78,99,98,12,SS_CENTERIMAGE | SS_SUNKEN
+    DEFPUSHBUTTON   "OK",IDOK,67,120,38,14
+    PUSHBUTTON      "Cancel",IDCANCEL,147,120,38,14
+END
+
+IDD_PROP_MODULE_SPECIFIC DIALOGEX 0, 0, 370, 261
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Extended Parameters"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "Available Ext. User Params.",IDC_STATIC,16,7,102,8
+    CONTROL         "List1",IDC_LIST_AVAILABLE_EXT_USER_PARAM,"SysListView32",
+                    LVS_REPORT | LVS_SINGLESEL | WS_TABSTOP,13,16,135,65,
+                    WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Add >>",IDC_DEVICE_PRM_ADD,157,16,56,14
+    PUSHBUTTON      "<< Remove",IDC_DEVICE_PRM_REMOVE,157,33,56,14
+    PUSHBUTTON      "Add All >>",IDC_DEVICE_PRM_ADD_ALL,157,50,56,14,NOT 
+                    WS_VISIBLE
+    PUSHBUTTON      "<< Remove All",IDC_DEVICE_PRM_REMOVE_ALL,157,67,56,14
+    LTEXT           "Used Ext. User Params",IDC_STATIC,224,7,102,8
+    CONTROL         "List1",IDC_LIST_USED_EXT_USER_PARAMS,"SysListView32",
+                    LVS_REPORT | LVS_SINGLESEL | WS_TABSTOP,222,16,135,65,
+                    WS_EX_CLIENTEDGE
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME | SS_SUNKEN,17,88,
+                    336,2
+    LTEXT           "Used Modules (with Ext. Params):",IDC_STATIC,17,95,200,
+                    8
+    COMBOBOX        IDC_COMBO_USED_MODULES,13,104,200,91,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Available Ext. Params:",IDC_STATIC,17,120,110,8
+    CONTROL         "",IDC_LIST_AVAIL_MOD_EXTPRM,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | WS_TABSTOP,13,131,135,64,
+                    WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Add >>",IDC_MODULE_EXTPRM_ADD,157,131,56,14
+    PUSHBUTTON      "<< Remove",IDC_MODULE_EXTPRM_REMOVE,157,148,56,14
+    PUSHBUTTON      "Add All >>",IDC_MODULE_PRM_ADD_ALL,157,165,56,14,NOT 
+                    WS_VISIBLE
+    PUSHBUTTON      "<< Remove All",IDC_MODULE_EXTPRM_REMOVE_ALL,157,182,56,
+                    14
+    LTEXT           "Used Ext. Params:",IDC_STATIC,225,120,110,8
+    CONTROL         "",IDC_LIST_USED_MOD_EXTPRM,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | WS_TABSTOP,222,131,135,64,
+                    WS_EX_CLIENTEDGE
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME | SS_SUNKEN,17,201,
+                    336,2
+    LTEXT           "Result:",IDC_STATIC,72,210,29,8
+    GROUPBOX        "User Prm Data",IDC_STATIC,104,207,160,46
+    EDITTEXT        IDC_USER_PRM_LINECOUNT,106,222,16,26,ES_RIGHT | 
+                    ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | 
+                    WS_DISABLED | NOT WS_BORDER | NOT WS_TABSTOP
+    EDITTEXT        IDC_DP_USER_PARAM,124,220,129,28,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL | NOT 
+                    WS_TABSTOP
+END
+
+IDD_PROP_GSD_MODULES DIALOGEX 0, 0, 370, 268
+STYLE WS_CHILD | WS_CAPTION
+CAPTION "Modules"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "Modules",IDC_STATIC,46,15,129,44
+    RTEXT           "Max. useable Modules:",IDC_STATIC,56,27,74,8
+    CTEXT           "",IDC_MAX_MODULES,137,26,25,10,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    RTEXT           "Used Modules:",IDC_STATIC,77,44,53,8
+    CTEXT           "",IDC_USED_MODULES,137,42,25,10,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    GROUPBOX        "I/O Data",IDC_STATIC,201,15,122,60
+    RTEXT           "Max. Input Length:",IDC_STATIC,209,26,70,8
+    CTEXT           "",IDC_MAX_INPUT_LENGTH,285,25,25,10,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    RTEXT           "Max. Output Length:",IDC_STATIC,213,41,67,8
+    CTEXT           "",IDC_MAX_OUTPUT_LENGTH,285,39,25,10,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    RTEXT           "Max. In/Output Length:",IDC_STATIC,205,57,75,8
+    CTEXT           "",IDC_MAX_IN_OUTPUT_LENGTH,285,55,25,10,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    LTEXT           "Available Modules:",IDC_STATIC,13,81,61,8
+    CONTROL         "",IDC_LIST_AVAILABLE_MODULES,"SysListView32",LVS_REPORT | 
+                    WS_TABSTOP,3,92,150,148,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Add >>",IDC_BUTTON_ADD,159,120,51,14
+    PUSHBUTTON      "<< Remove",IDC_BUTTON_REMOVE,159,175,51,14
+    PUSHBUTTON      "<< Remove All",IDC_BUTTON_REMOVE_ALL,159,198,51,14
+    LTEXT           "Used Modules:",IDC_STATIC,217,81,102,8
+    CONTROL         "",IDC_LIST_USED_MODULES,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | WS_TABSTOP,217,92,150,148,
+                    WS_EX_CLIENTEDGE
+    DEFPUSHBUTTON   "Up",IDC_ONE_UP,254,245,26,13,BS_CENTER | BS_VCENTER,
+                    WS_EX_STATICEDGE
+    DEFPUSHBUTTON   "Down",IDC_ONE_DOWN,299,245,26,13,BS_CENTER | BS_VCENTER,
+                    WS_EX_STATICEDGE
+END
+
+IDD_PROP_GSD_SLAVE_INFOS DIALOGEX 0, 0, 370, 250
+STYLE WS_CHILD | WS_CAPTION
+CAPTION "Slave Info"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    RTEXT           "Filedate:",IDC_STATIC,30,10,34,8
+    LTEXT           "",IDC_FILE_DATE,72,7,121,11,0,WS_EX_CLIENTEDGE
+    RTEXT           "Filename:",IDC_STATIC,25,26,38,8
+    LTEXT           "",IDC_FILE_NAME,72,22,280,11,0,WS_EX_CLIENTEDGE
+    GROUPBOX        "Deviceinfo",IDC_STATIC,17,41,201,200
+    RTEXT           "GSD Revision:",IDC_STATIC,38,59,47,8
+    LTEXT           "",IDC_GSD_REVISION,92,56,121,11,0,WS_EX_CLIENTEDGE
+    RTEXT           "Vendor:",IDC_STATIC,55,77,30,8
+    LTEXT           "",IDC_VENDOR_NAME,92,73,121,11,0,WS_EX_CLIENTEDGE
+    RTEXT           "Modelname:",IDC_STATIC,44,93,41,8
+    LTEXT           "",IDC_MODEL_NAME,92,90,121,11,0,WS_EX_CLIENTEDGE
+    RTEXT           "Revision:",IDC_STATIC,52,110,33,8
+    LTEXT           "",IDC_REVISION_STRING,92,107,121,11,0,WS_EX_CLIENTEDGE
+    RTEXT           "HW-Release:",IDC_STATIC,40,127,44,8
+    LTEXT           "",IDC_HARDWARE_RELEASE,92,124,121,11,0,WS_EX_CLIENTEDGE
+    RTEXT           "SW-Release:",IDC_STATIC,40,144,45,8
+    LTEXT           "",IDC_SOFTWARE_RELEASE,92,141,121,11,0,WS_EX_CLIENTEDGE
+    RTEXT           "Station Type:",IDC_STATIC,42,158,43,8
+    CONTROL         "",IDC_RADIO_MASTER,"Button",BS_AUTORADIOBUTTON | 
+                    BS_LEFT | BS_BOTTOM | WS_DISABLED | WS_GROUP,92,158,10,
+                    10
+    LTEXT           "Master",IDC_STATIC,103,158,24,8
+    CONTROL         "",IDC_RADIO_SLAVE,"Button",BS_AUTORADIOBUTTON | 
+                    BS_BOTTOM | WS_DISABLED | WS_GROUP,136,155,10,12
+    LTEXT           "Slave",IDC_STATIC,148,158,23,8
+    RTEXT           "Ident:",IDC_STATIC,61,177,24,8
+    LTEXT           "",IDC_IDENT_NUMBER,92,174,44,11,0,WS_EX_CLIENTEDGE
+    RTEXT           "FMS Support:",IDC_STATIC,39,194,46,8
+    LTEXT           "",IDC_FMS_SUPPORT,92,191,44,11,0,WS_EX_CLIENTEDGE
+    RTEXT           "Repeater Ctrl Signal:",IDC_STATIC,22,211,65,8
+    LTEXT           "",IDC_REPEATER_CTRL_SIG,92,208,44,11,0,WS_EX_CLIENTEDGE
+    RTEXT           "Pin 24 V:",IDC_STATIC,55,227,32,8
+    LTEXT           "",IDC_PINS_24V,92,225,44,11,0,WS_EX_CLIENTEDGE
+    GROUPBOX        "Supported Baudrates",IDC_STATIC,238,41,114,111
+    LISTBOX         IDC_LIST_SUPP_BAUDRATES,248,50,96,99,NOT LBS_NOTIFY | 
+                    WS_DISABLED | WS_VSCROLL,WS_EX_RIGHT
+    GROUPBOX        "Operation Mode",IDC_STATIC,238,152,114,89
+    CONTROL         "",IDC_SYNC_REQUEST,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED,244,161,13,8
+    LTEXT           "Sync. Request",IDC_STATIC,257,161,50,8
+    CONTROL         "",IDC_FREEZE_REQUEST,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED,244,174,13,8
+    LTEXT           "Freeze Request",IDC_STATIC,257,174,68,8
+    CONTROL         "",IDC_FAIL_SAVE,"Button",BS_AUTOCHECKBOX | WS_DISABLED,
+                    244,187,13,8
+    LTEXT           "Fail Safe",IDC_STATIC,257,187,48,8
+    CONTROL         "",IDC_SUPPORT_AUTOBAUD,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED,244,200,9,8
+    LTEXT           "Auto Baud Support",IDC_STATIC,257,200,64,8
+    CONTROL         "",IDC_REDUNDANCY,"Button",BS_AUTOCHECKBOX | WS_DISABLED,
+                    244,213,10,8
+    LTEXT           "Redundancy",IDC_STATIC,257,213,44,8
+    CONTROL         "",IDC_SET_SLAVE_ADDR_SUP,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED,244,226,13,8
+    LTEXT           "Support Set Slave Address",IDC_STATIC,257,226,85,8
+END
+
+IDD_PROP_USER_PRMS DIALOG DISCARDABLE  0, 0, 370, 260
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Cfg and User Data"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Configbytes",IDC_STATIC,17,32,159,214
+    EDITTEXT        IDC_EDIT_CONFIG_LINES,20,45,15,170,ES_RIGHT | 
+                    ES_MULTILINE | WS_DISABLED | NOT WS_BORDER | NOT 
+                    WS_TABSTOP
+    EDITTEXT        IDC_EDIT_CONFIGBYTES,38,43,123,172,ES_MULTILINE | 
+                    ES_WANTRETURN | WS_VSCROLL
+    PUSHBUTTON      "Default...",IDC_RESTORE_CFG_DATA,60,223,69,15
+    GROUPBOX        "User Prm Data",IDC_STATIC,192,32,159,214
+    EDITTEXT        IDC_EDIT_USER_LINES,195,45,15,170,ES_RIGHT | 
+                    ES_MULTILINE | WS_DISABLED | NOT WS_BORDER | NOT 
+                    WS_TABSTOP
+    EDITTEXT        IDC_EDIT_USER_PRMS,213,43,123,172,ES_MULTILINE | 
+                    ES_WANTRETURN | WS_VSCROLL
+    PUSHBUTTON      "Default...",IDC_RESTORE_USER_DATA,240,223,69,15
+END
+
+IDD_PROP_ERRORS DIALOG DISCARDABLE  0, 0, 370, 268
+STYLE WS_CHILD | WS_CAPTION
+CAPTION "Error Messages"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Errorcount:",IDC_STATIC,22,20,38,8
+    CTEXT           "Static",IDC_ERROR_COUNT,61,18,29,12,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    CONTROL         "",IDC_ERROR_MESSAGES,"SysListView32",LVS_REPORT | 
+                    WS_BORDER | WS_TABSTOP,22,40,325,214
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_EXT_USER_PRM_VALUES, DIALOG
+    BEGIN
+        VERTGUIDE, 16
+        VERTGUIDE, 238
+        HORZGUIDE, 15
+        HORZGUIDE, 46
+        HORZGUIDE, 56
+        HORZGUIDE, 94
+        HORZGUIDE, 106
+        HORZGUIDE, 134
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_CONFIGGSDBASIC      REGISTRY DISCARDABLE    "ConfigGSDBasic.rgs"
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1 TYPELIB ""ConfigGSD.tlb""\r\n"
+    "#include ""version.rc2""\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PROJNAME            "ConfigGSD"
+    IDS_SHEET_CAPTION       "GSD Information"
+    IDS_MODULE_DESCRIPTION  "Description"
+    IDS_MODULE_CONFIGBYTES  "Configbytes"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_DP_CFG_INPUT        "%1 byte(s) In"
+    IDS_DP_CFG_OUTPUT       "%1 byte(s) Out"
+    IDS_DP_CFG_INPUT_OUTPUT "%1 byte(s) I/O"
+    IDS_DP_CFG_CONSISTENCY  ", consistent"
+    IDS_DP_CFG_NO_CONSISTENCY ", not consistent"
+    IDS_DP_CFG_SPECIAL_IDENT "specific format:"
+    IDS_DP_CFG_SPECIAL_EMPTY ", empty"
+    IDS_DP_CFG_USER_DATA_LEN "%1 byte(s) user data"
+    IDS_EXTUSERPARAM_DESCRIPTION "Parameter Description"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "ConfigGSD.tlb"
+#include "version.rc2"
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

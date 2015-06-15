@@ -1,0 +1,25 @@
+TARGETTYPE=DLL
+TARGET=$(EXE_DIR)\Engineering\bin\ExeDelegator.dll
+
+DEFINE=_ATL_STATIC_REGISTRY
+DEFINE=_ATL_NO_SECURITY
+DEFINE=_AFXDLL
+DEFINE=_MRCEXT_NOFORCELIBS
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\inc
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\CE\inc
+INCLUDE=$(MAKEDIR)
+INCLUDE=$(MAKEDIR)\Inc
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+LIBPATH=$(LIB_DIR)
+
+#LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\Lib\fc_tools.lib
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\Lib\fc_util.lib
+
+MASTER_RC=ExeDelegator.rc
+PCHFILE=stdafx
+
+USER=precompile:
+USER=  $(CP) ExeDelegator.h ..\inc\ExeDelegator.h
+USER=  $(CP) ExeDelegator_i.c ..\inc\ExeDelegator_i.c
+USER=  $(CP) ExeDelegator.idl ..\inc\ExeDelegator.idl

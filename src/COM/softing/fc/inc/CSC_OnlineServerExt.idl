@@ -1,0 +1,147 @@
+/*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/inc/CSC_OnlineServerExt.idl 1     28.02.07 19:01 Ln $
+ *----------------------------------------------------------------------------*
+ *
+ * =FILENAME            $Workfile: CSC_OnlineServerExt.idl $
+ *                               $Logfile: /4CReleased/V2.20.00/COM/softing/fc/inc/CSC_OnlineServerExt.idl $
+ *
+ * =PROJECT             CAK1020  ATCMControl V2.0
+ *
+ * =SWKE                  4CSC
+ *
+ * =COMPONENT       CSC Online Server
+ *
+ * =CURRENT            $Date: 28.02.07 19:01 $
+ *                              $Revision: 1 $
+ *
+ * =ENVIRONMENT    Win32:
+ *                               MS Windows NT 4.0
+ *                               MSVC++ V6.0
+ *                               MS Java 3.2
+ *                               MS Visual SourceSafe 6.0
+ *
+ * =REFERENCES
+ *==
+ *----------------------------------------------------------------------------*
+ *
+ 
+ 
+
+ 
+
+ *==
+ *
+ *----------------------------------------------------------------------------*
+ * =DESCRIPTION
+ *== This IDL file defines the extension to the CSC_OnlineServer.idl.
+ *----------------------------------------------------------------------------*
+ * =MODIFICATIONS
+ * $History: CSC_OnlineServerExt.idl $
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.02.07   Time: 19:01
+ * Created in $/4CReleased/V2.20.00/COM/softing/fc/inc
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.08.03   Time: 16:34
+ * Created in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 4  *****************
+ * User: Jd           Date: 1.04.03    Time: 16:34
+ * Updated in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 3  *****************
+ * User: Jd           Date: 20.03.03   Time: 16:52
+ * Updated in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 2  *****************
+ * User: Jd           Date: 4.02.03    Time: 14:40
+ * Updated in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 1  *****************
+ * User: Jd           Date: 3.02.03    Time: 12:29
+ * Created in $/4Control/COM/softing/fc/inc
+ * 
+ *==
+ ******************************************************************************
+H<<*/
+
+
+
+// guard against multiple inclusion
+cpp_quote("#ifndef CSC_ONLINESERVEREXT_IDL")
+cpp_quote("#define CSC_ONLINESERVEREXT_IDL")
+
+cpp_quote("//+-------------------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  ATCMControl 4CSC")
+cpp_quote("//  ATCM.")
+cpp_quote("//")
+cpp_quote("//--------------------------------------------------------------------------")
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+
+    [
+        object,
+        uuid(ABA1DF33-5FC7-4a07-B9A3-C2EF039FA71F),
+        dual,
+        oleautomation,
+        helpstring("Interface for up/download domains to 4C control"),
+        pointer_default(unique)
+    ]
+    interface ICustOnlCmds : IDispatch
+    {
+        [id(1), helpstring("method CustDownUpLoad")]
+            HRESULT CustDownUpLoad([in] SAFEARRAY(unsigned char) *dataDown, [out] SAFEARRAY(unsigned char) *dataUp);  
+        [id(2), helpstring("method ProjectInfoUpload")]
+            HRESULT ProjectInfoUpload([out, string] BSTR* psProjVers,
+	                                  [out, string] BSTR* psProjName,
+	                                  [out, string] BSTR* psModified,
+	                                  [out, string] BSTR* psCreated,
+                                      [out, string] BSTR* psOwner,
+	                                  [out, string] BSTR* psComment1,
+	                                  [out, string] BSTR* psComment2,
+	                                  [out, string] BSTR* psComment3);
+        [id(3), helpstring("method ProjectDownload")]
+            HRESULT ProjectDownload([in] SAFEARRAY(unsigned char)* dataDown);
+        [id(4), helpstring("method ProjectUpload")]
+            HRESULT ProjectUpload([out] SAFEARRAY(unsigned char)* dataUp);
+        [id(5), helpstring("method CustCmd1")]
+            HRESULT CustCmd1([in] SAFEARRAY(unsigned char) *dataDown, [out] SAFEARRAY(unsigned char) *dataUp);  
+        [id(6), helpstring("method CustCmd2")]
+            HRESULT CustCmd2([in] SAFEARRAY(unsigned char) *dataDown, [out] SAFEARRAY(unsigned char) *dataUp);  
+        [id(7), helpstring("method CustCmd3")]
+            HRESULT CustCmd3([in] SAFEARRAY(unsigned char) *dataDown, [out] SAFEARRAY(unsigned char) *dataUp);  
+        [id(8), helpstring("method CustCmd4")]
+            HRESULT CustCmd4([in] SAFEARRAY(unsigned char) *dataDown, [out] SAFEARRAY(unsigned char) *dataUp);  
+        [id(9), helpstring("method CustCmd5")]
+            HRESULT CustCmd5([in] SAFEARRAY(unsigned char) *dataDown, [out] SAFEARRAY(unsigned char) *dataUp);  
+        [id(10), helpstring("method LoadFile")]
+            HRESULT LoadFile([in, string] BSTR sName, [out] SAFEARRAY(unsigned char) * data);
+        [id(11), helpstring("method SaveFile")]
+            HRESULT SaveFile([in, string] BSTR sName, [in] SAFEARRAY(unsigned char)* data);
+        [id(12), helpstring("method Dir")]
+            HRESULT Dir([out] SAFEARRAY(unsigned char)* fileNames);
+
+    };
+
+ 
+
+
+[
+    uuid(FABA6F95-012B-4247-B892-9A8839379AA1),
+    version(2.0),
+    helpstring("4CONTROL: CSC Online Server Extensions 2.0 Type Library")
+]
+library CSC_OnlineServerExt
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+
+    interface ICustOnlCmds;
+
+};
+
+
+cpp_quote("#endif //CSC_ONLINESERVEREXT_IDL")

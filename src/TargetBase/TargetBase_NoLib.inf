@@ -1,0 +1,35 @@
+# $Header: /4CReleased/V2.20.00/TargetBase/TargetBase_NoLib.inf 1     28.02.07 19:03 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: TargetBase_NoLib.inf $
+#                        $Logfile: /4CReleased/V2.20.00/TargetBase/TargetBase_NoLib.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Targetbase / AddOnHandler
+#
+# =COMPONENT            AddOnBase
+#
+# =CURRENT      $Date: 28.02.07 19:03 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+SUBPROJECT=CCG\CCG.mak
+SUBPROJECT=Tools\Tools.mak
+SUBPROJECT=Control\Control.mak
+SUBPROJECT=Online\Online.mak
+SUBPROJECT=AddonHandler\AddonHandler.mak
+SUBPROJECT=ProjectWizardBase\ProjectWizardBase.mak
+SUBPROJECT=FBConfig\FBConfig.mak
+
+USER=makefirst:$(PROJECT_ROOT)\TargetBase\bin
+USER=$(PROJECT_ROOT)\TargetBase\bin:
+USER=  -md $@
+
+USER=makefirst:$(PROJECT_ROOT)\TargetBase\lib
+USER=$(PROJECT_ROOT)\TargetBase\lib:
+USER=  -md $@
+
+# -------------------------------------------------------------------------------

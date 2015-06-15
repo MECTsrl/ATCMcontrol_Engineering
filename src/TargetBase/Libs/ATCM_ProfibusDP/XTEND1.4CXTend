@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XTEND CONTROL="localhost,08737544-44B1-4593-A5B4-6AB705ADBAD0,localhost,TCP(localhost),SIMPLE(1000),VERSION(22001)"
+  TCP="localhost"
+  RESOURCE="Resource1">
+    <CDOWNLOAD DIR="Download\XTEND1"/>
+</XTEND>

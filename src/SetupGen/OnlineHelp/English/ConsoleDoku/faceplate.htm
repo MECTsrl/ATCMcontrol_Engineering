@@ -1,0 +1,463 @@
+<html>
+<head>
+<title>Displays</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Manual_GE.css">
+</head>
+
+
+<body bgcolor="#FFFFFF" background="pic/backgrnd.jpg">
+<h1>Displays</h1>
+<hr>
+<h3><a name="overview"></a>Overview </h3>
+<ul>
+  <a href="#intro">Introduction</a><br>
+  <a href="#ConfigurationList">The Configuration List</a><br>
+  <a href="#Ressource">The Resource</a> 
+  <ul class="inul">
+    <a href="#RessourceFP">Faceplate</a><br>
+    <a href="#RessourceTD">Tuning Display</a> 
+  </ul>
+  <a href="#TaskList">The Task List</a><br>
+  <a href="#MessageHistory">The Message History</a><br>
+  <a href="#Tasks">Tasks</a> 
+  <ul class="inul">
+    <a href="#TasksFP">Faceplate</a><br>
+    <a href="#TasksTD">Tuning Display</a> 
+  </ul>
+  <a href="#FInst">Instances of Function Blocks</a><br>
+  <a href="#SInst">Instances of Structures</a><br>
+  <a href="#SFC">SFC Blocks in ATCM Console</a> 
+  <ul class="inul">
+    <a href="#SFCFP">Faceplate</a><br>
+    <a href="#SFCTD">Tuning Display</a> 
+  </ul>
+  <a href="#ChangeValue">Changing Variable Values on the Display </a> 
+</ul>
+<hr style="margin-left: 44px">
+<h2><a name="intro"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Introduction</h2>
+<p>Displays are visualization units in the Visualization view. One object of the 
+  project monitored in ATCM Console can be loaded in each display. To each type 
+  of object (e.g. task, function block instance), certain visualization schemes 
+  are assigned. These schemes determine which data are displayed (for a survey 
+  of the objects which can be displayed in the Visualization view, see the section 
+  <a href="Interface.htm#TabProject">The Project Tab</a>), and they ensure 
+  that objects belonging to the same type are always represented in the same manner.</p>
+<p>For a large number of objects, two visualization schemes are available:<br>
+  the <b>tuning display</b> and the <b>faceplate</b>: </p>
+<ul>
+  <li><a name="TuningDisplay"></a> The <b>tuning display</b> is used to display 
+    values of an object loaded in a display. These values are displayed in boxes 
+    in the tuning display. In instances of function blocks and structures, these 
+    values can partly be changed during the runtime of the control. <br>
+    See also the sections <a href="#FInst">Instances of Function Blocks</a> and 
+    <a href="#SInst">Instances of Structures</a>.</li>
+  <li><a name="Faceplate"></a>Like the tuning display, the <b>faceplate</b> also 
+    displays values of an object loaded in a display. The faceplate offers more 
+    visualization elements in addition to the ones in the tuning display. Furthermore, 
+    the runtime status of some objects can be influenced by means of buttons. 
+  </li>
+</ul>
+<p>By default, only a tuning display is available for the visualization of function 
+  block instances. However, some extended function blocks of the 4C_IEC1131_3 
+  and the 4C_Application library also have a faceplate with additional elements 
+  for the graphic representation of values.<br>
+  User-defined displays can be generated in the same way as the displays of the 
+  extended function blocks. Prerequisite, however, is detailed knowledge of HTML, 
+  Java, Java Script, ASP and the OPC interface. </p>
+<p>SFC blocks which were programmed by means of the graphic editor are equipped 
+  with additional visualization elements. For more information, see <a href="#SFC">SFC 
+  Blocks in ATCM Console</a>.</p>
+<p>By default, the faceplate (if implemented for the object) is displayed first 
+  when the object is loaded in a display. At the right end of the display header, 
+  a link labelled <b>TD</b> is available to you for changing from the object representation 
+  in the faceplate to the representation in the tuning display. After a change 
+  to the tuning display, the display header contains a link labelled <b>FP</b> 
+  by means of which you can change back to the faceplate. </p>
+<img src="pic/TD.gif" width="162" height="204" class="inP"> <img src="pic/FP.gif" width="162" height="204" class="inP"> 
+<h2><a name="ConfigurationList"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  The Configuration List</h2>
+<img src="pic/ConfList.gif" width="400" height="111" class="inP"> 
+<p>In each row, the configuration list displays the data of a resource loaded 
+  on a ATCM Control. All resources loaded on a control which belong to the currently 
+  monitored project are listed here. The columns contain the following information 
+  on each resource:</p>
+<dl> 
+  <dt><b>Status</b></dt>
+  <dd>Displays the runtime status of a resource. There are 4 different runtime 
+    statuses: 
+    <ul>
+      <li>Green color and <b>Running</b> message: The control on which the resource 
+        was loaded is running.</li>
+      <li>Yellow color and <b>Stopped</b> message: The control on which the resource 
+        was loaded has been stopped.</li>
+      <li>Yellow color and <b>Loading</b> message: The resource is loaded on a 
+        control.</li>
+      <li>Red color and <b>Error</b> message: An error has occurred during execution 
+        of the resource on the control. </li>
+    </ul>
+  </dd>
+  <dt><b>Machine</b></dt>
+  <dd> Indicates the PC to which the resource was assigned.</dd>
+  <dt><b>Resource</b> </dt>
+  <dd>Displays the name of the resource. The resource name is displayed in blue 
+    and underlined to signalize that it is a hyperlink. If you click on the name 
+    of a resource listed here, this resource is loaded in the display instead 
+    of the configuration list. </dd>
+  <dt><b>Memory (kB)</b></dt>
+  <dd>Indicates the amount of memory space required by the resource on the control 
+    in kilobytes. </dd>
+  <dt><b>Project</b></dt>
+  <dd>Indicates the name of the project to which the resource belongs.</dd>
+</dl>
+<h2><a name="Ressource"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  The Resource</h2>
+<p>The display for a resource shows data concerning the runtime status of the 
+  assigned control. The control onto which the resource was loaded can be started 
+  and stopped by means of the two buttons in the faceplate. </p>
+<h3><a name="RessourceFP"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Faceplate</h3>
+<img src="pic/ResourceFP.gif" width="330" height="228" class="inP"> 
+<dl> 
+  <dt><b>Runtime status</b></dt>
+  <dd>The four colored squares indicate the runtime status of the resource. There 
+    are 4 different runtime statuses: 
+    <ul>
+      <li>Green color and <b>Running</b> message: The control onto which the resource 
+        was loaded is running.</li>
+      <li>Yellow color and <b>Stopped</b> message: The control onto which the 
+        resource was loaded has been stopped.</li>
+      <li>Yellow color and <b>Loading</b> message: The resource is loaded on a 
+        control.</li>
+      <li>Red color and <b>Error</b> message: An error has occurred during execution 
+        of the resource on the control. </li>
+    </ul>
+  </dd>
+  <dt><b>Memory (kB)</b></dt>
+  <dd>Indicates the amount of memory space required by the resource on the control 
+    in kilobytes. </dd>
+  <dt><b>Project</b></dt>
+  <dd>Indicates the name of the project to which the resource belongs.</dd>
+  <dt><img src="pic/StopTask.gif" width="40" height="22"></dt>
+  <dd>This button stops the control assigned to the resource. The button is disabled 
+    if the control has already been stopped.</dd>
+  <dt><img src="pic/StartTaskl.gif" width="40" height="22"></dt>
+  <dd>This button starts the control assigned to the resource. It is disabled 
+    if the control is running.</dd>
+  <dt><b>Configuration List</b></dt>
+  <dd>If you click on this link, the display changes to the <a href="#ConfigurationList">Configuration 
+    List</a>. </dd>
+</dl>
+<h3><a name="RessourceTD"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Tuning Display</h3>
+<img src="pic/ResourceTD.gif" width="330" height="227" class="inP"> 
+<dl> 
+  <dt><b>__state</b></dt>
+  <dd>Indicates the runtime status of the control onto which the resource was 
+    loaded.</dd>
+  <dt><b>__memused</b></dt>
+  <dd>Indicates the amount of memory space required by the resource on the control 
+    in bytes. </dd>
+  <dt><b>__projectname</b></dt>
+  <dd>Indicates the name of the project to which the resource belongs. </dd>
+</dl>
+<h2><a name="TaskList"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  The Task List</h2>
+<p>The task list lists all tasks contained in a resource with their runtime statuses, 
+  cycle times and priorities. All tasks indicated in the task list can be started 
+  and stopped by buttons. </p>
+<img src="pic/TaskList.gif" width="402" height="203" class="inP"> 
+<dl> 
+  <dt><b>Status</b></dt>
+  <dd>Displays the runtime status of a task. There are 4 different runtime statuses: 
+    <ul>
+      <li>Green color and <b>Running</b> message: The control on which the resource 
+        was loaded is running.</li>
+      <li>Yellow color and <b>Stopped</b> message: The control on which the resource 
+        was loaded has been stopped.</li>
+      <li>Yellow color and <b>Loading</b> message: The resource is loaded on a 
+        control.</li>
+      <li>Red color and <b>Error</b> message: An error has occurred during execution 
+        of the resource on the control. </li>
+    </ul>
+  </dd>
+  <dt><b>Name</b></dt>
+  <dd>Name of the task. If you click on the task name, the display changes to 
+    the faceplate of the corresponding task.</dd>
+  <dt><b>Cycle Time(ms)</b></dt>
+  <dd>Indicates the cycle time assigned to the task in milliseconds. </dd>
+  <dt><b>Priority</b></dt>
+  <dd>Indicates the task priority assigned to the task.</dd>
+  <dt><img src="pic/StopTask.gif" width="40" height="22"></dt>
+  <dd>This button stops all tasks indicated in the task list. The button is disabled 
+    if all tasks have already been stopped.</dd>
+  <dt><img src="pic/StartTaskl.gif" width="40" height="22"></dt>
+  <dd>This button starts all tasks indicated in the task list. It is disabled 
+    if all tasks are running.</dd>
+</dl>
+<h2><a name="MessageHistory"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  The Message History</h2>
+<p>In the Message History, all messages given in the Message view of ATCM Engineering 
+  are displayed and collected. In addition to the messages given in ATCM Engineering, 
+  the number of the message as well as date and time at which the message was 
+  given are displayed to the left of the corresponding message text. Counting 
+  of the message numbers starts with 0; therefore, the 20th message, for example, 
+  has the number 19. Error messages and warnings are highlighted in color.</p>
+<img src="pic/MessageHistory.gif" width="624" height="203" class="inP"> 
+<p>In the Message view, messages are displayed by page. One page contains 100 
+  messages which are displayed together. Therefore, the range you can scroll through 
+  by means of the vertical scroll bar comprises precisely 100 messages (exception: 
+  see <a href="#exception">below</a>). If you want to display other messages than 
+  on the currently loaded page, you have to navigate to these messages by means 
+  of the buttons below the display area of the Message view. The buttons have 
+  the following functions:</p>
+<table >
+  <tr> 
+    <td valign="top"><img src="pic/Begin.gif" width="50" height="23" style="margin-right: 10px"></td>
+    <td valign="top">Loads the first page Therefore, the first 100 messages are 
+      displayed. </td>
+  </tr>
+  <tr> 
+    <td valign="top"><img src="pic/Back.gif" width="50" height="22" style="margin-right: 10px"></td>
+    <td valign="top">Loads the previous page. The display navigates back 100 messages.</td>
+  </tr>
+  <tr> 
+    <td valign="top"><img src="pic/Forward.gif" width="51" height="22" style="margin-right: 10px"></td>
+    <td valign="top">Loads the next page. The display navigates forward 100 messages 
+      (exception: see <a href="#exception">below</a>). </td>
+  </tr>
+  <tr> 
+    <td valign="top"><img src="pic/End.gif" width="50" height="21" style="margin-right: 10px"></td>
+    <td valign="top">Loads the last page. The last 100 messages are displayed. 
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top"><img src="pic/Goto.gif" width="51" height="23" style="margin-right: 10px"></td>
+    <td valign="top">Shows the message with the number entered in the box to the 
+      right of this button. </td>
+  </tr>
+</table>
+<p>The message display in the Message History is not automatically updated. To 
+  view the current messages as well, you have to press the button for displaying 
+  the last page.<a name="exception"></a> If less than 100 messages have been given 
+  since the last update, you can also update the display in the Message History 
+  by means of the button for navigating to the next page. The number of messages 
+  on one page is equal to the difference between the number of the last given 
+  message and the last message on the previous page. If, for instance, the last 
+  message on the previous page had the number 1500 and the last message given 
+  by the control has the number 1518, the last page only contains 18 messages. 
+</p>
+<p>Given messages are stored by ATCM Control in a ring buffer store. This buffer 
+  can store up to 100000 messages. If this number is exceeded, the messages given 
+  first are removed from the buffer to make room for the most current ones.<br>
+  The Message History header contains the number of messages on the currently 
+  loaded page and the total number of messages stored in the ring buffer store. 
+  Please note that the messages given by the control continue to be counted even 
+  if the maximum number of 100 000 messages has already been exceeded. In this 
+  case, the Message History header indicates, for instance, 100 of 99 999 although 
+  the most current message already has the number 120 000. </p>
+<h2><a name="Tasks"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Tasks</h2>
+<p>The task displays visualize values concerning the runtime status and runtime 
+  properties of the selected task.</p>
+<h3><a name="TasksFP"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Faceplate</h3>
+<img src="pic/TaskFP.gif" width="362" height="279" class="inP"> 
+<dl> 
+  <dt><b>Runtime Status</b></dt>
+  <dd>The five colored squares indicate the runtime status of the task. There 
+    are 5 different runtime statuses: 
+    <ul>
+      <li>Green color and <b>Running</b> message: The task is running.</li>
+      <li>Yellow color and <b>Stopped</b> message: The task has been stopped.</li>
+      <li>Yellow color and <b>Break</b> message: The task has been stopped at 
+        a breakpoint. </li>
+      <li>Yellow color and <b>Loading</b> message: The task is being loaded.</li>
+      <li>Red color and <b>Error</b> message: An error has occurred in the task. 
+      </li>
+    </ul>
+  </dd>
+  <dt><b>Cycle Time</b></dt>
+  <dd>Indicates the cycle time assigned to the task. </dd>
+  <dt><b>Elapsed Time</b></dt>
+  <dd>Indicates the time required by the task for the execution of a cycle in 
+    milliseconds.</dd>
+  <dt><b>Priority</b></dt>
+  <dd>Indicates the task priority assigned to the task.</dd>
+  <dt><img src="pic/StopTask.gif" width="40" height="22"></dt>
+  <dd>This button stops the execution of the task. This button is disabled if 
+    the task has already been stopped.</dd>
+  <dt><img src="pic/StartTaskl.gif" width="40" height="22"></dt>
+  <dd>This button starts a task. It is disabled if the task is already running.</dd>
+  <dt><b>Task List</b></dt>
+  <dd>If you click on this link, the display changes to the <a href="#TaskList">Task 
+    List</a>. </dd>
+</dl>
+<h3><a name="TasksTD"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Tuning Display</h3>
+<img src="pic/TaskTD.gif" width="362" height="281" class="inP"> 
+<dl> 
+  <dt><b>__state</b></dt>
+  <dd>Displays the runtime status of a task.</dd>
+  <dt><b>__prio</b></dt>
+  <dd>Indicates the task priority assigned to the task.</dd>
+  <dt><b>__cyle</b></dt>
+  <dd>Indicates the cycle time assigned to the task. </dd>
+  <dt><b>__etmax</b></dt>
+  <dd>Indicates the time required by the task for the execution of a cycle in 
+    milliseconds.</dd>
+  <dt><b>__errno</b></dt>
+  <dd>Displays the error status of a task. An error number which is not equal 
+    to 0 signalizes an error.</dd>
+</dl>
+<h2><a name="FInst"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Instances of Function Blocks</h2>
+<p>Unless additional visualization functions have been implemented in a user-defined 
+  function block, function block instances are only represented as <a href="#TuningDisplay">tuning 
+  display</a>. The display header therefore contains no link to a corresponding 
+  <a href="#Faceplate">faceplate</a>. </p>
+<img src="pic/FBUserdefined.gif" width="351" height="216" class="inP"> 
+<p>Only data of the type <i>ANY_SIMPLE</i> belonging to the public interface of 
+  the function block, i.e. variables which have been declared in a <i>VAR_INPUT</i>, 
+  <i>VAR_IN_OUT</i> or <i>VAR_OUTPUT</i> section, are displayed. </p>
+<p>The following are <u>not</u> displayed:</p>
+<ul>
+  <li>Arrays and array elements</li>
+  <li>Instances of structures and structural elements declared in the corresponding 
+    function block. These are visualized in a separate display (see <a href="#SInst">Instances 
+    of Structures</a>).</li>
+  <li>Instances of function blocks declared in the corresponding function block. 
+    These are visualized in a separate display.</li>
+</ul>
+<p>Variables whose values can be changed during runtime are displayed in blue 
+  and underlined. Variables with values which cannot be changed, on the other 
+  hand, appear in normal writing. </p>
+<p>Variables with changeable values are variables declared in the visualized function 
+  block as <i>VAR_INPUT</i> which are <u>not</u> initialized with actual parameters 
+  when an instance of this function block is called.<br>
+  The values of all other variables cannot be changed in ATCM Console. Not changeable 
+  are therefore e.g. values of variables which were declared in <i>VAR_OUTPUT</i> 
+  sections or values of <i>VAR_INPUT</i> variables which are initialized with 
+  actual parameters when the instance of the visualized function block is called. 
+</p>
+<p>See also <a href="#ChangeValue">Changing Variable Values on the Display</a>.</p>
+<h2><a name="SInst"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Instances of Structures</h2>
+<p>Structure instances are only displayed as <a href="#TuningDisplay">tuning display</a>. 
+  All structural elements of the type <i>ANY_SIMPLE</i> are displayed. </p>
+<p>The following are <u>not</u> displayed:</p>
+<ul>
+  <li>Arrays and array elements</li>
+  <li>Instances of structures declared in the visualized structure.</li>
+</ul>
+<p>All values of structure instances which are displayed can be changed. Therefore, 
+  the variables are represented in blue and underlined. </p>
+<img src="pic/StructVisu.gif" width="371" height="142" class="inP"> 
+<h2><a name="SFC"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  SFC Blocks in ATCM Console</h2>
+<h3><a name="SFCFP"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Faceplate</h3>
+<p>Function blocks or programs which were programmed in the graphic editor as 
+  SFC sequence charts are visualized in the faceplate in the same way as in the 
+  graphic editor, i.e. the graphical representations used by the graphic editor 
+  for SFC blocks are also used for visualization in the faceplate. This concerns 
+  also the position and the interconnect lines between SFC blocks so that the 
+  graphical representations in the graphic editor and the faceplate are largely 
+  identical. Actions whose bodies are displayed in the graphic editor but not 
+  in the faceplate, are an exception. Operations which are executed in actions 
+  and data elements in actions are therefore not displayed in the faceplate. </p>
+<img src="pic/SFCDisplay.gif" width="692" height="334" class="inP"> 
+<p>As in the Instance view of the graphic editor, active steps are represented 
+  in gray color also in the faceplate. The <b>Context</b> menu of the faceplate, 
+  which you can call by clicking in the visualization area of the faceplate with 
+  the right mouse button, offers all options for monitoring and controlling SFC 
+  program components which are also supplied by the graphic editor. It contains, 
+  for example, a menu item for activating the SFC monitoring mode and options 
+  for controlling actions and transitions. <br>
+  In addition, the <b>Context</b> menu offers you three options for zooming the 
+  faceplate visualization area. The currently enabled zooming factor is checked. 
+</p>
+<img src="pic/note.gif"
+        width="32" height="31" align="left"> 
+<div style="margin-left: 5; position: relative; top: 0"> 
+  <table border="0" cellpadding="0" class="tabhinweis">
+    <tr> 
+      <td class="HinweisText"> Please note that you can call the <b>Context</b> 
+        menu for monitoring and controlling SFC program components only if the 
+        cursor is positioned, at the time you click on the right mouse button, 
+        in an area located between the SFC elements on the very right and on the 
+        very left. If you click outside this area, the <b>Context</b> menu of 
+        the Internet Explorer will be called instead. </td>
+    </tr>
+  </table>
+</div>
+<br>
+<img src="pic/SFCDisplayCon.gif" width="694" height="334" class="inP"> 
+<p>The method of working in the <a href="SFCdebug.htm#SingleStep">SFC monitoring mode</a> 
+  and with the options for controlling SFC program components in the faceplate 
+  is identical with the corresponding procedure in the editor of ATCM Engineering. 
+  <br>
+  For more information, see the chapter <a href="SFCdebug.htm">Monitoring 
+  and Controlling SFC Program Components</a>. </p>
+<img src="pic/note.gif"
+        width="32" height="31" align="left"> 
+<div style="margin-left: 5; position: relative; top: 0"> 
+  <table border="0" cellpadding="0" class="tabhinweis">
+    <tr> 
+      <td class="HinweisText"> Only SFC program components programmed in the graphic 
+        editor can be visualized as faceplate. SFC program components programmed 
+        in the ST editor, on the other hand, are only displayed as tuning display. 
+        <br>
+        Other than non-SFC program instances, instances of SFC programs which 
+        were programmed in the graphic editor are displayed in the Navigator view 
+        as hyperlinks and can be visualized in ATCM Console in the same way as function 
+        block instances. Non-SFC program instances cannot be visualized in ATCM 
+        Console. </td>
+    </tr>
+  </table>
+  <h3><a name="SFCTD"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+    Tuning Display</h3>
+</div>
+<p>The representation as tuning display of SFC program components programmed in 
+  the graphic editor is the same as the general <a href="#FInst">Representation 
+  of Function Blocks as Tuning Display</a>. </p>
+<h2><a name="#ChangeValue"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Changing Variable Values on the Display</h2>
+<p>Values of variables which are displayed in blue and underlined can be changed 
+  in the control during runtime. </p>
+<p>You can change a variable value in the following manner:</p>
+<ol>
+  <li>In the display, click on the desired variable to call the dialog for variable 
+    alteration.<br>
+    <br>
+  </li>
+  <li>In the alteration dialog, the <b>Current</b> box indicates the current value 
+    of the variable. <br>
+    <br>
+    <img src="pic/WriteValue.gif" width="450" height="160"><br>
+    <br>
+    Enter the value that you want to assign to the variable in the <b>New</b> 
+    box. Note that the entered format must correspond to the data type of the 
+    variable. If, for example, the variable has the data type <i>LREAL</i>, the 
+    variable value must be written by using a decimal point. The easiest thing 
+    is to refer to the notation of the current value in the <b>Current</b> box. 
+    <br>
+    <br>
+    <img src="pic/WriteBoolValue.gif" width="450" height="150"> <br>
+    <br>
+    If you change a variable value of the type <i>BOOL</i>, two circular radio 
+    buttons will appear in the alteration dialog instead of the input field. By 
+    clicking on these, you can define the new value. In this case, naturally, 
+    the correct input format follows automatically.<br>
+    <br>
+  </li>
+  <li>If the format of the value entered by you corresponds to the data type of 
+    the variable, the <b>Write</b> button is enabled. Click on this button to 
+    update the variable with the new value. <br>
+    <br>
+  </li>
+  <li>To close the dialog, click on <b>Close</b>.</li>
+</ol>
+</body>
+</html>

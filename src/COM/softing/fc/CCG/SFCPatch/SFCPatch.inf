@@ -1,0 +1,18 @@
+
+TARGET=$(EXE_DIR)\Engineering\bin\SFCPatch.exe
+TARGETTYPE=CON 
+
+STATIC_RUNTIME=0
+
+DEFINE=_ATL_NO_SECURITY
+DEFINE=_AFXDLL
+
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\ce\inc
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\res
+LIBRARY=$(LIB_DIR)\fc_util.lib
+#LIBRARY=$(LIB_DIR)\baselib.lib
+
+USER=clean::
+USER=   @IF EXIST debug\SFCPatch.exe $(RM) debug\SFCPatch.exe
+USER=   @IF EXIST debug\SFCPatch.tlb $(RM) debug\SFCPatch.tlb

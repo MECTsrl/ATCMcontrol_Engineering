@@ -1,0 +1,51 @@
+// GrEditor.odl : type library source for GrEditor.exe
+
+// This file will be processed by the MIDL compiler to produce the
+// type library (GrEditor.tlb).
+
+[ uuid(F8F838B3-096A-11d5-94E1-00E02939A881), version(1.0) ]
+library GrEditor
+{
+	importlib("stdole32.tlb");
+	
+
+	//  Primary dispatch interface for CGrEditorDoc
+	
+	[ uuid(F8F838B2-096A-11d5-94E1-00E02939A881) ]
+	dispinterface IGrEditor
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CGrEditorDoc)
+			//}}AFX_ODL_PROP
+			
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CGrEditorDoc)
+			//}}AFX_ODL_METHOD
+
+	};
+
+#include "PrgEditorIF.idl"
+
+	//  Class information for CGrEditorDoc
+	
+//	[ uuid(59119A13-6422-11D2-9A3D-0000C0D26FBC) ]  old wizard generated
+//  [ uuid(E46EFC83-FAF7-11D1-8E7B-444553540000) ]  V1.0 - V1.3
+    [ uuid(F8F838B1-096A-11d5-94E1-00E02939A881) ]
+	coclass Document
+	{
+		[default] dispinterface IGrEditor;
+		interface ICEEdit;
+        interface ICEPrint;
+		interface ICEPrgEdit;
+		interface ICEDebug;
+		interface ICEMonitor;
+	};
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};
+

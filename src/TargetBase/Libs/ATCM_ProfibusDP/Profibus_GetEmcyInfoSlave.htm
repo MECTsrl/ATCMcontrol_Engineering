@@ -1,0 +1,257 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>  </TITLE>
+<META NAME="Template" CONTENT="D:\!!job\code\AutoDoc\prot\logic17.dot">
+</HEAD>
+<BODY BGCOLOR="#ffffcc">
+
+<B><FONT FACE="Arial"><P>Profibus_GetEmcyInfoSlave</P>
+</B></FONT><FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">La funzione Profibus_GetEmcyInfoSlave permette di leggere le informazioni di diagnostica ritornate da una scheda Profibus slave.</P>
+<P ALIGN="JUSTIFY"></P>
+<B><P>Sintassi</P>
+</B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<I><P>ret_code</I>&nbsp;:= Profibus_GetEmcyInfoSlave ( <I>ExecMode</I>, <I>ExecStatus</I>, <I>Board</I>, </P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P>       TaskState</I>, <I>ErrorCnt</I>, <I>LastError</I>, <I>NodeId </I>);</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<B><P ALIGN="JUSTIFY">Parametri di ingresso</P>
+<P ALIGN="JUSTIFY"></P>
+</B><I><P ALIGN="JUSTIFY">ExecMode</I> (INT)&#9;Modalita di esecuzione del comando [MODE_NOWAIT, </P>
+<P ALIGN="JUSTIFY">&#9;&#9;&#9;&#9;MODE_WAIT, MODE_WAIT_ACCEPT, MODE_NOWAIT_ACK].</P>
+<I><P ALIGN="JUSTIFY">Board</I> (INT)&#9;&#9;Scheda master su cui opera la funzione.</P>
+<P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">Parametri di uscita</P>
+<P ALIGN="JUSTIFY"></P>
+</B><I><P ALIGN="JUSTIFY">ExecStatus</I> (DWORD)&#9;Stato di esecuzione del comando in modalit&agrave; MODE_NOWAIT_ACK.</P>
+<I><P ALIGN="JUSTIFY">TaskState</I>   (WORD)      Stato della scheda slave</P>
+<I><P ALIGN="JUSTIFY">ErrorCnt</I>     (WORD)       numero degli errori che si sono verificati sullo slave</P>
+<I><P ALIGN="JUSTIFY">LastError</I>    (WORD)       codice dell’ultimo errore che si &egrave; verificato</P>
+<I><P ALIGN="JUSTIFY">NodeId</I>       (WORD)       indirizzo di rete configurato sullo slave</P>
+<P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">Modalit&agrave; di esecuzione</P>
+<P ALIGN="JUSTIFY"></P>
+</B><P ALIGN="JUSTIFY">La funzione deve essere eseguita in modalit&agrave; MODE_WAIT.</P>
+
+<B><P ALIGN="JUSTIFY">Uso</P>
+<P ALIGN="JUSTIFY"></P>
+</B><P ALIGN="JUSTIFY">La funzione ritorna alcune informazioni inerenti la diagnostica della scheda Profibus slave. Questa funzione pu&ograve; essere utilizzata solo se la scheda identificata dal parametro <I>Board </I>&egrave; una scheda Profibus slave.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Il parametro di uscita <I>TaskState</I> (stato della scheda slave) &egrave; composto da diversi bit; il significato di ogni bit &egrave; il seguente:</P>
+<P ALIGN="JUSTIFY"></P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=639>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<B><I><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">TaskState</B></I></FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit</B></FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Descrizione</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ts_INITIALIZING</FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0001</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Inizializzazione in corso. Se questo stato permane per alcuni secondi i parametri di configurazione possono non essere validi</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ts_RUNNING </FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0002</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Esecuzione in corso. La inizializzazione ha avuto successo.</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ts_DIAGNOSIS </FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0004</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Lo slave sta inviando telegrammi di diagnostica sul bus.</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ts_DATA_EXCHANGE</FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0008</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Scambio dati tra master e slave in corso. La modalit&agrave; scambio dati &egrave; attiva.</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Il parametro di uscita <I>LastError</I> pu&ograve; assumere questi valori:</P>
+<P ALIGN="JUSTIFY"></P></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=641>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<B><I><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">LastError</B></I></FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Descrizione</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">52</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">L’indirizzo di rete configurato non &egrave; valido. Indirizzi validi: 1 … 125</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">53</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">In attesa di warmstart</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">54</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Il tipo di modulo configurato &egrave; sconosciuto</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">55</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">La lunghezza del modulo non &egrave; valida</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">61</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Nella configurazione &egrave; previsto che l’indirizzo di rete venga letto da uno switch hardware, ma lo switch non &egrave; presente</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">63</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">La modalit&agrave; handshake non &egrave; supportata</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">70</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">La lunghezza dei dati di I/O non &egrave; valida. O la lunghezza &egrave; troppo grande oppure non sono stati specificati moduli di I/O</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">72</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">La lunghezza del buffer DPV1 class 1 non &egrave; valida</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">73</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">La lunghezza del buffer DPV1 class 2 non &egrave; valida</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">74</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Il chip SPC3 non &egrave; in modalit&agrave; offline durante la inizializzazione</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">75</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Memoria non sufficiente nel chip SPC3</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">76</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">La lunghezza del buffer dei dati di I/O non &egrave; valida</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">77</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">La lunghezza del buffer di diagnostica non &egrave; valida</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">78</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">La lunghezza del buffer dei parametri non &egrave; valida</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">79</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">La lunghezza del buffer di configurazione non &egrave; valida</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">80</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">La lunghezza del buffer SSA non &egrave; valida</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">210</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Database non trovato</FONT></TD>
+</TR>
+</TABLE>
+
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Valori di ritorno</P></B></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=641>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Valore (HEX)</B></FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Descrizione</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Funzione eseguita correttamente</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">  0x0037003F</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Parametro <I>Board</I> non valido</FONT></TD>
+</TR>
+</TABLE>
+
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Esempio</P>
+<P ALIGN="JUSTIFY"></P>
+</B><P ALIGN="JUSTIFY">VAR</P>
+<P ALIGN="JUSTIFY">ExecMode       : INT := MODE_WAIT;</P>
+<P ALIGN="JUSTIFY">ExecStatus      : DWORD;</P>
+<P ALIGN="JUSTIFY">Board               : INT;</P>
+<P ALIGN="JUSTIFY">TaskState        : WORD;</P>
+<P ALIGN="JUSTIFY">ErrorCnt           : WORD;</P>
+<P ALIGN="JUSTIFY">LastError          : WORD;</P>
+<P ALIGN="JUSTIFY">NodeId             : WORD;</P>
+<P ALIGN="JUSTIFY">RetCode          : DWORD;</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">END_VAR</P>
+<P ALIGN="JUSTIFY"></P>
+<P>RetCode&nbsp;:= Profibus_GetEmcyInfoSlave ( ExecMode, ExecStatus, Board, </P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<P>       TaskState, ErrorCnt, LastError, NodeId );</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</FONT></BODY>
+</HTML>

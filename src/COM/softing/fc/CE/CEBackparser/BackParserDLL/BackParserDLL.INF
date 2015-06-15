@@ -1,0 +1,54 @@
+TARGETTYPE=DLL
+TARGET=$(EXE_DIR)\Engineering\bin\BackParserDLL.dll
+IMPLIB=$(PROJECT_ROOT)\COM\softing\fc\CE\lib\BackParserDLL.lib
+DEFINE=_ATL_NO_SECURITY
+DEFINE=_AFXDLL
+DEFINE=YYEXIT
+DEFINE=_BACKPARSERDLL
+INCLUDE=$(MAKEDIR)
+INCLUDE=$(MAKEDIR)\Inc
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\CE\inc
+INCLUDE=$(RESOURCE_DIR)
+LIBPATH=$(LIB_DIR)
+PCHFILE=stdafx
+DEFLIB=tracea.lib
+
+USER=makefirst: lex_yacc\Scanner.h lex_yacc\Scanner.cpp lex_yacc\Parser.h lex_yacc\Parser.cpp
+
+USER=lex_yacc\Scanner.h: lex_yacc\Scanner.l lex_yacc\proto\Yylex.cpp
+USER=	lex_yacc\CallLexYacc.bat
+
+USER=lex_yacc\Scanner.cpp: lex_yacc\Scanner.l lex_yacc\proto\Yylex.cpp
+USER=	lex_yacc\CallLexYacc.bat
+
+USER=lex_yacc\Parser.h: lex_yacc\Parser.y lex_yacc\proto\Yyparse.cpp
+USER=	lex_yacc\CallLexYacc.bat
+
+USER=lex_yacc\Parser.cpp: lex_yacc\Parser.y lex_yacc\proto\Yyparse.cpp
+USER=	lex_yacc\CallLexYacc.bat
+
+# CE_SRCOPS_IEC_Parser.cpp includes Parser.cpp.
+# But parser.cpp is a generated file. So nmake does not create the dependency
+# "CE_SRCOPS_IEC_Parser.cpp: lex_yacc\Parser.cpp".
+# So the following rule is included.
+# Rule: If Parser.cpp changed, touch CE_SRCOPS_IEC_Parser.cpp.
+# (No touch command on NT. So the type command is used to modify the date of the file.)
+USER=CE_SRCOPS_IEC_Parser.cpp: lex_yacc\Parser.cpp
+USER=	copy CE_SRCOPS_IEC_Parser.cpp CE_SRCOPS_IEC_Parser.tmp
+USER=	del /F CE_SRCOPS_IEC_Parser.cpp
+USER=	type CE_SRCOPS_IEC_Parser.tmp > CE_SRCOPS_IEC_Parser.cpp
+USER=	del /F CE_SRCOPS_IEC_Parser.tmp
+
+# Corresponding to CE_SRCOPS_IEC_Parser.cpp and Parser.cpp.
+USER=CE_SRCOPS_IEC_Scanner.cpp: lex_yacc\Scanner.cpp
+USER=	copy CE_SRCOPS_IEC_Scanner.cpp CE_SRCOPS_IEC_Scanner.tmp
+USER=	del /F CE_SRCOPS_IEC_Scanner.cpp
+USER=	type CE_SRCOPS_IEC_Scanner.tmp > CE_SRCOPS_IEC_Scanner.cpp
+USER=	del /F CE_SRCOPS_IEC_Scanner.tmp
+
+USER=makefirst:$(MAKEDIR)\Lib
+USER=$(MAKEDIR)\Lib:
+USER=  -md $@
+
+

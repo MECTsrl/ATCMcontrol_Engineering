@@ -1,0 +1,383 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+		<title>ATCMControl v2.1</title>
+		<script language="javascript" type="text/javascript">
+
+	pic1 = new Image();
+	pic1.src = "../pic/nav1e.gif";
+	pic2 = new Image();
+	pic2.src = "../pic/nav2e.gif";
+	pic3 = new Image();
+	pic3.src = "../pic/nav3d.gif";
+	pic6 = new Image();
+	pic6.src = "../pic/nav6e.gif";
+	pic8 = new Image();
+	pic8.src = "../pic/nav5d.gif";
+	pic7 = new Image();
+	pic7.src = "../pic/nav7e.gif";
+	pic9 = new Image();
+	pic9.src = "../pic/nav9e.gif";
+
+	pic11 = new Image();
+	pic11.src = "../pic/nav11e.gif";
+	pic22 = new Image();
+	pic22.src = "../pic/nav22e.gif";
+	pic33 = new Image();
+	pic33.src = "../pic/nav33d.gif";
+	pic66 = new Image();
+	pic66.src = "../pic/nav66e.gif";
+	pic88 = new Image();
+	pic88.src = "../pic/nav55d.gif";
+	pic77 = new Image();
+	pic77.src = "../pic/nav77e.gif";
+	pic99 = new Image();
+	pic99.src = "../pic/nav99e.gif";
+
+function drauf(wert)
+{
+	switch (wert)
+	{
+		case 1:	document.nav1.src = pic11.src;
+		break;
+		case 2: document.nav2.src = pic22.src;
+		break;
+		case 3: document.nav3.src = pic33.src;
+		break;
+		case 6: document.nav6.src = pic66.src;
+		break;
+		case 8: document.nav8.src = pic88.src;
+		break;
+		case 7: document.nav7.src = pic77.src;
+		break;
+		case 9: document.nav9.src = pic99.src;
+		break;
+	}
+}
+function runter(wert)
+{
+	switch (wert)
+	{
+		case 1:document.nav1.src = pic1.src;
+		break;
+		case 2:document.nav2.src = pic2.src;
+		break;
+		case 3:document.nav3.src = pic3.src;
+		break;
+		case 6:document.nav6.src = pic6.src;
+		break;
+		case 8:document.nav8.src = pic8.src;
+		break;
+		case 7:document.nav7.src = pic7.src;
+		break;
+		case 9: document.nav9.src = pic9.src;
+		break;
+
+	}
+}
+</script>
+		<link rel="stylesheet" href="../text.css">
+	</head>
+
+	<body leftmargin="2" topmargin="2" marginwidth="2" marginheight="2" bgcolor="#CCCCCC" link="#003366" vlink="#003366" alink="#003366">
+		<!--hauptmenue-->
+		<table width="760" height="25" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="155" align="right" valign="bottom"><img src="../pic/4clogo.gif" width="14" height="16" alt="" border="0"><img src="../pic/clearpix.gif" width="2" height="1" alt="" border="0"></td>
+				<!--kurze laengsline-->
+				<td align="left" valign="bottom"><img src="../pic/linien.gif" width="2" height="25" alt="" border="0"></td>
+				<!--ende-->
+				<td colspan="4">&nbsp;</td>
+			</tr>
+		</table>
+		<!--querline-->
+		<table width="760" height="2" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><img src="../pic/linien.gif" width="760" height="2" alt="" border="0"></td>
+			</tr>
+		</table>
+		<!--ende-->
+		<table width="760" height="94%" border="0" cellpadding="0" cellspacing="0">
+			<tr><!--navigation-->
+				<td width="155" valign="top">
+					<table width="155" height="60" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="24" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td valign="center"><img src="../pic/4clayout-kl.jpg" width="152" height="134" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><img src="../pic/nav1e.gif" name="nav1" width="120" height="25" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="thiscd.html" onmouseover="drauf(2)" onmouseout="runter(2)"><img src="../pic/nav2e.gif" name="nav2" width="120" height="25" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="cinstall.html" onmouseover="drauf(3)" onmouseout="runter(3)"><img src="../pic/nav3d.gif" name="nav3" width="120" height="25" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="license.html" onmouseover="drauf(6)" onmouseout="runter(6)"><img src="../pic/nav6e.gif" name="nav6" width="120" height="25" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="knownbugs.html" onmouseover="drauf(8)" onmouseout="runter(8)"><img src="../pic/nav5d.gif" name="nav8" width="120" height="25" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="contact.html" onmouseover="drauf(7)" onmouseout="runter(7)"><img src="../pic/nav7e.gif" name="nav7" width="120" height="25" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="60" valign="center"><a href="readme_dep.htm" onmouseover="drauf(9)" onmouseout="runter(9)"><img src="../pic/nav9e.gif" name="nav9" width="120" height="50" border="0"></a></td>
+						</tr>
+					</table>
+				</td>
+				<!--navigation ende--><!--lange vertikalline-->
+				<td bgcolor="#999999">
+					<table width="2" height="94%" valign="top" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="1" alt="" border="0"></td>
+						</tr>
+					</table>
+				</td>
+				<!--ende--><!--inhalt-->
+				<td width="603" valign="top">
+					<table border="0" cellpadding="0" cellspacing="0" align="center" valign="middle" width="570">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="24" alt="" border="0"></td>
+						</tr>
+						<tr height="55">
+							<td align="center" valign="top" height="55">
+								<p><span class="headblau">Configuring the PROFIbus Driver with the <br>
+										PROFIBUS Control Panel </span></p>
+							</td></tr>
+							<tr><td><span class="text">Use the PROFIBUS control panel applet to configure the parameters of the PROFIBUS hardware device driver for Windows 2000/XP. The PROFIBUS control panel applet is installed in the Control Panel during the installation procedure. To start the PROFIBUS control panel applet, simply double click the &quot;PROFIBUS&quot; icon. </span>
+								<p><span class="zwitiblau">Overview</span><span class="text"> </span></p>
+								<p><span class="text">The user interface of the PROFIBUS control panel behaves like a standard Windows MDI (Multiple Document Interface) application. It consists of the PROFIBUS tree, buttons and an information area displaying hardware-specific configuration parameters.</span></p>
+								<p> <img src="../pic/ProfiControlPanel.gif" width="554" height="414"></p>
+								<p><span class="zwitiblau">PROFIBUS Tree Structure</span></p>
+								<p><span class="text">The PROFIBUS tree displays all configured PROFIBUS nodes with their current states, subdivided into the following hardware (board) categories:</span></p>
+								<ul>
+									<li><span class="text">PROFIboard-ISA (ISA version of PROFIboard with PROFIBUS DP/FMS Master or DP Slave stack)<br>
+										</span>
+									<li><span class="text">PROFI104 (PC104 board with PROFIBUS DP/FMS Master or DP Slave stack)<br>
+										</span>
+									<li><span class="text">PROFI104-S (PC104 board with PROFIBUS DP Slave stack)<br>
+										</span>
+									<li><span class="text">PROFIboard-PCI&nbsp;(PCI version of PROFIboard with PROFIBUS DP/FMS Master or DP Slave stack)<br>
+										</span>
+									<li><span class="text">PROFIcard / PROFIcard 2 (PC card with PROFIBUS DP/FMS Master stack)<br>
+										</span>
+									<li><span class="text">FG Series / PROFIgate&nbsp;(PROFIBUS Ethernet Gateway with DP/FMS Master or DP Slave stack)</span>
+								</ul>
+								<span class="text">These categories form the first level of the PROFIBUS tree and indicate the possible types of hardware interfaces. They appear at any time regardless of whether such hardware interfaces are actually installed or not.<br>
+								</span>
+								<p><span class="text">A PROFIBUS node is a PROFIBUS device acting as a master or slave. PROFIboard-ISA, PROFIcard / PROFIcard 2, PROFI104 and FG Series / PROFIgate can act as single nodes, PROFIboard-PCI has two channels and can therefore act as two nodes.<br>
+									</span></p>
+								<p><span class="text">When a PROFIBUS node of a certain hardware category has been configured, the category will be displayed in bold letters and a node icon will appear below that category. A configured node is a node known to the PROFIBUS Windows 2000/XP driver. Depending on the state of the node, three different icons are used to display a node:</span></p>
+								<ul>
+									<li><span class="text">The <img src="../pic/working.gif" width="16" height="16"> icon indicates that the PROFIBUS node is working properly.</span>									<li><span class="text">The <img src="../pic/notworking.gif" width="16" height="16"> icon indicates that the PROFIBUS node is not working properly. </span>									<li><span class="text">The <img src="../pic/configured.gif" width="17" height="16"> icon indicates that the PROFIBUS node is configured but not yet checked.</span>								</ul>
+								<span class="zwitiblau">Information Area</span>
+								<p><span class="text">The main settings (firmware type, firmware version, resources, device names, etc.) of the PROFIBUS node configuration are displayed in the information area. </span></p>
+								<p><span class="zwitiblau">Status Bar</span> </p>
+								<p><span class="text">The current status of a PROFIBUS node is displayed in the status bar. </span></p>
+								<p><span class="zwitiblau">Buttons</span></p>
+								<p><span class="text">The buttons in the PROFIBUS Control Panel have the following meanings:</span></p>
+								<table width="450" border="0">
+									<tr>
+										<td width="19%" valign="top"><b><span class="text">Add</span></b></td>
+										<td width="81%"><span class="text">Click the <b>Add</b> button to add a new PROFIBUS node to the PROFIBUS tree.</span></td>
+									</tr>
+									<tr>
+										<td width="19%" valign="top"><b><span class="text">Edit</span></b></td>
+										<td width="81%"><span class="text">Click the <b>Edit</b> button to modify the settings of an existing PROFIBUS node in the PROFIBUS tree.</span></td>
+									</tr>
+									<tr>
+										<td width="19%" valign="top"><b><span class="text">Remove</span></b></td>
+										<td width="81%"><span class="text">Click the <b>Remove</b> button to remove a PROFIBUS node from the PROFIBUS tree.</span></td>
+									</tr>
+									<tr>
+										<td width="19%" valign="top"><b><span class="text">Scan Nodes</span></b></td>
+										<td width="81%"><span class="text">Click the <b>Scan Nodes</b> button to automatically search and configure all connected PROFIBUS interfaces (boards) in the PC.</span></td>
+									</tr>
+									<tr>
+										<td width="19%" valign="top"><b><span class="text">OK</span></b></td>
+										<td width="81%"><span class="text">Click the <b>OK</b> button to save the current configuration settings and to load the device drivers.</span></td>
+									</tr>
+									<tr>
+										<td width="19%" valign="top"><b><span class="text">Cancel</span></b></td>
+										<td width="81%"><span class="text">Click the <b>Cancel</b> button to restore the last configuration settings and to load the device drivers.</span></td>
+									</tr>
+									<tr>
+										<td width="19%" valign="top"><b><span class="text">Apply</span></b></td>
+										<td width="81%"><span class="text">Click the <b>Apply</b> button to apply the configuration settings and load the device drivers</span>.</td>
+									</tr>
+								</table>
+								<span class="text">The procedure for adding or editing a node or for automatically scanning for nodes will be explained in detail in the following sections. </span>
+								<p><span class="zwitiblau">Scanning for Nodes</span> </p>
+								<p><span class="text">When you click the <b>Scan Nodes</b>... button, the PROFIBUS hardware device driver searches for all PROFIBUS interfaces (boards) installed in your PC. All necessary resources like dual-port RAM, IO ports, interrupts, etc. will be determined automatically by the hardware device driver.<br>
+									</span></p>
+								<p><span class="text">Depending on the hardware configuration, the scan process may take some time, which is indicated by a clock symbol.</span></p>
+								<p><span class="zwitiblau">Adding and Editing a PROFIBUS Interface</span></p>
+								<p><span class="text">Click the <b>Add</b> button to configure the hardware device driver for a new PROFIBUS interface.<br>
+									</span><span class="text">At first, you will be asked to select the type of the interface board you want to configure.<br>
+									</span><span class="text">You can then enter a symbolic name for the new node.<br>
+									</span><span class="text">The remaining dialog boxes depend on the type of the interface board. They are explained in detail in the sections below.<br>
+									</span><span class="text">Using the <b>Edit</b> button, an existing hardware device driver configuration of a PROFIBUS interface board can be modified. You may modify the node name and other parameters which depend on the type of the interface board.<br>
+									</span><span class="text">The dialog boxes for modifying a node are the same as for adding a new node. They are explained in detail in the sections below.</span></p>
+								<p><span class="zwitiblau">Selecting a Node Name </span></p>
+								<p><span class="text">To access a logical PROFIBUS device from an application, a unique Win32 device name is required. In addition to the standard Win32 device name which is assigned automatically by the PROFIBUS hardware device driver, a Win32 alias device name can be defined optionally.</span></p>
+								<p> <img src="../pic/SelectNodeName.gif" width="458" height="336"> </p>
+								<p><span class="text">Enter a symbolic node name in the text field and click the <b>Next</b> button to continue the configuration. Click the <b>Cancel</b> button to abort the configuration and return to the main dialog box.</span></p>
+								<p><span class="zwitiblau">Selecting the Operating Mode</span></p>
+								<p><span class="text">A PROFIBUS interface can be operated either as DP / FMS master or DP slave device.<br>
+										<br>
+									</span> <img src="../pic/SelectOperationMode.gif" width="458" height="336"></p>
+								<p><span class="text">Select the desired operating mode and click the <b>Next</b> button to continue the configura-tion. Click the <b>Back</b> button to return to the previous dialog box. Click the <b>Cancel</b> button to abort the configuration and return to the main dialog box.</span></p>
+								<table width="450" border="0">
+									<tr>
+										<td valign="top" width="16%"><span class="textrotbold">Note:</span></td>
+										<td width="84%"><span class="text"><b>PROFIcard / PROFIcard 2</b> supports only the DP / FMS master operating mode.<br>
+												<b>PROFI104-S</b> supports only the DP slave operating mode.</span></td>
+									</tr>
+									<tr>
+										<td valign="top" width="16%"><span class="textrotbold">Caution:</span> </td>
+										<td width="84%"><span class="text">Changing the operating mode causes the hardware driver to download the selected firmware to the PROFIBUS board. The existing firmware on the board will be overwritten!</span></td>
+									</tr>
+								</table>
+								<p><span class="zwitiblau">PROFIboard-ISA, PROFI104 and PROFI104-S Parameter Settings</span></p>
+								<p><span class="text">To access PROFIboard-ISA, PROFI104 or PROFI104-S, the PROFIBUS hardware device driver has to allocate resources like I/O ports, address space for the dual-port RAM and interrupt lines.</span></p>
+								<p> <img src="../pic/SelectInterfaceResources.gif" width="458" height="336"> &nbsp;
+</p>
+								<table width="480" border="1">
+									<tr>
+										<td width="23%" valign="top"><b><span class="text">IO-Port Address:</span></b></td>
+										<td width="77%"><span class="text">The I/O base address of the board. The auto detection feature searches only the range between 0x200 and 0x3FC. To specify an address outside this range, enter the base address in the text field. Refer to the hardware installation manual for more information about valid I/O base addresses.</span></td>
+									</tr>
+									<tr>
+										<td width="23%" valign="top"><b><span class="text">DP RAM Address:</span></b></td>
+										<td width="77%" valign="top"><span class="text">Address of the dual-port memory.</span></td>
+									</tr>
+									<tr>
+										<td width="23%" valign="top"><b><span class="text">Interrupt:</span></b></td>
+										<td width="77%"><span class="text">IRQ line.</span></td>
+									</tr>
+								</table>
+								<p><span class="text">When you select auto, the PROFIBUS hardware driver determines the necessary resources of the PROFIBUS board. </span></p>
+								<p><span class="text">Select the resources and click the <b>Finish</b> button to complete the configuration and return to the main dialog box. Click the <b>Back</b> button to return to the previous dialog box. Click the <b>Cancel</b> button to abort the configuration and return to the main dialog box.</span></p>
+								<p><span class="zwitiblau">PROFIcard / PROFIcard 2 Parameter Settings</span></p>
+								<p><span class="textblaubold">PROFIcard / PROFIcard 2 Software Interface </span></p>
+								<p><span class="text">The PROFIBUS hardware device driver provides two mechanism for accessing PROFIcard / PROFIcard 2:<br>
+									</span></p>
+								<ul>
+									<li><span class="text">The standard Windows 2000/XP enabling mechanism for PC Cards<br>
+										</span>
+									<li><span class="text">PC Card software &quot;CardWare for Windows 2000/XP&quot; by Award Software International Inc.<br>
+										</span>
+								</ul>
+								<p><span class="text">When using the standard Windows 2000/XP enabling mechanism for PC Cards, only one PROFIcard / PROFIcard 2 can be used. The PROFIcard / PROFIcard 2 must be inserted at boot time.</span></p>
+								<p> <img src="../pic/SProficard.gif" width="476" height="336"> </p>
+								<p><span class="text">Select the desired PC Card software interface and click the <b>Next</b> button to continue the configuration. Click the <b>Back</b> button to return to the previous dialog box. Click the <b>Cancel</b> button to abort the configuration and return to the main dialog box. </span></p>
+								<p><span class="zwitiblau">PROFIcard / PROFIcard 2 (NT Standard)</span> </p>
+								<p><span class="text">When accessing PROFIcard / PROFIcard 2 using the Windows 2000/XP PC Card enabler, the PROFIBUS hardware device driver has to allocate resources to PROFIcard / PROFIcard 2.</span></p>
+								<p> <img src="../pic/StandardWinNT.gif" width="476" height="336"> &nbsp;
+</p>
+								<table width="450">
+									<tr>
+										<td width="27%" valign="top"><b><span class="text">Attribute Memory</span></b></td>
+										<td width="73%"><span class="text">PC Card attribute memory.</span></td>
+									</tr>
+									<tr>
+										<td width="27%" valign="top"><b><span class="text">DP RAM Address</span></b></td>
+										<td width="73%"><span class="text">Address of the dual-port memory.</span></td>
+									</tr>
+									<tr>
+										<td width="27%" valign="top"><b><span class="text">Interrupt</span></b></td>
+										<td width="73%"><span class="text">IRQ line.</span></td>
+									</tr>
+								</table>
+								<p><span class="text">The PROFIBUS hardware device driver does not feature an auto detection function for the resources, except for the interrupt resource. You have to specify the physical values. You can configure only one &quot;PROFIcard / PROFIcard 2 (NT standard)&quot; because the standard NT PC Card enabling mechanism supports only one PROFIcard / PROFIcard 2. You cannot configure a mixture of both PROFIcard / PROFIcard 2 solutions (PROFIcard / PROFIcard 2 (NT standard) and PROFIcard / PROFIcard 2 (Cardware)) with one installation.<br>
+									</span></p>
+								<p><span class="text">Select the resources and click the <b>Finish</b> button to complete the configuration and return to the main dialog box. Click the <b>Back</b> button to return to the previous dialog box. Click the <b>Cancel</b> button to abort the configuration and return to the main dialog box.</span></p>
+								<table width="560">
+									<tr>
+										<td width="13%" valign="top"><b><span class="textrotbold">Attention:</span></b></td>
+										<td width="87%"><span class="text"><b>The Windows 2000/XP PC Card device driver starts during the boot process. Make sure to configure only free resources because your system might not boot with an inserted card (e.g., if you have configured the PROFIcard / PROFIcard 2 (NT standard) using the interrupt of the SCSI controller, the system will hang-up during start-up).</b></span></td>
+									</tr>
+								</table>
+								<p><span class="zwitiblau">PROFIcard / PROFIcard 2 (Cardware)</span> </p>
+								<p><span class="text">When accessing PROFIcard / PROFIcard 2 using the &quot;Award Cardware for Windows 2000/XP&quot;, the PROFIBUS hardware device driver needs to allocate resources to PROFIcard / PROFIcard 2.</span></p>
+								<p> <img src="../pic/SCardware.gif" width="476" height="336"> &nbsp;
+</p>
+								<table width="450">
+									<tr>
+										<td width="24%" valign="top"><b><span class="text">PCMCIA Socket:</span></b></td>
+										<td width="76%"><span class="text">Socket number of the PROFIcard / PROFIcard 2. This value is only needed to link an interface (board) number of the driver to the PC Card slot number where the PROFIcard / PROFIcard 2 is inserted. When a PROFIcard / PROFIcard 2 is inserted into the PC Card slot, the driver searches the parameters for a PROFIcard / PROFIcard 2 configured for this socket.</span></td>
+									</tr>
+									<tr>
+										<td width="24%" valign="top"><b><span class="text">DP RAM Address:</span></b></td>
+										<td width="76%" valign="top"><span class="text">Address of the dual-port memory.</span></td>
+									</tr>
+									<tr>
+										<td width="24%" valign="top"><b><span class="text">Interrupt:</span></b></td>
+										<td width="76%"><span class="text">The PROFIBUS hardware driver automatically determines the IRQ line.</span></td>
+									</tr>
+								</table>
+								<p><span class="text">Select the resources and click the <b>Finish</b> button to complete the configuration and return to the main dialog box. Click the <b>Back</b> button to return to the previous dialog box. Click the <b>Cancel</b> button to abort the configuration and return to the main dialog box.</span></p>
+								<p><span class="zwitiblau">PROFIboard-PCI Parameter Settings</span></p>
+								<p><span class="text">A PROFIboard-PCI interface contains one or two channels, where each channel represents a node in the PROFIBUS network.</span></p>
+								<p> <img src="../pic/SPCIResources.gif" width="470" height="388"> &nbsp;
+</p>
+								<table width="470">
+									<tr>
+										<td valign="top"><b><span class="text">PCI Slot</span></b></td>
+										<td><span class="text">PCI slot number where the interface is plugged in.</span></td>
+									</tr>
+									<tr>
+										<td valign="top"><b><span class="text">Channel</span></b></td>
+										<td><span class="text">Channel number (only with the dual channel PROFIboard-PCI board).</span></td>
+									</tr>
+								</table>
+								<p><span class="text">Click the <b>Finish</b> button to complete the configuration and return to the main dialog box. Click the <b>Back</b> button to return to the previous dialog box. Click the <b>Cancel</b> button to abort the configuration and return to the main dialog box.</span></p>
+								<p><span class="zwitiblau">FG Series / PROFIgate Parameter Settings</span></p>
+								<p><span class="textblaubold">FG Series / PROFIgate Address</span> </p>
+								<p><span class="text">The PROFIBUS driver for Windows 2000/XP is capable of accessing a remote FG Series / PROFIgate PROFIBUS Ethernet Gateway over a TCP/IP network and to treat it like a local PROFIBUS interface. To do this, the driver needs to know the IP address or the IP host name of the FG Series / PROFIgate.</span></p>
+								<p> <img src="../pic/SProfigate.gif" width="447" height="402"> </p>
+								<p><span class="text">Enter the host name (if the IP network has a name server) or the IP address assigned to the FG Series / PROFIgate in the text field and click the <b>Next</b> button to continue the configuration. Click the <b>Cancel</b> button to abort the configuration and return to the main dialog box. </span></p>
+								<p><span class="zwitiblau">Timeout Parameters for FG Series / PROFIgate </span></p>
+								<p><span class="text">For proper communication with FG Series / PROFIgate, it is necessary to define some timeout values.</span></p>
+								<p> <img src="../pic/STimeout.gif" width="447" height="402"> &nbsp;
+</p>
+								<table width="79%">
+									<tr>
+										<td width="32%" valign="top"><b><span class="text">Timeout for Connect</span></b></td>
+										<td width="68%"><span class="text">Time control interval for monitoring the connection establishment to FG Series / PROFIgate.</span></td>
+									</tr>
+									<tr>
+										<td width="32%" valign="top"><b><span class="text">Max Idle Time</span></b></td>
+										<td width="68%"><span class="text">Time control interval for monitoring the connection.</span></td>
+									</tr>
+									<tr>
+										<td width="32%" valign="top"><b><span class="text">DP Update Interval</span></b></td>
+										<td width="68%"><span class="text">Update interval for exchanging the DP process image. The process image will only be transferred if data have changed.</span></td>
+									</tr>
+									<tr>
+										<td width="32%" valign="top"><b><span class="text">Forced DP Update Interval</span></b></td>
+										<td width="68%"><span class="text">Forced update interval for exchanging the DP process image (regardless of whether data have changed).</span></td>
+									</tr>
+								</table>
+								<p><span class="text">Enter the desired values and click the <b>Finish</b> button to complete the configuration and return to the main dialog box. Click the <b>Back</b> button to return to the previous dialog box. Using the <b>Cancel</b> button you can abort the configuration and return to the main dialog box.</span></p>
+								<p><span class="zwitiblau">Removing a PROFIBUS Interface</span></p>
+								<p><span class="text">Click the <b>Remove</b> button to remove a PROFIBUS interface from the PROFIBUS tree. After removing an interface click the <b>Apply</b> button to apply the new configuration and to reload the device drivers.<br>
+										<br>
+									</span></p>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>

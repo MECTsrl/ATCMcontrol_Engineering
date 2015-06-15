@@ -1,0 +1,61 @@
+// SflPropBags.idl : IDL source for SflPropBags.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (SflPropBags.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+
+
+[
+	uuid(F0A5B360-8898-11d3-9DAC-00C04F91E286),
+	version(2.0),
+	helpstring("SFL Property bag services"),
+	helpfile("")
+]
+library SflPropBags
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+
+	[
+		object,
+		uuid(54A28AB0-426E-11D2-9D20-00C04F91E286),
+		dual, 
+		helpstring("Automation-friendly persistence strategy interface"),
+		pointer_default(unique)
+	]
+	interface IPersistenceStrategy : IDispatch
+	{
+		[id(1), helpstring("Initialization of Property Bag")] HRESULT Init([in] VARIANT InitParam);
+		[id(2), helpstring("Commits the persistence operation")] HRESULT Commit();
+		[id(3), helpstring("Persist the given object")] HRESULT Save([in] BSTR PropertyName, [in] IUnknown* pPersistObject);
+		[id(4), helpstring("Load an object from persisted state")] HRESULT Load([in] BSTR PropertyName, [out] IUnknown** pPersistObject);
+	};
+
+
+	// Coclasses
+
+	[
+		uuid(54A28AB1-426E-11D2-9D20-00C04F91E286),
+		helpstring("RegistryPropertyBag Class")
+	]
+	coclass RegistryPropertyBag
+	{
+		[default] interface IPersistenceStrategy;
+	};
+
+
+	[
+		uuid(54A28AB4-426E-11D2-9D20-00C04F91E286),
+		helpstring("FilePropertyBag Class")
+	]
+	coclass XMLPropertyBag
+	{
+		[default] interface IPersistenceStrategy;
+	};
+
+};

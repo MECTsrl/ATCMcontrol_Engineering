@@ -1,0 +1,36 @@
+HKCR
+{
+    4C_20.AddonHandler.HW119AddonObject.1 = s '4C_20: HW119AddonObject Class'
+	{
+        CLSID = s '{BEAEB7F7-3B03-477c-989A-A31A04E00494}'
+        'Index' 
+        { 
+            val Version = s '2.0' 
+            val LCID = d '1033' 
+        } 
+	}
+    4C_20.AddonHandler.HW119AddonObject = s '4C_20: HW119AddonObject Class'
+	{
+        CLSID = s '{BEAEB7F7-3B03-477c-989A-A31A04E00494}'
+        CurVer = s '4C_20.AddonHandler.HW119AddonObject.1'
+	}
+	NoRemove CLSID
+	{
+        ForceRemove {BEAEB7F7-3B03-477c-989A-A31A04E00494} = s '4C_20: HW119AddonObject Class'
+		{
+            ProgID = s '4C_20.AddonHandler.HW119AddonObject.1'
+            VersionIndependentProgID = s '4C_20.AddonHandler.HW119AddonObject'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+            'TypeLib' = s '{E07E1A27-8A91-46c1-A4CD-F46D1AC4CAE0}'
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+                {01C36A7a-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+
+	}
+}

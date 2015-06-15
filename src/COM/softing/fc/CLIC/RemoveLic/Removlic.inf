@@ -1,0 +1,83 @@
+#H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CLIC/RemoveLic/Removlic.inf 1     28.02.07 19:00 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: Removlic.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CLIC/RemoveLic/Removlic.inf $
+#
+# =PROJECT             CAK1020    ATCMControl V2.0
+#
+# =SWKE                4CLIC
+#
+# =COMPONENT           REMOVLIC
+#
+# =CURRENT             $Date: 28.02.07 19:00 $
+#                      $Revision: 1 $
+#
+# =REFERENCES
+#==
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+#== Inf-File for gen.
+#----------------------------------------------------------------------------*
+# =MODIFICATIONS
+#  02.02.01  Wi      File created (copied from V1.3)
+#  see history at end of file !
+# 
+# 
+#==
+#*****************************************************************************
+#H<<
+
+TARGET=$(EXE_DIR)\Pub\Removlic.exe
+
+DEFINE=_ATL_NO_SECURITY
+
+# this component must be linked statically
+STATIC_RUNTIME=1
+
+INCLUDE=$(MAKEDIR)
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+MASTER_RC=REMOVLIC.RC
+DEFLIB=winmm.lib
+PCHFILE=stdafx
+
+
+#
+#----------------------------------------------------------------------------*
+#  $History: Removlic.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:00
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CLIC/RemoveLic
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:32
+# Created in $/4Control/COM/softing/fc/CLIC/RemoveLic
+# 
+# *****************  Version 3  *****************
+# User: Jd           Date: 19.06.02   Time: 15:38
+# Updated in $/4Control/COM/softing/fc/CLIC/RemoveLic
+# 
+# *****************  Version 2  *****************
+# User: Jd           Date: 8.02.01    Time: 9:56
+# Updated in $/4Control/COM/softing/fc/CLIC/RemoveLic
+# Changed to directory structure of ATCMControl V2.0.
+# 
+# *****************  Version 1  *****************
+# User: Wi           Date: 2.02.01    Time: 15:55
+# Created in $/4Control/COM/softing/fc/CLIC/RemoveLic
+# moved from V1.3
+# 
+#==
+#----------------------------------------------------------------------------*
+#

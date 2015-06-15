@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>Variable quality</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<link rel="stylesheet" href="Manual_GE.css"></head>
+
+
+<body bgcolor="#FFFFFF" background="pic/backgrnd.jpg">
+<h1>Variable quality</h1>
+<p>Variables of a project loaded on ATCM Control are read by ATCM Console within a 
+  defined cycle time and updated in the Visualization view. The connection for 
+  data exchange between ATCM Control and ATCM Console is established via the OPC interface. 
+  Each variable has its own OPC quality according to the OPC standard (good, bad 
+  or indeterminate). For instance, variables have the OPC quality <i>good</i> 
+  if there is a functioning connection to the data object loaded on a ATCM Control. 
+  If the connection is interrupted, the variable quality changes to <i>bad</i>. 
+<p>The variable quality is visualized in the boxes for displaying the variable 
+  values. If the variable quality is good, the variable values are displayed in 
+  black color and normal font.<br>
+  If the variable quality is bad or indeterminate, the variable values are displayed 
+  in red and crossed out.<br>
+  <br>
+<p><b><i>Good quality </i></b></p>
+<img src="pic/actualvalue.gif"
+        width="166" height="131" class="inP"> 
+<p><b><i>Bad or indeterminate quality </i></b></p>
+<img src="pic/nonactualvalue.gif"
+        width="173" height="136" class="inP"> 
+<h1>&nbsp; </h1>
+</body>
+</html>

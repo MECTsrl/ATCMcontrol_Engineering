@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>Datalog Library</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css">
+</head>
+
+<body bgcolor="#FFFFCC">
+<h2>Datalog_get</h2>
+<p>Capture data to create single log file and the list of captured labels.</p>
+<h3>Interface</h3>
+<pre class="preforma">
+FUNCTION Datalog_get : UINT
+VAR_INPUT
+        label : STRING;
+        value : REAL;
+END_VAR
+</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>UINT</b></i><br>
+<br>
+<table border="1">
+<tr>
+<tr>
+	<td>
+		0 :
+	</td>
+ 	<td>
+		<b>Succes</b>
+ 	</td>
+ </tr>
+<tr>
+	<td>
+		1 :
+	</td>
+ 	<td>
+		log failed
+ 	</td>
+ </tr>
+<tr>
+	<td>
+		2 :
+	</td>
+ 	<td>
+		buffer exceeded
+ 	</td>
+ </tr>
+ </table>
+ </p>
+
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl>
+  <dt><b>label</b></dt>
+  <dd>Value of type <b><i>STRING</i></b><br>
+    label of the captured data (20 char max without spaces)<br></dd>
+</dl>
+<dl>
+  <dt><b>value</b></dt>
+  <dd>Value of type <b><i>REAL</i></b><br>
+     value of the captured data<br></dd>
+</dl>
+<h3>Description</h3>
+<p><b>Datalog_get</b> Capture data to create single log file and the list of captured labels.</p>
+</body>
+</html>

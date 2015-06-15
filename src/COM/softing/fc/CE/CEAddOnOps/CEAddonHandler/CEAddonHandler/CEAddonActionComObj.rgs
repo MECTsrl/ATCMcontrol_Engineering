@@ -1,0 +1,25 @@
+HKCR
+{
+	CEAddonHandler.CEAddonActionComObj.1 = s 'CEAddonActionComObj Class'
+	{
+		CLSID = s '{C2EED755-E717-11D4-B8D2-002018641833}'
+	}
+	CEAddonHandler.CEAddonActionComObj = s 'CEAddonActionComObj Class'
+	{
+		CLSID = s '{C2EED755-E717-11D4-B8D2-002018641833}'
+		CurVer = s 'CEAddonHandler.CEAddonActionComObj.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {C2EED755-E717-11D4-B8D2-002018641833} = s 'CEAddonActionComObj Class'
+		{
+			ProgID = s 'CEAddonHandler.CEAddonActionComObj.1'
+			VersionIndependentProgID = s 'CEAddonHandler.CEAddonActionComObj'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{EB0423E1-F5DC-11D4-B8EE-002018641833}'
+		}
+	}
+}

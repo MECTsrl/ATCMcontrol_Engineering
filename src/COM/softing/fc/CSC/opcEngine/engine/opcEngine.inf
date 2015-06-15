@@ -1,0 +1,103 @@
+#*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CSC/opcEngine/engine/opcEngine.inf 1     28.02.07 19:00 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: opcEngine.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CSC/opcEngine/engine/opcEngine.inf $
+#
+# =PROJECT             CAK1020 ATCMControlV2.0
+#
+# =SWKE                4CSC
+#
+# =COMPONENT           OPC Engine
+#
+# =CURRENT      $Date: 28.02.07 19:00 $
+#               $Revision: 1 $
+#
+# =REFERENCES
+#
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+#    @DESCRIPTION@
+#==
+#----------------------------------------------------------------------------*
+# =MODIFICATION
+#  20.03.2001  SU      File created
+#  see history at end of file !
+#==
+#******************************************************************************
+#H<<*/
+
+TARGET=$(EXE_DIR)\pub\opcEngine.dll
+TARGETTYPE=DLL
+STATIC_RUNTIME=0
+UNICODE=0
+INCLUDE=$(INCLUDE_DIR)
+LIBPATH=$(LIB_DIR)
+IMPLIB=$(LIB_DIR)\opcEngine.lib
+DEFLIB=winmm.lib
+INCLUDE=..\common
+INCLUDE=..\include
+INCLUDE=..\opc
+INCLUDE=..\engine
+PCHFILE=stdafx
+DEFINE=_AFXEXT
+DEFINE=_AFXDLL
+DEFINE=_WINDLL
+DEFINE=OPCENGINE
+DEFINE=SERVER
+
+USER=makefirst:$(EXE_DIR)\pub
+USER=$(EXE_DIR)\pub:
+USER=  -md $@
+
+USER=makefirst:$(EXE_DIR)\Control\bin
+USER=$(EXE_DIR)\Control\bin:
+USER=  -md $@
+
+LATECOPY=$(EXE_DIR)\Pub\opcEngine.dll $(EXE_DIR)\Control\bin\opcEngine.dll
+
+#----------------------------------------------------------------------------*
+# =MODIFICATIONS
+# $History: opcEngine.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:00
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CSC/opcEngine/engine
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:33
+# Created in $/4Control/COM/softing/fc/CSC/opcEngine/engine
+# 
+# *****************  Version 2  *****************
+# User: Ed           Date: 6/01/01    Time: 1:54p
+# Updated in $/4Control/COM/softing/fc/CSC/opcEngine/engine
+# Win98
+# 
+# *****************  Version 1  *****************
+# User: Su           Date: 20.03.01   Time: 15:59
+# Created in $/4Control/COM/softing/fc/CSC/opcEngine/engine
+# 
+# *****************  Version 4  *****************
+# User: Ed           Date: 24.08.99   Time: 11:59
+# Updated in $/4Control/COM/softing/fc/CSC/opcEngine/engine
+# update V1 to V2
+# 
+# *****************  Version 3  *****************
+# User: Je           Date: 15.01.99   Time: 20:19
+# Updated in $/4Control/COM/softing/fc/CSC/opcEngine/engine
+# * fixed d-1201
+# * fixed mem leaks and asserts in engine
+# 
+# *****************  Version 1  *****************
+# User: Je           Date: 12.02.98   Time: 21:00
+# Created in $/4Control/COM/softing/fc/CSC/Toolbox
+#==
+#----------------------------------------------------------------------------*

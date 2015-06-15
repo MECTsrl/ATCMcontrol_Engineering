@@ -1,0 +1,32 @@
+HKCR
+{
+	4C_20_CIO.GSDPARSER.1 = s '4C_20: Profibus GSD Parser'
+	{
+		CLSID = s '{608A23E6-25B3-4697-A084-3FBE830B52F7}'
+	}
+	4C_20_CIO.GSDPARSER = s '4C_20: Profibus GSD Parser'
+	{
+		CurVer = s '4C_20_CIO.GSDPARSER.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {608A23E6-25B3-4697-A084-3FBE830B52F7} = s '4C_20: Profibus GSD Parser'
+		{
+			ProgID = s '4C_20_CIO.GSDPARSER.1'
+			VersionIndependentProgID = s '4C_20_CIO.GSDPARSER'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 1'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '132497'
+			}
+			'TypeLib' = s '{E34FA8DD-C53A-497d-B1CC-3137CA507F2A}'
+			'Version' = s '2.0'
+		}
+	}
+}

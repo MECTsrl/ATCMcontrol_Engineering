@@ -1,0 +1,423 @@
+
+// ATCMControl 4CPCCtrl InstallShield Scripts
+// ----------------------------------------------------------------------------
+
+#include "isrt.h"
+#include "iswi.h"
+
+#include "I:\4Control_R\COM\softing\fc\CSET\rul\common.rul"
+
+export prototype CheckRequirements(HWND);  
+export prototype ProcessBeforeDataMove(HWND);
+export prototype ProcessAfterDataMove(HWND);
+export prototype GetInstallDir(HWND);    
+export prototype CheckFeatureStatus(HWND);
+export prototype InstallRTCEAdditions(HWND);    
+export prototype TouchConsoleFiles(HWND);   
+export prototype CheckStop(HWND);
+
+      
+    #define ST_CONTROL		1
+    #define ST_ENGINEERING	2
+    #define ST_DEMO			4
+    #define ST_RTCE         8
+    #define ST_LIBS			16
+    #define ST_ALL			32
+ 
+
+///////////////////////////////////////////////////////////////////////////////
+//                                                                           
+// Function:  MyFunction
+//                                                                           
+//  Purpose:  This function will be called by the script engine when 
+//            Windows(TM) Installer executes your custom action (see the "To 
+//            Do," above).
+//                                                                           
+///////////////////////////////////////////////////////////////////////////////
+function CheckRequirements(hMSI)   
+    // To Do:  Declare local variables.
+    STRING szKey, svErrorText, szName, svValue, svRet;
+    NUMBER nvType, nvSize, nv4cPathRet;   
+   
+begin             
+
+    // To Do:  Write script that will be executed when MyFunction is called.
+    
+    // Check required installations
+	svRet = "0";
+
+	// Retrieve ATCMControl V2 install path	                      
+	szKey = "SOFTWARE\\Softing\\4ControlV2\\2.0";
+	szName = "Path";
+	nvType = REGDB_STRING;
+	RegDBSetDefaultRoot (HKEY_LOCAL_MACHINE);	
+	if RegDBGetKeyValueEx (szKey, szName, nvType, svValue, nvSize) = 0 then
+		// Ok
+		nv4cPathRet = 1;
+	else
+		// Show 'DestinationFolder' dialog
+		nv4cPathRet = 0;
+	endif;
+	
+	// Set MSI properties
+	// INSTALLDIR:
+	if nv4cPathRet > 0 then
+		// Set 'INSTALLDIR' property
+		MsiSetProperty(hMSI, "INSTALLDIR", svValue);
+	else              
+		// Show 'DestinationFolder' Dialog
+		MsiSetProperty(hMSI, "_FC_SHOW_DESTFOLDER_DIALOG", "1");
+	endif;
+	
+	svRet = "1";	
+	MsiSetProperty(hMSI, "_FC_REQUIREMENTS", svRet);
+	
+end;
+
+// To Do:  Handle initialization code when each sequence (User Interface and 
+//         Execute) starts.
+// function OnBegin()
+// begin
+// end;
+
+// To Do:  Write clean-up code when each sequence (User Interface and Execute)
+//         ends.
+// function OnEnd()
+// begin
+// end;
+
+function ProcessBeforeDataMove(hMSI)
+	NUMBER nvSize;
+	STRING svInstalled;   
+	STRING svResume;
+	STRING svPreselected;
+	STRING svPatch;
+	STRING svRemove;
+begin
+
+	// Check if remove is selected
+	nvSize = 10;	
+	MsiGetProperty(hMSI, "Installed", svInstalled, nvSize);
+	nvSize = 10;	
+	MsiGetProperty(hMSI, "RESUME", svResume, nvSize);
+	nvSize = 10;	
+	MsiGetProperty(hMSI, "Preselected", svPreselected, nvSize);
+	nvSize = 10;	
+	MsiGetProperty(hMSI, "PATCH", svPatch, nvSize);
+	nvSize = 10;	
+	MsiGetProperty(hMSI, "REMOVE", svRemove, nvSize);
+
+	/*if svRemove = "ALL" | svRemove = "Control" then
+ 		MsiSetProperty(hMSI, "_FC_UNINSTALL", "1");
+ 	endif;*/
+end;
+
+function ProcessAfterDataMove(hMSI)
+	NUMBER nvSize, nvItem, nv4cPathRet, nvComponentsListID, nvType, nvComponentsCnt;
+	STRING svFCRemove, sv4cPath, szComponentsKey;
+	STRING szPathKey, szPathName, szPathValue;   
+begin
+             
+	// Retrieve ATCMControl V2 install path	                      
+	szPathKey = "SOFTWARE\\Softing\\4ControlV2\\2.0";
+	szPathName = "Path";
+	nvType = REGDB_STRING;
+	RegDBSetDefaultRoot (HKEY_LOCAL_MACHINE);	
+	if RegDBGetKeyValueEx(szPathKey, szPathName, nvType, sv4cPath, nvSize) = 0 then
+		// Ok
+		nv4cPathRet = 1;
+	else
+		// Show 'DestinationFolder' dialog
+		nv4cPathRet = 0;
+	endif;
+	
+	// Retrieve installed components from registry
+	szComponentsKey = "SOFTWARE\\Softing\\4ControlV2\\2.0\\Components";
+	nvItem = REGDB_KEYS;
+	RegDBSetDefaultRoot(HKEY_LOCAL_MACHINE);
+	nvComponentsListID = ListCreate(STRINGLIST);
+	if nvComponentsListID != LIST_NULL then
+		if RegDBQueryKey(szComponentsKey, nvItem, nvComponentsListID) = 0 then
+			// Ok
+			nvComponentsCnt = ListCount(nvComponentsListID);
+		endif;
+	endif;
+    ListDestroy(nvComponentsListID);
+	
+	// Add / Remove installpath value in the registry 
+	if nvComponentsCnt > 0 & 
+		nv4cPathRet = 0 then 
+		// Create installpath value in the registry
+		nvSize = 100;	
+		MsiGetProperty(hMSI, "INSTALLDIR", sv4cPath, nvSize);
+		
+		nvType = REGDB_STRING;
+		nvSize = -1;
+		RegDBSetKeyValueEx(szPathKey, szPathName, nvType, sv4cPath, nvSize);
+	elseif nvComponentsCnt = 0 & 
+		nv4cPathRet > 0 then 
+		// Remove installpath value in the registry
+		RegDBDeleteValue(szPathKey, szPathName);
+		szPathKey = "SOFTWARE\\Softing\\4ControlV2";
+		RegDBDeleteKey(szPathKey);
+	endif;
+	
+	// Force reboot
+	//MsiSetProperty(hMSI, "REBOOT", "Force");	
+end;
+
+function GetInstallDir(hMSI)   
+    // To Do:  Declare local variables.
+    STRING szKey, szName, svValue, sv4cPath, svConUserDir, svConDir, svBARDir;
+    NUMBER nvType, nvSize, nv4cPathRet;   
+begin             
+
+	// Retrieve ATCMControl V2 install path	                      
+	szKey = "SOFTWARE\\Softing\\4ControlV2\\2.0";
+	szName = "Path";
+	nvType = REGDB_STRING;
+	RegDBSetDefaultRoot (HKEY_LOCAL_MACHINE);	
+	if RegDBGetKeyValueEx (szKey, szName, nvType, svValue, nvSize) = 0 then
+		// Ok
+		nv4cPathRet = 1;
+	else
+		// Show 'DestinationFolder' dialog
+		nv4cPathRet = 0;
+	endif;
+	
+	// Set MSI properties
+	// INSTALLDIR:
+	if nv4cPathRet > 0 then
+		// Set 'INSTALLDIR' property
+		MsiSetProperty(hMSI, "INSTALLDIR", svValue);
+	else              
+		// Show 'DestinationFolder' Dialog
+		MsiSetProperty(hMSI, "_FC_SHOW_DESTFOLDER_DIALOG", "1");
+	endif;          
+	
+	nvSize = 100;	
+	MsiGetProperty(hMSI, "INSTALLDIR", sv4cPath, nvSize);   
+	
+	svConUserDir = sv4cPath + "Console\\users";
+	MsiSetProperty(hMSI, "_FC_CONSOLE_USER_DIR", svConUserDir);      
+	svConDir = sv4cPath + "Console";
+	MsiSetProperty(hMSI, "_FC_CONSOLE_DIR", svConDir);
+
+	svBARDir = sv4cPath + "4C_BackupAndRestore";
+	MsiSetProperty(hMSI, "_FC_BAR_DIR", svBARDir);
+end;
+   
+   
+   
+
+
+
+
+function CheckFeatureStatus(hMSI)
+  
+NUMBER nvInstalled;
+NUMBER nvAction; 
+NUMBER nvSize;  
+STRING szRemove;
+STRING szAddLocal;
+STRING szReinstall;
+STRING szAddDefault;    
+STRING szPBInstalled;
+
+  
+begin      
+	nvSize = 100;	
+	MsiGetProperty(hMSI, "REMOVE", szRemove, nvSize);
+	nvSize = 100;	
+	MsiGetProperty(hMSI, "ADDLOCAL", szAddLocal, nvSize);
+	nvSize = 100;	
+	MsiGetProperty(hMSI, "REINSTALL", szReinstall, nvSize);
+	nvSize = 100;	
+	MsiGetProperty(hMSI, "ADDDEFAULT", szAddDefault, nvSize);
+
+    // Feature:  Control
+	MsiGetFeatureState(hMSI, "Control", nvInstalled,  nvAction);
+	if (nvInstalled >= INSTALLSTATE_LOCAL) then   
+		  // feature status == 1 if feature is installed and should be uninstalled
+		  // only in this case the unreg/stop services actions have to be performed
+		MsiSetProperty(hMSI, "FCFEATURECONTROL_STATUS", "1");  
+		if (nvAction=INSTALLSTATE_REMOVED || nvAction=INSTALLSTATE_ABSENT ||
+		    szRemove % "All" || szRemove % "Control") then
+		    MsiSetProperty(hMSI, "FCFEATURECONTROL_REMOVE", "1"); 
+		else
+		    MsiSetProperty(hMSI, "FCFEATURECONTROL_REMOVE", "0"); 
+		endif;	    
+	else  
+		MsiSetProperty(hMSI, "FCFEATURECONTROL_STATUS", "0");
+	    MsiSetProperty(hMSI, "FCFEATURECONTROL_REMOVE", "0"); 
+	endif;  
+
+	if ((szAddLocal % "All") || (szAddLocal % "Control") ||
+	    (szReinstall % "All") || (szReinstall % "Control") ||
+	    (nvAction>=INSTALLSTATE_LOCAL) ) then
+		MsiSetProperty(hMSI, "FCFEATURECONTROL_FLAG", "1");
+	else
+		MsiSetProperty(hMSI, "FCFEATURECONTROL_FLAG", "0");
+	endif;   
+	
+	// Feature:  Console
+	MsiGetFeatureState(hMSI, "Console", nvInstalled,  nvAction);
+	if (nvInstalled >= INSTALLSTATE_LOCAL) then
+		MsiSetProperty(hMSI, "FCFEATURECONSOLE_STATUS", "1");    
+ 		if (nvAction=INSTALLSTATE_REMOVED || nvAction=INSTALLSTATE_ABSENT ||
+		    szRemove % "All" || szRemove % "Control") then
+		    MsiSetProperty(hMSI, "FCFEATURECONSOLE_REMOVE", "1"); 
+		else
+		    MsiSetProperty(hMSI, "FCFEATURECONSOLE_REMOVE", "0"); 
+		endif;	    
+	else  
+		MsiSetProperty(hMSI, "FCFEATURECONSOLE_STATUS", "0");
+	    MsiSetProperty(hMSI, "FCFEATURECONSOLE_REMOVE", "0"); 
+	endif;     
+	
+	if ((szAddLocal % "All") || (szAddLocal % "Console") ||
+	    (szReinstall % "All") || (szReinstall % "Console") ||
+	    (nvAction>=INSTALLSTATE_LOCAL)) then
+		MsiSetProperty(hMSI, "FCFEATURECONSOLE_FLAG", "1");
+	else
+		MsiSetProperty(hMSI, "FCFEATURECONSOLE_FLAG", "0");
+	endif;
+         
+    // Feature:  RTCE
+  	MsiGetFeatureState(hMSI, "RTCE", nvInstalled,  nvAction);
+	if (nvInstalled >= INSTALLSTATE_LOCAL) then
+		MsiSetProperty(hMSI, "FCFEATURERTCE_STATUS", "1"); 
+		if (nvAction=INSTALLSTATE_REMOVED || nvAction=INSTALLSTATE_ABSENT ||
+		    szRemove % "All" || szRemove % "Control") then
+		    MsiSetProperty(hMSI, "FCFEATURERTCE_REMOVE", "1"); 
+		else
+		    MsiSetProperty(hMSI, "FCFEATURERTCE_REMOVE", "0"); 
+		endif;	    
+	else  
+		MsiSetProperty(hMSI, "FCFEATURERTCE_STATUS", "0");
+	    MsiSetProperty(hMSI, "FCFEATURERTCE_REMOVE", "0"); 
+	endif;     
+	
+	if ((szAddLocal % "All") || (szAddLocal % "RTCE") ||
+	    (szReinstall % "All") || (szReinstall % "RTCE") ||
+	    (nvAction>=INSTALLSTATE_LOCAL)) then
+		MsiSetProperty(hMSI, "FCFEATURERTCE_FLAG", "1");
+	else
+		MsiSetProperty(hMSI, "FCFEATURERTCE_FLAG", "0");
+	endif;   
+	
+end;    
+
+
+function InstallRTCEAdditions(hMSI)
+
+STRING szServicesKey;
+STRING szServicesRootKey;
+STRING szValue;  
+STRING szMulti[2];
+NUMBER nSize;
+NUMBER nType;
+
+begin    
+	RegDBSetDefaultRoot (HKEY_LOCAL_MACHINE);	
+    szServicesRootKey = "SYSTEM\\CurrentControlSet\\Services";
+    
+    szServicesKey = szServicesRootKey ^ "RTCE\\Parameters";
+    szValue = "";
+    
+    if (RegDBGetKeyValueEx(szServicesKey, "Export", nType, szValue, nSize) <0) then
+      szMulti = "\0";
+      RegDBSetKeyValueEx(szServicesKey, "Export", REGDB_STRING_MULTI, szMulti, 1);
+    endif;  
+    
+end;
+   
+   
+
+function TouchConsoleFiles(hMSI)
+  
+NUMBER nvSize;    
+STRING sv4cPath;
+STRING svConsoleDir;
+NUMBER nvResult;
+STRING svDate; 
+STRING svOrigDate;
+STRING svTime; 
+STRING svDD;
+STRING svMM;
+STRING svYYYY;
+STRING svRest;
+     
+STRING svDir; 
+STRING svFileSpec;
+STRING svMatchingFileName; 
+
+NUMBER nPos;
+     
+begin       
+
+	nvSize = 100;	
+	MsiGetProperty(hMSI, "INSTALLDIR", sv4cPath, nvSize);  
+	svConsoleDir = sv4cPath + "Console"; 
+	 
+	GetSystemInfo (DATE, nvResult, svOrigDate);
+	GetSystemInfo (TIME, nvResult, svTime);     
+	
+	nPos = StrFind(svOrigDate, "-");
+	StrSub (svMM, svOrigDate, 0, nPos);  
+	StrSub (svRest, svOrigDate, nPos+1, 10); // there are a maximum of 7 chars
+	nPos = StrFind(svRest, "-");
+	StrSub (svDD, svRest, 0, nPos);
+	StrSub (svYYYY, svRest, nPos+1, 10);
+	
+	if (StrLength(svDD)<2) then
+		svDD = "0" + svDD;
+	endif;                
+	if (StrLength(svMM)<2) then
+		svMM = "0" + svMM;
+	endif;
+
+    svDate = svYYYY + "/" + svMM + "/" + svDD;
+	
+	svDir = svConsoleDir;
+	      
+	svFileSpec = "*.*";
+    // Get the first file that matches the file spec.
+    nvResult = FindAllFiles (svDir, svFileSpec, svMatchingFileName, RESET);
+
+    while(nvResult = 0)
+        // Add the file to the list.
+        SetFileInfo(svMatchingFileName, FILE_TIME, 0, svTime);
+        SetFileInfo(svMatchingFileName, FILE_DATE, 0, svDate);
+       
+        // Find the next matching file name.
+        nvResult = FindAllFiles(svDir, svFileSpec, svMatchingFileName, CONTINUE);
+    endwhile;
+
+    // Free all files and folders accessed by FindAllFiles. If your
+    // setup does not target the Windows NT platform, this step is
+    // not necessary.
+    FindAllFiles(svDir, svFileSpec, svMatchingFileName, CANCEL);
+	
+end;             
+
+
+
+function CheckStop(hMSI)
+    
+NUMBER nvSrvStatus;
+NUMBER nvSize;
+STRING szPCStatus;
+STRING szPBStatus;
+    
+begin    
+   	nvSize = 100;	
+	MsiGetProperty(hMSI, "_FC_PCCTRL_SRV_STATUS", szPCStatus, nvSize);  
+  	nvSize = 100;	
+	MsiGetProperty(hMSI, "_FC_PB_INSTALLED", szPBStatus, nvSize);
+
+	if (szPCStatus!="0" || szPBStatus!="0") then
+		MsiSetProperty(hMSI, "_FC_USER_BREAK", "1");
+	endif;
+
+end;

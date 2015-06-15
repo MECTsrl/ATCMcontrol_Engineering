@@ -1,0 +1,70 @@
+:INT
+10# ;decimal
+16# ;hexa decimal
+b   ;2 BYTEs
+wu  ;unsigned
+
+:DINT
+10# ;decimal
+16# ;hexa decimal
+b   ;4 BYTEs
+w   ;2 WORDs
+du  ;unsigned
+		
+:LINT
+10# ;decimal
+16# ;hexa decimal
+b   ;8 BYTEs
+w   ;4 WORDs
+d   ;2 DWORDs
+lu  ;unsigned
+		
+:BYTE
+2#  ;binary
+8#  ;octal
+10# ;decimal
+16# ;hexa decimal
+
+:WORD
+2#  ;binary
+8#  ;octal
+10# ;decimal
+16# ;hexa decimal
+b   ;2 BYTEs
+		
+:DWORD
+2#  ;binary
+8#  ;octal
+10# ;decimal
+16# ;hexa decimal
+b   ;4 BYTEs
+w   ;2 WORDs
+
+:LWORD		
+2#  ;binary
+8#  ;octal
+10# ;decimal
+16# ;hexa decimal
+b   ;8 BYTEs
+w   ;4 WORDs
+d   ;2 DWORDs
+		
+:WSTRING
+b   ;n BYTEs
+w   ;n WORDs
+
+:STRING
+b   ;n BYTEs
+w   ;n WORDs
+		
+:REAL
+e20.5  ;1.23456e005_________
+e 20.5 ;_________1.23456e005
+f20.5  ;12345.67890
+f 20.5 ;_________12345.67890
+
+:LREAL
+E20.5  ;1.23456e005_________
+E 20.5 ;_________1.23456e005
+F20.5  ;12345.67890
+F 20.5 ;_________12345.67890

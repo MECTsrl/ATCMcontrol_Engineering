@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>Windows 95/98</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Manual_GE.css"></head>
+
+<body background="pic/backgrnd.jpg" bgproperties="fixed">
+<h1>ATCM Console unter Win 95/98 betreiben</h1>
+<p><strong>Um eine mit einer Windows NT-Domäne verbundene ATCM Console unter Win 
+  95/98 zu nutzen, gehen Sie wie folgt vor: </strong></p>
+<h2><font color="#000000"
+        face="arial"><img src="pic/jump.gif" border="0"
+        width="11" height="9"></font> Konfiguration </h2>
+<p>Sie haben zwei Möglichkeiten, sich bei einer NT-Domäne anzumelden: </p>
+<ol>
+  <li>Im ersten Fall kennt die User Administration der NT-Domäne Ihre Win 95/98- 
+    Anmeldung und Ihr Kennwort. </li>
+  <li> Im zweiten Fall kennt die User Administration der NT-Domäne Ihre Win 95/98-Anmeldung 
+    und Ihr Kennwort nicht. </li>
+</ol>
+<hr style="margin-left: 44px">
+<p><strong>Wie informieren Sie die NT-Domäne über Ihre Anmeldung und Ihr Paßwort?</strong></p>
+<ol>
+  <li> Gehen Sie in Win 95/98 auf das <strong>Start</strong>-Menü, wählen Sie 
+    <strong>Einstellungen</strong> und klicken Sie auf <strong>Systemsteuerung</strong>. 
+  </li>
+  <li>Wählen Sie <strong>Netzwerk</strong>. </li>
+  <li>Klicken Sie auf die Registerkarte <strong>Konfigurations-Client für MS-Netzwerk</strong>.</li>
+  <li>Unter <strong>Eigenschaften Login-Prüfung</strong> muß das Kontrollkästchen 
+    <strong>Login in Win NT-Domäne </strong>aktiviert sein! </li>
+</ol>
+<hr style="margin-left: 44px">
+<p>In beiden Fällen müssen Sie die Zugriffssteuerung konfigurieren und das Programm 
+  DCOM Configuration ausführen. </p>
+<p>Zugriffssteuerung konfigurieren </p>
+<ol>
+  <li>Gehen Sie im <strong>Start</strong>-Menü von Win 95/98 auf <strong>Einstellungen</strong> 
+    und klicken Sie auf <strong>Systemsteuerung</strong>. </li>
+  <li> Wählen Sie <strong>Netzwerk</strong>.</li>
+  <li>Klicken Sie im Dialog Netzwerk auf die Registerkarte <strong>Zugriffssteuerung</strong>. 
+  </li>
+  <li>Das Optionsfeld <strong>Zugriffssteuerung auf Benutzerebene</strong> muß 
+    angewählt sein! Zus&auml;tzlich mu&szlig; der Name des Servers angegeben werden, 
+    von dem die 'Benutzer- und Gruppenlisten' bezogen werden können.</li>
+  <li>Klicken Sie auf <strong>OK</strong>, um die Prüfung abzuschließen. </li>
+</ol>
+<p>Das Programm DCOM Configuration ausführen </p>
+<ol>
+  <li> Klicken Sie den folgenden Link, um das Programm zu starten: <u>DCOM Configuration</u> 
+    oder gehen Sie auf Ihrem Win 95/98-Desktop auf das <strong>Start</strong>-Menü 
+    und klicken Sie auf <strong>Ausführen...</strong> . <br>
+    Geben Sie <i><b>dcomcnfg.exe</b></i> ein. Das Programm wird gestartet. </li>
+  <li>Klicken Sie in diesem Programm auf die Registerkarte <strong>Default Properties</strong>.</li>
+  <li>Das Kontrollkästchen<strong> Enable Distributed COM on this Computer</strong> 
+    muß aktiviert sein. </li>
+</ol>
+<p>Das Kontrollk&auml;stchen <strong>Default Authentification Level </strong>muß 
+  abhängig von Ihrer Win 95/98-Anmeldung gemäß einer der folgenden Einstellungen 
+  eingerichtet sein:</p>
+<ul>
+  <li> Wenn der User Administrator der NT-Domäne Sie kennt, wählen Sie in diesem 
+    Feld <strong>Connect</strong>. </li>
+  <li> Wenn der User Administrator der NT-Domäne Sie nicht kennt, muß das Feld 
+    <strong>Default Authentification Level </strong>auf <strong>None</strong> 
+    eingestellt werden.</li>
+
+<ul type="square" style="margin-left: 20px">
+    <li>Klicken Sie auf die Registerkarte<strong> Default Security </strong>und 
+      deaktivieren Sie das Kontrollkästchen <strong>Enable Remote Connection</strong>. 
+    </li>
+	</ul>
+</ul>
+</body>
+</html>

@@ -1,0 +1,107 @@
+
+; FUN       SYSTEM      0   -   76
+; FB        SYSTEM      0   -   9
+; -----------------------------------------------------------------------
+
+; FUNCTIONs
+; -----------------------------------------------------------------------
+LeftString_int              0       0 99999
+RightString_int             1       0 99999
+MidString_int               2       0 99999
+ConcatString                3       0 99999
+InsertString_int            4       0 99999
+DeleteString_int            5       0 99999
+ReplaceString_int           6       0 99999
+FindString_int              7       0 99999
+strlen_int                  8       0 99999
+bool_to_string              9       0 99999
+byte_to_string              10      0 99999
+word_to_string              11      0 99999
+dword_to_string             12      0 99999
+int_to_string               13      0 99999
+dint_to_string              14      0 99999
+real_to_string              15      0 99999
+lreal_to_string             16      0 99999
+
+string_to_bool              17      0 99999
+string_to_byte              18      0 99999
+string_to_word              19      0 99999
+string_to_dword             20      0 99999
+string_to_int               21      0 99999
+string_to_dint              22      0 99999
+string_to_real              23      0 99999
+string_to_lreal             24      0 99999
+string_to_time              25      0 99999
+
+sin_real                    26      0 99999
+sin_lreal                   27      0 99999
+asin_real                   28      0 99999
+asin_lreal                  29      0 99999
+cos_real                    30      0 99999
+cos_lreal                   31      0 99999
+acos_real                   32      0 99999
+acos_lreal                  33      0 99999
+tan_real                    34      0 99999
+tan_lreal                   35      0 99999
+atan_real                   36      0 99999
+atan_lreal                  37      0 99999
+log_real                    38      0 99999
+log_lreal                   39      0 99999
+log10_real                  40      0 99999
+log10_lreal                 41      0 99999
+sqrt_real                   42      0 99999
+sqrt_lreal                  43      0 99999
+exp_real                    44      0 99999
+exp_lreal                   45      0 99999
+time32_to_string            46      0 99999
+mux_bit                     47      0 99999
+mux_byte                    48      0 99999
+mux_int                     49      0 99999
+mux_dint                    50      0 99999
+mux_string                  51      0 99999
+mux_64bit                   52      0 99999
+
+;max_bool                   53
+;max_byte                   54
+;max_word                   55
+;max_dword                  56
+;max_int                    57
+;max_dint                   58
+;max_real                   59
+;max_lreal                  60
+;max_string                 61
+
+;min_bool                   62
+;min_byte                   63
+;min_word                   64
+;min_dword                  65
+;min_int                    66
+;min_dint                   67
+;min_real                   68
+;min_lreal                  69
+;min_string                 70
+    
+sys_dbg_outstring           71      0 99999
+
+; SFC interpreter:
+;sfc_calcdotrans            72
+;sfc_calcdoact              73
+;sfc_finalise               74
+
+Trunc_real_dint             75      0 99999
+Trunc_lreal_dint            76      0 99999
+
+
+;FUNCTION_BLOCKs
+; -----------------------------------------------------------------------
+rs                          0       0 99999
+sr                          1       0 99999
+tp                          2       0 99999
+ton                         3       0 99999
+tof                         4       0 99999
+ctu                         5       0 99999
+ctd                         6       0 99999
+ctud                        7       0 99999
+r_trig                      8       0 99999
+f_trig                      9       0 99999
+

@@ -1,0 +1,302 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>  </TITLE>
+<META NAME="Template" CONTENT="D:\!!job\code\AutoDoc\prot\logic17.dot">
+</HEAD>
+<BODY BGCOLOR="#ffffcc">
+
+<B><FONT FACE="Arial"><P>Profibus_GetEmcyInfo</P>
+</B></FONT><FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">La funzione Profibus_GetEmcyInfo permette di leggere le informazioni di diagnostica ritornate da un  nodo presente nella configurazione del master</P>
+<P ALIGN="JUSTIFY"></P>
+<B><P>Sintassi</P>
+</B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<I><P>ret_code</I>&nbsp;:= Profibus_GetEmcyInfo ( <I>ExecMode</I>, <I>ExecStatus</I>, <I>Board</I>, <I>NodeId</I>, <I>Timeout</I>,         </P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<I><P>StationStatus_1</I>, <I>StationStatus_2</I>, <I>StationStatus_3</I>, <I>MasterAddress</I>,  <I>IdentNumber</I>, <I>ExtendedDiagnostic </I>);</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<B><P ALIGN="JUSTIFY">Parametri di ingresso</P>
+<P ALIGN="JUSTIFY"></P>
+</B><I><P ALIGN="JUSTIFY">ExecMode</I> (INT)&#9;Modalita di esecuzione del comando [MODE_NOWAIT, </P>
+<P ALIGN="JUSTIFY">&#9;&#9;&#9;&#9;MODE_WAIT, MODE_WAIT_ACCEPT, MODE_NOWAIT_ACK].</P>
+<I><P ALIGN="JUSTIFY">Board</I> (INT)&#9;&#9;Scheda master su cui opera la funzione.</P>
+<I><P ALIGN="JUSTIFY">NodeId</I> (INT)&#9;&#9;Indirizzo del nodo di cui interessa leggere la diagnostica.</P>
+<I><P ALIGN="JUSTIFY">Timeout</I> (INT)                Timeout in ms (=0 nessun timeout).</P>
+<P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">Parametri di uscita</P>
+<P ALIGN="JUSTIFY"></P>
+</B><I><P ALIGN="JUSTIFY">ExecStatus</I> (DWORD)&#9;     Stato di esecuzione del comando in modalit&agrave; MODE_NOWAIT_ACK.</P>
+<I><P ALIGN="JUSTIFY">StationStatus_1</I> (BYTE)      Stato del nodo (prima parte): maschera di bit</P>
+<I><P ALIGN="JUSTIFY">StationStatus_2</I> (BYTE)      Stato del nodo (seconda parte): maschera di bit</P>
+<I><P ALIGN="JUSTIFY">StationStatus_3</I> (BYTE)      Stato del nodo (terza parte): maschera di bit</P>
+<I><P ALIGN="JUSTIFY">MasterAddress</I> (BYTE)       Indirizzo del master che ha effettuato la parametrizzazione dello slave. </P>
+<P ALIGN="JUSTIFY">&#9;&#9;&#9;     Se lo slave non &egrave; stato parametrizzato l’indirizzo vale 255.</P>
+<I><P ALIGN="JUSTIFY">IdentNumber</I> (WORD)        Ident number dello slave; parametro Profibus che identifica il tipo di</P>
+<P ALIGN="JUSTIFY">&#9;&#9;&#9;     dispositivo slave</P>
+<I><P ALIGN="JUSTIFY">ExtendedDiagnostic</I> (ARRAY[0..99] of BYTE)   Area di diagnostica estesa. Il significato dei byte &egrave;</P>
+<P ALIGN="JUSTIFY">&#9;&#9;&#9;&#9;&#9;          definito nel manuale dello slave</P>
+<B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Modalit&agrave; di esecuzione</P>
+<P ALIGN="JUSTIFY"></P></B></FONT>
+<TABLE CELLSPACING=0 BORDER=0 CELLPADDING=5 WIDTH=652>
+<TR><TD WIDTH="20%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">MODE_WAIT:</B></FONT></TD>
+<TD WIDTH="80%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">La funzione rimane in attesa di una risposta dal nodo remoto, salvo il caso in cui &egrave; stato specificato un tempo di timeout; in questo caso, se non dovesse ricevere alcuna risposta, ritorna l'errore di timeout.</FONT></TD>
+</TR>
+</TABLE>
+
+<FONT FACE="Arial" SIZE=2>
+<B><P ALIGN="JUSTIFY">Uso</P>
+<P ALIGN="JUSTIFY"></P>
+</B><P ALIGN="JUSTIFY">La funzione ritorna alcune informazioni inerenti la diagnostica del nodo specificato dal parametro <I>NodeID</I>. Questa funzione pu&ograve; essere utilizzata solo se la scheda identificata dal parametro <I>Board </I>&egrave; una scheda Profibus master.</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Il parametro di uscita <I>StationStatus_1</I> &egrave; composto da diversi bit; il significato di ogni bit &egrave; il seguente:</P>
+<P ALIGN="JUSTIFY"></P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=639>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<I><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">StationStatus_1</I></FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit</B></FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Descrizione</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ss1_STA_NON_EXIST</FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0001</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Lo slave non risponde</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ss1_STA_NOT_RDY   </FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0002</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Lo slave non &egrave; pronto</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ss1_CFG_FAULT</FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0004</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">La parametrizzazione dello slave &egrave; errata</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ss1_EXT_DIAG      </FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0008</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">L’area di diagnostica estesa &egrave; utilizzata</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ss1_NOT_SUPP      </FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0010</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Comando sconosciuto rilevato dallo slave</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ss1_INV_SL_RES    </FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0020</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">La risposta dello slave non &egrave; valida</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ss1_PRM_FAULT     </FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0040</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Il telegramma contenente l’ultimo parametro &egrave; difettoso</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ss1_MASTER_LOCK   </FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0080</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Lo slave &egrave; parametrizzato da un altro master</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Il parametro di uscita <I>StationStatus_2</I> &egrave; composto da diversi bit; il significato di ogni bit &egrave; il seguente:</P>
+<P ALIGN="JUSTIFY"></P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=639>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<I><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">StationStatus_2</I></FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit</B></FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Descrizione</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ss2_PRM_REQ </FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0001</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Lo slave deve essere parametrizzato</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ss2_STAT_DIAG </FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0002</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Leggere la diagnostica dallo slave finch&egrave; il bit &egrave; resettato</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ss2_WD_ON </FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0008</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Watchdog attivato</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ss2_FREEZE_MODE </FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0010</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Comando freeze attivo</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ss2_SYNC_MODE </FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0020</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Comando sync attivo</FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ss2_DEACTIVATED </FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0080</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Slave disattivato</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Il parametro di uscita <I>StationStatus_3</I> &egrave; composto da diversi bit; il significato di ogni bit &egrave; il seguente:</P>
+<P ALIGN="JUSTIFY"></P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=639>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<I><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">StationStatus_3</I></FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit</B></FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Descrizione</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ss3_EXT_DIAG_OVFL</FONT></TD>
+<TD WIDTH="16%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0080</FONT></TD>
+<TD WIDTH="57%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Lo slave ha pi&ugrave; dati di diagnostica disponibili di quanti riesce a inviare</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Valori di ritorno</P></B></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=641>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Valore (HEX)</B></FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Descrizione</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Funzione eseguita correttamente</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x00370006</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Numero del nodo incongruente</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">  0x0037003F</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Parametro <I>Board</I> non valido</FONT></TD>
+</TR>
+</TABLE>
+
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Esempio</P>
+<P ALIGN="JUSTIFY"></P>
+</B><P ALIGN="JUSTIFY">VAR</P>
+<P ALIGN="JUSTIFY">ExecMode           :  INT := MODE_WAIT;</P>
+<P ALIGN="JUSTIFY">ExecStatus          :  DWORD;</P>
+<P ALIGN="JUSTIFY">Board                   : INT;</P>
+<P ALIGN="JUSTIFY">NodeId                 : INT;</P>
+<P ALIGN="JUSTIFY">StationStatus_1   : BYTE;</P>
+<P ALIGN="JUSTIFY">StationStatus_2   : BYTE;</P>
+<P ALIGN="JUSTIFY">StationStatus_3   : BYTE;</P>
+<P ALIGN="JUSTIFY">MasterAddress    :  BYTE;</P>
+<P ALIGN="JUSTIFY">IdentNumber        :  WORD;</P>
+<P ALIGN="JUSTIFY">ExtendedDiagnostic :  ARRAY [0..99] of BYTE;</P>
+<P ALIGN="JUSTIFY">RetCode                   : DWORD;</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">END_VAR</P>
+<P ALIGN="JUSTIFY"></P>
+<P>RetCode&nbsp;:= Profibus_GetEmcyInfo ( ExecMode, ExecStatus, Board, NodeId, 0,         </P><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<P>StationStatus_1, StationStatus_2, StationStatus_3, MasterAddress,  IdentNumber, ExtendedDiagnostic<I> </I>);</P>
+<P ALIGN="JUSTIFY"></P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</FONT></BODY>
+</HTML>

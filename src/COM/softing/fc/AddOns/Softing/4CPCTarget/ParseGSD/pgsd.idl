@@ -1,0 +1,67 @@
+
+//----  Type Library:    -----------------------------------------------------*
+[
+	uuid(E34FA8DD-C53A-497d-B1CC-3137CA507F2A),
+	version(2.0),
+	helpstring("4C_20: Profibus GSD Parser Type Library")
+]
+library pgsd
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+    //import Profibus GSD Parser Standard Interfaces
+    importlib("..\inc\parsegsd.tlb");
+
+//----  Component Classes:    ------------------------------------------------*
+	[
+		uuid(608A23E6-25B3-4697-A084-3FBE830B52F7),
+		helpstring("4C_20: Profibus GSD Parser - root object of object hierarchy")
+	]
+	coclass ParseGsdFile
+	{
+		[default] interface IParseGsdFile;
+	};
+
+	[
+		uuid(078C1FCE-E6E6-4929-88BF-A341506E1005),
+		helpstring("access to DP station data"),
+        hidden,
+        noncreatable //created by IParseGsdFile::ParseFile()
+	]
+	coclass DP_Station
+	{
+		[default] interface IDP_Station;
+        interface IDP_Station2;
+		interface IDP_Master;
+        interface IDP_Master2;
+		interface IDP_Slave;
+        interface IDP_Slave2;
+	};
+
+	[
+		uuid(79E54424-CE5D-44f7-AF8E-5669C61B0B22),
+		helpstring("access to DP slave module data"),
+        hidden,
+        noncreatable //created via module enumerator
+	]
+	coclass DP_Module
+	{
+		[default] interface IModule;
+        interface IModule2;
+	};
+
+	[
+		uuid(8BE9F388-EED0-4b96-9D02-830E9E51618F),
+		helpstring("access to DP slave extended user parameter data"),
+        hidden,
+        noncreatable //created via ExtUserParam enumerator
+	]
+	coclass DP_ExtUserParam
+	{
+		[default] interface IExtUserParam;
+        interface IExtUserParam2;
+	};
+};
+
+
+

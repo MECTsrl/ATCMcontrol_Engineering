@@ -1,0 +1,61 @@
+#H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CMN/PatchVer/patchver.inf 1     28.02.07 19:00 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: patchver.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CMN/PatchVer/patchver.inf $
+#
+# =PROJECT             CAK1020  ATCMControl
+#
+# =SWKE                CMN
+#
+# =COMPONENT           version
+#
+# =CURRENT             $Date: 28.02.07 19:00 $
+#                      $Revision: 1 $
+#
+# =ENVIRONMENT         perl5:
+#                      MS Windows NT 4.0
+#                      MSVC++ V5.0 / MFC 4.2 / ATL 2.0 / DAO 3.5
+#                      MS Java 2.0
+#                      MS Visual SourceSafe 5.0
+#
+# =REFERENCES
+#==
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+#==
+#----------------------------------------------------------------------------*
+# =MODIFICATIONS
+# $History: patchver.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:00
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CMN/PatchVer
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:33
+# Created in $/4Control/COM/softing/fc/CMN/PatchVer
+# 
+# *****************  Version 1  *****************
+# User: Wi           Date: 2.04.01    Time: 15:16
+# Created in $/4Control/COM/softing/fc/CMN/PatchVer
+# 
+# *****************  Version 1  *****************
+# User: Ed           Date: 4.08.98    Time: 11:47
+# Created in $/4Control/COM/softing/fc/CMN/patchver
+#==
+#*****************************************************************************
+#H<<
+
+TARGET=$(EXE_DIR)\pub\patchver.exe
+TARGETTYPE=CON
+INCLUDE=$(RESOURCE_DIR)

@@ -1,0 +1,56 @@
+<html>
+
+<head>
+<title>FNC_Sceleton</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Help.css">
+</head>
+
+<body bgcolor="#FFFFCC">
+<BLOCKQUOTE> 
+  <h2>Function Name</h2>
+  <p> modbus_rtu_set_rts - set the current RTS mode in RTU</p>
+  <h3>Interface</h3>
+  <p class="interface">FUNCTION MODBUS_RTU_SET_RTS : UINT</p>
+  <p class="interface">&nbsp;</p>
+  
+ 
+  <p class="interface">VAR_INPUT </p>
+  <BLOCKQUOTE class="structinterface"> 
+    <p class="interface">rts : UINT;</p>
+  </BLOCKQUOTE>
+  <p class="interface">END_VAR</p>
+  
+  <h3>Return value</h3>
+  <p>Value of type <i><b>UINT</b></i> </p>
+  <p>0 for success 1 for error </p>
+  
+  <h3>Parameters </h3>
+  <h3>INPUT </h3>
+   <p><strong>rts</strong></p>
+  <p class="indent"> Value of type <i><b>UINT</b></i> </p>
+  <p class="indent">current RTS status to be set</p>
+  
+  <h3>Description </h3>
+  <p>The MODBUS_RTU_SET_RTS function shall set the Request To Send mode to
+communicate on a RS485 serial bus. By default, the mode is set to
+MODBUS_RTU_RTS_NONE and no signal is issued before writing data on the wire.
+ </p>
+<p>
+To enable the RTS mode, the values MODBUS_RTU_RTS_UP or MODBUS_RTU_RTS_DOWN must
+be used, these modes enable the RTS mode and set the polarity at the same
+time. When MODBUS_RTU_RTS_UP is used, an ioctl call is made with RTS flag
+enabled then data is written on the bus after a delay of 1ms, then another ioctl
+call is made with the RTS flag disabled and again a delay of 1ms occurs.
+The MODBUS_RTU_RTS_DOWN mode applies the same procedure but with an inversed
+RTS flag.
+ </p>
+<p>
+This function can only be used with a context using a RTU backend.
+
+
+
+ </p>
+</BLOCKQUOTE>
+</body>
+</html>

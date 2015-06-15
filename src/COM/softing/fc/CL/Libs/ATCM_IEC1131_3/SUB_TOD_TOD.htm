@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>SUB_TOD_TOD</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>SUB_TOD_TOD</h2>
+<p>Subtracts two values of type <i><b>TIME_OF_DAY</b></i>.<br>
+</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION SUB_TOD_TOD : TIME
+VAR_INPUT  
+    IN1 : TOD;  
+    IN2 : TOD; 
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>TIME</b></i><br>
+  Result of the subtraction of <b><i> IN2</i></b> from <i><b>IN1</b></i> in ms.</p>
+
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>IN1</b></dt>
+  <dd>Value of type <b><i>TOD</i></b><br>
+    Value from which<i><b> IN2</b></i> is to be subtracted.</dd>
+  <dt><b>IN2</b></dt>
+  <dd>Value of type <i><b>TOD</b></i><br>
+    Value which is to be subtracted from <i><b>IN1</b></i>.</dd>
+  <dt><b><i> </i></b></dt>
+</dl>
+<h3> Description</h3>
+<p>Subtracts <i><b>IN2</b></i> from<b> <i>IN1</i></b> and yields the result in 
+  ms. Instead of using the <i><b>SUB_TOD_TOD</b></i> function, you can also use 
+  the minus operator<i><b> - </b></i>to subtract one value of type <i><b>TIME_OF_DAY</b></i> 
+  from another.</p>
+</body>
+</html>

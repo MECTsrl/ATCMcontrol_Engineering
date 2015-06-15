@@ -1,0 +1,22 @@
+(*[[
+]]*)
+TYPE
+
+    SerialLineSTS_struct : STRUCT
+
+        LineStatus   :    WORD;
+        Error        :    DWORD;
+        FreeTxFrames :    WORD;
+        TXStatus     :    WORD;
+        TXError      :    DWORD;
+        FreeRxFrames :    WORD;
+        RXStatus     :    WORD;
+        RXError      :    DWORD;
+        RXCharRead   :    WORD;
+        InternalSts  :    DWORD;
+        Reserved1    :    DWORD;
+        Reserved2    :    DWORD;
+        
+    END_STRUCT;
+
+END_TYPE

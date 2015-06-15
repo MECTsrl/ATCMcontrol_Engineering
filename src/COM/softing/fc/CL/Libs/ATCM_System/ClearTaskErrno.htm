@@ -1,0 +1,25 @@
+<html>
+<head>
+<title>ClearTaskErrno</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>ClearTaskErrno </h2>
+<p>Resets the error number of the calling task to 0.</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION ClearTaskErrno</pre>
+<h3>Return value</h3>
+<p>Keiner</p>
+<h3>Parameter</h3>
+<p>Keine</p>
+<h3>Description</h3>
+<p>The function <i><b>ClearTaskErrno</b></i> should always be called before interrogating 
+  the error number with <i><b><a href="GetTaskErrno.htm">GetTaskErrno</a></b></i> 
+  since the error number of the calling task is not automatically reset to 0 when 
+  an error has occurred. If an error has already occurred previously in the calling 
+  task and<i><b> ClearTaskErrno</b></i> has not been called,<i><b> GetTaskErrno</b></i> 
+  will return the error number of the last occurred error even if no new error 
+  has occurred in a subsequent task cycle. </p>
+</body>
+</html>

@@ -1,0 +1,278 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\TestProjManDlg1.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\TestProjManDlg1.ico"
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_TESTPROJMANDLG1_DIALOG DIALOGEX 0, 0, 555, 317
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "TestProjManDlg1"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,215,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,267,7,50,14
+    EDITTEXT        IDC_EDITPROJNAME,7,7,98,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Open",IDC_BUTTON1,111,7,50,14
+    PUSHBUTTON      "Close",IDC_BUTTON2,163,7,50,14
+    EDITTEXT        IDC_EDITTREEs,7,44,198,179,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL | WS_HSCROLL,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "ClassXML",IDC_BUTTON3,7,25,50,14
+    PUSHBUTTON      "Target XML",IDC_BUTTON4,59,25,50,14
+    PUSHBUTTON      "Reparse",IDC_BUTTON5,267,25,50,14
+    LTEXT           "----",IDC_CHANGE,327,7,48,9
+    PUSHBUTTON      "Save",IDC_BUTTON6,215,25,50,14
+    EDITTEXT        IDC_EDITMsg,210,44,110,89,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL | WS_HSCROLL
+    PUSHBUTTON      "Class Tree",IDC_BUTTON7,111,25,50,14
+    PUSHBUTTON      "Target Tree",IDC_BUTTON8,163,25,50,14
+    EDITTEXT        IDC_EDIT_IMSG,210,151,109,72,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | 
+                    WS_VSCROLL | WS_HSCROLL
+    LTEXT           "Messages:",IDC_STATIC,210,138,70,9
+    EDITTEXT        IDC_EDIT_Section,494,38,45,13,ES_AUTOHSCROLL
+    LTEXT           "Section",IDC_STATIC,455,39,31,10
+    LTEXT           "Key",IDC_STATIC,455,55,32,12
+    EDITTEXT        IDC_EDIT_Key,494,54,45,13,ES_AUTOHSCROLL
+    LTEXT           "Value",IDC_STATIC,455,71,33,11
+    EDITTEXT        IDC_EDIT_Value,494,70,45,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_CP_OUTPUT,453,144,88,49,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | 
+                    WS_VSCROLL | WS_HSCROLL
+    PUSHBUTTON      "Insert",IDC_BUTTON9,453,90,43,11
+    PUSHBUTTON      "Delete Key",IDC_BUTTON10,453,105,43,11
+    PUSHBUTTON      "Del Key Val",IDC_BUTTON11,499,105,43,11
+    PUSHBUTTON      "GetVal",IDC_BUTTON12,453,120,43,11
+    PUSHBUTTON      "GetAllVal",IDC_BUTTON13,499,120,43,11
+    GROUPBOX        "Test 4CP",IDC_STATIC,448,26,100,172
+    GROUPBOX        "Test Container",IDC_STATIC,326,26,119,172
+    LTEXT           "File Name:",IDC_STATIC,330,40,37,11
+    EDITTEXT        IDC_EDIT_Cont_FileName,390,40,52,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "Get Cont for File ",IDC_BUTTON14,330,54,52,13
+    EDITTEXT        IDC_EDIT_Cont_Location,390,70,52,13,ES_AUTOHSCROLL
+    LTEXT           "Location:",IDC_STATIC,330,70,42,11
+    EDITTEXT        IDC_EDIT_Cont_OldLink,390,84,52,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_Cont_NewLink,390,99,52,13,ES_AUTOHSCROLL
+    LTEXT           "(Old) Link name:",IDC_STATIC,330,84,49,12
+    LTEXT           "New Link Name:",IDC_STATIC,330,99,51,11
+    PUSHBUTTON      "Delete",IDC_BUTTON15,330,181,52,13
+    PUSHBUTTON      "Create",IDC_BUTTON16,330,149,52,13
+    PUSHBUTTON      "Rename",IDC_BUTTON17,330,165,52,13
+    LTEXT           "Parent File:",IDC_STATIC,330,113,43,10
+    LTEXT           "ParentLocation:",IDC_STATIC,331,130,47,9
+    EDITTEXT        IDC_EDIT_cont_ParentFile,390,113,52,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_cont_ParentLocation,390,127,52,13,
+                    ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Get Container",IDC_BUTTON18,390,54,52,13
+    EDITTEXT        IDC_EDIT_cont_Error,390,176,52,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Error:",IDC_STATIC,390,161,37,8
+    EDITTEXT        IDC_EDIT_TestOut,368,231,180,67,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | 
+                    WS_VSCROLL | WS_HSCROLL
+    PUSHBUTTON      "Get Lib Path",IDC_BUTTON19,319,231,42,15
+    PUSHBUTTON      "Get Inst Path",IDC_BUTTON20,319,249,42,15
+    LTEXT           "Test Output:",IDC_STATIC,366,217,58,11
+    EDITTEXT        IDC_EDIT_TEST_ERROR,296,297,63,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    PUSHBUTTON      "Get All Class Types",IDC_BUTTON21,7,228,65,9
+    PUSHBUTTON      "Get All Target Types",IDC_BUTTON22,7,238,65,9
+    PUSHBUTTON      "Text For ClassType",IDC_BUTTON23,7,247,65,9
+    EDITTEXT        IDC_EDIT_Test_ClassType,296,266,63,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "File Parse Now",IDC_BUTTON24,7,265,65,9
+    PUSHBUTTON      "File Change Hint",IDC_BUTTON25,7,256,65,9
+    PUSHBUTTON      "Get XMLNode Ptr",IDC_BUTTON26,7,275,65,9
+    PUSHBUTTON      "Get Name Prop",IDC_BUTTON27,7,284,65,9
+    PUSHBUTTON      "Get All Classes",IDC_BUTTON28,74,228,65,9
+    PUSHBUTTON      " All Cla. of Type",IDC_BUTTON29,74,239,65,9
+    PUSHBUTTON      "Get All Targets",IDC_BUTTON30,74,250,65,9
+    PUSHBUTTON      "Get All Files Of Cat",IDC_BUTTON33,144,228,65,9
+    PUSHBUTTON      "Get File Cat",IDC_BUTTON34,144,239,65,9
+    PUSHBUTTON      "Add FV File",IDC_BUTTON35,144,250,65,9
+    PUSHBUTTON      "Remove FV File",IDC_BUTTON36,144,261,65,9
+    EDITTEXT        IDC_EDIT_Test_2,296,280,63,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "Get All Classes (IDp)",IDC_BUTTON31,74,261,65,9
+    PUSHBUTTON      " All Cla. of Type (IDp)",IDC_BUTTON32,74,272,65,9
+    PUSHBUTTON      "Get All Targets (IDp)",IDC_BUTTON37,74,283,65,9
+    PUSHBUTTON      "Get File From IdPath",IDC_BUTTON38,144,272,65,9
+    PUSHBUTTON      "Get IdPath From File",IDC_BUTTON39,144,283,65,9
+    PUSHBUTTON      "Type Of Target",IDC_BUTTON40,212,228,65,9
+    PUSHBUTTON      "Address For Target",IDC_BUTTON41,212,239,65,9
+    PUSHBUTTON      "User Address For T.",IDC_BUTTON42,212,250,65,9
+    PUSHBUTTON      "Name For Addr",IDC_BUTTON43,212,261,65,9
+    PUSHBUTTON      "Resource For Target",IDC_BUTTON44,212,272,65,9
+    PUSHBUTTON      "Free Channel For PC",IDC_BUTTON45,212,283,65,9
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "TestProjManDlg1 MFC Application\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "TestProjManDlg1\0"
+            VALUE "LegalCopyright", "Copyright (C) 2001\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "TestProjManDlg1.EXE\0"
+            VALUE "ProductName", "TestProjManDlg1 Application\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_TESTPROJMANDLG1_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 548
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 310
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\TestProjManDlg1.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,36 @@
+HKCR
+{
+    4C_20.AddonHandler.[*TN]AddonObject.1 = s '4C_20: [*TN]AddonObject Class'
+	{
+        CLSID = s '{[*AG]}'
+        'Index' 
+        { 
+            val Version = s '2.0' 
+            val LCID = d '1033' 
+        } 
+	}
+    4C_20.AddonHandler.[*TN]AddonObject = s '4C_20: [*TN]AddonObject Class'
+	{
+        CLSID = s '{[*AG]}'
+        CurVer = s '4C_20.AddonHandler.[*TN]AddonObject.1'
+	}
+	NoRemove CLSID
+	{
+        ForceRemove {[*AG]} = s '4C_20: [*TN]AddonObject Class'
+		{
+            ProgID = s '4C_20.AddonHandler.[*TN]AddonObject.1'
+            VersionIndependentProgID = s '4C_20.AddonHandler.[*TN]AddonObject'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+            'TypeLib' = s '{[*TG]}'
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+                {01C36A7a-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+
+	}
+}

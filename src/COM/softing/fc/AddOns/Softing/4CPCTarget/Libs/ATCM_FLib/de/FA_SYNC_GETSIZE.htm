@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>FA_SYNC_GETSIZE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>FA_SYNC_GETSIZE </h2>
+<p>Liefert die Gr&ouml;&szlig;e einer Datei in Bytes.</p>
+<h3>Schnittstelle</h3>
+<pre class="preforma">FUNCTION FA_SYNC_GETSIZE:BOOL
+VAR_INPUT
+    EXEC        : BOOL;            
+END_VAR
+VAR_IN_OUT
+    FILE        : FA_SYNC_FILE;     
+END_VAR
+VAR_OUTPUT
+    SIZE        : LINT;                 
+END_VAR</pre>
+<h3>Rückgabewert</h3>
+<p>Wert vom Typ <i><b>BOOL</b></i><br>
+  Signalisiert den Fehlerstatus.<br>
+  M&ouml;gliche Werte:<br>
+  <i><b>TRUE</b></i>: Ein Fehler ist aufgetreten.<br>
+  <i><b>FALSE</b></i>: Es ist kein Fehler aufgetreten.</p>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>EXEC</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Startet die Operation. </dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl> 
+  <dt><b>FILE</b></dt>
+  <dd>Instanz der Struktur <a href="FA_SYNC_FILE.htm"><i><b>FA_SYNC_FILE</b></i></a><br>
+    Dateiobjekt, auf das die Operation ausgef&uuml;hrt wird.</dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b>SIZE</b></dt>
+  <dd>Wert vom Typ <i><b>LINT</b></i>.<br>
+    Enth&auml;lt nach Beendigung der Operation die Gr&ouml;&szlig;e der in <i><b>FILE</b></i> 
+    &uuml;bergebenen Datei in Bytes.</dd>
+</dl>
+<h3>Beschreibung</h3>
+<p><b><i>FA_SYNC_GETSIZE</i></b> liefert im Parameter <i><b>SIZE</b></i> die Gr&ouml;&szlig;e 
+  der an <i><b>FILE</b></i> &uuml;bergebenen Datei. Die Datei mu&szlig; vor dem 
+  Ermitteln der Dateigr&ouml;&szlig;e nicht ge&ouml;ffnet werden, d.h. die Ausf&uuml;hrung 
+  von <i><b>FA_SYNC_GETSIZE</b></i> ist unabh&auml;ngig von einem Zugriffszyklus. 
+</p>
+</body>
+</html>

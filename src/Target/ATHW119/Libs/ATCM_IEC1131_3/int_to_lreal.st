@@ -1,0 +1,12 @@
+(*[[
+    UserURL= "ATCMfile:DINT_TO_LREAL.htm"
+]]*)
+
+FUNCTION INT_TO_LREAL : LREAL
+VAR_INPUT 
+    IN : INT; 
+END_VAR
+
+inline{VMOP}
+
+END_FUNCTION

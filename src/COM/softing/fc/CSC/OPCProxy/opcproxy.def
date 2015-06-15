@@ -1,0 +1,67 @@
+;*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CSC/OPCProxy/opcproxy.def 1     28.02.07 19:00 Ln $
+;----------------------------------------------------------------------------*
+;
+; =FILENAME            $Workfile: opcproxy.def $
+;                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CSC/OPCProxy/opcproxy.def $
+;
+; =PROJECT             CAK1020 ATCMControlV2.0
+;
+; =SWKE                4CSC
+;
+; =COMPONENT           OPC Data access
+;
+; =CURRENT      $Date: 28.02.07 19:00 $
+;               $Revision: 1 $
+;
+; =REFERENCES
+;
+;----------------------------------------------------------------------------*
+;----------------------------------------------------------------------------*
+; =DESCRIPTION
+;    @DESCRIPTION@
+;== OPC COM proxy/stub dll for Interfaces exposed with opcDA.idl
+;== Used for mashalling the opcDA.idl interfaces and creating proxy and stub-
+;== objects.
+;----------------------------------------------------------------------------*
+; =MODIFICATION
+;  20.03.2001  SU      File created
+;  see history at end of file !
+;==
+;******************************************************************************
+;H<<*/
+
+LIBRARY      "OPCProxy.DLL"
+
+EXPORTS
+	DllCanUnloadNow     @1 PRIVATE
+	DllGetClassObject   @2 PRIVATE
+	DllRegisterServer   @3 PRIVATE
+	DllUnregisterServer	@4 PRIVATE
+
+;----------------------------------------------------------------------------*
+;  $History: opcproxy.def $
+; 
+; *****************  Version 1  *****************
+; User: Ln           Date: 28.02.07   Time: 19:00
+; Created in $/4CReleased/V2.20.00/COM/softing/fc/CSC/OPCProxy
+; 
+; *****************  Version 1  *****************
+; User: Ln           Date: 28.08.03   Time: 16:33
+; Created in $/4Control/COM/softing/fc/CSC/OPCProxy
+; 
+; *****************  Version 1  *****************
+; User: Su           Date: 20.03.01   Time: 11:49
+; Created in $/4Control/COM/softing/fc/CSC/OPCProxy
+; Moved from ATCMControl V1.x source safe database
+;*****************  Version 3  *****************
+; User: Ed           Date: 22.12.97   Time: 14:26
+; Updated in $/4Control/COM/softing/fc/CSC/OPCProxy
+; pragma some ((unneccessary)) warnings away...
+; 
+;*****************  Version 2  *****************
+; User: Je           Date: 16.12.97   Time: 11:43
+; Updated in $/4Control/COM/softing/fc/CSC/OPCProxy
+; * implements OPC COM proxy/stub dll
+;==
+;----------------------------------------------------------------------------*
+;

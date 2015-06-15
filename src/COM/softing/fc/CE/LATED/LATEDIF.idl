@@ -1,0 +1,52 @@
+// LATED.idl : type library source for LATED.exe
+
+// This file will be processed by the MIDL compiler to produce the
+// type library (LATED.tlb).
+import "CEMsg.idl";
+
+[ 
+    uuid(BD9B1D45-0FE1-42BA-9B8A-9877C41EFF7F), 
+    helpstring("4C_20: Latcomm Editor type library"),
+    version(1.0) 
+]
+library LATED
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+    importlib("..\inc\CEBackparse.tlb");
+    importlib("..\inc\StdEditorIF.tlb");
+
+	//  Primary dispatch interface for CLATEDDoc
+	//  Primary dispatch interface for CSTEditorDoc
+	[ uuid(0A3F8FD9-46FE-40d0-B426-3BB4B9E44F5D) ]
+	dispinterface ILATED
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CSTEditorDoc)
+			//}}AFX_ODL_PROP
+			
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CSTEditorDoc)
+			//}}AFX_ODL_METHOD
+
+	};
+
+	//  Class information for CLATEDDoc
+	
+	[ uuid(86046CB4-294D-4EB0-9411-13EB84F3888F) ]
+	coclass LATED
+	{
+        [default] dispinterface ILATED;
+		interface ICEEdit;
+        interface ICEBackParse;
+        [source] interface ICEEditNotify;
+        [source] interface _ICEMessageEvent;
+	};
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};

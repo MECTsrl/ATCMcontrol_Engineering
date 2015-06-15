@@ -1,0 +1,23 @@
+USER=libname=ATCM_IEC1131_3
+USER=targettype=4CPC
+
+USER=make_lib: force
+USER= xcopy  $(MAKEDIR)\table_22\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_23\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_24\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_25\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_26\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_27\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_28\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_29\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_30\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_34\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_35\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_36\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_37\*.*     $(MAKEDIR)\*.* /Y
+
+USER= $(4CG) $(MAKEDIR)\$(libname).4cp  -ml:$(targettype) $(ENGBIN_DIR)\$(targettype)\libs\$(libname).$(targettype).4cl
+
+USER= $(4CG) -al $(ENGBIN_DIR)\$(targettype)\libs\$(libname).$(targettype).4cl  $(4CL_DIR)\$(libname).4cl
+
+# -------------------------------------------------------------------------------

@@ -1,0 +1,5 @@
+cd /local/root
+killall -9 hmi
+cp fcrts fcrts.bkp
+cp hmi hmi.bkp
+tar cf /local/etc/sysconfig.tar /local/etc/sysconfig

@@ -1,0 +1,22 @@
+//
+// ProRC.RC2 - resources Microsoft Visual C++ does not edit directly
+//
+
+#ifdef APSTUDIO_INVOKED
+	#error this file is not editable by Microsoft Visual C++
+#endif //APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Add manually edited resources here...
+
+//
+// Objective Toolkit Pro resource includes
+//
+// This file is included from secres.rc, which is common to both
+// Objective Toolkit standard and Pro editions. For OT standard,
+// this file is no more than a stub.
+
+/////////////////////////////////////////////////////////////////////////////
+
+		

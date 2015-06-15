@@ -1,0 +1,58 @@
+HKCR
+{
+	4C_20_CE.CEWatchBE.1 = s '4C_20: CEWatchBE Class'
+	{
+		CLSID = s '{CBE4BA23-FB6C-49f8-8029-470C28F03ADD}'
+		'Index'
+		{
+			val Version = s '2.0'
+		}
+	}
+	4C_20_CE.CEWatchBE = s '4C_20: CEWatchBE Class'
+	{
+		CLSID = s '{CBE4BA23-FB6C-49f8-8029-470C28F03ADD}'
+		CurVer = s '4C_20_CE.CEWatchBE.1'
+	}
+	4C_20_CE.CEWatchBEAdmin.1 = s '4C_20: CEWatchBE Admin Class'
+	{
+		CLSID = s '{CBE4BA25-FB6C-49f8-8029-470C28F03ADD}'
+	}
+	4C_20_CE.CEWatchBEAdmin = s '4C_20: CEWatchBE Admin Class'
+	{
+		CLSID = s '{CBE4BA25-FB6C-49f8-8029-470C28F03ADD}'
+		CurVer = s '4C_20_CE.CEWatchBEAdmin.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {CBE4BA23-FB6C-49f8-8029-470C28F03ADD} = s '4C_20: CEWatchBE Class'
+		{
+			ProgID = s '4C_20_CE.CEWatchBE.1'
+			VersionIndependentProgID = s '4C_20_CE.CEWatchBE'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			'TypeLib' = s '{CBE4BA20-FB6C-49f8-8029-470C28F03ADD}'
+			'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+		ForceRemove {CBE4BA25-FB6C-49f8-8029-470C28F03ADD} = s '4C_20: CEWatchBE Admin Class'
+		{
+			ProgID = s '4C_20_CE.CEWatchBEAdmin.1'
+			VersionIndependentProgID = s '4C_20_CE.CEWatchBEAdmin'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			'TypeLib' = s '{CBE4BA20-FB6C-49f8-8029-470C28F03ADD}'
+			'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

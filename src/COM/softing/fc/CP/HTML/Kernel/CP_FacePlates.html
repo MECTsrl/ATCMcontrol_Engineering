@@ -1,0 +1,24 @@
+<!--ATCM. All rights reserved-->
+<html>
+<head>
+<script language="JavaScript" src="CP_Panel.js"></script>
+<script language="JavaScript">
+function init() 
+{
+	setTimeout("init2()", 100);
+}
+
+function init2() 
+{
+	if (isViewLoaded())
+		parent.initMain();
+	else
+		setTimeout("init2()", 500);
+}
+
+function exit() { parent.resetMainLoaded(); }
+</script>
+</head>
+
+<body onLoad="init()" onUnload="exit()"></body>
+</html>

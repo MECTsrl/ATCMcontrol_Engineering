@@ -1,0 +1,11 @@
+(*[[
+    UserURL= "ATCMfile:REAL_TO_UINT.htm"
+]]*)
+FUNCTION REAL_TO_UINT : UINT
+VAR_INPUT
+    IN : REAL;
+END_VAR
+
+inline{ VMOP }
+
+END_FUNCTION

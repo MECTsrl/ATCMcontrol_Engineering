@@ -1,0 +1,355 @@
+<html>
+<head>
+<title>Layouts</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Manual_GE.css">
+</head>
+
+
+<body bgcolor="#FFFFFF" background="pic/backgrnd.jpg">
+<h1>Layouts</h1>
+<hr>
+<h3><a name="Overview"></a>Overview </h3>
+<ul>
+  <a href="#Layout">Working with Layouts</a> <br>
+  <a href="#EditLayout">Editing a Layout in the Layout Editor</a> 
+  <ul class="inul">
+    <a href="#Examples">Examples</a><br>
+    <a href="#Rules">Rules for Creating valid Layouts</a> 
+  </ul>
+  <a href="#OrderDisplay">Editing Layouts via the Context Menu of the Displays</a> 
+  <ul class="inul">
+    <a href="#ExpandLeft">Expanding a Display to the left</a><br>
+    <a href="#ExpandRight">Expanding a Display to the right</a><br>
+    <a href="#ExpandUp">Expanding a Display Upwards</a><br>
+    <a href="#ExpandDown">Expanding a Display Downwards</a><br>
+    <a href="#InsertLeft">Inserting a Display on the left Side</a><br>
+    <a href="#InsertRight">Inserting a Display on the right Side</a><br>
+    <a href="#InsertAbove">Inserting a Display above a Selected Display</a><br>
+    <a href="#InsertBelow">Inserting a Display below a Selected Display</a><br>
+    <a href="#Clear">Resetting the Display Content</a> 
+  </ul>
+  <a href="#SaveLayout">Saving Altered Layouts</a><br>
+  <a href="#LoadLayout">Loading a saved Layout</a><br>
+  <a href="#DeleteLayout">Deleting a Layout</a><br>
+  <a href="Faceplatelayoutexample.htm">Examples of Display Layouts</a> 
+</ul>
+<hr style="margin-left: 44px">
+<h2><a name="Layout"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Working with Layouts</h2>
+<p>Layouts form the basic structure for the arrangement of the displays shown 
+  in the Visualization view. The arrangement of displays can be altered via the 
+  <b>layout editor</b> or via the <b>Context</b> menus of the displays in the 
+  Visualization view. </p>
+<p>Alterations of layouts are always carried out on the basis of the currently 
+  enabled layout. The enabled layout is indicated in the <b>Layout</b> list box 
+  in the ATCM Control toolbar. If you have not yet stored any new layout, the basic 
+  layout is the standard layout used by ATCM Control. </p>
+<p>Alterations of the layout which have been carried through via the layout editor 
+  or via the <b>Context</b> menu of the displays are not automatically stored. 
+  As soon as you update the entire Visualization view via the corresponding option 
+  in the Internet Explorer or restart ATCM Console, the displays are again arranged 
+  in the order of the currently loaded layout. To maintain layout changes, you 
+  have to explicitly store the layout. <br>
+  For saving and loading a layout, see also the sections: <a href="#SaveLayout">Saving 
+  Altered Layouts</a> and <a href="#LoadLayout">Loading a saved Layout</a><b>. 
+  </b></p>
+<p>Every time you start ATCM Console, the displays are arranged on the basis of 
+  the last used layout. If you have not yet created and saved a new layout, the 
+  standard layout of ATCM Console will be used for the arrangement of the displays.</p>
+<h2><a name="EditLayout"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Editing a Layout in the Layout Editor</h2>
+<p>To edit a layout, start the <b>layout editor</b> by clicking on the <b>Edit</b> 
+  button in the toolbar of ATCM Console or on the <b> Edit Layout </b>option in 
+  the <b>Context</b> menu of any display. </p>
+<img src="pic/ViewEditor.gif" width="450" height="600" class="inP"> 
+<p>The arrangement of the displays which is shown in the layout editor always 
+  corresponds to the layout that is currently displayed in ATCM Console, even if 
+  the latter has not been saved yet. If you have not yet edited any layout in 
+  ATCM Console, see the structure shown in the above figure. It is identical with 
+  the standard layout used in ATCM Console. In the figure below, you can see the 
+  display arrangement, which is based on this layout, in the Visualization view:</p>
+<img src="pic/StandardLayout.gif" width="442" height="346" class="inP"> 
+<p>As you can see by comparing the two figures, one display corresponds to a row 
+  of squares with the same color and number in the layout editor. In the above 
+  figure, therefore, the first display from the left is represented in the layout 
+  editor by the gray squares with the number <i>1</i>, the second display by the 
+  blue squares with the number <i>2</i> etc. </p>
+<p>You can change the size and position of the displays in the layout editor. 
+  To do this, proceed as follows:</p>
+<ol>
+  <li>On the very top of the layout editor, there is a row of numbered colored 
+    squares. Each square stands for a separate display. Click on one of these 
+    squares with the left mouse button. This square is now displayed similar to 
+    a pressed button; this is to signalize that it is enabled. </li>
+  <li>The area underneath these squares represents the layout displayed in the 
+    Visualization view. The layout is divided into 4 x 4 squares. They form a 
+    grid indicating possible positions for the placement of a display. Click on 
+    one of the squares. This square is now displayed in the color and with the 
+    number that you have previously enabled by the mouse click on one of the squares 
+    in the upper row.</li>
+  <li>To define the area which is to be covered by a display, click on additional 
+    squares so that the squares form a coherent area. The area covered later by 
+    a display in the Visualization view is determined by the squares with identical 
+    color and number. It is also possible to generate a display which consists 
+    of only one square. </li>
+  <li>If your display has the desired size and position, click on another square 
+    in the upper row of squares to define the size and position of another display. 
+    All actions which you will from now on perform in the area underneath the 
+    row of squares, will be executed with the color and number of the enabled 
+    square. </li>
+  <li>To close the layout editor and view the result of your arrangement, click 
+    <b>OK</b>. If, on the other hand, you do not want to keep the changes of your 
+    layout, click on <b>Cancel</b>. </li>
+</ol>
+<h3><b><a name="Examples"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  </b> Examples</h3>
+<p>Taking the standard layout displayed above as a starting point, we will now 
+  arrange the displays in such a way that they are no longer positioned side by 
+  side but so that two displays are located in the upper and two in the lower 
+  half of the Visualization view. For this purpose, the grid in the layout editor 
+  must be such that 2 x 2 squares have the same color and number.</p>
+<img src="pic/Layout2x2.gif" width="450" height="600" class="inP"> 
+<p>This results in the following arrangement in the Visualization view:</p>
+<img src="pic/Visu2x2.gif" width="421" height="314" class="inP"> 
+<p>To arrange the two upper displays one under the other instead of side by side, 
+  each display is arranged in a horizontal row of 4 squares: </p>
+<img src="pic/Layouthr.gif" width="450" height="600" class="inP"> 
+<p>The Visualization view now looks as follows:</p>
+<img src="pic/Visuhr.gif" width="420" height="314" class="inP"> 
+<p>For further examples of layouts, see the section <a href="Faceplatelayoutexample.htm">Examples 
+  of Display Layouts</a>. </p>
+<h3><b><a name="Rules"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a></b> 
+  Rules for Creating valid Layouts</h3>
+<p>Displays cannot be arranged at random in the layout editor. Therefore, you 
+  have to observe a few rules to create a layout which can be displayed as a valid 
+  layout in the Visualization view:</p>
+<ul>
+  <li>Squares with the same color and number have to be arranged in such a way 
+    as to form a coherent area since a display cannot be distributed over several 
+    places in the Visualization view which are not interconnected. </li>
+  <li>Displays may not be L-shaped, i.e. squares with the same color and number 
+    may not be arranged in L-shape.</li>
+  <li>Displays may not be arranged in circular shape (see <a href="Faceplatelayoutexample.htm#rotate">Example 
+    of a Circular Arrangement</a>).</li>
+</ul>
+<p>Whether the current arrangement of displays results in a valid layout, is indicated 
+  in the layout editor by the text to the left of the two buttons <b>OK</b> and 
+  <b>Cancel</b>. If the current arrangement of displays results in a valid layout, 
+  the text reads <b> Faceplate Layout: Valid</b>. If, on the other hand, the current 
+  arrangement does not result in a valid layout, the text <b>Faceplate Layout: 
+  Invalid</b> is displayed. In this case, the <b>OK</b> button is disabled so 
+  that an invalid layout cannot be accepted in the Visualization view.</p>
+<p>For further examples of valid and invalid layouts, see the section <a href="Faceplatelayoutexample.htm">Examples 
+  of Display Layouts</a>.</p>
+<h2> <a name="OrderDisplay"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Editing Layouts via the Context Menu of the Displays </h2>
+<p>Each display has a <b>Context</b> menu by means of which size and position 
+  of the display can be influenced. With the <b>Expand</b> options, displays can 
+  be expanded to the left or right; with the <b>Insert</b> options, other displays 
+  can be inserted in the Visualization view. Changes which have been carried through 
+  via the <b>Context</b> menu are inserted in the currently enabled layout and 
+  displayed in the layout editor. <br>
+  In addition, the <b>Context</b> menu contains two options for resetting the 
+  displayed object and the options <b>Edit Layout</b> and <b>Copy Layout</b> (on 
+  these options, see the sections <a href="#EditLayout">Editing a Layout in the 
+  Layout Editor</a> and <a href="#SaveLayout">Saving Altered Layouts</a>). </p>
+<p>The options in the <b>Context</b> menu are sensitive to context; i.e. only 
+  those options are displayed which are relevant for the current position of a 
+  display. If, for example, a display is already situated at the very left of 
+  the Visualization view, this display cannot be further expanded to the left. 
+  In this case, the option <b>Expand Left </b> does therefore not appear in the 
+  <b>Context</b> menu of the corresponding display. As a rule, a display can only 
+  be expanded in a direction where there are other displays as well. Similarly, 
+  the <b>Insert</b> options for displays are only shown if the maximum number 
+  of 4 displays in a vertical or horizontal row in the Visualization view has 
+  not yet been reached.</p>
+<p>A display inserted via the <b>Insert</b> options will generally be empty. If, 
+  however, you have removed one or more displays from the Visualization view by 
+  the <b>Expand</b> option before inserting a display (see the section <a href="#ExpandLeft">Expanding 
+  a Display to the left</a>), the object which has been removed first and has 
+  no longer been displayed until the time of insertion is loaded in the inserted 
+  displays. </p>
+<p>You can call the <b>Context</b> menu of a display by clicking with the right 
+  mouse button in the title bar of the desired display. Please note that the display-specific 
+  <b>Context</b> menu is only called if you click on the display title bar, whereas 
+  a click in the display area of the display opens a <b>Context</b> menu which 
+  contains options of the Internet Explorer.</p>
+<img src="pic/DisplayContext.gif" width="209" height="219" class="inP"> 
+<h3><a name="ExpandLeft"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Expanding a Display to the left</h3>
+<p>With the <b>Expand Left</b> option, you can expand a display in this direction. 
+  The display which was located to the left of the selected display before this 
+  option was enabled, is no longer displayed. Instead, the selected display is 
+  expanded to cover the display area which was previously on its left. </p>
+<p>If, for example, you expand the display with the function block instance <i>time_count</i>, 
+  which is shown in the figure below, the display with the function block instance 
+  <i>pulse</i> is replaced by the expanded area of the <i>time_count</i> display. 
+</p>
+<img src="pic/BExpandLeft.gif" width="560" height="266" class="inP"> 
+<p class="Bildunterschrift">Before expansion of time_count to the left</p>
+<img src="pic/ExpandLeft.gif" width="557" height="266" class="inP"> 
+<p class="Bildunterschrift">After expansion of time_count to the left</p>
+<h3><a name="ExpandRight"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Expanding a Display to the right</h3>
+<p>With the <b>Expand Right</b> option, you can expand a display in this direction. 
+  The representation of a display which has been expanded to the right is analogous 
+  to <a href="#ExpandLeft">Expanding a Display to the left</a>. </p>
+<h3><a name="ExpandUp"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Expanding a Display Upwards</h3>
+<p>If there is a display located above another display, you can expand the lower 
+  one upwards by the option <b>Expand Up</b>. The display which was located above 
+  the selected display before this option was enabled, is no longer displayed. 
+  Instead, the selected display is expanded to cover the display area which was 
+  previously above it. </p>
+<p>If, for example, you expand the display with the function block instance <i>time_count</i>, 
+  which is shown in the figure below, the display with the function block instance 
+  rise_edge2 is replaced by the expanded area of the time_count display. </p>
+<img src="pic/InsertUp.gif" width="559" height="262" class="inP"> 
+<p class="Bildunterschrift">Before the expansion of time_count upwards</p>
+<img src="pic/ExpandUp.gif" width="556" height="262" class="inP"> 
+<p class="Bildunterschrift">After the expansion of time_count upwards</p>
+<h3><a name="ExpandDown"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Expanding a Display Downwards</h3>
+<p>If there is a display located under another display, you can expand the upper 
+  one downwards by the option <b>Expand Down</b>. The representation of a display 
+  which has been expanded downwards is analogous to <a href="#ExpandUp">Expanding 
+  a Display Upwards</a>. </p>
+<h3><a name="InsertLeft"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Inserting a Display on the left Side</h3>
+<p>With the <b>Insert Left</b> option, you can insert a display to the left of 
+  another display you have selected. The selected display is reduced by the area 
+  required by the display inserted on its left. </p>
+<p>If, for example, you insert a display to the left of the display with the function 
+  block instance <i>timer_base</i> in the figure below, the area of this display 
+  is reduced by the space required by the newly inserted display. </p>
+<img src="pic/BInsertLeft.gif" width="557" height="258" class="inP"> 
+<p class="Bildunterschrift">Before the insertion of a display to the left of timer_base</p>
+<img src="pic/InsertLeft.gif" width="558" height="258" class="inP"> 
+<h4 class="Bildunterschrift">After the insertion of a display to the left of timer_base</h4>
+<h3><a name="InsertRight"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Inserting a Display on the right Side</h3>
+<p>With the <b>Insert Right</b> option, you can insert a display to the right 
+  of another display you have selected. The representation of a display inserted 
+  on the right is analogous to <a href="#InsertLeft">Inserting a Display on the 
+  left Side</a>. </p>
+<h3><a name="InsertAbove"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Inserting a Display above a Selected Display</h3>
+<p>With the <b>Insert Above</b> option, you can insert a display above of another 
+  display you have selected. The selected display is reduced by the area required 
+  by the display inserted above it. </p>
+<p>If, for example, you insert a display above the display with the function block 
+  instance <i>time_count</i> in the figure below, the area of this display is 
+  reduced by the space required by the newly inserted display. </p>
+<img src="pic/ExpandUp.gif" width="556" height="262" class="inP"> 
+<p class="Bildunterschrift">Before the insertion of a display above time_count</p>
+<img src="pic/InsertUp.gif" width="555" height="265" class="inP"> 
+<p class="Bildunterschrift">After the insertion of a display above time_count</p>
+<h3><a name="InsertBelow"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Inserting a Display below a Selected Display</h3>
+<p>With the <b>Insert Below</b> option, you can insert a display below another 
+  display you have selected. The representation of a display inserted below is 
+  analogous to <a href="#InsertAbove">Inserting a Display above a Selected Display</a>. 
+</p>
+<h3><a name="Clear"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Resetting the Display Content</h3>
+<p>With the option <b>Clear</b> in the <b>Context</b> menu, you can reset the 
+  display. The object previously represented in the selected display is no longer 
+  displayed and the display title bar reads <i>Empty</i>. </p>
+<p>With the option <b>Clear</b> <b>All</b>, the content of all displays in ATCM 
+  Console is reset.</p>
+<h2><a name="SaveLayout"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Saving Altered Layouts</h2>
+<p>Alterations carried through in a layout are not automatically saved and will 
+  therefore be lost as soon as you close ATCM Console or update the entire Visualization 
+  view. Therefore, you have to explicitly save a layout to maintain changes of 
+  this layout permanently.</p>
+<p>The arrangement of displays currently represented in the Visualization view 
+  forms the basis for saving a layout. Both changes carried out via the layout 
+  editor and changes carried through by means of the <b>Context</b> menu are saved. 
+  If you have carried through changes in a layout and not yet saved them, the 
+  entry <i>[Unsaved Layout]</i> is displayed in the <b>Layout</b> list box of 
+  the ATCM Console toolbar.<br>
+  During the saving of a layout, not only the current size and position of the 
+  displays are stored but also the linkage to the objects which are currently 
+  displayed. If you load a saved display, the objects assigned to the displays 
+  are therefore also visualized in the displays as long as there still is a valid 
+  linkage to the corresponding object. If the connection to the control on which 
+  the object was loaded no longer exists or if the object has been removed from 
+  the project, the message <i>The object &lt;object name&gt; has been removed 
+  ! </i>appears on the displays assigned to the corresponding objects. </p>
+<p>To save an altered layout, proceed as follows:</p>
+<ol>
+  <li>After editing a layout, click on the <b>Disk</b> button in the toolbar of 
+    ATCM Engineering <br>
+    <br>
+    - OR -<br>
+    <br>
+    click with the right mouse button on the colored title bar of any desired 
+    display to call the <b>Context</b> menu and in this menu, select the option 
+    <b>Copy Layout</b>.<br>
+    <br>
+  </li>
+  <li>Enter the name of the new layout in the lower input field of the dialog. 
+    With the entry of the first character, the <b>Save as</b> button is enabled. 
+    <br>
+    <br>
+    <img src="pic/savefaceplate.gif" width="600" height="280"> <br>
+    <br>
+  </li>
+  <li>Click on the <b>Save as</b> button to insert the layout in the <b>Available 
+    Layouts</b> list. From now on, the layout is available for selection with 
+    the new name in the list box of the ATCM Console toolbar. <br>
+    <br>
+  </li>
+  <li>Click on <b>Exit</b> to close the <b>Save Layout</b> dialog. The saved layout 
+    automatically becomes the currently enabled layout. </li>
+</ol>
+<p>You can save several layouts by calling the <b>Save and Delete Layout</b> dialog 
+  again after changing a layout and then entering a new name for the altered layout. 
+  As before, the layout is inserted in the <b>Available Layouts</b> list.<br>
+  After saving, the last saved layout automatically becomes the currently enabled 
+  layout which is displayed in the <b>Layout</b> list box in the ATCM Console toolbar. 
+</p>
+<p>Saved layouts are managed inside ATCM Console and not stored as files. Therefore, 
+  it is not possible to copy layouts on floppy disk to use them on a different 
+  computer. </p>
+<h2><a name="LoadLayout"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Loading a Stored Layout</h2>
+<p>If you have already saved one or more layouts, the currently loaded layout 
+  is displayed in the <b>Layout</b> list box in the ATCM Console toolbar.</p>
+<p>To load a different layout,</p>
+<ol>
+  <li>click in the <b>Layout</b> list box on the button with the downward arrow 
+    to scroll down the list of the list box. All stored layouts will be displayed 
+    in the list.</li>
+  <li>Click on the desired layout with the left mouse button in order to load 
+    it. After a short time required by ATCMControl for restoring the Visualization 
+    view, the displays are shown in the selected layout. </li>
+</ol>
+<img src="pic/SelectLayout.gif" width="504" height="277" class="inP"> 
+<h2><a name="DeleteLayout"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Deleting a Layout</h2>
+<ol>
+  <li>Click on the <b>Disk</b> button to call the <b>Save Layout </b> dialog.<br>
+    <br>
+  </li>
+  <li>All saved layouts are indicated in the <b>Available Layouts</b> list. Select 
+    the desired layout in the list. When you have selected a layout, the <b>Delete</b> 
+    button is enabled and the name of the layout is displayed in the lower box 
+    of the dialog. If you keep the <b>CTRL</b> or the <b>Shift</b> key pressed 
+    while selecting the layout, you can choose several layouts at one time.<br>
+    <br>
+    <img src="pic/deleteLayout.gif" width="600" height="280"><br>
+    <br>
+  </li>
+  <li>Click on <b>Delete</b> to delete the selected layout. <br>
+    <br>
+  </li>
+  <li>Now click <b>Exit</b> to close the dialog.</li>
+</ol>
+<div style="margin-left: 5; position: relative; top: 0"> 
+  <h2></h2>
+</div>
+</body>
+</html>

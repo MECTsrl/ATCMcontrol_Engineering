@@ -1,0 +1,27 @@
+HKCR
+{
+	4C_20_CSC.CommissioningMgt.1 = s '4C_20: ATCM Control Online Server'
+	{
+		CLSID = s '{3E99950A-9502-4a7c-B0AE-6B3C4C011DF4}'
+	}
+	4C_20_CSC.CommissioningMgt = s '4C_20: ATCM Control Online Server'
+	{
+		CurVer = s '4C_20_CSC.CommissioningMgt.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {3E99950A-9502-4a7c-B0AE-6B3C4C011DF4} = s '4C_20: ATCM Control Online Server'
+		{
+			ProgID = s '4C_20_CSC.CommissioningMgt.1'
+			VersionIndependentProgID = s '4C_20_CSC.CommissioningMgt'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '{4849089A-8BE5-4c5b-B37C-C003DBA0BAC7}'
+
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

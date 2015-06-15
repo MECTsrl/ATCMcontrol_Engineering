@@ -1,0 +1,600 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Event constants</title>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="stylesheet" href="Lib.css">
+</head>
+<body bgcolor="#ffffcc">
+<h2>Error numbers</h2>
+<h3>General function return (error) codes</h3>
+<table border="1">
+  <tbody>
+    <tr>
+      <td align="center"><b>Constant</b></td>
+      <td align="center"><b>Value</b></td>
+      <td align="center"><b>Description</b></td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>OK</b></i></td>
+      <td align="center">0</td>
+      <td align="left">OK, no error</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_ERROR</b></i></td>
+      <td align="center">1</td>
+      <td align="left">General error</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Warnings</h3>
+<table border="1">
+  <tbody>
+    <tr>
+      <td align="center"><b>Constant</b></td>
+      <td align="center"><b>Value</b></td>
+      <td align="center"><b>Description</b></td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_TIME_OUT</b></i></td>
+      <td align="center">100</td>
+      <td align="left">Time out occured (communication).</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_NO_CONNECTION</b></i></td>
+      <td align="center">101</td>
+      <td align="left">No connection to OPC++ server.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_HANDLED</b></i></td>
+      <td align="center">102</td>
+      <td align="left">Command/response already handled.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_BREAK</b></i></td>
+      <td align="center">103</td>
+      <td align="left">Breakpoint reached.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_CRC</b></i></td>
+      <td align="center">104</td>
+      <td align="left">Checksum calculation failed.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_DIVIDED</b></i></td>
+      <td align="center">105</td>
+      <td align="left">Data block is divided.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Common error messages</h3>
+<table border="1">
+  <tbody>
+    <tr>
+      <td align="center"><b>Constant</b></td>
+      <td align="center"><b>Value</b></td>
+      <td align="center"><b>Description</b></td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_INIT</b></i></td>
+      <td align="center">200</td>
+      <td align="left">Initialization failed.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_INVALID_TASK</b></i></td>
+      <td align="center">201</td>
+      <td align="left">Invalid task number.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_INVALID_COMMAND</b></i></td>
+      <td align="center">202</td>
+      <td align="left">Invalid command.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_DATA</b></i></td>
+      <td align="center">203</td>
+      <td align="left">Invalid data.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_OFFSET</b></i></td>
+      <td align="center">204</td>
+      <td align="left">Invalid object offset received.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_INSTANCE</b></i></td>
+      <td align="center">205</td>
+      <td align="left">Invalid instance.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_CLASS</b></i></td>
+      <td align="center">206</td>
+      <td align="left">Invalid class number.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_DATA_SIZE</b></i></td>
+      <td align="center">207</td>
+      <td align="left">Invalid data size.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_QUEUE_FULL</b></i></td>
+      <td align="center">208</td>
+      <td align="left">Queue full.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_OUT_OF_MEMORY</b></i></td>
+      <td align="center">209</td>
+      <td align="left">Out of memory.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_DEBUG_MODE</b></i></td>
+      <td align="center">20A</td>
+      <td align="left">Can't execute, not in debug mode.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_LOGIN</b></i></td>
+      <td align="center">20B</td>
+      <td align="left">Can't execute, not logged in.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_NO_PROJECT</b></i></td>
+      <td align="center">20C</td>
+      <td align="left">No project loaded.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_CRITICAL_SECTION</b></i></td>
+      <td align="center">20D</td>
+      <td align="left">Failed to enter a critical section.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_ACTIVATE_TIMER</b></i></td>
+      <td align="center">20E</td>
+      <td align="left">Failed to activate VM timer.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_WRONG_PROJECT</b></i></td>
+      <td align="center">20F</td>
+      <td align="left">Wrong project or project version.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_TO_MANY_VARS</b></i></td>
+      <td align="center">210</td>
+      <td align="left">To many variables for Get/SetValue.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_INVALID_PARAM</b></i></td>
+      <td align="center">211</td>
+      <td align="left">Invalid parameter.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_CREATE_QUEUE</b></i></td>
+      <td align="center">212</td>
+      <td align="left">Failed to create a IPC message queue.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_CREATE_TIMER</b></i></td>
+      <td align="center">213</td>
+      <td align="left">Failed to create a VM timer object.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_IPC_RECV_FAILED</b></i></td>
+      <td align="center">214</td>
+      <td align="left">Failed to receive a IPC message.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_IPC_SEND_FAILED</b></i></td>
+      <td align="center">215</td>
+      <td align="left">Failed to send a IPC message.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_IPC_VMM_TIMEOUT</b></i></td>
+      <td align="center">216</td>
+      <td align="left">Timeout waiting for answer from VMM.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_ALREADY_IN_DEBUG</b></i></td>
+      <td align="center">217</td>
+      <td align="left">Only one debug mode possible.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_INVALID_SEGMENT</b></i></td>
+      <td align="center">218</td>
+      <td align="left">Invalid object segment.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_IO_READ</b></i></td>
+      <td align="center">219</td>
+      <td align="left">Error reading from comm. device.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_IO_WRITE</b></i></td>
+      <td align="center">21A</td>
+      <td align="left">Error writing to comm. device.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Download</h3>
+<table border="1">
+  <tbody>
+    <tr>
+      <td align="center"><b>Constant</b></td>
+      <td align="center"><b>Value</b></td>
+      <td align="center"><b>Description</b></td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_INVALID_DOMAIN</b></i></td>
+      <td align="center">300</td>
+      <td align="left">Invalid download domain.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_INVALID_VERSION</b></i></td>
+      <td align="center">301</td>
+      <td align="left">Control newer than Engineering.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_OVERRUN_TASK</b></i></td>
+      <td align="center">302</td>
+      <td align="left">Number of tasks to large.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_OVERRUN_INSTANCE</b></i></td>
+      <td align="center">303</td>
+      <td align="left">Number of objects to large</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_OVERRUN_CLASS</b></i></td>
+      <td align="center">304</td>
+      <td align="left">Number of code blocks to large.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_OVERRUN_PROGRAM</b></i></td>
+      <td align="center">305</td>
+      <td align="left">Number of programs per task to large.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_OVERRUN_CODESEG</b></i></td>
+      <td align="center">306</td>
+      <td align="left">Code segment overrun.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_OVERRUN_OBJSEG</b></i></td>
+      <td align="center">307</td>
+      <td align="left">Object segment overrun.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_OVERRUN_REGION</b></i></td>
+      <td align="center">308</td>
+      <td align="left">Number of memory regions to large.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_ENTRIES_MISSING</b></i></td>
+      <td align="center">309</td>
+      <td align="left">Not all list entries correctly received.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_INVALID_SEG_INIT</b></i></td>
+      <td align="center">30A</td>
+      <td align="left">Common segment initialization not first.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_CREATE_TASK</b></i></td>
+      <td align="center">310</td>
+      <td align="left">Error creating a (VM) task or thread.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_OVERRUN_COPYSEG</b></i></td>
+      <td align="center">311</td>
+      <td align="left">Number of copy regions to large.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_BUFFER_TOO_SMALL</b></i></td>
+      <td align="center">312</td>
+      <td align="left">Buffer for divided data too small.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Breakpoints</h3>
+<table border="1">
+  <tbody>
+    <tr>
+      <td align="center"><b>Constant</b></td>
+      <td align="center"><b>Value</b></td>
+      <td align="center"><b>Description</b></td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_INVALID_CODE_POS</b></i></td>
+      <td align="center">400</td>
+      <td align="left">Invalid code offset in BP specification.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_BP_NOT_FOUND</b></i></td>
+      <td align="center">401</td>
+      <td align="left">Given breakpoint not found in BP list.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_BP_LIST_FULL</b></i></td>
+      <td align="center">402</td>
+      <td align="left">Breakpoint list is full.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_TASK_NOT_IN_BREAK</b></i></td>
+      <td align="center">403</td>
+      <td align="left">Task has no reached breakpoint.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>File IO</h3>
+<table border="1">
+  <tbody>
+    <tr>
+      <td align="center"><b>Constant</b></td>
+      <td align="center"><b>Value</b></td>
+      <td align="center"><b>Description</b></td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_FILE_INIT</b></i></td>
+      <td align="center">500</td>
+      <td align="left">File functionality not initialized.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_FILE_MAX</b></i></td>
+      <td align="center">501</td>
+      <td align="left">Maximum number of open files reached.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_FILE_WRONG_ID</b></i></td>
+      <td align="center">502</td>
+      <td align="left">File id is not valid.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_FILE_EOF</b></i></td>
+      <td align="center">503</td>
+      <td align="left">The end of the file has been reached.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_FILE_OPEN</b></i></td>
+      <td align="center">504</td>
+      <td align="left">Error opening a file.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_FILE_CLOSE</b></i></td>
+      <td align="center">505</td>
+      <td align="left">Error closing a file.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_FILE_READ</b></i></td>
+      <td align="center">506</td>
+      <td align="left">Error reading from file.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_FILE_WRITE</b></i></td>
+      <td align="center">507</td>
+      <td align="left">Error writing to file.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_FILE_SYNC</b></i></td>
+      <td align="center">508</td>
+      <td align="left">Temporary file closed by another process.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_FILE_NOT_EXIST</b></i></td>
+      <td align="center">509</td>
+      <td align="left">File doesn't exist.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_FILE_SEEK</b></i></td>
+      <td align="center">50A</td>
+      <td align="left">Common segment initialization not first.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_FILE_RENAME</b></i></td>
+      <td align="center">50B</td>
+      <td align="left">Error seeking a file.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_FILE_REMOVE</b></i></td>
+      <td align="center">50C</td>
+      <td align="left">Error deleting a file.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_INVALID_DRIVE</b></i></td>
+      <td align="center">50D</td>
+      <td align="left">Invalid drive specification.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_CHANGE_DRIVE</b></i></td>
+      <td align="center">50E</td>
+      <td align="left">Error changing a drive.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_CHANGE_DIR</b></i></td>
+      <td align="center">50F</td>
+      <td align="left">Error changing a directory.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_INVALID_PATH</b></i></td>
+      <td align="center">510</td>
+      <td align="left">Invalid path specified.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_INVALID_FILE_NAME</b></i></td>
+      <td align="center">511</td>
+      <td align="left">Invalid file name specified.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_PATH_IS_NOT_8_3</b></i></td>
+      <td align="center">512</td>
+      <td align="left">Path is not in 8.3 format.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_PATH_TOO_LONG</b></i></td>
+      <td align="center">513</td>
+      <td align="left">Path is to long.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Debug Interface</h3>
+<table border="1">
+  <tbody>
+    <tr>
+      <td align="center"><b>Constant</b></td>
+      <td align="center"><b>Value</b></td>
+      <td align="center"><b>Description</b></td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_DBI_INIT</b></i></td>
+      <td align="center">600</td>
+      <td align="left">DBI functionality not initialized.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_DBI_PARAM</b></i></td>
+      <td align="center">601</td>
+      <td align="left">One parameter was not valid.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_DBI_OBJ_NOT_FOUND</b></i></td>
+      <td align="center">602</td>
+      <td align="left">Object not found.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_DBI_FILE_FORMAT</b></i></td>
+      <td align="center">603</td>
+      <td align="left">A file has been wrong formatted.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_DBI_RETAIN_MIXED</b></i></td>
+      <td align="center">604</td>
+      <td align="left">Complex variable is located in retain and non retain segment.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_DBI_BUF_TOO_SMALL</b></i></td>
+      <td align="center">605</td>
+      <td align="left">Transmission buffer has been to small.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Flash Interface</h3>
+<table border="1">
+  <tbody>
+    <tr>
+      <td align="center"><b>Constant</b></td>
+      <td align="center"><b>Value</b></td>
+      <td align="center"><b>Description</b></td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_FLASH</b></i></td>
+      <td align="center">700</td>
+      <td align="left">Common flash error.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_FLASH_INIT</b></i></td>
+      <td align="center">701</td>
+      <td align="left">Error initializating flash memory.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_FLASH_WRITE</b></i></td>
+      <td align="center">702</td>
+      <td align="left">Error writing into flash memory.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_FLASH_READ</b></i></td>
+      <td align="center">703</td>
+      <td align="left">Error reading from flash memory.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_FLASH_CLEAR</b></i></td>
+      <td align="center">704</td>
+      <td align="left">Error clearing the flash memory.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_FLASH_WRONG_BLOCK</b></i></td>
+      <td align="center">705</td>
+      <td align="left">Flash block does not match.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Online Change</h3>
+<table border="1">
+  <tbody>
+    <tr>
+      <td align="center"><b>Constant</b></td>
+      <td align="center"><b>Value</b></td>
+      <td align="center"><b>Description</b></td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_OC_TASK_CHANGED</b></i></td>
+      <td align="center">800</td>
+      <td align="left">Count of tasks or attributes changed.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_OC_PROJ_CHANGED</b></i></td>
+      <td align="center">801</td>
+      <td align="left">Project changed, OC not possible.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_OC_INVALID_CODE</b></i></td>
+      <td align="center">802</td>
+      <td align="left">Invalid code object index received.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_OC_INVALID_INST</b></i></td>
+      <td align="center">803</td>
+      <td align="left">Invalid instance object index received.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_OC_COPY_LIST</b></i></td>
+      <td align="center">804</td>
+      <td align="left">Invalid instance obj. copy list received.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_OC_COPY_NEW</b></i></td>
+      <td align="center">805</td>
+      <td align="left">Invalid new instance object specified.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_OC_COPY_OLD</b></i></td>
+      <td align="center">806</td>
+      <td align="left">Invalid old instance object specified.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_OC_TO_MANY_CODE</b></i></td>
+      <td align="center">807</td>
+      <td align="left">To many changed code objects received.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_OC_TO_MANY_INST</b></i></td>
+      <td align="center">808</td>
+      <td align="left">To many changed instance objects received.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_OC_TO_MANY_CL</b></i></td>
+      <td align="center">809</td>
+      <td align="left">To many entries in copy list.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_OC_TEMP_CODE</b></i></td>
+      <td align="center">80A</td>
+      <td align="left">To many temporary code objects.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>ERR_OC_TEMP_INST</b></i></td>
+      <td align="center">80B</td>
+      <td align="left">To many temporary instance objects.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Description</h3>
+<p>Error numbers define return values of functions placed in the ATCM library <i><b>ATCM System2</b></i>.
+</p>
+<p>&nbsp; </p>
+</body>
+</html>

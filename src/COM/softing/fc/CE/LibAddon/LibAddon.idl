@@ -1,0 +1,32 @@
+// LibAddon.idl : IDL source for LibAddon.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (LibAddon.tlb) and marshalling code.
+
+
+
+
+
+[
+	uuid(4B8A9461-686D-43DF-896F-DE6037F9806F),
+	version(1.0),
+	helpstring("LibAddon 1.0 Type Library")
+]
+library LIBADDONLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+    importlib("..\inc\CEAddonAction.tlb");
+    importlib("..\inc\CEBackparse.tlb");
+
+	[
+		uuid(AA6A1A66-3AE2-49F2-9F9D-768B893A522A),
+		helpstring("LibAddOnHandler Class")
+	]
+	coclass LibAddOnHandler
+	{
+                [default] interface ICEAddonAction;
+                interface ICEBackparse;
+	};
+};

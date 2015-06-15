@@ -1,0 +1,60 @@
+#H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CMN/trace/tracea/tracea.inf 1     28.02.07 19:00 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: tracea.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CMN/trace/tracea/tracea.inf $
+#
+# =PROJECT             CAK1020 ATCMControlV2.0
+#
+# =SWKE                CMN
+#
+# =COMPONENT           Trace
+#
+# =CURRENT      $Date: 28.02.07 19:00 $
+#               $Revision: 1 $
+#
+# =REFERENCES
+#
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+#    @DESCRIPTION@
+#==
+#----------------------------------------------------------------------------*
+# =MODIFICATION
+#  15.03.2001  SU      File created
+#  see history at end of file !
+#==
+#******************************************************************************
+#H<<*/
+
+TARGET=$(LIB_DIR)\tracea.lib
+TARGETTYPE=LIB
+INCLUDE=$(INCLUDE_DIR)
+UNICODE=0
+PCHFILE=stdafx
+
+#----------------------------------------------------------------------------*
+# =MODIFICATIONS
+# $History: tracea.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:00
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CMN/trace/tracea
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:33
+# Created in $/4Control/COM/softing/fc/CMN/trace/tracea
+# 
+# *****************  Version 1  *****************
+# User: Su           Date: 15.03.01   Time: 15:04
+# Created in $/4Control/COM/softing/fc/CMN/trace/tracea
+#==
+#----------------------------------------------------------------------------*

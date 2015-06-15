@@ -1,0 +1,11 @@
+(*[[
+    UserURL= "ATCMFile:UINT_TO_DINT.htm"
+]]*)
+FUNCTION UINT_TO_DINT : DINT
+VAR_INPUT
+    IN : UINT;
+END_VAR
+
+inline{ VMOP }
+
+END_FUNCTION

@@ -1,0 +1,43 @@
+HKCR
+{
+	4C_20_CSC.Online.1 = s '4C_20: Online access to Control'
+	{
+		CLSID = s '{1AC09BA6-8C6C-4dd4-8B3A-3ED3F90545FD}'
+		'Index' 
+        { 
+            val Version = s '2.0' 
+            val LCID = d '1033' 
+        } 
+	}
+	4C_20_CSC.Online = s '4C_20: Online access to Control'
+	{
+		CurVer = s '4Control_CSC.Online.1'
+		CLSID = s '{1AC09BA6-8C6C-4dd4-8B3A-3ED3F90545FD}'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {1AC09BA6-8C6C-4dd4-8B3A-3ED3F90545FD} = s '4C_20: Online access to Control'
+		{
+			ProgID = s '4C_20_CSC.Online.1'
+			VersionIndependentProgID = s '4C_20_CSC.Online'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 1'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '132497'
+			}
+			'TypeLib' = s '{3025E740-9D36-4574-9E69-5FA3244DC6F2}'
+			'Version' = s '2.0'
+
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

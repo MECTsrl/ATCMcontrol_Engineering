@@ -1,0 +1,30 @@
+TARGET=$(EXE_DIR)\Engineering\bin\cewatchview.ocx
+TARGETTYPE=DLL
+UNICODE=0
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\inc
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\CE
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\CE\inc
+PCHFILE=stdafx
+DEFINE=_ATL_STATIC_REGISTRY
+STATIC_RUNTIME=0
+DEFINE=_AFXDLL
+
+LIBPATH=$(LIB_DIR)
+LIBPATH=$(PROJECT_ROOT)\COM\softing\fc\CE\lib
+LIBPATH=$(PROJECT_ROOT)\COM\softing\fc\CE\lib\stingray
+DEFLIB=ole32.lib
+DEFLIB=oleaut32.lib
+DEFLIB=uuid.lib
+DEFLIB=fc_util.lib
+DEFLIB=fc_todebug.lib
+DEFLIB=fc_baselib.lib
+DEFLIB=htmlhelp.lib
+
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\CE\Lib\CEUTIL_XML.lib
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\CE\Lib\CEUTIL.lib
+
+USER=SRC_DIR = $(PROJECT_ROOT)\Com\softing\fc\ce\cewatchview
+USER=DES_DIR = $(EXE_DIR)\Engineering\bin
+COPY=$(SRC_DIR)\WatchFormats.4cw $(DES_DIR)\WatchFormats.4cw

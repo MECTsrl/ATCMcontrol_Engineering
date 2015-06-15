@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>SYS_RetainWrite</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>SYS_RetainWrite</h2>
+<p>Writes the IEC retain segment to the file system.</p>
+<h3>Interface</h3>
+<pre class="preforma">FUNCTION SYS_RetainWrite : WORD</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>WORD</b></i><br>
+<br>OK if successful, else error number. (See
+  <a href="Const_Errno.htm"><strong><em>ErrNo.cst</em></strong></a> for details.)</p>
+<h3>Parameter</h3>
+<p>None</p>
+<h3>Description</h3>
+<p><b>SYS_RetainWrite</b> writes the IEC retain segment to the file system. This function is not supported on all targets and it works only if no real physical retentive memory is available.</p>
+</body>
+</html>

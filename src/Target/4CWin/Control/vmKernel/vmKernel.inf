@@ -1,0 +1,36 @@
+# $Header: /4CReleased/V2.20.00/Target/4CWin/Control/vmKernel/vmKernel.inf 3     24.02.08 18:12 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: vmKernel.inf $
+#                        $Logfile: /4CReleased/V2.20.00/Target/4CWin/Control/vmKernel/vmKernel.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Targetbase / Control
+#
+# =COMPONENT            Kernel
+#
+# =CURRENT      $Date: 24.02.08 18:12 $
+#           $Revision: 3 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+TARGET=..\lib\vmKernel.lib
+TARGETTYPE=lib
+UNICODE=0
+DEFINE=_USE_EXTERN_
+
+INCLUDE=..\inc
+INCLUDE=..\..\inc
+INCLUDE=..\..\res
+
+USER=makefirst:..\lib
+USER=..\lib:
+USER=  -md $@
+
+# -------------------------------------------------------------------------------
+
+
+

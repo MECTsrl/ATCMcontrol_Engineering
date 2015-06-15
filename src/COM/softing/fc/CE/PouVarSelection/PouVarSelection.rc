@@ -1,0 +1,321 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1 TYPELIB ""PouVarSelection.tlb""\r\n"
+    "#include ""version.rc2""\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_SELECTGVL DIALOG DISCARDABLE  0, 0, 186, 87
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Select global variable file"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,39,59,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,95,59,50,14
+    COMBOBOX        IDC_GVLSELECT_COMBO,16,16,152,93,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_SELECTGVL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 80
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_SELECTGVL DLGINIT
+BEGIN
+    IDC_GVLSELECT_COMBO, 0x403, 6, 0
+0x7266, 0x6e61, 0x006b, 
+    IDC_GVLSELECT_COMBO, 0x403, 7, 0
+0x7266, 0x7a79, 0x6c65, "\000" 
+    IDC_GVLSELECT_COMBO, 0x403, 6, 0
+0x6178, 0x6576, 0x0072, 
+    0
+END
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DLG_POUSEL DIALOG DISCARDABLE  0, 0, 187, 384
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Libraries:",IDC_POU_LIB_STATIC,7,7,33,9
+    CONTROL         "List1",IDC_POU_LIB_LIST,"SysListView32",LVS_SMALLICON | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_SORTASCENDING | 
+                    LVS_NOLABELWRAP | WS_BORDER | WS_TABSTOP,7,22,79,51
+    CONTROL         "List1",IDC_POU_TYPES_LIST,"SysListView32",LVS_SMALLICON | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_SORTASCENDING | 
+                    LVS_NOLABELWRAP | WS_BORDER | WS_TABSTOP,7,93,79,45
+    EDITTEXT        IDC_POU_POU_EDIT,103,20,77,12,ES_AUTOHSCROLL
+    CONTROL         "List1",IDC_POU_POU_LISTCTRL,"SysListView32",
+                    LVS_SMALLICON | LVS_SINGLESEL | LVS_SHOWSELALWAYS | 
+                    LVS_SORTASCENDING | LVS_NOLABELWRAP | WS_BORDER | 
+                    WS_TABSTOP,105,40,61,133
+    CONTROL         "List1",IDC_POU_LRU_LISTCTRL,"SysListView32",
+                    LVS_SMALLICON | LVS_SINGLESEL | LVS_SHOWSELALWAYS | 
+                    WS_BORDER | WS_TABSTOP,7,164,82,46
+    PUSHBUTTON      "Apply",IDC_POU_APPLY_BTN,119,195,48,14
+    EDITTEXT        IDC_POU_HEADER_EDIT,7,232,173,64,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | 
+                    WS_VSCROLL | WS_HSCROLL
+    LTEXT           "Types:",IDC_POU_TYPES_STATIC,7,80,28,10
+    LTEXT           "Last Recently Used:",IDC_POU_LRU_STATIC,7,151,62,8
+    LTEXT           "Programming Unit:",IDC_POU_POU_STATIC,100,7,56,8
+    LTEXT           "Header:",IDC_POU_HEADER_STATIC,7,219,51,9
+END
+
+IDD_DLG_VARSEL DIALOG DISCARDABLE  0, 0, 201, 304
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_VAR_VN_NAME_EDIT,40,152,146,12,ES_AUTOHSCROLL
+    COMBOBOX        IDC_VAR_VN_CLASS_CB,40,167,146,88,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_VAR_VN_ADDR_EDIT,40,182,146,12,ES_AUTOHSCROLL
+    COMBOBOX        IDC_VAR_VN_TYPE_CB,40,196,146,101,CBS_DROPDOWN | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_VAR_VN_INITVAL_EDIT,40,212,146,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_VAR_VN_COMMENT_EDIT,40,227,146,12,ES_AUTOHSCROLL
+    LISTBOX         IDC_SCOPE_FILTER_LIST,9,16,76,51,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+    LISTBOX         IDC_VAR_DATA_TYPES_LIST,10,84,76,61,LBS_NOINTEGRALHEIGHT | 
+                    LBS_EXTENDEDSEL | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_VAR_VAR_EDIT,96,16,90,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_IECTEXT_EDIT,5,255,180,26,ES_MULTILINE | 
+                    ES_AUTOHSCROLL | ES_READONLY | WS_HSCROLL
+    PUSHBUTTON      "Apply",IDC_VAR_APPLY_BTN,5,283,44,14
+    PUSHBUTTON      "Delete",IDC_VAR_DELETE_BTN,50,283,44,14
+    PUSHBUTTON      "Define",IDC_VAR_DEFINEORUPDATE_BTN,95,283,44,14
+    PUSHBUTTON      "External",IDC_VAR_EXTERNAL_BTN,140,283,44,14
+    CONTROL         "List1",IDC_VAR_VAR_LISTCTRL,"SysListView32",
+                    LVS_SMALLICON | LVS_SINGLESEL | LVS_SHOWSELALWAYS | 
+                    LVS_SORTASCENDING | LVS_NOLABELWRAP | WS_BORDER | 
+                    WS_TABSTOP,95,32,90,113
+    LTEXT           "Types",IDC_VAR_TYPES_STATIC,10,74,20,8
+    LTEXT           "Identifier:",IDC_VAR_VN_NAME_STATIC,5,154,28,9
+    LTEXT           "Type",IDC_VAR_VN_TYPE_STATIC,5,199,19,9
+    LTEXT           "Initial:",IDC_VAR_VN_INITVAL_STATIC,5,214,23,9
+    LTEXT           "Class:",IDC_VAR_VN_CLASS_STATIC,5,169,19,9
+    LTEXT           "Comment:",IDC_VAR_VN_COMMENT_STATIC,5,229,31,9
+    LTEXT           "Address:",IDC_VAR_VN_ADDR_STATIC,5,184,25,9
+    LTEXT           "Source file",IDC_SOURCEFILE_STATIC,5,244,165,10,
+                    SS_NOTIFY
+    GROUPBOX        "Filter",IDC_VAR_FILTER_STATIC,5,6,84,143
+    GROUPBOX        "Variables",IDC_VAR_VAR_STATIC,91,6,97,143
+END
+
+IDD_VAR_SELECT DIALOG DISCARDABLE  0, 0, 96, 109
+STYLE WS_POPUP | WS_BORDER
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_VARSEL_COMBO,0,0,95,108,CBS_SIMPLE | CBS_AUTOHSCROLL | 
+                    CBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_DLG_POUSEL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 377
+    END
+
+    IDD_DLG_VARSEL, DIALOG
+    BEGIN
+        RIGHTMARGIN, 194
+        VERTGUIDE, 114
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 297
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_POUVARSELCTRL       REGISTRY DISCARDABLE    "PouVarSelCtrl.rgs"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_POUSEL_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "Popup"
+    BEGIN
+        MENUITEM "Show &User Help",             IDM_SHOW_USER_HELP
+        MENUITEM "Show &Header",                IDM_SHOW_HEADER
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PROJNAME            "PouVarSelection"
+    IDS_TITLE_POUSEL        "POU Selection"
+    IDS_TITLE_VARSEL        "Variable Selection"
+    IDS_CREATE_ERROR        "Could not create POU-Var-Selection!"
+    IDS_ERROR_VAR_EXISTS    "Variable already exists."
+    IDS_ERROR_SYNTAX        "Syntax error."
+    IDS_ERROR_RANGE         "Invalid range."
+    IDS_ERROR_FORMAT        "Invalid format."
+    IDS_ERROR_ARGUMENT      "Invalid argument."
+    IDS_ERROR_FUNCTION      "Function not implemented."
+    IDS_ERROR_BUFFER        "Buffer too small."
+    IDS_ERROR_INTERNAL      "Internal error."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ERROR_PRECISITION   "Loss of precisition"
+    IDS_ERROR_RADIX         "Invalid radix."
+    IDS_ERROR_INITVAL       "Invalid initial value: "
+    IDS_ERROR_EMPTY_DATATYPE "No data type specified."
+    IDS_ERROR_EMPTY_VARNAME "No variable name specified."
+    IDS_ERROR_INCOMPLETE_VAR_INFOS 
+                            "Incomplete variable information, storage class and data type have to be filled."
+    IDS_LOCAL_HEADER        "Local POU, no header information available."
+    IDS_HEADER_HEADER       "Header: "
+    IDS_HEADER_TARGETS      "Targets: "
+    IDS_PVS_SEL_ALL         "<All>"
+    IDS_PVS_SEL_PROJECT     "<Project>"
+    IDS_PVS_SEL_HEADER      "<Header>"
+    IDS_PVS_SEL_GLOBAL      "<Global>"
+    IDS_PVS_SEL_CONSTS      "<Constants>"
+    IDS_PVS_SEL_COMPLEX     "<Complex>"
+    IDS_PVS_SEL_SIMPLE      "<Simple>"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "ATCMControl Engineering"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PVS_SEL_NONE        "None"
+    IDS_ERROR_IECVAL        "No valid IEC identifier: "
+    IDS_ERROR_IDENTIFIER_SYNTAX_ERROR "syntax error."
+    IDS_ERROR_IDENTIFIER_IS_KEYWORD "It is a IEC keyword."
+    IDS_ERROR_IDENTIFIER_TOO_LONG "Identifier too long."
+    IDS_ERROR_IDENTIFIER    "Error testing IEC identifier."
+    IDS_ERROR_NOGVL         "cannot insert global variable, because there is no gvl in the project"
+    IDS_SELECTGVL           "select a gvl for the new variable"
+    IDS_BAD_DECL_SCOPE      "cannot change declaration scope from %1 to %2"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "PouVarSelection.tlb"
+#include "version.rc2"
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

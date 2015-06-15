@@ -1,0 +1,27 @@
+
+; FUN       SYSTEM      160 -   175 -   179
+; FB        SYSTEM          -       -   
+; -----------------------------------------------------------------------
+
+; FUNCTIONs
+; -----------------------------------------------------------------------
+
+f_sync_openFile               160       0        99999
+f_sync_readFile               161       0        99999
+f_sync_renameFile             162       0        99999
+f_sync_writeFile              163       0        99999
+f_sync_closeFile              164       0        99999
+f_sync_createDirectory        165       0        99999
+f_sync_deleteFile             166       0        99999
+f_sync_existsFile             167       0        99999
+f_sync_getSize                168       0        99999
+f_get_diskFreeSpace           169       0        99999
+f_error_string                170       0        99999
+f_sync_arrayReadFile          171       0        99999
+f_sync_arrayWriteFile         172       0        99999
+f_flush                       173       0        99999
+f_sync_readLine               174       0        99999
+f_sync_writeLine              175       0        99999
+f_sync_writeCsvFile           176       0        99999
+f_sync_readCsvFile            177       0        99999
+f_sync_copyFile               178       0        99999

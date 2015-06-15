@@ -1,0 +1,32 @@
+# $Header: /4CReleased/V2.20.00/Target/TEMPLATES/KAD/KAD.inf 1     28.02.07 18:54 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: KAD.inf $
+#                        $Logfile: /4CReleased/V2.20.00/Target/TEMPLATES/KAD/KAD.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Target
+#
+# =COMPONENT            KAD
+#
+# =CURRENT      $Date: 28.02.07 18:54 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+USER=makefirst:$(EXE_DIR)\Engineering\bin\images
+USER=$(EXE_DIR)\Engineering\bin\images:
+USER=  -md $@ 
+USER=makefirst:$(EXE_DIR)\Engineering\bin\images\[*PR]
+USER=$(EXE_DIR)\Engineering\bin\images\[*PR]:
+USER=  -md $@
+
+USER=makelast: force
+USER= xcopy $(MAKEDIR)\*.kad	       $(EXE_DIR)\Engineering\bin\[*PR]\*.* /y
+USER= xcopy $(MAKEDIR)\images\*.* $(EXE_DIR)\Engineering\bin\images\[*PR]\*.* /y
+#USER= del $(EXE_DIR)\Engineering\bin\images\[*PR]\vssver.scc
+
+# -------------------------------------------------------------------------------

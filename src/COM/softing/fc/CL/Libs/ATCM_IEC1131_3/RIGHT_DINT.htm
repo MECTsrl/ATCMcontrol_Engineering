@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>RIGHT_DINT</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>RIGHT_DINT</h2>
+<p>Returns a set number of characters from a string, starting from the end of 
+  the string.<br>
+</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION RIGHT_DINT : ANY_STRING
+VAR_INPUT  
+    IN : ANY_STRING; 
+    L  : DINT;
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>ANY_STRING</b></i><br>
+  Characters from the string of <b><i>IN</i></b></p>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>IN</b></dt>
+  <dd>Value of type <i><b>ANY_STRING<br>
+    </b></i> String from which the number of characters specified in <i><b>L</b></i> 
+    is returned.</dd>
+  <dt><b>L</b></dt>
+  <dd>Value of type <i><b>DINT</b></i></dd>
+  <dt><i><b> </b></i></dt>
+  <dt><i><b> </b></i></dt>
+  <dd>Number of characters to be returned. <br>
+  </dd>
+</dl>
+<h3>Description</h3>
+<p>Returns the number of characters specified in <i><b>L</b></i>, starting from 
+  the end of the string (rightmost character) defined in <i><b>IN</b></i>. If 
+  <i> <b>L</b></i> contains a value that exceeds the number of characters contained 
+  in the string, a runtime error is generated and the calling task is stopped.</p>
+</body>
+</html>

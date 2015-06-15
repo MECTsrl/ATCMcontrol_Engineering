@@ -1,0 +1,39 @@
+
+TARGET=$(EXE_DIR)\Control\bin\4CSCS.EXE
+TARGETTYPE=GUI
+#for old fashioned device.odl
+ODL_TO_H=1
+STATIC_RUNTIME=0
+UNICODE=0
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+INCLUDE=$(INCLUDE_DIR)\opc
+INCLUDE=$(INCLUDE_DIR)\lic
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\CSC\OPCENGINE\include
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\CSC\OPCENGINE\engine
+LIBPATH=$(LIB_DIR)
+DEFLIB=ole32.lib
+DEFLIB=oleaut32.lib
+DEFLIB=uuid.lib
+DEFLIB=version.lib
+DEFLIB=opcEngine.lib
+DEFLIB=fc_tools.lib
+DEFLIB=fc_baselib.lib
+DEFLIB=fc_todebug.lib
+DEFLIB=fc_slbase20.lib
+DEFLIB=tracea.lib
+PCHFILE=stdafx
+DEFINE=_AFXDLL
+DEFINE=_ATL_STATIC_REGISTRY
+
+
+USER=precompile:
+USER=  $(CP) CSC_OnlSrv.h ..\inc\CSC_OnlSrv.h
+USER=  $(CP) CSC_OnlSrv_i.c ..\inc\CSC_OnlSrv_i.c
+
+
+COPY=who.list $(EXE_DIR)\Control\bin\who.list
+COPY=who.list $(EXE_DIR)\Engineering\bin\who.list
+
+#copy the CSC_OnlineServer.tlb to controls exe directory
+LATECOPY=$(INCLUDE_DIR)\CSC_OnlineServer.tlb $(EXE_DIR)\Control\bin\CSC_OnlineServer.tlb

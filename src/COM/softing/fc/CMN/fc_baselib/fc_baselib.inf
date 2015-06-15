@@ -1,0 +1,95 @@
+#H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CMN/fc_baselib/fc_baselib.inf 1     28.02.07 19:00 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: fc_baselib.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CMN/fc_baselib/fc_baselib.inf $
+#
+# =PROJECT             CAK1020  ATCMControl V2.0
+#
+# =SWKE                CMN
+#
+# =COMPONENT           fc_baselib
+#
+# =CURRENT             $Date: 28.02.07 19:00 $
+#                      $Revision: 1 $
+#
+# =ENVIRONMENT         MS Windows NT 4.0 / MS Windows 2000
+#                      MSVC++ V6.0
+#                      MS Java 3.2
+#                      MS Visual SourceSafe 6.0
+#                      Perl5
+#
+# =REFERENCES
+#==
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+#==Module definition file for baselib
+#----------------------------------------------------------------------------*
+# =MODIFICATIONS
+# $History: fc_baselib.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:00
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CMN/fc_baselib
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:33
+# Created in $/4Control/COM/softing/fc/CMN/fc_baselib
+# 
+# *****************  Version 6  *****************
+# User: Ef           Date: 26.04.01   Time: 14:35
+# Updated in $/4Control/COM/softing/fc/CMN/fc_baselib
+# removed .idl form dsp, midl call from inc.inf
+# 
+# *****************  Version 5  *****************
+# User: Wi           Date: 10.04.01   Time: 14:49
+# Updated in $/4Control/COM/softing/fc/CMN/fc_baselib
+# better distribution
+# 
+# *****************  Version 4  *****************
+# User: Ed           Date: 3/22/01    Time: 11:49a
+# Updated in $/4Control/COM/softing/fc/CMN/fc_baselib
+# 
+# *****************  Version 3  *****************
+# User: Jd           Date: 8.02.01    Time: 9:54
+# Updated in $/4Control/COM/softing/fc/CMN/fc_baselib
+# Changed to directory structure of ATCMControl V2.0.
+# 
+# *****************  Version 2  *****************
+# User: Ef           Date: 25.01.01   Time: 10:16
+# Updated in $/4Control/COM/softing/fc/CMN/fc_baselib
+# copy midl gen files to inc, assigned new uuids for V2.0
+#==
+#*****************************************************************************
+#H<<
+
+
+TARGET=$(EXE_DIR)\Pub\fc_baselib.dll
+IMPLIB=$(LIB_DIR)\fc_baselib.lib
+TARGETTYPE=DLL
+UNICODE=0
+INCLUDE=$(INCLUDE_DIR) 
+INCLUDE=$(RESOURCE_DIR) 
+LIBRARY=$(LIB_DIR)\fc_tools.lib
+DEFLIB=ole32.lib
+DEFLIB=oleaut32.lib
+DEFLIB=uuid.lib
+DEFINE=_ATL_STATIC_REGISTRY
+LATECOPY=$(EXE_DIR)\Pub\fc_baselib.dll $(EXE_DIR)\Engineering\bin\fc_baselib.dll
+LATECOPY=$(EXE_DIR)\Pub\fc_baselib.dll $(EXE_DIR)\Control\bin\fc_baselib.dll
+LATECOPY=$(EXE_DIR)\Pub\fc_baselib.dll $(EXE_DIR)\Engineering\bin\4cpc\fc_baselib.dll
+
+
+#USER=precompile:
+#USER=  $(CP) BaseLibCOM.h   $(INCLUDE_DIR)\BaseLibCOM.h
+#USER=  $(CP) BaseLibCOM_i.c $(INCLUDE_DIR)\BaseLibCOM_i.c
+

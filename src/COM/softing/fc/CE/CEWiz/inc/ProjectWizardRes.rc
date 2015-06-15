@@ -1,0 +1,94 @@
+
+#include "ProjectWizardRes.h"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_LIBSPAGE_IMAGELIST   BITMAP  DISCARDABLE     "libspage.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_4CWIZ_LIBRARIES DIALOG DISCARDABLE  0, 0, 327, 161
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Project Wizard: Libraries"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Which libraries would you like to use?",IDC_STATIC,20,
+                    20,119,8
+    CONTROL         "List1",IDC_4CWIZ_UNUSED_LIBS,"SysListView32",LVS_LIST | 
+                    LVS_SHOWSELALWAYS | LVS_SORTASCENDING | WS_BORDER | 
+                    WS_TABSTOP,20,45,105,99
+    CONTROL         "List2",IDC_4CWIZ_USED_LIBS,"SysListView32",LVS_LIST | 
+                    LVS_SHOWSELALWAYS | LVS_SORTASCENDING | WS_BORDER | 
+                    WS_TABSTOP,200,45,105,99
+    PUSHBUTTON      "&Add >",IDC_4CWIZ_ADD_LIBRARY,135,50,55,14
+    PUSHBUTTON      "< &Remove ",IDC_4CWIZ_REMOVE_LIBRARY,135,70,55,14
+    PUSHBUTTON      "Add A&ll >>",IDC_4CWIZ_ADD_ALL_LIBRARIES,135,105,55,14
+    PUSHBUTTON      "<< Remo&ve All",IDC_4CWIZ_REMOVE_ALL_LIBRARIES,135,125,
+                    55,14
+    LTEXT           "Unused libraries",IDC_STATIC,20,35,51,8
+    LTEXT           "Used libraries",IDC_STATIC,200,35,43,8
+    GROUPBOX        "Library Settings",IDC_STATIC,10,5,310,150
+END
+
+
+IDD_4CWIZ_PROPERTIES DIALOG DISCARDABLE  0, 0, 327, 161
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Project Wizard: Properties"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Object Information",IDC_STATIC,10,5,310,95
+    LTEXT           "&Alias:",IDC_STATIC,16,24,18,8
+    EDITTEXT        IDC_ALIAS,45,21,265,14,ES_AUTOHSCROLL
+    LTEXT           "Text &1:",IDC_STATIC,16,42,23,8
+    EDITTEXT        IDC_USER_TEXT1,45,39,265,14,ES_AUTOHSCROLL
+    LTEXT           "Text &2:",IDC_STATIC,16,60,23,8
+    EDITTEXT        IDC_USER_TEXT2,45,57,265,14,ES_AUTOHSCROLL
+    LTEXT           "Text &3:",IDC_STATIC,16,78,23,8
+    EDITTEXT        IDC_USER_TEXT3,45,75,265,14,ES_AUTOHSCROLL
+    GROUPBOX        "Links",IDC_STATIC,10,110,310,45
+    LTEXT           "&URL:",IDC_STATIC,20,130,18,8
+    EDITTEXT        IDC_URL,45,130,205,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "B&rowse...",IDC_BROWSE,260,130,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_RESOURCE            "resource"
+    IDS_TASK                "task"
+    IDS_PROGRAM             "program"
+    IDS_TARGET              "target"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ERR_NON_UNIQUE_RESOURCE 
+                            "Two or more resources have the same name (%s)"
+    IDS_ERR_NON_UNIQUE_TARGET "Two or more targets have the same name (%s)"
+    IDS_ERR_NON_UNIQUE_TASK "Two or more tasks have the same name (%s)"
+    IDS_ERR_NON_UNIQUE_PROGRAM "Two or more programs have the same name (%s)"
+    IDS_ERR_EQUAL_TASK_AND_PROGRAM_NAME "A task and a program have the same name (%s)"
+    IDS_ERR_IDENTIFIER_SYNTAX "The %s identifier '%s' is not correct"
+    IDS_ERR_IDENTIFIER_IS_KEYWORD "The %s identifier '%s' is a keyword"
+    IDS_ERR_IDENTIFIER_TOO_LONG "The %s identifier '%s' is too long"
+    IDS_ERR_FILE_EXISTS     "The file '%s' already exists."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_URL_FILE            "Select File as URL"
+    IDS_URL_FILTER          "HTML files (*.htm; *.html)|*.htm; *.html|All files (*.*)|*.*||"
+END

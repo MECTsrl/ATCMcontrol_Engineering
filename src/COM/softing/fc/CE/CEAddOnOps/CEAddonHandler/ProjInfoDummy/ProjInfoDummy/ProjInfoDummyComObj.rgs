@@ -1,0 +1,26 @@
+HKCR
+{
+	ProjInfoDummy.ProjInfoDummyComObj.1 = s 'ProjInfoDummyComObj Class'
+	{
+		CLSID = s '{25E1BEC1-F68A-11D4-B8EE-002018641833}'
+	}
+	ProjInfoDummy.ProjInfoDummyComObj = s 'ProjInfoDummyComObj Class'
+	{
+		CLSID = s '{25E1BEC1-F68A-11D4-B8EE-002018641833}'
+		CurVer = s 'ProjInfoDummy.ProjInfoDummyComObj.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {25E1BEC1-F68A-11D4-B8EE-002018641833} = s 'ProjInfoDummyComObj Class'
+		{
+			ProgID = s 'ProjInfoDummy.ProjInfoDummyComObj.1'
+			VersionIndependentProgID = s 'ProjInfoDummy.ProjInfoDummyComObj'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{25E1BEA3-F68A-11D4-B8EE-002018641833}'
+		}
+	}
+}

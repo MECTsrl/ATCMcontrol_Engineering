@@ -1,0 +1,451 @@
+
+
+cpp_quote("//+-------------------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  ATCMControl 4CE")
+cpp_quote("//  ATCM.")
+cpp_quote("//")
+cpp_quote("//--------------------------------------------------------------------------")
+
+enum EStandardOperation {
+	STDOP_OPEN,
+	STDOP_DELETE,
+	STDOP_RENAME,
+	STDOP_INSERT
+};
+
+#ifndef DO_NO_IMPORTS
+import "unknwn.idl";
+#endif
+
+cpp_quote("//+-------------------------------------------------------------------------")
+cpp_quote("// The interfaces of the KAD manager:")
+
+[
+    object,
+    uuid(DA83A300-F05C-11d4-B374-0008C77981F8)
+]
+interface IGeneral : IUnknown
+{
+	HRESULT GetCompilerPath([out,string] BSTR *psCompilerPath);
+	HRESULT GetSplashScreenFilename([out,string] BSTR *psSplashScreenFilename);
+	HRESULT GetDesktopIcon([out,string] BSTR *psDesktopIcon);
+	HRESULT GetAboutBoxHandler([out] GUID *pHandlerId);
+    HRESULT GetApplicationTitle([out,string] BSTR *psApplicationTitle);
+    HRESULT GetMaxDocs([out,string] BSTR *psMaxDocs);
+    HRESULT GetMaxDocsRec([out,string] BSTR *psMaxDocsRec);
+};
+
+[
+    object,
+    uuid(DA83A301-F05C-11d4-B374-0008C77981F8)
+]
+interface IFile : IUnknown
+{
+	HRESULT GetExtension([out,string] BSTR *psExtension);
+	HRESULT GetIcon([out,string] BSTR *psIcon);
+	HRESULT GetParser([out] GUID *pParserId);
+	HRESULT GetStandardEditor([out] GUID *pEditorId);
+	HRESULT GetProgramEditor([out] GUID *pEditorId);
+	HRESULT GetExeEditor([out,string] BSTR *psEditor);
+	HRESULT GetContainer([out] GUID *pContainerId);
+    HRESULT GetFilterText([out,string] BSTR *psFilterText);
+    HRESULT GetHandler([out] GUID *pHandler);
+	HRESULT GetDispatchId([out,string] BSTR *psDispatchId);
+    HRESULT GetConfigurator([out] GUID *pConfigurator);
+    HRESULT GetVisibilityFlag([out] BOOL *pbVisible);
+    HRESULT GetFindInFilesFlag([out] BOOL *pbFindInFiles);
+    HRESULT GetOrderKey([out,string] BSTR *psOrderKey);
+    HRESULT GetPrintFlag([out] BOOL* pbPrint);
+};
+
+[
+    object,
+    uuid(DA83A302-F05C-11d4-B374-0008C77981F8)
+]
+interface IEnumFiles : IUnknown
+{
+	HRESULT Next([in] ULONG celt, [out] IFile **rgelt,
+			[out] ULONG *pceltFetched);
+    HRESULT Skip([in] ULONG celt);
+    HRESULT Reset();
+    HRESULT Clone([out] IEnumFiles **ppenum);
+};
+
+[
+    object,
+    uuid(DA83A303-F05C-11d4-B374-0008C77981F8)
+]
+interface IFiles : IUnknown
+{
+	HRESULT GetFileEnumerator([out] IEnumFiles **ppEnumFiles);
+	HRESULT GetFileByExtension([in,string] BSTR sExtension, [out] IFile **ppIFile);
+};
+
+[
+    object,
+    uuid(DA83A304-F05C-11d4-B374-0008C77981F8)
+]
+interface IMenuItem : IUnknown
+{
+	HRESULT GetId([out,string] BSTR *psId);
+	HRESULT GetText([out,string] BSTR *psText);
+	HRESULT GetHandler([out] GUID *pHandlerId);
+	HRESULT GetExeHandler([out,string] BSTR *psHandler);
+	HRESULT GetDispatchId([out,string] BSTR *psDispatchId);
+	HRESULT GetStandardOperation([out] BSTR *piStandardOperation);
+	HRESULT GetStatusBarText([out,string] BSTR *psStatusBarText);
+	HRESULT GetOrderKey([out,string] BSTR *psOrderKey);
+	HRESULT GetKeyMouseEvent([out,string] BSTR *psKeyMouseEvent);
+	HRESULT GetEnableExpression([out,string] BSTR *psEnableExpression);
+	HRESULT GetShowExpression([out,string] BSTR *psShowExpression);
+    HRESULT GetAccelerator([out,string] BSTR *psAccelerator);
+};
+
+[
+    object,
+    uuid(DA83A305-F05C-11d4-B374-0008C77981F8)
+]
+interface IEnumMenuItems : IUnknown
+{
+	HRESULT Next([in] ULONG celt, [out] IMenuItem **rgelt,
+			[out] ULONG *pceltFetched);
+    HRESULT Skip([in] ULONG celt);
+    HRESULT Reset();
+    HRESULT Clone([out] IEnumMenuItems **ppenum);
+};
+
+[
+    object,
+    uuid(DA83A306-F05C-11d4-B374-0008C77981F8)
+]
+interface IMenu : IUnknown
+{
+	HRESULT GetId([out,string] BSTR *psId);
+	HRESULT GetTitle([out,string] BSTR *psTitle);
+	HRESULT GetHandler([out] GUID *pHandlerId);
+	HRESULT GetMenuItemEnumerator([out] IEnumMenuItems **ppEnumMenuItems);
+	HRESULT GetItemByText([in,string] BSTR sText, [out] IMenuItem **ppIMenuItem);
+};
+
+[
+    object,
+    uuid(DA83A307-F05C-11d4-B374-0008C77981F8)
+]
+interface IEnumMenus : IUnknown
+{
+	HRESULT Next([in] ULONG celt, [out] IMenu **rgelt,
+			[out] ULONG *pceltFetched);
+    HRESULT Skip([in] ULONG celt);
+    HRESULT Reset();
+    HRESULT Clone([out] IEnumMenus **ppenum);
+};
+
+[
+    object,
+    uuid(DA83A308-F05C-11d4-B374-0008C77981F8)
+]
+interface IMainMenu : IUnknown
+{
+	HRESULT GetMenuEnumerator([out] IEnumMenus **ppEnumMenus);
+	HRESULT GetMenuById([in,string] BSTR sId, [out] IMenu **ppIMenu);
+};
+
+[
+    object,
+    uuid(DA83A309-F05C-11d4-B374-0008C77981F8)
+]
+interface ITargetOnline : IUnknown
+{
+	HRESULT GetCustomConnect([out] GUID *pCustomConnectId);
+	HRESULT GetDownload([out] GUID *pDownloadId);
+//	HRESULT GetDownloadChanges([out] GUID *pDownloadChangesId);
+//	HRESULT GetDownloadSelection([out] GUID *pDownloadSelectionId);
+    HRESULT GetConsoleFlag([out] BOOL* pbConsoleFlag);
+    HRESULT GetDebugFlag([out] BOOL* pbDebug);
+    HRESULT GetMultitaskFlag([out] BOOL* pbMultitaskFlag);
+    HRESULT GetWarmstartFlag([out] BOOL* pbWarmstartFlag);
+    HRESULT GetInitClearFlag([out] BOOL* pbInitClearFlag);
+    HRESULT GetDLChangesFlag([out] BOOL* pbDLChangesFlag);
+	HRESULT GetPreDLStep([out] GUID *pPreDLStepId);
+	HRESULT GetPostDLStep([out] GUID *pPostDLStepId);
+	HRESULT GetPreConnectStep([out] GUID *pPreConnectStepId);
+};
+
+
+
+[
+    object,
+    uuid(78D54950-FBC1-454e-A50C-9B66C6FC7110)
+]
+interface IIECFeatures : IUnknown
+{
+	HRESULT GetDataTypes([out,string]BSTR *psDataTypes);
+    HRESULT GetLanguages([out,string]BSTR *psLanguages);
+    HRESULT GetRetain([out]BOOL *pbRetain);
+    HRESULT GetAutoDecl([out] GUID* pAutoDeclComponent, [out,string] BSTR *pINIFileWithFullPath);
+};
+
+
+[
+    object,
+    uuid(746C3CF0-1929-11d5-B39A-0008C77981F8)
+]
+interface IState : IUnknown
+{
+	HRESULT GetText([out,string] BSTR *psText);
+	HRESULT GetIcon([out,string] BSTR *psIcon);
+	HRESULT GetOverlay([out,string] BSTR *psOverlay);
+	HRESULT GetStateValue([out,string] BSTR *psStateValue);
+};
+
+[
+    object,
+    uuid(746C3CF1-1929-11d5-B39A-0008C77981F8)
+]
+interface IEnumStates : IUnknown
+{
+	HRESULT Next([in] ULONG celt, [out] IState **rgelt,
+			[out] ULONG *pceltFetched);
+    HRESULT Skip([in] ULONG celt);
+    HRESULT Reset();
+    HRESULT Clone([out] IEnumStates **ppenum);
+};
+
+
+[
+    object,
+    uuid(037C4920-D5A9-4363-A2A4-E51FCF63A50F)
+]
+interface IVarDecl : IUnknown
+{
+	HRESULT GetHandler([out] GUID *pHandlerId);
+	HRESULT GetRetain([out] BOOL *pbRetainFlag);
+	HRESULT GetInput([out] BOOL *pbInputFlag);
+	HRESULT GetOutput([out] BOOL *pbOutpuFlag);
+	HRESULT GetInOut([out] BOOL *pbInOutFlag);
+
+};
+
+
+[
+    object,
+    uuid(DA83A30A-F05C-11d4-B374-0008C77981F8)
+]
+interface IType : IUnknown
+{
+	HRESULT GetIcon([out,string] BSTR *psIcon);
+	HRESULT GetId([out,string] BSTR *psId);
+	HRESULT GetVisibilityFlag([out] BOOL *pbVisibilityFlag);
+	HRESULT GetMenu([out] IMenu **ppIMenu);
+	HRESULT GetText([out,string] BSTR *psText);
+    HRESULT GetFilterText([out,string] BSTR *psFilterText);
+    HRESULT GetView([out,string] BSTR *psView);
+	HRESULT GetStateEnumerator([out] IEnumStates **ppEnumStates);
+	HRESULT GetProjectListViewFlag([out] BOOL *pbProjectListViewFlag);
+    HRESULT GetVarDecl([out] IVarDecl **ppIVarDecl);
+};
+
+[
+    object,
+    uuid(DA83A30B-F05C-11d4-B374-0008C77981F8)
+]
+interface IEnumTypes : IUnknown
+{
+	HRESULT Next([in] ULONG celt, [out] IType **rgelt,
+			[out] ULONG *pceltFetched);
+    HRESULT Skip([in] ULONG celt);
+    HRESULT Reset();
+    HRESULT Clone([out] IEnumTypes **ppenum);
+};
+
+[
+    object,
+    uuid(DA83A30C-F05C-11d4-B374-0008C77981F8)
+]
+interface ITypes : IUnknown
+{
+	HRESULT GetTypeEnumerator([out] IEnumTypes **ppEnumTypes);
+	HRESULT GetTypeById([in,string] BSTR sId, [out] IType **ppIType);
+};
+
+[
+    object,
+    uuid(DA83A30D-F05C-11d4-B374-0008C77981F8)
+]
+interface IClass : IUnknown
+{
+	HRESULT GetSection([out,string] BSTR *psSection);
+	HRESULT GetGroupText([out,string] BSTR *psGroupText);
+	HRESULT GetClassType([out,string] BSTR *psClassType);
+	HRESULT GetTypeString([out,string] BSTR *psType);
+	HRESULT GetType([out] IType **ppIType);
+   	HRESULT GetPouSel([out] BOOL *pbPouSelFlag);
+};
+
+[
+    object,
+    uuid(DA83A30E-F05C-11d4-B374-0008C77981F8)
+]
+interface IEnumClasses : IUnknown
+{
+	HRESULT Next([in] ULONG celt, [out] IClass **rgelt,
+			[out] ULONG *pceltFetched);
+    HRESULT Skip([in] ULONG celt);
+    HRESULT Reset();
+    HRESULT Clone([out] IEnumClasses **ppenum);
+};
+
+[
+    object,
+    uuid(DA83A30F-F05C-11d4-B374-0008C77981F8)
+]
+interface IClasses : IUnknown
+{
+	HRESULT GetClassesTypeString([out,string] BSTR *psType);
+	HRESULT GetClassesType([out] IType **ppIType);
+	HRESULT GetClassEnumerator([out] IEnumClasses **ppEnumClasses);
+	HRESULT GetClassByType([in,string] BSTR sType, [out] IClass **ppIClass);
+};
+
+[
+    object,
+    uuid(DA83A310-F05C-11d4-B374-0008C77981F8)
+]
+interface IToolbarItem : IUnknown
+{
+	HRESULT GetMainMenuId([out,string] BSTR *psMainMenuId);
+	HRESULT GetIcon([out,string] BSTR *psIcon);
+	HRESULT GetToolTip([out,string] BSTR *psToolTip);
+};
+
+[
+    object,
+    uuid(DA83A311-F05C-11d4-B374-0008C77981F8)
+]
+interface IEnumToolbarItems : IUnknown
+{
+	HRESULT Next([in] ULONG celt, [out] IToolbarItem **rgelt,
+			[out] ULONG *pceltFetched);
+    HRESULT Skip([in] ULONG celt);
+    HRESULT Reset();
+    HRESULT Clone([out] IEnumToolbarItems **ppenum);
+};
+
+[
+    object,
+    uuid(DA83A312-F05C-11d4-B374-0008C77981F8)
+]
+interface IToolbar : IUnknown
+{
+	HRESULT GetId([out,string] BSTR *psId);
+	HRESULT GetHandler([out] GUID *pHandlerId);
+	HRESULT GetToolbarItemEnumerator([out] IEnumToolbarItems **ppEnumToolbarItems);
+};
+
+[
+    object,
+    uuid(DA83A313-F05C-11d4-B374-0008C77981F8)
+]
+interface IEnumToolbars : IUnknown
+{
+	HRESULT Next([in] ULONG celt, [out] IToolbar **rgelt,
+			[out] ULONG *pceltFetched);
+    HRESULT Skip([in] ULONG celt);
+    HRESULT Reset();
+    HRESULT Clone([out] IEnumToolbars **ppenum);
+};
+
+[
+    object,
+    uuid(DA83A314-F05C-11d4-B374-0008C77981F8)
+]
+interface IToolbars : IUnknown
+{
+	HRESULT GetToolbarEnumerator([out] IEnumToolbars **ppEnumToolbars);
+	HRESULT GetToolbarById([in,string] BSTR sId, [out] IToolbar **ppIToolbar);
+};
+
+[
+    object,
+    uuid(DA83A315-F05C-11d4-B374-0008C77981F8)
+]
+interface ITarget : IUnknown
+{
+	HRESULT GetTypeString([out,string] BSTR *psType);
+    HRESULT GetExt([out,string] BSTR* psExt);
+	HRESULT GetType([out] IType **ppIType);
+    HRESULT GetFacilityCode([out] WORD *pFacilityCode);
+	HRESULT GetTargetOnline([out] ITargetOnline **ppITargetOnline);
+    HRESULT GetIECFeatures([out] IIECFeatures **ppIIECFeatures);
+};
+
+[
+    object,
+    uuid(DA83A316-F05C-11d4-B374-0008C77981F8)
+]
+interface IEnumTargets : IUnknown
+{
+	HRESULT Next([in] ULONG celt, [out] ITarget **rgelt,
+			[out] ULONG *pceltFetched);
+    HRESULT Skip([in] ULONG celt);
+    HRESULT Reset();
+    HRESULT Clone([out] IEnumTargets **ppenum);
+};
+
+[
+    object,
+    uuid(DA83A317-F05C-11d4-B374-0008C77981F8)
+]
+interface ITargets : IUnknown
+{
+	HRESULT GetTargetsTypeString([out,string] BSTR *psType);
+	HRESULT GetTargetsType([out] IType **ppIType);
+	HRESULT GetTargetEnumerator([out] IEnumTargets **ppEnumTargets);
+	HRESULT GetTargetByType([in,string] BSTR sType, [out] ITarget **ppITarget);
+};
+
+[
+    object,
+    uuid(C3924BC8-7C33-4417-B823-75974F6026FF)
+]
+interface IDragDropAction : IUnknown
+{
+	HRESULT GetDragType([out,string] BSTR*  psDragType);
+	HRESULT GetDropType([out,string] BSTR*  psDropType);
+    HRESULT GetHandler([out] GUID *pHandler);
+	HRESULT GetEnableExpression([out,string] BSTR*  psEnableExpression);
+};
+
+
+[
+    object,
+    uuid(4AF649B6-03B0-404b-AF25-F9E90EE39AA1)
+]
+interface IEnumDragDropActions : IUnknown
+{
+	HRESULT Next([in] ULONG celt, [out] IDragDropAction **rgelt,
+			[out] ULONG *pceltFetched);
+    HRESULT Skip([in] ULONG celt);
+    HRESULT Reset();
+    HRESULT Clone([out] IEnumDragDropActions **ppenum);
+};
+
+
+[
+    object,
+    uuid(191E1886-3D88-4ec3-B116-3422124CC153)
+]
+interface IDragDropMap : IUnknown
+{
+	HRESULT GetDragDropActionEnumerator([out] IEnumDragDropActions **ppEnumDragDropActions);
+};
+
+[
+    object,
+    uuid(9F6EAF49-E6AF-4429-9700-4A76841BB028)
+]
+interface IDragDrop : IUnknown
+{
+	HRESULT GetDragDropMap([out] IDragDropMap **ppIDragDropMap);
+};

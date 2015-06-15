@@ -1,0 +1,13 @@
+
+(*[[
+    UserURL= "ATCM:DINT_TO_LWORD.htm"
+]]*)
+
+FUNCTION DINT_TO_LWORD : LWORD
+VAR_INPUT 
+    IN : DINT; 
+END_VAR
+
+inline{(long)%1}
+
+END_FUNCTION

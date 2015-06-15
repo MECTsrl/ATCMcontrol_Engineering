@@ -1,0 +1,262 @@
+<KAD4CE>
+
+<GENERAL 
+   SPLASHSCREEN="4Control3.bmp"
+   ICON="cemain.ico"
+   ABOUTBOX="{8CFC6369-0596-498E-B7CA-4BC7EE0C5BC7}"    
+   COMPILERPATH="4CG.EXE"
+   MAXDOCS="50"
+   MAXDOCSREC="10"
+>
+</GENERAL>
+
+
+<KERNEL>
+  <ADDON
+       NAME="ATHW119 AddOn"
+       VERSION="2.1"
+       VENDOR="Softing AG"
+       KADFILE="Engineering\bin\ATHW119_4CEng.kad"
+       DESC="ATHW119 Addon ... "/>
+</KERNEL>
+ 
+
+<FILES>   
+  <FILE EXT="ATHW119" 
+        PARSER="{BEAEB7F7-3B03-477c-989A-A31A04E00494}"
+        STDEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}"
+        FILTERTEXT="ATHW119 Files"
+        ORDERKEY="fdag"/>
+</FILES>
+
+
+<TARGETS TYPE="PROJECT_TARGET">
+  <TARGET TYPE="HW119" 
+          FACILITYCODE="0x340" 
+          EXT="ATHW119">
+    <TARGETONLINE CUSTOM_CONNECT="{C31E31A7-567C-49a2-B393-CEC8F2E17F99}" 
+                  DOWNLOAD="{88AD4524-E2B2-4853-A081-5CDBF5732E09}"
+                  DLCHANGES="1" />
+    <IEC_FEATURES DATA_TYPES="BOOL, BYTE, WORD, DWORD, INT, DINT, TIME, STRING, REAL, LREAL"
+                  LANGUAGES="ST, FBD, SFC, LD, IL"/>
+  </TARGET>
+</TARGETS>
+
+
+<MAINMENU>
+  <MENU ID="create" TITLE="&amp;Create">
+    <MENUITEM ID="CreateHW119" 
+              ORDERKEY="gag" 
+              TEXT="&amp;ATHW119 Target" 
+              STBARTXT="Insert New ATHW119 Target"
+              DISPID="New" 
+              HANDLER="{BEAEB7F7-3B03-477c-989A-A31A04E00494}"
+              ENABLE_EXPRESSION="project=open;project!=readonly"/>
+  </MENU>
+
+  <MENU ID="settings" TITLE="&amp;Settings">
+    <MENUITEM ID="SettingsHW119"
+              ORDERKEY="sag"
+              TEXT="&amp;ATHW119 Target"
+              DISPID="Settings"
+              HANDLER="{BEAEB7F7-3B03-477c-989A-A31A04E00494}"
+              ENABLE_EXPRESSION="project!=readonly"/>
+  </MENU>
+
+  <MENU ID="tools" TITLE="&amp;Tools">
+<!--
+    <MENUITEM ID="PouProtection"
+              ORDERKEY="ea"
+              TEXT="&amp;POU Protection"
+              STBARTXT="Open POU-Protection Dialog"
+              DISPID="PouProtection" 
+              HANDLER="{7365C084-BEB1-47A4-8446-2EF1E87E2BCB}"
+              SHOW_EXPRESSION="project=open"/>
+-->
+    <MENUITEM ID="PMTool"
+              ORDERKEY="eb"
+              TEXT="P&amp;M Tool"
+              STBARTXT="Start Project Management Tool"
+              EXEHANDLER="&quot;$(InstDir)Engineering\bin\PMTool.exe&quot; &quot;$(PrjDir)&quot;"/>
+  </MENU>
+</MAINMENU>
+
+
+<TOOLBARS>
+  <TOOLBAR ID="Create">
+    <TOOLBARITEM MAINMENUID="CreateHW119" 
+                 TOOLTIP="Create New ATHW119 Target" 
+                 ICON="ATHW119\createtarget.bmp"/>
+  </TOOLBAR>
+</TOOLBARS>
+
+
+<TYPES>
+  <TYPE ID="PROJECT_TARGET">
+    <MENU>
+      <MENUITEM TEXT="Insert New ATHW119 Target"
+                ORDERKEY="fag"
+                DISPID="New" 
+                HANDLER="{BEAEB7F7-3B03-477c-989A-A31A04E00494}"
+                ENABLE_EXPRESSION="project!=readonly"/>
+    </MENU>
+  </TYPE>
+
+  <TYPE ID="HW119" 
+        ICON="ATHW119\target.bmp" 
+        TEXT="ATHW119 Target" 
+        PROJ_LIST_VIEW="1">
+    <STATE ICON="ATHW119\TargetConErr5.bmp" STATE_VAL="-5"/>
+    <STATE ICON="ATHW119\TargetConErr4.bmp" STATE_VAL="-4"/>
+    <STATE ICON="ATHW119\TargetConErr3.bmp" STATE_VAL="-3"/>
+    <STATE ICON="ATHW119\TargetConErr2.bmp" STATE_VAL="-2"/>
+    <STATE ICON="ATHW119\TargetConErr1.bmp" STATE_VAL="-1"/>
+    <STATE ICON="ATHW119\TargetCon.bmp"     STATE_VAL="1"/>
+    <STATE ICON="ATHW119\TargetConEx.bmp"   STATE_VAL="2"/>
+    <MENU>
+      <MENUITEM TEXT="Assign Resource"
+                ORDERKEY="ha"
+                DISPID="Assignment" 
+                HANDLER="{BEAEB7F7-3B03-477c-989A-A31A04E00494}"
+                ENABLE_EXPRESSION="source!=readonly"/>
+      <MENUITEM TEXT="Build Target" 
+                ORDERKEY="ia"
+                STANDARDOP="BuildTarget"/>
+      <MENUITEM TEXT="Full Download" 
+                ORDERKEY="ib"
+                STANDARDOP="DownloadFull"/>
+      <MENUITEM TEXT="Download Changes"
+                ORDERKEY="ic" 
+                STANDARDOP="DownloadChanges"/>
+      <MENUITEM TEXT="Flash Project"
+                ORDERKEY="ja"
+                STANDARDOP="UpdateFlash"/>
+      <MENUITEM TEXT="Flash (and Download)"
+                ORDERKEY="jb"
+                STANDARDOP="DownloadFlash"/>
+      <MENUITEM TEXT="Clear Flash"
+                ORDERKEY="jc"
+                STANDARDOP="ClearFlash"/>
+      <MENUITEM TEXT="Connect" 
+                ORDERKEY="ka" 
+                STANDARDOP="Connect"/>
+      <MENUITEM TEXT="Disconnect" 
+                ORDERKEY="kb"
+                STANDARDOP="Disconnect"/>
+      <MENUITEM TEXT="Enable Debug"
+                ORDERKEY="kc"
+                STANDARDOP="ConnectEx"/>
+      <MENUITEM TEXT="Disable Debug"
+                ORDERKEY="kd"
+                STANDARDOP="DisconnectEx"/>
+      <MENUITEM TEXT="Project Info Upload"
+                ORDERKEY="la"
+                DISPID="ProjectInfoUpload"
+                HANDLER="{BEAEB7F7-3B03-477c-989A-A31A04E00494}"
+                ENABLE_EXPRESSION="constate==connected"/>
+<!--
+      <MENUITEM TEXT="Online Test Dialog"
+                ORDERKEY="kf"
+                DISPID="WinTargetOnline"
+                HANDLER="{7365C084-BEB1-47A4-8446-2EF1E87E2BCB}"/>
+-->
+      <MENUITEM TEXT="Goto URL"
+                ORDERKEY="ra"
+                STANDARDOP="OpenUrl"/>
+
+      <MENUITEM TEXT="Rename"
+                ORDERKEY="ua"
+                KEYMOUSEEVENT="rename"
+                DISPID="Rename" 
+                HANDLER="{BEAEB7F7-3B03-477c-989A-A31A04E00494}"
+                ENABLE_EXPRESSION="project!=readonly;source!=readonly"/>
+      <MENUITEM TEXT="Delete"
+                ORDERKEY="ub"
+                KEYMOUSEEVENT="delete"
+                DISPID="Delete" 
+                HANDLER="{BEAEB7F7-3B03-477c-989A-A31A04E00494}"
+                ENABLE_EXPRESSION="project!=readonly;source!=readonly"/>
+      <MENUITEM TEXT="Properties"
+                ORDERKEY="uc"
+                KEYMOUSEEVENT="open"
+                DISPID="Properties" 
+                HANDLER="{BEAEB7F7-3B03-477c-989A-A31A04E00494}"/>
+    </MENU>
+  </TYPE>
+
+
+  <TYPE ID="HW119_INST" 
+        ICON="ATHW119\target.bmp" 
+        TEXT="ATHW119 Target">
+    <STATE ICON="ATHW119\TargetConErr5.bmp" STATE_VAL="-5"/>
+    <STATE ICON="ATHW119\TargetConErr4.bmp" STATE_VAL="-4"/>
+    <STATE ICON="ATHW119\TargetConErr3.bmp" STATE_VAL="-3"/>
+    <STATE ICON="ATHW119\TargetConErr2.bmp" STATE_VAL="-2"/>
+    <STATE ICON="ATHW119\TargetConErr1.bmp" STATE_VAL="-1"/>
+    <STATE ICON="ATHW119\TargetCon.bmp"     STATE_VAL="1"/>
+    <STATE ICON="ATHW119\TargetConEx.bmp"   STATE_VAL="2"/>
+    <MENU>
+      <MENUITEM TEXT="Build Target" 
+                ORDERKEY="ia" 
+                STANDARDOP="BuildTarget"/>
+      <MENUITEM TEXT="Full Download" 
+                ORDERKEY="ib" 
+                STANDARDOP="DownloadFull"/>
+      <MENUITEM TEXT="Download Changes"
+                ORDERKEY="id" 
+                STANDARDOP="DownloadChanges"/>
+      <MENUITEM TEXT="Flash Project"
+                ORDERKEY="ja"
+                STANDARDOP="UpdateFlash"/>
+      <MENUITEM TEXT="Flash (and Download)"
+                ORDERKEY="jb"
+                STANDARDOP="DownloadFlash"/>
+      <MENUITEM TEXT="Clear Flash"
+                ORDERKEY="jc"
+                STANDARDOP="ClearFlash"/>
+      <MENUITEM TEXT="Connect" 
+                ORDERKEY="ka" 
+                STANDARDOP="Connect"/>
+      <MENUITEM TEXT="Disconnect" 
+                ORDERKEY="kb" 
+                STANDARDOP="Disconnect"/>
+      <MENUITEM TEXT="Enable Debug"
+                ORDERKEY="kc"
+                STANDARDOP="ConnectEx"/>
+      <MENUITEM TEXT="Disable Debug"
+                ORDERKEY="kd"
+                STANDARDOP="DisconnectEx"/>
+    </MENU>
+  </TYPE>
+
+
+  <TYPE ID="RESOURCE_INST.ATHW119" 
+        ICON="res.bmp">
+    <STATE ICON="reserror.bmp" STATE_VAL="-1"/>
+    <STATE ICON="resstop.bmp"  STATE_VAL="1"/>
+    <STATE ICON="resrun.bmp"   STATE_VAL="2"/>
+    <MENU>
+      <MENUITEM STANDARDOP="Open" 
+                ORDERKEY="ca" 
+                TEXT="Open" 
+                KEYMOUSEEVENT="open"/>
+      <MENUITEM STANDARDOP="StartControl" 
+                ORDERKEY="la" 
+                TEXT="Start Resource"/>
+      <MENUITEM STANDARDOP="StopControl" 
+                ORDERKEY="lb" 
+                TEXT="Stop Resource"/>
+      <MENUITEM STANDARDOP="StartAllTasks" 
+                ORDERKEY="lc" 
+                TEXT="Start All Tasks"/>
+      <MENUITEM STANDARDOP="StopAllTasks" 
+                ORDERKEY="ld" 
+                TEXT="Stop All Tasks"/>
+    </MENU>
+  </TYPE>
+
+
+</TYPES>
+
+
+</KAD4CE>

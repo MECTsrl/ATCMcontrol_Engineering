@@ -1,0 +1,45 @@
+
+//----  Local Defines:   -------------------------------------------*
+//----  Includes:   -------------------------------------------*
+import "oaidl.idl";
+import "ocidl.idl";
+
+//------------------------------------------------------------------*
+/**
+ * @file io_configdp.idl interface(s) between SW-Unit 4CCG and 
+ * the Profibus DP IO-Configurator.
+ * <b>Usage:</b><br> contains <b>NO</b> coclass, create your own IDL for each configurator
+ * and insert <b>import "io_configdp.idl";</b> in the library section, before you 
+ * actually define your coclass.<br>
+ * <b>NOTE</b><br> Denotes a special interface between 4CCG and the
+ * Profibus DP IO-Configurator for RTCE. Normal IO-Configurators shall not
+ * implement this interface.
+ * 
+*/
+//interface predeclarations
+interface IDPCompile;
+
+//----  IDPCompile Interface:    -----------------------------------------------*
+	[
+		object,
+		uuid(75424A32-AEA7-11d1-89B0-0060080993FF),
+		oleautomation,
+		helpstring("IDPCompile Interface"),
+		pointer_default(unique)
+	]
+	interface IDPCompile : IUnknown
+	{
+		[helpstring("GetVarOffset")] 
+		HRESULT GetVarOffset([in, string] BSTR sVarAddress, [out] long * plByteOffset, 
+            [out] long * plBitOffset);
+            
+		[helpstring("GetIOReadLength")] 
+		HRESULT GetIOReadLength([in] long lChannel, [out] long * plLength);
+		
+		[helpstring("GetIOWriteLength")] 
+		HRESULT GetIOWriteLength([in] long lChannel, [out] long * plLength);
+		
+		[helpstring("GetMasterAddress")] 
+		HRESULT GetMasterAddress([in] long lChannel, [out] long * plMasterAddr);
+	};
+

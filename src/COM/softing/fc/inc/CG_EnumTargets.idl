@@ -1,0 +1,131 @@
+/*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/inc/CG_EnumTargets.idl 1     28.02.07 19:01 Ln $
+ *----------------------------------------------------------------------------*
+ *
+ * =FILENAME            $Workfile: CG_EnumTargets.idl $
+ *                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/inc/CG_EnumTargets.idl $
+ *
+ * =PROJECT             CAK1020 ATCMControl V2.0
+ *
+ * =SWKE                4CCG
+ *
+ * =COMPONENT           CG_IECFront
+ *
+ * =CURRENT             $Date: 28.02.07 19:01 $
+ *                      $Revision: 1 $
+ *
+ * =ENVIRONMENT         Win32:
+ *                      MS Windows NT 4.0
+ *                      MSVC++ V6.0
+ *                      MS Java 3.2
+ *                      MS Visual SourceSafe 6.0
+ *
+ * =REFERENCES
+ *==4CCG architecture 2.0
+ *----------------------------------------------------------------------------*
+ *
+
+ 
+
+ 
+
+ *==
+ *
+ *----------------------------------------------------------------------------*
+ * =DESCRIPTION
+ *== Interface ICG_EnumTargets.
+ *   This interface is part of the ATCMControl compiler framework.
+ *   Used by clients (e.g. also downloader, console code generators) 
+ *   to get target basic info from a 4CH file and all it's nested 
+ *   targets (if any).Implement this interface for every hardware 
+ *   definiton file (4CH). The uuid of the COMponent where this interface is 
+ *   implemented (typically the file types backparser) must be 
+ *   assigned to the 4cg.kad's GETTARGETINFO attribute. 
+ *   Example: 
+ *       .........
+ *   	<TARGETS>
+ *          <TARGET EXT="pc" BACKEND="pc\4cg.exe" GETTARGETINFO="<uuid>"/> 
+ *       .........
+ * 
+ *----------------------------------------------------------------------------*
+ * =MODIFICATIONS
+ * $History: CG_EnumTargets.idl $
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.02.07   Time: 19:01
+ * Created in $/4CReleased/V2.20.00/COM/softing/fc/inc
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.08.03   Time: 16:34
+ * Created in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 3  *****************
+ * User: Ef           Date: 20.11.00   Time: 16:43
+ * Updated in $/4Control/COM/softing/fc/inc
+ * fixed typing errro 'addTargteInfo'
+ * 
+ * *****************  Version 2  *****************
+ * User: Ef           Date: 20.11.00   Time: 16:41
+ * Updated in $/4Control/COM/softing/fc/inc
+ * renamed in VSS, server is now available
+ * 
+ * *****************  Version 1  *****************
+ * User: Ef           Date: 2.11.00    Time: 17:06
+ * Created in $/4Control/COM/softing/fc/inc
+ * created first (draft) version
+ * 
+ * *****************  Version 1  *****************
+ * User: Ef           Date: 2.11.00    Time: 16:55
+ * Created in $/4Control/COM/softing/fc
+ * created first viersion
+ * *****************  Version 1  *****************
+ * User: Ef           Date: 14.11.00    Time: 15:30
+ * Changed name and converted to Enum callback style
+ * now not only for nested targets, give basic info for all targets.
+ *==
+ ******************************************************************************
+H<<*/
+
+cpp_quote("//+-------------------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  ATCMControl IEC Compiler front")
+cpp_quote("//  ATCM.")
+cpp_quote("//")
+cpp_quote("//--------------------------------------------------------------------------")
+
+
+#ifndef DO_NO_IMPORTS
+import "oaidl.idl";
+#endif
+
+
+[
+    object,
+    uuid(15005fc0-ba3a-11d4-a52d-0008c779c600),
+    local
+]
+interface ICG_EnumTargetCallback : IUnknown
+{
+    [helpstring("call back to client module that wants the target basic info")]
+    HRESULT addTargetInfo([in,string]BSTR s4CHFileAndPath, //full or project relative path of 4CH file
+                          [in,string]BSTR sResource,       //"" if no resource assigned or IEC identifier 
+                          [in,string]BSTR sControlAddr,    //"" if no address given yet 
+                          [in,string]BSTR sConsoleAddr);   //"" if no console support or no address given yet 
+
+    [helpstring("called for every file opned, even if no target file (checks recursiv links)")]
+    //returns E_FAIL if recursion detected, caller must terminate immediately!
+    HRESULT addContainerFile([in,string]BSTR s4CHFileAndPath);
+};
+
+[
+    object,
+    uuid(02f888b0-af01-11d4-a52a-0008c779c600),
+    local
+]
+interface ICG_EnumTargets : IUnknown
+{
+    [helpstring("gets all target basic information for s4CHFileAndPathand ist nested (recurse)")] 
+    HRESULT enumTargets([in]ICG_EnumTargetCallback* pCallback, [in,string]BSTR s4CHFileAndPath);
+};
+
+
+

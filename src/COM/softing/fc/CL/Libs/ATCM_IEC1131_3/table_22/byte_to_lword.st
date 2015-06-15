@@ -1,0 +1,12 @@
+(*[[
+    UserURL= "ATCMFile:BYTE_TO_LWORD.htm"
+]]*)
+
+FUNCTION BYTE_TO_LWORD : LWORD
+VAR_INPUT 
+    IN : BYTE; 
+END_VAR
+
+inline{(long)%1}
+
+END_FUNCTION

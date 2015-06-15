@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>StartLocalTask</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>StartLocalTask</h2>
+<p>Starts the task passed as parameter.</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION StartLocalTask
+VAR_INPUT
+    NAME : ANY_STRING;
+END_VAR</pre>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>NAME</b></dt>
+  <dd>Value of type <i><b>ANY_STRING</b></i><br>
+    Name of the task to be started. <br>
+  </dd>
+</dl>
+<h3>Description</h3>
+<p><b><i>StartLocalTask</i></b> starts the task passed to <i><b>NAME</b></i>. 
+  If the task passed as a parameter doesn&acute;t comply to any existing 
+  task in the current project, an exception is triggered.</p>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>USB Manager Library</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css">
+</head>
+<body bgcolor="#FFFFCC">
+<h2>Usb_mkdir</h2>
+<p>Create a directory on a usb key</p>
+<h3>Interface</h3>
+<pre class="preforma">
+FUNCTION Usb_mkdir : UINT
+VAR_INPUT
+	dirname : STRING;
+	index : UINT;
+END_VAR
+</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>UINT</b></i><br>
+<br>
+<table border="1">
+<tr>
+	<td>
+		0 :
+	</td>
+ 	<td>
+		<b>Success</b>
+ 	</td>
+ </tr>
+<tr>
+	<td>
+		1 :
+	</td>
+ 	<td>
+		error
+ 	</td>
+ </tr>
+<tr>
+	<td>
+		2 :
+	</td>
+ 	<td>
+		directory already exist
+ 	</td>
+ </tr>
+ </table>
+ </p>
+
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl>
+  <dt><b>dirname</b></dt>
+  <dd>Value of type <b><i>STRING</i></b><br>
+    Directory to be created<br></dd>
+</dl>
+<dl>
+  <dt><b>index</b></dt>
+  <dd>Value of type <b><i>UINT</i></b><br>
+     index representing the usbkey on which the directory will exist<br></dd>
+</dl>
+<h3>Description</h3>
+<p><b>Usb_mkdir</b> Create a directory on a usb key</p>
+</body>
+</html>

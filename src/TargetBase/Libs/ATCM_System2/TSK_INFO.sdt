@@ -1,0 +1,20 @@
+(*
+ * ATCMControl Embedded - System Library
+ * ----------------------------------------------------------------------------
+ *
+ 
+ *)
+
+(*[[
+    UserURL= "ATCMfile:TSK_INFO.htm"
+]]*)
+
+TYPE
+    TSK_INFO : STRUCT
+        ulStat      : DINT; (*[Task state]*)
+        ulPriority  : DINT; (*[Task Priority]*)
+        tCycle      : TIME; (*[Task cycle time (in ms)]*)
+        tETMax      : TIME; (*[Task max. execution time (in ms)]*)
+        ulError     : DINT; (*[Task error state]*)
+   END_STRUCT;
+END_TYPE

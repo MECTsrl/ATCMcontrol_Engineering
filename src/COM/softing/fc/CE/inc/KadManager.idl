@@ -1,0 +1,56 @@
+// KadManager.idl : IDL source for KadManager.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (KadManager.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "CEKadMan.idl";
+
+[
+    object,
+    uuid(DE63C9D0-D28D-11d4-B35D-0008C77981F8)
+]
+interface IXmlNodeRef : IUnknown
+{
+	HRESULT SetXmlNode(IUnknown *pXmlNode);
+};
+
+[
+    object,
+    uuid(8FDEE5E0-EE26-11d4-B373-0008C77981F8)
+]
+interface IInitEnum : IUnknown
+{
+	HRESULT InitEnum(GUID enumElementInterfaceId, IUnknown *pNode, 
+		BSTR sSubNodeName);
+};
+
+[
+	uuid(5BF1B281-D1A7-11D4-B35C-0008C77981F8),
+	version(1.0),
+	helpstring("KadManager 1.0 Type Library")
+]
+library KADMANAGERLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(0569B97C-EC4D-11D4-B36F-0008C77981F8),
+		helpstring("KadManagerComObj Class")
+	]
+	coclass KadManagerComObj
+	{
+		[default] interface IGeneral;
+		interface IClasses;
+		interface IFiles;
+		interface IMainMenu;
+		interface ITargets;
+		interface IToolbars;
+		interface ITypes;
+        interface IDragDrop;
+	};
+};
+

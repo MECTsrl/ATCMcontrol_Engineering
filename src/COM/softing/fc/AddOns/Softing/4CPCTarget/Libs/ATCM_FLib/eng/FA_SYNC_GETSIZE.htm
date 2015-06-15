@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>FA_SYNC_GETSIZE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+
+<body bgcolor="#FFFFCC">
+<h2>FA_SYNC_GETSIZE</h2>
+<p>Delivers the size of a file in bytes.</p>
+<h3>Interface</h3>
+<pre class="preforma">FUNCTION FA_SYNC_GETSIZE:BOOL
+VAR_INPUT
+    EXEC        : BOOL;
+END_VAR
+VAR_IN_OUT
+    FILE        : FA_SYNC_FILE;
+END_VAR
+VAR_OUTPUT
+    SIZE        : LINT;
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of the type <i><b>BOOL</b></i><br> Signalizes the error status.<br> Possible values:<br> <i><b>TRUE</b></i>: An error has occurred.<br> <i><b>FALSE</b></i>: No error has occurred.</p>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+
+ <dt><b>EXEC</b></dt>
+
+ <dd>Value of the type <i><b>BOOL</b></i><br> Starts the operation. </dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl> 
+
+ <dt><b><a name="File"></a>FILE</b></dt>
+
+  <dd>Instance of the <a href="FA_SYNC_FILE.htm"><i><b>FA_SYNC_FILE</b></i></a> 
+    structure<br>
+     File object on which the operation is performed.</dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+
+ <dt><b>SIZE</b></dt>
+
+ <dd>Value of the type <i><b>LINT</b></i>.<br> Contains the size in bytes of the file passed to <i><b>FILE</b></i> on conclusion of the operation.</dd>
+</dl>
+<h3>Description</h3>
+<p>In the parameter <i><b>SIZE</b></i>, <b><i>FA_SYNC_GETSIZE</i></b> delivers 
+  the size of the file passed to <i><b>FILE</b></i>. The file does not need to 
+  be opened before determining the file size, which means that the execution of 
+  <i><b>FA_SYNC_GETSIZE</b></i> is independent of an access cycle. </p>
+</body>
+</html>

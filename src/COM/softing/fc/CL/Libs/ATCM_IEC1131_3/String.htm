@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>Error Handling with STRING Conversion Functions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="lib.css"></head>
+
+
+<body bgcolor="#FFFFCC">
+<div style="margin-left: 5; position: relative; top: 0"></div>
+<h2><a name="WString"></a>Error Handling with STRING Conversion Functions
+</h2>
+<p>When you use the functions for converting from the <i>STRING (STRING_TO_**)</i> data type, the result depends on the correct syntax of the value to be converted from the passed string; this applies particularly if complex data, such as the data format <i>TIME</i>, are represented as strings. The compiler only checks whether the value passed to a conversion function is compatible with the formal parameters of the corresponding function, but does not check the value itself that is passed as a parameter. For this reason, no compiler error will be issued if the representation of the value of the string to be converted does not comply with the target data format into which the string is to be converted. 
+
+ <br>
+</p>
+<p>To catch such cases, all STRING conversion functions feature an internal error handling routine:</p>
+<ul>
+
+ <li>If a string passed as an actual parameter contains invalid data, a standard value is returned in the external representation of the target data format.</li>
+
+ <li>An internal error number is set. In the case of an error, this value is <i>&lt;&gt; 0</i>. If the conversion was successful, the error number is set to the value <i>0</i>. You can query the error numbers with the
+  <b><i>GetTaskErrno</i></b> function from the <b><i>ATCM_System library</i></b>. Since error numbers are not cleared automatically, you should always call the <b><i>ClearTaskErrno</b></i> function before calling the <i>GetTaskErrno</i> function. This resets the last error number and ensures that only the error number associated with the function to be checked is queried. Please note that the error number is only significant with regard to the occurrence of an error or the successful execution of a function. The error number, however, is not assigned uniquely to one specific error which could then be evaluated individually in an error handling routine, for example. </li>
+</ul>
+<p>Especially in the case of complex representation formats, you should make sure before you use a converted value that the conversion was successful, and only use the value in the subsequent program run after the check.</p>
+<p>&nbsp; </p>
+</body>
+</html>

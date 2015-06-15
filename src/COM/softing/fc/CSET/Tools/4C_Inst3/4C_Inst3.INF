@@ -1,0 +1,47 @@
+# $Header: /4CReleased/V2.20.00/COM/softing/fc/CSET/Tools/4C_Inst3/4C_Inst3.INF 1     28.02.07 19:00 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: 4C_Inst3.INF $
+#                        $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CSET/Tools/4C_Inst3/4C_Inst3.INF $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 CSET
+#
+# =COMPONENT            Tools\4C_Inst3
+#
+# =CURRENT      $Date: 28.02.07 19:00 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+#
+# ------------------------------------------------------------------------------
+#
+
+
+TARGETTYPE=DLL
+TARGET=$(EXE_DIR)\4C_Inst3.dll
+
+#LINK MFC42 and MSVCRT statically is intentional, do not change
+STATIC_RUNTIME=1
+DEFINE=_WINDLL
+DEFINE=_USRDLL
+DEFINE=_ATL_STATIC_REGISTRY
+DEFINE=_ATL_NO_SECURITY
+
+DEFLIB=version.lib
+
+INCLUDE=$(MAKEDIR)
+INCLUDE=$(MAKEDIR)\Inc
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+LIBPATH=$(LIB_DIR)
+
+PCHFILE=stdafx
+
+USER=makefirst:$(MAKEDIR)\Lib
+USER=$(MAKEDIR)\Lib:
+USER=  -md $@
+
+# -------------------------------------------------------------------------------

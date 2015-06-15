@@ -1,0 +1,100 @@
+/*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/inc/CEMsgViewer.idl 1     28.02.07 19:01 Ln $
+ *----------------------------------------------------------------------------*
+ *
+ * =FILENAME            $Workfile: CEMsgViewer.idl $
+ *                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/inc/CEMsgViewer.idl $
+ *
+ * =PROJECT				CAK1020  ATCMControl V2.0
+ *
+ * =SWKE                CE
+ *
+ * =COMPONENT           CEMsgVw
+ *
+ * =CURRENT      $Date: 28.02.07 19:01 $
+ *               $Revision: 1 $
+ *
+ * =REFERENCES
+ *
+ *----------------------------------------------------------------------------*
+ *
+
+ 
+
+
+
+ *==
+ *----------------------------------------------------------------------------*
+ * =DESCRIPTION
+ *    @DESCRIPTION@
+ *==
+ *----------------------------------------------------------------------------*
+ * =MODIFICATION
+ *  18.04.2001  JD      File created
+ *  see history at end of file !
+ *==
+ *******************************************************************************
+H<<*/
+
+
+
+// CEMsgViewer.idl : IDL source 
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (CEMsgViewer.tlb) and marshalling code.
+#include <olectl.h>
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+
+/*
+	INTERFACES 
+*/
+[
+	uuid(EE830CC2-0BFE-11d2-8842-006097E1BE6E),
+	version(1.0),
+	helpstring("MsgViewer 1.0 Type Library")
+]
+library CEMsgViewer
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+    /* Event dipatch interfaces */
+import "CEMsg.idl";
+
+    /* Com class declaration */
+
+	[
+		uuid(EE830CC3-0BFE-11d2-8842-006097E1BE6E),
+		helpstring("Message Viewer Class")
+	]
+	coclass CEMsgViewer
+	{
+		[default] interface _ICEMessageEvent;
+	};
+
+};
+
+
+/*
+ *----------------------------------------------------------------------------*
+ *  $History: CEMsgViewer.idl $
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.02.07   Time: 19:01
+ * Created in $/4CReleased/V2.20.00/COM/softing/fc/inc
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.08.03   Time: 16:34
+ * Created in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 3  *****************
+ * User: Jd           Date: 18.04.01   Time: 16:35
+ * Updated in $/4Control/COM/softing/fc/inc
+ * Added Goto Location(open editor with source file and goto edipos)  from
+ * compiler tab
+ *==
+ *----------------------------------------------------------------------------*
+*/

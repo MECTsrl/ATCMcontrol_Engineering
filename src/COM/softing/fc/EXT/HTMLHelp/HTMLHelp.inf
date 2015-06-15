@@ -1,0 +1,34 @@
+#H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/EXT/HTMLHelp/HTMLHelp.inf 1     28.02.07 19:01 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: HTMLHelp.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/EXT/HTMLHelp/HTMLHelp.inf $
+#
+# =PROJECT             7VH102  ATCMControl V1
+#
+# =SWKE                EXT
+#
+# =COMPONENT           LEdit
+#
+# =CURRENT             $Date: 28.02.07 19:01 $
+#                      $Revision: 1 $History: HTMLHelp.inf $
+# 
+# *****************  Version 2  *****************
+# User: Wi           Date: 27.03.98   Time: 14:24
+# Updated in $/4Control/COM/softing/fc/EXT/HTMLHelp
+# 
+# *****************  Version 1  *****************
+# User: Wi           Date: 27.03.98   Time: 11:03
+# Created in $/4Control/COM/softing/fc/EXT/HTMLHelp
+# 
+# 
+#==
+#*****************************************************************************
+#H<<
+
+COPY=HTMLHelp.h $(INCLUDE_DIR)\HTMLHelp.h
+
+COPY=HTMLHelp.lib $(LIB_DIR)\HTMLHelp.lib
+
+USER=makefirst: $(LIB_DIR)
+USER=$(LIB_DIR): ; -md $@

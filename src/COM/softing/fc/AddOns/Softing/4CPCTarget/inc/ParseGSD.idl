@@ -1,0 +1,1074 @@
+
+#include <olectl.h>
+
+//------------------------------------------------------------------*
+/**
+ * @file ParseGSD.idl IDL file for integration of Profibus GSD Parser.
+ * <b>Usage:</b><br> contains <b>NO</b> coclass, a separate IDL file imports
+ * the typelibrary generated from this IDL file and defines the coclasses.
+ * This file will be processed by the MIDL tool to
+ * produce the type library (ParseGSD.tlb) and marshalling code.
+ *
+ * Interface method attributes denoted in brackets '[' contain the follwing 
+ * additional information:
+ * 
+ *  D = Default value returned if corresponding keyword not found in GSD.
+ *  T = Datatype according to GSD specification.
+ *  M = mandatory attribute
+*/
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+cpp_quote("//  type enumerator of different DP station categories")
+/**
+ * type DP_STATION_CAT - enumeration DP_STATION_CAT for different
+ * DP station categories
+ *
+*/
+enum tagDP_STATION_CAT
+{ 
+    DP_Master = 0,          // station is a DP master, QI for IDP_Master
+    DP_Slave,               // station is a standard DP slave, QI for IDP_Slave
+    DP_V1_Slave,            // station is a DP/V1 slave
+    noDP = 99               // station is not a DP station (perhaps FMS??)
+};
+typedef enum tagDP_STATION_CAT  DP_STATION_CAT;
+
+
+cpp_quote("//  baudrate enumerator; values are same as in PROFIBUS headers")
+/**
+ * type BAUDRATE - baudrate enumerator; values are same as in PROFIBUS headers.
+ *
+*/
+enum tagBAUDRATE
+{ 
+    KBAUD_9_6   = 0,
+    KBAUD_19_2  = 1,
+    KBAUD_93_75 = 2,
+    KBAUD_187_5 = 3,
+    KBAUD_500   = 4,
+    KBAUD_750   = 5,
+    MBAUD_1_5   = 6,
+    MBAUD_3     = 7,
+    MBAUD_6     = 8,
+    MBAUD_12    = 9,
+    KBAUD_45_45 = 11,
+    KBAUD_31_25 = 12
+};
+typedef enum tagBAUDRATE BAUDRATE;
+
+enum tagCommunicationRelationship
+{
+    /** C1-communication relationship */
+    C1 = 1,
+    /** C2-communication relationship */
+    C2 = 2
+};
+typedef enum tagCommunicationRelationship COMMREL;
+
+enum tagAlarmType
+{
+    Diagnostic_Alarm,
+    Process_Alarm,
+    Pull_Plug_Alarm,
+    Status_Alarm,
+    Update_Alarm,
+    Manufacturer_Specific_Alarm,
+    Extra_Alarm_SAP
+};
+typedef enum tagAlarmType ALARMTYPE;
+
+enum tagMessageFilter
+{
+    NoFilter,
+    Errors,
+    Warnings
+};
+typedef enum tagMessageFilter MESSAGEFILTER;
+
+enum tagDiagType
+{
+    /** Unit diag bit*/
+    DiagBit,
+    /** Unit diag area*/
+    DiagArea,
+    /** Unit diag no bit - reserved for GSD revision 4*/
+    DiagNoBit,
+    /** Channel diag*/
+    DiagChannel,
+};
+typedef enum tagDiagType DIAG_TYPE;
+
+enum tagGSDDatatype
+{
+    octets = 1,
+    bitArea,
+    uSignedInt8,
+    uSignedInt16,
+    uSignedInt32,
+    signedInt8,
+    signedInt16,
+    signedInt32
+};
+typedef enum tagGSDDatatype GSDDATATYPE;
+
+cpp_quote("//  DEFAULT is set for all properties which may be omitted in GSD file")
+cpp_quote("#define DEFAULT               0")
+cpp_quote("//  NOT_SPECIFIED is set for all properties not specified in GSD file")
+cpp_quote("#define NOT_SPECIFIED        -1")
+cpp_quote("//  MISSING is set for all properties not specified in GSD file, but must be specified")
+cpp_quote("#define MISSING              -2")
+	
+
+//forward declaration of interfaces
+interface IParseGsdFile;
+interface IDP_Station;
+interface IDP_Master;
+interface IDP_Slave;
+interface IModule;
+interface IExtUserParam;
+//new interfaces delared with support for GSD rev. 3
+interface IDP_Station2;
+interface IDP_Master2;
+interface IDP_Slave2;
+interface IModule2;
+interface IExtUserParam2;
+interface IPhysicalInterface;
+interface ISlot;
+interface IDP_AlarmInfo;
+interface IParseMessage;
+interface IDiagnosticInfo;
+interface IPhysicalInterfaceCollection;
+interface IModuleCollection;
+interface IExtUserParamCollection;
+interface ISlotCollection;
+interface IParseMessageCollection;
+interface IDiagnosticInfoCollection;
+//----  Parse GSD Files Interfaces:    ---------------------------------------*
+
+//-Interfaces on coclass ParseGsdFile-----------------------------------------*
+    
+    //------------------------------------------------------------------*
+    /**
+     *  interface IParseGsdFile
+     *  Implemented on the object root coclass (see table 3). 
+     *  Used to initiate a parse process for a GSD file.
+    */
+    [
+		object,
+		uuid(0351C73B-910E-4faa-A8D7-CD6C591E6174),
+		dual,
+        oleautomation,
+		helpstring("IParseGsdFile Interface"),
+		pointer_default(unique)
+	]
+	interface IParseGsdFile : IDispatch
+	{
+		[id(1), helpstring("method ParseFile")]
+            HRESULT ParseFile([in, string] BSTR sFileGSD, [out] LPUNKNOWN *pGsdObj);
+		[propget, id(2), helpstring("property bTraceParsing")]
+            HRESULT bTraceParsing([out, retval] BOOL *pVal);
+		[propput, id(2), helpstring("property bTraceParsing")]
+            HRESULT bTraceParsing([in] BOOL newVal);
+		[propget, id(3), helpstring("property sTraceFilePath")]
+            HRESULT sTraceFilePath([out, retval] BSTR *pVal);
+		[propput, id(3), helpstring("property sTraceFilePath")]
+            HRESULT sTraceFilePath([in] BSTR newVal);
+	};
+
+//----------------------------------------------------------------------------*
+
+
+//-Interfaces on station object-----------------------------------------------*
+
+    //------------------------------------------------------------------*
+    /**
+     *  interface IDP_Station
+     *  Implemented on the station object. Used to obtain general 
+     *  information (e.g. GSD revision, vendor name) about the GSD file 
+     *  and the parse process that created the station object.
+     *  @see    IDP_Station2
+    */
+	[
+		object,
+		uuid(AFDF158D-269E-42c4-AB32-2CA0DD88A470),
+		dual,
+        oleautomation,
+		helpstring("IDP_Station Interface"),
+		pointer_default(unique)
+	]
+	interface IDP_Station : IDispatch
+	{
+		[propget, id(1), helpstring("property ErrorCount of last parsing")]
+            HRESULT ErrorCount([out, retval] long *pVal);
+		[propget, id(2), helpstring("property ErrorStrings")]
+            HRESULT ErrorStrings([out, retval] LPUNKNOWN *pVal);
+		[propget, id(3), helpstring("property StationCategory")]
+            HRESULT StationCategory([out, retval] DP_STATION_CAT *pVal);
+		[propget, id(4), helpstring("property GSD-FileName")]
+            HRESULT FileName([out, retval] BSTR *pVal);
+		[propget, id(5), helpstring("property GSD-FileDate, last modification")]
+            HRESULT FileDate([out, retval] DATE *pVal);
+		[propget, id(6), helpstring("property GSD_Revision")]
+            HRESULT GSD_Revision([out, retval] long *pVal);
+		[propget, id(7), helpstring("property Vendor_Name")]
+            HRESULT Vendor_Name([out, retval] BSTR *pVal);
+		[propget, id(8), helpstring("property Model_Name")]
+            HRESULT Model_Name([out, retval] BSTR *pVal);
+		[propget, id(9), helpstring("property Revision")]
+            HRESULT Revision([out, retval] BSTR *pVal);
+		[propget, id(10), helpstring("property Revision_Number")]
+            HRESULT Revision_Number([out, retval] long *pVal);
+		[propget, id(11), helpstring("property Ident_Number")]
+            HRESULT Ident_Number([out, retval] long *pVal);
+		[propget, id(12), helpstring("property Protocol_Ident")]
+            HRESULT Protocol_Ident([out, retval] long *pVal);
+		[propget, id(13), helpstring("property Station_Type")]
+            HRESULT Station_Type([out, retval] long *pVal);
+		[propget, id(14), helpstring("property HW_Release")]
+            HRESULT HW_Release([out, retval] BSTR *pVal);
+		[propget, id(15), helpstring("property SW_Release")]
+            HRESULT SW_Release([out, retval] BSTR *pVal);
+		[propget, id(16), helpstring("property FMS_supported")]
+            HRESULT FMS_supported([out, retval] BOOL *pVal);
+		[propget, id(17), helpstring("property Redundancy")]
+            HRESULT Redundancy([out, retval] BOOL *pVal);
+		[propget, id(18), helpstring("property Repeater_Ctrl_Sig")]
+            HRESULT Repeater_Ctrl_Sig([out, retval] long *pVal);
+		[propget, id(19), helpstring("property Pins_24V")]
+            HRESULT Pins_24V([out, retval] long *pVal);
+		[propget, id(20), helpstring("property Physical_Layer")]
+            HRESULT Physical_Layer([out, retval] long *pVal);
+		[propget, id(21), helpstring("property Implementation_Type")]
+            HRESULT Implementation_Type([out, retval] BSTR *pVal);
+		[propget, id(22), helpstring("property Bitmap_Device")]
+            HRESULT Bitmap_Device([out, retval] BSTR *pVal);
+		[propget, id(23), helpstring("property Bitmap_Diag")]
+            HRESULT Bitmap_Diag([out, retval] BSTR *pVal);
+		[propget, id(24), helpstring("property Bitmap_SF")]
+            HRESULT Bitmap_SF([out, retval] BSTR *pVal);
+		[propget, id(25), helpstring("property SupportedBaudrates as array of enum BAUDRATE")]
+            HRESULT SupportedBaudrates([out, retval] VARIANT *pVal);
+		[propget, id(26), helpstring("property MaxTsdr")]
+            HRESULT MaxTsdr(BAUDRATE baudrate, [out, retval] long *pVal);
+	};
+
+    //------------------------------------------------------------------*
+    /**
+     *  class IDP_Master
+     *  Implemented on the station object. Shall only be used if the 
+     *  station type indicates a master. The station type can be obtained 
+     *  via the IDP_Station interface. Used to fetch master specific 
+     *  parameters.
+     *
+     *  @see    IDP_Station, IDP_Master2
+    */
+	[
+		object,
+		uuid(249B9282-3704-4f45-BCF2-5A74FAE4AEED),
+		dual,
+        oleautomation,
+		helpstring("IDP_Master Interface"),
+		pointer_default(unique)
+	]
+	interface IDP_Master : IDispatch
+	{
+		[propget, id(1), helpstring("property IsDPV1Master")]
+            HRESULT IsDPV1Master([out, retval] BOOL *pVal);
+		[propget, id(2), helpstring("property DownloadSupp")]
+            HRESULT DownloadSupp([out, retval] BOOL *pVal);
+		[propget, id(3), helpstring("property UploadSupp")]
+            HRESULT UploadSupp([out, retval] BOOL *pVal);
+		[propget, id(4), helpstring("property ActParaBrctSupp")]
+            HRESULT ActParaBrctSupp([out, retval] BOOL *pVal);
+		[propget, id(5), helpstring("property ActParamSupp")]
+            HRESULT ActParamSupp([out, retval] BOOL *pVal);
+		[propget, id(6), helpstring("property MaxMPSLen")]
+            HRESULT MaxMPSLen([out, retval] long *pVal);
+		[propget, id(7), helpstring("property MaxLsduMS")]
+            HRESULT MaxLsduMS([out, retval] long *pVal);
+		[propget, id(8), helpstring("property MaxLsduMM")]
+            HRESULT MaxLsduMM([out, retval] long *pVal);
+		[propget, id(9), helpstring("property MinPollTimeout")]
+            HRESULT MinPollTimeout([out, retval] long *pVal);
+		[propget, id(10), helpstring("property LasLen")]
+            HRESULT LasLen([out, retval] long *pVal);
+		[propget, id(11), helpstring("property MaxSlavesSupp")]
+            HRESULT MaxSlavesSupp([out, retval] long *pVal);
+		[propget, id(12), helpstring("property MaxMasterInputLen")]
+            HRESULT MaxMasterInputLen([out, retval] long *pVal);
+		[propget, id(13), helpstring("property MaxMasterOutputLen")]
+            HRESULT MaxMasterOutputLen([out, retval] long *pVal);
+		[propget, id(14), helpstring("property MaxMasterDataLen")]
+            HRESULT MaxMasterDataLen([out, retval] long *pVal);
+		[propget, id(15), helpstring("property Trdy")]
+            HRESULT Trdy(BAUDRATE baudrate, [out, retval] long *pVal);
+		[propget, id(16), helpstring("property Tqui")]
+            HRESULT Tqui(BAUDRATE baudrate, [out, retval] long *pVal);
+		[propget, id(17), helpstring("property Tset")]
+            HRESULT Tset(BAUDRATE baudrate, [out, retval] long *pVal);
+		[propget, id(18), helpstring("property Tsdi")]
+            HRESULT Tsdi(BAUDRATE baudrate, [out, retval] long *pVal);
+	};
+
+    //------------------------------------------------------------------*
+    /**
+     *  interface IDP_Slave
+     *  Implemented on the station object. Shall only be used if the 
+     *  station type indicates a slave. The station type can be obtained 
+     *  via the IDP_Station interface. Used to get slave specific 
+     *  parameters and for instance to obtain the list of modules defined 
+     *  for the slave.
+     *
+     *  @see    IDP_Slave2, IDP_Station.
+    */
+	[
+		object,
+		uuid(03D5FFD1-0431-4d52-B35C-FE2968B0FA6D),
+		dual,
+        oleautomation,
+		helpstring("IDP_Slave Interface"),
+		pointer_default(unique)
+	]
+	interface IDP_Slave : IDispatch
+	{
+		[propget, id(1), helpstring("property FreezeModeSupp")]
+            HRESULT FreezeModeSupp([out, retval] BOOL *pVal);
+		[propget, id(2), helpstring("property SyncModeSupp")]
+            HRESULT SyncModeSupp([out, retval] BOOL *pVal);
+		[propget, id(3), helpstring("property AutoBaudSupp")]
+            HRESULT AutoBaudSupp([out, retval] BOOL *pVal);
+		[propget, id(4), helpstring("property SetSlaveAddSupp")]
+            HRESULT SetSlaveAddSupp([out, retval] BOOL *pVal);
+		[propget, id(5), helpstring("property UserPrmData")]
+            HRESULT UserPrmData([out, retval] VARIANT *pVal);
+		[propget, id(6), helpstring("property MinSlaveIntervall")]
+            HRESULT MinSlaveIntervall([out, retval] long *pVal);
+		[propget, id(7), helpstring("property ModularStation")]
+            HRESULT ModularStation([out, retval] BOOL *pVal);
+		[propget, id(8), helpstring("property MaxModule")]
+            HRESULT MaxModule([out, retval] long *pVal);
+		[propget, id(9), helpstring("property MaxInputLen")]
+            HRESULT MaxInputLen([out, retval] long *pVal);
+		[propget, id(10), helpstring("property MaxOutputLen")]
+            HRESULT MaxOutputLen([out, retval] long *pVal);
+		[propget, id(11), helpstring("property MaxDataLen")]
+            HRESULT MaxDataLen([out, retval] long *pVal);
+		[propget, id(12), helpstring("property FailSafe")]
+            HRESULT FailSafe([out, retval] BOOL *pVal);
+		[propget, id(13), helpstring("property MaxDiagDataLen")]
+            HRESULT MaxDiagDataLen([out, retval] long *pVal);
+		[propget, id(14), helpstring("property SlaveFamily")]
+            HRESULT SlaveFamily([out, retval] BSTR *pVal);
+        //------------------------------------------------------------------*
+        /**
+         * Returns TRUE in argument pVal if the device has extended user 
+         * parameters or if one of the modules has extended user parameters 
+         * (logical or). Returns FALSE in argument pVal if neither the device 
+         * nor any of the modules has extended user parameters.
+         *
+         * @param       pVal - reference to BOOL value. See above for 
+         *              description of the semantics. Reference shall not be
+         *              NULL.
+         * @return      HRESULT indicating success or failure. Possible 
+         *              HRESULT codes are: S_OK - success.<br>
+         *              E_POINTER - Invalid pointer pVal passed.
+        */
+		[propget, id(15), helpstring("property HasExtUserParam")]
+            HRESULT HasExtUserParam([out, retval] BOOL *pVal);
+		[propget, id(16), helpstring("property LenUserParams")]
+			HRESULT LenUserParams([out, retval] long *pVal);
+
+		[id(30), helpstring("method CreateModuleEnumerator")]
+            HRESULT CreateModuleEnumerator(/*[in] REFIID riid,*/ [out, retval] LPUNKNOWN *pVal);
+		[id(31), helpstring("method CreateExtUserParamEnumerator")]
+            HRESULT CreateExtUserParamEnumerator(/*[in] REFIID riid,*/ [out, retval] LPUNKNOWN *pVal);
+	};
+
+
+    //------------------------------------------------------------------*
+    /**
+     *  interface IDP_Station2
+     *  Implemented on the station object. Used to obtain information 
+     *  about the parse process that created this station object. 
+     *  The warnings occurred during the parse process can be acquired 
+     *  via this interface and access to the collection of physical 
+     *  interface descriptions (IPhysicalInterfaceCollection) is 
+     *  provided by this interface.
+     *
+     *  @see    IPhysicalInterfaceCollection
+    */
+	[
+		object,
+		uuid(70A99731-418F-49b7-B955-26E63BB186FA),
+		dual,
+        oleautomation,
+		helpstring("IDP_Station2 interface"),
+		pointer_default(unique)
+	]
+    interface IDP_Station2 : IDispatch
+    {
+		[propget, id(1), helpstring("Supported GSD revision of parser")]
+            HRESULT SupportedGSDRevision([out, retval] long *pVal);
+
+        [id(2), helpstring("Set the message filter for message collection")]
+            HRESULT SetMessageFilter([in] MESSAGEFILTER filter);
+
+        [propget, id(3), helpstring("Collection of parser message objects - includes errors, warnings, informational")]
+            HRESULT ParseMessageCollection([out, retval] IParseMessageCollection ** pp);
+        
+        [propget, id(4), helpstring("get collection of physical interface objects")]
+            HRESULT PhysicalInterfaceCollection([out, retval] IPhysicalInterfaceCollection ** pp);
+    };
+
+
+    //------------------------------------------------------------------*
+    /**
+     *  interface IDP_Master2 -
+     *  Implemented on the station object. Shall only be used if the 
+     *  station type indicates a master. The station type can be obtained 
+     *  via the IDP_Station interface. Used to fetch master specific 
+     *  parameters introduced with GSD revision 3 
+     *  (e.g. DPV1_Conformance_Class or Master_DPV1_Alarm_supp).
+     *
+     *  @see    IDP_Master1
+    */
+	[
+		object,
+		uuid(E6AE7AAE-2A8F-429b-8590-8D27F2E9A8DC),
+		dual,
+        oleautomation,
+		helpstring("IDP_Master2 interface"),
+		pointer_default(unique)
+	]
+    interface IDP_Master2 : IDispatch
+    {
+		[propget, id(1), helpstring("FreezeModeSupp T=Boolean D=0 (VARIANT_FALSE)")]
+            HRESULT MasterFreezeModeSupp([out, retval] VARIANT_BOOL *pVal);
+
+		[propget, id(2), helpstring("SyncModeSupp T=Boolean D=0 (VARIANT_FALSE)")]
+            HRESULT MasterSyncModeSupp([out, retval] VARIANT_BOOL *pVal);
+        
+		[propget, id(3), helpstring("FailSafeSupp T=Boolean D=0 (VARIANT_FALSE)")]
+            HRESULT FailSafeSupp([out, retval] VARIANT_BOOL *pVal);
+
+        [propget, id(4), helpstring("DPV1ConformanceClass T=Unsigned8 D=-1")]
+            HRESULT DPV1ConformanceClass([out, retval] short *pVal);
+
+        [propget, id(5), helpstring("C1ReadWriteSupp T=Boolean D=0 (VARIANT_FALSE)")]
+            HRESULT C1ReadWriteSupp([out, retval] VARIANT_BOOL *pVal);
+
+        [propget, id(6), helpstring("DPV1AlarmSupp T=Boolean D=0 (VARIANT_FALSE)")]
+            HRESULT DPV1AlarmSupp([out, retval] VARIANT_BOOL *pVal);
+        
+    };
+
+
+    //------------------------------------------------------------------*
+    /**
+     *  interface IDP_Slave2 -
+     *  Implemented on the station object. Shall only be used if the 
+     *  station type indicates a slave. The station type can be obtained
+     *  via the IDP_Station interface. Used to get slave specific para-
+     *  meters introduced with GSD revision 3 (e.g. C1/C2 parameters). 
+     *  Additionally IDP_Slave2 provides a collection for the slot 
+     *  definitions (see interface ISlotCollection) and a collection of
+     *  module objects (see interface IModuleCollection).
+     *
+     *  @see    IDP_Slave, IModuleCollection, ISlotCollection
+    */
+	[
+		object,
+		uuid(CD75B6DD-1B57-4cb9-8571-73F9F7488333),
+		dual,
+        oleautomation,
+		helpstring("IDP_Slave2 interface"),
+		pointer_default(unique)
+	]
+    interface IDP_Slave2 : IDispatch
+    {
+		[propget, id(1), helpstring("IsDPV1Slave T=Boolean D=0 (VARIANT_FALSE)")]
+            HRESULT IsDPV1Slave([out, retval] VARIANT_BOOL *pVal);
+
+        [propget, id(2), helpstring("DiagUpdateDelay T=Unsigned8 D=0")]
+            HRESULT DiagUpdateDelay([out, retval] short *pVal);
+
+        [propget, id(3), helpstring("InfoText T=Visible string D=Empty string ")]
+            HRESULT InfoText([out, retval] BSTR *psVal);
+
+		[propget, id(4), helpstring("ReadWriteSupp T=Boolean D=0 (VARIANT_FALSE)")]
+            HRESULT ReadWriteSupp([in] COMMREL commrel, [out, retval] VARIANT_BOOL *pVal);
+
+		[propget, id(5), helpstring("MaxDataLen T=Unsigned8 D=0")]
+            HRESULT MaxDataLen([in] COMMREL commrel, [out, retval] short *pVal);
+
+		[propget, id(6), helpstring("ResponseTimeOut (timebase = 10ms) T=Unsigned16 D=0")]
+            HRESULT ResponseTimeOut([in] COMMREL commrel, [out, retval] long *pVal);
+
+		[propget, id(7), helpstring("ReadWriteRequired T=Boolean D=0 (VARIANT_FALSE)")]
+            HRESULT ReadWriteRequired([in] COMMREL commrel, [out, retval] VARIANT_BOOL *pVal);
+
+		[propget, id(8), helpstring("MaxCountChannels (commrel must be C2) T=Unsigned8 D=0")]
+            HRESULT MaxCountChannels([in] COMMREL commrel, [out, retval] short *pVal);
+
+        [propget, id(9), helpstring("MaxInitatePDULength T=Unsigned8 D=0")]
+            HRESULT MaxInitatePDULength([out, retval] short *pVal);
+
+		[propget, id(10), helpstring("DPV1DataTypes T=Boolean D=0 (VARIANT_FALSE)")]
+            HRESULT DPV1DataTypes([out, retval] VARIANT_BOOL *pVal);
+
+		[propget, id(11), helpstring("WDBase1msSupp T=Boolean D=0 (VARIANT_FALSE)")]
+            HRESULT WDBase1msSupp([out, retval] VARIANT_BOOL *pVal);
+
+		[propget, id(12), helpstring("CheckCfgMode T=Boolean D=0 (VARIANT_FALSE)")]
+            HRESULT CheckCfgMode([out, retval] VARIANT_BOOL *pVal);
+
+		[propget, id(13), helpstring("FailSafeRequired T=Boolean D=0 (VARIANT_FALSE)")]
+            HRESULT FailSafeRequired([out, retval] VARIANT_BOOL *pVal);
+
+        [propget, id(14), helpstring("get collection of module objects")]
+            HRESULT ModuleCollection([out, retval] IModuleCollection ** pp);
+
+        [propget, id(15), helpstring("get collection of slot objects")]
+            HRESULT SlotCollection([out, retval] ISlotCollection ** pp);
+
+        [propget, id(16), helpstring("get collection of unit diagnostic definitions and device specific channel diagnostics")]
+            HRESULT DiagnosticCollection([out, retval]  IDiagnosticInfoCollection** pp);
+
+		[propget, id(17), helpstring("Number of bytes used with unit diag definitions")]
+            HRESULT NoDiagosticBytes([out, retval] short *pVal);
+
+        [propget, id(18), helpstring("get collection extended user parameter objects")]
+            HRESULT ExtUserParamCollection([out, retval]  IExtUserParamCollection** pp);
+
+    };
+
+    //------------------------------------------------------------------*
+    /**
+     *  interface ISlot -
+     *  Implemented on the slot object. Accessible via the slot collection 
+     *  exposed with the interface ISlotCollection. Used to access para-
+     *  meters of a single slot definition like slot number, slot name, 
+     *  default module (as IModule interface), an the collection of 
+     *  mountable modules (see IModuleCollection).
+     *
+     *  @see    ISlotCollection, IDP_Slave2, IModuleCollection
+    */
+	[
+		object,
+		uuid(CF8968C1-49E6-4d08-8ED3-97EEF60C55D2),
+		dual,
+        oleautomation,
+		helpstring("ISlot Interface"),
+		pointer_default(unique)
+	]
+    interface ISlot : IDispatch
+    {
+        [propget, id(1), helpstring("Slot number T=Unsigned8 D=0 (not allowed)")]
+            HRESULT SlotNumber([out,retval] long * pVal);
+
+        [propget, id(2), helpstring("Slot number T=Visible string D=Empty string")]
+            HRESULT SlotName([out,retval] BSTR * psVal);
+
+        [propget, id(3), helpstring("get the default module")]
+            HRESULT DefaultModule([out,retval] IModule **pp);
+
+        [propget, id(4), helpstring("get collection of mountable module objects")]
+            HRESULT ModuleCollection([out, retval] IModuleCollection ** pp);
+    };
+
+//----------------------------------------------------------------------------*
+
+//-Interfaces on module object------------------------------------------------*
+
+    //------------------------------------------------------------------*
+    /**
+     *  interface IModule - 
+     *  Implemented on the module object. Used to get module properties,
+     *  for instance the module name, the configuration bytes etc. Module 
+     *  specific extended user parameters can be retrieved via 
+     *  CreateExtUserParamEnumerator() on this interface.
+     *
+     *  @see    IModule2
+    */
+	[
+		object,
+		uuid(B151E309-AB42-4389-91DA-BA3151AC1BBC),
+		dual,
+        oleautomation,
+		helpstring("IModule Interface"),
+		pointer_default(unique)
+	]
+	interface IModule : IDispatch
+	{
+		[propget, id(1), helpstring("property HasExtUserParam")]
+            HRESULT HasExtUserParam([out, retval] BOOL *pVal);
+		[propget, id(2), helpstring("property ModName")]
+            HRESULT ModName([out, retval] BSTR *pVal);
+		[propget, id(3), helpstring("property ConfigBytes")]
+            HRESULT ConfigBytes([out, retval] VARIANT *pVal);
+		[id(4), helpstring("method CreateExtUserParamEnumerator")]
+            HRESULT CreateExtUserParamEnumerator(/*[in] REFIID riid,*/ [out, retval] LPUNKNOWN *pVal);
+		[propget, id(5), helpstring("property LenUserParams")]
+            HRESULT LenUserParams([out, retval] long *pVal);
+    };
+
+    //------------------------------------------------------------------*
+    /**
+     *  interface IModule2 - 
+     *  Implemented on the module object. Used to get module properties 
+     *  that have been introduced with GSD revision 3.
+     *
+     *  @see    IModule
+    */
+	[
+		object,
+		uuid(56EDC4F9-0B85-453c-9204-8D51651B0068),
+		dual,
+        oleautomation,
+		helpstring("IModule2 Interface"),
+		pointer_default(unique)
+	]
+	interface IModule2 : IDispatch
+	{
+        [propget, id(1), helpstring("ModuleReference T=Unsigned16 D=-1 meaning not specified")]
+            HRESULT ModuleReference([out,retval] long * pVal);
+
+        [propget, id(2), helpstring("InfoText T=Visible string D=Empty string")]
+            HRESULT InfoText([out, retval] BSTR *psVal);
+
+        [propget, id(3), helpstring("get collection extended user parameter objects")]
+            HRESULT ExtUserParamCollection([out, retval]  IExtUserParamCollection** pp);
+
+        [propget, id(4), helpstring("get collection of module specific channel diagnostic definitions")]
+            HRESULT DiagnosticCollection([out, retval]  IDiagnosticInfoCollection** pp);
+
+    };
+
+//-Interfaces on various objects --------------------------------------------*
+
+    //------------------------------------------------------------------*
+    /**
+     *  interface IExtUserParam
+     *  Implemented on the extended user parameter object. Used to get 
+     *  the properties of an extended user parameter. To obtain a 
+     *  collection of extended user parameter objects call 
+     *  get_ExtUserParamCollection() on the IDP_Slave2 or the IModule2
+     *  interface.
+     *
+     *  @see    IExtUserParamCollection, IDP_Slave, IDP_Slave2, IModule
+     *          IModule2 
+    */
+	[
+		object,
+		uuid(40CBB185-9F59-4aec-B950-32909EA4406C),
+		dual,
+        oleautomation,
+		helpstring("IExtUserParam Interface"),
+		pointer_default(unique)
+	]
+	interface IExtUserParam : IDispatch
+	{
+		[propget, id(1), helpstring("property Offset")]
+            HRESULT Offset([out, retval] LONG *pVal);
+		[propget, id(2), helpstring("property Description")]
+            HRESULT Description([out, retval] BSTR *pVal);
+		[propget, id(3), helpstring("property IsConstantParam")]
+            HRESULT IsConstantParam([out, retval] BOOL *pVal);
+		[propget, id(4), helpstring("property IsVariableEnumParam")]
+            HRESULT IsVariableEnumParam([out, retval] BOOL *pVal);
+		[propget, id(5), helpstring("property IsVariableMinMaxParam")]
+            HRESULT IsVariableMinMaxParam([out, retval] BOOL *pVal);
+		[propget, id(6), helpstring("property IsBitArea")]
+            HRESULT IsBitArea([out, retval] BOOL *pVal);
+		[propget, id(7), helpstring("property BitAreaStart")]
+            HRESULT BitAreaStart([out, retval] LONG *pVal);
+		[propget, id(8), helpstring("property BitAreaLength")]
+            HRESULT BitAreaLength([out, retval] LONG *pVal);
+		[propget, id(9), helpstring("property DefaultValue")]
+            HRESULT DefaultValue([out, retval] LONG *pVal);
+		[propget, id(10), helpstring("property MinValue")]
+            HRESULT MinValue([out, retval] LONG *pVal);
+		[propget, id(11), helpstring("property MaxValue")]
+            HRESULT MaxValue([out, retval] LONG *pVal);
+		[propget, id(12), helpstring("property ConstPrmBytes")]
+            HRESULT ConstPrmBytes([out, retval] VARIANT *pVal);
+		[id(13), helpstring("method NamedEnumValues")]
+            HRESULT NamedEnumValues([out] VARIANT *pValues, [out] VARIANT *pNames);
+		[id(14), helpstring("method EnumValues")]
+            HRESULT EnumValues([out] VARIANT *pValues);
+    };
+
+	
+    //------------------------------------------------------------------*
+    /**
+     *  interface IExtUserParam2
+     *  Implemented on the extended user parameter object. Used to get 
+     *  the properties of an extended user parameter. To obtain a 
+     *  collection of extended user parameter objects call 
+     *  get_ExtUserParamCollection() on the IDP_Slave2 or the IModule2
+     *  interface.
+     *
+     *  @see    IExtUserParamCollection, IDP_Slave, IDP_Slave2, IModule
+     *          IModule2, IExtUserParam
+    */
+    [
+		object,
+		uuid(ADA53904-B88F-4bad-B345-5299E0D5E752),
+		dual,
+        oleautomation,
+		helpstring("IExtUserParam2 Interface"),
+		pointer_default(unique)
+	]
+	interface IExtUserParam2 : IDispatch
+	{
+		[propget, id(1), helpstring("datatype of extended user parameter T=GSDDATATYPE D=octets")]
+            HRESULT Datatype([out, retval] GSDDATATYPE *pVal);
+
+    };
+
+    //------------------------------------------------------------------*
+    /**
+     *  interface IDP_AlarmInfo
+     *  Implemented on the station object and the module object to support 
+     *  alarm specific parameters introduced with GSD revision 3 
+     *  (e.g. the alarm support flags).
+     *
+    */
+	[
+		object,
+		uuid(FFEED24F-16C5-472b-9AFA-F88BEA638434),
+		dual,
+        oleautomation,
+		helpstring("IDP_AlarmInfo Interface"),
+		pointer_default(unique)
+	]
+    interface IDP_AlarmInfo : IDispatch
+    {
+        [propget, id(1), helpstring("AlarmSupp T=Boolean D=0 (VARIANT_FALSE)")]
+            HRESULT AlarmSupp([in] ALARMTYPE type, [out,retval] VARIANT_BOOL *pVal);
+
+        [propget, id(2), helpstring("AlarmRequired T=Boolean D=0 (VARIANT_FALSE)")]
+            HRESULT AlarmRequired([in] ALARMTYPE type, [out,retval] VARIANT_BOOL *pVal);
+
+        [propget, id(3), helpstring("AlarmSequenceMode T=Unsigned8 D=0")]
+            HRESULT AlarmSequenceMode([out,retval] short *pVal);
+
+        [propget, id(4), helpstring("AlarmTypeModeSupp T=Boolean D=0 (VARIANT_FALSE)")]
+            HRESULT AlarmTypeModeSupp([out,retval] VARIANT_BOOL *pVal);
+    };
+
+
+
+    //------------------------------------------------------------------*
+    /**
+     *  interface IParseMessage
+     *  interface to access properties of a GSD Parser message after
+     *  parse process. The message string, HRESULT error code can
+     *  be obtained via this interface. It can also be queried wether
+     *  the message is an hard error message or not. 
+     *
+    */
+	[
+		object,
+		uuid(6DBF14A8-E1AE-44a3-8712-A7369BC1ED60),
+		dual,
+        oleautomation,
+		helpstring("IParseMessage Interface"),
+		pointer_default(unique)
+	]
+    interface IParseMessage : IDispatch
+    {
+        [propget, id(1), helpstring("Message text (localized)")]
+            HRESULT Message([out,retval] BSTR *psVal);
+
+        [propget, id(2), helpstring("HRESULT code")]
+            HRESULT Code([out,retval] long *pVal);
+
+        [id(3), helpstring("Is this an error ?")]
+            HRESULT IsError([out,retval] VARIANT_BOOL *pVal);
+    };
+
+
+    //------------------------------------------------------------------*
+    /**
+     *  interface IDiagnosticInfo
+     *  interface to access properties of a Unit diag area, Unit diag bit 
+     *  or channel diagnostic definition. An collection to get all diagnostic 
+     *  definitions of a device can be obtained on the interface IDP_Slave2. 
+     *  To obtain the collection of module specific channel diagnostic 
+     *  definitions call get_DiagnosticCollection() on the IModule2 interface.
+     *  @see    IDP_Slave2, IDiagnosticInfoCollection, IModule2
+    */
+	[
+		object,
+		uuid(17FF7B05-91E7-472f-9F64-D837E1ED2E59),
+		dual,
+        oleautomation,
+		helpstring("IDiagnosticInfo Interface"),
+		pointer_default(unique)
+	]
+    interface IDiagnosticInfo : IDispatch
+    {
+        [propget, id(1), helpstring("Gives diagnostic type")]
+            HRESULT DiagnosticType([out,retval] DIAG_TYPE *pVal);
+		[propget, id(2), helpstring("Starting bit position of diagnostic Area - also used to get only diagnostic bit")]
+            HRESULT BitAreaStart([out, retval] LONG *pVal);
+		[propget, id(3), helpstring("End bit position of diagnostic Area - set to -1 if it's a diagnostic bit")]
+            HRESULT BitAreaEnd([out, retval] LONG *pVal);
+		[propget, id(4), helpstring("Get diagnostic bit/area/channel values and associated texts - bit returned value=1")]
+            HRESULT Values([out] VARIANT *pValues, [out] VARIANT *pText);
+    }
+
+
+
+//-Interfaces on physical interface object -----------------------------------*
+	
+    //------------------------------------------------------------------*
+    /**
+     *  interface IPhysicalInterface - 
+     *  Implemented on the physical interface object. Used to access the
+     *  parameters of a physical interface description (introduced with 
+     *  GSD Revision 3).
+     *  @see  IPhysicalInterfaceCollection  
+    */
+    [
+		object,
+		uuid(169C9775-E2AC-4573-839C-0A673983F122),
+		dual,
+        oleautomation,
+		helpstring("IPhysicalInterface Interface"),
+		pointer_default(unique)
+	]
+	interface IPhysicalInterface : IDispatch
+	{
+        [propget, id(1), helpstring("Interface Id T=Unsigned8 D=0 M")]
+            HRESULT InterfaceId([out,retval] long *pVal);
+		[propget, id(2), helpstring("Transmission delay T= Unsigned16 D=-1")]
+            HRESULT TransmissionDelay(BAUDRATE baudrate, [out, retval] long *pVal);
+		[propget, id(3), helpstring("Reaction delay T= Unsigned16 D=-1")]
+            HRESULT ReactionDelay(BAUDRATE baudrate, [out, retval] long *pVal);
+    };
+
+
+//-Collection interfaces------------------------------------------------------*
+
+    //------------------------------------------------------------------*
+    /**
+     *  interface IPhysicalInterfaceCollection - 
+     *  Collection interface that provides access to a collection of 
+     *  0-n physical interface objects. For random access Item() can be 
+     *  used. For enumeration calling _NewEnum creates a new standard 
+     *  enumerator.
+     *
+     *  @see    IPhysicalInterface
+    */
+	[
+		object,
+		uuid(ABE44C2A-2FC8-4574-872E-E2C5033420AB),
+		dual,
+        oleautomation,
+		helpstring("IPhysicalInterfaceCollection Interface"),
+		pointer_default(unique)
+	]
+    interface IPhysicalInterfaceCollection : IDispatch 
+    {
+        [propget, id(1), helpstring("count of elements")]
+            HRESULT Count([out, retval] long* pnCount);
+        [id(DISPID_VALUE), propget, helpstring("raw indexed access to collection")]
+            HRESULT Item([in] long n, [out, retval] IPhysicalInterface** pp);
+        [id(DISPID_NEWENUM), propget, restricted, hidden, helpstring("create new enumerator")]
+            HRESULT _newEnum([out, retval] IUnknown** ppEnum);
+    };
+
+    //------------------------------------------------------------------*
+    /**
+     *  interface IModuleCollection -
+     *  Collection interface providing access to a collection of 0-n 
+     *  module objects. For random access Item() can be used. For 
+     *  enumeration calling _newEnum creates a new standard enumerator 
+     *  To acquire the collection call get_ModuleCollection() 
+     *  on the IDP_Slave2 interface. In order to obtain a collection of 
+     *  the module objects that can be mounted to a slot call get_Module-
+     *  Collection() on the ISlot interface.
+     *  @see    IDP_Slave2, ISlot.
+    */
+	[
+		object,
+		uuid(6800E53D-0F0B-4d29-BF34-F0A961F8683E),
+		dual,
+        oleautomation,
+		helpstring("IModuleCollection Interface"),
+		pointer_default(unique)
+	]
+    interface IModuleCollection : IDispatch 
+    {
+        [propget, id(1), helpstring("count of elements")]
+            HRESULT Count([out, retval] long* pnCount);
+        [id(DISPID_VALUE), propget, helpstring("raw indexed access to collection")]
+            HRESULT Item([in] long n, [out, retval] IModule** pp);
+        [id(DISPID_NEWENUM), propget, restricted, hidden, helpstring("create new enumerator")]
+            HRESULT _newEnum([out, retval] IUnknown** ppEnum);
+    };
+
+    //------------------------------------------------------------------*
+    /**
+     *  interface IExtUserParamCollection -
+     *  Collection interface providing access to a collection of 0-n 
+     *  extended user parameter objects. For random access Item() can be 
+     *  used. For enumeration calling _newEnum creates a new standard 
+     *  enumerator. To acquire the collection call get_ExtUserParam- 
+     *  Collection() on the IDP_Slave2 or the IModule2 interface.
+     *  @see    IDP_Slave2, IModule2
+    */
+	[
+		object,
+		uuid(1C0DEB01-CC82-49cd-BF88-57D2EA761D71),
+		dual,
+        oleautomation,
+		helpstring("IExtUserParamCollection Interface"),
+		pointer_default(unique)
+	]
+    interface IExtUserParamCollection : IDispatch 
+    {
+        [propget, id(1), helpstring("count of elements")]
+            HRESULT Count([out, retval] long* pnCount);
+        [id(DISPID_VALUE), propget, helpstring("raw indexed access to collection")]
+            HRESULT Item([in] long n, [out, retval] IExtUserParam** pp);
+        [id(DISPID_NEWENUM), propget, restricted, hidden, helpstring("create new enumerator")]
+            HRESULT _newEnum([out, retval] IUnknown** ppEnum);
+    };
+
+    //------------------------------------------------------------------*
+    /**
+     *  interface ISlotCollection
+     *  Collection interface that provides access to a collection of 0-n
+     *  slot objects. For random access Item() can be used. For enumeration
+     *  calling _newEnum creates a new standard enumerator. 
+     *  To obtain the collection call get_SlotCollection() on the IDP_Slave2 
+     *  interface.
+     *
+     *  @see    IDP_Slave2
+    */
+	[
+		object,
+		uuid(FEBACCE0-B7E3-485b-A243-D1046587C641),
+		dual,
+        oleautomation,
+		helpstring("ISlotCollection Interface"),
+		pointer_default(unique)
+	]
+    interface ISlotCollection : IDispatch 
+    {
+        [propget, id(1), helpstring("count of elements")]
+            HRESULT Count([out, retval] long* pnCount);
+        [id(DISPID_VALUE), propget, helpstring("raw indexed access to collection")]
+            HRESULT Item([in] long n, [out, retval] ISlot** pp);
+        [id(DISPID_NEWENUM), propget, restricted, hidden, helpstring("create new enumerator")]
+            HRESULT _newEnum([out, retval] IUnknown** ppEnum);
+    };
+
+
+    //------------------------------------------------------------------*
+    /**
+     *  interface IParseMessageCollection
+     *  Collection interface that provides access to a collection of 0-n
+     *  parse message objects of the GSD Parser. For random access Item() 
+     *  can be used. For enumeration calling _newEnum creates a new standard 
+     *  enumerator. To obtain the collection call get_ParseMessageCollection() 
+     *   on the IDP_Station2 interface.
+     *
+     *  @see    IDP_Station2
+    */
+	[
+		object,
+		uuid(AFFD7A23-0A43-42fd-B371-B1BADCBF2D3D),
+		dual,
+        oleautomation,
+		helpstring("IParseMessageCollection Interface"),
+		pointer_default(unique)
+	]
+    interface IParseMessageCollection : IDispatch
+    {
+        [propget, id(1), helpstring("count of elements")]
+            HRESULT Count([out, retval] long* pnCount);
+        [id(DISPID_VALUE), propget, helpstring("raw indexed access to collection")]
+            HRESULT Item([in] long n, [out, retval] IParseMessage** pp);
+        [id(DISPID_NEWENUM), propget, restricted, hidden, helpstring("create new enumerator")]
+            HRESULT _newEnum([out, retval] IUnknown** ppEnum);
+    };
+
+    //------------------------------------------------------------------*
+    /**
+     *  interface IDiagnosticInfoCollection
+     *  Collection interface that provides access to a collection of 0-n
+     *  diagnostic definitions of the GSD Parser. For random access Item() 
+     *  can be used. For enumeration calling _newEnum creates a new standard 
+     *  enumerator. To obtain the collection of device specific diagnostics
+     *  call get_DiagnosticCollection() on the IDP_Slave2 interface. To 
+     *  obtain the collection module specific channel diagnostic definitions
+     *  call get_DiagnosticCollection() on the IModule2 interface.
+     *
+     *  @see    IDP_Slave2
+    */
+	[
+		object,
+		uuid(49D923FE-0B9C-4891-A25A-275735060F06),
+		dual,
+        oleautomation,
+		helpstring("IDiagnosticInfoCollection Interface"),
+		pointer_default(unique)
+	]
+    interface IDiagnosticInfoCollection : IDispatch
+    {
+        [propget, id(1), helpstring("count of elements")]
+            HRESULT Count([out, retval] long* pnCount);
+        [id(DISPID_VALUE), propget, helpstring("raw indexed access to collection")]
+            HRESULT Item([in] long n, [out, retval] IDiagnosticInfo** pp);
+        [id(DISPID_NEWENUM), propget, restricted, hidden, helpstring("create new enumerator")]
+            HRESULT _newEnum([out, retval] IUnknown** ppEnum);
+    };
+    
+
+
+//----  Type Library:    -----------------------------------------------------*
+[
+	uuid(E191FC94-A146-4d7a-81B8-36E4BB7F9995),
+	version(2.0),
+	helpstring("4C_20: Profibus GSD Parser Standard Interfaces")
+    //new Version 2.0 - E191FC94-A146-4d7a-81B8-36E4BB7F9995 (see above)
+    //old Version 1.0 - D222B710-B6AC-11D1-A7FB-0000B459DC11
+]
+library PARSEGSDLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+    //Reference all interfaces in the type library.
+    interface IParseGsdFile;
+    interface IDP_Station;
+    interface IDP_Master;
+    interface IDP_Slave;
+    interface IModule;
+    interface IExtUserParam;
+    //new interfaces delared with support for GSD rev. 3
+    interface IDP_Station2;
+    interface IDP_Master2;
+    interface IDP_Slave2;
+    interface IModule2;
+    interface IExtUserParam2;
+    interface IPhysicalInterface;
+    interface ISlot;
+    interface IDP_AlarmInfo;
+    interface IParseMessage;
+    interface IDiagnosticInfo;
+    interface IPhysicalInterfaceCollection;
+    interface IModuleCollection;
+    interface IExtUserParamCollection;
+    interface ISlotCollection;
+    interface IParseMessageCollection;
+    interface IDiagnosticInfoCollection;
+};
+
+

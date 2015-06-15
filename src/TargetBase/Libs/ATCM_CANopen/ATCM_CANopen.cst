@@ -1,0 +1,56 @@
+(*Constant file*)
+(*[[
+]]*)
+
+CONST
+
+(* constants definition for function CANopen_BoardCmd *)
+
+(* constants for parameter Command *)
+	cmd_RESET : INT := 1;
+	cmd_START : INT := 2;
+	cmd_STOP  : INT := 3;
+
+
+(* constants definition for function CANopen_GetEmcyInfo *)
+
+(* bit definition for parameter NodeStatus *)
+	st_NO_RESPONSE	  : WORD := 16#0001;
+	st_EMCY_BUFF_OVFL : WORD := 16#0002;
+	st_PRM_FAULT      : WORD := 16#0004;
+	st_GUARD_ACTIVE   : WORD :=	16#0008;
+	st_DEACT          : WORD := 16#0080;
+
+(* constants for parameter ProfileNum *)
+	dp_IO_MODULES  : INT := 401;
+	dp_DRIVES      : INT := 402;
+	dp_ENCODERS    : INT := 406;
+
+(* constants for parameter NodeState *)
+	ns_DISCONNECTED   : INT := 1;
+	ns_CONNECTING	  : INT := 2;
+	ns_PREPARING	  : INT := 3;
+	ns_PREPARED	      : INT := 4;
+	ns_OPERATIONAL	  : INT := 5;
+	ns_PREOPERATIONAL : INT := 127;
+
+
+(* constants definition for function CANopen_GetStatus *)
+
+(* constants for parameter MasterStatus *)
+	ms_OFFLINE   : WORD := 16#00;
+	ms_STOP      : WORD := 16#40;
+	ms_CLEAR     : WORD := 16#80;
+	ms_OPERATE   : WORD := 16#C0;
+
+
+(* constants definition for function CANopen_NmtCmd *)
+
+(* constants for parameter Cmd *)
+	nmt_START_REMOTE_NODE    : INT := 1;
+	nmt_STOP_REMOTE_NODE     : INT := 2;
+	nmt_ENTER_PREOPERATIONAL : INT := 128;
+	nmt_RESET_NODE           : INT := 129;
+	nmt_RESET_COMMUNICATION  : INT := 130;
+
+END_CONST

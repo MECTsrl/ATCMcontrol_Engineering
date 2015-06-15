@@ -1,0 +1,12 @@
+(*[[
+    UserURL= "ATCMfile:WORD_TO_WSTRING.htm"
+]]*)
+
+FUNCTION WORD_TO_STRING : STRING
+VAR_INPUT 
+    IN : WORD; 
+END_VAR
+
+inline{VMOP}
+
+END_FUNCTION

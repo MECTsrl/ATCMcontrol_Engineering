@@ -1,0 +1,12 @@
+(*[[
+    UserURL= "ATCMFile:BOOL_TO_WSTRING.htm"
+]]*)
+
+FUNCTION BOOL_TO_WSTRING : WSTRING
+VAR_INPUT 
+    IN : BOOL; 
+END_VAR
+
+inline{%1?"TRUE":"FALSE"}
+
+END_FUNCTION

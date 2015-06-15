@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>BYTE_STRING_SET</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>BYTE_STRING_SET </h2>
+<p>Changes the value of a byte in a bytestring.</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION BYTE_STRING_SET
+VAR_IN_OUT 
+    BSTR  : BYTE_STRING; 
+END_VAR
+VAR_INPUT 
+    INDEX : DINT;
+    VALUE : BYTE;
+END_VAR</pre>
+<h3>Parameters</h3>
+<h3>IN_OUT</h3>
+<dl> 
+  <dt><b>BSTR</b></dt>
+  <dd>Instance of the structure <i><b><a href="BYTE_STRING.htm">BYTE_STRING</a></b></i>.<br>
+    Bytestring, in which a value is to be changed.</dd>
+</dl>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>INDEX</b></dt>
+  <dd>Value of type <i><b>DINT</b></i>.<br>
+    Defines the index of the byte whose value has to be changed in the bytestring. 
+  </dd>
+  <dt><b>VALUE</b></dt>
+  <dd>Value of type <i><b>BYTE</b></i>.<br>
+    Defines the value to be written. </dd>
+</dl>
+<h3>Description</h3>
+<p>Writes the<b> <i>VALUE</i></b><i> </i>to that byte of the <b><i>BSTR</i></b> 
+  byte which is specified in the index.</p>
+<p>Before calling <i><b>BYTE_STRING_SET</b></i>, the instance of <a href="BYTE_STRING.htm"><b><i>BYTE_STRING</i></b></a> 
+  that is passed as a parameter must either be initialized with the function <a href="BYTE_STRING_INIT.htm"><b><i>BYTE_STRING_INIT</i></b></a> 
+  or the structure variable size of <i><b>BSTR</b></i> must be set to a value 
+  <b><i>>= INDEX</i></b> since the size of the byte string is initialized by default 
+  with the value <i><b>0</b></i> when an instance of <i><b>BYTE_STRING </b></i>is 
+  created. Thus, if <i><b><a href="BYTE_STRING_GET.htm">BYTE_STRING_GET</a></b></i> 
+  is called with<i><b> INDEX > 0</b></i>, this would result in an attempt to access 
+  a nonexistent index and generate a runtime error.</p>
+</body>
+</html>

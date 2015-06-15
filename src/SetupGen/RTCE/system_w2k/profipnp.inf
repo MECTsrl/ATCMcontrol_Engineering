@@ -1,0 +1,99 @@
+;***********************************************************
+; PROFIPNP.INF                             (NO DISC VERSION)
+;
+; Setup information file to install the PROFIBUS controllers
+; - PROFIboard-PCI
+; - PROFIcard
+; - PROFIcard 2
+; in the Windows XP, Windows 2000 environment
+;
+
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=SoftingFieldbusInterface
+ClassGUID={74844200-FFFD-11d3-9C7D-00902766E5CB}
+Provider="ATCM"
+DriverVer=06/30/2004,5,27,0,0
+
+[SourceDisksNames]
+1=%DiskId%
+
+[SourceDisksFiles]
+profipnp.sys=1
+
+[ClassInstall32]
+Addreg=HwClass
+
+[HwClass]
+HKR,,,,%ClassName%
+HKR,,Icon,,"-5"
+
+[DestinationDirs]
+DefaultDestDir=12
+
+[Manufacturer]
+%Mfg%=MfgDeviceSection
+
+[MfgDeviceSection]
+%DeviceDesc0% = PROFIboard_PCI, PCI\VEN_10B5&DEV_9050&SUBSYS_002814A0&REV_02
+%DeviceDesc1% = PROFIcard,      PCMCIA\SOFTING-PROFIcard_FMS/DP_PCMCIA_Interface-7602
+%DeviceDesc2% = PROFicard_2,    PCMCIA\SOFTING-PROFIcard_2_FMS/DP_PC_CARD_Interface-C976
+
+[PROFIboard_PCI]
+;CopyFiles = @profipnp.sys
+
+[PROFIboard_PCI.Services]
+AddService = profipnp,%SPSVCINST_ASSOCSERVICE%,Profibus_Service_Inst
+
+
+[PROFIcard]
+;CopyFiles = @profipnp.sys
+
+[PROFIcard.Services]
+AddService = profipnp,%SPSVCINST_ASSOCSERVICE%,Profibus_Service_Inst
+
+[PROFIcard.LogConfigOverride]
+LogConfig=PROFIcard_Override
+
+[PROFIcard_Override]
+IRQConfig = 3,4,5,6,7,8,9,10,11,12,13,14,15
+;MemConfig = 4000@C0000-FFFFF%FFFFC000(RW)  ;Common Memory
+MemConfig = 4000@C0000-FFFFFFFF%FFFFC000(RWD)  ;Common Memory
+PcCardConfig=0::(M)
+
+
+[PROFIcard_2]
+;CopyFiles = @profipnp.sys
+
+[PROFIcard_2.Services]
+AddService = profipnp,%SPSVCINST_ASSOCSERVICE%,Profibus_Service_Inst
+
+[PROFIcard_2.LogConfigOverride]
+LogConfig=PROFIcard_2_Override
+
+[PROFIcard_2_Override]
+IRQConfig = 3,4,5,6,7,8,9,10,11,12,13,14,15
+;MemConfig = 4000@C0000-FFFFF%FFFFC000(RW)  ;Common Memory
+MemConfig = 4000@C0000-FFFFFFFF%FFFFC000(RWD)  ;Common Memory
+PcCardConfig=0::(M)
+
+[Profibus_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_MANUAL_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\profipnp.sys
+
+
+[Strings]
+ClassName ="ATCM Fieldbus Interface"
+DeviceDesc0 = "PROFIboard-PCI"
+DeviceDesc1 = "PROFIcard"
+DeviceDesc2 = "PROFIcard 2"
+DiskId = "CARDINST"
+Mfg = "ATCM"
+
+SPSVCINST_ASSOCSERVICE  = 0x00000002
+SERVICE_KERNEL_DRIVER   = 1
+SERVICE_MANUAL_START    = 3
+SERVICE_ERROR_NORMAL    = 1

@@ -1,0 +1,27 @@
+Datatype Name
+
+Short description
+
+
+Interface
+TYPE
+   Name : STRUCT  
+      Element : Datatype;
+      ...
+   END_STRUCT;
+END_TYPE
+
+
+Elements
+
+ElementName 
+Value of type datatype
+
+description
+
+... 
+
+
+Description
+
+Text

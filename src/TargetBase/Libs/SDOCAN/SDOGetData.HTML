@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>SDO Library</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css">
+</head>
+<body bgcolor="#FFFFCC">
+<h2>SDOGetData</h2>
+<p>Get the CAN open data</p>
+<h3>Interface</h3>
+<pre class="preforma">
+FUNCTION SDOGetData : UINT
+VAR_OUTPUT
+	data : DWORD; (*[output data]*)
+END_VAR
+</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>UINT</b></i><br>
+<br>
+<table border="1">
+<tr>
+	<td>
+		0 :
+	</td>
+ 	<td>
+		<b>Success</b>
+ 	</td>
+ </tr>
+<tr>
+	<td>
+		1 :
+	</td>
+ 	<td>
+		Error
+ 	</td>
+ </tr>
+ </table>
+ </p>
+
+<h3>Parameter</h3>
+<h3>OUTPUT</h3>
+<dl>
+  <dt><b>data</b></dt>
+  <dd>Value of type <b><i>DWORD</i></b><br>
+      CAN open data<br></dd>
+</dl>
+<h3>Description</h3>
+<p><b>SDOGetData</b> get the CAN open data</p>
+</body>
+</html>

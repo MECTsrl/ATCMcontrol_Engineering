@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<KADCGFRONT>
+    <TARGETS>
+        <TARGET EXT="4cpc" BACKEND="4cpc\4cpc.exe"/>
+        <TARGET EXT="4cec" BACKEND="4cec\4cvm.exe"/>
+        <TARGET EXT="4cvxw" BACKEND="4cvxw\4cvm.exe"/>
+        <TARGET EXT="4cosai" BACKEND="4cosai\4cvm.exe"/>
+        <TARGET EXT="4cwin" BACKEND="4cwin\4cvm.exe"/>
+    </TARGETS>
+    <LANGUAGES>
+         <FILETYP EXT="pn" IECFILTER="{D1474F9B-FD05-11D4-B382-0008C77981F8}"/>
+    </LANGUAGES>
+</KADCGFRONT>
+

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>F_TRIG</TITLE>
+<META content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
+<link rel="stylesheet" href="Lib.css"></head>
+
+<BODY bgColor=#ffffcc>
+<H2>F_TRIG</H2>
+<P>Detects falling edges.<BR>
+</P>
+<H3>Interface definition</H3>
+<PRE class=preforma>FUNCTION_BLOCK F_TRIG
+VAR_INPUT
+	CLK: BOOL;
+END_VAR
+VAR_OUTPUT
+	Q: BOOL;
+END_VAR</PRE>
+<H3>Parameters</H3>
+<H3>INPUT</H3>
+<DL>
+  <DT><B>CLK</B> 
+  <DD>Value of type <I><B>BOOL<BR>
+    </B></I>Input signal for edge detection. 
+  <DT><I><B></B></I>
+  <DD><B></B><I></I></DD></DL>
+<H3>OUTPUT</H3>
+<DL> 
+  <DT><B></B><B>Q</B> 
+  <DD>Value of type <B><I>BOOL</I></B><BR>
+    Detects falling edges. Is <i><b>TRUE</b></i> for one execution of the function 
+    block if the input signal<b> <i>CLK</i></b> changes from <i><b>TRUE</b></i> 
+    to<b> <i>FALSE</i></b>. 
+  <DD> </DD>
+</DL>
+<H3>Description</H3>
+<P>The function block<i> <b>F_TRIG</b></i><b> </b>detects falling edges. Every 
+  time the input variable <i><b>CLK</b></i> changes from <i><b>TRUE</b></i> to 
+  <i><b>FALSE</b></i>, the output<b> <i>Q</i></b> is set to <i><b>TRUE</b></i> 
+  for the execution of a function block call. The next time the function block 
+  is called,<i><b> Q</b></i> is reset to <i><b>FALSE</b></i> again. </P>
+</BODY></HTML>

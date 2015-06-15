@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>UDP_LOOKUP</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>UDP_LOOKUP</h2>
+<p>Ermittelt die IP-Adresse zu einem Hostnamen.</p>
+<h3>Schnittstelle</h3>
+<pre class="preforma">FUNCTION_BLOCK UDP_LOOKUP
+
+VAR_INPUT
+    EN_L          : Bool; 
+    HOST_NAME     : WString;           
+END_VAR
+
+VAR_IN_OUT
+    SOCKET_HANDLE : UDP_SOCKET_HANDLE;  
+END_VAR
+
+VAR_OUTPUT
+    READY         : Bool;               
+    HOST_ADDRESS  : WString;            
+    ERROR         : Bool;               
+    ERROR_NR      : DInt;
+    ERROR_STRING  : WString;
+END_VAR</pre>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>EN_L</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i>.<br>
+    Startet die Operation bei steigender Flanke.</dd>
+  <dt><b>HOST_NAME</b></dt>
+  <dd>Wert vom Typ <i><b>WSTRING</b></i><br>
+    Name des Hosts, dessen IP-Adresse ermittelt werden soll.</dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl> 
+  <dt><b>SOCKET_HANDLE</b></dt>
+  <dd>Instanz der Struktur <a href="UDP_SOCKET_HANDLE.htm"><i><b>UDP_SOCKET_HANDLE</b></i></a>.<br>
+    Spezifiziert den Socket des lokalen Rechners, von dem das Kommando zum Ermitteln 
+    der IP-Adresse abgesetzt wird. </dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b>READY</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i>.<br>
+    Signalisiert den (erfolgreichen oder gescheiterten) Abschlu&szlig; der Operation.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Operation ist abgeschlossen.<br>
+    <i><b>FALSE</b></i>: Operation ist nicht abgeschlossen.</dd>
+  <dt><b>HOST_ADDRESS</b></dt>
+  <dd>Wert vom Typ <i><b>WSTRING</b></i>.<br>
+    Enth&auml;lt bei erfolgreichem Abschlu&szlig; der Operation die IP-Adresse 
+    des Host-Rechners. </dd>
+  <dt><b>ERROR</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i>.<br>
+    Signalisiert den Fehlerstatus.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Ein Fehler ist aufgetreten.<br>
+    <i><b>FALSE</b></i>: Es ist kein Fehler aufgetreten.</dd>
+  <dt><b>ERROR_NR</b></dt>
+  <dd>Wert vom Typ <i><b>DINT</b></i>.<br>
+    Enth&auml;lt eine Fehlernummer, falls ein Fehler aufgetreten ist. <br>
+    Ist kein Fehler aufgetreten, hat diese Variable den Wert 0.<br>
+    M&ouml;gliche Werte sind in den <a href="ConstUDPErr.htm">UDP-Fehlerkonstanten</a> 
+    definiert.</dd>
+  <dt><b>ERROR_STRING</b></dt>
+  <dd>Wert vom Typ <i><b>WSTRING</b></i>.<br>
+    Enth&auml;lt einen Fehlertext, falls ein Fehler aufgetreten ist. <br>
+    Ist kein Fehler aufgetreten, enth&auml;lt diese Variable einen Leerstring. 
+  </dd>
+</dl>
+<h3>Beschreibung</h3>
+<p>Der Aufruf einer Instanz von <i><b>UDP_LOOKUP</b></i> ermittelt die Host-Adresse 
+  des <i><b> </b></i>Rechners mit dem an <i><b>HOST_NAME</b></i> &uuml;bergebenen 
+  Hostnamen und legt die Adresse in der Variablen<i><b> HOST_ADDRESS</b></i> ab. 
+  Die Host-Adresse eines Rechners wird vom Funktionsbaustein <i><b><a href="UDP_USEND.htm">UDP_USEND</a></b></i> 
+  zur Bestimmung des Zielrechners ben&ouml;tigt, an den eine Botschaft gesendet 
+  werden soll. </p>
+<p>Da die Ermittlung der Host-Adresse zu einem Host-Namen sehr zeitaufwendig sein 
+  kann, wird eine Instanz von <i><b>UDP_LOOKUP</b></i> asynchron ausgef&uuml;hrt. 
+  Die asynchrone Ausf&uuml;hrung hat zur Folge, da&szlig; die aufrufende Task 
+  nicht auf den Abschlu&szlig; der auszuf&uuml;hrenden Operation wartet; die Task 
+  wird also mit der Initialisierung einer Operation nicht blockiert. Das bedeutet, 
+  da&szlig; auf<i><b> UDP_LOOKUP</b></i> folgende Anweisungen auch dann ausgef&uuml;hrt 
+  werden, wenn die Suche nach der Host-Adresse noch nicht abgeschlossen ist. &Uuml;berpr&uuml;fen 
+  Sie deshalb die Variable <i><b>READY</b></i>, um zu ermitteln, ob die Suche 
+  nach der Host-Adresse bereits abgeschlossen ist. </p>
+</body>
+</html>

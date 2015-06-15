@@ -1,0 +1,10 @@
+#include "version.rc2"
+#include "4cpc.rc"
+#include "resource.h"
+
+/*
+STRINGTABLE DISCARDABLE 
+BEGIN
+
+END
+*/

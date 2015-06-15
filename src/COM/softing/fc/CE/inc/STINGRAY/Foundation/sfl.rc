@@ -1,0 +1,112 @@
+/////////////////////////////////////////////////////////////////////////////
+// sflres.h : SFL Resource Script
+//
+// Stingray Software Foundation Library
+// Copyright (C) 2000 RogueWave Software Inc,
+// All rights reserved.
+//
+
+
+#pragma once
+
+#ifndef __SFL_RC__
+#define __SFL_RC__
+
+#if !defined(_SFL)
+#define _SFL
+#endif
+
+#include "winres.h"
+#include "sflres.h"
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursors
+//
+
+IDC_CROSSSPLITBAR       CURSOR  DISCARDABLE     "Foundation\\res\\SplitCross.cur"
+IDC_HSPLITBAR           CURSOR  DISCARDABLE     "Foundation\\res\\SplitH.cur"
+IDC_VSPLITBAR           CURSOR  DISCARDABLE     "Foundation\\res\\SplitV.cur"
+IDC_BARS_HAND			CURSOR  DISCARDABLE		"Foundation\\res\\H_point.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialogs
+//
+
+IDD_PRINTPREVIEW_BAR DIALOG DISCARDABLE  0, 0, 251, 14
+STYLE WS_CHILD | WS_THICKFRAME
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "&Print",IDC_SFL_PPV_PRINT,5,2,35,12
+    PUSHBUTTON      "&Next",IDC_SFL_PPV_NEXT,46,2,35,12
+    PUSHBUTTON      "&Previous",IDC_SFL_PPV_PREV,87,2,35,12
+    PUSHBUTTON      "&Close",IDC_SFL_PPV_CLOSE,128,2,35,12
+    COMBOBOX        IDC_SFL_PPV_ZOOM,171,1,49,65,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmaps
+//
+
+IDB_CMN_DOWNARROW           BITMAP  DISCARDABLE     "Foundation\\res\\DARROW.BMP"
+IDB_CMN_RIGHTARROW          BITMAP  DISCARDABLE     "Foundation\\res\\RARROW.BMP"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Strings
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ALLFILES				"All files (*.*)\n*.*"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CMN_OTHERBUTTON         "&Other..."
+    IDS_CMN_SECIMAGE_MSG1       "Rotate90: Error, unsupported format."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WINDOW_MENU_TEXT		"&Window"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_SFL_MDI_CASCADE          "Arranges the windows as overlapping tiles"
+    IDC_SFL_MDI_TILEVERTICAL     "Arranges the windows as vertical, non-overlapping tiles"
+    IDC_SFL_MDI_TILEHORIZONTAL   "Arranges the windows as horizontal, non-overlapping tiles"
+    IDC_SFL_MDI_ARRANGEICONS     "Arrange minimized icons"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
+#endif // #ifndef __SFL_RC__

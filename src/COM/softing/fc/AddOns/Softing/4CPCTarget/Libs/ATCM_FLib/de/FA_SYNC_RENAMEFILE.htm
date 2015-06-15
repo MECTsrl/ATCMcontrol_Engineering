@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>FA_SYNC_RENAMEFILE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>FA_SYNC_RENAMEFILE </h2>
+<p>Benennt eine Datei um.</p>
+<h3>Schnittstelle</h3>
+<pre class="preforma">FUNCTION FA_SYNC_RENAMEFILE:BOOL
+VAR_INPUT
+    EXEC        : BOOL;             
+    NEWNAME     : WSTRING;          
+END_VAR
+VAR_IN_OUT
+    FILE        : FA_SYNC_FILE;     
+END_VAR</pre>
+<h3>Rückgabewert</h3>
+<p>Wert vom Typ <i><b>BOOL</b></i><br>
+  Signalisiert den Fehlerstatus.<br>
+  M&ouml;gliche Werte:<br>
+  <i><b>TRUE</b></i>: Ein Fehler ist aufgetreten.<br>
+  <i><b>FALSE</b></i>: Es ist kein Fehler aufgetreten.</p>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>EXEC</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Startet die Operation.</dd>
+  <dt><b>NEWNAME</b></dt>
+  <dd>Wert vom Typ <i><b>WSTRING</b></i><br>
+    Dateiname, in den die Datei umbenannt werden soll. <br>
+    Der Dateiname kann mit voll qualifiziertem Pfad angegeben werden. Wird kein 
+    Pfad spezifiziert, wird intern das Standard-Arbeitsverzeichnis von ATCMControl 
+    als Pfad erg&auml;nzt.<br>
+    Wenn ein anderer Pfad als der im Parameter <i><b>FILENAME</b></i> der an <i><b>FILE</b></i> 
+    &uuml;bergebenen Strukturinstanz von <i><b><a href="FA_SYNC_FILE.htm"> FA_SYNC_FILE</a></b></i> 
+    spezifizierte Pfad angegeben wird, wird die umbenannte Datei in das in <i><b>NEWNAME</b></i> 
+    angegebene Verzeichnis verschoben. <br>
+    Existiert die in <i><b>NEWNAME</b></i> spezifizierte Datei bereits, wird die 
+    Operation abgebrochen und ein Fehler gesetzt. <br>
+    Der Dateiname einschlie&szlig;lich Pfadangabe wird vom Compiler nicht auf 
+    korrekte Syntax oder Plausibilit&auml;t &uuml;berpr&uuml;ft. </dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl> 
+  <dt><b>FILE</b></dt>
+  <dd>Instanz der Struktur <a href="FA_SYNC_FILE.htm"><i><b>FA_SYNC_FILE</b></i></a><br>
+    Dateiobjekt, auf das die Operation ausgef&uuml;hrt wird.</dd>
+</dl>
+<h3>Beschreibung</h3>
+<p><b><i>FA_SYNC_RENAMEFILE</i></b> benennt eine Datei in den im Parameter <i><b>NEWNAME</b></i> 
+  spezifizierten Dateinamen um. Die Datei, die umbenannt werden soll, wird im 
+  Parameter <i><b>FILENAME</b></i> der an <i><b>FA_SYNC_RENAMEFILE</b></i> &uuml;bergebenen 
+  Instanz von <a href="FA_SYNC_FILE.htm"><i><b>FA_SYNC_FILE</b></i></a> angegeben. 
+  Nachdem die Datei umbenannt wurde, enth&auml;lt dieser Parameter den neuen Dateinamen.</p>
+<p><i><b>FA_SYNC_RENAMEFILE </b></i>bildet unter der Bausteingruppe f&uuml;r elementare 
+  synchrone Dateioperationen eine Ausnahme. Im Gegensatz zu den meisten anderen 
+  Funktionen dieser Gruppe darf eine Instanz von <i><b>FA_SYNC_RENAMEFILE </b></i> 
+  nicht innerhalb eines Zugriffzyklus aufgerufen werden, da nur das Umbenennen 
+  von Dateien erlaubt ist, auf die aktuell kein Zugriff durch einen anderen Proze&szlig; 
+  erfolgt. Die an <i><b>FA_SYNC_RENAMEFILE </b></i>&uuml;bergebene Datei darf 
+  deshalb nicht &uuml;ber <i> <b><a href="FA_SYNC_OPENFILE.htm">FA_SYNC_OPENFILE</a></b></i> 
+  oder von einem Fremdprogramm aktuell ge&ouml;ffnet sein.</p>
+
+</body>
+</html>

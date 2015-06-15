@@ -1,0 +1,9 @@
+; <funtion name> <id> <version min> <version max>
+Buzzer				260 0 99999
+Date_add			261 0 99999
+Date_diff			262 0 99999
+DateTimeRead		263 0 99999
+DateTimeSync		264 0 99999
+DateTimeWrite		265 0 99999
+LCD_get_backlight 	266 0 99999
+LCD_set_backlight	267 0 99999

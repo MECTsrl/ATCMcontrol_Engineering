@@ -1,0 +1,28 @@
+HKCR
+{
+	4C_20_[*TN].Online_Server.%PARAM% = s '4CONTROL: 4C OPC server for [*TN] at %PARAM%'
+	{
+		CLSID = s '%GUID%'
+        OPC
+        {
+            Vendor = s 'ATCM ATCMControl'
+        }
+	}
+	NoRemove CLSID
+	{
+		ForceRemove '%GUID%' = s '4CONTROL: 4C OPC server for [*TN] at %PARAM%'
+		{
+			ProgID = s '4C_20_[*TN].Online_Server.%PARAM%'
+			VersionIndependentProgID = s '4C_20_[*TN].Online_Server.%PARAM%'
+			LocalServer32 = s '%MODULE% -param %PARAM%'
+			val AppID = s '{[*AP]}'
+
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+                {63D5F430-CFE4-11d1-B2C8-0060083BA1FB}
+                {63D5F432-CFE4-11d1-B2C8-0060083BA1FB}
+            }
+		}
+	}
+}

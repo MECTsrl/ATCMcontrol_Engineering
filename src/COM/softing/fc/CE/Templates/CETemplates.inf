@@ -1,0 +1,7 @@
+
+USER=makelast: force
+
+USER= xcopy .\english\*.* $(EXE_DIR)\Engineering\templates\UserHelp\english\*.*
+USER= xcopy .\german\*.* $(EXE_DIR)\Engineering\templates\UserHelp\german\*.*
+USER= del $(EXE_DIR)\Engineering\templates\UserHelp\english\vssver.scc
+USER= del $(EXE_DIR)\Engineering\templates\UserHelp\german\vssver.scc

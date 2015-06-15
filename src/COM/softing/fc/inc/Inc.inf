@@ -1,0 +1,10 @@
+
+
+
+USER=makefirst:$(EXE_DIR)\Pub
+USER=$(EXE_DIR)\Pub:
+USER=  -md $@
+
+
+LATECOPY=$(MAKEDIR)\CSC_OnlineServer.tlb    $(EXE_DIR)\Pub\CSC_OnlineServer.tlb
+LATECOPY=$(MAKEDIR)\CSC_OnlineServerExt.tlb $(EXE_DIR)\Pub\CSC_OnlineServerExt.tlb

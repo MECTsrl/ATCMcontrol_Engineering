@@ -1,0 +1,120 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "..\inc\resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_OPCSERVER           REGISTRY DISCARDABLE    "OPCServer.rgs"
+IDR_CSC_ONLINE_SRV      REGISTRY DISCARDABLE    "CSC_OnlSrv.rgs"
+IDR_CONTROL_MGT         REGISTRY DISCARDABLE    "ControlMgt.rgs"
+IDR_COMMISSIONING_MGT   REGISTRY DISCARDABLE    "CommissioningMgt.rgs"
+IDR_CUSTOM_CONNECT      REGISTRY DISCARDABLE    "CustomConnect.rgs"
+IDR_DUMMY_REGSCRIPT     REGISTRY DISCARDABLE    "dummy.rgs"
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1 TYPELIB ""CSC_OnlSrv.tlb""\r\n"
+    "#include ""version.rc2""    // generic version resource\r\n"
+    "#include ""csc_onlineerr.rc"" // Errorstrings for CSC Online Server\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_VENDOR_INFO         "ATCM ATCMCONTROL"
+    IDS_ERROR_CANNOT_CREATE_4C_CATIDS 
+                            "Cannot create ATCMControl Category IDs in registry!"
+    IDS_ERROR_CANNOT_CREATE_OPC_CATIDS 
+                            "Cannot create OPC Category IDs in registry!"
+    IDS_ERROR_CANNOT_REGISTER_4C_SRV 
+                            "Cannot register 4C-specific COM interfaces!"
+    IDS_ERROR_CANNOT_REGISTER_4C_OPC_SRV 
+                            "Cannot register OPC-specific COM interfaces!"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "CSC_OnlSrv.tlb"
+#include "version.rc2"    // generic version resource
+#include "csc_onlineerr.rc" // // Errorstrings for CSC Online Server
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

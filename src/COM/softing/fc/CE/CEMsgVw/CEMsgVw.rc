@@ -1,0 +1,217 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "..\inc\msgrc.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_MSG_STATE           BITMAP  DISCARDABLE     "..\\res\\msgstate.bmp"
+IDB_MSG_INDICATORS      BITMAP  DISCARDABLE     "..\\res\\msgind.bmp"
+IDB_MSG_CONNSTATE       BITMAP  DISCARDABLE     "..\\res\\MsgConnect.bmp"
+IDB_MSG_INDICATORS_NEW  BITMAP  DISCARDABLE     "..\\res\\msg_indi.bmp"
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "..\\inc\\msgrc.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_COMPILEVW_POPUP MENU DISCARDABLE 
+BEGIN
+    POPUP "Popup"
+    BEGIN
+        MENUITEM "Copy",                        IDM_MSG_COPY
+        MENUITEM "Clear",                       IDM_MSG_CLEAR
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MSGTARGET_DLGBAR DIALOG DISCARDABLE  0, 0, 414, 95
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Connect",IDC_CONNECTTARGET,5,0,21,16,BS_ICON
+    PUSHBUTTON      "Enable Debug",IDC_OPERATE_EXCLUSIVECONNECT,26,0,21,16,
+                    BS_ICON
+    PUSHBUTTON      "Disable Debug",IDC_OPERATE_EXCLUSIVEDISCONNECT,47,0,21,
+                    16,BS_ICON
+    PUSHBUTTON      "Disconnect",IDC_DISCONNECTTARGET,68,0,21,16,BS_ICON
+    PUSHBUTTON      "Start Control",IDC_OPERATE_RESSTART,89,0,21,16,BS_ICON
+    PUSHBUTTON      "Stop Control",IDC_OPERATE_RESSTOP,110,0,21,16,BS_ICON
+    PUSHBUTTON      "Run all Tasks",IDC_OPERATE_ALLTASKSSTART,131,0,21,16,
+                    BS_ICON
+    PUSHBUTTON      "Stop all Tasks",IDC_OPERATE_ALLTASKSSTOP,152,0,21,16,
+                    BS_ICON
+    PUSHBUTTON      "Warmstart Reset",IDC_OPERATE_WARMSTART,173,0,21,16,
+                    BS_ICON
+    PUSHBUTTON      "Coldstart Reset",IDC_OPERATE_COLDSTART,194,0,21,16,
+                    BS_ICON
+    PUSHBUTTON      "Initialize/Clear",IDC_OPERATE_RESCLEAR,215,0,21,16,
+                    BS_ICON
+    PUSHBUTTON      "Acknowledge Fatal Errors",IDC_OPERATE_ACK,236,0,21,16,
+                    BS_ICON
+    CONTROL         "Static",IDC_STATE_TEXT,"Static",SS_LEFTNOWORDWRAP | 
+                    SS_CENTERIMAGE | WS_GROUP,259,4,19,8
+    EDITTEXT        IDC_EDITMESSAGE,7,20,399,74,ES_MULTILINE | WS_VSCROLL | 
+                    WS_HSCROLL
+END
+
+IDD_MSG_DLGBAR DIALOG DISCARDABLE  0, 0, 473, 95
+STYLE WS_CHILD | WS_CAPTION
+CAPTION "Messages"
+FONT 8, "MS Sans Serif"
+BEGIN
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_MSGTARGET_DLGBAR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 406
+    END
+
+    IDD_MSG_DLGBAR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 466
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 88
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MSGACCEL ACCELERATORS DISCARDABLE 
+BEGIN
+    VK_F10,         IDM_MSG_CONTEXT_MENU,   VIRTKEY, SHIFT, NOINVERT
+    VK_LEFT,        IDM_MSG_PREVIOUS_TAB,   VIRTKEY, ALT, NOINVERT
+    VK_RIGHT,       IDM_MSG_NEXT_TAB,       VIRTKEY, ALT, NOINVERT
+END
+
+IDR_MSGDLGACCEL ACCELERATORS DISCARDABLE 
+BEGIN
+    VK_F10,         IDM_MSG_CONTEXT_MENU,   VIRTKEY, SHIFT, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_MSG_COMPILE         "Compile"
+    IDS_MSG_DOWNLOAD        "Download"
+    IDS_MSG_CONTROL         "Control"
+    IDS_MSG_FINDINFILES     "Find in Files"
+    IDS_MSG_TTIP_EDIT       "Control Messages"
+    IDS_MSG_SYSTEM          "System"
+    IDS_CSC_OUTOFMEM        "Out of memory"
+    IDS_CSC_SINGLE_DL_ALLOWED 
+                            "Only one debug connection for download to one Target is allowed at the same time."
+    IDS_CSC_NO_VALID_LIC    "Cannot access license info for CSC_Online server"
+    IDS_CSC_NO_REMOTE_DLOAD_FOR_BUNDLE 
+                            "This bundle license doesn't allow download to remote Target."
+    IDS_CSC_UNKNOWN_CONFIGURATION "Unknown configuration name"
+    IDS_CSC_CONFIGURATION_UNREACHABLE 
+                            "No connection to configuration possible"
+    IDS_CSC_SESSION_ALREADY_CONNECTED "Session is already connected"
+    IDS_CSC_NO_CONNECT_TO_CONTROL "COM Connection to control failed"
+    IDS_CSC_NO_FTP_SESSION  "Connection to Web server for transfer of visualisation domains failed"
+    IDS_CANNOT_CREATE_MESSAGE_WINDOW 
+                            "Unable to create message window for new Target"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_STATETEXT_NOT_CONNECTED "Not connected"
+    IDS_STATETEXT_INTERRUPTED "Interrupted"
+    IDS_STATETEXT_CONNECTED "Connected"
+    IDS_STATETEXT_DEBUG_ENABLED "debug enabled"
+    IDS_STATETEXT_SERVICE_STOPPED "Service stopped"
+    IDS_STATETEXT_RESOURCE_ERROR "Resource error"
+    IDS_STATETEXT_RESOURCE_PAUSED "Resource stopped"
+    IDS_STATETEXT_RESOURCE_RUNNING "Resource running"
+    IDS_STATETEXT_RESOURCE_CLEARED "cleared"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

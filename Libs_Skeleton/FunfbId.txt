@@ -1,0 +1,6 @@
+; Library functions version description
+; <Function> <id> <minimum version> <maximum version>
+[LIB]_FUNCTION		230 0 99999
+[LIB]_FUNCTION2		231 0 99999
+
+

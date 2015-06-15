@@ -1,0 +1,61 @@
+Function Name
+
+Short description
+
+Interface
+
+FUNCTION Name   
+
+VAR_INPUT
+    ...
+
+END_VAR
+
+VAR_OUTPUT
+    ...
+
+END_VAR
+
+VAR_IN_OUT
+    ...
+
+END_VAR
+
+
+Return value
+
+Value of type datatype
+description
+
+
+Parameters
+
+INPUT
+
+ParameterName 
+	Value of type datatype
+	Description
+
+	... 
+
+OUTPUT
+
+ParameterName 
+
+	Value of type datatype
+	Description
+	... 
+IN_OUT
+
+
+ParameterName 
+
+	Value of type datatype
+	Description
+
+	... 
+
+
+Description
+
+Text

@@ -1,0 +1,84 @@
+/*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/inc/CEMsg.IDL 1     28.02.07 19:01 Ln $
+ *----------------------------------------------------------------------------*
+ *
+ * =FILENAME            $Workfile: CEMsg.IDL $
+ *                       $Logfile: /4CReleased/V2.20.00/COM/softing/fc/inc/CEMsg.IDL $
+ *
+ * =PROJECT				CAK1020  ATCMControl V2.0
+ *
+ * =SWKE                4CE
+ *
+ * =COMPONENT           CEMain
+ *
+ * =CURRENT      $Date: 28.02.07 19:01 $
+ *           $Revision: 1 $
+ *
+ * =REFERENCES
+ *
+ *----------------------------------------------------------------------------*
+ *
+
+ 
+
+
+
+ *==
+ *----------------------------------------------------------------------------*
+ * =DESCRIPTION
+ *    @DESCRIPTION@
+ *==
+ *----------------------------------------------------------------------------*
+ * =MODIFICATION
+ *  31.01.01  SU      File created
+ *  see history at end of file !
+ *==
+ *******************************************************************************
+H<<*/
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+    //-- MsgViewer Event dipatch interfaces -----------------------------------
+    [
+        uuid(AEFB55D0-EAD0-11d3-B8D6-00600857CC2E),
+        dual,
+        oleautomation,
+        helpstring("Public event interface MsgViewer")
+    ]
+    interface _ICEMessageEvent: IDispatch
+    {
+
+		[id(1), helpstring("Notify client that a new Message has arrived")] 
+			HRESULT OnNewMessage(BSTR sMachine, WORD wScrFacility, HRESULT hr, BSTR sDescr);
+    };
+
+/*  include this File and use the 
+    following lines to add the _ICEMessageEvent-IF to your xxx-Server
+
+	coclass xxx
+	{
+		..
+		[source] interface _ICEMessageEvent;
+	};
+*/
+
+
+/*
+ *----------------------------------------------------------------------------*
+ *  $History: CEMsg.IDL $
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.02.07   Time: 19:01
+ * Created in $/4CReleased/V2.20.00/COM/softing/fc/inc
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.08.03   Time: 16:34
+ * Created in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 2  *****************
+ * User: Scd          Date: 31.01.01   Time: 12:22
+ * Updated in $/4Control/COM/softing/fc/inc
+ * new headers added
+ *==
+ *----------------------------------------------------------------------------*
+*/

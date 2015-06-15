@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>GetLocalTaskState</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>GetLocalTaskState</h2>
+<p>Yields the status of the task passed as a parameter. </p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION GetLocalTaskState : DINT
+VAR_INPUT
+    NAME : ANY_STRING;
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>DINT</b></i><br>
+  Status of the task</p>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>NAME</b></dt>
+  <dd>Value of type <i><b>ANY_STRING</b></i><br>
+    Name of the task whose status is to be determined. <br>
+  </dd>
+</dl>
+<h3>Description</h3>
+<p><b><i>GetLocalTaskState</i></b> returns the status of the task passed to <i><b>NAME</b></i>. 
+  If the task passed as a parameter doesn&acute;t comply to any existing 
+  task in the current project, an exception is triggered. <br>
+  Possible returns:</p>
+<p> <b>-1</b>&nbsp;&nbsp;&nbsp;<b><i>STATE_ERROR</i></b> Task is in error state<br>
+  &nbsp;<b>0</b>&nbsp;&nbsp;&nbsp;<b><i>STATE_ONCREATION</i></b> Task is newly 
+  created (e.g. in the case of an incremental download)<br>
+  &nbsp;<b>1&nbsp;</b>&nbsp;&nbsp;<b><i>STATE_STOPPED</i></b> Task was stopped<br>
+  &nbsp;<b>2</b>&nbsp;&nbsp;&nbsp;<b><i>STATE_RUNNING</i></b> Task is running<br>
+  <b>&nbsp;3</b> &nbsp;&nbsp;<b><i>STATE_BREAK</i></b> Task was interrupted by 
+  a break point</p>
+</body>
+</html>

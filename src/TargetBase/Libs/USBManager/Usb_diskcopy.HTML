@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>USB Manager Library</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css">
+</head>
+<body bgcolor="#FFFFCC">
+<h2>Usb_diskcopy</h2>
+<p>Copy either a file or a directory with all its content from a usb key to internal flash</p>
+<h3>Interface</h3>
+<pre class="preforma">
+FUNCTION Usb_diskcopy : UINT
+VAR_INPUT
+	srcfile : STRING;
+	dstfile : STRING;
+	index : UINT;
+END_VAR
+</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>UINT</b></i><br>
+<br>
+<table border="1">
+<tr>
+	<td>
+		0 :
+	</td>
+ 	<td>
+		<b>Success</b>
+ 	</td>
+ </tr>
+<tr>
+	<td>
+		1 :
+	</td>
+ 	<td>
+		resource already busy cannot start another usb operation
+ 	</td>
+ </tr>
+ </table>
+ </p>
+
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl>
+  <dt><b>srcfile</b></dt>
+  <dd>Value of type <b><i>STRING</i></b><br>
+    Name of file o directory to be copied<br></dd>
+</dl>
+<dl>
+  <dt><b>dstfile</b></dt>
+  <dd>Value of type <b><i>STRING</i></b><br>
+     Name of file o directory for destination<br></dd>
+</dl>
+<dl>
+  <dt><b>index</b></dt>
+  <dd>Value of type <b><i>UINT</i></b><br>
+     index in the USBstatus array  representing the source usbkey for filename<br></dd>
+</dl>
+<h3>Description</h3>
+<p><b>Usb_diskcopy</b> Copy either a file or a directory with all its content from a usb key to internal flash</p>
+</body>
+</html>

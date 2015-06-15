@@ -1,0 +1,79 @@
+<!--ATCM. All rights reserved-->
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Developer Studio">
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=iso-8859-1">
+<TITLE>browser check</TITLE>
+<script language="JavaScript">
+
+function executeCheck()
+{
+	if (navigator.javaEnabled() == false)
+	{
+		writeErrorMessage("Java must be enabled !");
+		return;
+	}
+
+    var temp_errortrap = onerror;
+
+	onerror = errortrap_ActiveXNotExecutable;
+	document.FC_OCX_Navigator.ShowObjectList(0, 0); 
+
+	onerror = errortrap_AppletNotExecutable;
+	// If scripting of applets is not allowed, the folowing lines fails and errortrap_AppletNotExecutable is called.
+	if (document.IdASPStarter.checkAppletExecution() != "ok")
+	{
+	    // Scripting of applets is allowed but applet methods are not executed.
+		// Generate an error by calling a non existing method in order to call errortrap_AppletNotExecutable and EXIT.
+		document.IdASPStarter.NotExistingMethod();
+	}
+
+	onerror = temp_errortrap;
+
+	// Fill in more checks here.
+
+	document.location = "CP_HttpServerCheck.asp";
+}
+
+function errortrap_ActiveXNotExecutable(msg,url,line)
+{
+	// Is "downloading of signed ActiveX Controls" really necessary?
+	// Are these the only features for ActiveX controls that must be enabled?
+	
+	writeErrorMessage("Can't execute ActiveX methods !");
+	return true;
+}
+
+function errortrap_AppletNotExecutable(msg,url,line)
+{
+	writeErrorMessage("Can't execute applet methods !");
+	return true;
+}
+
+function writeErrorMessage(ErrMsg)
+{
+	// The text "Sorry !" is written dynamically to avoid it flashing during the checks.
+	SorryLine.innerText = "Sorry !";
+	ErrorMessage.innerText = ErrMsg;
+}
+
+</script>
+</HEAD>
+
+<body bgcolor='#E0E0E0' onload='executeCheck()'>
+<p align='center'><font color='#FF0000' size='5'><strong><div id='SorryLine' align='center'></div></strong></font></p>
+<p><font size='3' face='MS Sans Serif'><div id='ErrorMessage' align='center'></div></font></p>
+
+<!-- check activex -->
+<object id="FC_OCX_Navigator"
+	classid="clsid:2CF26AE0-EE63-11d1-A512-00A024363DFC"
+	codebase="CpNavigator.cab#version=1,0,0,300" 
+	width="0" height="0">
+</object>
+
+<!-- check applet -->
+<applet id="IdASPStarter" height="0" width="0" code="CP_ASPStarter.class"> </applet>
+
+</body>
+
+</HTML>

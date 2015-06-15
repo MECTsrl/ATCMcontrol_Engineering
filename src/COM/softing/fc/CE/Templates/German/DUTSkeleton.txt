@@ -1,0 +1,27 @@
+Datentyp Name
+
+Kurzbeschreibung
+
+
+Schnittstelle
+TYPE
+   Name : STRUCT  
+      Element : Datentyp;
+      ...
+   END_STRUCT;
+END_TYPE
+
+
+Strukturelemente
+
+ElementName 
+Wert vom Typ Datentyp
+
+Beschreibung 
+
+... 
+
+
+Beschreibung
+
+Beschreibungstext

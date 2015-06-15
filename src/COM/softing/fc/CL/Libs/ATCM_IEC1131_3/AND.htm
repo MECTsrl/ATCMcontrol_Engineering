@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>AND</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>AND</h2>
+<p>Combines the values delivered as actual parameters with bitwise <i><b>AND</b></i>.<br>
+</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION AND : ANY_BIT
+VAR_INPUT 
+    IN1 : ANY_BIT; 
+END_VAR
+VAR_IN_EXT 
+    IN2 : ANY_BIT; 
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>ANY_BIT</b></i><br>
+  Yields the value resulting from combining the actual parameters.</p>
+
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>IN1</b></dt>
+  <dd>Value of type <b><i>ANY_BIT</i></b><br>
+    Value to be combined.</dd>
+  <dt><b>IN2 </b>(IN_EXT)</dt>
+  <dd>Value of type <b><i>ANY_BIT</i></b><br>
+    Value to be combined. <br>
+    <i><b>IN_EXT</b></i>-variables are extensible. Optional, further values can 
+    be stated to be combined.<br>
+  </dd>
+</dl>
+<h3>Description</h3>
+<p>The function <i><b>AND</b></i> corresponds to the operator for bitwise <i><b>AND</b></i>. 
+  With a bitwise <i><b>AND</b></i>, the bit patterns of the output value and the 
+  bit mask are combined in such a way that, as the result of the operation, a 
+  bit is set only at that position at which a bit had been set in both values, 
+  the output value and bit mask alike. The bitwise <i><b>AND</b></i> can therefore 
+  be used for precisely disabling specific bits or for testing whether specific 
+  bits have been set. </p>
+</body>
+</html>

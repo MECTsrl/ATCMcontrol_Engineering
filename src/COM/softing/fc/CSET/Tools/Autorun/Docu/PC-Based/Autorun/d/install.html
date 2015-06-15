@@ -1,0 +1,260 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+		<title>ATCMControl v2.1</title>
+                 <script language="javascript" type="text/javascript">
+
+	pic1 = new Image();
+	pic1.src = "../pic/nav1d.gif";
+	pic2 = new Image();
+	pic2.src = "../pic/nav2d.gif";
+	pic3 = new Image();
+	pic3.src = "../pic/nav3d.gif";
+	pic6 = new Image();
+	pic6.src = "../pic/nav6d.gif";
+	pic8 = new Image();
+	pic8.src = "../pic/nav8d.gif";
+	pic7 = new Image();
+	pic7.src = "../pic/nav7d.gif";
+	pic9 = new Image();
+	pic9.src = "../pic/nav9d.gif";
+
+	pic11 = new Image();
+	pic11.src = "../pic/nav11d.gif";
+	pic22 = new Image();
+	pic22.src = "../pic/nav22d.gif";
+	pic33 = new Image();
+	pic33.src = "../pic/nav33d.gif";
+	pic66 = new Image();
+	pic66.src = "../pic/nav66d.gif";
+	pic88 = new Image();
+	pic88.src = "../pic/nav88d.gif";
+	pic77 = new Image();
+	pic77.src = "../pic/nav77d.gif";
+	pic99 = new Image();
+	pic99.src = "../pic/nav99d.gif";
+
+function drauf(wert)
+{
+	switch (wert)
+	{
+		case 1:	document.nav1.src = pic11.src;
+		break;
+		case 2: document.nav2.src = pic22.src;
+		break;
+		case 3: document.nav3.src = pic33.src;
+		break;
+		case 6: document.nav6.src = pic66.src;
+		break;
+		case 8: document.nav8.src = pic88.src;
+		break;
+		case 7: document.nav7.src = pic77.src;
+		break;
+		case 9: document.nav9.src = pic99.src;
+		break;
+	}
+}
+function runter(wert)
+{
+	switch (wert)
+	{
+		case 1:document.nav1.src = pic1.src;
+		break;
+		case 2:document.nav2.src = pic2.src;
+		break;
+		case 3:document.nav3.src = pic3.src;
+		break;
+		case 6:document.nav6.src = pic6.src;
+		break;
+		case 8:document.nav8.src = pic8.src;
+		break;
+		case 7:document.nav7.src = pic7.src;
+		break;
+		case 9: document.nav9.src = pic9.src;
+		break;
+
+	}
+}
+</script>
+		<link rel="stylesheet" href="../text.css">
+	</head>
+
+	<body leftmargin="2" topmargin="2" marginwidth="2" marginheight="2" bgcolor="#CCCCCC" link="#003366" vlink="#003366" alink="#003366">
+		<!--hauptmenue-->
+		<table width="760" height="25" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="155" align="right" valign="bottom"><img src="../pic/4clogo.gif" width="14" height="16" alt="" border="0"><img src="../pic/clearpix.gif" width="2" height="1" alt="" border="0"></td>
+				<!--kurze laengsline-->
+				<td align="left" valign="bottom"><img src="../pic/linien.gif" width="2" height="25" alt="" border="0"></td>
+				<!--ende-->
+				<td colspan="4">&nbsp;</td>
+			</tr>
+		</table>
+		<!--querline-->
+		<table width="760" height="2" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><img src="../pic/linien.gif" width="760" height="2" alt="" border="0"></td>
+			</tr>
+		</table>
+		<!--ende-->
+		<table width="760" height="94%" border="0" cellpadding="0" cellspacing="0">
+			<tr><!--navigation-->
+				<td width="155" valign="top">
+					<table width="155" height="60" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="24" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td valign="center"><img src="../pic/4clayout-kl.jpg" width="152" height="134" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><img src="../pic/nav1d.gif" name="nav1" width="120" height="25" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="thiscd.html" onmouseover="drauf(2)" onmouseout="runter(2)"><img src="../pic/nav2d.gif" name="nav2" width="120" height="25" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="cinstall.html" onmouseover="drauf(3)" onmouseout="runter(3)"><img src="../pic/nav3d.gif" name="nav3" width="120" height="25" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="license.html" onmouseover="drauf(6)" onmouseout="runter(6)"><img src="../pic/nav6d.gif" name="nav6" width="120" height="25" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="knownbugs.html" onmouseover="drauf(8)" onmouseout="runter(8)"><img src="../pic/nav8d.gif" name="nav8" width="150" height="25" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="contact.html" onmouseover="drauf(7)" onmouseout="runter(7)"><img src="../pic/nav7d.gif" name="nav7" width="120" height="25" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="60" valign="center"><a href="readme_dep.htm" onmouseover="drauf(9)" onmouseout="runter(9)"><img src="../pic/nav9d.gif" name="nav9" width="120" height="50" border="0"></a></td>
+						</tr>
+					</table>
+				</td>
+				<!--navigation ende--><!--lange vertikalline-->
+				<td bgcolor="#999999">
+					<table width="2" height="94%" valign="top" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="1" alt="" border="0"></td>
+						</tr>
+					</table>
+				</td>
+				<!--ende--><!--inhalt-->
+				<td width="603" valign="top">
+					<table border="0" cellpadding="0" cellspacing="0" align="center" valign="middle" width="570">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="24" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td align="center"><span class="headblau">Hinweise zur Installation:</span></td>
+						</tr>
+						<tr>
+							<td valign="top" align="center" colspan="2"><img src="../pic/clearpix.gif" width="1" height="20" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td class="text">
+								<p class="text">ATCMControl erfordert ein bestehendes Netzwerk. Falls Ihr Rechner noch nicht in ein Netzwerk eingebunden ist, m&uuml;ssen Sie zun&auml;chst eine <a href="network.html">Netzwerkkarte einbauen</a>, bevor Sie mit der Installation aller ben&ouml;tigten Komponenten f&uuml;r ATCMControl beginnen k&ouml;nnen. Wenn Sie ATCMControl nicht in einem Netzwerk betreiben m&ouml;chten, m&uuml;ssen Sie einen sogenannten Loopback-Adapter installieren, um einen einwandfreien Betrieb zu gew&auml;hrleisten.<br>
+									<br>
+									Um ATCMControl installieren zu k&ouml;nnen, m&uuml;ssen Sie im System als Administratror angemeldet sein.<br>
+									<br>
+									ATCMControl ben&ouml;tigt zum korrekten Betrieb unter Windows 2000/XP die MS Internet Information Services. Bei der Installation wird Ihr Betriebssystem nach diesen Komponenten durchsucht. Haben Sie diese Komponenten noch nicht installiert, werden Sie von der Informationsroutine dazu aufgefordert, die entsprechende Komponente von Ihrer Windows Installations-CD zu installieren. Halten Sie daher die Windows Installations-CD bereit.</p>
+								<ol>
+									<li class="text">Schlie&szlig;en Sie alle ge&ouml;ffneten Anwendungen.<br>
+										<br>
+									<li class="text">Starten Sie <a href="../../Setup.exe">Setup.exe</a> von der ATCMControl-Installations-CD.<br>
+										<br>
+									<li class="text">Der Setup-Startdialog wird angezeigt.<br>
+									<br>
+										Klicken Sie auf <b>OK</b>, um mit der Installation fortzufahren.<br>
+										<br>
+									<li class="text">W&auml;hlen Sie das Zielverzeichnis f&uuml;r die Installation aus.<br>
+										<br>
+										Wenn Sie noch keine ATCMControl-Version installiert haben, wird als Standardpfad in der Regel C:\Programme\4ControlV2 vorgeschlagen, andernfalls der Pfad Ihrer vorhergehenden ATCMControl-Version. Um das Installationsverzeichnis zu &auml;ndern klicken Sie auf <b>Verzeichnis &auml;ndern</b>. In einem Verzeichnis-Auswahldialog k&ouml;nnen Sie ein anderes Verzeichnis einstellen. Klicken auf <b>Weiter</b>, um das Zielverzeichnis f&uuml;r die Installation zu best&auml;tigen.<br>
+										<br>
+									<li class="text">W&auml;hlen Sie nun aus, ob Sie eine Standard- oder eine benutzerdefinierte Installation durchf&uuml;hren wollen. Der Unterschied zwischen beiden Installationsarten besteht darin, da&szlig; bei der Standard-Installation ein PC Target nur zusammen mit ATCM Console und ein Ethernet Controller Target nur zusammen mit dem OPC Server installiert werden kann. Bei der benutzerdefinierten Installation k&ouml;nnen diese Komponenten dagegen separat installiert werden.<br>
+										<br>
+										<br>
+										<span class="text">Klicken Sie auf <b>Standard</b>, um mit der Standard-Installation, oder auf <b>Benutzerdefiniert</b>, um mit der benutzerdefinierten Installation fortzufahren.</span><br>
+										<br>
+									<li class="text">Im folgenden Dialog w&auml;hlen Sie im Register <b>Setup</b> die Komponenten aus, die Sie installieren wollen. Standardm&auml;&szlig;ig sind alle Komponenten f&uuml;r die Installation markiert. Um eine Komponente abzuw&auml;hlen, klicken Sie auf das entsprechende Kontrollk&auml;stchen, um die Markierung zu entfernen. Per Mausklick auf ein demarkiertes Kontrollk&auml;stchen f&uuml;gen sie eine Markierung wieder hinzu.<br>
+										<br></ol></td>
+						</tr></table>
+									<table border="0" cellpadding="0" cellspacing="0" align="center" valign="middle" width="800">
+									</table>
+									<table border="0" cellpadding="0" cellspacing="0" align="center" valign="middle" width="570">
+									<tr>
+									<td>
+								<p class="text"><br>
+
+									Im Bereich PC-Target k&ouml;nnen Sie folgende Komponenten ausw&auml;hlen:<br>
+									<br>
+								</p>
+								<ul>
+									<li><span class="textblau"><b>ATCM PC-based Engineering</b></span><br>
+										<span class="text">Installiert ATCM Engineering mit den Komponenten und Standardbibliotheken zur Entwicklung von Laufzeitprogrammen f&uuml;r ein PC-Target</span>.<br>
+										<br>
+									<li class="text"><span class="textblau"><b>ATCM PC-based Control</b></span><br>
+										Installiert in der Standard-Installation das Laufzeitsystem (ATCM Control) f&uuml;r die Ausf&uuml;hrung von Laufzeitprogrammen auf einem PC-Target zusammen mit ATCM Console. In der benutzerdefinierten Installation k&ouml;nnen Laufzeitsystem und ATCM Console getrennt installiert werden.<br>
+										<br>
+									<li><span class="textblau"><b>Bibliotheken</b></span><br>
+										<span class="text">Installiert die im Listenfeld unterhalb dieses Kontrollk&auml;stchens aufgef&uuml;hrten Zusatzbibliotheken. Ist das Kontrollk&auml;stchen markiert, k&ouml;nnen die Zusatzbibliotheken im Listenfeld einzeln f&uuml;r die Installation ausgew&auml;hlt werden. Wird das Listenfeld demarkiert, werden auch alle Markierungen der Bibliotheken im Listenfeld entfernt.</span><br>
+										<br>
+
+								</ul>
+								<p class="text">Im Bereich <b>Ethernet Controller Target</b> k&ouml;nnen Sie folgende Komponenten ausw&auml;hlen:<br>
+									<br>
+									In der Standard-Installation installieren Sie bei markiertem Kontrollk&auml;stchen <b>ATCM Ethernet Controller Engineering</b> ATCM Engineering einschlie&szlig;lich der Komponenten und Standardbibliotheken zur Entwicklung von Laufzeitprogrammen f&uuml;r ein Ethernet Controller Target zusammen mit dem OPC-Server. Dieser wird zur Kommunikation von auf Ethernet Controllern ausgef&uuml;hrten Laufzeitprogrammen mit ATCM Engineering ben&ouml;tigt. In der benutzerdefinerten Installation k&ouml;nnen ATCM Engineering und OPC-Server getrennt installiert werden.<br>
+									<br>
+										Die Sprachversion der installierten Komponenten nehmen Sie &uumlber die Optionsfelder <b>Deutsch</b> und <b>English</b> vor. Die Auswahl der Sprache entscheidet u.a. dar&uuml;ber, welche Sprachversion der Online-Hilfe zu den ausgew&aumlhlten Komponenten installiert wird.<br>
+									<br>
+									ATCMControl ben&ouml;tigt zur korrekten Ausf&uuml;hrung einige Systemkomponenten und je nach Windows-Version ein entsprechendes Servicepack. Bei der Ausf&uuml;hrung der Installation wird Ihr System nach diesen Komponenten durchsucht. Werden die erforderlichen Komponenten nicht gefunden, werden Sie w&auml;hrend des Installationsvorgangs von der ATCMControl-CD installiert. &Uuml;ber die von ATCMControl ben&ouml;tigten Komponenten und die Version der Komponenten, die aktuell auf Ihrem System installiert sind, k&ouml;nnen Sie sich in der Registerkarte <b>Info</b> informieren.<br>
+									<br>
+
+
+							</td></tr>
+										</table>
+										<table border="0" cellpadding="0" cellspacing="0" align="center" valign="middle" width="570">
+										<tr>
+							<td class="text"><br>
+								<span class="text">Um die ausgew&auml;hlten Komponenten zu installieren, klicken Sie in der Registerkarte <b>Setup</b> auf <b>Installation starten</b>.<br>
+									<br>
+								</span>
+								<ol start=7>
+									<li><span class="text">Lesen Sie die Lizenzvereinbarung sorgf&auml;ltig durch, markieren Sie das Optionsfeld <b>Ich aktzeptiere die Bedingungen der Lizenzvereinbarung</b>, und klicken Sie auf <b>Weiter</b>, um mit der Installation fortzufahren.<br>
+										</span><br>
+								</ol>
+								<ol start=8>
+									<li><span class="text">Best&auml;tigen Sie die Frage im folgenden Dialog, ob Sie mit der Installation fortfahren wollen, mit <b>Ja</b>.<br>
+										</span><br>
+								</ol>
+								<ol start=9>
+									<li><span class="text">Vor der Installation der ausgew&auml;hlten Komponenten werden gegebenenfalls die ben&ouml;tigten Systemkomponenten installiert. Ein Dialog informiert Sie &uuml;ber den Fortschritt der Installation und die Komponenten, die noch installiert werden m&uuml;ssen.<br>
+											<br>
+										</span>
+								</ol>
+							</td>
+						</tr>
+										</table>
+										<table border="0" cellpadding="0" cellspacing="0" align="center" valign="middle" width="570">
+										<tr><td>
+									<br>
+										<span class="text">W&auml;hrend der Installation von System- und ATCMControl-Komponenten kann es mehrfach vorkommen, da&szlig; Sie zum Neustart von Windows aufgefordert werden. Folgen Sie in diesem Fall den Anweisungen auf Ihrem Bildschirm und starten Sie Windows neu. Nach dem Neustart wird das ATCMControl-Setup automatisch wieder aufgerufen und f&auml;hrt mit der Installation fort.<br>
+											<br>
+										</span><span class="zwitired">Hinweis:</span>
+
+								<p><span class="text"><b>Wenn Sie unter Windows 2000 / Windows XP die MS Internet Information Services noch nicht installiert haben, wird zuerst eine HTML-Seite angezeigt. Diese Seite fordert Sie auf, die Internet Information Services zu installieren. Folgen Sie den Anweisungen auf dieser Seite. Sie k&ouml;nnen mit der weiteren Installation erst dann fortfahren, wenn Sie die entsprechenden Services installiert haben.</b></span></p>
+								<p></p>
+								<p><span class="text">Falls Sie I/Os von PROFIbus DP-Feldger&auml;ten in Ihren Programmen verwenden wollen, m&uuml;ssen Sie nach der Installation von ATCMControl Ihre<a href="pbsetup.html"> PROFIBus-Treiber konfigurieren</a>. </span></p>
+							</td>
+									</tr>
+								</table>
+								<br>
+					<br>
+				</td>
+						</tr>
+					</table>
+	</body>
+
+</html>

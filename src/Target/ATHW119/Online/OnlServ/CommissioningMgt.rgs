@@ -1,0 +1,23 @@
+HKCR
+{
+	4C_20_HW119.CommissioningMgt.%PARAM% = s '4CONTROL: 4C HW119 Commissioning Managment at %PARAM%'
+	{
+		CLSID = s '%GUID%'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove '%GUID%' = s '4CONTROL: 4C HW119 Commissioning Managment at %PARAM%'
+		{
+			ProgID = s '4C_20_HW119.CommissioningMgt.%PARAM%'
+			VersionIndependentProgID = s '4C_20_HW119.CommissioningMgt.%PARAM%'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE% -param %PARAM%'
+			val AppID = s '{3FF3B137-CFCD-40a7-9D09-17127B1DAFC4}'
+
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

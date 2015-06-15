@@ -1,0 +1,661 @@
+<html>
+<head>
+<title>CP_Trend</title>
+
+<script>
+
+var trend1;
+
+var trendColors = new Array(
+	"#888888", // black
+	"#ffffff", // gray
+	"#ff0000", // red
+	"#ff9999", // lightred
+	"#00ff00", // green
+	"#99ff99", // lightgreen
+	"#0000ff", // blue
+	"#6699ff"  // lightblue
+);
+
+var sizesX = new Array(
+	960,
+	480,
+	240,
+	120,
+	960,
+	480,
+	240,
+	120,
+	960,
+	480,
+	240,
+	120
+);
+var sizesY = new Array(
+	120,
+	120,
+	120,
+	120,
+	240,
+	240,
+	240,
+	240,
+	360,
+	360,
+	360,
+	360
+);
+
+function init()
+{
+	lastTime          = getCurrentTimeMillis();
+	updateTime        = 1000;
+
+	updateCounter = 0;
+
+	phi = 0;
+		
+	vars = new Array(0, 1, 2, 3);
+	phase = new Array(0.9, 1.8, 2.7, 3.5);
+	markerColors = new Array(
+					markerColorSelect1, 
+					markerColorSelect2, 
+					markerColorSelect3, 
+					markerColorSelect4);
+	markerStyles = new Array(
+					markerStyleSelect1, 
+					markerStyleSelect2, 
+					markerStyleSelect3, 
+					markerStyleSelect4); 
+	lineColors = new Array(
+					lineColorSelect1, 
+					lineColorSelect2, 
+					lineColorSelect3, 
+					lineColorSelect4);
+	interpolationStyles = new Array(
+					interpolationStyleSelect1, 
+					interpolationStyleSelect2, 
+					interpolationStyleSelect3, 
+					interpolationStyleSelect4);
+	scaleMins = new Array(
+					scaleMinSelect1, 
+					scaleMinSelect2, 
+					scaleMinSelect3, 
+					scaleMinSelect4);
+	scaleMaxs = new Array(
+					scaleMaxSelect1, 
+					scaleMaxSelect2, 
+					scaleMaxSelect3, 
+					scaleMaxSelect4);
+	update();
+}
+
+function update(init)
+{
+	var pBad       = getSelFloat(isBadSelect);
+	var pUncertain = getSelFloat(isUncertainSelect);
+	phi += parseFloat(getSelValue(stepSelect));
+
+	trend.width  = sizesX[getSelValue(sizeSelect)];
+	trend.height = sizesY[getSelValue(sizeSelect)];
+
+	trend.setTrendBgColor        (getSelColor(bgColorSelect));
+	trend.setUncertainColor(getSelColor(uncertainColorSelect));
+	trend.setBadMarkerColor      (getSelColor(badMarkerColorSelect));
+	trend.setGridColor           (getSelColor(gridColorSelect));
+	trend.setTimeWindowMillis    (getSelValue(timeWindowMillisSelect));
+	trend.setMarkerSize          (getSelValue(markerSizeSelect));
+	trend.setUncertainMarkerSize (getSelValue(uncertainMarkerSizeSelect));
+	trend.setBadMarkerSize       (getSelValue(badMarkerSizeSelect));
+	trend.showGrid               (getSelBool(showGridSelect));
+	trend.setQuality             (getSelValue(qualitySelect));
+
+	for( var i = 0; i < 4; i++)
+	{
+		var t = getCurrentTimeMillis();
+		var v = Math.sin(phi + phase[i]);
+		var q = computeQuality(pUncertain, pBad);
+		trend.setMarkerColor       (i, getSelColor(markerColors[i]));
+		trend.setMarkerStyle       (i, getSelValue(markerStyles[i]));
+		trend.setLineColor         (i, getSelColor(lineColors[i]));
+		trend.setInterpolationStyle(i, getSelValue(interpolationStyles[i]));
+		trend.setTrendScaleMin     (i, getSelFloat(scaleMins[i])); 
+		trend.setTrendScaleMax     (i, getSelFloat(scaleMaxs[i])); 
+		trend.addPointToTrend      (i, t, v, q);
+	}
+	var t = getCurrentTimeMillis();
+	trend.advance(t);
+
+	info.innerText = trend.getAppletInfo();
+
+	updateCounter++;
+	setTimeout("update()", updateTime);
+}
+
+function computeQuality(p1, p2)
+{
+	var q = ( Math.random() < p1 ? 1 : 0 );
+		q = ( Math.random() < p1 ? 2 : q );
+
+//	var q = ( updateCounter % 10 == 0 ? 1 : 0 );
+
+//	var q = ( updateCounter == 5 ? 1 : 0 );
+	return q;
+}
+
+function getCurrentTimeMillis()
+{
+	var d = new Date();
+	return d.getTime();
+}
+
+
+function getSelColor(selectObj)
+{
+	return trendColors[selectObj.selectedIndex-1];
+}
+
+function getSelValue(selectObj)
+{
+	return selectObj.options[selectObj.selectedIndex].value;
+}
+
+function getSelFloat(selectObj)
+{
+	return parseFloat(getSelValue(selectObj));
+}
+
+function getSelBool(selectObj)
+{
+	status = "AHA"+getSelValue(selectObj);
+	return ( getSelValue(selectObj) == "true" ? true : false);
+}
+</script>
+
+</head>
+
+<body onload=init()>
+
+<h1>Testseite für das Trenddisplay</h1>
+
+<table>
+<tr><td><small>aktueller Zeitstempel:</small>
+<tr><td><small><div id=time></div></small>
+<tr><td><small><div id=updateControl></div></small>
+<tr><td><small><div id=foo></div></small>
+</table>
+
+<hr>
+<applet code=CP_ApTrend.class id="trend" width=960 height=240>
+	<param name=TRENDS value=4>
+</applet>
+<hr>
+
+<table border=2>
+<tr>
+<td>Size:
+<td>
+<select id=sizeSelect>
+<option value=0>960x120
+<option value=1>480x120
+<option value=2>240x120
+<option value=3>120x120
+<option value=4 selected>960x240
+<option value=5>480x240
+<option value=6>240x240
+<option value=7>120x240
+<option value=8>960x360
+<option value=9>480x360
+<option value=10>240x360
+<option value=11>120x360
+</select>
+
+<td>Update:
+<td>
+<select id=updateSelect>
+<option value=10>0.01s
+<option value=100>0.1s
+<option value=500>0.5s
+<option value=1000 selected>1.0s
+<option value=2000>2.0s
+<option value=3000>3.0s
+</select>
+
+<td><small>Step:</small>
+<td>
+<select id=stepSelect>
+<option value=0.001>0.001
+<option value=0.005>0.005
+<option value=0.01>0.01
+<option value=0.05>0.05
+<option value=0.1>0.1
+<option value=0.5 selected>0.5
+<option value=1.0>1.0
+</select>
+
+<td><small>Uncertain Prob.:</small>
+<td>
+<select id=isUncertainSelect>
+<option value=0.0>0.0
+<option value=0.0001>0.0001
+<option value=0.001>0.001
+<option value=0.01>0.01
+<option value=0.1>0.1
+<option value=0.2>0.2
+<option value=0.3>0.3
+<option value=0.4>0.4
+<option value=0.5>0.5
+<option value=0.6 selected>0.6
+<option value=0.7>0.7
+<option value=0.8>0.8
+<option value=0.9>0.9
+<option value=1.0>1.0
+</select>
+<td><small>Bad Prob.:</small>
+<td>
+<select id=isBadSelect>
+<option value=0.0 selected>0.0
+<option value=0.0001>0.0001
+<option value=0.001>0.001
+<option value=0.01>0.01
+<option value=0.1>0.1
+<option value=0.2>0.2
+<option value=0.3>0.3
+<option value=0.4>0.4
+<option value=0.5>0.5
+<option value=0.6>0.6
+<option value=0.7>0.7
+<option value=0.8>0.8
+<option value=0.9>0.9
+<option value=1.0>1.0
+</select>
+</table>
+
+<table border=2>
+<tr>
+<td>Trend Display:
+<td><small>Background:</small>
+<td>
+<select id=bgColorSelect>
+<option>black
+<option selected>gray
+<option>white
+<option>red
+<option>lightred
+<option>green
+<option>lightgreen
+<option>blue
+<option>lightblue
+</select>
+
+<td><small>Time window:</small>
+<td>
+<select id=timeWindowMillisSelect>
+<option value=15000>15s
+<option value=30000>30s
+<option value=60000 selected>1min
+<option value=300000>5min
+<option value=600000>10min
+<option value=1800000>30min
+<option value=3600000>1h
+<option value=7200000>2h
+<option value=21600000>6h
+<option value=43200000>12h
+</select>
+
+<tr>
+<td><small>Marker:</small>
+<td>
+<select id=markerSizeSelect>
+<option value=1>1
+<option value=2>2
+<option value=3 selected>3
+<option value=4>4
+<option value=5>5
+<option value=6>6
+<option value=7>7
+<option value=8>8
+<option value=9>9
+<option value=10>10
+</select>
+
+<td><small>Uncertain marker:</small>
+<td>
+<select id=uncertainColorSelect>
+<option selected>black
+<option>gray
+<option>white
+<option>red
+<option>lightred
+<option>green
+<option>lightgreen
+<option>blue
+<option>lightblue
+</select>
+<td>
+<select id=uncertainMarkerSizeSelect>
+<option value=2>2
+<option value=4>4
+<option value=6>6
+<option value=8>8
+<option value=10>10
+<option value=12>12
+<option value=14 selected>14
+<option value=16>16
+<option value=18>18
+<option value=20>20
+</select>
+<td><small>Bad marker:</small>
+<td>
+<select id=badMarkerColorSelect>
+<option>black
+<option>gray
+<option>white
+<option selected>red
+<option>lightred
+<option>green
+<option>lightgreen
+<option>blue
+<option>lightblue
+</select>
+<td>
+<select id=badMarkerSizeSelect>
+<option value=2>2
+<option value=4>4
+<option value=6>6
+<option value=8>8
+<option value=10>10
+<option value=12>12
+<option value=14 selected>14
+<option value=16>16
+<option value=18>18
+<option value=20>20
+</select>
+</table>
+
+<table border=2>
+<tr><td>Grid
+<td>
+<select id=gridColorSelect>
+<option>black
+<option selected>gray
+<option>white
+<option>red
+<option>lightred
+<option>green
+<option>lightgreen
+<option>blue
+<option>lightblue
+</select>
+<td>
+<select id=showGridSelect>
+<option value=true>SHOW
+<option value=false selected>HIDE
+</select>
+</table>
+
+<table border=2>
+<tr><td>Quality
+<td>
+<select id=qualitySelect>
+<option value=0 selected>good
+<option value=1>uncertain
+<option value=2>bad
+</select>
+</table>
+
+<table border=2>
+<tr><td>Variable 1:
+<td><small>Marker:</small>
+<td>
+<select id=markerColorSelect1>
+<option selected>black
+<option>gray
+<option>white
+<option>red
+<option>lightred
+<option>green
+<option>lightgreen
+<option>blue
+<option>lightblue
+</select>
+
+<td>
+<select id=markerStyleSelect1>
+<option value=0 selected>NONE
+<option value=1>RECTANGLE
+<option value=2>CIRCLE
+<option value=3>RECTANGLE FILLED
+<option value=4>CIRCLE FILLED
+</select>
+
+<td><small>Line:</small>
+<td>
+<select id=lineColorSelect1>
+<option>black
+<option>gray
+<option>white
+<option>red
+<option>lightred
+<option>green
+<option>lightgreen
+<option>blue
+<option selected>lightblue
+</select>
+
+<td>
+<select id=interpolationStyleSelect1>
+<option value=0 selected>NONE
+<option value=1>LINEAR
+<option value=2>LAST
+</select>
+
+<td><small>Scale min:</small>
+<td>
+<select id=scaleMinSelect1>
+<option value=0.0>0.0
+<option value=-0.5>-0.5
+<option value=-1.0 selected>-1.0
+<option value=-2.0>-2.0
+</select>
+<td><small>Scale max:</small>
+<td>
+<select id=scaleMaxSelect1>
+<option value=0.0>+0.0
+<option value=0.5>+0.5
+<option value=1.0 selected>+1.0
+<option value=2.0>+2.0
+</select>
+
+<tr><td>Variable 2:
+<td><small>Marker:</small>
+<td>
+<select id=markerColorSelect2>
+<option>black
+<option>gray
+<option>white
+<option>red
+<option>lightred
+<option>green
+<option selected>lightgreen
+<option>blue
+<option>lightblue
+</select>
+
+<td>
+<select id=markerStyleSelect2>
+<option value=0>NONE
+<option value=1 selected>RECTANGLE
+<option value=2>CIRCLE
+<option value=3>RECTANGLE_FILLED
+<option value=4>CIRCLE_FILLED
+</select>
+
+<td><small>Line:</small>
+<td>
+<select id=lineColorSelect2>
+<option>black
+<option>gray
+<option>white
+<option>red
+<option>lightred
+<option>green
+<option selected>lightgreen
+<option>blue
+<option>lightblue
+</select>
+
+<td>
+<select id=interpolationStyleSelect2>
+<option value=0>NONE
+<option value=1 selected>LINEAR
+<option value=2>LAST
+</select>
+
+<td><small>Scale min:</small>
+<td>
+<select id=scaleMinSelect2>
+<option value=0.0>0.0
+<option value=-0.5>-0.5
+<option value=-1.0 selected>-1.0
+<option value=-2.0>-2.0
+</select>
+<td><small>Scale max:</small>
+<td>
+<select id=scaleMaxSelect2>
+<option value=0.0>+0.0
+<option value=0.5>+0.5
+<option value=1.0 selected>+1.0
+<option value=2.0>+2.0
+</select>
+
+<tr><td>Variable 3:
+<td><small>Marker:</small>
+<td>
+<select id=markerColorSelect3>
+<option>black
+<option>gray
+<option selected>white
+<option>red
+<option>lightred
+<option>green
+<option>lightgreen
+<option>blue
+<option>lightblue
+</select>
+
+<td>
+<select id=markerStyleSelect3>
+<option value=0 selected>NONE
+<option value=1>RECTANGLE
+<option value=2>CIRCLE
+<option value=3>RECTANGLE FILLED
+<option value=4>CIRCLE FILLED
+</select>
+
+<td><small>Line:</small>
+<td>
+<select id=lineColorSelect3>
+<option selected>black
+<option>gray
+<option>white
+<option>red
+<option>lightred
+<option>green
+<option>lightgreen
+<option>blue
+<option>lightblue
+</select>
+
+<td>
+<select id=interpolationStyleSelect3>
+<option value=0 selected>NONE
+<option value=1>LINEAR
+<option value=2>LAST
+</select>
+
+<td><small>Scale min:</small>
+<td>
+<select id=scaleMinSelect3>
+<option value=0.0>0.0
+<option value=-0.5>-0.5
+<option value=-1.0 selected>-1.0
+<option value=-2.0>-2.0
+</select>
+<td><small>Scale max:</small>
+<td>
+<select id=scaleMaxSelect3>
+<option value=0.0>+0.0
+<option value=0.5>+0.5
+<option value=1.0 selected>+1.0
+<option value=2.0>+2.0
+</select>
+
+<tr><td>Variable 4:
+<td><small>Marker:</small>
+<td>
+<select id=markerColorSelect4>
+<option>black
+<option>gray
+<option selected>white
+<option>red
+<option>lightred
+<option>green
+<option>lightgreen
+<option>blue
+<option>lightblue
+</select>
+
+<td>
+<select id=markerStyleSelect4>
+<option value=0 selected>NONE
+<option value=1>RECTANGLE
+<option value=2>CIRCLE
+<option value=3>RECTANGLE_FILLED
+<option value=4>CIRCLE_FILLED
+</select>
+
+<td><small>Line:</small>
+<td>
+<select id=lineColorSelect4>
+<option>black
+<option>gray
+<option>white
+<option>red
+<option selected>lightred
+<option>green
+<option>lightgreen
+<option>blue
+<option>lightblue
+</select>
+
+<td>
+<select id=interpolationStyleSelect4>
+<option value=0 selected>NONE
+<option value=1>LINEAR
+<option value=2>LAST
+</select>
+
+<td><small>Scale min:</small>
+<td>
+<select id=scaleMinSelect4>
+<option value=0.0>0.0
+<option value=-0.5>-0.5
+<option value=-1.0 selected>-1.0
+<option value=-2.0>-2.0
+</select>
+<td><small>Scale max:</small>
+<td>
+<select id=scaleMaxSelect4>
+<option value=0.0>+0.0
+<option value=0.5>+0.5
+<option value=1.0 selected>+1.0
+<option value=2.0>+2.0
+</select>
+</table>
+
+<hr>
+<div id=info><br><br><br><br></div>
+
+</body>
+</html>

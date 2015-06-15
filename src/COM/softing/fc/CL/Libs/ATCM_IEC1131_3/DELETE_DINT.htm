@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>DELETE_DINT</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>DELETE_DINT</h2>
+<p>Deletes a set number of characters in a string at a set position.<br>
+</p>
+<h3>Interface definition</h3>
+<pre class="preforma">
+FUNCTION DELETE_DINT : ANY_STRING
+VAR_INPUT  
+    IN : ANY_STRING; 
+    L  : DINT;
+    P  : DINT;
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>ANY_STRING</b></i><br>
+  Edited string</p>
+
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>IN</b></dt>
+  <dd>Value of type <b><i>ANY_STRING</i></b><br>
+    String in which characters are to be deleted.</dd>
+  <dt><b>L</b></dt>
+  <dd>Value of type <b><i>DINT</i></b><br>
+    Number of characters to be deleted.</dd>
+  <dt><b>P</b></dt>
+  <dd>Value of type <b><i>DINT</i></b><br>
+    Position of the character in<i> <b>IN1</b></i> as from which characters are 
+    to be deleted. <br>
+  </dd>
+</dl>
+<h3>Description</h3>
+<p>Deletes the number of characters specified in <i><b>L</b></i><b> </b>in the 
+  passed string, starting from position <i><b>P</b></i>. If <b><i>L</i></b> or 
+  <b><i>P</i></b> contain a value that exceeds the number of characters contained 
+  in the string, a runtime error is generated and the calling task is stopped. 
+</p>
+</body>
+</html>

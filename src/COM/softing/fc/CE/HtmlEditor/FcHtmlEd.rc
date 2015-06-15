@@ -1,0 +1,1269 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\FcHtmlEd.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#include ""afxprint.rc""       // printing/print preview resources\r\n"
+    "#include ""afxolesv.rc""       // OLE server resources\r\n"
+    "#endif\r\n"
+    "#include ""version.rc2""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// TYPELIB
+//
+
+1                       TYPELIB MOVEABLE PURE   "FcHtmlEdIF.tlb"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_STYLE DIALOG DISCARDABLE  0, 0, 186, 111
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Block Style"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,24,50,14
+    LISTBOX         IDC_STYLE_LIST,10,5,100,70,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_CB_ALIGN,50,85,60,55,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Alignment:",IDC_STATIC,10,88,40,8
+END
+
+IDD_INSERT_TABLE DIALOG DISCARDABLE  0, 0, 312, 305
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Insert Table"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,140,284,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,196,284,50,14
+    PUSHBUTTON      "&Help",IDHELP,252,284,50,14
+    CONTROL         "Spin1",IDC_SPIN_TABLE_ROWS,"msctls_updown32",
+                    UDS_ARROWKEYS,68,8,11,12
+    EDITTEXT        IDC_EDIT_TABLE_ROWS,36,8,32,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "Rows:",IDC_STATIC,8,12,21,8
+    CONTROL         "Spin1",IDC_SPIN_TABLE_COLUMNS,"msctls_updown32",
+                    UDS_ARROWKEYS,168,8,11,12
+    EDITTEXT        IDC_EDIT_TABLE_COLUMNS,136,8,32,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "Columns:",IDC_STATIC,92,12,30,8
+    CONTROL         "Spin1",IDC_SPIN_TABLE_WIDTH,"msctls_updown32",
+                    UDS_ARROWKEYS,116,72,11,12
+    EDITTEXT        IDC_EDIT_TABLE_WIDTH,92,72,25,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "Width:",IDC_STATIC,20,76,70,8
+    COMBOBOX        IDC_CB_TABLE_WIDTH_UNIT,132,72,48,45,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Alignment:",IDC_STATIC,196,76,40,8
+    COMBOBOX        IDC_CB_TABLE_ALIGN,240,72,56,45,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_CB_TABLE_COLOR_BG,92,112,140,84,CBS_DROPDOWN | 
+                    CBS_OWNERDRAWFIXED | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Background color:",IDC_STATIC,20,116,70,8
+    PUSHBUTTON      "...",IDC_BTN_TABLE_COLOR_BG,240,112,15,12
+    LTEXT           "Background image:",IDC_STATIC,20,96,70,8
+    EDITTEXT        IDC_EDIT_TABLE_IMAGE_BG,92,92,180,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BTN_TABLE_IMAGE_BG,280,92,15,12
+    COMBOBOX        IDC_CB_TABLE_COLOR_BORDER,92,132,140,96,CBS_DROPDOWN | 
+                    CBS_OWNERDRAWFIXED | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Border color:",IDC_STATIC,20,136,70,8
+    PUSHBUTTON      "...",IDC_BTN_TABLE_COLOR_BORDER,240,132,15,12
+    CONTROL         "Spin1",IDC_SPIN_TABLE_BORDER_SIZE,"msctls_updown32",
+                    UDS_ARROWKEYS,120,152,11,12
+    EDITTEXT        IDC_EDIT_TABLE_BORDER_SIZE,92,152,28,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "Border Size",IDC_STATIC,20,156,40,8
+    CONTROL         "Spin1",IDC_SPIN_TABLE_CELL_SPACING,"msctls_updown32",
+                    UDS_ARROWKEYS,284,152,11,12
+    EDITTEXT        IDC_EDIT_TABLE_CELL_SPACING,256,152,29,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "Cell spacing:",IDC_STATIC,196,156,47,8
+    CONTROL         "Spin1",IDC_SPIN_TABLE_CELL_PADDING,"msctls_updown32",
+                    UDS_ARROWKEYS,284,172,11,12
+    EDITTEXT        IDC_EDIT_TABLE_CELL_PADDING,256,172,29,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "Cell padding:",IDC_STATIC,196,176,47,8
+    GROUPBOX        "Table Attributes",IDC_STATIC,8,56,296,132
+    COMBOBOX        IDC_CB_TABLECELL_COLOR_BG,92,208,140,72,CBS_DROPDOWN | 
+                    CBS_OWNERDRAWFIXED | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Background color:",IDC_STATIC,20,212,70,8
+    PUSHBUTTON      "...",IDC_BTN_TABLECELL_COLOR_BG,240,208,15,12
+    COMBOBOX        IDC_CB_TABLECELL_COLOR_BORDER,92,228,140,52,CBS_DROPDOWN | 
+                    CBS_OWNERDRAWFIXED | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Border color:",IDC_STATIC,20,232,70,8
+    PUSHBUTTON      "...",IDC_BTN_TABLECELL_COLOR_BORDER,240,228,15,12
+    LTEXT           "Alignment:",IDC_STATIC,20,252,47,8
+    COMBOBOX        IDC_CB_TABLECELL_ALIGN,92,248,56,45,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Wrap text",IDC_CHK_TABLECELL_WRAP_TEXT,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,196,252,80,10
+    GROUPBOX        "Cell Attributes",IDC_STATIC,8,196,296,76
+    EDITTEXT        IDC_EDIT_TABLE_TITLE,36,32,268,12,ES_AUTOHSCROLL
+    LTEXT           "Title:",IDC_STATIC,8,36,16,8
+END
+
+IDD_INSERT_HTML DIALOG DISCARDABLE  0, 0, 280, 125
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Insert Html"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,164,100,48,14
+    PUSHBUTTON      "Cancel",IDCANCEL,224,100,48,14
+    EDITTEXT        IDC_INSERTHTML_EDIT,8,12,264,80,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN
+END
+
+IDD_PAGE DIALOG DISCARDABLE  0, 0, 296, 105
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Page Properties"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,124,80,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,180,80,50,14
+    PUSHBUTTON      "&Help",IDHELP,236,80,50,14
+    COMBOBOX        IDC_CB_COLOR_BG,84,32,140,80,CBS_DROPDOWN | 
+                    CBS_OWNERDRAWFIXED | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Background color:",IDC_STATIC,12,36,70,8
+    PUSHBUTTON      "...",IDC_BTN_COLOR_BG,232,32,15,12
+    LTEXT           "Background image:",IDC_STATIC,12,16,70,8
+    EDITTEXT        IDC_EDIT_IMAGE_BG,84,13,180,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BTN_IMAGE_BG,272,12,15,12
+    COMBOBOX        IDC_CB_COLOR_TEXT,84,52,140,80,CBS_DROPDOWN | 
+                    CBS_OWNERDRAWFIXED | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Text color:",IDC_STATIC,12,57,70,8
+    PUSHBUTTON      "...",IDC_BTN_COLOR_TEXT,232,52,15,12
+END
+
+IDD_GRID DIALOG DISCARDABLE  0, 0, 186, 95
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION | WS_SYSMENU
+CAPTION "Grid"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Horizontal",IDC_STATIC,12,28,40,8
+    LTEXT           "Vertical",IDC_STATIC,12,44,40,8
+    EDITTEXT        IDC_GRID_HORZ,56,24,40,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GRID_VERT,56,44,40,12,ES_AUTOHSCROLL
+    CONTROL         "Snap to Grid",IDC_GRID_ON,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,8,84,10
+END
+
+IDD_FONT_BAR DIALOG DISCARDABLE  0, 0, 192, 16
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        ID_FORMAT_FONTSIZE,156,1,32,72,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        ID_FORMAT_FONTNAME,84,1,68,72,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        ID_FORMAT_BLOCKFORMAT,4,1,72,72,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_STYLE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 104
+    END
+
+    IDD_INSERT_TABLE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 305
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 298
+    END
+
+    IDD_INSERT_HTML, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 273
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 118
+    END
+
+    IDD_PAGE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 289
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 98
+    END
+
+    IDD_GRID, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 88
+    END
+
+    IDD_FONT_BAR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 185
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 9
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_STYLE DLGINIT
+BEGIN
+    IDC_CB_ALIGN, 0x403, 11, 0
+0x5328, 0x6174, 0x646e, 0x7261, 0x2964, "\000" 
+    IDC_CB_ALIGN, 0x403, 5, 0
+0x654c, 0x7466, "\000" 
+    IDC_CB_ALIGN, 0x403, 7, 0
+0x6543, 0x746e, 0x7265, "\000" 
+    IDC_CB_ALIGN, 0x403, 6, 0
+0x6952, 0x6867, 0x0074, 
+    0
+END
+
+IDD_INSERT_TABLE DLGINIT
+BEGIN
+    IDC_CB_TABLE_WIDTH_UNIT, 0x403, 8, 0
+0x6570, 0x6372, 0x6e65, 0x0074, 
+    IDC_CB_TABLE_WIDTH_UNIT, 0x403, 6, 0
+0x6970, 0x6578, 0x006c, 
+    IDC_CB_TABLE_ALIGN, 0x403, 5, 0
+0x656c, 0x7466, "\000" 
+    IDC_CB_TABLE_ALIGN, 0x403, 7, 0
+0x6563, 0x746e, 0x7265, "\000" 
+    IDC_CB_TABLE_ALIGN, 0x403, 6, 0
+0x6972, 0x6867, 0x0074, 
+    IDC_CB_TABLECELL_ALIGN, 0x403, 10, 0
+0x6261, 0x6273, 0x746f, 0x6f74, 0x006d, 
+    IDC_CB_TABLECELL_ALIGN, 0x403, 10, 0
+0x6261, 0x6d73, 0x6469, 0x6c64, 0x0065, 
+    IDC_CB_TABLECELL_ALIGN, 0x403, 9, 0
+0x6162, 0x6573, 0x696c, 0x656e, "\000" 
+    IDC_CB_TABLECELL_ALIGN, 0x403, 7, 0
+0x6f62, 0x7474, 0x6d6f, "\000" 
+    IDC_CB_TABLECELL_ALIGN, 0x403, 5, 0
+0x656c, 0x7466, "\000" 
+    IDC_CB_TABLECELL_ALIGN, 0x403, 7, 0
+0x696d, 0x6464, 0x656c, "\000" 
+    IDC_CB_TABLECELL_ALIGN, 0x403, 6, 0
+0x6972, 0x6867, 0x0074, 
+    IDC_CB_TABLECELL_ALIGN, 0x403, 8, 0
+0x6574, 0x7478, 0x6f74, 0x0070, 
+    IDC_CB_TABLECELL_ALIGN, 0x403, 4, 0
+0x6f74, 0x0070, 
+    0
+END
+
+IDD_FONT_BAR DLGINIT
+BEGIN
+    ID_FORMAT_FONTSIZE, 0x403, 2, 0
+0x0038, 
+    ID_FORMAT_FONTSIZE, 0x403, 3, 0
+0x3031, "\000" 
+    ID_FORMAT_FONTSIZE, 0x403, 3, 0
+0x3231, "\000" 
+    ID_FORMAT_FONTSIZE, 0x403, 3, 0
+0x3431, "\000" 
+    ID_FORMAT_FONTSIZE, 0x403, 3, 0
+0x3831, "\000" 
+    ID_FORMAT_FONTSIZE, 0x403, 3, 0
+0x3432, "\000" 
+    ID_FORMAT_FONTSIZE, 0x403, 3, 0
+0x3633, "\000" 
+    0
+END
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 240, 81
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About HTML Editor"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,12,12,20,20
+    LTEXT           "ATCM. All rights reserved.",
+                    IDC_STATIC,44,24,188,8
+    DEFPUSHBUTTON   "OK",IDOK,94,52,50,14,WS_GROUP
+    LTEXT           "ATCMControl HTML-Editor ",IDC_APP_VERSION,44,12,156,8,
+                    SS_NOPREFIX
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 74
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
+IDR_SRVR_IP             BITMAP  MOVEABLE PURE   "res\\IToolbar.bmp"
+IDR_INSERT              BITMAP  DISCARDABLE     "res\\bmp00001.bmp"
+IDR_FORMAT              BITMAP  DISCARDABLE     "res\\toolbar1.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM SEPARATOR
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "Format Bar",                  ID_VIEW_FORMATBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About HTML Editor...",       ID_APP_ABOUT
+    END
+END
+
+IDR_DOCUMENT MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM "&Redo\tCtrl+Y",               ID_EDIT_REDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "&Delete\tDel",                ID_EDIT_CLEAR
+        MENUITEM SEPARATOR
+        MENUITEM "Select &All\tCtrl+A",         ID_EDIT_SELECT_ALL
+        MENUITEM SEPARATOR
+        MENUITEM "&Find...\tCtrl+F",            ID_EDIT_FIND
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "Format Bar",                  ID_VIEW_FORMATBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Insert"
+    BEGIN
+        MENUITEM "&Picture...",                 ID_INSERT_PICTURE
+        MENUITEM "&HTML...",                    ID_INSERT_HTML
+        MENUITEM SEPARATOR
+        MENUITEM "&Anchor...\tCtrl+K",          ID_INSERT_ANCHOR
+    END
+    POPUP "F&ormat"
+    BEGIN
+        MENUITEM "&Style...",                   ID_FORMAT_STYLE
+        MENUITEM "&Font...",                    ID_FORMAT_FONT
+        MENUITEM SEPARATOR
+        MENUITEM "&Italic\tCtrl+I",             ID_FORMAT_ITALIC
+        MENUITEM "&Bold\tCtrl+B",               ID_FORMAT_BOLD
+        MENUITEM "&Underline\tCtrl+U",          ID_FORMAT_UNDERLINE
+        MENUITEM SEPARATOR
+        MENUITEM "I&ncrease Indent",            ID_FORMAT_INCREASEINDENT
+        MENUITEM "&Decrease Indent",            ID_FORMAT_DECREASEINDENT
+        MENUITEM SEPARATOR
+        MENUITEM "&Absolute Positioning",       ID_FORMAT_ABS_POSITION
+        MENUITEM "&Lock Element",               ID_FORMAT_LOCK
+        MENUITEM "Snap to &Grid",               ID_FORMAT_GRID
+        MENUITEM SEPARATOR
+        POPUP "Z-Order"
+        BEGIN
+            MENUITEM "Bring to Front",              ID_ZORDER_TO_FRONT
+            MENUITEM "Send to Back",                ID_ZORDER_TO_BACK
+            MENUITEM SEPARATOR
+            MENUITEM "Bring Forward",               ID_ZORDER_FORWARD
+            MENUITEM "Send Backward",               ID_ZORDER_BACKWARD
+            MENUITEM SEPARATOR
+            MENUITEM "Behind Text",                 ID_ZORDER_BEHINDTEXT
+            MENUITEM "Front of Text",               ID_ZORDER_FRONTOFTEXT
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&Page Properties...",         ID_FORMAT_PAGE
+        MENUITEM SEPARATOR
+        MENUITEM "O&ptions ...",                ID_VIEW_OPTIONS
+    END
+    POPUP "T&able"
+    BEGIN
+        MENUITEM "Insert &Table...",            ID_TABLE_INSERTTABLE
+        MENUITEM SEPARATOR
+        MENUITEM "Insert &Row",                 ID_TABLE_INSERTROW
+        MENUITEM "Insert &Column",              ID_TABLE_INSERTCOL
+        MENUITEM "Insert Ce&ll",                ID_TABLE_INSERTCELL
+        MENUITEM SEPARATOR
+        MENUITEM "Delete Ro&ws",                ID_TABLE_DELETEROWS
+        MENUITEM "Delete Colu&mns",             ID_TABLE_DELETECOLS
+        MENUITEM "Delete C&ells",               ID_TABLE_DELETECELLS
+        MENUITEM SEPARATOR
+        MENUITEM "&Merge Cells",                ID_TABLE_MERGECELLS
+        MENUITEM "&Split Cell",                 ID_TABLE_SPLITCELL
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&New Window",                 ID_WINDOW_NEW
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "&Tile",                       ID_WINDOW_TILE_HORZ
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About HTML Editor...",       ID_APP_ABOUT
+    END
+END
+
+IDR_SRVR_EMB MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM "&Update\tCtrl+S",             ID_FILE_UPDATE
+        MENUITEM "Save Copy &As...",            ID_FILE_SAVE_COPY_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM "&Redo\tCtrl+Y",               ID_EDIT_REDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "&Delete\tDel",                ID_EDIT_CLEAR
+        MENUITEM SEPARATOR
+        MENUITEM "Select &All\tCtrl+A",         ID_EDIT_SELECT_ALL
+        MENUITEM SEPARATOR
+        MENUITEM "&Find...\tCtrl+F",            ID_EDIT_FIND
+    END
+    POPUP "&Insert"
+    BEGIN
+        MENUITEM "&Picture...",                 ID_INSERT_PICTURE
+        MENUITEM "&HTML...",                    ID_INSERT_HTML
+        MENUITEM SEPARATOR
+        MENUITEM "&Anchor...\tCtrl+K",          ID_INSERT_ANCHOR
+    END
+    POPUP "F&ormat"
+    BEGIN
+        MENUITEM "&Style...",                   ID_FORMAT_STYLE
+        MENUITEM "&Font...",                    ID_FORMAT_FONT
+        MENUITEM SEPARATOR
+        MENUITEM "&Italic\tCtrl+I",             ID_FORMAT_ITALIC
+        MENUITEM "&Bold\tCtrl+B",               ID_FORMAT_BOLD
+        MENUITEM "&Underline\tCtrl+U",          ID_FORMAT_UNDERLINE
+        MENUITEM SEPARATOR
+        MENUITEM "I&ncrease Indent",            ID_FORMAT_INCREASEINDENT
+        MENUITEM "&Decrease Indent",            ID_FORMAT_DECREASEINDENT
+        MENUITEM SEPARATOR
+        MENUITEM "&Absolute Positioning",       ID_FORMAT_ABS_POSITION
+        MENUITEM "&Lock Element",               ID_FORMAT_LOCK
+        MENUITEM "Snap to &Grid",               ID_FORMAT_GRID
+        MENUITEM SEPARATOR
+        POPUP "Z-Order"
+        BEGIN
+            MENUITEM "Bring to Front",              ID_ZORDER_TO_FRONT
+            MENUITEM "Send to Back",                ID_ZORDER_TO_BACK
+            MENUITEM SEPARATOR
+            MENUITEM "Bring Forward",               ID_ZORDER_FORWARD
+            MENUITEM "Send Backward",               ID_ZORDER_BACKWARD
+            MENUITEM SEPARATOR
+            MENUITEM "Behind Text",                 ID_ZORDER_BEHINDTEXT
+            MENUITEM "Front of Text",               ID_ZORDER_FRONTOFTEXT
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&Page Properties...",         ID_FORMAT_PAGE
+        MENUITEM SEPARATOR
+        MENUITEM "O&ptions ...",                ID_VIEW_OPTIONS
+    END
+    POPUP "T&able"
+    BEGIN
+        MENUITEM "Insert &Table...",            ID_TABLE_INSERTTABLE
+        MENUITEM SEPARATOR
+        MENUITEM "Insert &Row",                 ID_TABLE_INSERTROW
+        MENUITEM "Insert &Column",              ID_TABLE_INSERTCOL
+        MENUITEM "Insert Ce&ll",                ID_TABLE_INSERTCELL
+        MENUITEM SEPARATOR
+        MENUITEM "Delete Ro&ws",                ID_TABLE_DELETEROWS
+        MENUITEM "Delete Colu&mns",             ID_TABLE_DELETECOLS
+        MENUITEM "Delete C&ells",               ID_TABLE_DELETECELLS
+        MENUITEM SEPARATOR
+        MENUITEM "&Merge Cells",                ID_TABLE_MERGECELLS
+        MENUITEM "&Split Cell",                 ID_TABLE_SPLITCELL
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&New Window",                 ID_WINDOW_NEW
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "&Tile",                       ID_WINDOW_TILE_HORZ
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About HTML Editor...",       ID_APP_ABOUT
+    END
+END
+
+IDR_SRVR_IP MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM "&Redo\tCtrl+Y",               ID_EDIT_REDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "&Delete\tDel",                ID_EDIT_CLEAR
+        MENUITEM SEPARATOR
+        MENUITEM "Select &All\tCtrl+A",         ID_EDIT_SELECT_ALL
+        MENUITEM SEPARATOR
+        MENUITEM "&Find...\tCtrl+F",            ID_EDIT_FIND
+    END
+    POPUP "&Insert"
+    BEGIN
+        MENUITEM "&Picture...",                 ID_INSERT_PICTURE
+        MENUITEM "&HTML...",                    ID_INSERT_HTML
+        MENUITEM SEPARATOR
+        MENUITEM "&Anchor...\tCtrl+K",          ID_INSERT_ANCHOR
+    END
+    POPUP "F&ormat"
+    BEGIN
+        MENUITEM "&Style...",                   ID_FORMAT_STYLE
+        MENUITEM "&Font...",                    ID_FORMAT_FONT
+        MENUITEM SEPARATOR
+        MENUITEM "&Italic\tCtrl+I",             ID_FORMAT_ITALIC
+        MENUITEM "&Bold\tCtrl+B",               ID_FORMAT_BOLD
+        MENUITEM "&Underline\tCtrl+U",          ID_FORMAT_UNDERLINE
+        MENUITEM SEPARATOR
+        MENUITEM "I&ncrease Indent",            ID_FORMAT_INCREASEINDENT
+        MENUITEM "&Decrease Indent",            ID_FORMAT_DECREASEINDENT
+        MENUITEM SEPARATOR
+        MENUITEM "&Absolute Positioning",       ID_FORMAT_ABS_POSITION
+        MENUITEM "&Lock Element",               ID_FORMAT_LOCK
+        MENUITEM "Snap to &Grid",               ID_FORMAT_GRID
+        MENUITEM SEPARATOR
+        POPUP "Z-Order"
+        BEGIN
+            MENUITEM "Bring to Front",              ID_ZORDER_TO_FRONT
+            MENUITEM "Send to Back",                ID_ZORDER_TO_BACK
+            MENUITEM SEPARATOR
+            MENUITEM "Bring Forward",               ID_ZORDER_FORWARD
+            MENUITEM "Send Backward",               ID_ZORDER_BACKWARD
+            MENUITEM SEPARATOR
+            MENUITEM "Behind Text",                 ID_ZORDER_BEHINDTEXT
+            MENUITEM "Front of Text",               ID_ZORDER_FRONTOFTEXT
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&Page Properties...",         ID_FORMAT_PAGE
+        MENUITEM SEPARATOR
+        MENUITEM "O&ptions ...",                ID_VIEW_OPTIONS
+    END
+    POPUP "T&able"
+    BEGIN
+        MENUITEM "Insert &Table...",            ID_TABLE_INSERTTABLE
+        MENUITEM SEPARATOR
+        MENUITEM "Insert &Row",                 ID_TABLE_INSERTROW
+        MENUITEM "Insert &Column",              ID_TABLE_INSERTCOL
+        MENUITEM "Insert Ce&ll",                ID_TABLE_INSERTCELL
+        MENUITEM SEPARATOR
+        MENUITEM "Delete Ro&ws",                ID_TABLE_DELETEROWS
+        MENUITEM "Delete Colu&mns",             ID_TABLE_DELETECOLS
+        MENUITEM "Delete C&ells",               ID_TABLE_DELETECELLS
+        MENUITEM SEPARATOR
+        MENUITEM "&Merge Cells",                ID_TABLE_MERGECELLS
+        MENUITEM "&Split Cell",                 ID_TABLE_SPLITCELL
+    END
+    MENUITEM SEPARATOR
+    MENUITEM SEPARATOR
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About HTML Editor...",       ID_APP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\FcHtmlEd.ico"
+IDR_DOCUMENT            ICON    DISCARDABLE     "res\\FcHtmlEdDoc.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_EDIT_UNDO
+    BUTTON      ID_EDIT_REDO
+    SEPARATOR
+    BUTTON      ID_EDIT_FIND
+END
+
+IDR_SRVR_IP TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+END
+
+IDR_INSERT TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_INSERT_PICTURE
+    BUTTON      ID_INSERT_ANCHOR
+END
+
+IDR_FORMAT TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_FORMAT_BOLD
+    BUTTON      ID_FORMAT_ITALIC
+    BUTTON      ID_FORMAT_UNDERLINE
+    SEPARATOR
+    BUTTON      ID_FORMAT_TEXT_COLOR
+    SEPARATOR
+    BUTTON      ID_FORMAT_NUMBER
+    BUTTON      ID_FORMAT_BULLETS
+    BUTTON      ID_FORMAT_DECREASEINDENT
+    BUTTON      ID_FORMAT_INCREASEINDENT
+    SEPARATOR
+    BUTTON      ID_FORMAT_ALIGN_LEFT
+    BUTTON      ID_FORMAT_ALIGN_CENTER
+    BUTTON      ID_FORMAT_ALIGN_RIGHT
+    SEPARATOR
+    BUTTON      ID_FORMAT_ABS_POSITION
+    BUTTON      ID_FORMAT_LOCK
+    BUTTON      ID_FORMAT_GRID
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_F1,          ID_HELP,                VIRTKEY, NOINVERT
+    VK_F1,          ID_CONTEXT_HELP,        VIRTKEY, SHIFT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Y",            ID_EDIT_REDO,           VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+IDR_SRVR_IP ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_ESCAPE,      ID_CANCEL_EDIT_SRVR,    VIRTKEY, NOINVERT
+    VK_F1,          ID_HELP,                VIRTKEY, NOINVERT
+    VK_F1,          ID_CONTEXT_HELP,        VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Y",            ID_EDIT_REDO,           VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+IDR_SRVR_EMB ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_UPDATE,         VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_F1,          ID_HELP,                VIRTKEY, NOINVERT
+    VK_F1,          ID_CONTEXT_HELP,        VIRTKEY, SHIFT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Y",            ID_EDIT_REDO,           VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDP_OLE_INIT_FAILED     "OLE initialization failed.  Make sure that the OLE libraries are the correct version."
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "Html Editor"
+    IDR_DOCUMENT            "\nHtml\nNewHtmlFile\nHtml Files (*.html)\n.html\n4C_20_CE.HtmlEditor.Document\nHtml Document"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "ATCM HTML Editor"
+    AFX_IDS_IDLEMESSAGE     "For Help, press F1"
+    AFX_IDS_HELPMODEMESSAGE "Select an object on which to get Help"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+    ID_FILE_UPDATE          "Update the container to show any changes\nUpdate"
+    ID_FILE_SAVE_COPY_AS    "Save a copy of the active document with a new name\nSave Copy"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+    ID_HELP_INDEX           "Opens Help\nHelp Topics"
+    ID_HELP_FINDER          "List Help topics\nHelp Topics"
+    ID_HELP_USING           "Display instructions about how to use help\nHelp"
+    ID_CONTEXT_HELP         "Display help for clicked on buttons, menus and windows\nHelp"
+    ID_HELP                 "Display help for current task or command\nHelp"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WINDOW_NEW           "Open another window for the active document\nNew Window"
+    ID_WINDOW_ARRANGE       "Arrange icons at the bottom of the window\nArrange Icons"
+    ID_WINDOW_CASCADE       "Arrange windows so they overlap\nCascade Windows"
+    ID_WINDOW_TILE_HORZ     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_TILE_VERT     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+    AFX_IDS_MDICHILD        "Activate this window"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
+    ID_IMAGE_FILTER         """GIF and JPEG (*.gif, *.jpg)|*.gif;*.jpg|All Files (*.*)|*.*||"""
+    ID_OPTIONS              "Options"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FORMAT_TEXT_COLOR    "TextColor\nText Color"
+    ID_FORMAT_BOLD          "Bold\nBold"
+    ID_FORMAT_FONTNAME      "Font Name\nFont Name"
+    ID_FORMAT_FONTSIZE      "Font Size\nFont Size"
+    ID_FORMAT_BLOCKFORMAT   "Block Style\nBlock Style"
+    ID_FORMAT_ITALIC        "Italic\nItalic"
+    ID_FORMAT_UNDERLINE     "Underline\nUnderline"
+    ID_FORMAT_ALIGN_LEFT    "Align Left\nAlign Left"
+    ID_FORMAT_ALIGN_CENTER  "Align Center\nAlign Center"
+    ID_FORMAT_ALIGN_RIGHT   "Align Right\nAlign Right"
+    ID_FORMAT_BULLETS       "Bullet List\nBullet List"
+    ID_FORMAT_DECREASEINDENT "Decrease Indent\nDecrease Indent"
+    ID_FORMAT_INCREASEINDENT "Increase Indent\nIncrease Indent"
+    ID_FORMAT_NUMBER        "Number List\nNumber List"
+    ID_FORMAT_ABS_POSITION  "Absolute positioning of HTML objects\nAbsolute Mode"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FORMAT_GRID          "Snap to Grid\nSnap to Grid"
+    ID_FORMAT_STYLE         "Block Format Style\nBlock Format Style"
+    ID_FORMAT_LOCK          "Lock Element\nLock Element"
+    ID_INSERT_ANCHOR        "Insert Anchor\nInsert Anchor"
+    ID_INSERT_HTML          "Insert HTML\nInsert HTML"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FORMAT_FONT          "Display Font Dialog\nFont Dialog"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INSERT_PICTURE       "Insert Image\nInsert Image"
+    ID_TABLE_INSERTTABLE    "Insert Table\nInsert Table"
+    ID_TABLE_INSERTROW      "Insert Row\nInsert Row"
+    ID_TABLE_INSERTCOL      "Insert Column\nInsert Column"
+    ID_TABLE_DELETEROWS     "Delete Rows\nDelete Rows"
+    ID_TABLE_DELETECOLS     "Delete Columns\nDelete Columns"
+    ID_TABLE_MERGECELLS     "Merge Cells\nMerge Cells"
+    ID_TABLE_SPLITCELL      "Split Cell\nSplit Cell"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_TABLE_INSERTCELL     "Insert Cell\nInsert Cell"
+    ID_TABLE_DELETECELLS    "Delete Cells\nDelete Cells"
+    ID_ZORDER_TO_FRONT      "Bring to Front\nBring to Front"
+    ID_ZORDER_TO_BACK       "Send to Back\nSend to Back"
+    ID_ZORDER_FORWARD       "Bring Forward\nBring Forward"
+    ID_ZORDER_BACKWARD      "Send Backward\nSend Backward"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_ZORDER_BEHINDTEXT    "Behind Text\nBehind Text"
+    ID_ZORDER_FRONTOFTEXT   "Front of Text\nFront of Text"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_COLOR_000            "#000000 Black"
+    ID_COLOR_001            "#ffffff White"
+    ID_COLOR_002            "#808080 Gray"
+    ID_COLOR_003            "#c0c0c0 Silver"
+    ID_COLOR_004            "#ff0000 Red"
+    ID_COLOR_005            "#008000 Green"
+    ID_COLOR_006            "#0000ff Blue"
+    ID_COLOR_007            "#ffff00 Yellow"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_COLOR_008            "#800080 Purple"
+    ID_COLOR_009            "#808000 Olive"
+    ID_COLOR_010            "#000080 Navy"
+    ID_COLOR_011            "#00ffff Aqua"
+    ID_COLOR_012            "#00ff00 Lime"
+    ID_COLOR_013            "#800000 Maroon"
+    ID_COLOR_014            "#008080 Teal"
+    ID_COLOR_015            "#ff00ff Fuchsia"
+    ID_COLOR_016            "#f0f8ff Aliceblue"
+    ID_COLOR_017            "#faebd7 Antiquewhite"
+    ID_COLOR_018            "#7fffd4 Aquamarine"
+    ID_COLOR_019            "#f0ffff Azure"
+    ID_COLOR_020            "#f5f5dc Beige"
+    ID_COLOR_021            "#ffe4c4 Bisque"
+    ID_COLOR_022            "#ffebcd Blanchedalmond"
+    ID_COLOR_023            "#8a2be2 Blueviolet"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_COLOR_024            "#a52a2a Brown"
+    ID_COLOR_025            "#deb887 Burlywood"
+    ID_COLOR_026            "#5f9ea0 Cadetblue"
+    ID_COLOR_027            "#7fff00 Chartreuse"
+    ID_COLOR_028            "#d2691e Chocolate"
+    ID_COLOR_029            "#ff7f50 Coral"
+    ID_COLOR_030            "#6495ed Cornflower"
+    ID_COLOR_031            "#fff8dc Cornsilk"
+    ID_COLOR_032            "#dc143c Crimson"
+    ID_COLOR_033            "#00ffff Cyan"
+    ID_COLOR_034            "#00008b Darkblue"
+    ID_COLOR_035            "#008b8b Darkcyan"
+    ID_COLOR_036            "#b8860b Darkgoldenrod"
+    ID_COLOR_037            "#a9a9a9 Darkgray"
+    ID_COLOR_038            "#006400 Darkgreen"
+    ID_COLOR_039            "#bdb76b Darkkhaki"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_COLOR_040            "#8b008b Darkmagenta"
+    ID_COLOR_041            "#556b2f Darkolivegreen"
+    ID_COLOR_042            "#ff8c00 Darkorange"
+    ID_COLOR_043            "#9932cc Darkorchid"
+    ID_COLOR_044            "#8b0000 Darkred"
+    ID_COLOR_045            "#e9967a Darksalmon"
+    ID_COLOR_046            "#8fbc8b Darkseagreen"
+    ID_COLOR_047            "#483d8b Darkslateblue"
+    ID_COLOR_048            "#2f4f4f Darkslategray"
+    ID_COLOR_049            "#00ced1 Darkturquoise"
+    ID_COLOR_050            "#9400d3 Darkviolet"
+    ID_COLOR_051            "#ff1493 Deeppink"
+    ID_COLOR_052            "#00bfff Deepskyblue"
+    ID_COLOR_053            "#696969 Dimgray"
+    ID_COLOR_054            "#1e90ff Dodgerblue"
+    ID_COLOR_055            "#b22222 Firebrick"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_COLOR_056            "#fffaf0 Floralwhite"
+    ID_COLOR_057            "#228b22 Forestgreen"
+    ID_COLOR_058            "#dcdcdc Gainsboro"
+    ID_COLOR_059            "#f8f8ff Ghostwhite"
+    ID_COLOR_060            "#ffd700 Gold"
+    ID_COLOR_061            "#daa520 Goldenrod"
+    ID_COLOR_062            "#adff2f Greenyellow"
+    ID_COLOR_063            "#f0fff0 Honeydew"
+    ID_COLOR_064            "#ff69b4 Hotpink"
+    ID_COLOR_065            "#cd5c5c Indianred"
+    ID_COLOR_066            "#4b0082 Indigo"
+    ID_COLOR_067            "#fffff0 Ivory"
+    ID_COLOR_068            "#f0e68c Khaki"
+    ID_COLOR_069            "#e6e6fa Lavender"
+    ID_COLOR_070            "#fff0f5 Lavenderblush"
+    ID_COLOR_071            "#7cfc00 Lawngreen"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_COLOR_072            "#fffacd Lemonchiffon"
+    ID_COLOR_073            "#add8e6 Lightblue"
+    ID_COLOR_074            "#f08080 Lightcoral"
+    ID_COLOR_075            "#e0ffff Lightcyan"
+    ID_COLOR_076            "#fafad2 Lightgoldenrodyellow"
+    ID_COLOR_077            "#90ee90 Lightgreen"
+    ID_COLOR_078            "#d3d3d3 Lightgrey"
+    ID_COLOR_079            "#ffb6c1 Lightpink"
+    ID_COLOR_080            "#ffa07a Lightsalmon"
+    ID_COLOR_081            "#20b2aa Lightseagreen"
+    ID_COLOR_082            "#87cefa Lightskyblue"
+    ID_COLOR_083            "#778899 Lightslategray"
+    ID_COLOR_084            "#b0c4de Lightsteelblue"
+    ID_COLOR_085            "#ffffe0 Lightyellow"
+    ID_COLOR_086            "#32cd32 Limegreen"
+    ID_COLOR_087            "#faf0e6 Linen"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_COLOR_088            "#ff00ff Magenta"
+    ID_COLOR_089            "#66cdaa Mediumaquamarine"
+    ID_COLOR_090            "#0000cd Mediumblue"
+    ID_COLOR_091            "#ba55d3 Mediumorchid"
+    ID_COLOR_092            "#9370db Mediumpurple"
+    ID_COLOR_093            "#3cb371 Mediumseagreen"
+    ID_COLOR_094            "#7b68ee Mediumslateblue"
+    ID_COLOR_095            "#00fa9a Mediumspringgreen"
+    ID_COLOR_096            "#48d1cc Mediumturquoise"
+    ID_COLOR_097            "#c71585 Mediumvioletred"
+    ID_COLOR_098            "#191970 Midnightblue"
+    ID_COLOR_099            "#f5fffa Mintcream"
+    ID_COLOR_100            "#ffe4e1 Mistyrose"
+    ID_COLOR_101            "#ffe4b5 Moccasin"
+    ID_COLOR_102            "#ffdead Navajowhite"
+    ID_COLOR_103            "#fdf5e6 Oldlace"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_COLOR_104            "#6b8e23 Olivedrab"
+    ID_COLOR_105            "#ffa500 Orange"
+    ID_COLOR_106            "#ff4500 Orangered"
+    ID_COLOR_107            "#da70d6 Orchid"
+    ID_COLOR_108            "#eee8aa Palegoldenrod"
+    ID_COLOR_109            "#98fb98 Palegreen"
+    ID_COLOR_110            "#afeeee Paleturquoise"
+    ID_COLOR_111            "#db7093 Palevioletred"
+    ID_COLOR_112            "#ffefd5 Papayawhip"
+    ID_COLOR_113            "#ffdab9 Peachpuff"
+    ID_COLOR_114            "#cd853f Peru"
+    ID_COLOR_115            "#ffc0cb Pink"
+    ID_COLOR_116            "#dda0dd Plum"
+    ID_COLOR_117            "#b0e0e6 Powderblue"
+    ID_COLOR_118            "#bc8f8f Rosybrown"
+    ID_COLOR_119            "#4169e1 Royalblue"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_COLOR_120            "#8b4513 Saddlebrown"
+    ID_COLOR_121            "#fa8072 Salmon"
+    ID_COLOR_122            "#f4a460 Sandybrown"
+    ID_COLOR_123            "#2e8b57 Seagreen"
+    ID_COLOR_124            "#fff5ee Seashell"
+    ID_COLOR_125            "#a0522d Sienna"
+    ID_COLOR_126            "#87ceeb Skyblue"
+    ID_COLOR_127            "#6a5acd Slateblue"
+    ID_COLOR_128            "#708090 Slategray"
+    ID_COLOR_129            "#fffafa Snow"
+    ID_COLOR_130            "#00ff7f Springgreen"
+    ID_COLOR_131            "#4682b4 Steelblue"
+    ID_COLOR_132            "#d2b48c Tan"
+    ID_COLOR_133            "#d8bfd8 Thistle"
+    ID_COLOR_134            "#ff6347 Tomato"
+    ID_COLOR_135            "#40e0d0 Turquoise"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_COLOR_136            "#ee82ee Violet"
+    ID_COLOR_137            "#f5deb3 Wheat"
+    ID_COLOR_138            "#f5f5f5 Whitesmoke"
+    ID_COLOR_139            "#9acd32 Yellowgreen"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\FcHtmlEd.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#include "afxprint.rc"       // printing/print preview resources
+#include "afxolesv.rc"       // OLE server resources
+#endif
+#include "version.rc2"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

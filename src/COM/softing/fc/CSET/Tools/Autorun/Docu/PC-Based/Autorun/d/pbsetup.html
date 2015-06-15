@@ -1,0 +1,369 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+		<title>ATCMControl v2.1</title>
+		<script language="javascript" type="text/javascript">
+
+	pic1 = new Image();
+	pic1.src = "../pic/nav1d.gif";
+	pic2 = new Image();
+	pic2.src = "../pic/nav2d.gif";
+	pic3 = new Image();
+	pic3.src = "../pic/nav3d.gif";
+	pic6 = new Image();
+	pic6.src = "../pic/nav6d.gif";
+	pic8 = new Image();
+	pic8.src = "../pic/nav8d.gif";
+	pic7 = new Image();
+	pic7.src = "../pic/nav7d.gif";
+	pic9 = new Image();
+	pic9.src = "../pic/nav9d.gif";
+
+	pic11 = new Image();
+	pic11.src = "../pic/nav11d.gif";
+	pic22 = new Image();
+	pic22.src = "../pic/nav22d.gif";
+	pic33 = new Image();
+	pic33.src = "../pic/nav33d.gif";
+	pic66 = new Image();
+	pic66.src = "../pic/nav66d.gif";
+	pic88 = new Image();
+	pic88.src = "../pic/nav88d.gif";
+	pic77 = new Image();
+	pic77.src = "../pic/nav77d.gif";
+	pic99 = new Image();
+	pic99.src = "../pic/nav99d.gif";
+
+function drauf(wert)
+{
+	switch (wert)
+	{
+		case 1:	document.nav1.src = pic11.src;
+		break;
+		case 2: document.nav2.src = pic22.src;
+		break;
+		case 3: document.nav3.src = pic33.src;
+		break;
+		case 6: document.nav6.src = pic66.src;
+		break;
+		case 8: document.nav8.src = pic88.src;
+		break;
+		case 7: document.nav7.src = pic77.src;
+		break;
+		case 9: document.nav9.src = pic99.src;
+		break;
+	}
+}
+function runter(wert)
+{
+	switch (wert)
+	{
+		case 1:document.nav1.src = pic1.src;
+		break;
+		case 2:document.nav2.src = pic2.src;
+		break;
+		case 3:document.nav3.src = pic3.src;
+		break;
+		case 6:document.nav6.src = pic6.src;
+		break;
+		case 8:document.nav8.src = pic8.src;
+		break;
+		case 7:document.nav7.src = pic7.src;
+		break;
+		case 9: document.nav9.src = pic9.src;
+		break;
+
+	}
+}
+</script>
+		<link rel="stylesheet" href="../text.css">
+	</head>
+
+	<body leftmargin="2" topmargin="2" marginwidth="2" marginheight="2" bgcolor="#CCCCCC" link="#003366" vlink="#003366" alink="#003366">
+		<!--hauptmenue-->
+		<table width="760" height="25" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="155" align="right" valign="bottom"><img src="../pic/4clogo.gif" width="14" height="16" alt="" border="0"><img src="../pic/clearpix.gif" width="2" height="1" alt="" border="0"></td>
+				<!--kurze laengsline-->
+				<td align="left" valign="bottom"><img src="../pic/linien.gif" width="2" height="25" alt="" border="0"></td>
+				<!--ende-->
+				<td colspan="4">&nbsp;</td>
+			</tr>
+		</table>
+		<!--querline-->
+		<table width="760" height="2" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><img src="../pic/linien.gif" width="760" height="2" alt="" border="0"></td>
+			</tr>
+		</table>
+		<!--ende-->
+		<table width="760" height="94%" border="0" cellpadding="0" cellspacing="0">
+			<tr><!--navigation-->
+				<td width="155" valign="top">
+					<table width="155" height="60" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="24" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td valign="center"><img src="../pic/4clayout-kl.jpg" width="152" height="134" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><img src="../pic/nav1d.gif" name="nav1" width="120" height="25" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="thiscd.html" onmouseover="drauf(2)" onmouseout="runter(2)"><img src="../pic/nav2d.gif" name="nav2" width="120" height="25" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="cinstall.html" onmouseover="drauf(3)" onmouseout="runter(3)"><img src="../pic/nav3d.gif" name="nav3" width="120" height="25" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="license.html" onmouseover="drauf(6)" onmouseout="runter(6)"><img src="../pic/nav6d.gif" name="nav6" width="120" height="25" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="knownbugs.html" onmouseover="drauf(8)" onmouseout="runter(8)"><img src="../pic/nav8d.gif" name="nav8" width="150" height="25" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="contact.html" onmouseover="drauf(7)" onmouseout="runter(7)"><img src="../pic/nav7d.gif" name="nav7" width="120" height="25" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="60" valign="center"><a href="readme_dep.htm" onmouseover="drauf(9)" onmouseout="runter(9)"><img src="../pic/nav9d.gif" name="nav9" width="120" height="50" border="0"></a></td>
+						</tr>
+					</table>
+				</td>
+				<!--navigation ende--><!--lange vertikalline-->
+				<td bgcolor="#999999">
+					<table width="2" height="94%" valign="top" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="1" alt="" border="0"></td>
+						</tr>
+					</table>
+				</td>
+				<!--ende--><!--inhalt-->
+				<td width="603" valign="top">
+					<table border="0" cellpadding="0" cellspacing="0" align="center" valign="middle" width="570">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="24" alt="" border="0"></td>
+						</tr>
+						<tr height="55">
+							<td align="center" valign="top" height="55">
+								<p><span class="headblau">Konfiguration des PROFIbus-Treibers &uuml;ber die PROFIBUS-Systemsteuerung </span></p>
+							</td></tr>
+							<tr><td><span class="text">Zur Konfigurierung der Parameter des PROFIBUS-Hardwareger&auml;tetreibers f&uuml;r Windows 2000/XP verwenden Sie das PROFIBUS-Applet zur Systemsteuerung. Das PROFIBUS-Systemsteuer-ungsapplet wird w&auml;hrend des Installationsvorgangs in der &quot;Systemsteuerung&quot; installiert. Das PROFIBUS-Systemsteuerungsapplet starten Sie durch Doppelklick auf das &quot;PROFIBUS&quot;-Symbol. </span>
+								<p><span class="zwitiblau">&Uuml;bersicht</span><span class="text"> </span></p>
+								<p><span class="text">Die Benutzeroberfl&auml;che der PROFIBUS-Systemsteuerung verh&auml;lt sich wie eine Standard-Windows-MDI-Anwendung (Multiple Document Interface). Sie besteht aus der PROFIBUS-Baumstruktur, Schaltfl&auml;chen und einem Info-Bereich, in dem hardwarespezifische Konfigurationsparameter angezeigt werden.</span></p>
+								<p> <img src="../pic/ProfiControlPanel.gif" width="554" height="414"></p>
+								<p><span class="zwitiblau">PROFIBUS-Baumstruktur</span></p>
+								<p><span class="text"> Die PROFIBUS-Baumstruktur stellt alle konfigurierten PROFIBUS-Knoten mit ihrem aktuellen Status, aufgeteilt auf folgende Hardware-(Karten-)Kategorien dar:</span></p>
+								<ul>
+									<li><span class="text">PROFIboard-ISA (ISA-Version von PROFIboard mit PROFIBUS DP/FMS-Master oder DP-Slave-Stack)
+</span>									<li><span class="text">PROFI104 (PC104-Board mit PROFIBUS DP/FMS-Master oder DP-Slave-Stack)
+</span>									<li><span class="text">PROFI104-S (PC104-Board mit PROFIBUS DP-Slave-Stack)
+</span>									<li><span class="text">PROFIboard-PCI&nbsp;(PCI-Version von PROFIboard mit PROFIBUS DP/FMS-Master oder DP-Slave-Stack)
+</span>									<li><span class="text">PROFIcard / PROFIcard 2 (PC-Karte mit PROFIBUS DP/FMS-Master-Stack)
+</span>									<li><span class="text">FG Series / PROFIgate&nbsp;(PROFIBUS-Ethernet-Gateway mit DP/FMS-Master oder DP-Slave-Stack)
+</span>								</ul>
+								<span class="text">Diese Kategorien bilden die erste Ebene des PROFIBUS-Baums und geben die m&ouml;glichen Hardwareschnittstellentypen an. Sie werden immer angezeigt, unabh&auml;ngig davon, ob solche Hardwareschnittstellen tats&auml;chlich installiert sind oder nicht. </span>
+								<p><span class="text">Bei einem PROFIBUS-Knoten handelt es sich um ein PROFIBUS-Ger&auml;t, das als Master oder Slave betrieben wird. PROFIboard-ISA, PROFIcard/PROFIcard 2, PROFI104 und PROFIgate k&ouml;nnen sich wie Einzelknoten verhalten, PROFIboard-PCI verf&uuml;gt &uuml;ber zwei Kan&auml;le und kann daher wie zwei Knoten agieren. </span></p>
+								<p><span class="text">Nach der Konfiguration eines PROFIBUS-Knotens einer bestimmten Hardwarekategorie wird diese in Fettdruck angezeigt und ein Knoten-Symbol erscheint unter dieser Kategorie. Bei einem konfigurierten Knoten handelt es sich um einen Knoten, der dem PROFIBUS-Windows 2000/XP-Treiber bekannt ist. Je nach Status des Knotens werden drei verschiedene Symbole zur Darstellung eines Knotens unterschieden:</span></p>
+								<ul>
+									<li><span class="text">Das Symbol <img src="../pic/working.gif" width="16" height="16"> zeigt an, da&szlig; der PROFIBUS-Knoten einwandfrei arbeitet.
+</span>									<li><span class="text">Das Symbol <img src="../pic/notworking.gif" width="16" height="16"> zeigt an, da&szlig; der PROFIBUS-Knoten nicht ordnungsgem&auml;&szlig; arbeitet.
+</span>									<li><span class="text">Das Symbol <img src="../pic/configured.gif" width="17" height="16"> zeigt an, da&szlig; der PROFIBUS-Knoten konfiguriert, aber noch nicht gepr&uuml;ft wurde.
+</span>								</ul>
+								<span class="zwitiblau">Info-Bereich </span>
+								<p><span class="text">Die Haupteinstellungen (Firmware, Firmware-Version, Ressourcen, Ger&auml;tenamen, ...) der Konfiguration der PROFIBUS-Knoten werden im Info-Bereich angezeigt. </span></p>
+								<p><span class="zwitiblau">Statuszeile</span> </p>
+								<p><span class="text">Die Statuszeile zeigt den aktuellen Status eines PROFIBUS-Knotens an. </span></p>
+								<p><span class="zwitiblau">Schaltfl&auml;chen </span></p>
+								<p><span class="text">Die Schaltfl&auml;chen in der PROFIBUS-Systemsteuerung haben folgende Bedeutung:</span></p>
+								<table width="450" border="0">
+									<tr>
+										<td width="19%" valign="top"><b><span class="text">Add</span></b></td>
+										<td width="81%"><span class="text">Klicken Sie auf die Schaltfl&auml;che <b>Add</b>, um einen neuen PROFIBUS-Knoten zum PROFIBUS-Baum hinzuzuf&uuml;gen.</span></td>
+									</tr>
+									<tr>
+										<td width="19%" valign="top"><b><span class="text">Edit</span></b></td>
+										<td width="81%"><span class="text">Klicken Sie auf die Schaltfl&auml;che <b>Edit</b>, um die Einstellungen eines bestehenden PROFIBUS-Knotens im PROFIBUS-Baum zu bearbeiten.</span></td>
+									</tr>
+									<tr>
+										<td width="19%" valign="top"><b><span class="text">Remove</span></b></td>
+										<td width="81%"><span class="text">Klicken Sie auf die Schaltfl&auml;che <b>Remove</b>, um einen PROFIBUS-Knoten aus dem PROFIBUS-Baum zu entfernen.</span></td>
+									</tr>
+									<tr>
+										<td width="19%" valign="top"><b><span class="text">Scan Nodes</span></b></td>
+										<td width="81%"><span class="text">Klicken Sie auf die Schaltfl&auml;che <b>Scan Nodes</b>, um alle angeschlossenen PROFIBUS-Schnittstellen (-Karten) im PC automatisch zu suchen und zu konfigurieren.</span></td>
+									</tr>
+									<tr>
+										<td width="19%" valign="top"><b><span class="text">OK</span></b></td>
+										<td width="81%"><span class="text">Klicken Sie auf die Schaltfl&auml;che <b>OK</b>, um die aktuellen Konfigurationseinstellungen zu speichern und die Ger&auml;tetreiber zu laden.</span></td>
+									</tr>
+									<tr>
+										<td width="19%" valign="top"><b><span class="text">Cancel</span></b></td>
+										<td width="81%"><span class="text">Klicken Sie auf die Schaltfl&auml;che <b>Cancel</b>, um die letzten Konfigurationseinstellungen wiederherzustellen und die Ger&auml;tetreiber zu laden.</span></td>
+									</tr>
+									<tr>
+										<td width="19%" valign="top"><b><span class="text">Apply</span></b></td>
+										<td width="81%"><span class="text">Klicken Sie auf die Schaltfl&auml;che <b>Apply</b>, um die letzten Konfigurationseinstellungen zu &uuml;bernehmen und die Ger&auml;tetreiber zu laden.</span></td>
+									</tr>
+								</table>
+								<span class="text">Im folgenden wird ausf&uuml;hrlich auf die Vorgehensweise beim Hinzuf&uuml;gen bzw. Bearbeiten eines Knotens sowie zum automatischen Scannen nach Knoten eingegangen. </span>
+								<p><span class="zwitiblau">Scannen nach Knoten</span> </p>
+								<p><span class="text">Nach dem Klicken auf die Schaltfl&auml;che <b>Scan Nodes...</b> sucht der PROFIBUS-Hardwareger&auml;tetreiber nach allen auf Ihrem PC installierten PROFIBUS-Schnittstellen (-Karten). Alle erforderlichen Ressourcen wie bspw. Dual-Port-RAM, IO-Ports, Interrupts, usw. werden automatisch durch den Hardwareger&auml;tetreiber festgestellt.</span> </p>
+								<p><span class="text">Je nach Hardwarekonfiguration kann der Scanvorgang einige Zeit in Anspruch nehmen, was durch eine Sanduhr dargestellt wird.</span> </p>
+								<p><span class="zwitiblau">Eine PROFIBUS-Schnittstelle hinzuf&uuml;gen und bearbeiten</span> </p>
+								<p><span class="text">Klicken Sie auf die Schaltfl&auml;che <b>Add</b>, um den Hardwareger&auml;tetreiber f&uuml;r eine neue PROFIBUS-Schnittstelle zu konfigurieren.<br>
+										Zun&auml;chst erscheint ein Dialog, in dem Sie den Typ der zu konfigurierenden Schnittstellenkarte ausw&auml;hlen k&ouml;nnen. <br>
+										Als n&auml;chstes k&ouml;nnen Sie einen symbolischen Namen f&uuml;r den neuen Knoten eingeben. <br>
+										Die darauf folgenden Dialoge sind vom Typ der Schnittstellenkarte abh&auml;ngig. Auf sie wird im einzelnen in den nachstehenden Abschnitten (3.3.1 bis 3.3.6) eingegangen. <br>
+										Mit der Schaltfl&auml;che <b>Edit</b> kann die Konfiguration eines bestehenden Hardwareger&auml;tetreibers einer PROFIBUS-Schnittstellenkarte ge&auml;ndert werden. Sie k&ouml;nnen den Knotennamen sowie weitere Parameter &auml;ndern, die von dem jeweiligen Schnittstellenkartentyp abh&auml;ngig sind. <br>
+										Die Dialoge zur &Auml;nderung eines Knotens entsprechen denen zum Hinzuf&uuml;gen eines neuen Knotens. Auf sie wird im einzelnen in den nachstehenden Abschnitten (3.3.1 bis 3.3.6) eingegangen.</span> </p>
+								<p><span class="zwitiblau">Ausw&auml;hlen eines Knotennamens </span></p>
+								<p><span class="text">Um von einer Anwendung aus auf ein logisches PROFIBUS-Ger&auml;t zugreifen zu k&ouml;nnen, ist ein eindeutiger Win32-Ger&auml;tename erforderlich. Au&szlig;er dem Standard-Win32-Ger&auml;tenamen, der automatisch vom PROFIBUS-Hardwareger&auml;tetreiber zugewiesen wird, kann optional ein Win32-Aliasname f&uuml;r das Ger&auml;t eingegeben werden.</span></p>
+								<p> <img src="../pic/SelectNodeName.gif" width="458" height="336"> </p>
+								<p><span class="text">Geben Sie einen symbolischen Knotennamen in das Textfeld ein und klicken Sie auf die Schaltfl&auml;che <b>Next</b>, um mit der Konfiguration fortzufahren. Klicken Sie auf die Schaltfl&auml;che <b>Cancel</b>, um die Konfiguration abzubrechen und zum Hauptdialog zur&uuml;ckzukehren.</span> </p>
+								<p><span class="zwitiblau">Ausw&auml;hlen der Betriebsart</span> </p>
+								<p><span class="text">Eine PROFIBUS-Schnittstelle kann entweder als DP / FMS-Master oder als DP-Slave betrieben werden.</span> <img src="../pic/SelectOperationMode.gif" width="458" height="336"> </p>
+								<p><span class="text">W&auml;hlen Sie die gew&uuml;nschte Betriebsart aus und klicken Sie auf die Schaltfl&auml;che <b>Next</b>, um mit der Konfiguration fortzufahren. Klicken Sie auf die Schaltfl&auml;che <b>Back</b>, um zum vorherigen Dialog zur&uuml;ckzukehren. Klicken Sie auf die Schaltfl&auml;che <b>Cancel</b>, um die Konfiguration abzubrechen und zum Hauptdialog zur&uuml;ckzukehren.</span></p>
+								<table width="450" border="0">
+									<tr>
+										<td valign="top" width="16%"><span class="textrotbold">HINWEIS:</span></td>
+										<td width="84%"><span class="text"><b>PROFIcard / PROFIcard 2</b> unterst&uuml;tzt nur die Betriebsart DP / FMS-Master.<br>
+												<b>PROFI104-S</b> unterst&uuml;tzt nur die Betriebsart DP-Slave.</span></td>
+									</tr>
+									<tr>
+										<td valign="top" width="16%"><span class="textrotbold">ACHTUNG:</span> </td>
+										<td width="84%"><span class="text">Bei einem Wechsel der Betriebsart f&uuml;hrt der Hardwareger&auml;tetreiber ein Download der gew&auml;hlten Firmware auf die PROFIBUS-Karte durch. Die auf der Karte bestehende Firmware wird &uuml;berschrieben!!!</span></td>
+									</tr>
+								</table>
+								<p><span class="zwitiblau">Parametereinstellungen f&uuml;r PROFIboard-ISA, PROFI104 und PROFI104-S </span></p>
+								<p><span class="text">Beim Zugriff auf PROFIboard-ISA, PROFI104 oder PROFI104-S mu&szlig; der PROFIBUS-Hardwareger&auml;tetreiber Ressourcen wie bspw. IO-Ports, den Adressierungsbereich f&uuml;r das Dual-Port-RAM und Interruptadressen zuweisen.</span></p>
+								<p> <img src="../pic/SelectInterfaceResources.gif" width="458" height="336"> &nbsp;
+</p>
+								<table width="480" border="1">
+									<tr>
+										<td width="23%" valign="top"><b><span class="text">IO-Port Address:</span></b></td>
+										<td width="77%"><span class="text">Die I/O-Basisadresse der Karte. Die Autoerkennung sucht nur im Bereich von 0x200 bis 0x3FC. Um eine Adresse au&szlig;erhalb dieses Bereichs anzugeben, geben Sie die Basisadresse in das Eingabefeld ein. Weitere Informationen zu den g&uuml;ltigen I/O-Basisadressen erhalten Sie in Ihrem Hardwareinstallations-Handbuch.</span></td>
+									</tr>
+									<tr>
+										<td width="23%" valign="top"><b><span class="text">DP RAM Address:</span></b></td>
+										<td width="77%"><span class="text">Adresse des Dual-Port-Speichers (siehe Kapitel 2.2.1 Hardwarevoraussetzungen).</span></td>
+									</tr>
+									<tr>
+										<td width="23%" valign="top"><b><span class="text">Interrupt:</span></b></td>
+										<td width="77%"><span class="text">IRQ-Adresse (siehe Kapitel 2.2.1 Hardwarevoraussetzungen).</span></td>
+									</tr>
+								</table>
+								<p><span class="text">Bei der automatischen Auswahl bestimmt der PROFIBUS-Hardwaretreiber die erforderlichen Ressourcen der PROFIBUS-Karte. </span></p>
+								<p><span class="text">W&auml;hlen Sie die jeweiligen Ressourcen aus und klicken Sie auf die Schaltfl&auml;che <b>Finish</b>, um die Konfiguration abzuschlie&szlig;en und zum Hauptdialog zur&uuml;ckzukehren. Klicken Sie auf die Schaltfl&auml;che <b>Back</b>, um zum vorherigen Dialog zur&uuml;ckzukehren. Klicken Sie auf die Schaltfl&auml;che <b>Cancel</b>, um die Konfiguration abzubrechen und zum Hauptdialog zur&uuml;ckzukehren.</span></p>
+								<p><span class="zwitiblau">Parametereinstellungen f&uuml;r PROFIcard / PROFIcard 2</span> </p>
+								<p><span class="textblaubold">PROFIcard/PROFIcard 2-Softwareschnittstelle </span></p>
+								<p><span class="text">Der PROFIBUS-Hardwareger&auml;tetreiber stellt zwei Mechanismen zum Zugriff auf die PROFIcard/PROFIcard 2 zur Verf&uuml;gung:</span></p>
+								<ul>
+									<li><span class="text">Den Windows 2000/XP Standard-Freigabemechanismus f&uuml;r PC-Karten
+</span>									<li><span class="text">Die PC-Kartensoftware &quot;CardWare for Windows NT&quot; von Award Software International Inc.
+</span>								</ul>
+								<span class="text">Bei Verwendung des Windows 2000/XP Standard-Freigabemechanismus f&uuml;r PC-Karten kann nur genau eine PROFIcard verwendet werden. Die PROFIcard mu&szlig; zum Zeitpunkt des Bootvorgangs montiert werden.</span>
+								<p> <img src="../pic/SProficard.gif" width="476" height="336"> </p>
+								<p><span class="text">W&auml;hlen Sie die gew&uuml;nschte Softwareschnittstelle f&uuml;r die PC-Karte aus und klicken Sie auf die Schaltfl&auml;che <b>Next</b>, um mit der Konfiguration fortzufahren. Klicken Sie auf die Schaltfl&auml;che <b>Back</b>, um zum vorherigen Dialog zur&uuml;ckzukehren. Klicken Sie auf die Schaltfl&auml;che <b>Cancel</b>, um die Konfiguration abzubrechen und zum Hauptdialog zur&uuml;ckzukehren. </span></p>
+								<p><span class="zwitiblau">PROFIcard / PROFIcard 2 (NT-Standard)</span> </p>
+								<p><span class="text">Beim Zugriff auf die PROFIcard &uuml;ber die Windows NT PC-Kartenfreigabe mu&szlig; der PROFIBUS-Hardwareger&auml;tetreiber der PROFIcard Ressourcen zuweisen.</span></p>
+								<p> <img src="../pic/StandardWinNT.gif" width="476" height="336"> &nbsp;
+</p>
+								<table width="450">
+									<tr>
+										<td width="27%" valign="top"><b><span class="text">Attribute Memory</span></b></td>
+										<td width="73%"><span class="text">Attributspeicher f&uuml;r die PC-Karte (siehe Kapitel 2.2.1 Hardwarevoraussetzungen).</span></td>
+									</tr>
+									<tr>
+										<td width="27%" valign="top"><b><span class="text">DP RAM Address</span></b></td>
+										<td width="73%"><span class="text">Adresse des Dual-Port-Speichers (siehe Kapitel 2.2.1 Hardwarevoraussetzungen).</span></td>
+									</tr>
+									<tr>
+										<td width="27%" valign="top"><b><span class="text">Interrupt</span></b></td>
+										<td width="73%"><span class="text">IRQ-Adresse (siehe Kapitel 2.2.1 Hardwarevoraussetzungen).</span></td>
+									</tr>
+								</table>
+								<p><span class="text">Der PROFIBUS-Hardwareger&auml;tetreiber verf&uuml;gt nicht &uuml;ber die M&ouml;glichkeit einer automatischen Erkennung der Ressourcen, au&szlig;er der Interrupt-Ressource. Sie m&uuml;ssen die physikalischen Werte selbst angeben. Sie k&ouml;nnen nur genau eine &quot;PROFIcard (NT-Standard)&quot; konfigurieren, da der Standard-NT-Freigabemechanismus f&uuml;r PC-Karten nur eine PROFIcard unterst&uuml;tzt. Die Konfiguration einer Kombination beider PROFIcard-L&ouml;sungen (PROFIcard (NT-Standard) und PROFIcard (Cardware) in einer einzelnen Installation ist nicht m&ouml;glich.</span></p>
+								<p><span class="text"> W&auml;hlen Sie die jeweiligen Ressourcen aus und klicken Sie auf die Schaltfl&auml;che <b>Finish</b>, um die Konfiguration abzuschlie&szlig;en und zum Hauptdialog zur&uuml;ckzukehren. Klicken Sie auf die Schaltfl&auml;che <b>Back</b>, um zum vorherigen Dialog zur&uuml;ckzukehren. Klicken Sie auf die Schaltfl&auml;che <b>Cancel</b>, um die Konfiguration abzubrechen und zum Hauptdialog zur&uuml;ckzukehren.</span></p>
+								<table width="560">
+									<tr>
+										<td width="13%" valign="top"><b><span class="textrotbold">ACHTUNG:</span></b></td>
+										<td width="87%"><b><span class="text">Der Windows 2000/XP-Ger&auml;tetreiber f&uuml;r die PC-Karte startet w&auml;hrend des Bootvorgangs. Achten Sie darauf, nur freie Ressourcen zu konfigurieren, da Ihr System sonst bei montierter Karte evtl. nicht mehr bootet (wenn Sie bspw. die PROFIcard (NT-Standard) mit dem Interrupt des SCSI-Controllers konfiguriert haben, bleibt Ihr System w&auml;hrend des Hochfahrens h&auml;ngen). </span></b></td>
+									</tr>
+								</table>
+								<p><span class="zwitiblau">PROFIcard / PROFIcard 2 (Cardware)</span> </p>
+								<p><span class="text">Beim Zugriff auf die PROFIcard &uuml;ber die &quot;Award Cardware for Windows NT&quot; mu&szlig; der PROFIBUS-Hardwareger&auml;tetreiber der PROFIcard/PROFIcard 2 Ressourcen zuweisen.</span></p>
+								<p> <img src="../pic/SCardware.gif" width="476" height="336"> &nbsp;
+</p>
+								<table width="450">
+									<tr>
+										<td width="24%" valign="top"><b><span class="text">PCMCIA Socket:</span></b></td>
+										<td width="76%"><span class="text">Socketnummer der PROFIcard. Dieser Wert mu&szlig; nur angegeben werden, wenn eine Schnittstellen- (Karten-)Nummer des Treibers mit der Slotnummer der PC-Karte, in der die PROFIcard montiert ist, verkn&uuml;pft werden soll. Ist eine PROFIcard im Steckplatz f&uuml;r die PC-Karte eingesteckt, sucht der Treiber die Parameter f&uuml;r eine PROFIcard, die f&uuml;r diesen Socket konfiguriert ist.</span></td>
+									</tr>
+									<tr>
+										<td width="24%" valign="top"><b><span class="text">DP RAM Address:</span></b></td>
+										<td width="76%"><span class="text">Adresse des Dual-Port-Speichers (siehe Kapitel 2.2.1 Hardwarevoraussetzungen).</span></td>
+									</tr>
+									<tr>
+										<td width="24%" valign="top"><b><span class="text">Interrupt:</span></b></td>
+										<td width="76%"><span class="text">Der PROFIBUS-Hardwaretreiber bestimmt die IRQ-Adresse automatisch.</span></td>
+									</tr>
+								</table>
+								<p><span class="text">W&auml;hlen Sie die jeweiligen Ressourcen aus und klicken Sie auf die Schaltfl&auml;che <b>Finish</b>, um die Konfiguration abzuschlie&szlig;en und zum Hauptdialog zur&uuml;ckzukehren. Klicken Sie auf die Schaltfl&auml;che <b>Back</b>, um zum vorherigen Dialog zur&uuml;ckzukehren. Klicken Sie auf die Schaltfl&auml;che <b>Cancel</b>, um die Konfiguration abzubrechen und zum Hauptdialog zur&uuml;ckzukehren.</span></p>
+								<p><span class="zwitiblau">Parametereinstellungen f&uuml;r PROFIboard-PCI</span> </p>
+								<p><span class="text">Eine PROFIboard-PCI-Schnittstelle enth&auml;lt ein bis zwei Kan&auml;le, wobei jeder Kanal jeweils einen Knoten im PROFIBUS-Netzwerk darstellt.</span></p>
+								<p> <img src="../pic/SPCIResources.gif" width="470" height="388"> &nbsp;
+</p>
+								<table width="470">
+									<tr>
+										<td valign="top"><b><span class="text">PCI Slot</span></b></td>
+										<td><span class="text">Nummer des PCI-Steckplatzes, an dem die Schnittstelle eingesteckt ist.</span></td>
+									</tr>
+									<tr>
+										<td valign="top"><b><span class="text">Channel</span></b></td>
+										<td><span class="text">Kanalnummer (nur bei der zweikanaligen PROFIboard-PCI-Karte)</span></td>
+									</tr>
+								</table>
+								<p><span class="text">Klicken Sie auf die Schaltfl&auml;che <b>Finish</b>, um die Konfiguration abzuschlie&szlig;en und zum Hauptdialog zur&uuml;ckzukehren. Klicken Sie auf die Schaltfl&auml;che <b>Back</b>, um zum vorherigen Dialog zur&uuml;ckzukehren. Klicken Sie auf die Schaltfl&auml;che <b>Cancel</b>, um die Konfiguration abzubrechen und zum Hauptdialog zur&uuml;ckzukehren. </span></p>
+								<p><span class="zwitiblau">Parametereinstellungen f&uuml;r FG Series / PROFIgate</span> </p>
+								<p><span class="textblaubold">FG Series / PROFIgate-Adresse</span> </p>
+								<p><span class="text">Der PROFIBUS-Treiber f&uuml;r Windows 2000/XP ist in der Lage, &uuml;ber ein TCP/IP-Netzwerk auf einen Remote FG Series / PROFIgate PROFIBUS-Ethernet-Gateway zuzugreifen und diesen wie eine lokale PROFIBUS-Schnittstelle zu behandeln. Dazu mu&szlig; dem Treiber die IP-Adresse oder der IP-Hostname des FG Series / PROFIgate bekannt sein.</span></p>
+								<p> <img src="../pic/SProfigate.gif" width="447" height="402"> </p>
+								<p><span class="text">Geben Sie den Hostnamen ein (falls das IP-Netzwerk &uuml;ber einen Name-Server verf&uuml;gt) bzw. die dem PROFIgate zugewiesene IP-Adresse in das Textfeld ein und klicken Sie auf die Schaltfl&auml;che <b>Next</b>, um mit der Konfiguration fortzufahren. Klicken Sie auf die Schaltfl&auml;che <b>Cancel</b>, um die Konfiguration abzubrechen und zum Hauptdialog zur&uuml;ckzukehren. </span></p>
+								<p><span class="zwitiblau">Timeout-Parameter f&uuml;r FG Series / PROFIgate </span></p>
+								<p> <img src="../pic/STimeout.gif" width="447" height="402"> &nbsp;
+</p>
+								<table width="79%">
+									<tr>
+										<td width="32%" valign="top"><b><span class="text">Timeout for Connect</span></b></td>
+										<td width="68%"><span class="text">Zeitsteuerungsintervall zur &Uuml;berwachung der Herstellung der Verbindung zu PROFIgate.</span></td>
+									</tr>
+									<tr>
+										<td width="32%" valign="top"><b><span class="text">Max Idle Time</span></b></td>
+										<td width="68%"><span class="text">Zeitsteuerungsintervall zur Verbindungs&uuml;berwachung.</span></td>
+									</tr>
+									<tr>
+										<td width="32%" valign="top"><b><span class="text">DP Update Interval</span></b></td>
+										<td width="68%"><span class="text">Aktualisierungs-Intervallzeit zum Austausch des DP-Prozessabbilds. Das Prozessabbild wird nur &uuml;bertragen, wenn sich Daten ge&auml;ndert haben.</span></td>
+									</tr>
+									<tr>
+										<td width="32%" valign="top"><b><span class="text">Forced DP Update Interval</span></b></td>
+										<td width="68%"><span class="text">Erzwungene Aktualisierungsintervallzeit zum Austausch des DP-Prozessabbilds (unabh&auml;ngig davon, ob sich Daten ge&auml;ndert haben).</span></td>
+									</tr>
+								</table>
+								<p><span class="text">Geben Sie die gew&uuml;nschten Werte ein und klicken Sie auf die Schaltfl&auml;che <b>Finish</b>, um die Konfiguration abzuschlie&szlig;en und zum Hauptdialog zur&uuml;ckzukehren. Klicken Sie auf die Schaltfl&auml;che <b>Back</b>, um zum vorherigen Dialog zur&uuml;ckzukehren. &Uuml;ber die Schaltfl&auml;che <b>Cancel</b> k&ouml;nnen sie die Konfiguration abbrechen und zum Hauptdialog zur&uuml;ckkehren. </span></p>
+								<p><span class="zwitiblau">Entfernen einer PROFIBUS-Schnittstelle </span></p>
+								<p><span class="text">Klicken Sie auf die Schaltfl&auml;che <b>Remove</b>, um eine PROFIBUS-Schnittstelle aus dem PROFIBUS-Baum zu entfernen. Nach dem Entfernen der Schnittstelle, klicken Sie die Schaltfl&auml;che <b>Apply</b>, um die neue Konfiguration zu &uuml;bernehmen und die Ger&auml;tetreiber neu zu laden.</span></p>
+								<p></p>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>

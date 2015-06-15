@@ -1,0 +1,96 @@
+<html>
+<head>
+<title>SER_READ</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>SER_READ</h2>
+<p>Reads data from a remote partner.</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION_BLOCK SER_READ           
+VAR_INPUT                                                  
+    REQ      : BOOL R_EDGE := FALSE;                         
+    ID       : COMM_CHANNEL;            
+    RD_LEN_1 : DINT;                  
+    READ_ALL : BOOL := FALSE;    
+END_VAR                                                    
+                                                        
+VAR_OUTPUT                                                 
+    NDR    : BOOL;                     
+    ERROR  : BOOL;               
+    STATUS : DINT;                       
+    RD_1   : BYTE_STRING;       
+END_VAR</pre>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>REQ</b></dt>
+  <dd>Value of type <i><b>BOOL</b></i><br>
+    Initializes the reading of a value.<br>
+    Possible values:<br>
+    <i><b>TRUE</b></i>: Message is read.<br>
+    <i><b>FALSE</b></i>: Message is not read.<br>
+    After a message was read, <i><b>REQ</b></i> has to be set to <i><b>FALSE</b></i> 
+    before an other message may be read with <font face="Courier New, Courier, mono">REQ 
+    := TRUE</font> . </dd>
+  <dt><b>ID</b></dt>
+  <dd>Instance of the structure <a href="COMM_CHANNEL.htm"><i><b>COMM_CHANNEL</b></i></a><br>
+    Identifies the connection from which a message is to be read. </dd>
+  <dt><b>RD_LEN_1</b></dt>
+  <dd>Value of type <i><b>DINT</b></i><br>
+    Defines the length of the data to be read in bytes.<br>
+    If the parameter <i><b>READ_ALL</b></i> is set to <i><b>TRUE</b></i>, the 
+    value set in <i><b>RD_LEN_1</b></i> is ignored and all bytes contained in 
+    the bytestring are read. </dd>
+  <dt><b>READ_ALL</b></dt>
+  <dd>Value of type <i><b>BOOL</b></i><br>
+    Determines whether all bytes in a bytestring are to be read or only bytes 
+    up to the length defined in <i><b>RD_LEN_1</b></i>. <br>
+    Possible values:<br>
+    <i><b>TRUE</b></i>: All bytes contained in the bytestring are read. A value 
+    set in <i><b>RD_LEN_1</b></i> is ignored.<br>
+    <i><b>FALSE</b></i>: Bytes contained in the bytestring are read up to the 
+    length defined in <i><b>RD_LEN_1</b></i>. <br>
+    The default value is <i><b>FALSE</b></i>.</dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b>NDR</b></dt>
+  <dd>Value of type <i><b>BOOL</b></i><br>
+    Signals the reception of a new message.<br>
+    Possible values:<br>
+    <i><b>TRUE:</b></i> A new message was received<br>
+    <i><b>FALSE:</b></i> No new message was received</dd>
+  <dt><b>ERROR</b></dt>
+  <dd>Value of type <i><b>BOOL</b></i><br>
+    Signals the error state.<br>
+    Possible values:<br>
+    <i><b>TRUE</b></i>: An error occurred.<br>
+    <i><b>FALSE</b></i>: No error occurred.</dd>
+  <dt><b>STATUS</b></dt>
+  <dd>Value of type <i><b>DINT</b></i><br>
+    Contains a status code. <br>
+    Possible values are defined within the <a href="ConstState.htm">state constants</a>. 
+  </dd>
+  <dt><b>RD_1</b></dt>
+  <dd>Instance of the structure <a href="BYTE_STRING.htm"><i><b>BYTE_STRING</b></i></a><br>
+    Contains the bytes read in a bytestring format if <font face="Courier New, Courier, mono">NDR 
+    = TRUE</font>. </dd>
+</dl>
+<h3>Description</h3>
+<p>The call of an instance of <i><b>SER_READ</b></i> reads a message from the 
+  message buffer via the connection passed to <i> <b>ID</b></i>. The connection 
+  is represented by an instance of the structure <i><b>COMM_PARTNER</b></i>. This 
+  instance is generated automatically when a connection is being established with 
+  <a href="CONNECT.htm"><i><b>CONNECT</b></i></a> and is initialized with the 
+  corresponding connection values. </p>
+<p>The message has the format of a bytestring. The message that was read is stored 
+  as a bytestring in the OUTPUT variable <i><b>RD_1</b></i>. </p>
+<p>If a timeout was exceeded, both write requests and read requests are cancelled. 
+  The timeout can be set in the parameter <i><b>iTimeout</b></i> of the instance 
+  of <a href="COMM_PARTNER.htm"><b><i>COMM_PARTNER</i></b></a> that is passed 
+  to <i><b>CONNECT</b></i> before a connection is established with an instance 
+  of <i><b>CONNECT</b></i>.</p>
+</body>
+</html>

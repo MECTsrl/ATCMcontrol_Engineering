@@ -1,0 +1,11 @@
+#need include path for e.g. #include "dbi.h" in some idl files:
+INCLUDE=$(INCLUDE_DIR)
+
+
+LATECOPY=$(MAKEDIR)\CEAddonAction.tlb $(EXE_DIR)\Engineering\pub\CEAddonAction.tlb
+LATECOPY=$(MAKEDIR)\CEBackparse.tlb $(EXE_DIR)\Engineering\pub\CEBackparse.tlb
+LATECOPY=$(MAKEDIR)\CEContainer.tlb $(EXE_DIR)\Engineering\pub\CEContainer.tlb
+LATECOPY=$(MAKEDIR)\CEDragDrop.tlb $(EXE_DIR)\Engineering\pub\CEDragDrop.tlb
+LATECOPY=$(MAKEDIR)\CEVarDecl.tlb $(EXE_DIR)\Engineering\pub\CEVarDecl.tlb
+LATECOPY=$(MAKEDIR)\PrgEditorIF.tlb $(EXE_DIR)\Engineering\pub\PrgEditorIF.tlb
+LATECOPY=$(MAKEDIR)\StdEditorIF.tlb $(EXE_DIR)\Engineering\pub\StdEditorIF.tlb

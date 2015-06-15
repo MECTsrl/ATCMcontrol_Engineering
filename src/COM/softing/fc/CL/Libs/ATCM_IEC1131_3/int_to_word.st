@@ -1,0 +1,12 @@
+(*[[
+    UserURL= "ATCMFile:INT_TO_WORD.htm"
+]]*)
+
+FUNCTION INT_TO_WORD : WORD
+VAR_INPUT 
+    IN : INT; 
+END_VAR
+
+inline{NOOP}
+
+END_FUNCTION

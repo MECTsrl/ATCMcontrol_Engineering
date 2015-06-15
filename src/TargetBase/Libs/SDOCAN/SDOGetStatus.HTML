@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>SDO Library</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css">
+</head>
+<body bgcolor="#FFFFCC">
+<h2>SDOGetStatus</h2>
+<p>Get the CAN open status</p>
+<h3>Interface</h3>
+<pre class="preforma">
+FUNCTION SDOGetStatus : UINT
+VAR_OUTPUT
+	status : UINT; (*[status 0: not ready; <> 0 : ready]*)
+END_VAR
+</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>UINT</b></i><br>
+<br>
+<table border="1">
+<tr>
+	<td>
+		0 :
+	</td>
+ 	<td>
+		<b>Success</b>
+ 	</td>
+ </tr>
+<tr>
+	<td>
+		1 :
+	</td>
+ 	<td>
+		Error
+ 	</td>
+ </tr>
+ </table>
+ </p>
+
+<h3>Parameter</h3>
+<h3>OUTPUT</h3>
+<dl>
+  <dt><b>status</b></dt>
+  <dd>Value of type <b><i>UINT</i></b><br>
+      CAN open status: 0 if is not ready not ready; <> 0 if it is ready<br></dd>
+</dl>
+<h3>Description</h3>
+<p><b>SDOGetStatus</b> get the CAN open status</p>
+</body>
+</html>

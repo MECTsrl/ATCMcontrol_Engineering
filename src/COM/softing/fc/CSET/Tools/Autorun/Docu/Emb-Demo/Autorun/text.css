@@ -1,0 +1,10 @@
+
+.text { color: black; font-size: 9pt; font-family: Verdana, Arial }
+.textblau { color: #036; font-size: 9pt; font-family: Verdana, Arial }
+.textblaubold { color: #036; font-weight: bold; font-size: 9pt; font-family: Verdana, Arial }
+.textrotbold { color: red; font-weight: bold; font-size: 9pt; font-family: Verdana, Arial }
+.textgruenbold { color: #099; font-weight: bold; font-size: 9pt; font-family: Verdana, Arial }
+.zwitiblack  { color: black; font-weight: bold; font-size: 11pt; font-family: Verdana, Arial }
+.zwitiblau { color: #036; font-weight: bold; font-size: 11pt; font-family: Verdana, Arial }
+.zwitired { color: #f00; font-weight: bold; font-size: 11pt; font-family: Verdana, Arial }
+.headblau    { color: #036; font-weight: 600; font-size: 14pt; font-family: Verdana, Arial }

@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>LD_Get</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>LD_Get</h2>
+<p>Retrieves the system load of a BC/FC.</p>
+<h3>Interface</h3>
+<pre class="preforma">FUNCTION LD_Get : WORD
+VAR_INPUT
+    LoadType : WORD;      (* See SysLoad.cst for details.    *)
+    TaskID   : UINT;      (* See SysLoad.cst for details.    *)
+END_VAR
+
+VAR_OUTPUT
+    str      : STRING;
+END_VAR
+</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>DWORD</b></i><br>
+<br>OK if successful, else error number. (See
+  <a href="Const_Errno.htm"><strong><em>ErrNo.cst</em></strong></a> for details.)</p>
+
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl>
+  <dt><b>LoadType</b></dt>
+  <dd>Value of type <b><i>WORD</i></b><br>
+    <a href="Const_SysLoad.htm#LoadTypes">Type</a> of the system load.<br></dd>
+</dl>
+<dl>
+  <dt><b>TaskID</b></dt>
+  <dd>Value of type <b><i>UINT</i></b><br>
+    Task <a href="Const_SysLoad.htm#TaskID">index number </a> of the current task.<br></dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl>
+  <dt><b>str</b></dt>
+  <dd>Value of type <b><i>STRING</i></b><br>
+    Contains information for the given system load and task ID.<br></dd>
+</dl>
+<h3>Description</h3>
+<p><b>LD_Get</b> retrieves informations about the current system load.
+The infos are stores in the parameter <i><b>str</b></i> .</p>
+<p>This function is not thread safe. Calling the function from different tasks for the same load type may cause unpredictable results!</p>
+</body>
+</html>

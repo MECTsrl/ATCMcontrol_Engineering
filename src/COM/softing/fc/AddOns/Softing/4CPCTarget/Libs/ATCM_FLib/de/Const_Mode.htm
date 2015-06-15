@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>Zugriffsmodus-Konstanten</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css">
+</head>
+
+<body bgcolor="#FFFFCC">
+<h2>Zugriffsmodus-Konstanten </h2>
+<p>Konstanten f&uuml;r den Zugriffsmodus auf eine ge&ouml;ffnete oder neu angelegte 
+  Datei. </p>
+<table border="1">
+  <tr> 
+    <td valign="top"><b>Konstante</b> </td>
+    <td valign="top"><b>Numerischer Wert</b></td>
+    <td valign="top"><b>Dateizeiger-Position</b></td>
+    <td valign="top"><b>Beschreibung</b></td>
+  </tr>
+  <tr> 
+    <td valign="top"><b>CFA_READ</b> </td>
+    <td valign="top" align="center">2</td>
+    <td valign="top" align="center">Dateianfang<br>
+      0 = CFA_BOF</td>
+    <td valign="top">Datei wird f&uuml;r Nur-Lesezugriff ge&ouml;ffnet. Zugriffe 
+      auf diese Datei durch andere Tasks oder andere Benutzer sind erlaubt. Wenn 
+      die Datei nicht existiert, wird ein Fehler generiert.</td>
+  </tr>
+  <tr> 
+    <td valign="top"><b>CFA_READ_WRITE</b></td>
+    <td valign="top" align="center">6</td>
+    <td valign="top" align="center">Dateianfang<br>
+      0 = CFA_BOF</td>
+    <td valign="top">Datei wird f&uuml;r Lese- und Schreibzugriff ge&ouml;ffnet. 
+      Falls die Datei nicht existiert, wird sie erzeugt. Zugriffe auf diese Datei 
+      durch andere Tasks oder andere Benutzer sind erlaubt.</td>
+  </tr>
+  <tr> 
+    <td valign="top" height="20"><b>CFA_APPEND</b></td>
+    <td valign="top" align="center" height="20">7</td>
+    <td valign="top" align="center" height="20">Dateiende<br>
+      -1 = CFA_EOF</td>
+    <td valign="top" height="20">Datei wird f&uuml;r Lese- und Schreibzugriff 
+      ge&ouml;ffnet. Falls die Datei nicht existiert, wird sie erzeugt. Zugriffe 
+      auf diese Datei durch andere Tasks oder andere Benutzer sind erlaubt.</td>
+  </tr>
+</table>
+<h3>Beschreibung</h3>
+<p>Die Zugriffsmodus-Konstanten werden dem Parameter <i><b>MODE</b></i> der Strukturen 
+  <a href="FA_ASYNC_FILE.htm"><b><i>FA_ASYNC_FILE</i></b></a> oder <a href="FA_SYNC_FILE.htm"><b><i>FA_SYNC_FILE</i></b></a>, 
+  die jeweils ein Dateiobjekt repr&auml;sentieren, zugewiesen. Dieser Parameter 
+  mu&szlig; immer vor der Initialisierung eines Zugriffszyklus mit <a href="FA_ASYNC_OPENFILE.htm"><b><i>FA_ASYNC_OPENFILE</i></b></a> 
+  oder <i><b><a href="FA_SYNC_OPENFILE.htm">FA_SYNC_OPENFILE</a></b></i> f&uuml;r 
+  das an diese Bausteine &uuml;bergebene Dateiobjekt gesetzt werden. </p>
+<p>Mittels des <i><b>MODE</b></i>-Parameters wird die Zugriffsberechtigung auf 
+  eine Datei festgelegt. Wurde bspw. der Parameter <i><b>MODE</b></i> eines Dateiobjekts 
+  mit dem Wert <i> <b>CFA_READ</b></i> vor der &Uuml;bergabe an <i><b>FA_ASYNC_OPENFILE</b></i> 
+  initialisiert, kann auf dieses Dateiobjekt nur lesend zugegriffen werden. Schreibzugriffe 
+  l&ouml;sen dagegen einen Fehler aus. </p>
+<p>Ein in <i><b>MODE</b></i> gesetzter Zugriffsmodus ist nur dann wirksam, wenn 
+  er <u>vor der &Uuml;bergabe</u> an <i><b>FA_ASYNC_OPENFILE</b></i> oder <i><b>FA_SYNC_OPENFILE</b></i> 
+  f&uuml;r das &uuml;bergebene Dateiobjekt gesetzt wurde. Ein bei der Initialisierung 
+  eines Zugriffszyklus gesetzter Zugriffsmodus ist f&uuml;r die Dauer eines kompletten 
+  Zugriffszyklus g&uuml;ltig. &Auml;nderungen des Werts von <i><b>MODE</b></i> 
+  innerhalb eines Zugriffszyklus haben daher keine Auswirkung. Um nach dem Lesen 
+  einer mit<i><b> CFA_READ</b></i> f&uuml;r Nur-Lesezugriff ge&ouml;ffneten Datei 
+  schreibend auf diese zuzugreifen, mu&szlig; die Datei daher erst geschlossen 
+  und nach dem &Auml;ndern des <i> <b>MODE</b></i>-Parameters des Dateiobjekts 
+  erneut ge&ouml;ffnet werden. </p>
+<p>Au&szlig;er der Zugriffsberechtigung definiert der Zugriffsmodus auch die Position 
+  des Dateizeigers nach dem &Ouml;ffnen der Datei.</p>
+<p> Den Zugriffsmodus-Konstanten<b><i> CFA_READ</i></b> und <i><b>CFA_READ_WRITE</b></i> 
+  ist der Wert <a href="Const_Pos.htm"><b><i>CFA_BOF</i></b></a> zugeordnet. Dieser 
+  Wert bewirkt, da&szlig; der Dateizeiger beim &Ouml;ffnen einer Datei immer an 
+  den Dateianfang positioniert wird. </p>
+<div style="margin-left: 5; position: relative; top: 0"> </div>
+<p> Der Zugriffsmodus-Konstante <i><b>CFA_APPEND </b></i>ist der Wert <a href="Const_Pos.htm#eof"><b><i>CFA_EOF</i></b></a> 
+  zugeordnet. Dieser Wert bewirkt, da&szlig; der Dateizeiger beim &Ouml;ffnen 
+  einer Datei immer an das Dateiende positioniert wird. Ein direkt nach dem &Ouml;ffnen 
+  erfolgender Schreibzugriff h&auml;ngt daher die geschriebenen Daten immer an 
+  das Dateiende an, ohne bereits vorhandene Daten zu &uuml;berschreiben. </p>
+<p>Die beim &Ouml;ffnen einer Datei mit der Definition des Zugriffsmodus gesetzte 
+  Dateizeiger-Position &uuml;berschreibt den Wert des Strukturelements <i><b>POSITION</b></i> 
+  einer Strukturinstanz von <i><b><a href="FA_ASYNC_FILE.htm">FA_ASYNC_FILE</a></b></i> 
+  bzw. <i><b><a href="FA_SYNC_FILE.htm">FA_SYNC_FILE</a></b></i>. Nach dem &Ouml;ffnen 
+  einer Datei steht daher der Dateizeiger immer auf der Position, die durch den 
+  Zugriffsmodus definiert ist, unabh&auml;ngig von dem Wert, der f&uuml;r <i><b>POSITION</b></i> 
+  in der an den &ouml;ffnenden Baustein &uuml;bergebenen Strukturinstanz gesetzt 
+  wurde. Soll eine Dateioperation explizit an einer bestimmten Dateiposition erfolgen, 
+  mu&szlig; daher nach dem &Ouml;ffnen einer Datei der Wert von <i><b>POSITION</b></i> 
+  neu gesetzt werden.</p> 
+  </body>
+</html>

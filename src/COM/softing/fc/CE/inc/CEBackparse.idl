@@ -1,0 +1,81 @@
+cpp_quote("//+---------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  ATCMControl 4CE")
+cpp_quote("//  Copyright 2000 - 2001 SoftingGmbH.")
+cpp_quote("//")
+cpp_quote("//----------------------------------------------------------------")
+
+
+#ifndef DO_NO_IMPORTS
+import "unknwn.idl";
+#endif
+
+//interface ICEProjInfo;
+import "CEProjInfo.idl";
+
+//------------------------------------------------------------------*
+/**
+ * ICEBackparse 
+ * Each back parser for a source file has to implement this interface. 
+ * The engineering uses this interface to invoke a back parser for a 
+ * certain source file.
+ */
+
+cpp_quote("//+---------------------------------------------------------------")
+cpp_quote("// The interface to a backparser:")
+[
+    object,
+    oleautomation,
+    uuid(9e49c860-abd0-11d4-94f6-0008c779d265)
+]
+interface ICEBackparse : IUnknown
+{    
+    //------------------------------------------------------------------*
+    /**
+     * doBackparse
+     * The doBackparse method is used to start the back parsing for a source 
+     * file. A back parser will create some xml-information to display the 
+     * views. It can store this information in a file or return the whole 
+     * xml-string to the parent. If the information is stored in a file, 
+     * the back parser has to return a LINK xml-statement to the parent. 
+     * The parent will insert this link into it's own xml representation. 
+     * To create a view file the back parser will ask the ProjectManager 
+     * for the file name and path of the view file 
+     *
+     * @param   sFileName  - Name and absolute path of the source file.
+     * @param   pIProjInfo - Handler to the ProjectManager to get some 
+     *                       necessary information 
+     * @param   psXmlText  - The XML text output of the back parser 
+     *                       for the parent
+     *         
+     * @return          
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT doBackparse ([in, string]   BSTR         sFileName, 
+                         [in]           ICEProjInfo* pICEProjInfo,
+                         [out, string]  BSTR*        psXmlText);
+};
+
+
+//-----------------------------------------------------
+// This TYPELIB is generated as a convenience to users of high level tools
+// which are capable of using or browsing TYPELIBs. 
+// 'Smart Pointers' in VC6 is one example.
+//-----------------------------------------------------
+
+[
+    uuid(1FB14BE9-D910-4988-883A-88B989048E28),
+    version(2.0),
+    helpstring("4CONTROL: CEBackparse 2.0 Type Library")
+]
+library CE_BackparseLib
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+
+    interface ICEBackparse;
+};
+

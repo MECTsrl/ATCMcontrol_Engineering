@@ -1,0 +1,4 @@
+
+SUBPROJECT=Dialogs\Dialogs\Dialogs.mak
+SUBPROJECT=CEAddonHandler\CEAddonHandler\CEAddonHandler.mak
+

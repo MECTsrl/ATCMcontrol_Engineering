@@ -1,0 +1,23 @@
+# $Header: /ATCMReleased/V2.20.00/TargetBase/LIBS/ATCM_SerialComm/ATCM_SerialComm.inf 1     28.02.07 19:05 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: ATCM_SerialComm.inf $
+#                        $Logfile: /ATCMReleased/V2.20.00/TargetBase/LIBS/ATCM_SerialComm/ATCM_SerialComm.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Targetbase / Libs
+#
+# =COMPONENT            ATCM_SerialComm
+#
+# =CURRENT      $Date: 28.02.07 19:05 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+USER=libname=ATCM_SerialComm
+USER=make_lib: force
+
+USER= $(4CG) $(MAKEDIR)\$(libname).4cp  -ml:0 $(4CL_DIR)\$(libname).4cl
+
+# -------------------------------------------------------------------------------

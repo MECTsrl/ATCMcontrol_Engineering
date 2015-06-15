@@ -1,0 +1,748 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+
+<Title>Glossary</Title>
+</HEAD>
+<body background="pic/backgrnd.jpg" bgproperties="fixed">
+
+
+<h1> Glossary</h1>
+<hr>
+
+<font face="Arial">
+
+
+<table>
+  <tr> 
+    <td valign=top align=right> <font face=arial> 
+      <h4><a name="overview"></a>Index </h4>
+      </font> </td>
+    <td> 
+      <table cellpadding=20>
+          <td valign=top align=left height="711"> 
+            <P><b>A</b><br>
+              <a href="#array">array</a><br>
+          <P><b>B</b><br>
+              <A HREF="#build">build all</A><br>
+            
+            <P><b>C</b><br>
+              <a href="#call">call</a><br>
+              <a href="#control">ATCM Control</a><br>
+              <a href="#class">class</a><br>
+              <a href="#class tree">class tree</a><br>
+              <a href="#comment">comment</a><br>
+              <a href="#compile">compiling</a> <br>
+              <a href="#configuration">configuration</a><br>
+            
+          <P><b>D</b><br>
+              <A HREF="#data type">data type</A><br>
+              <a href="#declaration">declaration</a><br>
+              <a href="#definition">definition</a><br>
+              <a href="#domain">domain</a><br>
+              <a href="#download">download</a><br>
+          <P><b>F</b><br>
+              <a href="#file tree">file tree</a><br>
+              <A HREF="#function">function</A><br>
+              <a href="#function block class">function block</a><br>
+              <a href="#function block instance">function block instance</a><br>
+            
+          <P><b>G</b><br>
+              <A HREF="#globalvar">global variable</A><br>
+            
+            <P><b>H</b><br>
+              <a href="#hardware tree">hardware tree</a><br>
+              <br>
+              <b>I</b><br>
+              <a href="#initial value">initial value</a><br>
+              <a href="#input parameter">input parameter (input)</a><br>
+              <a href="#instance">instance</a><br>
+              <a href="#instance tree">instance tree</a>
+         
+        </td>
+          <td valign=top align=left height="711" > 
+            <P> <b>L</b><br>
+              <A HREF="#local var">local variable</A><br>
+          <P><b>N</b><br>
+            <a href="#native">Native</a><br>
+            <P><b>O</b><br>
+              <a href="#object">object</a><br>
+              <a href="#object list">object list</a><br>
+              <A HREF="#name">object name and alias</A><br>
+              <A HREF="#operand">operand</A><br>
+              <A HREF="#operator">operator</A><br>
+              <a href="#output parameter">output parameter (output)</a><br>
+            
+            <P><b>P</b><br>
+              <a href="#program class">program</a><br>
+              <a href="#program instance">program instance</a><br>
+            
+          <P><b>R</b><br>
+              <a href="#resource">resource</a><br>
+            
+          <P><b>S</b><br>
+              <A HREF="#step">step</A><br>
+              <A HREF="#structured data type">structured data type</A><br>
+              <A HREF="#subscripting">subscripting</A><br>
+            
+          <P><b>T</b><br>
+              <a href="#task">task</a><br>
+              <A HREF="#task status">task status message</A><br>
+            <A HREF="#tcpip">TCP/IP</A><br>
+              <A HREF="#temp var">temporary variable</A><br>
+            
+          <P><b>U</b><br>
+            <A HREF="#url">URL</A><br>
+          <P>&nbsp; 
+        </td>
+      </table>
+      <hr>
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="array"></a><b>array </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><font face="Arial">a group of variables with identical data types each 
+        of which can be referred to separately by indexing </font> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="build"></a><b>build all</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><font face="Arial">The entire project is compiled and organized in such 
+        a way that after compilation, it can be loaded onto ATCM Control. </font> 
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial> 
+      <h3><a name="call"></a>call</h3>
+      </font> </td>
+    <td valign="top"> 
+      <p><font face="Arial">A language construct for calling the execution of 
+        a function block.<br>
+        Parameters are mandatory. </font> 
+      <font face=arial> 
+      <h5>Example</h5>
+      </font> 
+      <p>aTEST(aIN1 := 2, aIN2 := 3);<br>
+        aDBG(str := CONCAT("2*3=",<br>
+        DINT_TO_WSTRING(aTEST.aOUT1))); 
+      <p> 
+      <p> 
+      <p> 
+    </td>
+  <tr> 
+    <td valign=top height="176" > <font face=arial > 
+      <h3><a name="control"></a><b>ATCM Control </b></h3>
+      </font> </td>
+    <td valign="top" height="176"> 
+      <p><font face="Arial">ATCM Control is the part of ATCMControl which works in 
+        the software background. It forms the "heart" of ATCMControl and has no user 
+        interface.<br>
+        For the system to be able to work, all projects must be downloaded onto 
+        ATCM Control. ATCM Control is connected to your production plant and controls 
+        it. <br>
+        It runs automatically in the real-time environment without user monitoring. 
+        ATCM Control is started directly after booting of the computer as a Windows 
+        NT service.<br>
+        </font><font face="Arial"> Unless it is running already, ATCM Control starts 
+        automatically after the download of the project. </font> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="class"></a><b>class</b></h3>
+      </font></td>
+    <td valign="top"> 
+      <p><font face="Arial">A class receives the source code of an object. </font> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="class tree"></a>class tree</h3>
+      </font></td>
+    <td valign="top"> 
+      <p><font face="Arial">The class tree is part of the Navigator view in ATCM 
+        Engineering. It shows the hierarchical structure of all classes representing 
+        source codes of the individual objects which are used in a project.</font> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="comment"></a><b>comment </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <p><font face="Arial">a language construct for the integration of text without 
+        effects on program execution in a program </font> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="compile"></a><b>compiling </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <p><font face="Arial">A program organization unit or data type specification 
+        is checked for correct syntax and compiled in machine language or in a 
+        machine-oriented format. </font> 
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="configuration"></a><b>configuration </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <p><font face="Arial">The resources of a project are summarized in a configuration.<br>
+        This ATCMControl version supports only the assignment of <u>one</u> resource 
+        to <u>one</u> configuration. Therefore, resource and configuration are 
+        de facto identical. This means that global declarations and ACCESS declarations 
+        in configurations are not supported in ATCMControl. The definition of project-global 
+        variables can take place in the assigned resource. <br>
+        Only one configuration can be assigned to one PC.</font> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="data type"></a><b>data type</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><font face="Arial">Represents a range of values which can be assumed 
+        by a variable and the manner in which values of a variable are stored. 
+        The data type of a variable defines the operations which can be carried 
+        out with this variable.</font> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="declaration"></a><b>declaration </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <p><font face="Arial">The mechanism with which a concrete instance is created 
+        in the source code for an abstract data structure which is already determined 
+        by a definition. For a function block, for example, several instances 
+        can be created. Other than for an abstract data structure, the compiler 
+        allocates memory during the compilation for an instance declared in the 
+        source code. </font> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="definition"></a><b>definition </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <p><font face="Arial">Determines the abstract structure of a data object. 
+        During the definition of a function block, for instance, the variables 
+        are determined with which the function block works. If required, an initial 
+        value can be assigned to the variables as well. </font> 
+    </td>
+  <tr> 
+    <td valign=top> 
+      <h3><a name="Domain"></a>domain</h3>
+    </td>
+    <td valign="top"><font face="Arial">Unit of programs or data, which can be 
+      loaded and which is transferred for execution during downloading of a project 
+      on ATCM Control. </font></td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="download"></a><b>download </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      The downloading process shifts the programs to the 
+        indicated PC. (For this process, the ATCMControl component ATCM Control must 
+        be available on the PC.) <br>
+        The standard setting is such that the program starts directly after the 
+        download. 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="file tree"></a><b>file tree</b></h3>
+      </font></td>
+    <td valign="top"> 
+      A file tree is part of the Navigator view in ATCM Engineering. 
+        It displays all files of the project. 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="function"></a><b>function </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      A program organization unit which has no static variables 
+        and always renders the same result for the same input parameters. 
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="function block class"></a><b>function block</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><font face="Arial">A language element which consists of the following 
+        elements: </font>
+      <ul>
+        <li><font face="Arial">the definition of a data structure which is divided 
+          into input (VAR_INPUT), output (VAR_OUTPUT), I/O (VAR_IN_OUT) and internal 
+          variables (VAR) </font></li>
+        <li><font face="Arial">operations which are carried out with elements 
+          of a data structure when an instance is created. </font></li>
+      </ul>
+      <p><font face="Arial">A function block is an ST-coded sub-program. ATCMControl 
+        uses predefined function blocks such as CTUD, CTUD_EX, MEAN, FC_DEBUG, 
+        and supplies user-defined function blocks</font> <font face=arial> </font></p>
+      <font face=arial> 
+      <h5>Example of a user-defined function block</h5>
+      </font> 
+      <P>(*[[<br>
+        GUID= "{5BE0F862-B821-11D1-B290-00600857CC2E}",<br>
+        UserText1= TEXT1,<br>
+        UserText2= TEXT2,<br>
+        UserText3= TEXT3,<br>
+        UserURL= "http://www.ascontecnologic.com"<br>
+        ]]*)<br>
+        <br>
+        FUNCTION_BLOCK TEST1<br>
+        VAR_INPUT<br>
+        aIN1 : DINT;<br>
+        aIN2 : DINT;<br>
+        END_VAR<br>
+        VAR_OUTPUT<br>
+        aOUT1 : DINT;<br>
+        END_VAR<br>
+        aOUT1 := aIN1 * aIN2;<br>
+        END_FUNCTION_BLOCK 
+      <P> 
+      <P> 
+      <P> 
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="function block instance"></a><b>function block instance</b></h3>
+      </font></td>
+    <td valign="top"> 
+      <P><font face="Arial">The definition of a function block is an abstract 
+        data structure which determines the basic characteristics and behavior 
+        of a function block instance. The abstract characteristics and behavior 
+        of the function block are only transformed into concrete values and actions 
+        when the function block instance is created. Several instances of a function 
+        block can be declared all of which have the same characteristics and behavior 
+        defined in the function block. Other than for the definition of a function 
+        block, memory is allocated by the compiler for each declared function 
+        block instance.<br>
+        The name of the function block instance may be the same as the class name, 
+        but this is not compulsory. </font>
+      <h5><font face="Arial">Example:</font></h5>
+      <p><font face="Arial">VAR<br>
+        aTEST: TEST1;<br>
+        aDBG: FC_DEBUG;<br>
+        END_VAR</font></p>
+      <p><font face="Arial">This example declares a user-defined class "TEST1" 
+        with the instance "aTEST" and the predefined function block "FC_DEBUG".</font> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="globalvar"></a><b>global variable </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><font face="Arial">a variable with global validity </font> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="hardware tree"></a><b>hardware tree</b></h3>
+      </font></td>
+    <td valign="top"> 
+      <P><font face="Arial">The hardware tree is part of the Navigator view in 
+        ATCM Engineering. It shows the hierarchical structure of all hardware components 
+        used in a project. </font> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="initial value"></a>initial value</h3>
+      </font></td>
+    <td valign="top"> 
+      <p><font face="Arial">the value assigned to a variable during the system 
+        start </font> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="input parameter"></a><b>input para-meter (input) </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <p><font face="Arial">a parameter which delivers an argument to a program 
+        organization unit </font> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="instance"></a><b>instance</b></h3>
+      </font></td>
+    <td valign="top"> 
+      <P><font face="Arial">A single named copy of the data structure (class) 
+        which belongs to a function block or to a program and which continues 
+        to exist from one call of the corresponding program operations to the 
+        next. When an instance is created, memory is allocated to it other than 
+        with an abstract data structure.</font> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="instance tree"></a><b>instance tree</b></h3>
+      </font></td>
+    <td valign="top"> 
+      <P><font face="Arial">Part of the Navigator view in ATCM Engineering. It shows 
+        the hierarchical structure of all instances which are part of the project. 
+        </font> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="local var"></a><b>local variable</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><font face="Arial">A variable whose validity is limited to the program 
+        organization unit in which it is used. Outside the program organization 
+        unit in which it was defined, the variable is not visible for other program 
+        organization units and can therefore be neither written nor read by them.</font> 
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="native"></a><b>Native </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><font face="Arial">The keyword NATIVE offers you the possibility of integrating 
+        JAVA code in your ST co</font>de.
+      <font face=arial> 
+      <h5>Example</h5>
+      </font> 
+      <pre>
+<P>FUNCTION_BLOCK TEST1
+VAR_INPUT
+  aIN1 : DINT;
+  aIN2 : DINT;
+END_VAR
+VAR_OUTPUT
+  aOUT1 : DINT;
+END_VAR
+
+NATIVE
+_aout1.putInt(_ain1.getInt() * _ain2.getInt());
+END_NATIVE;
+
+END_FUNCTION_BLOCK 
+    </pre>
+    </td>
+  <tr> 
+    <td valign=top align=right> <img src="pic/note.gif"> </td>
+    <td valign="top"> <font color=red> </font><font face="Arial" color="#ff0000">Due 
+      to the real-time environment, infinite loops within the programs can cause 
+      system crashes during booting. If this should happen, please proceed as 
+      follows:</font> 
+      <p></p>
+      <ol>
+        <font face="Arial" color="#ff0000"> </font> 
+        <li><font face="Arial">Boot your computer in the status "Last Known Good 
+          Hardware Configuration".</font></li>
+        <li><font face="Arial">Open the <strong>System control</strong>.</font></li>
+        <li><font face="Arial">Go to <b>Services</b>. </font></li>
+        <li><font face="Arial">Check the starting parameter<strong> ATCMControl:Control 
+          Service</strong>. It should indicate <strong>Paused</strong>. </font></li>
+        <li><font face="Arial">Change the starting parameter from <strong>4CONTROL:Control 
+          Service</strong> and <strong>4CONTROL:CSC Online Server</strong> to 
+          <strong>Manual</strong>.</font></li>
+        <li><font face="Arial">If this is not possible, go to <strong>Programs/4Control/config</strong> 
+          in the explorer and delete the configuration file.</font></li>
+        <li><font face="Arial">Go back to the <strong>System control</strong> 
+          and restart the starting parameter <strong>4CONTROL:Control Service</strong>. 
+          </font></li>
+        <li><font face="Arial">Test the new configuration. </font></li>
+        <li><font face="Arial">You should reset the starting parameter to <strong>Autostart</strong> 
+          only after you have tested the new configuration.</font>
+      </ol>
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="object"></a><b>object </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><font face="Arial">Every program organization unit, every function and 
+        every function block as well as their instances are objects. <br>
+        In object-oriented programming, they are variables which contain routines 
+        as well as data and form discrete units. An object is based on a specific 
+        model where a client which makes use of the services of an object has 
+        access to the data of the object via an interface which consists of a 
+        set of methods or corresponding functions. The client can then call these 
+        methods to carry out the desired operations. </font> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="object list"></a><b>object list</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><font face="Arial">An object list is part of the project and lists all 
+        objects in the current project. </font> 
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="name"></a><b>object name and alias </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><font face="Arial">Each object can be identified by a defined name. When 
+        you add a new object, you have to enter a name for it.<br>
+        The alias function of ATCMControl supports you when you are carrying through 
+        bilingual projects. You can, for instance, give to each object a name 
+        in your own language; this will facilitate the handling of the objects. 
+        If, however, you are compiling a project for a customer who does not speak 
+        your language or whose employees do not know your language, you can enter 
+        an alias name for each object.<br>
+        Enter the alias name for the object while creating the object.<br>
+        It is displayed in the object list to illustrate the correlation between 
+        the name and the object. <br>
+        If you want to use the alias name, go to ATCM Console and click on <strong>Alias 
+        in the tool bar</strong>.<br>
+        The original names displayed in the standard setting change to the alias 
+        names so that staff members who speak a different language can use your 
+        project.</font> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="operand"></a><b>operand </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><font face="Arial">a language element on which an operation is carried 
+        through </font> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="operator"></a><b>operator</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><font face="Arial">a symbol representing the action which is to be carried 
+        through in an operation</font> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="output parameter"></a><b>output parameter (output)</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <p><font face="Arial">a parameter which renders the evaluation result(s) 
+        of a program organization unit </font> 
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="program class"></a><b>program </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><font face="Arial">A program is the ST source code used by ATCM Control. 
+        To be able to use a program, you must call it by means of a task.<br>
+        Programs can call function blocks or functions and carry through calculations.</font></p>
+      <dir> 
+        <dir> 
+          <h5><font face="Arial">Example:</font></h5>
+          <p><font face="Arial">(*[[<br>
+            GUID= "{A9E2F134-B75F-11D1-B28F-00600857CC2E}",<br>
+            ]]*)<br>
+            PROGRAM Program1<br>
+            VAR<br>
+            ADINT : DINT;<br>
+            END_VAR<br>
+            ADINT := ADINT + 1;<br>
+            END_PROGRAM </font>
+        </dir>
+      </dir>
+      <P>&nbsp; </p>
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="program instance"></a><b>program instance </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><font face="Arial">The definition of a program is an abstract data structure 
+        which determines the basic characteristics and behavior of a program instance. 
+        The abstract characteristics and behavior of the program are only transformed 
+        into concrete values and actions when the program instance is created. 
+        Several instances of one program can be declared all of which have the 
+        same characteristics and behavior defined in the program. Other than with 
+        the definition of a program, memory is allocated by the compiler to each 
+        declared program instance.</font><br>
+      <font face=arial> 
+      <h5>Example: </h5>
+      </font> 
+      <P>PROGRAM Program1 (* instance name *)<br>
+        WITH Task1: Program1 (* class name *); 
+    </td>
+  <tr> 
+    <td valign=top align=right> <img src="pic/note.gif"> </td>
+    <td valign="top"> <font color=red> </font><font face="Arial" color="#ff0000">The 
+      name of the program instance may be the same as that of the program, but 
+      this is not compulsory.</font><font color=red> 
+      <P>&nbsp; 
+      </font></td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="resource"></a><b>resource </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><font face="Arial">The function of a resource is to determine the assignment 
+        of tasks and programs and the attributes of the task defined in the resource. 
+        Project-global variables are declared in the resource as well. By the 
+        assignment of programs to tasks and the definition of the task attributes, 
+        the resource quasi defines the runtime behavior of the project. <br>
+        Since only the assignment of one single resource to one configuration 
+        is supported in this ATCMControl version and since only one configuration 
+        can be assigned to one PC, the resource corresponds to the assigned PC.</font> 
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="step"></a><b>step</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><font face="Arial">Processing step; a situation in which the behavior 
+        of a program organization unit in terms of its in- and outputs follows 
+        a set of guidelines which are defined by the corresponding actions of 
+        the step.</font> 
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="structured data type"></a><b>structured data type</b></h3>
+      </font></td>
+    <td valign="top"> 
+      <P><font face="Arial">a summary of data objects which may be of different 
+        kinds but which belong to one STRUCT declaration </font> 
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="subscripting"></a><b>subscripting</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><font face="Arial">indexing; a mechanism for indicating an array element 
+        by means of an array reference and one or more expressions which during 
+        their evaluation indicate the position of the element</font> 
+    </td>
+  <tr> 
+    <td valign=top > <font face=arial > 
+      <h3><a name="task"></a><b>task </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><font face="Arial">The function of tasks is to determine runtime properties 
+        of programs and of the function blocks assigned to them. Programs are 
+        called periodically in dependence on the defined task properties. The 
+        task functions as a kind of clock generator for the execution of a program. 
+        During a program call, a task cycle is carried out by means of the assigned 
+        task, i.e.all statements contained in the program are carried out exactly 
+        one time. If, for instance, you add the value <i>1</i> to a variable, 
+        the value of this variable is increased by <i>1</i> during each task cycle.</font> 
+    </td>
+  <tr> 
+    <td></td>
+    <td valign="top"> 
+      <h4>&nbsp;</h4>
+      <h4>Priority</h4>
+      
+          
+      <p>Within a project, several tasks can be carried out simultaneously. If, 
+        however, these tasks are carried out by the same CPU, they only seem to 
+        run at the same time, for a CPU can only carry out one command after the 
+        other. The seemingly simultaneous processing is due to the high processing 
+        speed for the commands and the distribution of several tasks over time 
+        slices, which guarantees that one sequence of commands can be interrupted 
+        for the sake of another sequence and continued later at the place of interruption. 
+        If several tasks require the CPU to carry out a command sequence, a possible 
+        runtime conflict is prevented by preemptive scheduling. In this manner, 
+        the point of execution of a task which is in competition with another 
+        task is determined according to the priorities defined for the tasks. 
+        If a task is activated which has a higher priority than the task which 
+        is currently executed, this task is interrupted and replaced by the one 
+        with higher priority. Only after processing of the task with higher priority, 
+        the one with lower priority will continue to be processed. <br>
+        <br>
+      <P> 
+      <table cellpadding=8 border bgcolor=white width="364">
+        <tr > 
+          <td colspan=3> <i><b>IEC 1131-Priorit&auml;tsbereich <br>
+            von 0 bis 9 (am niedrigsten):</b></i> </td>
+        <tr> 
+          <td  align=right width="54">0</td>
+          <td width="72">real time</td>
+          <td width="174">Windows NT priority 31</td>
+        <tr> 
+          <td  align=right width="54">1</td>
+          <td width="72">highest</td>
+          <td width="174">Windows NT priority 26</td>
+        <tr> 
+          <td width="54">2 und 3</td>
+          <td width="72">high</td>
+          <td width="174">Windows NT priority 25</td>
+        <tr> 
+          <td width="54">4 und 5</td>
+          <td width="72">normal</td>
+          <td width="174">Windows NT priority 24</td>
+        <tr> 
+          <td width="54">6 und 7</td>
+          <td width="72">low</td>
+          <td width="174">Windows NT priority 23</td>
+        <tr> 
+          <td width="54">8 und 9</td>
+          <td width="72">lowest</td>
+          <td width="174">Windows NT priority 22</td>
+      </table>
+      <P> 
+      <P><font face="Arial">The priority is only important if two or more tasks 
+        are competing. </font> 
+    </td>
+  <tr> 
+    <td valign=top align=right> <img src="pic/note.gif"> </td>
+    <td valign="top"> <font color=red> </font><font face="Arial" color="#ff0000">All 
+      ATCMControl tasks have far higher priorities than Windows applications such 
+      as the Windows Explorer and even most system tasks.</font><font color=red> 
+      <P>&nbsp; 
+      </font></td>
+  <tr> 
+    <td valign=top> <font face=arial> 
+      <h3><a name="task status"></a>task status message</h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><font face="Arial">Every 15 seconds, each running task gives a message 
+        to the Message view to show that it is still running. A message is also 
+        given when a task is started or stopped or when an error occurs. </font> 
+      <font face=arial> 
+      <h5>example:</h5>
+      </font> 
+      <P>Task: task1 dTmin=87 dTmax=105 eTMax=13 ol/cyc=0/150 mem=201832<br>
+        dTmin=min. sleep time<br>
+        dTmax=max. sleep time<br>
+        eTmax=max. exec. time<br>
+        ol/cyc=overload/total cycles<br>
+        mem=used memory (total) 
+      <P> 
+      <P> 
+      <P> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="tcpip"></a><b> TCP/IP</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><font face="Arial">Transmission Control Protocol/Internet Protocol. TCP/IP 
+        is a combined set of protocols which carry through the transfer of data 
+        between two computers. The TCP monitors and guarantees the correct transfer 
+        of data. The IP receives the data from TCP, divides them into packages 
+        and sends them to a network within the Internet.</font> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="temp var"></a><b>temporary variable</b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><font face="Arial">A variable whose validity is limited to the program 
+        organization unit in which it is used. The temporary variable is reset 
+        after use.</font> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name="url"></a><b>URL </b></h3>
+      </font> </td>
+    <td valign="top"> 
+      <P><font face="Arial"><b>U</b></font><font face="Arial">niform <b>R</b>esource 
+        <b>L</b>ocator. An address with which a website in the World Wide Web 
+        can be clearly identified. In general, it has an <i>http:// </i>in front 
+        of it as in this fictitious URL <i>http://www.ascontecnologic.com/.</i> 
+        A URL may contain additional details such as the name of a hypertext page 
+        which is generally labelled by the ending .html or .htm. </font> 
+    </td>
+  <tr> 
+    <td valign=top> <font face=arial > 
+      <h3><a name=""></a><b> </b></h3>
+      </font> </td>
+    <td> 
+      <P> 
+      <P> 
+      <P> 
+      <P> 
+    </td>
+</table>
+</font></BODY></HTML>

@@ -1,0 +1,399 @@
+<html>
+<head>
+<title>ATCM Console User Interface</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Manual_GE.css">
+</head>
+
+
+<body bgcolor="#FFFFFF" background="pic/backgrnd.jpg">
+<h1>User Interface</h1>
+<hr>
+<h3><a name="overview"></a>Overview </h3>
+<ul>
+  <a href="#general">Structure</a><br>
+  <a href="#VisuView"> The Visualization View</a> 
+  <ul class="inul">
+    <a href="#NaviEtVisu">Correlation Between Visualization and Navigator View</a><br>
+    <a href="#LoadObject">Loading and Visualizing Objects in a Display</a><br>
+  </ul>
+  <a href="#NaviView">The Navigator View</a> 
+  <ul class="inul">
+    <a href="#TabProject">The Project Tab</a><br>
+    <a href="#TabFB">The Function Blocks Tab</a> 
+  </ul>
+  <a href="#Toolbar">The Toolbar</a><br>
+  <a href="#Statusbar">The Status Bar</a><br>
+  <a href="#IEPanel">The Internet Navigation Menu in ATCM Engineering</a><br>
+  <a href="#InternetFunctions">The Internet Functions</a> 
+  <ul class="inul">
+    <a href="#Refresh">Updating the Navigator and Visualization Views</a><br>
+    <a href="#navigate">Navigating in the Visualization View</a> 
+  </ul>
+</ul>
+<hr style="margin-left: 44px">
+<h2><a name="general"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Structure</h2>
+<p>ATCM Console is an application embedded in the Internet Explorer. The graphical 
+  surface of ATCM Console is implemented by means of HTML, ASP, Java Script and 
+  VB Script and represented as an HTML page in the window of the Internet Explorer. 
+  Basically, all operational elements and the entire functionality of the Internet 
+  Explorer are therefore available to you when you work with ATCM Console. Except 
+  for the <b>Context</b> menu, however, a Console window started from ATCM Engineering 
+  contains only the ATCM Control-specific operation and visualization elements. 
+  Part of the Internet Explorer functionality is replaced by a group of buttons 
+  with the most important navigation functions. For details on this group of buttons, 
+  see the section <a href="#IEPanel">Internet Navigation Menu in ATCM Engineering</a>. 
+  For navigating in ATCM Console by means of the Internet functions, see <a href="#navigate">Navigating 
+  in the Visualization View</a>. </p>
+<p>The actual user interface of ATCM Console starts underneath the menu bar and 
+  the toolbar of the Internet Explorer and is divided into 4 areas: </p>
+<ul>
+  <li><a href="#NaviView">Navigator View</a> (left side of the user interface)</li>
+  <li><a href="#VisuView">Visualization Area</a> (right side of the user interface, 
+    generally divided into several display modules) 
+  <li><a href="#Toolbar">Toolbar</a></li>
+  <li><a href="#Statusbar">Status bar</a></li>
+</ul>
+<img src="pic/INetConsole.gif" width="549" height="538" class="inP"> 
+<h2><a name="VisuView"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  The Visualization View</h2>
+<h3><a name="NaviEtVisu"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Correlation Between Visualization and Navigator View</h3>
+<p>There is a strong interdependence between the Visualization and the <a href="#NaviView">Navigator 
+  view</a>. Whereas in the Visualization view, process data loaded onto ATCM Control 
+  are displayed and, in some cases, represented graphically, the Navigator view 
+  determines which data can be seen in the Visualization view. In accordance with 
+  the object hierarchy of the ATCMControl programming model, data can be assigned 
+  to objects (e.g. function blocks, programs, tasks, resources) and grouped. Accordingly, 
+  process data supplied by ATCM Control are also visually grouped for presentation 
+  in the Visualization view; the groups correspond with this programming model. 
+  The object represented by a visualization group is selected by means of the 
+  Navigator view which displays the objects contained in the project in tree topology 
+  in accordance with the hierarchy of the IEC programming model. Each object in 
+  the tree topology is a hyperlink; by clicking on an object in the Navigator 
+  view, you can change to the representation of a visualization group in the Visualization 
+  view. </p>
+<p> An individual visualization group, which in the following will be called &quot;display&quot;, 
+  can be recognized by the gray frame around it. Size and position of the displays 
+  can be altered. If you start ATCM Console for the first time, the displays are 
+  empty at first; the title bars of the displays accordingly read <i>Empty</i>.</p>
+<img src="pic/4CConsole.gif" width="560" height="528" class="inP"> 
+<h3><a name="LoadObject"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Loading and Visualizing Objects in a Display</h3>
+<p>To load the process data of an object into one of the empty displays, click 
+  in the Navigator view on an icon behind which you find a blue underlined term. 
+  You can also click on the term itself instead of the icon. The blue color and 
+  the underlining signalize that this object is a link for which, if it is enabled, 
+  the corresponding process data are shown on the currently enabled display. <br>
+  In the <a href="#NaviView">Navigator view</a> section, you can see which objects 
+  are available for visualization in the Navigator view and in what hierarchy 
+  they are arranged. </p>
+<p>The process data of an object which you have clicked on in the navigator are 
+  always loaded into the currently enabled display. You can recognize the currently 
+  enabled display by the yellow color of the title bar; the title bars of disabled 
+  displays are blue. The next display is already enabled while the data are loaded; 
+  the previously enabled display changes back to the disabled status. This means 
+  that if you click on the next object in the navigator, the process data of this 
+  object are loaded into the next display. As a rule, objects are inserted from 
+  left to right and, if there are several rows and the last display of a row has 
+  been reached, from top to bottom.</p>
+<img src="pic/Faceplateorder.gif" width="505" height="570" class="inP"> 
+<p>However, you do not have to adhere to this standard order. You can also define 
+  into which display an object is to be inserted by specifically enabling this 
+  display.</p>
+<p>This is how you can enter an object into a display which has been freely selected 
+  by you:</p>
+<ol>
+  <li>Click in the title bar of the desired display with the left mouse button. 
+    By a color change, the title bar signalizes that the display is now enabled.</li>
+  <li>Click on the desired object in the Navigator view of ATCM Console. The selected 
+    object is inserted in the currently enabled display. The title bar of the 
+    display contains the name of the object.</li>
+</ol>
+<p>In this manner, you can also assign a different object to the display if object 
+  data are already visualized in this display. To do this, simply enable the desired 
+  display by means of a mouse click in its title bar and select a different object 
+  in the Navigator view. </p>
+<p>Displays cannot only be visualized in ATCM Console but also in a separate window 
+  outside ATCM Console.<br>
+  To do this, click in the Navigator view on the desired object while keeping 
+  the <b>CTRL</b> key pressed. The display is now represented as a separate window.</p>
+<img src="pic/FaceplateExtra.gif" width="371" height="457" class="inP"> 
+<p>Size and arrangement of the displays can be changed by means of the <a href="Layout.htm#EditLayout">layout 
+  editor</a> and the context menu. To do this, see the chapter on <a href="Layout.htm">Layouts</a>.</p>
+<h2><a name="NaviView"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  The Navigator View</h2>
+<div style="margin-left: 5; position: relative; top: 0"> 
+  <p>The display in the <a href="#VisuView">Visualization view</a> is controlled 
+    via the Navigator view. It represents the objects contained in your project 
+    (function block instances, programs, tasks etc.) in tree topology. All objects 
+    are displayed with an icon and the name of the object. Most object names are 
+    underlined and represented in blue. This is to signalize that these object 
+    representations are hyperlinks by means of which the data of the selected 
+    object can be loaded and visualized in a display. </p>
+  <p>To load the data of an object in a display, proceed as follows: </p>
+</div>
+<ol>
+  <li> 
+    <div style="margin-left: 5; position: relative; top: 0">In the Visualization 
+      view, enable the display in which the object is to be represented by clicking 
+      on its title bar. If you do not explicitly enable a display, all subsequent 
+      actions refer to the display which is enabled according to the standard 
+      order indicated by the Visualization view (see <a href="#LoadObject">Loading 
+      and Visualizing Objects in a Display</a>).</div>
+  </li>
+  <li> 
+    <div style="margin-left: 5; position: relative; top: 0">Click on the desired 
+      object in the Navigator view. The object is shown in the previously enabled 
+      display. </div>
+  </li>
+</ol>
+<p>The Navigator view is divided into the tabs <b>Project</b> and <b>Function 
+  Blocks</b>. Both contain the objects of the project loaded on ATCM Control in 
+  tree topology. The organization of the tree topology differs in the two tabs. 
+</p>
+<h3><a name="TabProject"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  The Project Tab</h3>
+<img src="pic/Project.gif" width="238" height="394" align=left class="inP" style="margin-right: 15px"> 
+<p>As a whole, the Project view is the same as the Instance view of the ATCM Engineering 
+  navigator. In both views, the objects arranged in tree topology are displayed 
+  according to the programming model structure of ST or FBD. Levels of the tree 
+  topology correspond to the object or calling hierarchy of a project. Tasks, 
+  for example, can call program instances, which in turn call function block instances 
+  etc. Every called object is accordingly represented one level below the calling 
+  object. In the following, you will find a survey of the objects organized in 
+  tree topology. For details on the visualization of these objects in the displays, 
+  see the chapter on <a href="faceplate.htm">Displays</a>.</p>
+<p>On top of the tree topology, you will find the <b>project icon with the project 
+  name</b>. Since only the objects contained in the project but not the entire 
+  project can be represented in the Visualization view, clicking on the project 
+  icon or name has no effect on the representation in the Visualization view. 
+</p>
+<p>Directly underneath the project icon, there is always the <b>configuration 
+  list</b>. It is not displayed in the Instance view of ATCM Engineering. If you 
+  have a license for multiple configurations, a project can contain several configurations. 
+  The configuration list gives a survey of all configurations in a PC if they 
+  have been loaded onto a control. If a valid configuration has been created in 
+  the project and assigned to a PC but the configuration has not been loaded onto 
+  the assigned control, this configuration is not listed. </p>
+<p>The <b>configurations</b> in a project are always on the same hierarchical 
+  level in the tree topology as the configuration list, but always underneath 
+  the same. In the tree topology, only one configuration at a time can be expanded 
+  by means of a mouse click on the positive sign; all other configurations have 
+  no positive sign. Instead, the other configurations are marked as hyperlinks 
+  by underlining and the blue color. A click on the link, however, does not lead 
+  to a presentation of the configuration in the currently enabled display, as 
+  usual, but the positive sign for expanding a configuration changes to the configuration 
+  you have clicked on. In this manner, the objects under this configuration can 
+  now be expanded in the tree topology and loaded in a display, but the objects 
+  belonging to the previous configuration are now invisible. </p>
+<p>Underneath the configuration, the <b>resource</b> assigned to this configuration 
+  is displayed. By a click on this hyperlink, information on the runtime status 
+  of the resource is shown in the enabled display. </p>
+<p>One or more tasks are assigned to each resource. On the next level underneath 
+  the resource, you will therefore find the <b>task list</b> which contains a 
+  list of all tasks assigned to the resource. </p>
+<p>The <b>message history</b> under the task list contains a list of the ATCM Control- 
+  and user-defined messages referring to the resource above the message history.</p>
+<p>The next level consists of the <b>tasks</b> mentioned in the task list. Since 
+  one resource can contain more than one task, several tasks can be displayed 
+  one under the other on this level in the tree topology. </p>
+<p>In turn, several <b>programs</b> can be assigned to a task. Each task can therefore 
+  be expanded. After the expansion, the program instances called by the task can 
+  be seen in the tree topology one level below the task. </p>
+<p>Programs, in turn, can call <b>function block instances</b>. After expansion 
+  of the program branch, the function block instances called by a program are 
+  therefore displayed on the next level.<br>
+  Function block instances make up the last level of the tree topology. Since, 
+  however, function block instances can again call other instances of function 
+  blocks or structures, the tree topology can branch out from this point to any 
+  depth, depending on the calling hierarchy and on the extent to which the function 
+  block calls are nested. </p>
+<p> <b>Instances of structures</b> are displayed one level below the function 
+  block instance in which the corresponding structure instance was declared. </p>
+<h3><a name="TabFB"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  The Function Blocks Tab</h3>
+<img src="pic/FunctionB.gif" width="238" height="140" align="left" class="inP" style="margin-right : 15px"> 
+<p>The Function Block view is a reduced version of the project structure represented 
+  in the Project view. Here, only the function block instances contained in a 
+  project are displayed in tree topology. As in the Project view, the organization 
+  of the tree topology levels corresponds to the calling hierarchy for a project. 
+  Calling function block instances are always one level above called function 
+  block instances in the tree topology. Calling function block instances can therefore 
+  be expanded by means of the positive sign. Under the expanded function block 
+  instance, the called function block instances are displayed. <br>
+  Both instances of user-defined function blocks and of function blocks from standard 
+  libraries are shown. <br>
+  Instances of structures are displayed one level below the function block instance 
+  in which the corresponding structure instance was declared.</p>
+<h2><a name="Toolbar"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  The Toolbar</h2>
+<img src="pic/toolbar.gif" width="660" height="48" class="inP"> 
+<p>The toolbar contains the following operational elements: 
+<dl> 
+  <dt><b>Layout: </b></dt>
+  <dd>displays the currently loaded layout. If you scroll down this list, all 
+    stored layouts will be displayed. By a mouse click on a list entry, a different 
+    layout can be loaded. <br>
+    See also: <a href="Layout.htm#LoadLayout">Loading a Stored Layout</a>.</dd>
+  <dt><b>Disk:</b></dt>
+  <dd>calls the <b>save layout dialog</b>. <br>
+    See also: <a href="Layout.htm#SaveLayout">Saving Altered Layouts.</a></dd>
+  <dt><b>Edit:</b></dt>
+  <dd>calls the layout editor.<br>
+    See also: <a href="Layout.htm#EditLayout">Editing a Layout in the Layout Editor.</a></dd>
+  <dt><b>Navigator:</b></dt>
+  <dd>displays or hides the <a href="#NaviView">Navigator view</a>.</dd>
+  <dt><b>Log out:</b></dt>
+  <dd>logs out the current user from ATCM Console and calls the password dialog. 
+    This button appears in the toolbar only if the currently loaded project has 
+    a password protection. <br>
+    See also: <a href="Connect.htm#Password">Password Protection</a></dd>
+  <dt><b>Help</b></dt>
+  <dd>calls the online help to ATCM Console.</dd>
+  <dt><b>About:</b></dt>
+  <dd>displays information on the current ATCMControl version.</dd>
+</dl>
+<h2><a name="Statusbar"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  The Status Bar</h2>
+<img src="pic/statuszeile.gif" width="364" height="110" class="inP"> 
+<p>The status bar is divided into three sections:</p>
+<dl> 
+  <dt><b>Left section:</b></dt>
+  <dd>Here, all error messages which are given during work with ATCM Console are 
+    displayed. </dd>
+  <dt><b>Middle section:</b></dt>
+  <dd>Here, the message <i>DOWNLOAD</i> is displayed flashing in red color after 
+    the download of an object visualized in ATCM Console. The message is to signalize 
+    that after a download, the displayed data may not all be up to date with the 
+    current status loaded on ATCM Control. After updating of the visualization area, 
+    the message is hidden. <br>
+    See also <a href="#refresh">Updating the Navigator and Visualization Views</a>.</dd>
+  <dt><b>Right section:</b></dt>
+  <dd>Here, the validity period of the <a href="Licence.htm">ATCM Control license</a> 
+    is displayed. If the remaining time period is shorter than 3 days, it is displayed 
+    in red. If the validity period is only one more day, the display begins to 
+    flash. </dd>
+</dl>
+<h2><a name="IEPanel"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  The Internet Navigation Menu in ATCM Engineering</h2>
+<p>If ATCM Console is started from ATCM Engineering, the Console window is opened 
+  without the menu bar and the toolbar of the Internet Explorer. Part of the functionality 
+  of the Internet Explorer is therefore replaced by the buttons in the Internet 
+  navigation menu located in the toolbar of ATCM Engineering (see also the section 
+  on <a href="#InternetFunctions">The Internet Functions</a>). If no window of 
+  ATCM Console is opened in ATCM Engineering, these buttons are disabled. If, on the 
+  other hand, several windows of ATCM Console are opened, the functions of the buttons 
+  always refer to the Console window in the foreground. </p>
+<img src="pic/InetButton.gif" width="142" height="21" class="inP"> 
+<p>These functions are listed in the following table:</p>
+<table border cellpadding=4 width="300" bgcolor="#FFFFFF" bordercolor="#000000" >
+  <tr> 
+    <td valign=TOP width="35%"><img src="pic/Icback.gif" height=14 width=16></td>
+    <td valign=TOP width="65%"><font size=-1><b>Back </b>to the preceding page 
+      </font></td>
+  </tr>
+  <tr> 
+    <td valign=TOP width="35%"><img src="pic/Icnext.gif" height=14 width=15></td>
+    <td valign=TOP width="65%"><font size=-1><b>Next </b> page </font></td>
+  </tr>
+  <tr> 
+    <td valign=TOP width="35%"><img src="pic/Icstopnet.gif" height=17 width=16></td>
+    <td valign=TOP width="65%"><font size="-1"><b>Interruption</b> of the loading 
+      process</font></td>
+  </tr>
+  <tr> 
+    <td valign=TOP width="35%"><img src="pic/Icrefresh.gif" height=15 width=14></td>
+    <td valign=TOP width="65%"><font size=-1><b>Refresh</b> - update page</font></td>
+  </tr>
+  <tr> 
+    <td valign=TOP width="35%"><img src="pic/Ichome.gif" height=16 width=15></td>
+    <td valign=TOP width="65%"><font size=-1>Back to <b>homesite</b></font></td>
+  </tr>
+  <tr> 
+    <td valign=TOP width="35%"><img src="pic/Icsearchnet.gif" height=16 width=16></td>
+    <td valign=TOP width="65%"><font size=-1>Search <b>network </b></font></td>
+  </tr>
+</table>
+<p>When using the two buttons for <b>backward</b> and <b>forward</b> navigation, 
+  <img src="pic/ForwBack.gif" width="41" height="17" align="top"> please note 
+  the following:<br>
+  Both buttons refer to the currently enabled display of ATCM Console. If while 
+  working with ATCM Console, you have loaded several objects in the same display, 
+  you can use these buttons to navigate forward and backward through the previously 
+  loaded objects in the order of loading. </p>
+<h2><a name="InternetFunctions"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  The Internet Functions</h2>
+<p>ATCM Console is an application embedded in the Internet Explorer. If you work 
+  with ATCM Console, therefore, practically all functions offered by the Internet 
+  Explorer without ATCM Console are available to you. You can use some of these 
+  functions to control the Navigator and Visualization views. For functions of 
+  the Internet Explorer which are not documented in this section, see the Internet 
+  Explorer help. </p>
+<h3><a name="Refresh"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Updating the Navigator and Visualization Views</h3>
+<p>The objects displayed in the Visualization view are automatically updated within 
+  a defined cycle time. If, however, new objects or variables have been created 
+  in the project after a complete or an incremental download, these new elements 
+  are not automatically displayed in ATCM Console. Variables which have been newly 
+  created within a function block before the download, for example, do not automatically 
+  appear after the download in the display for the corresponding function block. 
+  Neither are new objects in the Navigator view automatically inserted in the 
+  tree topology. To draw your attention to this fact, the red flashing message 
+  <i>DOWNLOAD</i> is displayed in the status bar after a new download. To be able 
+  to monitor, after a download, the newly loaded elements in ATCM Console as well, 
+  you have to update the views of ATCM Console. After updating, the <i>DOWNLOAD	
+  </i> message disappears. <br>
+  Deleted variables are not removed from the display after a download, but they 
+  signalize the OPC quality <i>bad</i> (see also the section on <a href="VQuality.htm">Variable 
+  Quality</a><i> </i>)<i> </i>. To display the data organization of an object 
+  loaded in a display, which is valid after the download, you have to manually 
+  update the corresponding display or the entire Visualization view.<br>
+  If you remove an entire object (e.g. function block or task) from the project 
+  before a download, the message <i>The object &lt;object name&gt; has been removed</i> 
+  appears after the download in the display assigned to this object. In this case, 
+  you have to assign a new valid block to the corresponding display. </p>
+<p>To update the Navigator view as well as the entire Visualization view, click 
+  on the <b>Update</b> button in the Internet Explorer toolbar if you have started 
+  ATCM Console outside ATCM Engineering, </p>
+<p><i>- OR -</i></p>
+<p>click on the <img src="pic/IcRefresh.gif" width="14" height="15" align="bottom"> 
+  button for page updating in the Internet navigation menu of ATCM Engineering if 
+  you have started ATCM Console from ATCM Engineering. </p>
+<p>In addition to updating the entire Navigator and Visualization views, you also 
+  have the possibility of updating individual displays. The download message, 
+  however, does not disappear after updating of an individual display. </p>
+<p>To update an individual display, proceed as follows:</p>
+<ol>
+  <li>Click in the display area of the desired display with the right mouse button 
+    to open the <strong>Context</strong> menu. The called <b>Context</b> menu 
+    is a menu of the Internet Explorer. The options mentioned in the menu refer 
+    to the selected display.</li>
+  <li>Click on <b>Update</b> in the <b>Context</b> menu. Since the <b>Context</b> 
+    menu refers exclusively to the selected display, only this display is updated. 
+  </li>
+</ol>
+<h3><a name="navigate"></a><a href="#Overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Navigating in the Visualization View</h3>
+<p>If you replace the objects loaded in the displays of the Visualization view, 
+  i.e. if you load other objects into the displays instead of the ones displayed 
+  before, you can undo the last changes step by step by means of the standard 
+  functions of the Internet Explorer, i.e. you can reload the object displayed 
+  previously into the corresponding display. </p>
+<p>If you have started ATCM Console outside ATCM Engineering, use the <b>Back</b> 
+  button in the toolbar of the Internet Explorer to do this. With each click on 
+  <b>Back</b>, you undo a change in reverse order as compared to the order in 
+  which you have carried through the changes. In each display in which you have 
+  loaded a new object, the previously loaded display is therefore redisplayed. 
+  <br>
+  Similarly, you can navigate with the <b>Forward</b> button in the toolbar of 
+  the Internet Explorer through the displayed objects, this time in reverse order. 
+  Changes in the displays which you have undone by <b>Back</b> are thus restored. 
+  The <b>Forward</b> button is only enabled if you have already carried through 
+  changes by <b>Back</b>.</p>
+<p>If you have started ATCM Console from ATCM Engineering, the <img src="pic/ForwBack.gif" width="41" height="17" align="top"> 
+  buttons in the <a href="#IEPanel">Internet Navigation Menu of ATCM Engineering</a> 
+  offer you the same functionality as the <b>Back</b> and <b>Forward</b> buttons.</p>
+</body>
+</html>

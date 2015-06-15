@@ -1,0 +1,34 @@
+HKCR
+{
+	4C_20_CSC.Online_Server.1 = s '4C_20: ATCM Control Online Server'
+	{
+		CLSID = s '{5425B8A4-754D-496a-AF31-7D78A530E58D}'
+	}
+	4C_20_CSC.Online_Server = s '4C_20: ATCM Control Online Server'
+	{
+		CLSID = s '{5425B8A4-754D-496a-AF31-7D78A530E58D}'
+		CurVer = s '4C_20_CSC.Online_Server.1'
+        OPC
+        {
+            Vendor = s 'ATCM ATCMContol'
+        }
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {5425B8A4-754D-496a-AF31-7D78A530E58D} = s '4C_20: ATCM Control Online Server'
+		{
+			ProgID = s '4C_20_CSC.Online_Server.1'
+			VersionIndependentProgID = s '4C_20_CSC.Online_Server'
+			LocalServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'both'
+			}
+			val AppID = s '{4849089A-8BE5-4c5b-B37C-C003DBA0BAC7}'
+
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

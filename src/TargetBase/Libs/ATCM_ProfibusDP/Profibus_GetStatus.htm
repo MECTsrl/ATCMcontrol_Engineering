@@ -1,0 +1,722 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>  </TITLE>
+<META NAME="Template" CONTENT="D:\!!job\code\AutoDoc\prot\logic17.dot">
+</HEAD>
+<BODY BGCOLOR="#ffffcc">
+
+<B><FONT FACE="Arial"><P>Profibus_GetStatus</P>
+</B></FONT><FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">La funzione Profibus_GetStatus ritorna alcune informazioni relative allo stato dei nodi presenti sulla rete Profibus</P>
+<P ALIGN="JUSTIFY"></P>
+<B><P>Sintassi</P>
+</B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<I><P>ret_code</I>&nbsp;:= Profibus_GetStatus(<I>ExecMode</I>, <I>ExecStatus</I>, <I>Board</I>, <I>StatusData</I>);</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<B><P ALIGN="JUSTIFY">Parametri di ingresso</P>
+<P ALIGN="JUSTIFY"></P>
+</B><I><P ALIGN="JUSTIFY">ExecMode</I> (INT)&#9;Modalita di esecuzione del comando [MODE_NOWAIT, </P>
+<P ALIGN="JUSTIFY">&#9;&#9;&#9;&#9;MODE_WAIT, MODE_WAIT_ACCEPT, MODE_NOWAIT_ACK].</P>
+<I><P ALIGN="JUSTIFY">Board</I> (INT)&#9;&#9;Scheda master su cui opera la funzione. </P>
+<P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">Parametri di uscita</P>
+</B><P ALIGN="JUSTIFY"></P>
+<I><P ALIGN="JUSTIFY">ExecStatus</I> (DWORD)&#9;Stato di esecuzione del comando in modalit&agrave; MODE_NOWAIT_ACK.</P>
+<I><P ALIGN="JUSTIFY">StatusData</I> (STRUCT)   Questa struttura, di tipo Profibus_StatusType, contiene lo stato dei nodi </P>
+<P ALIGN="JUSTIFY">&#9;&#9;&#9;presenti nella configurazione. </P>
+<B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Modalit&agrave; di esecuzione</P>
+<P ALIGN="JUSTIFY"></P>
+</B><P ALIGN="JUSTIFY">La funzione pu&ograve; essere eseguita soltanto in modalit&agrave; MODE_WAIT.</P>
+
+<B><P ALIGN="JUSTIFY">Uso</P>
+</B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">La funzione permette di leggere alcune informazioni sullo stato della scheda Profibus master e su quali nodi sono configurati, attivi ed eventualmente in errore nella rete Profibus. </P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Tutte le informazioni ritornate dalla funzione sono raggruppate nella struttura <B>Profibus_StatusType</B> che &egrave; composta dai campi seguenti:</P>
+<P ALIGN="JUSTIFY"></P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=643>
+<TR><TD WIDTH="22%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Campo</B></FONT></TD>
+<TD WIDTH="23%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Tipo</B></FONT></TD>
+<TD WIDTH="55%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Descrizione</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="MIDDLE">
+<I><FONT FACE="Arial" SIZE=2><P>GlobalBits</I></FONT></TD>
+<TD WIDTH="23%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">BYTE</FONT></TD>
+<TD WIDTH="55%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Bit globali di errore. Si veda pi&ugrave; avanti la tabella con il significato di ogni bit</FONT></TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="MIDDLE">
+<I><FONT FACE="Arial" SIZE=2><P>MasterState</I></FONT></TD>
+<TD WIDTH="23%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">BYTE</FONT></TD>
+<TD WIDTH="55%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">stato della scheda Profibus master. Si veda pi&ugrave; avanti la tabella con i valori possibili per questo campo</FONT></TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="MIDDLE">
+<I><FONT FACE="Arial" SIZE=2><P>ErrRemoteAddress</I></FONT></TD>
+<TD WIDTH="23%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">BYTE</FONT></TD>
+<TD WIDTH="55%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Indirizzo di rete dell’eventuale nodo in errore. Se l’errore &egrave; sulla scheda master questo campo assume il valore 255. Se esistono pi&ugrave; errori su pi&ugrave; nodi il campo <I>ErrRemoteAddress</I> contiene l’indirizzo del nodo in errore con indirizzo pi&ugrave; basso.</FONT></TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="MIDDLE">
+<I><FONT FACE="Arial" SIZE=2><P>ErrNumber </I></FONT></TD>
+<TD WIDTH="23%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">BYTE</FONT></TD>
+<TD WIDTH="55%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Numero dell’errore</FONT></TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="MIDDLE">
+<I><FONT FACE="Arial" SIZE=2><P>ConfgNode</I></FONT></TD>
+<TD WIDTH="23%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">ARRAY [0..15] of BYTE</FONT></TD>
+<TD WIDTH="55%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">identifica i nodi slave presenti nella configurazione della scheda Profibus master. A ogni nodo &egrave; associato un bit.</FONT></TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="MIDDLE">
+<I><FONT FACE="Arial" SIZE=2><P>ActivNode</I></FONT></TD>
+<TD WIDTH="23%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">ARRAY [0..15] of BYTE</FONT></TD>
+<TD WIDTH="55%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">identifica i nodi slave attualmente attivi. A ogni nodo &egrave; associato un bit.</FONT></TD>
+</TR>
+<TR><TD WIDTH="22%" VALIGN="MIDDLE">
+<I><FONT FACE="Arial" SIZE=2><P>DiagnNode</I></FONT></TD>
+<TD WIDTH="23%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">ARRAY [0..15] of BYTE</FONT></TD>
+<TD WIDTH="55%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">identifica i nodi attualmente in errore. A ogni nodo &egrave; associato un bit.</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Il campo <I>GlobalBits </I>della struttura Profibus_StatusType &egrave; composto da diversi bit; il significato di ogni bit &egrave; il seguente:</P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=639>
+<TR><TD WIDTH="16%" VALIGN="TOP">
+<B><I><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">GlobalBits</B></I></FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit</B></FONT></TD>
+<TD WIDTH="70%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Descrizione</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>gb_CTRL   </FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0001</FONT></TD>
+<TD WIDTH="70%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Control error: errore di parametrizzazione.</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>gb_ACLR   </FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0002</FONT></TD>
+<TD WIDTH="70%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Auto Clear Error: la scheda master ha fermato la comunicazione verso tutti gli slave ed &egrave; entrata nello stato Auto Clear.</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>gb_NEXC   </FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0004</FONT></TD>
+<TD WIDTH="70%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Non Exchange Error: almeno uno slave non ha raggiunto lo stato di scambio dati, quindi lo scambio dei dati di processo verso questo slave non sta avvenendo</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>gb_FAT    </FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0008</FONT></TD>
+<TD WIDTH="70%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Fatal Error: a causa di un grave errore sulla rete, non &egrave; possibile comunicare sulla rete Profibus</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>gb_EVE    </FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0010</FONT></TD>
+<TD WIDTH="70%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Event Error: la scheda master ha rilevato dei cortocircuiti sulla rete.</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>gb_NRDY   </FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0020</FONT></TD>
+<TD WIDTH="70%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Host Not Ready Notification: se il bit &egrave; settato la scheda master non &egrave; pronta a comunicare</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>gb_TOUT   </FONT></TD>
+<TD WIDTH="15%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0040</FONT></TD>
+<TD WIDTH="70%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Timeout error: timeout scaduto a causa di telegrammi Profibus rifiutati</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Il campo <I>MasterState </I>della struttura Profibus_StatusType pu&ograve; assumere i seguenti valori:</P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=294>
+<TR><TD WIDTH="58%" VALIGN="TOP">
+<B><I><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">MasterState</B></I></FONT></TD>
+<TD WIDTH="42%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Valori (HEX)</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ms_OFFLINE   </FONT></TD>
+<TD WIDTH="42%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0000</FONT></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ms_STOP      </FONT></TD>
+<TD WIDTH="42%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0040</FONT></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ms_CLEAR     </FONT></TD>
+<TD WIDTH="42%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x0080</FONT></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P>ms_OPERATE   </FONT></TD>
+<TD WIDTH="42%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x00C0</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Se un errore si &egrave; verificato su un nodo remoto (cio&egrave; se <I>ErrRemoteAddress</I> &egrave; diverso da 255) il campo <I>ErrNumber </I>della struttura Profibus_StatusType pu&ograve; assumere questi valori:</P></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=641>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<B><I><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">ErrNumber</B></I></FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Descrizione</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Lo slave segnala un overflow. Controllare la lunghezza dei dati di configurazione e di parametrizzazione dello slave</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">3</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">La funzione richiesta dal master non &egrave; attivata nello slave. Controllare se lo slave &egrave; compatibile con lo standard Profibus-DP</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">9</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Mancata risposta da parte dello slave. Controllare la configurazione dello slave, e in particolare la lunghezza dei dati di I/O</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">17</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Nessuna risposta da parte dello slave. Controllare il cavo Profibus e l’indirizzo dello slave</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">18</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Il master non &egrave; nel token ring logico</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">21</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Parametro errato nella richiesta</FONT></TD>
+</TR>
+</TABLE>
+
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Se un errore si &egrave; verificato sulla scheda master (cio&egrave; se <I>ErrRemoteAddress</I> &egrave; uguale a 255) il campo <I>ErrNumber </I>della struttura Profibus_StatusType pu&ograve; assumere questi valori:</P></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=641>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<B><I><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">ErrNumber</B></I></FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Descrizione</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Nessun errore</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">50</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Task USR_INTF non trovato</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">51</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Nessun campo di dati globali</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">52</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Task FDL non trovato</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">53</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Task PLC non trovato</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">54</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">I parametri del master non esistono</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">55</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Parametro con valore errato nei parametri del master</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">56</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">I parametri dello slave non esistono</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">57</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Parametro con valore errato nei parametri dello slave</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">58</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Due slave con lo stesso indirizzo</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">59</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">L’offset dei dati di processo da inviare &egrave; fuori dal range consentito 0-255</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">60</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">L’offset dei dati di processo da ricevere &egrave; fuori dal range consentito 0-255</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">61</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Le aree dati di alcuni slave sono sovrapposte nei dati di processo da inviare</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">62</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Le aree dati di alcuni slave sono sovrapposte nei dati di processo da ricevere</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">63</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Handshake sconosciuto nei dati di processo</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">64</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">RAM esaurita</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">65</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Errore nei parametri slave</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">212</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Errore nella lettura del data base</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">220</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Errore di watchdog software</FONT></TD>
+</TR>
+</TABLE>
+
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Il campo <I>ConfgNode</I> (array di 16 byte), appartenente alla struttura Profibus_StatusType, contiene l’informazione su quali sono i nodi slave presenti nella configurazione della scheda Profibus master: a ogni nodo &egrave; associato un bit nell’array di byte. La tabella seguente spiega la associazione tra bit e NodeId:</P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=594>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=30>
+<I><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">ConfgNode</I></FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 7</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 6</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 5</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 4</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 3</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 2</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 1</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 0</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Byte 0</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">7</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">6</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">5</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">4</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">3</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Byte 1</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">15</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">14</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">13</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">12</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">11</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">10</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">9</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">8</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Byte 2</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">23</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">22</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">21</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">20</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">19</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">18</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">17</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">16</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">…</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Byte 15</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">127</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">126</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">125</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">124</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">123</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">122</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">121</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">120</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Per esempio al nodo con indirizzo 6 &egrave; associato il bit 6 del byte 0 dell’array <I>ConfgNode.</P>
+</I><P ALIGN="JUSTIFY">Se il bit vale 1 allora il nodo corrispondente &egrave; presente nella configurazione del master;</P>
+<P ALIGN="JUSTIFY">se il bit vale 0 allora il nodo corrispondente non &egrave; presente nella configurazione del master.</P>
+<P ALIGN="JUSTIFY">Il campo <I>ActivNode</I> (array di 16 byte), appartenente alla struttura Profibus_StatusType, contiene l’informazione su quali sono i nodi slave attivi: a ogni nodo &egrave; associato un bit nell’array di byte. La tabella seguente spiega la associazione tra bit e NodeId:</P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=594>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=30>
+<I><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">ActivNode</I></FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 7</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 6</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 5</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 4</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 3</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 2</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 1</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 0</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Byte 0</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">7</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">6</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">5</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">4</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">3</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Byte 1</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">15</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">14</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">13</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">12</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">11</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">10</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">9</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">8</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Byte 2</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">23</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">22</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">21</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">20</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">19</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">18</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">17</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">16</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">…</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Byte 15</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">127</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">126</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">125</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">124</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">123</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">122</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">121</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">120</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Per esempio al nodo con indirizzo 23 &egrave; associato il bit 7 del byte 2 dell’array <I>ActivNode.</P>
+</I><P ALIGN="JUSTIFY">Se il bit vale 1 allora il nodo corrispondente e il master si stanno scambiando i dati di I/O;</P>
+<P ALIGN="JUSTIFY">se il bit vale 0 allora il nodo corrispondente e il master non si stanno scambiando i dati di I/O.</P>
+<P ALIGN="JUSTIFY">Il campo <I>DiagnNode</I> (array di 16 byte), appartenente alla struttura Profibus_StatusType, contiene per ogni nodo un bit di diagnostica. La tabella seguente spiega la associazione tra bit e NodeId:</P></FONT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=594>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=30>
+<I><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">DiagnNode</I></FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 7</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 6</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 5</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 4</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 3</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 2</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 1</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=30>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Bit 0</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Byte 0</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">7</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">6</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">5</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">4</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">3</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">2</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">1</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Byte 1</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">15</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">14</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">13</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">12</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">11</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">10</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">9</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">8</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Byte 2</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">23</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">22</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">21</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">20</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">19</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">18</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">17</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">16</FONT></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=20>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">…</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=20><P></P></TD>
+</TR>
+<TR><TD WIDTH="16%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Byte 15</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">127</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">126</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">125</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">124</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">123</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">122</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">121</FONT></TD>
+<TD WIDTH="11%" VALIGN="MIDDLE" HEIGHT=19>
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">120</FONT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Per esempio al nodo con indirizzo 120 &egrave; associato il bit 0 del byte 15 dell’array <I>DiagnNode.</P>
+</I><P ALIGN="JUSTIFY">Se il bit vale 1 questo significa che sono stati ricevuti dei nuovi dati di diagnostica provenienti dallo slave; questi dati di diagnostica possono essere letti tramite la funzione Profibus_GetEmcyInfo.</P>
+<P ALIGN="JUSTIFY">Se invece il bit vale 0 questo significa che non sono stati ricevuti nuovi dati di diagnostica dallo slave.</P>
+<B><P ALIGN="JUSTIFY">Valori di ritorno</P></B></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=641>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Valore (HEX)</B></FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Descrizione</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Funzione eseguita correttamente</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">  0x0037003F</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Parametro utente <I>Board</I> non valido</FONT></TD>
+</TR>
+</TABLE>
+
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Esempio</P>
+<P ALIGN="JUSTIFY"></P>
+</B><P ALIGN="JUSTIFY">VAR</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">RetCode       :  DWORD&nbsp;;</P>
+<P ALIGN="JUSTIFY">ExecMode    :  INT := MODE_WAIT;</P>
+<P ALIGN="JUSTIFY">ExecStatus   :  DWORD;</P>
+<P ALIGN="JUSTIFY">Board           :  INT;</P>
+<P ALIGN="JUSTIFY">StatusData   :  Profibus_StatusType;</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">END_VAR</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">RetCode := Profibus_GetStatus(ExecMode, ExecStatus, Board, StatusData);</P></FONT></BODY>
+</HTML>

@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>CTD_DINT</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>CTD</h2>
+<p>Down counter for rising edges. </p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION_BLOCK CTD
+VAR_INPUT  
+    CD         : BOOL R_EDGE; 
+    LD         : BOOL;        
+    PV         : INT;        
+END_VAR
+VAR_OUTPUT 
+    Q          : BOOL;        
+    CV         : INT;     
+END_VAR</pre>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>CD</b></dt>
+  <dd>Value of type <i><b>BOOL </b></i>with the attribute<b> <i>R_EDGE</i></b><i><b><br>
+    </b></i>Input signal that is evaluated for edge detection.</dd>
+  <dt><i><b> </b></i></dt>
+  <dt><b>LD</b></dt>
+  <dd>Value of type <i><b>BOOL<br>
+    </b></i> Resets the edge counter <i><b>CV</b></i> to the value of <i><b>PV</b></i> 
+    if <i><b>TRUE</b></i>.</dd>
+  <dt><b>PV</b></dt>
+  <dd>Value of type <i><b>INT</b></i> <i><b><br>
+    </b></i> Value to which the counter variable <i><b>CV</b></i> is set if <i><b>LD</b></i> 
+    is<b> <i>TRUE</i></b>.</dd>
+  <dt><i><b> </b></i></dt>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b></b><b>Q</b></dt>
+  <dd>Value of type <b><i>BOOL</i></b><br>
+    Flag that is set to <i><b>TRUE</b></i> when the counter variable <i><b>CV</b></i> 
+    reaches a value<b> <i>&lt;= 0</i></b>. </dd>
+  <dt><b>CV</b></dt>
+  <dd>Value of type <b><i>INT</i></b> <b><i><br>
+    </i></b> Counts rising edges at input <i><b>CD</b></i>. </dd>
+  <dt>&nbsp; </dt>
+</dl>
+<h3>Description</h3>
+<p>This function block is used as a down counter for rising edges at the input 
+  signal <i><b>CD</b></i>. The current count of down counting is stored in the 
+  counter variable<b> <i>CV</i></b>. The counter variable is reset to the value 
+  passed in<b> <i>PV</i></b> when the flag <i><b>LD</b></i> is set to the value 
+  <i><b>TRUE</b></i>. This flag is not reset automatically. If counting is to 
+  be restarted after the reset, the flag must be reset to <i><b>FALSE</b></i> 
+  beforehand. The variable <i><b>Q</b></i> is set to <i><b>TRUE</b></i> when <i><b>CV</b></i><b> 
+  </b>reaches a value <b><i>&lt;=0</i></b>. </p>
+</body>
+</html>

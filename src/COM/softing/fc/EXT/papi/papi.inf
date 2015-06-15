@@ -1,0 +1,46 @@
+# $Header: /4CReleased/V2.20.00/COM/softing/fc/EXT/papi/papi.inf 1     28.02.07 19:01 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: papi.inf $
+#                        $Logfile: /4CReleased/V2.20.00/COM/softing/fc/EXT/papi/papi.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 EXT
+#
+# =COMPONENT            papi
+#
+# =CURRENT      $Date: 28.02.07 19:01 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+COPY=pb_type.h $(INCLUDE_DIR)\papi\pb_type.h
+COPY=pb_if.h $(INCLUDE_DIR)\papi\pb_if.h
+COPY=pb_fms.h $(INCLUDE_DIR)\papi\pb_fms.h
+COPY=pb_fmb.h $(INCLUDE_DIR)\papi\pb_fmb.h
+COPY=pb_dps.h $(INCLUDE_DIR)\papi\pb_dps.h
+COPY=pb_fm7.h $(INCLUDE_DIR)\papi\pb_fm7.h
+COPY=pb_fdl.h $(INCLUDE_DIR)\papi\pb_fdl.h
+COPY=pb_err.h $(INCLUDE_DIR)\papi\pb_err.h
+COPY=pb_dp.h $(INCLUDE_DIR)\papi\pb_dp.h
+COPY=pb_conf.h $(INCLUDE_DIR)\papi\pb_conf.h
+COPY=keywords.h $(INCLUDE_DIR)\papi\keywords.h
+COPY=pb_ntdrv.h $(INCLUDE_DIR)\papi\pb_ntdrv.h
+COPY=UndocumentedFeatures.h $(INCLUDE_DIR)\papi\UndocumentedFeatures.h
+
+COPY=pb_tools.h $(INCLUDE_DIR)\papi\pb_tools.h
+COPY=PbTools.lib $(LIB_DIR)\PbTools.lib
+
+USER=makefirst: $(INCLUDE_DIR)\papi
+USER=$(INCLUDE_DIR)\papi: ; -md $@
+
+USER=makefirst: $(LIB_DIR)
+USER=$(LIB_DIR): ; -md $@
+
+USER=makefirst: $(EXE_DIR)\Engineering\bin\4cpc
+USER=$(EXE_DIR)\Engineering\bin\4cpc: ; -md $@
+
+# -------------------------------------------------------------------------------

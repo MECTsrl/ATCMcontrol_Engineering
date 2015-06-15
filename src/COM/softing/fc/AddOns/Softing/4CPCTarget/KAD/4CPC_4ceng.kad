@@ -1,0 +1,339 @@
+<KAD4CE>
+
+<GENERAL 
+   SPLASHSCREEN="4Control3.bmp"
+   ICON="cemain.ico"
+   ABOUTBOX="{8CFC6369-0596-498E-B7CA-4BC7EE0C5BC7}"    
+   COMPILERPATH="4CG.EXE"
+   MAXDOCS="50"
+   MAXDOCSREC="10"
+>
+</GENERAL>
+
+<KERNEL>
+    <ADDON
+       NAME="ATCM PCTarget AddOn"
+       VERSION="2.0"
+       VENDOR="ATCM"
+       KADFILE="Engineering\bin\4CPC_4ceng.kad"
+       DESC="ATCM Control PC Target Addon ... "/>
+</KERNEL>
+ 
+<FILES>   
+    <FILE EXT="4cpc" PARSER="{C8B442AE-F2BC-4E73-A8DE-6ECE3D2E6702}"
+          STDEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}"
+          CONTAINER="{C8B442AE-F2BC-4E73-A8DE-6ECE3D2E6702}"
+          FILTERTEXT="PC-based Files"
+          ORDERKEY="fa"/>
+    <FILE EXT="ioopc" PARSER="{33146a06-b51c-4267-9864-c040778c849a}"
+          STDEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}"
+          FILTERTEXT="IO-Configuration Files"
+          ORDERKEY="iab"/>
+    <FILE EXT="iodp" PARSER="{F90AD5F6-F39D-4f5a-9301-19A57C5FA767}" 
+          STDEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}" 
+          FILTERTEXT="IO-Configuration Files"
+          ORDERKEY="iaa"/>
+    <FILE EXT="iomodbus" PARSER="{A8958A71-663A-4b0e-844A-7F2F08A43947}" 
+          STDEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}" 
+          FILTERTEXT="IO-Configuration Files"
+          ORDERKEY="iad"/>
+</FILES>
+
+
+<TARGETS TYPE="PROJECT_TARGET">
+    <TARGET TYPE="PC" FACILITYCODE="0x300" EXT="4cpc">
+        <TARGETONLINE CONSOLE="1" DOWNLOAD="{88AD4524-E2B2-4853-A081-5CDBF5732E09}" DLCHANGES="1"/>
+        <IEC_FEATURES DATA_TYPES="BOOL, BYTE, WORD, DWORD, LWORD, TIME, DT, TOD, DATE, DINT, LINT, WSTRING, LREAL, QVT_BOOL, QVT_BYTE, QVT_WORD, QVT_DWORD, QVT_LWORD, QVT_DINT, QVT_LINT, QVT_LREAL, QVT_WSTRING"
+                      LANGUAGES="ST, FBD, LD, SFC, IL"
+                      RETAIN="1"/>
+    </TARGET>
+</TARGETS>
+
+
+<MAINMENU>
+    <MENU ID="create" TITLE="&amp;Create">
+        <MENUITEM ID="CreatePC" 
+                  ORDERKEY="ga" 
+                  TEXT="&amp;PC-based Controller" 
+                  STBARTXT="Inserts a new PC-based Controller" 
+                  DISPID="NewPC" 
+                  ENABLE_EXPRESSION="project=open;project!=readonly"
+                  HANDLER="{C8B442AE-F2BC-4E73-A8DE-6ECE3D2E6702}"/>
+    </MENU>
+    <MENU ID="settings" TITLE="&amp;Settings">
+	<MENUITEM ID="PCSettings"
+                  ORDERKEY="sa"
+                  TEXT="&amp;PC-based Controller"
+                  DISPID="Settings"
+                  HANDLER="{C8B442AE-F2BC-4E73-A8DE-6ECE3D2E6702}"/>
+    </MENU>
+</MAINMENU>
+
+
+<TOOLBARS>
+    <TOOLBAR ID="Create">
+        <TOOLBARITEM MAINMENUID="CreatePC" 
+                     TOOLTIP="Create PC-based Controller" 
+                     ICON="4CPC\createPC.bmp"/>
+    </TOOLBAR>
+</TOOLBARS>
+
+
+<TYPES>
+ <TYPE ID="PROJECT_TARGET">
+    <MENU>
+        <MENUITEM TEXT="Insert new PC-based Controller"
+                  ORDERKEY="fa"
+                  DISPID="NewPC" 
+                  HANDLER="{C8B442AE-F2BC-4E73-A8DE-6ECE3D2E6702}" />
+    </MENU>
+  </TYPE>
+
+  <TYPE ID="PC" ICON="4CPC\4cpc.bmp" TEXT="PC-based Controller" PROJ_LIST_VIEW="1">
+    <STATE ICON="4CPC\4CPCconerr5.bmp" STATE_VAL="-5"/>
+    <STATE ICON="4CPC\4CPCconerr4.bmp" STATE_VAL="-4"/>
+    <STATE ICON="4CPC\4CPCconerr3.bmp" STATE_VAL="-3"/>
+    <STATE ICON="4CPC\4CPCconerr2.bmp" STATE_VAL="-2"/>
+    <STATE ICON="4CPC\4CPCconerr1.bmp" STATE_VAL="-1"/>
+    <STATE ICON="4CPC\4CPCcon.bmp" STATE_VAL="1"/>
+    <STATE ICON="4CPC\4CPCconex.bmp" STATE_VAL="2"/>
+    <MENU>
+        <MENUITEM TEXT="Assign Resource"
+                  ORDERKEY="ha"
+                  DISPID="Assignment" 
+                  HANDLER="{C8B442AE-F2BC-4E73-A8DE-6ECE3D2E6702}"/>
+        <MENUITEM TEXT="Change Address"
+                  ORDERKEY="haa"
+                  DISPID="ChangeAddress" 
+                  HANDLER="{C8B442AE-F2BC-4E73-A8DE-6ECE3D2E6702}"/>
+        <MENUITEM TEXT="Insert OPC IO Component"
+                  ORDERKEY="hb"
+                  DISPID="CREATE"
+                  HANDLER="{33146a06-b51c-4267-9864-c040778c849a}"/>
+        <MENUITEM TEXT="Insert Profibus DP IO Component" 
+		  ORDERKEY="hc" 
+		  DISPID="CREATE" 
+		  HANDLER="{F90AD5F6-F39D-4f5a-9301-19A57C5FA767}"/>
+        <MENUITEM TEXT="Insert Modbus IO Component" 
+                  ORDERKEY="he" 
+                  DISPID="CREATE" 
+                  HANDLER="{A8958A71-663A-4b0e-844A-7F2F08A43947}"/>
+        <MENUITEM TEXT="Build Target" 
+                  ORDERKEY="ia" 
+                  STANDARDOP="BuildTarget"/>
+        <MENUITEM TEXT="Full Download" 
+                  ORDERKEY="ib"
+                  STANDARDOP="DownloadFull"/>
+        <MENUITEM TEXT="Download Changes"
+                  ORDERKEY="ic" 
+                  STANDARDOP="DownloadChanges"/>
+<!--    <MENUITEM TEXT="Selective Download" 
+                  ORDERKEY="id" 
+                  STANDARDOP="DownloadSelection"/> -->
+        
+        <MENUITEM TEXT="Connect" 
+                  ORDERKEY="ja" 
+                  STANDARDOP="Connect"/>
+        <MENUITEM TEXT="Disconnect" 
+                  ORDERKEY="jb" 
+                  STANDARDOP="Disconnect"/>
+        <MENUITEM TEXT="Enable Debug" 
+                  ORDERKEY="jc" 
+                  STANDARDOP="ConnectEx"/>
+        <MENUITEM TEXT="Disable Debug" 
+                  ORDERKEY="jd" 
+                  STANDARDOP="DisconnectEx"/>
+        
+        <MENUITEM TEXT="Goto URL" 
+                  ORDERKEY="ra" 
+                  STANDARDOP="OpenUrl" />
+        
+        <MENUITEM TEXT="Rename"
+                  ORDERKEY="ua"
+                  KEYMOUSEEVENT="rename"
+                  DISPID="Rename" 
+                  HANDLER="{C8B442AE-F2BC-4E73-A8DE-6ECE3D2E6702}"/>
+        <MENUITEM TEXT="Delete"
+                  ORDERKEY="ub"
+                  KEYMOUSEEVENT="delete"
+                  DISPID="Delete" 
+                  HANDLER="{C8B442AE-F2BC-4E73-A8DE-6ECE3D2E6702}"/>
+        <MENUITEM TEXT="Properties"
+                  ORDERKEY="xa"
+                  KEYMOUSEEVENT="open"
+                  DISPID="Properties" 
+                  HANDLER="{C8B442AE-F2BC-4E73-A8DE-6ECE3D2E6702}"/>
+    </MENU>
+  </TYPE>
+
+
+<TYPE ID="PC_INST" ICON="4CPC\4cpc.bmp" TEXT="PC-based Controller">
+    <STATE ICON="4CPC\4CPCconerr5.bmp" STATE_VAL="-5"/>
+    <STATE ICON="4CPC\4CPCconerr4.bmp" STATE_VAL="-4"/>
+    <STATE ICON="4CPC\4CPCconerr3.bmp" STATE_VAL="-3"/>
+    <STATE ICON="4CPC\4CPCconerr2.bmp" STATE_VAL="-2"/>
+    <STATE ICON="4CPC\4CPCconerr1.bmp" STATE_VAL="-1"/>
+    <STATE ICON="4CPC\4CPCcon.bmp" STATE_VAL="1"/>
+    <STATE ICON="4CPC\4CPCconex.bmp" STATE_VAL="2"/>
+    <MENU>
+        <MENUITEM STANDARDOP="OpenConsole"
+                  ORDERKEY="cb"
+                  TEXT="Open Console"/>
+        <MENUITEM TEXT="Build Target" 
+                  ORDERKEY="ia" 
+                  STANDARDOP="BuildTarget"/>
+        <MENUITEM TEXT="Full Download" 
+                  ORDERKEY="ib" 
+                  STANDARDOP="DownloadFull"/>
+        <MENUITEM TEXT="Download Changes" 
+                  ORDERKEY="ic" 
+                  STANDARDOP="DownloadChanges"/>
+<!--        <MENUITEM TEXT="Selective Download" 
+                  ORDERKEY="id" 
+                  STANDARDOP="DownloadSelect"/> -->
+        
+        <MENUITEM TEXT="Connect" 
+                  ORDERKEY="ja" 
+                  STANDARDOP="Connect"/>
+        <MENUITEM TEXT="Disconnect" 
+                  ORDERKEY="jb" 
+                  STANDARDOP="Disconnect"/>
+        <MENUITEM TEXT="Enable Debug" 
+                  ORDERKEY="jc" 
+                  STANDARDOP="ConnectEx"/>
+        <MENUITEM TEXT="Disable Debug" 
+                  ORDERKEY="jd" 
+                  STANDARDOP="DisconnectEx"/>
+    </MENU>
+  </TYPE>
+
+   <TYPE ID="RESOURCE_INST.4CPC" 
+         ICON="res.bmp">
+        <STATE ICON="reserror.bmp" 
+               STATE_VAL="-1"/>
+        <STATE ICON="resstop.bmp" 
+               STATE_VAL="1"/>
+        <STATE ICON="resrun.bmp" 
+               STATE_VAL="2"/>
+        <MENU>
+            <MENUITEM STANDARDOP="Open" 
+                      ORDERKEY="ca" 
+                      TEXT="Open" 
+                      KEYMOUSEEVENT="open"/>
+            <MENUITEM STANDARDOP="OpenConsole"
+                      ORDERKEY="cb"
+                      TEXT="Open Console"/>
+            <MENUITEM STANDARDOP="StartControl" 
+                      ORDERKEY="la" 
+                      TEXT="Start"/>
+            <MENUITEM STANDARDOP="StopControl" 
+                      ORDERKEY="lb" 
+                      TEXT="Stop"/>
+            <MENUITEM STANDARDOP="StartAllTasks" 
+                      ORDERKEY="lc" 
+                      TEXT="Start All Tasks"/>
+            <MENUITEM STANDARDOP="StopAllTasks" 
+                      ORDERKEY="ld" 
+                      TEXT="Stop All Tasks"/>
+        </MENU>
+   </TYPE>
+
+<TYPE ID="IO_OPC" ICON="4CPC\4cio_opc.bmp" TEXT="OPC IO Component">
+    <MENU>
+        <MENUITEM TEXT="Edit"
+                  ORDERKEY="ca"
+                  KEYMOUSEEVENT="open"
+                  DISPID="EDIT"
+                  ENABLE_EXPRESSION="source!=readonly"
+                  HANDLER="{33146a06-b51c-4267-9864-c040778c849a}"/>
+        <MENUITEM TEXT="Rename"
+                  ORDERKEY="ua"
+                  KEYMOUSEEVENT="rename"
+                  DISPID="RENAME"
+                  ENABLE_EXPRESSION="source!=readonly"
+                  HANDLER="{33146a06-b51c-4267-9864-c040778c849a}"/>
+        <MENUITEM TEXT="Delete"
+                  ORDERKEY="ub"
+                  KEYMOUSEEVENT="delete"
+                  DISPID="DELETE"
+                  ENABLE_EXPRESSION="source!=readonly"
+                  HANDLER="{33146a06-b51c-4267-9864-c040778c849a}"/>
+        <MENUITEM TEXT="Properties"
+                  ORDERKEY="xa"
+                  DISPID="PROPERTIES"
+                  ENABLE_EXPRESSION="source!=readonly"
+                  HANDLER="{33146a06-b51c-4267-9864-c040778c849a}"/>
+    </MENU>
+</TYPE>
+
+<TYPE ID="IO_DP" ICON="4CPC\4cio_dp.bmp" TEXT="Profibus DP IO Component">
+    <MENU>
+        <MENUITEM TEXT="Edit"
+                  ORDERKEY="ca" 
+                  KEYMOUSEEVENT="open" 
+                  DISPID="EDIT" 
+                  ENABLE_EXPRESSION="source!=readonly"
+                  HANDLER="{F90AD5F6-F39D-4f5a-9301-19A57C5FA767}"/>
+        <MENUITEM TEXT="Rename"
+                  ORDERKEY="ua" 
+                  KEYMOUSEEVENT="rename" 
+                  DISPID="RENAME" 
+                  ENABLE_EXPRESSION="source!=readonly"
+                  HANDLER="{F90AD5F6-F39D-4f5a-9301-19A57C5FA767}"/>
+        <MENUITEM TEXT="Delete" 
+                  ORDERKEY="ub" 
+                  KEYMOUSEEVENT="delete" 
+                  DISPID="DELETE" 
+                  ENABLE_EXPRESSION="source!=readonly"
+                  HANDLER="{F90AD5F6-F39D-4f5a-9301-19A57C5FA767}"/>
+        <MENUITEM TEXT="Properties" 
+                  ORDERKEY="xa" 
+                  DISPID="PROPERTIES" 
+                  ENABLE_EXPRESSION="source!=readonly"
+                  HANDLER="{F90AD5F6-F39D-4f5a-9301-19A57C5FA767}"/>
+    </MENU>
+</TYPE>
+
+
+<TYPE ID="IO_MODBUS" ICON="4CPC\4cio_modbus.bmp" TEXT="Modbus IO Component">
+      <MENU>
+          <MENUITEM TEXT="Edit" 
+                    ORDERKEY="ca" 
+                    KEYMOUSEEVENT="open" 
+                    DISPID="Configure"
+                    ENABLE_EXPRESSION="source!=readonly"
+                    HANDLER="{68073E36-BC21-4ad5-AA16-ED7F26D00002}"/>
+          <MENUITEM TEXT="Rename" 
+                    ORDERKEY="ua" 
+                    KEYMOUSEEVENT="rename" 
+                    DISPID="RENAME" 
+                    ENABLE_EXPRESSION="source!=readonly"
+                    HANDLER="{A8958A71-663A-4b0e-844A-7F2F08A43947}"/>
+          <MENUITEM TEXT="Delete" 
+                    ORDERKEY="ub" 
+                    KEYMOUSEEVENT="delete" 
+                    DISPID="DELETE" 
+                    ENABLE_EXPRESSION="source!=readonly"
+                    HANDLER="{A8958A71-663A-4b0e-844A-7F2F08A43947}"/>
+          <MENUITEM TEXT="Properties" 
+                    ORDERKEY="xa" 
+                    DISPID="PROPERTIES" 
+                    ENABLE_EXPRESSION="source!=readonly"
+                    HANDLER="{A8958A71-663A-4b0e-844A-7F2F08A43947}"/>
+      </MENU>
+    </TYPE>
+
+
+<TYPE ID="LC" ICON="links.bmp" TEXT="Lateral Communication">
+        <MENU>
+            <MENUITEM STANDARDOP="Open" 
+                      ORDERKEY="ca" 
+                      TEXT="Open" 
+                      KEYMOUSEEVENT="open"/>
+        </MENU>
+</TYPE>
+
+</TYPES>
+
+</KAD4CE>
+ 

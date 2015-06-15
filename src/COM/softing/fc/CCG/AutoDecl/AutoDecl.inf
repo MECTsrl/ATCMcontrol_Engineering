@@ -1,0 +1,31 @@
+TARGET=$(EXE_DIR)\engineering\bin\4CVMAutoDecl.dll
+TARGETTYPE=DLL
+
+STATIC_RUNTIME=0
+UNICODE=0
+
+
+INCLUDE=$(INCLUDE_DIR) 
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\ce\inc
+INCLUDE=$(RESOURCE_DIR) 
+LIBPATH=$(LIB_DIR)
+
+LIBRARY=$(LIB_DIR)\fc_util.lib
+LIBRARY=$(LIB_DIR)\fc_baselib.lib
+LIBRARY=$(LIB_DIR)\fc_tools.lib
+DEFLIB=ole32.lib 
+
+PCHFILE=stdafx
+
+
+DEFINE=_AFXDLL
+DEFINE=_ATL_STATIC_REGISTRY
+DEFINE=_ATL_NO_SECURITY
+#DEFINE=_WINDLL
+#DEFINE=_USRDLL
+
+
+USER=makelast: force
+USER=  $(CP) $(MAKEDIR)\VMAutoDecl.h    $(PROJECT_ROOT)\COM\softing\fc\inc\VMAutoDecl.h
+USER=  $(CP) $(MAKEDIR)\VMAutoDecl_i.c  $(PROJECT_ROOT)\COM\softing\fc\inc\VMAutoDecl_i.c
+

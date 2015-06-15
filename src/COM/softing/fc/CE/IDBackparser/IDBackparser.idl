@@ -1,0 +1,27 @@
+import "oaidl.idl";
+import "ocidl.idl";
+import "CEMsg.idl";
+
+
+[
+	uuid(7F674950-E14B-11D4-9505-0008C779D265),
+	version(1.0),
+	helpstring("IDBackparser 1.0 Type Library")
+]
+library IDBACKPARSERLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+	importlib("..\inc\CEBackparse.tlb");
+
+	[
+		uuid(7F67495D-E14B-11D4-9505-0008C779D265),
+		helpstring("CEBackparseImpl Class")
+	]
+	coclass CEBackparse
+	{
+		[default] interface ICEBackparse;
+        [default, source] interface _ICEMessageEvent;
+	};
+};
+

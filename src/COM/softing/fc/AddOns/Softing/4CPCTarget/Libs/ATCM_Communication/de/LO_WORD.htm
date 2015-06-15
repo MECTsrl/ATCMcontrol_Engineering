@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>LO_WORD</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>LO_WORD</h2>
+<p>Extrahiert aus dem niederwertigen Anteil eines Werts vom Datentyp <i><b>DWORD</b></i> 
+  einen neuen Wert vom Datentyp <i><b>WORD</b></i>.</p>
+<h3>Schnittstelle</h3>
+<pre class="preforma">FUNCTION LO_WORD : WORD
+    VAR_INPUT
+        VALUE : DWORD;
+    END_VAR</pre>
+<h3>R&uuml;ckgabewert</h3>
+<p>Wert vom Typ <i><b>WORD</b></i><br>
+  Aus dem niederwertigen Anteil von <i><b>VALUE</b></i> neu generierter Wert.</p>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>VALUE</b></dt>
+  <dd>Wert vom Typ <i><b>DWORD</b></i><br>
+    Wert, aus dem der niederwertige Anteil extrahiert werden soll.</dd>
+</dl>
+<h3>Beschreibung</h3>
+<p><i><b>LO_WORD</b></i> extrahiert aus dem niederwertigen Anteil des an <i><b>VALUE</b></i> 
+  &uuml;bergebenen Werts einen neuen Wert vom Datentyp <i><b>WORD</b></i> und 
+  liefert das Ergebnis als R&uuml;ckgabewert zur&uuml;ck.</p>
+</body>
+</html>

@@ -1,0 +1,32 @@
+
+// CEAbout.idl : IDL source for CEAbout.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (CEAbout.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+
+[
+	uuid(699836E6-434A-444B-A56F-6E227374EF06),
+	version(1.0),
+	helpstring("CEAbout 1.0 Type Library")
+]
+library CEABOUTLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+    importlib("..\inc\CEAddonAction.tlb");
+
+	[
+		uuid(8CFC6369-0596-498E-B7CA-4BC7EE0C5BC7),
+		helpstring("AboutDlg Class")
+	]
+	coclass AboutDlg
+	{
+		[default] interface ICEAddonAction;
+	};
+};
+

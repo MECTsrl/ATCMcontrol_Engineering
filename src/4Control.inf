@@ -1,0 +1,100 @@
+SUBPROJECT=COM\softing\fc\EXT\EXT.mak
+SUBPROJECT=COM\softing\fc\inc\inc.mak
+SUBPROJECT=COM\softing\fc\CMN\4CMN.mak
+SUBPROJECT=COM\softing\fc\CC\4CC.mak
+SUBPROJECT=COM\softing\fc\CE\4CE.mak
+SUBPROJECT=COM\softing\fc\CCG\4CCG.mak
+SUBPROJECT=COM\softing\fc\CSC\4CSC.mak
+SUBPROJECT=COM\softing\fc\CP\4CP.mak
+SUBPROJECT=COM\softing\fc\CL\4CL.mak
+SUBPROJECT=COM\softing\fc\CLIC\CLIC.mak
+SUBPROJECT=COM\softing\fc\AddOns\AddOns.mak
+SUBPROJECT=COM\softing\fc\CONV\4c13to20.mak
+SUBPROJECT=COM\softing\fc\CSET\CSet.mak
+
+USER=makefirst: $(EXE_DIR)
+USER=makefirst: $(EXE_DIR)\Engineering
+USER=makefirst: $(EXE_DIR)\Engineering\bin
+USER=makefirst: $(EXE_DIR)\Engineering\pub
+USER=makefirst: $(EXE_DIR)\Engineering\Help
+USER=makefirst: $(EXE_DIR)\Engineering\Lib
+USER=makefirst: $(EXE_DIR)\Engineering\Templates
+USER=makefirst: $(EXE_DIR)\Control
+USER=makefirst: $(EXE_DIR)\Control\bin
+USER=makefirst: $(EXE_DIR)\Console
+USER=makefirst: $(EXE_DIR)\Pub
+USER=makefirst: $(EXE_DIR)\Pub\LicAppV2
+USER=makefirst: $(EXE_DIR)\Demo
+USER=makefirst: $(INCLUDE_DIR)
+USER=makefirst: $(LIB_DIR)
+USER=makefirst: $(CLASSES_DIR)
+USER=$(EXE_DIR) $(EXE_DIR)\Engineering $(EXE_DIR)\Engineering\bin $(EXE_DIR)\Engineering\pub $(EXE_DIR)\Engineering\Help \
+USER=$(EXE_DIR)\Engineering\Lib $(EXE_DIR)\Engineering\Templates \
+USER=$(EXE_DIR)\Control $(EXE_DIR)\Control\bin $(EXE_DIR)\Console \
+USER=$(EXE_DIR)\Pub $(EXE_DIR)\Pub\LicAppV2 $(EXE_DIR)\Demo $(INCLUDE_DIR) $(LIB_DIR) $(CLASSES_DIR):
+USER=	- md $@
+# USER=makelast: rebase_dlls
+# USER=rebase_dlls: force
+# USER=     cd $(EXE_DIR)\ctl
+# USER=     link -edit -rebase:base=0x60000000 *.dll *.ocx
+# USER=     link -edit -bind:path=$(SYSTEMROOT)\SYSTEM32 -release *.dll *.ocx *.exe
+# USER=     cd $(EXE_DIR)\eng
+# USER=     link -edit -rebase:base=0x60000000 *.dll *.ocx
+# USER=     link -edit -bind:path=$(SYSTEMROOT)\SYSTEM32 -release *.dll *.ocx *.exe
+# USER=     cd $(EXE_DIR)\pub
+# USER=     link -edit -rebase:base=0x61000000 *.dll *.ocx
+# USER=     link -edit -bind:path=$(SYSTEMROOT)\SYSTEM32 -release *.dll *.ocx *.exe
+# USER=     cd $(EXE_DIR)\console
+# USER=     link -edit -rebase:base=0x61800000 *.dll *.ocx
+# USER=     link -edit -bind:path=$(SYSTEMROOT)\SYSTEM32 -release *.dll *.ocx *.exe
+# USER=     cd $(MAKEDIR)
+
+
+
+
+
+
+
+
+#register some components needed to build libs:
+USER=postmake: make_lib
+USER=make_lib: force
+USER=     regsvr32 /s $(EXE_DIR)\Engineering\bin\cg_4claccess.dll
+USER=     regsvr32 /s $(EXE_DIR)\Engineering\bin\cg_iecfront.dll
+USER=     regsvr32 /s $(EXE_DIR)\Engineering\bin\cg_console.dll
+USER=     $(CP) $(EXE_DIR)\Pub\fc_baselib.dll $(WINDIR)\system32\fc_baselib.dll
+USER=     $(CP) $(EXE_DIR)\Pub\fc_todebug.dll $(WINDIR)\system32\fc_todebug.dll
+USER=     $(CP) $(EXE_DIR)\Pub\fc_util.dll    $(WINDIR)\system32\fc_util.dll
+
+
+#create all stup libs first, they are stored in engineering\libs\[de|eng]
+#english stups will be copied into engineering\libs to be merged and used later for other targets:
+USER=     cd $(MAKEDIR)\COM\softing\fc\CL\Libs
+USER=     $(MAKE) -$(MAKEFLAGS) -f Libs.mak make_lib DEBUG=$(DEBUG)
+
+
+
+
+#create all target libs, doing so the stubs in engineering\lib gets updated for XXX target
+#4CPC:
+USER=     cd $(MAKEDIR)\COM\softing\fc\AddOns\Softing\4CPCTarget\Libs
+USER=     $(MAKE) -$(MAKEFLAGS) -f Libs.mak make_lib DEBUG=$(DEBUG)
+
+#4CEC:
+#USER=     cd $(MAKEDIR)\COM\softing\fc\AddOns\Softing\4CECTarget\Libs
+#USER=     $(MAKE) -$(MAKEFLAGS) -f Libs.mak make_lib DEBUG=$(DEBUG)
+
+#4COSAI:
+#USER=     cd $(MAKEDIR)\COM\softing\fc\AddOns\Softing\4COSAITarget\Libs
+#USER=     $(MAKE) -$(MAKEFLAGS) -f Libs.mak make_lib DEBUG=$(DEBUG)
+
+#4CVXW:
+#USER=     cd $(MAKEDIR)\COM\softing\fc\AddOns\Softing\4CVXWorksTarget\Libs
+#USER=     $(MAKE) -$(MAKEFLAGS) -f Libs.mak make_lib DEBUG=$(DEBUG)
+
+#4CWin:
+#USER=     cd $(MAKEDIR)\COM\softing\fc\AddOns\Softing\4CWinTarget\Libs
+#USER=     $(MAKE) -$(MAKEFLAGS) -f Libs.mak make_lib DEBUG=$(DEBUG)
+
+
+USER=     cd $(MAKEDIR)

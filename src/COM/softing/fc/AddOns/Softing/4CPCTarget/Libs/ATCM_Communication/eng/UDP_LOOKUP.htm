@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>UDP_LOOKUP</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>UDP_LOOKUP</h2>
+<p>Detects the IP-adress of a host name.</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION_BLOCK UDP_LOOKUP
+
+VAR_INPUT
+    EN_L          : Bool; 
+    HOST_NAME     : WString;           
+END_VAR
+
+VAR_IN_OUT
+    SOCKET_HANDLE : UDP_SOCKET_HANDLE;  
+END_VAR
+
+VAR_OUTPUT
+    READY         : Bool;               
+    HOST_ADDRESS  : WString;            
+    ERROR         : Bool;               
+    ERROR_NR      : DInt;
+    ERROR_STRING  : WString;
+END_VAR</pre>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>EN_L</b></dt>
+  <dd>Value of type <i><b>BOOL</b></i>.<br>
+    Starts the operation at a raising edge.</dd>
+  <dt><b>HOST_NAME</b></dt>
+  <dd>Value of type <i><b>WSTRING</b></i><br>
+    Name of the host whose IP-adress is to be detected.</dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl> 
+  <dt><b>SOCKET_HANDLE</b></dt>
+  <dd>Instance of the structure <a href="UDP_SOCKET_HANDLE.htm"><i><b>UDP_SOCKET_HANDLE</b></i></a>.<br>
+    Specifies the socket of the lokal host from which the command for detecting 
+    the IP-adress is executed. </dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b>READY</b></dt>
+  <dd>Value of type <i><b>BOOL</b></i>.<br>
+    Signals whether the operation was carried out successfully or not.<br>
+    Possible values:<br>
+    <i><b>TRUE</b></i>: Operation was carried out.<br>
+    <i><b>FALSE</b></i>: Operation is not carried out.</dd>
+  <dt><b>HOST_ADDRESS</b></dt>
+  <dd>Value of type <i><b>WSTRING</b></i>.<br>
+    Contains the IP-adress of the host if the operation was carried out successfully. 
+  </dd>
+  <dt><b>ERROR</b></dt>
+  <dd>Value of type <i><b>BOOL</b></i>.<br>
+    Signals the error state.<br>
+    Possible values:<br>
+    <i><b>TRUE</b></i>: An error occurred.<br>
+    <i><b>FALSE</b></i>: No error occurred.</dd>
+  <dt><b>ERROR_NR</b></dt>
+  <dd>Value of type <i><b>DINT</b></i>.<br>
+    Contains an error number if an error occurred. <br>
+    If no error ocurred, this variable has the value 0.<br>
+    Possible values are defined within the <a href="ConstUDPErr.htm">UDP-error 
+    constants</a>.</dd>
+  <dt><b>ERROR_STRING</b></dt>
+  <dd>Value of type <i><b>WSTRING</b></i>.<br>
+    Contains an error text in case of an error. <br>
+    This variable contains an empty string if no error occurred. </dd>
+</dl>
+<h3>Description</h3>
+<p>The call of an instance of <i><b>UDP_LOOKUP</b></i> detects the host adress 
+  of the host with the name passed to <i><b>HOST_NAME</b></i> and stores the adress 
+  in the variable <i><b> HOST_ADDRESS</b></i>. The host adress of a host is needed 
+  by the function block <i><b><a href="UDP_USEND.htm">UDP_USEND</a></b></i> in 
+  order to determine the target host to which a message is to be sent. </p>
+<p>As the detection of a host adress of a host name can be very time consuming, 
+  an instance of <i><b>UDP_LOOKUP</b></i> is carried out asynchronic. The asynchronic 
+  operation results in the task not waiting for the operation to be finished; 
+  the task is not blocked with the initialization if an operation. This means 
+  that instructions following <i><b> UDP_LOOKUP</b></i> are carried out even if 
+  the search for the host adress is still not completed.For this reason, check 
+  the variable <i><b>READY</b></i> in order to find out if the search for the 
+  host adress is already completed. </p>
+</body>
+</html>

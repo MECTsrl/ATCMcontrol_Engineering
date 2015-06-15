@@ -1,0 +1,12 @@
+(*[[
+    UserURL= "ATCMFile:INT_TO_DWORD.htm"
+]]*)
+
+FUNCTION INT_TO_DWORD : DWORD
+VAR_INPUT 
+    IN : INT; 
+END_VAR
+
+inline{VMOP}
+
+END_FUNCTION

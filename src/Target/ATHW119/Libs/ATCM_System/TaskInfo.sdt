@@ -1,0 +1,16 @@
+(*[[
+    UserURL= "ATCMfile:TaskInfo.htm"
+]]*)
+(* 
+ *  ATCMControl Standard Type TaskInfo
+ *)
+
+TYPE
+    TaskInfo : STRUCT
+        STATE    : DINT; (*[Task state]*)
+        PRIORITY : DINT; (*[Task Priority]*)
+        CYCLE    : TIME; (*[Task cycle time (in ms)]*)
+        ETMAX    : TIME; (*[Task max. execution time (in ms)]*)
+        ERRNO    : DINT; (*[Task error state]*)
+    END_STRUCT;
+END_TYPE

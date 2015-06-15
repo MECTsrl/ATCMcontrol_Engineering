@@ -1,0 +1,290 @@
+<KAD4CE>
+
+<GENERAL 
+   SPLASHSCREEN="4Control3.bmp"
+   ICON="cemain.ico"
+   ABOUTBOX="{8CFC6369-0596-498E-B7CA-4BC7EE0C5BC7}"    
+   COMPILERPATH="4CG.EXE"
+   MAXDOCS="50"
+   MAXDOCSREC="10"
+>
+</GENERAL>
+
+
+<KERNEL>
+  <ADDON
+       NAME="4CWin AddOn"
+       VERSION="2.1"
+       VENDOR="ATCM"
+       KADFILE="Engineering\bin\4CWin_4CEng.kad"
+       DESC="4CWin Addon ... "/>
+</KERNEL>
+ 
+
+<FILES>   
+  <FILE EXT="4CWin" 
+        PARSER="{7365C084-BEB1-47A4-8446-2EF1E87E2BCB}"
+        STDEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}"
+        CONTAINER="{7365C084-BEB1-47A4-8446-2EF1E87E2BCB}"
+        FILTERTEXT="4CWin Files"/>
+        ORDERKEY="fdca"/>
+  <FILE EXT="iobac" PARSER="{C32D1F4A-39DA-47F2-BC1D-E5A56062BD60}" 
+        STDEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}" 
+        FILTERTEXT="BACnet Configuration Files"
+        ORDERKEY="iaag"/>
+</FILES>
+
+
+<TARGETS TYPE="PROJECT_TARGET">
+  <TARGET TYPE="WIN" 
+          FACILITYCODE="0x303" 
+          EXT="4CWin">
+    <TARGETONLINE CUSTOM_CONNECT="{126a81fd-4b8e-4a44-96cb-e78c0c741258}"
+                  DOWNLOAD="{88AD4524-E2B2-4853-A081-5CDBF5732E09}"
+                  PREDLSTEP="{7365C084-BEB1-47A4-8446-2EF1E87E2BCB}"
+                  DLCHANGES="1" />
+    <IEC_FEATURES DATA_TYPES="BOOL, BYTE, WORD, DWORD, INT, DINT, UINT, UDINT, TIME, STRING, REAL, LREAL"
+                  LANGUAGES="ST, FBD, SFC, LD, IL"/>
+  </TARGET>
+</TARGETS>
+
+
+<MAINMENU>
+  <MENU ID="create" TITLE="&amp;Create">
+    <MENUITEM ID="CreateWin" 
+              ORDERKEY="gx" 
+              TEXT="&amp;4CWin Target"
+              STBARTXT="Insert New 4CWin Target" 
+              DISPID="New" 
+              HANDLER="{7365C084-BEB1-47A4-8446-2EF1E87E2BCB}"
+              ENABLE_EXPRESSION="project=open;project!=readonly"/>
+  </MENU>
+
+  <MENU ID="settings" TITLE="&amp;Settings">
+    <MENUITEM ID="WinSettings"
+              ORDERKEY="sx"
+              TEXT="&amp;4CWin Target"
+              DISPID="Settings"
+              HANDLER="{7365C084-BEB1-47A4-8446-2EF1E87E2BCB}"
+              ENABLE_EXPRESSION="project!=readonly"/>
+  </MENU>
+
+  <MENU ID="tools" TITLE="&amp;Tools">
+<!--
+    <MENUITEM ID="PouProtection"
+              ORDERKEY="ea"
+              TEXT="&amp;POU Protection"
+              STBARTXT="Open POU-Protection Dialog"
+              DISPID="PouProtection" 
+              HANDLER="{7365C084-BEB1-47A4-8446-2EF1E87E2BCB}"
+              SHOW_EXPRESSION="project=open"/>
+-->
+    <MENUITEM ID="PMTool"
+              ORDERKEY="eb"
+              TEXT="P&amp;M Tool"
+              STBARTXT="Start Project Management Tool"
+              EXEHANDLER="&quot;$(InstDir)Engineering\bin\PMTool.exe&quot; &quot;$(PrjDir)&quot;"/>
+  </MENU>
+</MAINMENU>
+
+
+<TOOLBARS>
+  <TOOLBAR ID="Create">
+    <TOOLBARITEM MAINMENUID="CreateWin" 
+                 TOOLTIP="Create New 4CWin Target" 
+                 ICON="4CWin\createWin.bmp"/>
+  </TOOLBAR>
+</TOOLBARS>
+
+
+<TYPES>
+  <TYPE ID="PROJECT_TARGET">
+    <MENU>
+      <MENUITEM TEXT="Insert New 4CWin Target"
+                ORDERKEY="fx"
+                DISPID="New" 
+                HANDLER="{7365C084-BEB1-47A4-8446-2EF1E87E2BCB}"
+                ENABLE_EXPRESSION="project!=readonly"/>
+    </MENU>
+  </TYPE>
+
+  <TYPE ID="WIN" 
+        ICON="4CWin\4CWin.bmp" 
+        TEXT="4CWin Target" 
+        PROJ_LIST_VIEW="1">
+    <STATE ICON="4CWin\4CWinconerr5.bmp" STATE_VAL="-5"/>
+    <STATE ICON="4CWin\4CWinconerr4.bmp" STATE_VAL="-4"/>
+    <STATE ICON="4CWin\4CWinconerr3.bmp" STATE_VAL="-3"/>
+    <STATE ICON="4CWin\4CWinconerr2.bmp" STATE_VAL="-2"/>
+    <STATE ICON="4CWin\4CWinconerr1.bmp" STATE_VAL="-1"/>
+    <STATE ICON="4CWin\4CWincon.bmp"     STATE_VAL="1"/>
+    <STATE ICON="4CWin\4CWinconex.bmp"   STATE_VAL="2"/>
+    <MENU>
+      <MENUITEM TEXT="Assign Resource"
+                ORDERKEY="ga"
+                DISPID="Assignment" 
+                HANDLER="{7365C084-BEB1-47A4-8446-2EF1E87E2BCB}"
+                ENABLE_EXPRESSION="source!=readonly"/>
+      <MENUITEM TEXT="Insert BACnet IO Component" 
+                ORDERKEY="hb" 
+                DISPID="CREATE" 
+                HANDLER="{C32D1F4A-39DA-47F2-BC1D-E5A56062BD60}"/>
+      <MENUITEM TEXT="Build Target" 
+                ORDERKEY="ia"
+                STANDARDOP="BuildTarget"/>
+      <MENUITEM TEXT="Full Download" 
+                ORDERKEY="ib"
+                STANDARDOP="DownloadFull"/>
+      <MENUITEM TEXT="Download Changes"
+                ORDERKEY="ic" 
+                STANDARDOP="DownloadChanges"/>
+      <MENUITEM TEXT="Flash Project"
+                ORDERKEY="ja"
+                STANDARDOP="UpdateFlash"/>
+      <MENUITEM TEXT="Flash (and Download)"
+                ORDERKEY="jb"
+                STANDARDOP="DownloadFlash"/>
+      <MENUITEM TEXT="Clear Flash"
+                ORDERKEY="jc"
+                STANDARDOP="ClearFlash"/>
+      <MENUITEM TEXT="Connect" 
+                ORDERKEY="ka" 
+                STANDARDOP="Connect"/>
+      <MENUITEM TEXT="Disconnect" 
+                ORDERKEY="kb"
+                STANDARDOP="Disconnect"/>
+      <MENUITEM TEXT="Enable Debug"
+                ORDERKEY="kc"
+                STANDARDOP="ConnectEx"/>
+      <MENUITEM TEXT="Disable Debug"
+                ORDERKEY="kd"
+                STANDARDOP="DisconnectEx"/>
+      <MENUITEM TEXT="Project Info Upload"
+                ORDERKEY="la"
+                DISPID="ProjectInfoUpload"
+                HANDLER="{7365C084-BEB1-47A4-8446-2EF1E87E2BCB}"
+                ENABLE_EXPRESSION="constate==connected"/>
+<!--
+      <MENUITEM TEXT="Online Test Dialog"
+                ORDERKEY="kf"
+                DISPID="WinTargetOnline"
+                HANDLER="{7365C084-BEB1-47A4-8446-2EF1E87E2BCB}"/>
+-->
+      <MENUITEM TEXT="Goto URL"
+                ORDERKEY="ra"
+                STANDARDOP="OpenUrl"/>
+
+      <MENUITEM TEXT="Rename"
+                ORDERKEY="ua"
+                KEYMOUSEEVENT="rename"
+                DISPID="Rename" 
+                HANDLER="{7365C084-BEB1-47A4-8446-2EF1E87E2BCB}"
+                ENABLE_EXPRESSION="project!=readonly;source!=readonly"/>
+      <MENUITEM TEXT="Delete"
+                ORDERKEY="ub"
+                KEYMOUSEEVENT="delete"
+                DISPID="Delete" 
+                HANDLER="{7365C084-BEB1-47A4-8446-2EF1E87E2BCB}"
+                ENABLE_EXPRESSION="project!=readonly;source!=readonly"/>
+      <MENUITEM TEXT="Properties"
+                ORDERKEY="uc"
+                KEYMOUSEEVENT="open"
+                DISPID="Properties" 
+                HANDLER="{7365C084-BEB1-47A4-8446-2EF1E87E2BCB}"/> 
+    </MENU>
+  </TYPE>
+
+
+  <TYPE ID="WIN_INST" 
+        ICON="4CWin\4CWin.bmp" 
+        TEXT="4CWin Target">
+    <STATE ICON="4CWin\4CWinconerr5.bmp" STATE_VAL="-5"/>
+    <STATE ICON="4CWin\4CWinconerr4.bmp" STATE_VAL="-4"/>
+    <STATE ICON="4CWin\4CWinconerr3.bmp" STATE_VAL="-3"/>
+    <STATE ICON="4CWin\4CWinconerr2.bmp" STATE_VAL="-2"/>
+    <STATE ICON="4CWin\4CWinconerr1.bmp" STATE_VAL="-1"/>
+    <STATE ICON="4CWin\4CWincon.bmp"     STATE_VAL="1"/>
+    <STATE ICON="4CWin\4CWinconex.bmp"   STATE_VAL="2"/>
+    <MENU>
+      <MENUITEM TEXT="Build Target" 
+                ORDERKEY="ia" 
+                STANDARDOP="BuildTarget"/>
+      <MENUITEM TEXT="Full Download" 
+                ORDERKEY="ib" 
+                STANDARDOP="DownloadFull"/>
+      <MENUITEM TEXT="Download Changes"
+                ORDERKEY="id" 
+                STANDARDOP="DownloadChanges"/>
+      <MENUITEM TEXT="Flash Project"
+                ORDERKEY="ja"
+                STANDARDOP="UpdateFlash"/>
+      <MENUITEM TEXT="Flash (and Download)"
+                ORDERKEY="jb"
+                STANDARDOP="DownloadFlash"/>
+      <MENUITEM TEXT="Clear Flash"
+                ORDERKEY="jc"
+                STANDARDOP="ClearFlash"/>
+      <MENUITEM TEXT="Connect" 
+                ORDERKEY="ka" 
+                STANDARDOP="Connect"/>
+      <MENUITEM TEXT="Disconnect" 
+                ORDERKEY="kb" 
+                STANDARDOP="Disconnect"/>
+      <MENUITEM TEXT="Enable Debug"
+                ORDERKEY="kc"
+                STANDARDOP="ConnectEx"/>
+      <MENUITEM TEXT="Disable Debug"
+                ORDERKEY="kd"
+                STANDARDOP="DisconnectEx"/>
+    </MENU>
+  </TYPE>
+
+
+  <TYPE ID="RESOURCE_INST.4CWIN" 
+        ICON="res.bmp">
+    <STATE ICON="reserror.bmp" STATE_VAL="-1"/>
+    <STATE ICON="resstop.bmp"  STATE_VAL="1"/>
+    <STATE ICON="resrun.bmp"   STATE_VAL="2"/>
+    <MENU>
+      <MENUITEM STANDARDOP="Open" 
+                ORDERKEY="ca" 
+                TEXT="Open" 
+                KEYMOUSEEVENT="open"/>
+      <MENUITEM STANDARDOP="StartControl" 
+                ORDERKEY="la" 
+                TEXT="Start Resource"/>
+      <MENUITEM STANDARDOP="StopControl" 
+                ORDERKEY="lb" 
+                TEXT="Stop Resource"/>
+      <MENUITEM STANDARDOP="StartAllTasks" 
+                ORDERKEY="lc" 
+                TEXT="Start All Tasks"/>
+      <MENUITEM STANDARDOP="StopAllTasks" 
+                ORDERKEY="ld" 
+                TEXT="Stop All Tasks"/>
+    </MENU>
+  </TYPE>
+
+  <TYPE ID="BACnet" ICON="4cio_bac.bmp" TEXT="BACnet IO Component">
+     <MENU>
+        <MENUITEM TEXT="Edit"
+                  ORDERKEY="ca" 
+                  KEYMOUSEEVENT="open" 
+                  DISPID="EDIT" 
+                  HANDLER="{C32D1F4A-39DA-47F2-BC1D-E5A56062BD60}"/>
+        <MENUITEM TEXT="Create GVL"
+                  ORDERKEY="cb" 
+                  DISPID="CREATEGVL" 
+                  HANDLER="{C32D1F4A-39DA-47F2-BC1D-E5A56062BD60}"/>
+        <MENUITEM TEXT="Delete" 
+                  ORDERKEY="ub" 
+                  KEYMOUSEEVENT="delete" 
+                  DISPID="DELETE" 
+                  HANDLER="{C32D1F4A-39DA-47F2-BC1D-E5A56062BD60}"/>
+    </MENU>
+  </TYPE>
+
+</TYPES>
+
+
+</KAD4CE>

@@ -1,0 +1,123 @@
+
+/*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CE/inc/PrgEditorIF.idl 1     28.02.07 18:58 Ln $
+ *----------------------------------------------------------------------------*
+ *
+ * =FILENAME            $Workfile: PrgEditorIF.idl $
+ *                       $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CE/inc/PrgEditorIF.idl $
+ *
+ * =PROJECT				CAK1020  ATCMControl V2.0
+ *
+ * =SWKE                CE
+ *
+ * =COMPONENT           CEMAIN / Editor
+ *
+ * =CURRENT      $Date: 28.02.07 18:58 $
+ *           $Revision: 1 $
+ *
+ * =REFERENCES
+ *
+ *----------------------------------------------------------------------------*
+ * =DESCRIPTION
+ *    @DESCRIPTION@
+ *==
+ *----------------------------------------------------------------------------*
+ * =MODIFICATION
+ *  see history at end of file !
+ *==
+ *******************************************************************************
+H<<*/
+
+
+
+// CEEdit.idl : IDL source for ATCM standard editor
+//
+
+// This file will be processed by the MIDL tool.
+
+// This file will be included into the odl files of the editor local servers.
+
+// You must add the following lines of code into the 'coclass'-section of your editors
+// odl file to expose the interfaces by your local server:
+// 		interface ICEPrgEdit;
+//      interface ICEDebug;
+//      interface ICEMonitor;
+
+// The base GUID for all program editor interfaces is {F4F5B620-56D6-11d2-B9C9-006008749B3D}.
+// Increment the first block of this GUID to add a new GUID to this file ({F4F5B621- ..}).
+
+#include "StdEditorIF.idl"
+
+
+   
+       [
+		object,
+		uuid(E59B0040-A39C-4f58-A00D-6831B95BF6DB),
+		oleautomation,
+		helpstring("ICEPrgEdit Interface"),
+		pointer_default(unique)
+	]
+	interface ICEPrgEdit : IUnknown
+	{
+		[id(1), helpstring("method SetInstance")]
+			HRESULT SetInstance([in, string] BSTR sInstanceName, [in, string] BSTR sMachineName, [in, string] BSTR sMachineAddress);
+		[id(2), helpstring("method SetSymbolFile")]
+			HRESULT SetSymbolFile([in, string] BSTR sSymbolFile);
+		[id(3), helpstring("method NotifyConnect")]
+			HRESULT NotifyConnect([in, string] BSTR sMachineName);
+		[id(4), helpstring("method Disconnect")]
+			HRESULT NotifyDisconnect([in, string] BSTR sMachineName);
+		[id(5), helpstring("method ShowError")]
+			HRESULT ShowError([in]EDP_POS_QUALIFIER posQual, [in] long lX, [in] long lY, [in] long lCX, [in] long lCY);
+		[id(6), helpstring("method InsertFBCall")]
+			HRESULT InsertFBCall([in, string] BSTR sFB);
+		[id(7), helpstring("method NotifyDebugState")]
+			HRESULT NotifyDebugState([in] short state);
+		[id(8), helpstring("method Resubscribe")]
+			HRESULT Resubscribe();
+        [id(9), helpstring("method InsertVariable")]
+            HRESULT InsertVariable([in, string] BSTR sVarName);
+	};
+
+    [
+		object,
+		uuid(E59B0041-A39C-4f58-A00D-6831B95BF6DB),
+		dual,
+		helpstring("ICEDebug Interface"),
+		pointer_default(unique)
+	]
+	interface ICEDebug : IUnknown
+	{
+		[id(1), helpstring("method ShowBreakpoint")]
+			HRESULT ShowBreakpoint([in] EDP_POS_QUALIFIER posQual, [in] long lX, [in] long lY, [in] long lCX, [in] long lCY, [in] short sState);
+		[id(2), helpstring("method HideBreakpoint")]
+			HRESULT HideBreakpoint([in] EDP_POS_QUALIFIER posQual, [in] long lX, [in] long lY, [in] long lCX, [in] long lCY);
+		[id(3), helpstring("method ShowStoppoint")]
+			HRESULT ShowStoppoint([in] EDP_POS_QUALIFIER posQual, [in] long lX, [in] long lY, [in] long lCX, [in] long lCY);
+		[id(4), helpstring("method HideStoppoint")]
+			HRESULT HideStoppoint();
+	};
+
+    [
+		object,
+		uuid(E59B0042-A39C-4f58-A00D-6831B95BF6DB),
+		dual,
+		helpstring("ICEMonitor Interface"),
+		pointer_default(unique)
+	]
+	interface ICEMonitor : IUnknown
+	{
+		[id(1), helpstring("method AddWatchpoint")]
+			HRESULT AddWatchpoint([in] long lX, [in] long lY, [out] long *plHandle);
+		[id(2), helpstring("method RemoveWatchpoint")]
+			HRESULT RemoveWatchpoint([in] long lHandle);
+		[id(3), helpstring("method LoadWatchpoints")]
+			HRESULT LoadWatchpoints([in] SAFEARRAY(BSTR) pWPInfos);
+		[id(4), helpstring("method StoreWatchpoints")]
+			HRESULT StoreWatchpoints([out] SAFEARRAY(BSTR) *pWPInfos);
+		[id(5), helpstring("method EnableStepMonitoring")]
+			HRESULT EnableStepMonitoring(BOOL bOn);
+		[id(6), helpstring("method AddExpressionWatchpoint")]
+			HRESULT AddExpressionWatchpoint([in] long lStartX, [in] long lStartY, [in] long lEndX, [in] long lEndY, [out] long *plHandle);
+	};
+
+

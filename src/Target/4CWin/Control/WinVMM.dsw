@@ -1,0 +1,173 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "WinVMM_Ext"=.\WinVMM_Ext\WinVMM_Ext.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/4CReleased/V2.20.00/Target/4CWin/Control/WinVMM_Ext", HTVGAAAA
+    .\WinVMM_Ext
+    end source code control
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name ioTest
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name osKernel
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name osShared
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name visLib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name vmKernel
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name vmLib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "WinVisu"=.\WinVisu\WinVisu.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/4CReleased/V2.20.00/Target/4CWin/Control", DFXFAAAA
+    .
+    end source code control
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name osShared
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name visLib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "ioTest"=.\ioTest\ioTest.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/4CReleased/V2.20.00/Target/4CWin/Control", DFXFAAAA
+    .
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "osKernel"=.\osKernel\osKernel.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/4CReleased/V2.20.00/Target/4CWin/Control", DFXFAAAA
+    .
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "osShared"=.\osShared\osShared.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/4CReleased/V2.20.00/Target/4CWin/Control", DFXFAAAA
+    .
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "visLib"=.\visLib\visLib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/4CReleased/V2.20.00/Target/4CWin/Control", DFXFAAAA
+    .
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "vmKernel"=.\vmKernel\vmKernel.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/4CReleased/V2.20.00/Target/4CWin/Control", DFXFAAAA
+    .
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "vmLib"=.\vmLib\vmLib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/4CReleased/V2.20.00/Target/4CWin/Control", DFXFAAAA
+    .
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+    begin source code control
+    "$/4CReleased/V2.20.00/Target/4CWin/Control", DFXFAAAA
+    .
+    end source code control
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

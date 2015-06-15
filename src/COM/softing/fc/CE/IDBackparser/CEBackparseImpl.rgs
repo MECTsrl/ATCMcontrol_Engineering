@@ -1,0 +1,36 @@
+HKCR
+{
+	4C_20_CE.IDBackparser.1 = s '4C_20: IDBackparse Class'
+	{
+		CLSID = s '{7F67495D-E14B-11D4-9505-0008C779D265}'
+        'Index' 
+        { 
+            val Version = s '2.0' 
+            val LCID = d '1033' 
+        } 
+    
+	}
+	4C_20_CE.IDBackparser = s '4C_20: IDBackparse Class'
+	{
+		CLSID = s '{7F67495D-E14B-11D4-9505-0008C779D265}'
+		CurVer = s '4C_20_CE.IDBackparser.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {7F67495D-E14B-11D4-9505-0008C779D265} = s '4C_20: IDBackparse Class'
+		{
+			ProgID = s '4C_20_CE.IDBackparser.1'
+			VersionIndependentProgID = s '4C_20_CE.IDBackparser'
+			InprocServer32 = s '%MODULE%'
+			{
+                val ThreadingModel = s 'Both'
+			}
+			'TypeLib' = s '{7F674950-E14B-11D4-9505-0008C779D265}'
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+
+            }
+		}
+	}
+}

@@ -1,0 +1,118 @@
+/////////////////////////////////////////////////////////////////////////////
+// Stingray Foundation Library 
+// Copyright 2000 Stingray Software, Inc. All rights reserved.
+// 
+// This source code is only intended as a supplement to the Objective 
+// Diagram User's Guide and related electronic documentation provided with 
+// the library. See these sources for detailed information regarding the 
+// Stingray Foundation Library product.
+// 
+/////////////////////////////////////////////////////////////////////////////
+
+#include "sflres.h"
+
+#ifdef _SFL_MFC_SUPPORT
+	#include "afxres.h"
+#endif
+	
+	#include "sfl.rc"
+
+	/////////////////////////////////////////////////////////////////////////////
+	// Version stamp for this .DLL
+ 
+	#ifdef _WIN32
+	#include "winver.h"
+	#else
+	#include "ver.h"
+	#endif
+
+	// Version Info for Stingray Foundation Library  DLL
+	VS_VERSION_INFO     VERSIONINFO
+	  FILEVERSION		1,0,3,0
+	  PRODUCTVERSION	1,0,0,0
+	  FILEFLAGSMASK     VS_FFI_FILEFLAGSMASK
+
+	#ifdef _DEBUG
+	  FILEFLAGS         VS_FF_DEBUG
+	#else
+	  FILEFLAGS         0 // final release
+	#endif
+
+	  FILEOS            VOS_NT_WINDOWS32
+	  FILETYPE          VFT_DLL
+	  FILESUBTYPE       0   // not used
+  
+	BEGIN
+		BLOCK "StringFileInfo"
+		BEGIN
+			BLOCK "040904E4" // Lang=US English, CharSet=Windows Multilual
+			BEGIN
+
+				VALUE "CompanyName",     "Stingray, a division of Rogue Wave Software Inc.\0"
+				VALUE "FileVersion",	 "1.03\0"
+				VALUE "LegalCopyright",  "Copyright © 2000 Stingray\0"
+
+	#ifdef _DEBUG
+	#ifdef UNICODE
+				// Unicode Debug
+				VALUE "FileDescription", "Stingray Foundation Library  DLL - Unicode Debug Ver.\0"
+	#ifdef _SFL_MFC_SUPPORT
+				VALUE "InternalName",    "SFLDLL_ASUD\0"
+				VALUE "OriginalFilename","sfl103asud.DLL\0"
+	#else
+				VALUE "InternalName",    "SFLDLL_WSUD\0"
+				VALUE "OriginalFilename","sfl103wsud.DLL\0"
+	#endif // _SFL_MFC_SUPPORT
+
+	#else
+				// ANSI Debug
+				VALUE "FileDescription", "Stingray Foundation Library  DLL - Debug Ver.\0"
+	#ifdef _SFL_MFC_SUPPORT
+				VALUE "InternalName",    "SFLDLL_ASD\0"
+				VALUE "OriginalFilename","sfl103asd.DLL\0"
+	#else
+				VALUE "InternalName",    "SFLDLL_WSD\0"
+				VALUE "OriginalFilename","sfl103wsd.DLL\0"
+	#endif // _SFL_MFC_SUPPORT
+
+	#endif
+
+	#else 
+	#ifdef UNICODE
+				// Unicode Release
+				VALUE "FileDescription", "Stingray Foundation Library  DLL - Unicode Release Ver.\0"
+	#ifdef _SFL_MFC_SUPPORT
+				VALUE "InternalName",    "SFLDLL_ASU\0"
+				VALUE "OriginalFilename","sfl103asu.DLL\0"
+	#else
+				VALUE "InternalName",    "SFLDLL_WSU\0"
+				VALUE "OriginalFilename","sfl103wsu.DLL\0"
+	#endif // _SFL_MFC_SUPPORT
+	#else
+				// ANSI Release
+				VALUE "FileDescription", "Stingray Foundation Library  DLL - Release Ver.\0"
+	#ifdef _SFL_MFC_SUPPORT
+				VALUE "InternalName",    "SFLDLL_AS\0"
+				VALUE "OriginalFilename","sfl103as.DLL\0"
+	#else
+				VALUE "InternalName",    "SFLDLL_WS\0"
+				VALUE "OriginalFilename","sfl103ws.DLL\0"
+	#endif // _SFL_MFC_SUPPORT
+
+	#endif
+	#endif
+				VALUE "ProductName",     "Stingray Foundation Library \0"
+				VALUE "ProductVersion",  "1.0.000\0"
+			END
+		END
+		BLOCK "VarFileInfo"
+		BEGIN
+			VALUE "Translation", 0x409, 1252
+				// English language (0x409) and the Windows ANSI codepage (1252)
+		END
+	END
+
+/////////////////////////////////////////////////////////////////////////////
+
+
+

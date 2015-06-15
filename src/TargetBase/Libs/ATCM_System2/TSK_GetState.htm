@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>TSK_GetState</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1"><LINK
+href="Lib.css" rel=stylesheet>
+<META content="MSHTML 6.00.2800.1458" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffcc>
+  <H2>TSK_GetState</H2>
+  <P>Gets the task state of the corresponding task.</P>
+  <H3>Interface</H3><PRE class="preforma">FUNCTION TSK_GetState : WORD<br>VAR_INPUT<BR>&nbsp;&nbsp;&nbsp; sTask&nbsp;&nbsp; : STRING;<BR>END_VAR<br>VAR_OUTPUT<BR>&nbsp;&nbsp;&nbsp; ulState : DINT;<BR>END_VAR<BR></PRE>
+  <H3>Return value</H3>
+  <P>Value of type&nbsp;<b><i>WORD</i></b> </P>
+  <P>OK if successful, else error number. (See
+  <a href="Const_Errno.htm"><strong><em>ErrNo.cst</em></strong></a> for details.)</P>
+  <H3>Parameters </H3>
+  <h3>INPUT</h3>
+  <dl>
+  <dt><b>sTask</b></dt>
+  <dd>Value of type <b><i>STRING</i></b><br>
+    Corresponding task name.<br></dd>
+  </dl>
+  <h3>OUTPUT</h3>
+  <dl>
+  <dt><b>ulState</b></dt>
+  <dd>Value of type <b><i>DINT</i></b><br>
+    Current state of the named task. (See
+  <a href="Const_System2.htm"><strong><em>System2.cst</em></strong></a> for possible values.)<br></dd>
+  </dl>
+  <H3>Description </H3>
+  <P>Gets the task state of the corresponding task</P></BODY></HTML>

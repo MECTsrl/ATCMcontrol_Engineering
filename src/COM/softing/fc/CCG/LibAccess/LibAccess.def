@@ -1,0 +1,10 @@
+; LibAccess.def : Declares the module parameters.
+
+LIBRARY      "cg_4claccess.dll"
+
+EXPORTS
+	DllCanUnloadNow     @1 PRIVATE
+	DllGetClassObject   @2 PRIVATE
+	DllRegisterServer   @3 PRIVATE
+	DllUnregisterServer	@4 PRIVATE
+    SLIC_GetVersionFromDataFile

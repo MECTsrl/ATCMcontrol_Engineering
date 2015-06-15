@@ -1,0 +1,23 @@
+HKCR
+{
+	4C_20_[*TN].ControlMgt.%PARAM% = s '4CONTROL: 4C [*TN] Manage Control at %PARAM%'
+	{
+		CLSID = s '%GUID%'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove '%GUID%' = s '4CONTROL: 4C [*TN] Manage Control at %PARAM%'
+		{
+			ProgID = s '4C_20_[*TN].ControlMgt.%PARAM%'
+			VersionIndependentProgID = s '4C_20_[*TN].ControlMgt.%PARAM%'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE% -param %PARAM%'
+			val AppID = s '{[*AP]}'
+
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

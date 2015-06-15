@@ -1,0 +1,23 @@
+(*[[
+]]*)
+TYPE
+
+    SerialLineCFG_struct : STRUCT
+
+        BaudRate     :    DWORD;
+        Parity       :    WORD;
+        ByteSize     :    WORD;
+        StopBits     :    WORD;
+        Protocol     :    WORD;
+        FlowCtrl     :    DWORD;
+        TxTimeout    :    WORD;
+        TXRetry      :    WORD;
+        RXTimeout    :    WORD;
+        RXRetry      :    WORD;
+        Terminator   :    WORD;
+        Reserved1    :    DWORD;
+        Reserved2    :    DWORD;
+        
+    END_STRUCT;
+
+END_TYPE

@@ -1,0 +1,25 @@
+TARGETTYPE=DLL
+TARGET=$(EXE_DIR)\Engineering\bin\FindInFiles.dll
+
+DEFINE=_ATL_STATIC_REGISTRY
+DEFINE=_ATL_NO_SECURITY
+DEFINE=_AFXDLL
+DEFINE=_MRCEXT_NOFORCELIBS
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\inc
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\CE\inc
+INCLUDE=$(MAKEDIR)
+INCLUDE=$(MAKEDIR)\Inc
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+LIBPATH=$(LIB_DIR)
+
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\Lib\fc_todebug.lib
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\Lib\fc_util.lib
+
+MASTER_RC=FindInFiles.rc
+PCHFILE=stdafx
+
+USER=precompile:
+USER=  $(CP) FindInFiles.h ..\inc\FindInFiles.h
+USER=  $(CP) FindInFiles_i.c ..\inc\FindInFiles_i.c
+USER=  $(CP) FindInFiles.idl ..\inc\FindInFiles.idl

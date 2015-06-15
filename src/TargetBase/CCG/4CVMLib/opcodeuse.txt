@@ -1,0 +1,355 @@
+ MAKE_ENUM(LEAID            ,0x00AA, NCC_LEAID           , 0, 1, 0),
+ MAKE_ENUM(LEAGDM           ,0x00AB, NCC_LEAGDM          , 0, 1, 0),
+ MAKE_ENUM(LEAGDR           ,0x00AC, NCC_LEAGDR          , 0, 1, 0),
+ MAKE_ENUM(LEAGDI           ,0x00AD, NCC_LEAGDI          , 0, 1, 0),
+ MAKE_ENUM(LEAINSTOID       ,0x00AE, NCC_LEAINSTOID      , 0, 2, 0),
+ MAKE_ENUM(LEAINSTO         ,0x00AF, NCC_LEAINSTO        , 0, 2, 0),
+
+
+ MAKE_ENUM(LEAGDO           ,0x00B2, NCC_LEAGDO          , 0, 1, 0),
+
+
+ MAKE_ENUM(LEASTRVS         ,0x00B7, NCC_LEASTRVS        , 2, 0, 0),
+ MAKE_ENUM(LEAINSTVS        ,0x00B8, NCC_LEAINSTVS       , 2, 0, 0),
+ MAKE_ENUM(LEAINSTDA        ,0x00B9, NCC_LEAINSTDA       , 0, 2, 0),
+ MAKE_ENUM(LEAINSTID        ,0x00BA, NCC_LEAINSTID       , 0, 1, 0),
+ MAKE_ENUM(LEAINST          ,0x00BB, NCC_LEAINST         , 0, 1, 0),
+ MAKE_ENUM(LEAINSTS         ,0x00BC, NCC_LEAINSTS        , 1, 1, 0),
+ MAKE_ENUM(LEAVID           ,0x00BD, NCC_LEAVID          , 7, 1, 0),
+ MAKE_ENUM(LEAV             ,0x00BE, NCC_LEAV            , 7, 1, 0),
+
+
+ MAKE_ENUM(LEAVS            ,0x00CA, NCC_LEAVS           , 0, 0, 0),
+
+ MAKE_ENUM(LEAINDOS         ,0x00CB, NCC_LEAINDOS        , 1, 1, 0),
+
+
+
+
+
+2.1.147 LEAID
+-----------------------------------------
+Name        Load Effective Address Ident
+Syntax      [WIDE] LEAID Index 
+Hexcode     AA
+Operation   (temp#Ptr) <- (pIN) + Index
+            (--(SP))   <- (temp#Ptr)
+Funktion    Kellert ein PTR auf Instance + Index
+Datenstack  ... -> ... PTR
+Exception   ERR_STACK_OVERFLOW
+
+
+2.1.148 LEAGDM
+-----------------------------------------
+Name        Load Effective Address Global Daten Memory
+Syntax      [WIDE] LEAGDM Index 
+Hexcode     AB
+Operation   (temp#Ptr) <- (MemorySegment) + Index
+            (--(SP))   <- (temp#Ptr)
+Funktion    Kellert ein PTR von MemorySegment + Index
+Datenstack  ... -> ... PTR
+Exception   ERR_STACK_OVERFLOW
+
+
+
+2.1.149 LEAGDR
+-----------------------------------------
+Name        Load Effective Address Global Daten Retain
+Syntax      [WIDE] LEAGDR Index 
+Hexcode     AC
+Operation   (temp#Ptr) <- (RetainSegment) + Index
+            (--(SP))   <- (temp#Ptr)
+Funktion    Kellert ein PTR auf RetainSegment + Index
+Datenstack  ... -> ... PTR
+Exception   ERR_STACK_OVERFLOW
+
+
+
+2.1.150 LEAGDI
+-----------------------------------------
+Name        Load Effective Address Global Daten Input
+Syntax      [WIDE] LEAGDI Index 
+Hexcode     AD
+Operation   (temp#Ptr) <- (InputSegment) + Index
+            (--(SP))   <- (temp#Ptr)
+Funktion    Kellert ein PTR auf InputSegment + Index
+Datenstack  ... -> ... PTR
+Exception   ERR_STACK_OVERFLOW
+
+
+
+2.1.151 LEAINSTOID
+-----------------------------------------
+Name        Load Effective Address Instance Objectlist Indirect
+Syntax      [WIDE] LEAINSTOID Offset Index 
+Hexcode     AE
+Operation   (tempObjIndex) <- ((pIN)+Offset)
+            (temp#Ptr)     <- ObjectList[tempObjIndex]
+            (temp#Ptr)     <- (tempPtr) + Index
+            (--(SP))       <- (temp#Ptr)
+Funktion    Aus der Instance + Offset wird ein Objektindex gelesen
+            Über ihn wird aus der Objektliste ein Segment gelesen
+            Kellert ein PTR auf Segmentadresse + Index
+Datenstack  ... -> ... PTR
+Exception   ERR_STACK_OVERFLOW
+
+
+2.1.152 LEAINSTO
+-----------------------------------------
+Name        Load Effective Address Instance Objectlist 
+Syntax      [WIDE] LEAINSTO ObjIndex Index 
+Hexcode     AF
+Operation   (temp#Ptr)     <- ObjectList[ObjIndex]
+            (temp#Ptr)     <- (tempPtr) + Index
+            (--(SP))       <- (temp#Ptr)
+Funktion    Über den ObjIndex wird aus der Objektliste ein Segment gelesen
+            Kellert ein PTR auf Segmentadresse + Index
+Datenstack  ... -> ... PTR
+Exception   ERR_STACK_OVERFLOW
+
+
+
+
+2.1.155 LEAGDO
+-----------------------------------------
+Name        Load Effective Address Global Daten Output
+Syntax      [WIDE] LEAGDO Index 
+Hexcode     B2
+Operation   (temp#Ptr) <- (OutputSegment) + Index
+            (--(SP))   <- (temp#Ptr)
+Funktion    Kellert ein PTR auf OutputSegment + Index
+Datenstack  ... -> ... PTR
+Exception   ERR_STACK_OVERFLOW
+
+
+
+2.1.158 LEASTRVS
+-----------------------------------------
+Name        Load Effective Address String Vector ?
+Syntax      [WIDE] LEASTRVS 
+Hexcode     B7
+Operation   (temp#X)       <- ((SP)++)        ; X = WIDE
+            (temp#Ptr)     <- ((SP)++)
+            (temp#Ptr)     <- (temp#Ptr)  + sizeof(ArrayIndexSize)
+            (temp#8)       <- ((temp#Ptr) + 1)
+            (--(SP))       <- (temp#Ptr)  + (temp#X) * ( (temp#8) + 2 )
+Funktion    Entkellert einen Arrayindex
+            Entkellert einen Pointer auf ein Stringarray
+            PTR = PTR + Länge ArrayIndexSize
+            Lese aus String dessen Länge
+            Kellert PTR + Index*(Len+2)
+Datenstack  ... temp#X PTR -> ... PTR
+Exception   ERR_STACK_UNDERFLOW, ERR_STACK_OVERFLOW, ERR_ARRAY_RANGE
+
+
+
+2.1.159 LEAINSTVS
+-----------------------------------------
+Name        Load Effective Address Instance Vector ?
+Syntax      [WIDE] LEAINSTVS 
+Hexcode     B8
+Operation   (temp#X)       <- ((SP)++)        ; X = WIDE
+            (temp#Ptr)     <- ((SP)++)
+            (temp#Ptr)     <- (temp#Ptr)  + sizeof(ArrayIndexSize)
+            (tempObjIndex) <- ((temp#Ptr) + temp#X)
+            (temp#Ptr)     <- ObjList[tempObjIndex]
+            (--(SP))       <- (temp#Ptr)
+Funktion    Entkellert einen Arrayindex
+            Entkellert einen Pointer auf ein Array
+            PTR = PTR + Länge ArrayIndexSize
+            Lese aus Objectindex von PTR + Index
+            Kellert PTR aus ObjectList
+Datenstack  ... temp#X PTR -> ... PTR
+Exception   ERR_STACK_UNDERFLOW, ERR_STACK_OVERFLOW, ERR_ARRAY_RANGE
+
+
+
+2.1.160 LEAINSTDA
+-----------------------------------------
+Name        Load Effective Address Instance Direct Absolute
+Syntax      [WIDE] LEAINSTDA SegmentIndex Offset 
+Hexcode     B9
+Operation   (temp#Ptr)     <- ObjList[SegmentIndex] + Offset
+            (--(SP))       <- (temp#Ptr)
+Funktion    Lädt PTR aus ObjectList[Index]
+            Kellert PTR + Offset
+Datenstack  ... -> ... PTR
+Exception   ERR_STACK_UNDERFLOW, ERR_STACK_OVERFLOW, ERR_ARRAY_RANGE
+
+
+2.1.161 LEAINSTID    &(this.obj_member)    LEAINSTID offset(obj_member)
+-----------------------------------------
+Name        Load Effective Address Instance Indirect
+Syntax      [WIDE] LEAINSTID Offset
+Hexcode     BA
+Operation   (tempObjIndex) <- ((pIN) + Offset)
+            (temp#Ptr)     <- ObjList[tempObjIndex]
+            (--(SP))       <- (temp#Ptr)
+Funktion    Lädt PTR aus ObjectList[Instance[Offset]]
+            Kellert PTR 
+Datenstack  ... -> ... PTR
+Exception   ERR_STACK_OVERFLOW
+
+
+2.1.162 LEAINST    &(glob auto obj or segm addr)  LEAINST ojb/segm number
+-----------------------------------------
+Name        Load Effective Address Instance
+Syntax      [WIDE] LEAINST Offset
+Hexcode     BB
+Operation   (temp#Ptr)     <- ObjList[Offset]
+            (--(SP))       <- (temp#Ptr)
+Funktion    Lädt PTR aus ObjectList[Offset]
+            Kellert PTR 
+Datenstack  ... -> ... PTR
+Exception   ERR_STACK_OVERFLOW
+
+
+
+2.1.163 LEAINSTS    &((&struct on tos).obj_member)   
+-----------------------------------------
+Name        Load Effective Address Instance Stack
+Syntax      [WIDE] LEAINSTS Offset
+Hexcode     BC
+Operation   (temp#Ptr)     <- ((SP)++)
+            (tempObjIndex) <- (((temp#Ptr) + Offset))
+            (temp#Ptr)     <- ObjList[tempObjIndex]
+            (--(SP))       <- (temp#Ptr)
+Funktion    Lädt PTR aus Stack
+            Lädt Objektindex von PTR + Offset
+            Kellert PTR aus ObjList[Objektindex]
+Datenstack  ... PTR -> ... PTR
+Exception   ERR_STACK_UNDERFLOW
+
+
+
+2.1.164 LEAVID   
+&(this.simple array[i])   simple::= keine struct, kein string
+push i LEAVID offset(simple type array)
+-----------------------------------------
+Name        Load Effective Address Vector Instance Indirect
+Syntax      [WIDE] LEAVID Offset 
+Hexcode     BD
+Operation   (temp1#X)      <- ((SP)++)  ; elemsize, X = WIDE
+            (temp2#X)      <- ((SP)++)  ; index,    X = WIDE
+            (tempObjIndex) <- (((pIN) + Offset))
+            (temp#Ptr)     <- ObjList[tempObjIndex]
+            (temp#Ptr)     <- (temp#Ptr)  + sizeof(ArrayIndexSize)
+            (temp#16)      <- (temp1#X) * (temp2#X) / 8
+            (--(SP))       <- (temp#Ptr) + (temp#16)
+Funktion    Entkellert eine Elementgrösse und einen Index (von einem Array)
+            Lädt einen Objektindex von Instance + Offset
+            Lädt einen PTR aus ObjList[Objectindex] 
+            Kellert PTR + Länge(ArrayIndexSize)+ Größe * Size / 8
+Datenstack  ... temp1#X temp2#X -> ... PTR
+Exception   ERR_STACK_OVERFLOW, ERR_STACK_UNDERFLOW, ERR_ARRAY_RANGE
+
+
+
+2.1.165 LEAV
+  global
+-----------------------------------------
+Name        Load Effective Address Vector
+Syntax      [WIDE] LEAV ObjIndex
+Hexcode     BE
+Operation   (temp1#X)      <- ((SP)++)  ; elemsize, X = WIDE
+            (temp2#X)      <- ((SP)++)  ; index,    X = WIDE
+            (temp#Ptr)     <- ObjList[ObjIndex]
+            (temp#Ptr)     <- (temp#Ptr)  + sizeof(ArrayIndexSize)
+            (temp#16)      <- (temp1#X) * (temp2#X) / 8
+            (--(SP))       <- (temp#Ptr) + (temp#16)
+Funktion    Entkellert eine Elementgrösse und einen Index (von einem Array)
+            Lädt einen PTR aus ObjList[Objindex] 
+            Kellert PTR + Länge(ArrayIndexSize)+ Größe * Size / 8
+Datenstack  ... temp1#X temp2#X -> ... PTR
+Exception   ERR_STACK_OVERFLOW, ERR_STACK_UNDERFLOW, ERR_ARRAY_RANGE
+
+
+2.1.176 LEAVS ?
+-----------------------------------------
+Name        Load Effective Address Vector Stack
+Syntax      [WIDE] LEAVS ElemSize
+Hexcode     CA
+Operation   (temp#X)       <- ((SP)++)  ; index,    X = WIDE
+            (temp#Ptr)     <- ((SP)++)
+            (temp#Ptr)     <- (temp#Ptr)  + sizeof(ArrayIndexSize)
+            (temp#16)      <- (temp#X) * ElemSize / 8
+            (--(SP))       <- (temp#Ptr) + (temp#16)
+Funktion    Entkellert einen Index und einen PTR (von einem Array)
+            Addiert zu PTR Länge von ArrayIndexSize
+            Kellert einen PTR + Index * Size / 8
+Datenstack  ... temp#X -> ... PTR
+Exception   ERR_STACK_OVERFLOW, ERR_STACK_UNDERFLOW, ERR_ARRAY_RANGE
+
+
+
+2.1.177 LEAINDOS
+-----------------------------------------
+Name        Load Effective Address Indirect Offset Stack
+Syntax      [WIDE] LEAINDOS Offset
+Hexcode     CB
+Operation   (temp#Ptr)     <- ((SP)++)
+            (temp#Ptr)     <- (temp#Ptr) + Offset
+            (--(SP))       <- (temp#Ptr)
+Funktion    Lädt PTR aus Stack
+            Kellert PTR + Offset
+Datenstack  ... PTR -> ... PTR
+Exception   ERR_STACK_UNDERFLOW
+
+
+
+
+
+
+
+
+
+
+ALT:
+.code newbool (classid=0) begin
+ 0000    1e                          PUSHI1_0        
+ 0001    55 20                       POPID1          Offset(32)
+STMT_BEG
+ 0003    0b 00                       PUSHINDID32     Offset(0)
+ 0005    0340                        DWORD_TO_DINT   
+ 0007    121f                        PUSHI32_1       
+ 0009    04cb                        ADD_DINT        
+ 0011    1b 00                       POPINDID32      Offset(0)
+STMT_BEG
+ 0013    0b 00                       PUSHINDID32     Offset(0)
+ 0015    121f                        PUSHI32_1       
+ 0017    043c                        AND_DWORD       
+ 0019    121e                        PUSHI32_0       
+ 0021    044a                        NE_DWORD        
+ 0023    55 20                       POPID1          Offset(32)
+ 0025    @__end:
+STMT_BEG
+ 0025    38 04                       LEAVE           dint#4
+ 0027    0d                          RET             
+CodeSize=28
+.code newbool end
+
+
+
+NEU:
+.code newbool (classid=0) begin
+ 0000    1e                          PUSHI1_0        
+ 0001    18 20                       POPINDID1       Offset(32)
+STMT_BEG
+ 0003    0b 00                       PUSHINDID32     Offset(0)
+ 0005    0340                        DWORD_TO_DINT   
+ 0007    121f                        PUSHI32_1       
+ 0009    04cb                        ADD_DINT        
+ 0011    1b 00                       POPINDID32      Offset(0)
+STMT_BEG
+ 0013    0b 00                       PUSHINDID32     Offset(0)
+ 0015    121f                        PUSHI32_1       
+ 0017    043c                        AND_DWORD       
+ 0019    121e                        PUSHI32_0       
+ 0021    044a                        NE_DWORD        
+ 0023    55 20                       POPID1          Offset(32)
+ 0025    @__end:
+STMT_BEG
+ 0025    38 04                       LEAVE           dint#4
+ 0027    0d                          RET             
+CodeSize=28
+.code newbool end

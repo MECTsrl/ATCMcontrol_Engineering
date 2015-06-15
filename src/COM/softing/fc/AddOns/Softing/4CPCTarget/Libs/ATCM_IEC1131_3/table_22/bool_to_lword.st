@@ -1,0 +1,13 @@
+
+(*[[
+    UserURL= "ATCM:BOOL_TO_LWORD.htm"
+]]*)
+
+FUNCTION BOOL_TO_LWORD : LWORD
+VAR_INPUT 
+    IN : BOOL; 
+END_VAR
+
+inline{%1?1l:0l}
+
+END_FUNCTION

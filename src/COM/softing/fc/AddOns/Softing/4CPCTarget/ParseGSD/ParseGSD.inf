@@ -1,0 +1,22 @@
+
+TARGET=$(EXE_DIR)\Engineering\bin\4cpc\ParseGSD.dll
+TARGETTYPE=DLL
+UNICODE=0
+#LINK MFC42 and MSVCRT statically is intentional, do not change
+STATIC_RUNTIME=1
+DEFINE=_WINDLL
+DEFINE=_USRDLL
+DEFINE=_ATL_STATIC_REGISTRY
+DEFINE=_ATL_NO_SECURITY
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+INCLUDE=..\inc
+DEFLIB=ole32.lib
+DEFLIB=oleaut32.lib
+DEFLIB=uuid.lib
+
+USER=precompile:
+USER=  $(CP) pgsd.h ..\inc\pgsd.h
+USER=  $(CP) pgsd_i.c ..\inc\pgsd_i.c
+
+LATECOPY=..\inc\ParseGSD.tlb $(EXE_DIR)\Engineering\bin\4cpc\ParseGSD.tlb

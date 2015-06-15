@@ -1,0 +1,2 @@
+SUBPROJECT=BackParserDLL\BackParserDLL.mak
+SUBPROJECT=CEBackparserCO\CEBackparserCO.mak

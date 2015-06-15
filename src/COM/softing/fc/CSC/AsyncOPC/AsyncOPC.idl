@@ -1,0 +1,138 @@
+/*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CSC/AsyncOPC/AsyncOPC.idl 1     28.02.07 19:00 Ln $
+ *----------------------------------------------------------------------------*
+ *
+ * =FILENAME            $Workfile: AsyncOPC.idl $
+ *                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CSC/AsyncOPC/AsyncOPC.idl $
+ *
+ * =PROJECT             CAK1020  ATCMControl V2.0
+ *
+ * =SWKE                4CSC
+ *
+ * =COMPONENT           AsyncOPC
+ *
+ * =CURRENT             $Date: 28.02.07 19:00 $
+ *                      $Revision: 1 $
+ *
+ * =ENVIRONMENT         MS Windows NT 4.0 / MS Windows 2000
+ *                      MSVC++ V6.0
+ *                      MS Java 3.2
+ *                      MS Visual SourceSafe 6.0
+ *                      Perl5
+ *
+ * =REFERENCES
+ *==
+ *----------------------------------------------------------------------------*
+ *
+
+ 
+
+ 
+
+ *==
+ *
+ *----------------------------------------------------------------------------*
+ * =DESCRIPTION
+ *==
+ *----------------------------------------------------------------------------*
+ * =MODIFICATIONS
+ * $History: AsyncOPC.idl $
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.02.07   Time: 19:00
+ * Created in $/4CReleased/V2.20.00/COM/softing/fc/CSC/AsyncOPC
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.08.03   Time: 16:33
+ * Created in $/4Control/COM/softing/fc/CSC/AsyncOPC
+ * 
+ * *****************  Version 2  *****************
+ * User: Ed           Date: 9/03/01    Time: 3:22p
+ * Updated in $/4Control/COM/softing/fc/CSC/AsyncOPC
+ * handle session password
+ * 
+ * *****************  Version 1  *****************
+ * User: Ca           Date: 8.08.01    Time: 9:41
+ * Created in $/4Control/COM/softing/fc/CSC/AsyncOPC
+ * copied from V1.3
+ *==
+ ******************************************************************************
+H<<*/
+
+cpp_quote("//+-------------------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  ATCMCONTROL 4CSC(SWKE)")
+cpp_quote("//  ATCM.")
+cpp_quote("//")
+cpp_quote("//--------------------------------------------------------------------------")
+
+// AsyncOPC.idl : IDL source for AsyncOPC.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (AsyncOPC.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(ACB9AA51-8B04-11d5-8796-00010209D2BC),
+		dual,
+		helpstring("IAsyncAccess Interface"),
+		pointer_default(unique)
+	]
+	interface IAsyncAccess : IDispatch
+	{
+		[id(1), helpstring("method Subscribe")]
+            HRESULT Subscribe([in, string] BSTR sItem);
+		[id(2), helpstring("method Unsubscribe")]
+            HRESULT Unsubscribe([in, string] BSTR sItem);
+		[propget, id(3), helpstring("property Value")]
+            HRESULT Value([in, string] BSTR sItem, [out, retval] VARIANT *pVal);
+		[propput, id(3), helpstring("property Value")]
+            HRESULT Value([in, string] BSTR sItem, [in] VARIANT newVal);
+		[id(4), helpstring("method SubscribeStringList")]
+            HRESULT SubscribeStringList([in,string] BSTR sItems, [in,string] BSTR sCommonPath);
+		[id(5), helpstring("method UnsubscribeStringList")]
+            HRESULT UnsubscribeStringList([in,string] BSTR sItems, [in,string] BSTR sCommonPath);
+		[id(6), helpstring("method ReadStringList")]
+            HRESULT ReadStringList([in, string] BSTR sItems, [in,string] BSTR sCommonPath, [out,string,retval] BSTR *psValues);
+		[id(7), helpstring("method ReadStringListTyped")]
+            HRESULT ReadStringListTyped([in, string] BSTR sItems, [in,string] BSTR sCommonPath, [out,string,retval] BSTR *psValues);
+		[id(8), helpstring("method Write")]
+            HRESULT Write([in,string] BSTR sItem, [in] VARIANT newVal);
+		[id(9), helpstring("method ReadStringListTypedAndRaw")]
+            HRESULT ReadStringListTypedAndRaw([in, string] BSTR sItems, [in,string] BSTR sCommonPath, [out,string,retval] BSTR *psValues);
+
+		[id(11), helpstring("method StartResource")]
+            HRESULT StartResource([in,string] BSTR sFullResourcePath, [in,string] BSTR sPassword);
+		[id(12), helpstring("method StopResource")]
+            HRESULT StopResource([in,string] BSTR sFullResourcePath, [in,string] BSTR sPassword);
+		[id(13), helpstring("method StartAllTasks")]
+            HRESULT StartAllTasks([in,string] BSTR sFullResourcePath, [in,string] BSTR sPassword);
+		[id(14), helpstring("method StopAllTasks")]
+            HRESULT StopAllTasks([in,string] BSTR sFullResourcePath, [in,string] BSTR sPassword);
+		[id(15), helpstring("method StartTask")]
+            HRESULT StartTask([in,string] BSTR sFullTaskPath, [in,string] BSTR sPassword);
+		[id(16), helpstring("method StopTask")]
+            HRESULT StopTask([in,string] BSTR sFullTaskPath, [in,string] BSTR sPassword);
+	};
+
+[
+	uuid(ACB9AA52-8B04-11d5-8796-00010209D2BC),
+	version(1.0),
+	helpstring("AsyncOPC 2.0 Type Library")
+]
+library ASYNCOPCLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(ACB9AA53-8B04-11d5-8796-00010209D2BC),
+		helpstring("AsyncAccess Class")
+	]
+	coclass AsyncAccess
+	{
+		[default] interface IAsyncAccess;
+	};
+};

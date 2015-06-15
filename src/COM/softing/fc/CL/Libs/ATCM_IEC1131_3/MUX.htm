@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>MUX</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>MUX</h2>
+<p>Returns the value at the index defined in <b><i>K</i></b>.<br>
+</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION MUX : ANY
+VAR_INPUT 
+   K : ANY_INT;
+   IN0: ANY; 
+END_VAR
+VAR_IN_EXT
+   IN1: ANY; 
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>ANY</b></i><br>
+  The value located at the indicated postion in the index.</p>
+
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>K</b></dt>
+  <dd>Value of type <b><i>ANY_INT</i></b><br>
+    Index parameter for selection.</dd>
+  <dt><b>IN0</b></dt>
+  <dd>Value of type <i><b>ANY<br>
+    </b></i>First parameter in the index row. </dd>
+  <dt><b>IN1</b></dt>
+  <dd>Value of type <b><i>ANY<br>
+    </i></b>Second parameter in the index row.<br>
+    <i><b>IN_EXT</b></i>-variables are extensible. Optional, further values can 
+    be stated to be compared.<br>
+    <br>
+  </dd>
+</dl>
+<h3>Description</h3>
+<p> The selection of the value is determined by the first parameter (<b><i>K</i></b>). 
+  This parameter serves as the index designating the position at which the value 
+  to be selected is located. The index count starts at <i><b>0</b></i>. Counting 
+  begins from the first parameter following the index parameter. If during program 
+  run the index parameter is assigned a value higher than the number of parameters 
+  to select from, the calling task is stopped. The value returned by the function 
+  is set to<b> <i>0</i></b>. &nbsp;</p>
+</body>
+</html>

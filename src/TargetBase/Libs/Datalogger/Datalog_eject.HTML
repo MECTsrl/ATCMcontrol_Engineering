@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>Datalog Library</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css">
+</head>
+
+<body bgcolor="#FFFFCC">
+<h2>Datalog_eject</h2>
+<p>Unmount USB key where the log is stored.</p>
+<h3>Interface</h3>
+<pre class="preforma">
+FUNCTION Datalog_eject : UINT
+VAR_INPUT
+        index : UINT;
+END_VAR
+</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>INT</b></i><br>
+<br>
+<table border="1">
+<tr>
+	<td>
+		0 :
+	</td>
+ 	<td>
+		<b>Succes</b>
+ 	</td>
+ </tr>
+<tr>
+	<td>
+		>0 :
+	</td>
+ 	<td>
+		usb device cannot be mounted
+ 	</td>
+ </tr>
+ </table>
+ </p>
+
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl>
+  <dt><b>index</b></dt>
+  <dd>Value of type <b><i>UINT</i></b><br>
+     index of the usbkey on which the data is stored.<br></dd>
+</dl>
+<h3>Description</h3>
+<p><b>Datalog_start</b> Initialize datalog infrastructure.</p>
+</body>
+</html>

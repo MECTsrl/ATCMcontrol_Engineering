@@ -1,0 +1,28 @@
+
+
+//----  Local Defines:   -------------------------------------------*
+
+//----  Includes:   -------------------------------------------*
+
+//----  Static Initializations:   ----------------------------------*
+
+
+import "docobj.idl";
+
+    [
+		object,
+		uuid(17297FFF-F487-11d1-8831-006097E1BE6E),
+		helpstring("ICESubscribe Interface"),
+		dual,
+		pointer_default(unique)
+	]
+	interface ICESubscribe : IUnknown
+	{
+		[id(1), helpstring("method SubscribeVariable")] 
+            HRESULT SubscribeVariable([in] BSTR sVariableName);
+		[id(2), helpstring("method UnsubscribeVariable")] 
+            HRESULT UnsubscribeVariable([in] BSTR sVariableName);
+	};
+
+
+

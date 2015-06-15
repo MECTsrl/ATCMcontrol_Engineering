@@ -1,0 +1,25 @@
+(*
+* ATCMControl Embedded - System Library
+* ----------------------------------------------------------------------------
+*
+
+*)
+
+(*[[
+UserURL= "ATCMfile:TSK_STAT.htm"
+]]*)
+
+TYPE
+    TSK_STAT : STRUCT
+        TaskState   : UDINT;    (*[Task state]                      *)  
+        CycleTime   : UDINT;    (*[Task cycle time]                 *)
+
+        ExecMax     : UDINT;    (*[Maximum execution time in us]    *)
+        ExecMin     : UDINT;    (*[Minimum execution time in us]    *)
+        ExecAverage : UDINT;    (*[Average execution time in us]    *)
+        ExecCount   : UDINT;    (*[Execution counter]               *)
+
+        WDogCounter : UDINT;    (*[Watchdog counter]                *)
+        WDogTrigger : UDINT;    (*[Watchdog trigger level]          *)
+    END_STRUCT;
+END_TYPE

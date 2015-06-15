@@ -1,0 +1,7 @@
+<NODE TEXT="myPC1 Addr=w-jd123" ID="myPC1"
+      TYPE="PC" SOURCE="PC1.pc">
+   <NODE TEXT="Address = w-jd" ID="addr"
+         TYPE="Variable"/>
+   <LINK SOURCE="myDP1.iodp"/>
+</NODE>
+     

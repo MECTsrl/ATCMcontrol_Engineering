@@ -1,0 +1,220 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 7, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\Test.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.deu\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\Test.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_TEST_DIALOG DIALOGEX 0, 0, 242, 158
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Test"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "TEST",IDC_TEST,97,7,45,14
+    COMBOBOX        IDC_DISPID,7,7,85,193,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040704B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "MFC-Anwendung Test\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "Test\0"
+            VALUE "LegalCopyright", "Copyright (C) 2000\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "Test.EXE\0"
+            VALUE "ProductName", "Anwendung Test\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x407, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_TEST_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 235
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 151
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_TEST_DIALOG DLGINIT
+BEGIN
+    IDC_DISPID, 0x403, 18, 0
+0x2031, 0x202d, 0x7546, 0x636e, 0x6974, 0x6e6f, 0x6c42, 0x636f, 0x006b, 
+
+    IDC_DISPID, 0x403, 13, 0
+0x2032, 0x202d, 0x7546, 0x636e, 0x6974, 0x6e6f, "\000" 
+    IDC_DISPID, 0x403, 12, 0
+0x2033, 0x202d, 0x7250, 0x676f, 0x6172, 0x006d, 
+    IDC_DISPID, 0x403, 14, 0
+0x2034, 0x202d, 0x6144, 0x6174, 0x5420, 0x7079, 0x0065, 
+    IDC_DISPID, 0x403, 13, 0
+0x2035, 0x202d, 0x6f43, 0x736e, 0x6174, 0x746e, "\000" 
+    IDC_DISPID, 0x403, 22, 0
+0x2036, 0x202d, 0x6c47, 0x626f, 0x6c61, 0x5620, 0x7261, 0x6169, 0x6c62, 
+0x7365, 0x0020, 
+    IDC_DISPID, 0x403, 13, 0
+0x2037, 0x202d, 0x7250, 0x666f, 0x6269, 0x7375, "\000" 
+    IDC_DISPID, 0x403, 8, 0
+0x2038, 0x202d, 0x504f, 0x0043, 
+    IDC_DISPID, 0x403, 9, 0
+0x2039, 0x202d, 0x6154, 0x6b73, "\000" 
+    IDC_DISPID, 0x403, 8, 0
+0x3031, 0x2d20, 0x5020, 0x0063, 
+    IDC_DISPID, 0x403, 14, 0
+0x3131, 0x2d20, 0x5220, 0x7365, 0x756f, 0x6372, 0x0065, 
+    IDC_DISPID, 0x403, 18, 0
+0x3231, 0x2d20, 0x4320, 0x6e6f, 0x7473, 0x6e61, 0x4674, 0x6c69, 0x0065, 
+
+    IDC_DISPID, 0x403, 17, 0
+0x3331, 0x2d20, 0x4720, 0x6f6c, 0x5662, 0x7261, 0x6946, 0x656c, "\000" 
+    IDC_DISPID, 0x403, 21, 0
+0x3431, 0x2d20, 0x5020, 0x6f72, 0x7267, 0x6d61, 0x6e49, 0x7473, 0x6e61, 
+0x6563, "\000" 
+    IDC_DISPID, 0x403, 13, 0
+0x3531, 0x2d20, 0x5020, 0x6f72, 0x656a, 0x7463, "\000" 
+    0
+END
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE 7, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\Test.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.deu\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

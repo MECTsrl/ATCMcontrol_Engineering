@@ -1,0 +1,9 @@
+
+(*[[
+    UserURL= "ATCMFile:BYTE_STRING.htm",
+]]*)
+TYPE
+    BYTE_STRING : STRUCT
+        size  : DINT := 0;   (* length of byte string *)
+    END_STRUCT;
+END_TYPE

@@ -1,0 +1,2161 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "GrResource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+#include "..\inc\editres.h"
+#include "..\inc\keyrc.h"
+#include "version.rc2"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_GR_PROP_LINE DIALOG DISCARDABLE  0, 0, 141, 45
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Line"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,84,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,84,24,50,14
+    CONTROL         "&Use size as default",IDC_GR_DEFAULT_SIZE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,7,71,12
+END
+
+IDD_GR_PROP_PRAIL DIALOG DISCARDABLE  0, 0, 141, 45
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Power Rail"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,84,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,84,24,50,14
+    CONTROL         "&Use size as default",IDC_GR_DEFAULT_SIZE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,7,71,12
+END
+
+IDR_GR_MAINFRAME DIALOG DISCARDABLE  0, 0, 330, 16
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "TODO: layout dialog bar ",IDC_STATIC,12,4,300,8
+END
+
+IDR_GR_TYPE_SRVR_IP DIALOG DISCARDABLE  0, 0, 330, 16
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "TODO: layout inplace dialog bar ",IDC_STATIC,12,4,300,8
+END
+
+IDD_GR_ZOOM DIALOG DISCARDABLE  0, 0, 175, 101
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Zoom"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Zoom Mode",IDC_STATIC,7,7,102,86
+    CONTROL         "&400 %",IDC_GR_ZOOM_400,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,16,16,35,10
+    CONTROL         "&200 %",IDC_GR_ZOOM_200,"Button",BS_AUTORADIOBUTTON,16,
+                    31,35,10
+    CONTROL         "&100 %",IDC_GR_ZOOM_100,"Button",BS_AUTORADIOBUTTON,16,
+                    46,35,10
+    CONTROL         "&50 %",IDC_GR_ZOOM_050,"Button",BS_AUTORADIOBUTTON,16,
+                    61,35,10
+    CONTROL         "&Custom",IDC_GR_ZOOM_CUSTOM,"Button",BS_AUTORADIOBUTTON,
+                    16,76,39,10
+    EDITTEXT        IDC_GR_ZOOM_VALUE,57,74,46,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,118,59,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,118,80,50,14
+END
+
+IDD_GR_GRID DIALOG DISCARDABLE  0, 0, 135, 87
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Grid"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Grid Selection",IDC_STATIC,7,3,62,77
+    CONTROL         "&no Grid",IDC_GR_GRID_NO,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,16,16,39,10
+    CONTROL         "&Points",IDC_GR_GRID_POINT,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,16,32,39,10
+    CONTROL         "&Cross",IDC_GR_GRID_CROSS,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,16,48,39,10
+    CONTROL         "&Lines",IDC_GR_GRID_LINES,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,16,64,39,10
+    DEFPUSHBUTTON   "OK",IDOK,78,45,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,78,66,50,14
+END
+
+IDD_GR_PROP_CON DIALOGEX 0, 0, 230, 59
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Connector"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "Name:",IDC_STATIC,7,2,22,12,SS_CENTERIMAGE,WS_EX_RIGHT
+    COMBOBOX        IDC_GR_CON_NAME,34,2,189,70,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Connect position",IDC_STATIC,7,17,84,36
+    CONTROL         "right (input)",IDC_GR_CON_LEFT,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,13,27,65,10
+    CONTROL         "left (output)",IDC_GR_CON_RIGHT,"Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,13,39,65,10
+    CONTROL         "",IDC_GR_CON_PREV,"Static",SS_BITMAP | SS_CENTERIMAGE,
+                    99,21,63,32
+    DEFPUSHBUTTON   "OK",IDOK,171,21,52,14
+    PUSHBUTTON      "Cancel",IDCANCEL,171,39,52,14
+END
+
+IDD_GR_PROP_LAB DIALOG DISCARDABLE  0, 0, 230, 87
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Label"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Name:",IDC_STATIC,7,7,22,8
+    COMBOBOX        IDC_GR_LAB_NAME,39,7,184,73,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Display horizontal line at destination ",
+                    IDC_GR_LAB_LINE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,
+                    27,122,12
+    GROUPBOX        "Label Type:",IDC_STATIC,7,44,84,36
+    CONTROL         "&Source",IDC_GR_LAB_SRC,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,13,55,65,10
+    CONTROL         "&Destination",IDC_GR_LAB_DEST,"Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,13,67,65,10
+    CONTROL         "",IDC_GR_LAB_PREV,"Static",SS_BITMAP | SS_CENTERIMAGE,
+                    99,48,63,32
+    DEFPUSHBUTTON   "OK",IDOK,171,48,52,14
+    PUSHBUTTON      "Cancel",IDCANCEL,171,66,52,14
+    CONTROL         "&Use size as default",IDC_GR_DEFAULT_SIZE,"Button",
+                    BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,152,27,71,
+                    12
+END
+
+IDD_GR_PROP_VAR DIALOG DISCARDABLE  0, 0, 250, 66
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Variable"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Name:",IDC_STATIC,7,7,22,8
+    COMBOBOX        IDC_GR_VAR_NAME,39,7,204,73,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Type:",IDC_STATIC,7,28,27,8
+    COMBOBOX        IDC_GR_VAR_TYPE,39,27,75,43,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_GR_VAR_PREV,"Static",SS_BITMAP | SS_CENTERIMAGE,
+                    123,27,59,32
+    DEFPUSHBUTTON   "OK",IDOK,191,27,52,14
+    PUSHBUTTON      "Cancel",IDCANCEL,191,45,52,14
+    CONTROL         "&Use size as default",IDC_GR_DEFAULT_SIZE,"Button",
+                    BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,7,47,71,12
+END
+
+IDD_GR_PROP_CMT DIALOG DISCARDABLE  0, 0, 230, 66
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Comment"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Text:",-1,7,7,17,8
+    EDITTEXT        IDC_GR_CMT_TEXT,28,7,134,52,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,171,27,52,14
+    PUSHBUTTON      "Cancel",IDCANCEL,171,45,52,14
+END
+
+IDD_GR_PROP_STEP DIALOGEX 0, 0, 230, 56
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Step"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "Name:",-1,12,9,22,8,0,WS_EX_RIGHT
+    COMBOBOX        IDC_GR_STEP_NAME,46,7,177,70,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "&Initial",IDC_GR_STEP_INITIAL,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,13,26,41,10
+    DEFPUSHBUTTON   "OK",IDOK,113,35,52,14
+    PUSHBUTTON      "Cancel",IDCANCEL,171,35,52,14
+    CONTROL         "&Use size as default",IDC_GR_DEFAULT_SIZE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,13,37,71,12
+END
+
+IDD_GR_PROP_TRAN DIALOGEX 0, 0, 230, 47
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Transition"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "Name:",-1,8,9,22,8,0,WS_EX_RIGHT
+    COMBOBOX        IDC_GR_TRAN_NAME,37,7,187,70,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,113,26,52,14
+    PUSHBUTTON      "Cancel",IDCANCEL,172,26,52,14
+    CONTROL         "&Use size as default",IDC_GR_DEFAULT_SIZE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,8,28,71,12
+END
+
+IDD_GR_PROP_DIV DIALOG DISCARDABLE  0, 0, 141, 49
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Sequence Selection"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Type:",IDC_STATIC,7,4,69,39
+    CONTROL         "Alternative",IDC_GR_DIV_ALT,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,15,17,54,10
+    CONTROL         "Simultanous",IDC_GR_DIV_SIM,"Button",BS_AUTORADIOBUTTON,
+                    15,29,54,10
+    DEFPUSHBUTTON   "OK",IDOK,83,10,52,14
+    PUSHBUTTON      "Cancel",IDCANCEL,83,29,52,14
+END
+
+IDD_GR_PROP_ACT DIALOGEX 0, 0, 231, 70
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Action"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "&Name:",-1,12,9,22,8,0,WS_EX_RIGHT
+    COMBOBOX        IDC_GR_ACT_NAME,46,7,177,70,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "T&ype:",-1,12,26,19,8,0,WS_EX_RIGHT
+    LTEXT           "",IDC_GR_ACT_WARN,105,26,117,8
+    DEFPUSHBUTTON   "OK",IDOK,113,51,52,14
+    PUSHBUTTON      "Cancel",IDCANCEL,171,51,52,14
+    CONTROL         "&Use size as default",IDC_GR_DEFAULT_SIZE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,114,36,71,10
+    CONTROL         "&ST-Action",IDC_GR_ACT_STACTION,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP,46,26,46,10
+    CONTROL         "&LD",IDC_GR_ACT_LDACTION,"Button",BS_AUTORADIOBUTTON,46,
+                    36,25,10
+    CONTROL         "&FBD",IDC_GR_ACT_FBDACTION,"Button",BS_AUTORADIOBUTTON,
+                    46,46,30,10
+END
+
+IDD_GR_PROP_FB DIALOGEX 0, 0, 230, 47
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Function Block / Function / Procedure"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "Name:",-1,12,7,22,12,SS_CENTERIMAGE,WS_EX_RIGHT
+    CONTROL         "&Use size as default",IDC_GR_DEFAULT_SIZE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,13,27,71,10
+    EDITTEXT        IDC_GR_FB_NAME,47,7,176,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,113,26,52,14
+    PUSHBUTTON      "Cancel",IDCANCEL,171,26,52,14
+END
+
+IDD_GR_EDITVARIABLE DIALOGEX 0, 0, 246, 111
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Edit Variable"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    COMBOBOX        IDC_GR_VARVALUE,35,50,200,60,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP,WS_EX_RIGHT
+    DEFPUSHBUTTON   "&OK",IDOK,80,90,50,15
+    PUSHBUTTON      "&Cancel",IDCANCEL,135,90,50,15
+    PUSHBUTTON      "&Apply",IDC_GR_APPLY,190,90,50,15
+    GROUPBOX        "New &Value for",IDC_STATIC,6,5,235,70
+    EDITTEXT        IDC_GR_VARNAME,35,20,200,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    LTEXT           "Name:",IDC_STATIC,9,22,22,8
+    LTEXT           "Value:",IDC_STATIC,10,52,21,8
+END
+
+IDD_GR_PROP_ACTBLK_V120 DIALOGEX 0, 0, 231, 92
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Action Block"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "&Name:",-1,12,9,22,8,0,WS_EX_RIGHT
+    COMBOBOX        IDC_GR_ACT_NAME,46,7,177,70,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Qualifier:",-1,12,29,28,8,0,WS_EX_RIGHT
+    COMBOBOX        IDC_GR_ACT_QUAL,46,27,177,70,CBS_DROPDOWNLIST | 
+                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "T&ype:",-1,12,46,19,8,0,WS_EX_RIGHT
+    DEFPUSHBUTTON   "OK",IDOK,113,69,52,14
+    PUSHBUTTON      "Cancel",IDCANCEL,171,69,52,14
+    LTEXT           "",IDC_GR_ACT_WARN,105,48,117,8
+    CONTROL         "&ST-Action",IDC_GR_ACT_STACTION,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP,46,46,46,10
+    CONTROL         "&LD",IDC_GR_ACT_LDACTION,"Button",BS_AUTORADIOBUTTON,46,
+                    56,25,10
+    CONTROL         "&FBD",IDC_GR_ACT_FBDACTION,"Button",BS_AUTORADIOBUTTON,
+                    46,66,30,10
+    CONTROL         "&Use size as default",IDC_GR_DEFAULT_SIZE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,113,57,71,10
+END
+
+IDD_GR_PROP_ACTBLK DIALOGEX 0, 0, 231, 109
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Action Block"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "&Name:",-1,9,9,22,8,0,WS_EX_RIGHT
+    COMBOBOX        IDC_GR_ACT_NAME,46,7,177,70,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Qualifier:",-1,9,29,28,8,0,WS_EX_RIGHT
+    COMBOBOX        IDC_GR_ACT_QUAL,46,27,177,70,CBS_DROPDOWNLIST | 
+                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Time:",-1,9,49,18,8,0,WS_EX_RIGHT
+    EDITTEXT        IDC_GR_ACT_TIME2,46,47,177,14,ES_AUTOHSCROLL
+    LTEXT           "T&yp:",-1,9,66,15,8,0,WS_EX_RIGHT
+    LTEXT           "",IDC_GR_ACT_WARN,105,66,117,8
+    DEFPUSHBUTTON   "OK",IDOK,113,90,52,14
+    PUSHBUTTON      "Cancel",IDCANCEL,171,90,52,14
+    CONTROL         "&ST-Action",IDC_GR_ACT_STACTION,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP,47,66,46,10
+    CONTROL         "&LD",IDC_GR_ACT_LDACTION,"Button",BS_AUTORADIOBUTTON,47,
+                    76,25,10
+    CONTROL         "&FBD",IDC_GR_ACT_FBDACTION,"Button",BS_AUTORADIOBUTTON,
+                    47,86,30,10
+    CONTROL         "&Use size as default",IDC_GR_DEFAULT_SIZE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,112,76,71,10
+END
+
+IDD_GR_STATISTIC DIALOG DISCARDABLE  0, 0, 483, 161
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Statistics"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "FBD - Elements:",IDC_STATIC,7,7,221,111
+    LTEXT           "FB:",IDC_STATIC,15,20,48,8
+    EDITTEXT        IDC_GR_STAT_FB,74,17,40,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Functions:",IDC_STATIC,15,33,48,8
+    EDITTEXT        IDC_GR_STAT_FCT,74,30,40,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Procedures:",IDC_STATIC,15,46,48,8
+    EDITTEXT        IDC_GR_STAT_PRO,74,43,40,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Var Read:",IDC_STATIC,16,59,48,8
+    EDITTEXT        IDC_GR_STAT_VARRD,74,56,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Var Write:",IDC_STATIC,16,72,48,8
+    EDITTEXT        IDC_GR_STAT_VARWR,74,69,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Var Feedback:",IDC_STATIC,16,85,48,8
+    EDITTEXT        IDC_GR_STAT_VARFB,74,82,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Label:",IDC_STATIC,122,20,48,8
+    EDITTEXT        IDC_GR_STAT_LABEL,180,17,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Jump:",IDC_STATIC,122,33,48,8
+    EDITTEXT        IDC_GR_STAT_JUMP,180,30,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Return:",IDC_STATIC,122,46,48,8
+    EDITTEXT        IDC_GR_STAT_RET,180,43,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Continuation:",IDC_STATIC,122,59,48,8
+    EDITTEXT        IDC_GR_STAT_CONT,180,56,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Connector:",IDC_STATIC,122,72,48,8
+    EDITTEXT        IDC_GR_STAT_CONN,180,69,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Comment:",IDC_STATIC,122,85,48,8
+    EDITTEXT        IDC_GR_STAT_CMT,180,81,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Sum:",IDC_STATIC,158,101,22,8
+    EDITTEXT        IDC_GR_STAT_SUMFBD,180,97,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    GROUPBOX        "SFC - Elements:",IDC_STATIC,236,7,115,111
+    LTEXT           "Step:",IDC_STATIC,242,20,48,8
+    EDITTEXT        IDC_GR_STAT_STEP,301,17,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Transition:",IDC_STATIC,242,33,48,8
+    EDITTEXT        IDC_GR_STAT_TRA,301,30,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Action:",IDC_STATIC,242,46,48,8
+    EDITTEXT        IDC_GR_STAT_ACTION,301,43,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Actionblock:",IDC_STATIC,243,59,48,8
+    EDITTEXT        IDC_GR_STAT_ACTBLK,301,56,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Alt. Div/Con:",IDC_STATIC,243,72,48,8
+    EDITTEXT        IDC_GR_STAT_ALTDIV,301,69,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Sim. Div/Con:",IDC_STATIC,243,85,48,8
+    EDITTEXT        IDC_GR_STAT_SIMDIV,301,82,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Sum:",IDC_STATIC,279,102,22,8
+    EDITTEXT        IDC_GR_STAT_SUMSFC,301,98,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    GROUPBOX        "LD - Elements:",IDC_STATIC,358,7,118,73
+    LTEXT           "Powerrail:",IDC_STATIC,364,20,48,8
+    EDITTEXT        IDC_GR_STAT_POWERRAIL,424,17,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Contact:",IDC_STATIC,364,33,48,8
+    EDITTEXT        IDC_GR_STAT_CONTACT,424,30,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Coil:",IDC_STATIC,364,46,48,8
+    EDITTEXT        IDC_GR_STAT_COIL,424,43,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Sum:",IDC_STATIC,402,63,22,8
+    EDITTEXT        IDC_GR_STAT_SUMLD,424,59,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    GROUPBOX        "Lines:",IDC_STATIC,358,83,118,59
+    LTEXT           "Fixed:",IDC_STATIC,364,96,48,8
+    EDITTEXT        IDC_GR_STAT_FIXLINE,424,93,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Rubberband:",IDC_STATIC,364,109,48,8
+    EDITTEXT        IDC_GR_STAT_RUBBLINE,424,106,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Sum:",IDC_STATIC,402,125,22,8
+    EDITTEXT        IDC_GR_STAT_SUMLINES,424,122,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    GROUPBOX        "Total:",IDC_STATIC,7,121,221,32
+    LTEXT           "elements in this sheet:",IDC_STATIC,15,134,120,8
+    EDITTEXT        IDC_GR_STAT_TOTAL,180,132,40,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    DEFPUSHBUTTON   "OK",IDOK,266,131,50,14
+END
+
+IDD_GR_PROP_CONTACT DIALOG DISCARDABLE  0, 0, 241, 66
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Contact"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Name:",IDC_STATIC,7,7,22,8
+    COMBOBOX        IDC_GR_CT_NAME,39,7,124,73,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Type:",IDC_STATIC,7,28,27,8
+    COMBOBOX        IDC_GR_CT_TYPE,39,27,124,63,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_GR_CT_PREV,"Static",SS_BITMAP | SS_CENTERIMAGE,
+                    171,7,59,32
+    DEFPUSHBUTTON   "OK",IDOK,124,46,52,14
+    PUSHBUTTON      "Cancel",IDCANCEL,183,46,52,14
+    CONTROL         "&Use size as default",IDC_GR_DEFAULT_SIZE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,48,71,12
+END
+
+IDD_GR_PROP_COIL DIALOG DISCARDABLE  0, 0, 241, 66
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Coil"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Name:",IDC_STATIC,7,7,22,8
+    COMBOBOX        IDC_GR_CL_NAME,39,7,124,73,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Type:",IDC_STATIC,7,28,27,8
+    COMBOBOX        IDC_GR_CL_TYPE,39,27,124,64,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_GR_CL_PREV,"Static",SS_BITMAP | SS_CENTERIMAGE,
+                    173,7,59,32
+    DEFPUSHBUTTON   "OK",IDOK,121,46,52,14
+    PUSHBUTTON      "Cancel",IDCANCEL,180,46,52,14
+    CONTROL         "&Use size as default",IDC_GR_DEFAULT_SIZE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,48,71,12
+END
+
+IDD_GR_PRINT_OPTIONS DIALOG DISCARDABLE  0, 0, 186, 95
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Print Options"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,68,74,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,74,50,14
+    GROUPBOX        "",IDC_STATIC,7,7,172,58
+    CONTROL         "Header",IDC_HEADER_CHECK,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,31,31,39,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_GR_PROP_LINE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 134
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 38
+    END
+
+    IDD_GR_PROP_PRAIL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 134
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 38
+    END
+
+    IDD_GR_PROP_CON, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 223
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 53
+    END
+
+    IDD_GR_PROP_LAB, DIALOG
+    BEGIN
+        RIGHTMARGIN, 223
+        TOPMARGIN, 1
+    END
+
+    IDD_GR_PROP_VAR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 243
+        BOTTOMMARGIN, 59
+    END
+
+    IDD_GR_PROP_CMT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 223
+        BOTTOMMARGIN, 59
+    END
+
+    IDD_GR_PROP_STEP, DIALOG
+    BEGIN
+        LEFTMARGIN, 4
+        RIGHTMARGIN, 223
+        BOTTOMMARGIN, 49
+    END
+
+    IDD_GR_PROP_TRAN, DIALOG
+    BEGIN
+        LEFTMARGIN, 8
+        RIGHTMARGIN, 224
+        BOTTOMMARGIN, 40
+    END
+
+    IDD_GR_PROP_DIV, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 135
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 43
+    END
+
+    IDD_GR_PROP_ACT, DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 230
+        BOTTOMMARGIN, 65
+    END
+
+    IDD_GR_PROP_ACTBLK_V120, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 223
+        BOTTOMMARGIN, 83
+    END
+
+    IDD_GR_PROP_ACTBLK, DIALOG
+    BEGIN
+        LEFTMARGIN, 9
+        RIGHTMARGIN, 223
+        BOTTOMMARGIN, 104
+    END
+
+    IDD_GR_STATISTIC, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 476
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 154
+    END
+
+    IDD_GR_PROP_CONTACT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 235
+        BOTTOMMARGIN, 60
+    END
+
+    IDD_GR_PROP_COIL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 232
+        BOTTOMMARGIN, 60
+    END
+
+    IDD_GR_PRINT_OPTIONS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 88
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "GrResource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "#include ""editres.h""\r\n"
+    "#include ""..\\inc\\keyrc.h""\r\n"
+    "#include ""version.rc2""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""CEGRError.rc""\r\n"
+    "#include ""res\\GrEditor.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#include ""afxprint.rc""       // printing/print preview resources\r\n"
+    "#include ""afxolesv.rc""       // OLE server resources\r\n"
+    "#endif\r\n"
+    "#include ""secedit.rc""\r\n"
+    "#include ""key.rc""\r\n"
+    "#include ""aboutdlg.rc""\r\n"
+    "#include ""STEditor.rc""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_GR_MAINFRAME        ICON    DISCARDABLE     "res\\GrEditor.ico"
+IDR_GR_TYPE             ICON    DISCARDABLE     "res\\GrEditorDoc.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_GR_TYPE_SRVR_IP     BITMAP  MOVEABLE PURE   "res\\IToolbar.bmp"
+IDR_GR_MAINFRAME        BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
+IDR_GR_TOOLBAR_SFC      BITMAP  MOVEABLE PURE   "res\\mainfram.bmp"
+IDR_GR_TOOLBAR_FBD      BITMAP  MOVEABLE PURE   "res\\toolbar_.bmp"
+IDR_GR_TOOLBAR_LD       BITMAP  MOVEABLE PURE   "res\\gr_toolb.bmp"
+IDB_GR_CON_PREV01       BITMAP  DISCARDABLE     "res\\cecon01.bmp"
+IDB_GR_CON_PREV02       BITMAP  DISCARDABLE     "res\\cecon02.bmp"
+IDB_GR_LAB_PREV01       BITMAP  DISCARDABLE     "res\\celab01.bmp"
+IDB_GR_LAB_PREV02       BITMAP  DISCARDABLE     "res\\celab02.bmp"
+IDB_GR_VAR_PREV01       BITMAP  DISCARDABLE     "res\\cevar01.bmp"
+IDB_GR_VAR_PREV02       BITMAP  DISCARDABLE     "res\\cevar02.bmp"
+IDB_GR_VAR_PREV03       BITMAP  DISCARDABLE     "res\\cevar03.bmp"
+IDB_GR_ICONCMT          BITMAP  DISCARDABLE     "res\\iconcmt.bmp"
+IDB_GR_ICONLAB          BITMAP  DISCARDABLE     "res\\iconlab.bmp"
+IDB_GR_ICONLABR         BITMAP  DISCARDABLE     "res\\iconlabr.bmp"
+IDB_GR_ICONRETL         BITMAP  DISCARDABLE     "res\\iconretl.bmp"
+IDB_GR_ICONRETR         BITMAP  DISCARDABLE     "res\\iconretr.bmp"
+IDB_GR_ICONCONR         BITMAP  DISCARDABLE     "res\\iconcon2.bmp"
+IDB_GR_ICONCONL         BITMAP  DISCARDABLE     "res\\iconcon1.bmp"
+IDB_GR_ICONCONLP        BITMAP  DISCARDABLE     "res\\iconcon3.bmp"
+IDB_GR_ICONCONRP        BITMAP  DISCARDABLE     "res\\iconcon4.bmp"
+IDB_GR_ICONVARRD        BITMAP  DISCARDABLE     "res\\iconvarr.bmp"
+IDB_GR_ICONVARWR        BITMAP  DISCARDABLE     "res\\iconvarw.bmp"
+IDB_GR_ICONVARFB        BITMAP  DISCARDABLE     "res\\iconvarf.bmp"
+IDB_GR_CT_PREV01        BITMAP  DISCARDABLE     "res\\gr_ct_pr.bmp"
+IDB_GR_CT_PREV02        BITMAP  DISCARDABLE     "res\\bmp00001.bmp"
+IDB_GR_CT_PREV03        BITMAP  DISCARDABLE     "res\\bmp00002.bmp"
+IDB_GR_CT_PREV04        BITMAP  DISCARDABLE     "res\\bmp00003.bmp"
+IDB_GR_CL_PREV01        BITMAP  DISCARDABLE     "res\\gr_cl_pr.bmp"
+IDB_GR_CL_PREV02        BITMAP  DISCARDABLE     "res\\bmp00004.bmp"
+IDB_GR_CL_PREV03        BITMAP  DISCARDABLE     "res\\bmp00005.bmp"
+IDB_GR_CL_PREV04        BITMAP  DISCARDABLE     "res\\bmp00006.bmp"
+IDB_GR_CL_PREV05        BITMAP  DISCARDABLE     "res\\bmp00007.bmp"
+IDB_GR_CL_PREV06        BITMAP  DISCARDABLE     "res\\bmp00008.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_GR_PENCUR           CURSOR  DISCARDABLE     "res\\cursor1.cur"
+IDC_GR_PENCUR1          CURSOR  DISCARDABLE     "res\\pencur1.cur"
+IDC_GR_INSCOL           CURSOR  DISCARDABLE     "res\\inscol.cur"
+IDC_GR_INSCOL1          CURSOR  DISCARDABLE     "res\\inscol1.cur"
+IDC_GR_DELROW           CURSOR  DISCARDABLE     "res\\insrow.cur"
+IDC_GR_INSROW           CURSOR  DISCARDABLE     "res\\inscol2.cur"
+IDC_GR_DELCOL           CURSOR  DISCARDABLE     "res\\delcol.cur"
+IDC_GR_DELCOL1          CURSOR  DISCARDABLE     "res\\delcol1.cur"
+IDC_GR_DELROW1          CURSOR  DISCARDABLE     "res\\delrow1.cur"
+IDC_GR_INSROW1          CURSOR  DISCARDABLE     "res\\insrow1.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_GR_MAINFRAME TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    BUTTON      ID_EDIT_CLEAR
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    BUTTON      ID_APP_ABOUT
+    BUTTON      ID_CONTEXT_HELP
+    SEPARATOR
+    BUTTON      ID_EDIT_UNDO
+    BUTTON      ID_EDIT_REDO
+    SEPARATOR
+    BUTTON      ID_GR_VIEW_ZOOMIN
+    BUTTON      ID_GR_VIEW_ZOOMOUT
+    BUTTON      ID_GR_EDIT_COL
+    BUTTON      ID_GR_EDIT_ROW
+    SEPARATOR
+    BUTTON      ID_GR_OPT_FONT
+    BUTTON      ID_GR_DEBUG
+    BUTTON      ID_GR_DEBUG2
+END
+
+IDR_GR_TYPE_SRVR_IP TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    BUTTON      ID_EDIT_CLEAR
+    SEPARATOR
+    BUTTON      ID_GR_VIEW_ZOOMIN
+    BUTTON      ID_GR_VIEW_ZOOMOUT
+    SEPARATOR
+    BUTTON      ID_GR_EDIT_COL
+    BUTTON      ID_GR_EDIT_ROW
+END
+
+IDR_GR_TOOLBAR_SFC TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_GR_INS_STEP
+    BUTTON      ID_GR_INS_TRANSITION
+    BUTTON      ID_GR_INS_ACTION
+    BUTTON      ID_GR_INS_ACTIONBLOCK
+    BUTTON      ID_GR_INS_DIVCON
+    BUTTON      ID_GR_INS_SDIVCON
+END
+
+IDR_GR_TOOLBAR_FBD TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_GR_EDIT_LINE
+    SEPARATOR
+    BUTTON      ID_GR_INS_FB_CALL
+    BUTTON      ID_GR_INS_VARIN
+    BUTTON      ID_GR_INS_VAROUT
+    BUTTON      ID_GR_INS_VARINOUT
+    SEPARATOR
+    BUTTON      ID_GR_INS_LAB
+    BUTTON      ID_GR_INS_JMP
+    BUTTON      ID_GR_INS_RET
+    BUTTON      ID_GR_INS_CONIN
+    BUTTON      ID_GR_INS_CONOUT
+    BUTTON      ID_GR_INS_CMT
+    BUTTON      ID_GR_INS_HLINE
+    BUTTON      ID_GR_INS_VLINE
+END
+
+IDR_GR_TOOLBAR_LD TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_GR_INS_POWER
+    SEPARATOR
+    BUTTON      ID_GR_INS_CT_NORMAL
+    BUTTON      ID_GR_INS_CT_CLOSED
+    BUTTON      ID_GR_INS_CT_POSTRANS
+    BUTTON      ID_GR_INS_CT_NEGTRANS
+    SEPARATOR
+    BUTTON      ID_GR_INS_CL_NORMAL
+    BUTTON      ID_GR_INS_CL_NEGATIVE
+    BUTTON      ID_GR_INS_CL_SET
+    BUTTON      ID_GR_INS_CL_RESET
+    BUTTON      ID_GR_INS_CL_POSTRANS
+    BUTTON      ID_GR_INS_CL_NEGTRANS
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_GR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM "&Redo\tCtrl+Y",               ID_EDIT_REDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "&Delete\tDel",                ID_EDIT_CLEAR
+        MENUITEM "Select &All\tCtrl+A",         ID_GR_SEL_ALL
+        MENUITEM SEPARATOR
+        MENUITEM "&Route Selected Lines\tCtrl+R", ID_GR_ROUTE
+        MENUITEM SEPARATOR
+        MENUITEM "Insert/Delete R&ow Mode",     ID_GR_EDIT_ROW
+        MENUITEM "Insert/Delete Colu&mn Mode",  ID_GR_EDIT_COL
+        MENUITEM "&Line Mode\t[L]",             ID_GR_EDIT_LINE
+        MENUITEM "Resi&ze Mode",                ID_GR_EDIT_RESIZE
+        MENUITEM SEPARATOR
+        MENUITEM "&Find\tCtrl+F",               ID_EDIT_FIND
+        MENUITEM "R&eplace\tCtrl+H",            ID_EDIT_REPLACE
+        MENUITEM "Find &Next\tF3",              ID_EDIT_REPEAT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "Toolbar S&FC",                ID_GR_VIEW_TOOLBAR_SFC
+        MENUITEM "Toolbar F&BD",                ID_GR_VIEW_TOOLBAR_FBD
+        MENUITEM "Toolbar &LD",                 ID_GR_VIEW_TOOLBAR_LD
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM SEPARATOR
+        MENUITEM "&Zoom...",                    ID_GR_VIEW_ZOOM
+        MENUITEM "&Grid...",                    ID_GR_VIEW_GRID
+    END
+    POPUP "&Insert"
+    BEGIN
+        MENUITEM "Var &Read / Expression\t[R]", ID_GR_INS_VARIN
+        MENUITEM "Var &Write\t[W]",             ID_GR_INS_VAROUT
+        MENUITEM "Var &Feedback\t[F]",          ID_GR_INS_VARINOUT
+        MENUITEM "&Jump",                       ID_GR_INS_JMP
+        MENUITEM "&Label",                      ID_GR_INS_LAB
+        MENUITEM "Ret&urn",                     ID_GR_INS_RET
+        MENUITEM "C&onnector",                  ID_GR_INS_CONOUT
+        MENUITEM "Continuatio&n",               ID_GR_INS_CONIN
+        MENUITEM "Comment &Box",                ID_GR_INS_CMT
+        MENUITEM SEPARATOR
+        MENUITEM "&Step\t[S]",                  ID_GR_INS_STEP
+        MENUITEM "&Transition\t[T]",            ID_GR_INS_TRANSITION
+        MENUITEM "&Action\t[A]",                ID_GR_INS_ACTION
+        MENUITEM "Action &Block\t[B]",          ID_GR_INS_ACTIONBLOCK
+        MENUITEM "Alt&ernative Divergence/Convergence\t[D]", 
+                                                ID_GR_INS_DIVCON
+        MENUITEM "Simultaneous D&ivergence/Convergence\t[C]", 
+                                                ID_GR_INS_SDIVCON
+        MENUITEM "E&xception Action",           ID_GR_INS_EXCEPTION_ACTION
+        MENUITEM SEPARATOR
+        MENUITEM "&Powerrail\t[P]",             ID_GR_INS_POWER
+        MENUITEM "&Normal Contact\t[I]",        ID_GR_INS_CT_NORMAL
+        MENUITEM "&Closed Contact\t[I/]",       ID_GR_INS_CT_CLOSED
+        MENUITEM "&Positve Transition-Sense Contact", ID_GR_INS_CT_POSTRANS
+        MENUITEM "&Negatve Transition-Sense Contact", ID_GR_INS_CT_NEGTRANS
+        MENUITEM "Normal Coil\t[Q]",            ID_GR_INS_CL_NORMAL
+        MENUITEM "Negative Coil\t[Q/]",         ID_GR_INS_CL_NEGATIVE
+        MENUITEM "Set Latch Coil",              ID_GR_INS_CL_SET
+        MENUITEM "Reset Latch Coil",            ID_GR_INS_CL_RESET
+        MENUITEM "&Positve Transition-Sense Coil", ID_GR_INS_CL_POSTRANS
+        MENUITEM "&Negatve Transition-Sense Coil", ID_GR_INS_CL_NEGTRANS
+    END
+    POPUP "&Options"
+    BEGIN
+        MENUITEM "S&FC Enabled",                ID_GR_OPT_SFC
+        MENUITEM SEPARATOR
+        MENUITEM "&AutoRoute Mode",             ID_GR_OPT_RECON
+        MENUITEM "&Auto Insert Size",           ID_GR_OPT_STDSIZE
+        MENUITEM "Signal &Warnings",            ID_GR_OPT_CHANGEWARN
+        MENUITEM SEPARATOR
+        POPUP "&Colors on Screen"
+        BEGIN
+            MENUITEM "&Paper",                      ID_GR_OPT_COLBACKGD
+            MENUITEM "Paper Edge",                  ID_GR_OPT_COLEDGE
+            MENUITEM "&Grid",                       ID_GR_OPT_COLGRID
+            MENUITEM SEPARATOR
+            MENUITEM "&Normal",                     ID_GR_OPT_COLNORMAL
+            MENUITEM "&Select",                     ID_GR_OPT_COLSELECT
+            MENUITEM "&Error",                      ID_GR_OPT_COLERROR
+            MENUITEM "&Comment",                    ID_GR_OPT_COLCOMMENT
+            MENUITEM "Rubberband &Line",            ID_GR_OPT_COLRUBBER
+            MENUITEM "Edit L&ine",                  ID_GR_OPT_COLEDITLINE
+            MENUITEM "Highlight Pin",               ID_GR_OPT_COLLIGHTPIN
+            MENUITEM "Element &Background",         ID_GR_OPT_COLELEMBK
+            MENUITEM "Active Ladder &Background",   ID_GR_OPT_COLLADDBK
+            MENUITEM "FB/FCT/PRO Bac&kground",      ID_GR_OPT_COLFBLKBK
+            MENUITEM SEPARATOR
+            MENUITEM "Stoppoint",                   ID_GR_OPT_COLBRKREC
+            MENUITEM "Breakpoint Active",           ID_GR_OPT_COLBRKACT
+            MENUITEM "Breakpoint Disabled",         ID_GR_OPT_COLBRKDIS
+            MENUITEM "Breakpoint Deconnected",      ID_GR_OPT_COLBRKDEC
+            MENUITEM SEPARATOR
+            MENUITEM "SFC Manual Mode Paper",       ID_GR_OPT_COLBACKGD_SFC
+            MENUITEM "SFC Element Background",      ID_GR_OPT_COLELEMBK_SFC
+            MENUITEM "SFC Active Ladder Background", ID_GR_OPT_COLLADDBK_SFC
+            MENUITEM "SFC FB/FCT/PRO Background",   ID_GR_OPT_COLFBLKBK_SFC
+            MENUITEM "SFC Active Step/Action",      ID_GR_OPT_COLACTIVE_SFC
+            MENUITEM "SFC Forced Action/Transition", ID_GR_OPT_COLFORCED_SFC
+            MENUITEM "SFC Blocked Action/Transition", 
+                                                    ID_GR_OPT_COLBLOCKD_SFC
+        END
+        MENUITEM "F&ont",                       ID_GR_OPT_FONT
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics\t[F1]",          ID_HELP_FINDER
+        MENUITEM SEPARATOR
+        MENUITEM "&About GrEditor... (MainFrame)", ID_APP_ABOUT
+        MENUITEM "Statistic ..",                ID_GR_STATISTIC
+    END
+END
+
+IDR_GR_TYPE MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM "&Redo\tCtrl+Y",               ID_EDIT_REDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "&Delete\tDel",                ID_EDIT_CLEAR
+        MENUITEM "Select &All\tCtrl+A",         ID_GR_SEL_ALL
+        MENUITEM SEPARATOR
+        MENUITEM "&Route Selected Lines\tCtrl+R", ID_GR_ROUTE
+        MENUITEM SEPARATOR
+        MENUITEM "Insert/Delete R&ow Mode",     ID_GR_EDIT_ROW
+        MENUITEM "Insert/Delete Colu&mn Mode",  ID_GR_EDIT_COL
+        MENUITEM "&Line Mode\t[L]",             ID_GR_EDIT_LINE
+        MENUITEM "Resi&ze Mode",                ID_GR_EDIT_RESIZE
+        MENUITEM SEPARATOR
+        MENUITEM "&Find\tCtrl+F",               ID_EDIT_FIND
+        MENUITEM "R&eplace\tCtrl+H",            ID_EDIT_REPLACE
+        MENUITEM "Find &Next\tF3",              ID_EDIT_REPEAT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "Toolbar SF&C",                ID_GR_VIEW_TOOLBAR_SFC
+        MENUITEM "Toolbar &FBD",                ID_GR_VIEW_TOOLBAR_FBD
+        MENUITEM "Toolbar &LD",                 ID_GR_VIEW_TOOLBAR_LD
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM SEPARATOR
+        MENUITEM "&Zoom...",                    ID_GR_VIEW_ZOOM
+        MENUITEM "&Grid...",                    ID_GR_VIEW_GRID
+    END
+    POPUP "&Insert"
+    BEGIN
+        MENUITEM "Var &Read / Expression\t[R]", ID_GR_INS_VARIN
+        MENUITEM "Var &Write\t[W]",             ID_GR_INS_VAROUT
+        MENUITEM "Var &Feedback\t[F]",          ID_GR_INS_VARINOUT
+        MENUITEM "&Jump",                       ID_GR_INS_JMP
+        MENUITEM "&Label",                      ID_GR_INS_LAB
+        MENUITEM "Ret&urn",                     ID_GR_INS_RET
+        MENUITEM "C&onnector",                  ID_GR_INS_CONOUT
+        MENUITEM "Continuatio&n",               ID_GR_INS_CONIN
+        MENUITEM "Comment &Box",                ID_GR_INS_CMT
+        MENUITEM SEPARATOR
+        MENUITEM "&Step\t[S]",                  ID_GR_INS_STEP
+        MENUITEM "&Transition\t[T]",            ID_GR_INS_TRANSITION
+        MENUITEM "&Action\t[A]",                ID_GR_INS_ACTION
+        MENUITEM "Action &Block\t[B]",          ID_GR_INS_ACTIONBLOCK
+        MENUITEM "Alt&ernative Divergence/Convergence\t[D]", 
+                                                ID_GR_INS_DIVCON
+        MENUITEM "Simultaneous D&ivergence/Convergence\t[C]", 
+                                                ID_GR_INS_SDIVCON
+        MENUITEM "E&xception Action",           ID_GR_INS_EXCEPTION_ACTION
+        MENUITEM SEPARATOR
+        MENUITEM "&Powerrail\t[P]",             ID_GR_INS_POWER
+        MENUITEM "&Normal Contact\t[I]",        ID_GR_INS_CT_NORMAL
+        MENUITEM "&Closed Contact\t[I/]",       ID_GR_INS_CT_CLOSED
+        MENUITEM "P&ositve Transition-Sense Contact", ID_GR_INS_CT_POSTRANS
+        MENUITEM "Ne&gatve Transition-Sense Contact", ID_GR_INS_CT_NEGTRANS
+        MENUITEM "No&rmal Coil\t[Q]",           ID_GR_INS_CL_NORMAL
+        MENUITEM "N&egative Coil\t[Q/]",        ID_GR_INS_CL_NEGATIVE
+        MENUITEM "Set &Latch Coil",             ID_GR_INS_CL_SET
+        MENUITEM "Reset &Latch Coil",           ID_GR_INS_CL_RESET
+        MENUITEM "Posit&ive Transition-Sense Coil", ID_GR_INS_CL_POSTRANS
+        MENUITEM "Negati&ve Transition-Sense Coil", ID_GR_INS_CL_NEGTRANS
+    END
+    POPUP "&Options"
+    BEGIN
+        MENUITEM "&SFC Enabled",                ID_GR_OPT_SFC
+        MENUITEM SEPARATOR
+        MENUITEM "&Auto Insert Size",           ID_GR_OPT_STDSIZE
+        MENUITEM "&AutoRoute Mode",             ID_GR_OPT_RECON
+        MENUITEM "Signal &Warnings",            ID_GR_OPT_CHANGEWARN
+        MENUITEM SEPARATOR
+        POPUP "&Colors on Screen"
+        BEGIN
+            MENUITEM "&Paper",                      ID_GR_OPT_COLBACKGD
+            MENUITEM "Paper edge",                  ID_GR_OPT_COLEDGE
+            MENUITEM "&Grid",                       ID_GR_OPT_COLGRID
+            MENUITEM SEPARATOR
+            MENUITEM "&Normal",                     ID_GR_OPT_COLNORMAL
+            MENUITEM "&Select",                     ID_GR_OPT_COLSELECT
+            MENUITEM "&Error",                      ID_GR_OPT_COLERROR
+            MENUITEM "&Comment",                    ID_GR_OPT_COLCOMMENT
+            MENUITEM "Rubberband &Line",            ID_GR_OPT_COLRUBBER
+            MENUITEM "Edit L&ine",                  ID_GR_OPT_COLEDITLINE
+            MENUITEM "Highlight Pin",               ID_GR_OPT_COLLIGHTPIN
+            MENUITEM "Element &Background",         ID_GR_OPT_COLELEMBK
+            MENUITEM "Active Ladder &Background",   ID_GR_OPT_COLLADDBK
+            MENUITEM "FB/FCT/PRO Bac&kground",      ID_GR_OPT_COLFBLKBK
+            MENUITEM SEPARATOR
+            MENUITEM "Stoppoint",                   ID_GR_OPT_COLBRKREC
+            MENUITEM "Breakpoint Active",           ID_GR_OPT_COLBRKACT
+            MENUITEM "Breakpoint Disabled",         ID_GR_OPT_COLBRKDIS
+            MENUITEM "Breakpoint Deconnected",      ID_GR_OPT_COLBRKDEC
+            MENUITEM SEPARATOR
+            MENUITEM "SFC Manual Mode Paper",       ID_GR_OPT_COLBACKGD_SFC
+            MENUITEM "SFC Element Background",      ID_GR_OPT_COLELEMBK_SFC
+            MENUITEM "SFC Active Ladder Background", ID_GR_OPT_COLLADDBK_SFC
+            MENUITEM "SFC FB/FCT/PRO Background",   ID_GR_OPT_COLFBLKBK_SFC
+            MENUITEM "SFC Active Step/Action",      ID_GR_OPT_COLACTIVE_SFC
+            MENUITEM "SFC Forced Action/Transition", ID_GR_OPT_COLFORCED_SFC
+            MENUITEM "SFC Blocked Action/Transition", 
+                                                    ID_GR_OPT_COLBLOCKD_SFC
+        END
+        MENUITEM "F&ont",                       ID_GR_OPT_FONT
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&New Window",                 ID_WINDOW_NEW
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "&Tile",                       ID_WINDOW_TILE_HORZ
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+        MENUITEM SEPARATOR
+        MENUITEM "&About GrEditor... (4GR)",    ID_APP_ABOUT
+        MENUITEM "Statistic ..",                ID_GR_STATISTIC
+    END
+END
+
+IDR_GR_TYPE_SRVR_EMB MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM "&Update\tCtrl+S",             ID_FILE_UPDATE
+        MENUITEM "Save Copy &As...",            ID_FILE_SAVE_COPY_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&New Window",                 ID_WINDOW_NEW
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "&Tile",                       ID_WINDOW_TILE_HORZ
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+    END
+END
+
+IDR_GR_TYPE_SRVR_IP MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM "&Redo\tCtrl+Y",               ID_EDIT_REDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "&Delete\tDel",                ID_EDIT_CLEAR
+        MENUITEM "Select &All\tCtrl+A",         ID_GR_SEL_ALL
+        MENUITEM SEPARATOR
+        MENUITEM "&Route Selected Lines\tCtrl+R", ID_GR_ROUTE
+        MENUITEM SEPARATOR
+        MENUITEM "Insert/Delete R&ow Mode",     ID_GR_EDIT_ROW
+        MENUITEM "Insert/Delete Colu&mn Mode",  ID_GR_EDIT_COL
+        MENUITEM "&Line Mode\t[L]",             ID_GR_EDIT_LINE
+        MENUITEM "Resi&ze Mode",                ID_GR_EDIT_RESIZE
+        MENUITEM SEPARATOR
+        MENUITEM "&Find\tCtrl+F",               ID_EDIT_FIND
+        MENUITEM "R&eplace\tCtrl+H",            ID_EDIT_REPLACE
+        MENUITEM "Find &Next\tF3",              ID_EDIT_REPEAT
+    END
+    POPUP "&Insert"
+    BEGIN
+        MENUITEM "&Programming Unit ...",       ID_GR_INS_FB_CALL
+        POPUP "F&BD Syntax"
+        BEGIN
+            MENUITEM "Var &Read / Expression\t[R]", ID_GR_INS_VARIN
+            MENUITEM "Var &Write\t[W]",             ID_GR_INS_VAROUT
+            MENUITEM "Var &Feedback\t[F]",          ID_GR_INS_VARINOUT
+            MENUITEM "&Jump",                       ID_GR_INS_JMP
+            MENUITEM "&Label",                      ID_GR_INS_LAB
+            MENUITEM "Ret&urn",                     ID_GR_INS_RET
+            MENUITEM "C&onnector",                  ID_GR_INS_CONOUT
+            MENUITEM "Continuatio&n",               ID_GR_INS_CONIN
+            MENUITEM "Comment &Box",                ID_GR_INS_CMT
+        END
+        POPUP "&SFC Syntax"
+        BEGIN
+            MENUITEM "&Step\t[S]",                  ID_GR_INS_STEP
+            MENUITEM "&Transition\t[T]",            ID_GR_INS_TRANSITION
+            MENUITEM "&Action\t[A]",                ID_GR_INS_ACTION
+            MENUITEM "Action &Block\t[B]",          ID_GR_INS_ACTIONBLOCK
+            MENUITEM "Alt&ernative Divergence/Convergence\t[D]", 
+                                                    ID_GR_INS_DIVCON
+            MENUITEM "Simultaneous D&ivergence/Convergence\t[C]", 
+                                                    ID_GR_INS_SDIVCON
+            MENUITEM "E&xception Action",           ID_GR_INS_EXCEPTION_ACTION
+
+        END
+        POPUP "&LD Syntax"
+        BEGIN
+            MENUITEM "&Powerrail\t[P]",             ID_GR_INS_POWER
+            MENUITEM "&Normal Contact\t[I]",        ID_GR_INS_CT_NORMAL
+            MENUITEM "&Closed Contact\t[I /]",      ID_GR_INS_CT_CLOSED
+            MENUITEM "P&ositve Transition-Sense Contact", 
+                                                    ID_GR_INS_CT_POSTRANS
+            MENUITEM "Ne&gatve Transition-Sense Contact", 
+                                                    ID_GR_INS_CT_NEGTRANS
+            MENUITEM "No&rmal Coil\t[Q]",           ID_GR_INS_CL_NORMAL
+            MENUITEM "N&egative Coil\t[Q /]",       ID_GR_INS_CL_NEGATIVE
+            MENUITEM "&Set Latch Coil",             ID_GR_INS_CL_SET
+            MENUITEM "Rese&t Latch Coil",           ID_GR_INS_CL_RESET
+            MENUITEM "Pos&itive Transition-Sense Coil", 
+                                                    ID_GR_INS_CL_POSTRANS
+            MENUITEM "Negati&ve Transition-Sense Coil", 
+                                                    ID_GR_INS_CL_NEGTRANS
+        END
+    END
+    MENUITEM SEPARATOR
+    POPUP "&Options"
+    BEGIN
+        MENUITEM "&AutoRoute Mode",             ID_GR_OPT_RECON
+        MENUITEM "&Auto Insert Size",           ID_GR_OPT_STDSIZE
+        MENUITEM "Signal &Warnings",            ID_GR_OPT_CHANGEWARN
+        MENUITEM SEPARATOR
+        MENUITEM "&Zoom...",                    ID_GR_VIEW_ZOOM
+        MENUITEM "&Grid...",                    ID_GR_VIEW_GRID
+    END
+    POPUP "&Debug"
+    BEGIN
+        MENUITEM "Set &Watchpoint\tF8",         ID_GR_SET_WATCHPOINT
+        MENUITEM "Rem&ove All Watchpoints\tCtrl+Shift+F8", 
+                                                ID_GR_CLEAR_ALL_WATCHPOINTS
+        MENUITEM SEPARATOR
+        MENUITEM "Set / Remove &Breakpoint\tF9", ID_GR_TOGGLE_BREAKPOINT
+        MENUITEM "Remove &All Breakpoints\tCtrl+Shift+F9", 
+                                                ID_GR_REMOVE_ALL_BREAKPOINTS
+        MENUITEM "&Enable / Disable Breakpoint\tCtrl+F9", 
+                                                ID_GR_TOGGLE_BREAKPOINT_ENABLED
+
+        MENUITEM SEPARATOR
+        MENUITEM "SFC &Manual Mode",            ID_GR_TOGGLE_MANUAL_MODE
+        MENUITEM SEPARATOR
+        MENUITEM "&Continue\tF5",               ID_GR_CONTINUE_TASK
+        MENUITEM "Step &Into\tF11",             ID_GR_STEP_INTO
+        MENUITEM "Step &Over\tF10",             ID_GR_STEP_OVER
+        MENUITEM "Step O&ut\tShift+F11",        ID_GR_STEP_OUT
+        MENUITEM "Single SFC C&ycle\tF12",      ID_GR_PERFORM_CYCLE
+    END
+    MENUITEM SEPARATOR
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+    END
+END
+
+ID_GR_POPUP_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "0 default"
+    BEGIN
+        MENUITEM "&Line Mode",                  ID_GR_EDIT_LINE
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "&Delete\tDel",                ID_EDIT_CLEAR
+        MENUITEM SEPARATOR
+        MENUITEM "Insert Programming Unit ...", ID_GR_INS_FB_CALL
+        POPUP "Insert FBD &Syntax"
+        BEGIN
+            MENUITEM "Var &Read / Expression",      ID_GR_INS_VARIN
+            MENUITEM "Var &Write",                  ID_GR_INS_VAROUT
+            MENUITEM "Var &Feedback\t[F]",          ID_GR_INS_VARINOUT
+            MENUITEM "&Jump",                       ID_GR_INS_JMP
+            MENUITEM "&Label",                      ID_GR_INS_LAB
+            MENUITEM "Ret&urn",                     ID_GR_INS_RET
+            MENUITEM "C&onnector",                  ID_GR_INS_CONOUT
+            MENUITEM "Continuatio&n",               ID_GR_INS_CONIN
+            MENUITEM "Comment &Box",                ID_GR_INS_CMT
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Co&mment",                    ID_GR_EDIT_COMMENT
+        MENUITEM "&Uncomment",                  ID_GR_EDIT_UNCOMMENT
+    END
+    POPUP "1 FB"
+    BEGIN
+        MENUITEM "&Edit Instance Name",         ID_GR_EDIT_INSTAMCE
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "&Delete\tDel",                ID_EDIT_CLEAR
+        MENUITEM SEPARATOR
+        MENUITEM "Co&mment",                    ID_GR_EDIT_COMMENT
+        MENUITEM "&Uncomment",                  ID_GR_EDIT_UNCOMMENT
+    END
+    POPUP "2 Lab"
+    BEGIN
+        MENUITEM "&Edit",                       ID_GR_EDIT_NAME
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "&Delete\tDel",                ID_EDIT_CLEAR
+        MENUITEM SEPARATOR
+        MENUITEM "Co&mment",                    ID_GR_EDIT_COMMENT
+        MENUITEM "&Uncomment",                  ID_GR_EDIT_UNCOMMENT
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties",                 ID_GR_EDIT_PROPERTY
+    END
+    POPUP "3 Var"
+    BEGIN
+        MENUITEM "&Edit",                       ID_GR_EDIT_NAME
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "&Delete\tDel",                ID_EDIT_CLEAR
+        MENUITEM SEPARATOR
+        MENUITEM "Co&mment",                    ID_GR_EDIT_COMMENT
+        MENUITEM "&Uncomment",                  ID_GR_EDIT_UNCOMMENT
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties",                 ID_GR_EDIT_PROPERTY
+    END
+    POPUP "4 ActQual"
+    BEGIN
+        MENUITEM "n&one",                       ID_GR_EDIT_ACT_NONE
+        MENUITEM "&N",                          ID_GR_EDIT_ACT_N
+        MENUITEM "&R",                          ID_GR_EDIT_ACT_R
+        MENUITEM "&S",                          ID_GR_EDIT_ACT_S
+        MENUITEM "&L",                          ID_GR_EDIT_ACT_L
+        MENUITEM "&D",                          ID_GR_EDIT_ACT_D
+        MENUITEM "&P",                          ID_GR_EDIT_ACT_P
+        MENUITEM "SD",                          ID_GR_EDIT_ACT_SD
+        MENUITEM "DS",                          ID_GR_EDIT_ACT_DS
+        MENUITEM "SL",                          ID_GR_EDIT_ACT_SL
+        MENUITEM "P&0",                         ID_GR_EDIT_ACT_P0
+        MENUITEM "P&1",                         ID_GR_EDIT_ACT_P1
+    END
+    POPUP "5 Con"
+    BEGIN
+        MENUITEM "&Edit",                       ID_GR_EDIT_NAME
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "&Delete\tDel",                ID_EDIT_CLEAR
+        MENUITEM SEPARATOR
+        MENUITEM "Co&mment",                    ID_GR_EDIT_COMMENT
+        MENUITEM "&Uncomment",                  ID_GR_EDIT_UNCOMMENT
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties",                 ID_GR_EDIT_PROPERTY
+    END
+    POPUP "6 Cmt"
+    BEGIN
+        MENUITEM "&Edit",                       ID_GR_EDIT_NAME
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "&Delete\tDel",                ID_EDIT_CLEAR
+        MENUITEM SEPARATOR
+        MENUITEM "Co&mment",                    ID_GR_EDIT_COMMENT
+        MENUITEM "&Uncomment",                  ID_GR_EDIT_UNCOMMENT
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties",                 ID_GR_EDIT_PROPERTY
+    END
+    POPUP "7 Step"
+    BEGIN
+        MENUITEM "&Edit",                       ID_GR_EDIT_NAME
+        MENUITEM SEPARATOR
+        MENUITEM "Toggle &Init",                ID_GR_STEP_TOGGLEINIT
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "&Delete\tDel",                ID_EDIT_CLEAR
+        MENUITEM SEPARATOR
+        MENUITEM "Co&mment",                    ID_GR_EDIT_COMMENT
+        MENUITEM "&Uncomment",                  ID_GR_EDIT_UNCOMMENT
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties",                 ID_GR_EDIT_PROPERTY
+    END
+    POPUP "8 Tran"
+    BEGIN
+        MENUITEM "&Edit",                       ID_GR_EDIT_NAME
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "&Delete\tDel",                ID_EDIT_CLEAR
+        MENUITEM SEPARATOR
+        MENUITEM "Co&mment",                    ID_GR_EDIT_COMMENT
+        MENUITEM "&Uncomment",                  ID_GR_EDIT_UNCOMMENT
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties",                 ID_GR_EDIT_PROPERTY
+    END
+    POPUP "9 Act"
+    BEGIN
+        MENUITEM "&Edit",                       ID_GR_EDIT_NAME
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "&Delete\tDel",                ID_EDIT_CLEAR
+        MENUITEM SEPARATOR
+        MENUITEM "Co&mment",                    ID_GR_EDIT_COMMENT
+        MENUITEM "&Uncomment",                  ID_GR_EDIT_UNCOMMENT
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties",                 ID_GR_EDIT_PROPERTY
+    END
+    POPUP "10 Div"
+    BEGIN
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "&Delete\tDel",                ID_EDIT_CLEAR
+        MENUITEM SEPARATOR
+        MENUITEM "Co&mment",                    ID_GR_EDIT_COMMENT
+        MENUITEM "&Uncomment",                  ID_GR_EDIT_UNCOMMENT
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties",                 ID_GR_EDIT_PROPERTY
+    END
+    POPUP "11 Monitor"
+    BEGIN
+        MENUITEM "Set &Watchpoint\tF8",         ID_GR_SET_WATCHPOINT
+        MENUITEM "Remove Watchpoint\tCtrl-F8",  ID_GR_CLEAR_WATCHPOINT
+        MENUITEM "Rem&ove All Watchpoints\tCtrl+Shift+F8", 
+                                                ID_GR_CLEAR_ALL_WATCHPOINTS
+        MENUITEM SEPARATOR
+        MENUITEM "Set/Remove &Breakpoint\tF9",  ID_GR_TOGGLE_BREAKPOINT
+        MENUITEM "Remove &All Breakpoints\tCtrl+Shift+F9", 
+                                                ID_GR_REMOVE_ALL_BREAKPOINTS
+        MENUITEM "&Enable/Disable Breakpoint\tCtrl+F9", 
+                                                ID_GR_TOGGLE_BREAKPOINT_ENABLED
+
+        MENUITEM "&Continue\tF5",               ID_GR_CONTINUE_TASK
+        MENUITEM "Step &Into\tF11",             ID_GR_STEP_INTO
+        MENUITEM "Step &Over\tF10",             ID_GR_STEP_OVER
+        MENUITEM "Step O&ut\tShift+F11",        ID_GR_STEP_OUT
+
+    END
+    POPUP "12 MonitorSFC"
+    BEGIN
+        MENUITEM "Set &Watchpoint\tF8",         ID_GR_SET_WATCHPOINT
+        MENUITEM "Remove Watchpoint\tCtrl-F8",  ID_GR_CLEAR_WATCHPOINT
+        MENUITEM "Rem&ove All Watchpoints\tCtrl+Shift+F8", 
+                                                ID_GR_CLEAR_ALL_WATCHPOINTS
+        MENUITEM "Write Value",                 ID_GR_WRITE_WATCHPOINT
+        MENUITEM SEPARATOR
+        MENUITEM "Set/Remove &Breakpoint\tF9",  ID_GR_TOGGLE_BREAKPOINT
+        MENUITEM "Remove &All Breakpoints\tCtrl+Shift+F9", 
+                                                ID_GR_REMOVE_ALL_BREAKPOINTS
+        MENUITEM "&Enable/Disable Breakpoint\tCtrl+F9", 
+                                                ID_GR_TOGGLE_BREAKPOINT_ENABLED
+
+        MENUITEM SEPARATOR
+        MENUITEM "SFC &Manual Mode",            ID_GR_TOGGLE_MANUAL_MODE
+        MENUITEM SEPARATOR
+        MENUITEM "&Continue\tF5",               ID_GR_CONTINUE_TASK
+        MENUITEM "Step &Into\tF11",             ID_GR_STEP_INTO
+        MENUITEM "Step &Over\tF10",             ID_GR_STEP_OVER
+        MENUITEM "Step O&ut\tShift+F11",        ID_GR_STEP_OUT
+        MENUITEM "Single SFC &Cycle\tF12",      ID_GR_PERFORM_CYCLE
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_GR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "A",            ID_GR_SEL_ALL,          VIRTKEY, CONTROL, NOINVERT
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "F",            ID_EDIT_FIND,           VIRTKEY, CONTROL, NOINVERT
+    "H",            ID_EDIT_REPLACE,        VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "R",            ID_GR_ROUTE,            VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_ESCAPE,      ID_GR_CANCEL_EDIT_SRVR, VIRTKEY, NOINVERT
+    VK_F1,          ID_HELP,                VIRTKEY, NOINVERT
+    VK_F1,          ID_CONTEXT_HELP,        VIRTKEY, SHIFT, NOINVERT
+    VK_F2,          ID_BOOKMARKSET,         VIRTKEY, CONTROL, NOINVERT
+    VK_F2,          ID_BOOKMARKNEXT,        VIRTKEY, NOINVERT
+    VK_F2,          ID_BOOKMARKPREV,        VIRTKEY, SHIFT, NOINVERT
+    VK_F2,          ID_BOOKMARKDELETE,      VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    VK_F10,         ID_GR_CONTEXT_MENU,     VIRTKEY, SHIFT, NOINVERT
+    VK_F12,         ID_GR_EDIT_AUTOSIZE,    VIRTKEY, SHIFT, NOINVERT
+    VK_F3,          ID_EDIT_REPEAT,         VIRTKEY, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_F8,          ID_GR_SET_WATCHPOINT,   VIRTKEY, NOINVERT
+    VK_F8,          ID_GR_CLEAR_WATCHPOINT, VIRTKEY, CONTROL, NOINVERT
+    VK_F9,          ID_GR_TOGGLE_BREAKPOINT, VIRTKEY, NOINVERT
+    VK_F9,          ID_GR_TOGGLE_BREAKPOINT_ENABLED, VIRTKEY, CONTROL, 
+                                                    NOINVERT
+    VK_F9,          ID_GR_REMOVE_ALL_BREAKPOINTS, VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Y",            ID_EDIT_REDO,           VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+IDR_GR_TYPE_SRVR_IP ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "A",            ID_GR_SEL_ALL,          VIRTKEY, CONTROL, NOINVERT
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "F",            ID_EDIT_FIND,           VIRTKEY, CONTROL, NOINVERT
+    "H",            ID_EDIT_REPLACE,        VIRTKEY, CONTROL, NOINVERT
+    "R",            ID_GR_ROUTE,            VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_UP,          ID_GR_XREF_LAST,        VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    VK_DOWN,        ID_GR_XREF_NEXT,        VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    VK_ESCAPE,      ID_GR_CANCEL_EDIT_SRVR, VIRTKEY, NOINVERT
+    VK_F1,          ID_HELP,                VIRTKEY, NOINVERT
+    VK_F1,          ID_CONTEXT_HELP,        VIRTKEY, SHIFT, NOINVERT
+    VK_F2,          ID_BOOKMARKNEXT,        VIRTKEY, NOINVERT
+    VK_F2,          ID_BOOKMARKSET,         VIRTKEY, CONTROL, NOINVERT
+    VK_F2,          ID_BOOKMARKPREV,        VIRTKEY, SHIFT, NOINVERT
+    VK_F2,          ID_BOOKMARKDELETE,      VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    VK_F3,          ID_EDIT_REPEAT,         VIRTKEY, NOINVERT
+    VK_F4,          ID_GR_SHOW_VAR_SEL_POPUP, VIRTKEY, NOINVERT
+    VK_F4,          ID_GR_SHOW_VAR_SELECTION, VIRTKEY, SHIFT, NOINVERT
+    VK_F5,          ID_GR_CONTINUE_TASK,    VIRTKEY, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_F8,          ID_GR_SET_WATCHPOINT,   VIRTKEY, NOINVERT
+    VK_F8,          ID_GR_CLEAR_WATCHPOINT, VIRTKEY, CONTROL, NOINVERT
+    VK_F8,          ID_GR_CLEAR_ALL_WATCHPOINTS, VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    VK_F9,          ID_GR_TOGGLE_BREAKPOINT, VIRTKEY, NOINVERT
+    VK_F9,          ID_GR_TOGGLE_BREAKPOINT_ENABLED, VIRTKEY, CONTROL, 
+                                                    NOINVERT
+    VK_F9,          ID_GR_REMOVE_ALL_BREAKPOINTS, VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    VK_F11,         ID_GR_STEP_INTO,        VIRTKEY, NOINVERT
+    VK_F10,         ID_GR_STEP_OVER,        VIRTKEY, NOINVERT
+    VK_F11,         ID_GR_STEP_OUT,         VIRTKEY, SHIFT, NOINVERT
+    VK_F10,         ID_GR_CONTEXT_MENU,     VIRTKEY, SHIFT, NOINVERT
+    VK_F12,         ID_GR_PERFORM_CYCLE,    VIRTKEY, NOINVERT
+    VK_F12,         ID_GR_EDIT_AUTOSIZE,    VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Y",            ID_EDIT_REDO,           VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+IDR_GR_TYPE_SRVR_EMB ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "R",            ID_GR_ROUTE,            VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_UPDATE,         VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_UP,          ID_GR_XREF_LAST,        VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    VK_DOWN,        ID_GR_XREF_NEXT,        VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    VK_ESCAPE,      ID_GR_CANCEL_EDIT_SRVR, VIRTKEY, NOINVERT
+    VK_F1,          ID_HELP,                VIRTKEY, NOINVERT
+    VK_F1,          ID_CONTEXT_HELP,        VIRTKEY, SHIFT, NOINVERT
+    VK_F2,          ID_BOOKMARKSET,         VIRTKEY, CONTROL, NOINVERT
+    VK_F2,          ID_BOOKMARKNEXT,        VIRTKEY, NOINVERT
+    VK_F2,          ID_BOOKMARKPREV,        VIRTKEY, SHIFT, NOINVERT
+    VK_F2,          ID_BOOKMARKDELETE,      VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    VK_F11,         ID_GR_STEP_INTO,        VIRTKEY, NOINVERT
+    VK_F10,         ID_GR_STEP_OVER,        VIRTKEY, NOINVERT
+    VK_F11,         ID_GR_STEP_OUT,         VIRTKEY, SHIFT, NOINVERT
+
+
+    VK_F10,         ID_GR_CONTEXT_MENU,     VIRTKEY, SHIFT, NOINVERT
+    VK_F12,         ID_GR_EDIT_AUTOSIZE,    VIRTKEY, SHIFT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// TYPELIB
+//
+
+1                       TYPELIB MOVEABLE PURE   "GrEditorIF.tlb"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDP_GR_OLE_INIT_FAILED  "OLE initialization has failed.  Make sure that the versions of the OLE libraries are correct."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_GR_EDIT_DEL         "Do you really want to delete %1?"
+    IDS_GR_EDIT_DELSEL      "Do you really want to delete the selected elements?"
+    IDS_GR_EDIT_DELLINE     "Do you really want to delete this line?"
+    IDS_GR_EDIT_DELSIGNAL   "Do you really want to delete this signal?"
+    IDS_GR_CANNOT_CONTINUE_TASK "Failed to continue task"
+    IDS_GR_CANNOT_STEP_INTO "Failed to perform step into"
+    IDS_GR_CANNOT_STEP_OVER "Failed to perform step over"
+    IDS_GR_CANNOT_STEP_OUT "Failed to perform step out"
+    IDS_GR_PRINTHEADER      "ATCMControl - Graphic Editor"
+    IDS_GR_PRINTFOOTER      "Page %d/%d"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_GR_CANNOT_BLOCK_TRANSITION "Failed to block transition."
+    IDS_GR_CANNOT_FORCE_TRANSITIONS "Failed to force all transitions."
+    IDS_GR_CANNOT_FORCE_ACTION "Failed to force action."
+    IDS_GR_CANNOT_BLOCK_ACTION "Failed to block action."
+    IDS_GR_CANNOT_BLOCK_ACTIONS "Failed to block all actions."
+    IDS_GR_READONLY_WARNING "The file is readonly. Do you want to continue editing?"
+    IDS_GR_CANNOT_SET_MANUAL_MODE "Failed to set SFC manual mode."
+    IDS_GR_CANNOT_RESET_MANUAL_MODE "Failed to reset SFC manual mode."
+    IDS_GR_CANNOT_WRITE_VAR "Failed to write variable"
+    IDS_GR_MSGBOX_TITLE     "Graphic Editor"
+    IDS_GR_REG_SECTION      "Settings"
+    IDS_GR_REG_RUBBLINE     "Draw Rubberlines"
+    IDS_GR_REG_ZOOMVALUE    "Zoom Factor"
+    IDS_GR_REG_RUBB_RECON   "Reconnect with Rubberlines"
+    IDS_GR_STACTION_WARN    "Warning: Elements inside of Action!"
+    IDS_GR_STACTION_WARN_YN "Warning: Elements inside of Action!\nThe elements will be deleted!\nAbort ?"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_GR_EDIT_NOTFOUND    "The string '%s' was not found."
+    IDS_GR_ERR_OVERLAP      "This operation leads to overlapping elements - abort."
+    IDS_GR_REG_STEPSIZE     "Step size"
+    IDS_GR_REG_TRANSIZE     "Set element size automatically"
+    IDS_GR_REG_CTSIZE       "Contact size"
+    IDS_GR_REG_CLSIZE       "Coil size"
+    IDS_GR_REG_ACTSIZE      "Action size"
+    IDS_GR_REG_ACTBLKSIZE   "Actionblock size"
+    IDS_GR_REG_VARSIZE      "Variable size"
+    IDS_GR_REG_LINESIZE     "Line size"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_GR_INS_POWER         "Inserts the correct LD syntax for a power rail\nInsert power rail [P]"
+    ID_GR_INS_CT_NORMAL     "Inserts the correct LD syntax for a normal contact\nInsert normal contact [I]"
+    ID_GR_INS_CT_CLOSED     "Inserts the correct LD syntax for a closed contact\nInsert closed contact [I /]"
+    ID_GR_INS_CT_POSTRANS   "Inserts the correct LD syntax for a positve transition-sensing contact \nInsert positve transition-sensing contact"
+    ID_GR_INS_CT_NEGTRANS   "Inserts the correct LD syntax for a negative transition-sensing contact \nInsert negative transition-sensing contact"
+    ID_GR_INS_CL_NORMAL     "Inserts the correct LD syntax for a normal coil\nInsert normal coil [Q]"
+    ID_GR_INS_CL_NEGATIVE   "Inserts the correct LD syntax for a negative coil\nInsert negative coil [Q /]"
+    ID_GR_INS_CL_SET        "Inserts the correct LD syntax for a set-latch coil\nInsert set-latch coil"
+    ID_GR_INS_CL_RESET      "Inserts the correct LD syntax for a reset-latch coil\nInsert reset-latch coil"
+    ID_GR_INS_CL_POSTRANS   "Inserts the correct LD syntax for a positive transition-sensing coil\nInsert positive transition-sensing coil"
+    ID_GR_INS_CL_NEGTRANS   "Inserts the correct LD syntax for a negative transition-sensing coil\nInsert negative transition-sensing coil"
+    ID_GR_OPT_STDSIZE       "Adapt element size to name size on insertion from toolbar\nAuto Insert Size"
+    ID_GR_INS_HLINE         "Inserts the correct syntax for a horizontal line\nInsert Horizontal Line [Shift+Cursor]"
+    ID_GR_INS_VLINE         "Inserts the correct syntax for a vertical line\nInsert Vertical Line [Shift+Cursor]"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_GR_OPT_CHANGEWARN    "Warn on multiple signal changes after move operations\nSignal Warnings"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_GR_REG_PRAILSIZE    "Power Rail size"
+    IDS_GR_REG_AUTOSIZE     "Auto size"
+    IDS_GR_REG_CHANGEWARN   "Signal Warnings"
+    IDS_GR_CHANGE_WARNING   "Multiple signals have changed."
+    IDS_GR_REG_FBLKSIZE     "Function Block Size"
+    IDS_GR_REG_FUN_SIZE     "Function Size"
+    IDS_GR_REG_PRC_SIZE     "Procedure Size"
+    IDS_GR_WRONG_VAR_SYNTAX "Wrong variable syntax"
+    IDS_GR_WRONG_VALUE_SYNTAX "Wrong value syntax"
+    IDS_GR_NO_TIME_QUALIFIER "Sorry, Time Qualifier not yet implemented!"
+    IDS_GR_FAILED_TO_WRITE_VAR "Failed to write variable"
+    IDS_GR_SFC_ACTION_TEXT_BLOCKED "blocked"
+    IDS_GR_SFC_ACTION_TEXT_FORCED "forced"
+    IDS_GR_SFC_ACTION_TEXT_FORCED_PERMANENTLY "forced permanently"
+    IDS_GR_CONMENU_EDIT_CUT "Cu&t\tCtrl+X"
+    IDS_GR_CONMENU_EDIT_COPY "&Copy\tCtrl+C"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_GR_CONMENU_EDIT_PASTE "&Paste\tCtrl+V"
+    IDS_GR_CONMENU_EDIT_CLEAR "&Delete\tDel"
+    IDS_GR_CONMENU_INSERT_FB_CALL "&Insert Programming Unit..."
+    IDS_GR_CONMENU_INSERT_LRU_FIRST "Insert &LRU Prog. Unit"
+    IDS_GR_CONMENU_SHOW_VAR_SELECTION "Show Variable &Selection...\tShift+F4"
+    IDS_GR_CONMENU_SHOW_VAR_SEL_POPUP "Select Variable\tF4"
+    IDS_GR_CONMENU_XREF_QUERY "Show &Cross Reference"
+    IDS_GR_CONMENU_XREF_LAST "Last Reference\tCtrl+Shift+Down"
+    IDS_GR_CONMENU_XREF_NEXT "Next Reference\tCtrl+Shift+Up"
+    IDS_GR_CONMENU_INSERT_VAR "&VAR"
+    IDS_GR_CONMENU_INSERT_CONST "C&ONST"
+    IDS_GR_CONMENU_INSERT_VAR_GLOBAL "VAR_&GLOBAL"
+    IDS_GR_CONMENU_INSERT_VAR_EXTERNAL "VAR_E&XTERNAL"
+    IDS_GR_CONMENU_INSERT_ASSIGNMENT "&Assignment"
+    IDS_GR_CONMENU_INSERT_IF "&IF"
+    IDS_GR_CONMENU_INSERT_CASE "&CASE"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_GR_CONMENU_INSERT_FOR "&FOR"
+    IDS_GR_CONMENU_INSERT_WHILE "&WHILE"
+    IDS_GR_CONMENU_INSERT_REPEAT "&REPEAT"
+    IDS_GR_CONMENU_INSERT_RETURN "RE&TURN"
+    IDS_GR_CONMENU_INSERT_EXIT "&EXIT"
+    IDS_GR_CONMENU_INSERT_INITIALSTEP "INITIA&L_STEP"
+    IDS_GR_CONMENU_INSERT_STEP "&STEP"
+    IDS_GR_CONMENU_INSERT_ACTION "ACTI&ON"
+    IDS_GR_CONMENU_INSERT_TRANSITION "TRA&NSITION"
+    IDS_GR_CONMENU_INSERT_ST_SYNTAX "Insert ST &Syntax"
+    IDS_GR_CONMENU_VIEW_OBJHELP "&View User Help"
+    IDS_GR_CONMENU_SET_WATCHPOINT "Set &Watchpoint\tF8"
+    IDS_GR_CONMENU_CLEAR_WATCHPOINT "&Remove Watchpoint\tCtrl+F8"
+    IDS_GR_CONMENU_CLEAR_ALL_WATCHPOINTS 
+                            "Rem&ove All Watchpoints\tCtrl+Shift+F8"
+    IDS_GR_CONMENU_WRITE_WATCHPOINT "Write &Value"
+    IDS_GR_CONMENU_TOGGLE_BREAKPOINT "Set / Remove &Breakpoint\tF9"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_GR_CONMENU_REMOVE_ALL_BREAKPOINTS 
+                            "Remove &All Breakpoints\tCtrl+Shift+F9"
+    IDS_GR_CONMENU_TOGGLE_BREAKPOINT_ENABLED 
+                            "&Enable / Disable Breakpoint\tCtrl+F9"
+    IDS_GR_CONMENU_TOGGLE_MANUAL_MODE "SFC Ma&nual Mode"
+    IDS_GR_CONMENU_CONTINUE_TASK "&Continue\tF5"
+    IDS_GR_CONMENU_STEP_INTO "Step &Into\tF11"
+    IDS_GR_CONMENU_STEP_OVER "Step &Over\tF10"
+    IDS_GR_CONMENU_STEP_OUT "Step O&ut\tShift+F11"
+    IDS_GR_CONMENU_PERFORM_CYCLE "Single SFC C&ycle\tF12"
+    IDS_GR_CONMENU_BOOKMARKSET "Toggle &Bookmark\tCtrl-F2"
+    IDS_GR_CONMENU_BOOKMARKNEXT "Ne&xt Bookmark\tF2"
+    IDS_GR_CONMENU_BOOKMARKPREV "P&revious Bookmark\tShift-F2"
+    IDS_GR_CONMENU_BOOKMARKCLEAR "Remove &all Bookmarks\tShift-Ctrl-F2"
+    IDS_GR_CONMENU_FORCE_TRANSITION_ONCE "&Force Transition Once"
+    IDS_GR_CONMENU_FORCE_TRANSITION "Force Transition &Permanently"
+    IDS_GR_CONMENU_BLOCK_TRANSITION "B&lock Transition Permanently"
+    IDS_GR_CONMENU_FORCE_ALL_TRANSITIONS "F&orce All Transitions"
+    IDS_GR_CONMENU_BLOCK_ALL_TRANSITIONS "Bloc&k All Transitions"
+    IDS_GR_CONMENU_REVERT_ALL_TRANSITIONS "Rever&t All Transitions"
+    IDS_GR_CONMENU_GLOBALLY_FORCE_ALL_TRANSITIONS 
+                            "&Globally Force All Transitions"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_GR_CONMENU_FORCE_ACTION_ONCE "Force Ac&tion Once"
+    IDS_GR_CONMENU_FORCE_ACTION "Force Action Pe&rmanently"
+    IDS_GR_CONMENU_BLOCK_ACTION "Bloc&k Action Permanently"
+    IDS_GR_CONMENU_FORCE_ALL_ACTIONS "Force All Actions"
+    IDS_GR_CONMENU_BLOCK_ALL_ACTIONS "Block All Actions"
+    IDS_GR_CONMENU_REVERT_ALL_ACTIONS "Revert All Actions"
+    IDS_GR_CONMENU_GOBALLY_BLOCK_ALL_ACTIONS "Globally Block All Actions"
+    IDS_GR_CONMENU_EDIT_LINE "&Line Mode"
+    IDS_GR_CONMENU_EDIT_INSTAMCE "&Edit Instance Name"
+    IDS_GR_CONMENU_EDIT_NAME "&Edit"
+    IDS_GR_CONMENU_STEP_TOGGLEINIT "Toggle &Init"
+    IDS_GR_CONMENU_EDIT_ACT_NONE "n&one"
+    IDS_GR_CONMENU_INS_VARIN "Var &Read / Expression\t[R]"
+    IDS_GR_CONMENU_INS_VAROUT "Var &Write\t[W]"
+    IDS_GR_CONMENU_INS_VARINOUT "Var &Feedback\t[F]"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_GR_CONMENU_INS_JMP "&Jump"
+    IDS_GR_CONMENU_INS_LAB "&Label"
+    IDS_GR_CONMENU_INS_RET "Ret&urn"
+    IDS_GR_CONMENU_INS_CONOUT "C&onnector"
+    IDS_GR_CONMENU_INS_CONIN "Continuatio&n"
+    IDS_GR_CONMENU_INS_CMT "Comment &Box"
+    IDS_GR_CONMENU_SUBMENU_FBD "Insert &FBD Syntax"
+    IDS_GR_CONMENU_INS_STEP "&Step\t[S]"
+    IDS_GR_CONMENU_INS_TRANSITION "&Transition\t[T]"
+    IDS_GR_CONMENU_INS_ACTION "&Action\t[A]"
+    IDS_GR_CONMENU_INS_ACTIONBLOCK "Action &Block\t[B]"
+    IDS_GR_CONMENU_INS_DIVCON "Alt&ernative Divergence/Convergence\t[D]"
+    IDS_GR_CONMENU_INS_SDIVCON "Simultaneous D&ivergence/Convergence\t[C]"
+    IDS_GR_CONMENU_INS_EXCEPTION_ACTION "E&xception Action"
+    IDS_GR_CONMENU_INS_SUBMENU_SFC "Insert &SFC Syntax"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_GR_CONMENU_INS_SUBMENU_LD "Insert &LD Syntax"
+    IDS_GR_CONMENU_INS_POWER "&Powerrail\t[P]"
+    IDS_GR_CONMENU_CT_NORMAL "&Normal Contact\t[I]"
+    IDS_GR_CONMENU_CT_CLOSED "&Closed Contact\t[I /]"
+    IDS_GR_CONMENU_CT_POSTRANS "P&ositve Transition-Sense Contact"
+    IDS_GR_CONMENU_CT_NEGTRANS "Ne&gatve Transition-Sense Contact"
+    IDS_GR_CONMENU_CL_NORMAL "No&rmal Coil\t[Q]"
+    IDS_GR_CONMENU_CL_NEGATIVE "N&egative Coil\t[Q /]"
+    IDS_GR_CONMENU_CL_SET "&Set Latch Coil"
+    IDS_GR_CONMENU_CL_RESET "Rese&t Latch Coil"
+    IDS_GR_CONMENU_CL_POSTRANS "Pos&itve Transition-Sense Coil"
+    IDS_GR_CONMENU_CL_NEGTRANS "Negati&ve Transition-Sense Coil"
+    IDS_GR_CONMENU_EDIT_COMMENT "Comme&nt"
+    IDS_GR_CONMENU_EDIT_UNCOMMENT "&Uncomment"
+    IDS_GR_CONMENU_EDIT_PROP_FBDACTION "&FBD - Action"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_GR_CONMENU_EDIT_PROP_LDACTION "&LD - Action"
+    IDS_GR_CONMENU_EDIT_PROP_STACTION "&ST - Action"
+    IDS_GR_CONMENU_EDIT_PROPERTY "&Properties"
+    IDS_GR_DLG_PROPACT_QUAL_NONE "    Non-stored (null qualifier)"
+    IDS_GR_DLG_PROPACT_QUAL_N " N  Non-stored"
+    IDS_GR_DLG_PROPACT_QUAL_R " R  overriding Reset"
+    IDS_GR_DLG_PROPACT_QUAL_S " S  Set (Stored)"
+    IDS_GR_DLG_PROPACT_QUAL_L " L  time Limited"
+    IDS_GR_DLG_PROPACT_QUAL_D " D  time Delayed"
+    IDS_GR_DLG_PROPACT_QUAL_P " P  Pulse"
+    IDS_GR_DLG_PROPACT_QUAL_SD " SD Stored and time Delayed"
+    IDS_GR_DLG_PROPACT_QUAL_DS " DS Delayed and Stored"
+    IDS_GR_DLG_PROPACT_QUAL_SL " SL Stored and time Limited"
+    IDS_GR_DLG_PROPACT_QUAL_P0 " P0 Pulse, Falling Edge"
+    IDS_GR_DLG_PROPACT_QUAL_P1 " P1 Pulse, Rising Edge"
+    IDS_GR_DLG_PROPVAR_TYPE_VARREAD  "VAR READ"
+    IDS_GR_DLG_PROPVAR_TYPE_VARWRITE "VAR WRITE"
+    IDS_GR_DLG_PROPVAR_TYPE_VARFEEDBACK "VAR FEEDBACK"
+    IDS_GR_DLG_PROPLD_TYPE_CONTACT "NORMAL CONTACT"
+    IDS_GR_DLG_PROPLD_TYPE_CONTACT_C "CLOSED CONTACT"
+    IDS_GR_DLG_PROPLD_TYPE_CONTACT_P "POS. TRANSITION-SENSE CONTACT"
+    IDS_GR_DLG_PROPLD_TYPE_CONTACT_N "NEG. TRANSITION-SENSE CONTACT"
+    IDS_GR_DLG_PROPCOIL_TYPE_NORMAL "NORMAL COIL"
+    IDS_GR_DLG_PROPCOIL_TYPE_NEGATIVE "NEGATIVE COIL"
+    IDS_GR_DLG_PROPCOIL_TYPE_POSTRAN "POS. TRANSITION-SENSE COIL"
+    IDS_GR_DLG_PROPCOIL_TYPE_NEGTRAN "NEG. TRANSITION-SENSE COIL"
+    IDS_GR_DLG_PROPCOIL_TYPE_SET "SET COIL"
+    IDS_GR_DLG_PROPCOIL_TYPE_RESET "RESET COIL"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_GR_MAINFRAME        "ATCM Graphic Editor"
+    IDR_GR_TYPE             "\n4Gr\n4Gr\n4GrEdit Files (*.4gr)\n.4gr\n4C_20_CE.GrEditor.Document\n4Gr Document"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "ATCM Grafic-Editor"
+    AFX_IDS_IDLEMESSAGE     "For Help, press F1"
+    AFX_IDS_HELPMODEMESSAGE "Select an object on which to get Help"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_NEW             "Creates a new file\nNew"
+    ID_FILE_OPEN            "Opens an existing file\nOpen [Ctrl+O]"
+    ID_FILE_CLOSE           "Closes the current file and prompts to save\nClose"
+    ID_FILE_SAVE            "Saves the active file\nSave [Ctrl+S]"
+    ID_FILE_SAVE_AS         "Saves the active file with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Changes the page setup for printing\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Opens the printer setup for changing the printer options\nPrint Setup"
+    ID_FILE_PRINT           "Prints the current file\nPrint [Ctrl+P]"
+    ID_FILE_PRINT_PREVIEW   "Previews the printing results\nPrint Preview"
+    ID_FILE_UPDATE          "Updates the container to show any changes\nUpdate"
+    ID_FILE_SAVE_COPY_AS    "Saves a copy of the current file with a new name\nSave Copy"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "Displays program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quits the application and prompts to save\nExit"
+    ID_HELP_INDEX           "Opens the help system\nHelp Topics"
+    ID_HELP_FINDER          "Opens the help system\nHelp Topics"
+    ID_HELP_USING           "Displays instructions about how to use help\nHelp"
+    ID_CONTEXT_HELP         "Displays help for clicked on buttons, menus and windows\nHelp [F1]"
+    ID_HELP                 "Displays help for current task or command\nHelp"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Opens the selected file"
+    ID_FILE_MRU_FILE2       "Opens the selected file"
+    ID_FILE_MRU_FILE3       "Opens the selected file"
+    ID_FILE_MRU_FILE4       "Opens the selected file"
+    ID_FILE_MRU_FILE5       "Opens the selected file"
+    ID_FILE_MRU_FILE6       "Opens the selected file"
+    ID_FILE_MRU_FILE7       "Opens the selected file"
+    ID_FILE_MRU_FILE8       "Opens the selected file"
+    ID_FILE_MRU_FILE9       "Opens the selected file"
+    ID_FILE_MRU_FILE10      "Opens the selected file"
+    ID_FILE_MRU_FILE11      "Opens the selected file"
+    ID_FILE_MRU_FILE12      "Opens the selected file"
+    ID_FILE_MRU_FILE13      "Opens the selected file"
+    ID_FILE_MRU_FILE14      "Opens the selected file"
+    ID_FILE_MRU_FILE15      "Opens the selected file"
+    ID_FILE_MRU_FILE16      "Opens the selected file"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_NEXT_PANE            "Switches to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switches back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WINDOW_NEW           "Opens another window for the current file\nNew Window"
+    ID_WINDOW_ARRANGE       "Arranges all icons at the bottom of the window\nArrange Icons"
+    ID_WINDOW_CASCADE       "Arranges the windows as overlapping tiles\nCascade Windows"
+    ID_WINDOW_TILE_HORZ     "Arranges the windows as horizontal, non-overlapping tiles\nTile Windows"
+    ID_WINDOW_TILE_VERT     "Arranges the windows as vertical, non-overlapping tiles\nTile Windows"
+    ID_WINDOW_SPLIT         "Splits the active window into panes\nSplit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Deletes the selection\nDelete [Del]"
+    ID_EDIT_CLEAR_ALL       "Deletes everything\nDelete All"
+    ID_EDIT_COPY            "Copies the selection to the clipboard\nCopy [Ctrl+C]"
+    ID_EDIT_CUT             "Cuts the selection and moves it to the clipboard\nCut [Ctrl+X]"
+    ID_EDIT_FIND            "Finds the specified text\nFind"
+    ID_EDIT_PASTE           "Inserts the clipboard contents at the insertion point\nPaste [Ctrl+V]"
+    ID_EDIT_REPEAT          "Finds the next occurance of the search text\nFind Next"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Selects the whole contents of the current file\nSelect All"
+    ID_EDIT_UNDO            "Undoes the last action\nUndo [Alt+BkSp]"
+    ID_EDIT_REDO            "Redoes the previously undone action\nRedo [Ctrl+Y]"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Shows or hides the toolbar\nView Toolbar"
+    ID_VIEW_STATUS_BAR      "Shows or hides the status bar\nView StatusBar"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Changes the window size"
+    AFX_IDS_SCMOVE          "Changes the window position"
+    AFX_IDS_SCMINIMIZE      "Reduces the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarges the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switches to the next file window"
+    AFX_IDS_SCPREVWINDOW    "Switches to the previous file window"
+    AFX_IDS_SCCLOSE         "Closes the active window and prompts to save"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restores the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activates the task list"
+    AFX_IDS_MDICHILD        "Activates this window"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Closes the preview of the printing results\nCancel Print Preview"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_GR_NOIECIDENT       "Identifier is not IEC 1131-3 conform."
+    IDS_GR_NAMEMASK_CON     "Connector%d"
+    IDS_GR_NAMEMASK_LAB     "Label%d"
+    IDS_GR_NAMEMASK_VAR     "Var%d"
+    IDS_GR_NAMEMASK_STEP    "Step%d"
+    IDS_GR_NAMEMASK_TRAN    "Transition%d"
+    IDS_GR_NAMEMASK_ACT     "Action%d"
+    IDS_GR_NAMEMASK_CONTACT "Con%d"
+    IDS_GR_NAMEMASK_COIL    "Coil%d"
+    IDS_GR_ERR_INVALID_POS  "Invalid position after property change\nAbort operation or move element! Abort?"
+    IDS_GR_NAMEMASK_FB      "Inst%d"
+    IDS_GR_CLIPTOOBIG       "The clipboard data is too big for the page."
+    IDS_GR_FINDNOWORDS      "The search for whole words is not supported in this version of the graphic editor."
+    IDS_GR_FINDNOREGEXP     "The search for regular expressions is not supported in this version of the graphic editor."
+    IDS_GR_CANNOT_PERFORM_CYCLE "Failed to perform SFC cycle."
+    IDS_GR_CANNOT_FORCE_TRANSITION "Failed to force transition."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_GR_SEL_ALL           "Selects the whole contents\nSelect All"
+    ID_GR_VIEW_TOOLBAR_SFC  "Shows or hides the SFC toolbar\nView SFC Toolbar"
+    ID_GR_VIEW_TOOLBAR_FBD  "Shows or hides the FBD toolbar\nView FBD Toolbar"
+    ID_GR_VIEW_TOOLBAR_LD   "Shows or hides the LD toolbar\nView LD Toolbar"
+    ID_GR_VIEW_ZOOM         "Zooms the view in and out\nZoom"
+    ID_GR_VIEW_ZOOMIN       "Zooms the view in\nZoom In [Num+, Ctrl+Num+]"
+    ID_GR_VIEW_ZOOMOUT      "Zooms the view out\nZoom Out [Num-, Ctrl+Num-]"
+    ID_GR_VIEW_GRID         "Changes the grid options\nGrid"
+    ID_GR_INS_FB            "Opens the programming unit selection and inserts a programming unit\nInsert Programming Unit"
+    ID_GR_INS_LAB           "Inserts the correct FBD syntax for a label\nInsert Label"
+    ID_GR_INS_CMT           "Inserts the correct FBD syntax for a comment box\nInsert Comment Box"
+    ID_GR_INS_RET           "Inserts the correct FBD syntax for a return statement\nInsert Return"
+    ID_GR_INS_STEP          "Inserts the correct SFC syntax for a step\nInsert Step [S]"
+    ID_GR_INS_TRANSITION    "Inserts the correct SFC syntax for a transition\nInsert Transition [T]"
+    ID_GR_INS_ACTION        "Inserts the correct SFC syntax for an action\nInsert Action [A]"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_GR_INS_DIVCON        "Inserts the correct SFC syntax for an alternative divergence / convergence\nInsert Alternative Divergence / Convergence [D]"
+    ID_GR_INS_SDIVCON       "Inserts the correct SFC syntax for a simultaneous divergence / convergence\nInsert Simultaneous Divergence / Convergence [C]"
+    ID_GR_INS_VAROUT        "Inserts the correct FBD syntax for a variable write\nInsert Var Write [W]"
+    ID_GR_INS_VARIN         "Inserts the correct FBD syntax for a variable read, constant or expression\nInsert Var Read / Expression [R]"
+    ID_GR_INS_JMP           "Inserts the correct FBD syntax for a jump\nInsert Jump"
+    ID_GR_INS_CONIN         "Inserts the correct FBD syntax for a line continuation\nInsert Continuation"
+    ID_GR_INS_CONOUT        "Inserts the correct FBD syntax for a line connector\nInsert Connector"
+    ID_GR_INS_ACTIONBLOCK   "Inserts the correct FBD syntax for an action block\nInsert Action Block [B]"
+    ID_GR_INS_VARINOUT      "Inserts the correct FBD syntax for a feedback variable\nInsert Var Feedback [F]"
+    ID_GR_EDIT_RESIZE       "Toggles resize mode on and off\nResize Mode"
+    ID_GR_EDIT_LINE         "Changes to line draw mode\nLine Draw Mode [L]"
+    ID_GR_EDIT_COMMENT      "Comments the selected elements and reads them only as comments\nComment"
+    ID_GR_EDIT_UNCOMMENT    "Uncomments the selected elements and reads the as syntax\nUncomment"
+    ID_GR_EDIT_NAME         "Edits the selected element\nEdit"
+    ID_GR_EDIT_PROPERTY     "Edits the properties of the selected element\nProperties"
+    ID_GR_EDIT_ROW          "Inserts or deletes a row at the insertion point\nInsert / Delete Row"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_GR_INS_FB_CALL       "Opens the programming unit selection for inserting a programming unit\nInsert Programming Unit"
+    ID_GR_CONTINUE_TASK     "Continues the stopped task\nContinue"
+    ID_GR_STEP_INTO         "Steps into the next statement\nStep into"
+    ID_GR_STEP_OVER         "Steps over the next statement\nStep over"
+    ID_GR_STEP_OUT          "Steps out of the current function\nStep out"
+    ID_GR_SET_WATCHPOINT    "Sets a watchpoint at the current position\nSet Watchpoint"
+    ID_GR_CLEAR_WATCHPOINT  "Removes the selected watchpoint\nRemove Watchpoint"
+    ID_GR_CLEAR_ALL_WATCHPOINTS 
+                            "Removes all watchpoints of the current instance\nRemove All Watchpoints"
+    ID_GR_REMOVE_ALL_BREAKPOINTS 
+                            "Removes all breakpoints of the current instance\nRemove All Breakpoints"
+    ID_GR_TOGGLE_BREAKPOINT "Sets / removes a breakpoint at the current position\nSet / Remove Breakpoint"
+    ID_GR_TOGGLE_BREAKPOINT_ENABLED 
+                            "Enables / disables a breakpoint at the current position\nEnable / Disable Breakpoint"
+    ID_GR_ROUTE             "Routes selected lines / signals\nRoute selected lines"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_GR_EDIT_COL          "Inserts or deletes a column at the insertion point\nInsert / Delete Column"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_GR_OPT_LINERUBB      "Draws the lines as rubberbands\nLine as Rubberband"
+    ID_GR_OPT_COLNORMAL     "Selects the normal pen color\nNormal Pen Color"
+    ID_GR_OPT_COLSELECT     "Select color of the selection pen\nSelection Pen Color"
+    ID_GR_OPT_COLERROR      "Selects the pen color if an error occurs\nError Pen Color"
+    ID_GR_OPT_COLCOMMENT    "Selects the color of the comment box\nComment Color"
+    ID_GR_OPT_COLRUBBER     "Selects the color of a rubberband line\nRubberband Color"
+    ID_GR_OPT_COLEDITLINE   "Selects the color of a normal line\nLine Color"
+    ID_GR_OPT_COLGRID       "Selects the grif color\nGrid Color"
+    ID_GR_OPT_COLBACKGD     "Selects the normal paper color\nPaper Color"
+    ID_GR_OPT_COLELEMBK     "Select the background color of an element\nElement Background Color"
+    ID_GR_OPT_COLFBLKBK     "Selects the background color of a programming unit\nProgramming Unit Background Color"
+    ID_GR_OPT_COLLADDBK     "Select the background color of an active ladder element\nActive Ladder Background Color"
+    ID_GR_OPT_COLEDGE       "Selects the color of the page margins\nPage Margin Color"
+    ID_GR_OPT_COLLIGHTPIN   "Selects the color for high lighting pins"
+    ID_GR_OPT_COLBRKREC     "Selects the breakpoint color if the breakpoint is reached\nReached Breakpoint Color"
+    ID_GR_OPT_COLBRKDIS     "Selects the breakpoint color if the breakpoint is disabled\nDisabled Breakpoint Color"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_GR_OPT_COLBRKACT     "Selects the breakpoint color if the breakpoint is active\nActive Breakpoint Color"
+    ID_GR_OPT_COLBRKDEC     "Selects the breakpoint color if the breakpoint is deconnected\nDeconnected Breakpoint Color"
+    ID_GR_OPT_COLBACKGD_SFC "Select the background color of an SFC in Manual mode\nSFC manual mode Background Color"
+    ID_GR_OPT_COLELEMBK_SFC "Select the background color of an SFC Element\nSFC Element Background Color"
+    ID_GR_OPT_COLLADDBK_SFC "Select the background color of an SFC Active Ladder Element\nSFC Active Ladder Background Color"
+    ID_GR_OPT_COLFBLKBK_SFC "Select the background color of an SFC FB/FCT/PRO\nSFC FB/FCT/PRO Background Color"
+    ID_GR_OPT_COLACTIVE_SFC "Select the color of an active SFC Step/Action\nSFC active Step/Action Color"
+    ID_GR_OPT_COLFORCED_SFC "Select the color of an forced SFC Action/Transition\nSFC forced Action/Transition Color"
+    ID_GR_OPT_COLBLOCKD_SFC "Select the color of an blocked SFC Action/Transition\nSFC blocked Action/Transition Color"
+    ID_GR_OPT_FONT          "Chooses the font\nChoose Font"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_GR_OPT_RECON         "Toggles the AutoRouter mode on and off; reconnects moved lines\nAutoRoute Mode"
+    ID_GR_OPT_SFC           "enable insertion of SFC elements\nEnable SFC elements"
+    ID_GR_DEBUG             "Shows some debug informations (only for development)"
+    ID_GR_DEBUG2            "Shows connect informations"
+    ID_GR_STEP_TOGGLEINIT   "Toggles init flag on and off\nToggle Init Flag"
+    ID_GR_EDIT_INSTAMCE     "Edits the name of the selected function block instance\nEdit Instance Name"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_GR_TOGGLE_MANUAL_MODE "Changes to SFC manual mode\nSFC manual Mode"
+    ID_GR_PERFORM_CYCLE     "Perform a single SFC cycle\nSingle Cycle"
+    ID_GR_FORCE_ALL_TRANSITIONS 
+                            "Forces all transitions\nForce all transitions"
+    ID_GR_BLOCK_ALL_TRANSITIONS 
+                            "Blockes all transitions\nBlockes all transitions"
+    ID_GR_REVERT_ALL_TRANSITIONS 
+                            "Reverts all transitions\nRevert all transitions"
+    ID_GR_BLOCK_ALL_ACTIONS "Blocks all actions\nBlock all actions"
+    ID_GR_FORCE_ALL_ACTIONS "Forces all actions\nForce all actions"
+    ID_GR_REVERT_ALL_ACTIONS "Reverts all actions\nRevert all actions"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_GR_STATISTIC         "Show statistic sheet data.\nSheet Statistic"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "CEGRError.rc"
+#include "res\GrEditor.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#include "afxprint.rc"       // printing/print preview resources
+#include "afxolesv.rc"       // OLE server resources
+#endif
+#include "secedit.rc"
+#include "key.rc"
+#include "aboutdlg.rc"
+#include "STEditor.rc"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

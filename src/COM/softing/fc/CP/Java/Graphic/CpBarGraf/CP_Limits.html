@@ -1,0 +1,240 @@
+<html>
+<head>
+<title>CP_Limits</title>
+
+<script>
+
+var limitValue1;
+var limitQuality1;
+var limitFgColor1;
+var limitValue3;
+var limitQuality3;
+var limitFgColor3;
+
+var limitsBgColor;
+
+
+var aBgColor = new Array(
+	"white",
+	"black",
+	"gray",
+	"lightgrey",
+	"darkgray",
+	"#c0c0c0"
+);
+
+var aFgColor = new Array(
+	"red",
+	"green",
+	"blue",
+	"#ffff00"
+);
+
+var aMin = new Array(
+	-1000,
+	-100,
+	-1,
+	0,
+	1,
+	100,
+	1000
+);
+
+var aQuality = new Array(
+	0,
+	1,
+	2
+);
+
+function init()
+{
+	update();
+	limitValue1Input.value=0.2;
+	limitValue3Input.value=0.8;
+	limitScaleMaxInput.value=1.0;
+	limitScaleMinInput.value=0;
+}
+
+function update(init)
+{
+	setTimeout("update()", 1000);
+	
+	//
+	// limit 1
+	//
+	limitQuality1 = aQuality[getSelValue(limitQuality1Select)];
+	limitValue1 = parseFloat(limitValue1Input.value);
+	limitFgColor1 = aFgColor[getSelValue(limitFg1Select)];
+
+	//
+	// limit 3
+	//
+	limitQuality3 = aQuality[getSelValue(limitQuality3Select)];
+	limitValue3 = parseFloat(limitValue3Input.value);
+	limitFgColor3 = aFgColor[getSelValue(limitFg3Select)];
+
+	//
+	// global
+	//
+	limitScaleQuality = aQuality[getSelValue(limitQualitySelect)];	
+	limitScaleMax = parseFloat(limitScaleMaxInput.value);
+	limitScaleMin = parseFloat(limitScaleMinInput.value);
+	limitBgColor = aBgColor[getSelValue(limitBgSelect)];
+
+
+	//
+	// setzen
+	//
+	limitV.SetQualityLimit(limitScaleQuality);
+	limitV.SetMax(limitScaleMax);
+	limitV.SetMin(limitScaleMin);
+	limitV.SetBgColorLimit(limitBgColor);
+
+	limitV.SetQualityLimit(1,limitQuality1);
+	limitV.SetValueLimit(1,limitValue1);
+	limitV.setFgColorLimit(1, limitFgColor1);
+
+	limitV.SetQualityLimit(3,limitQuality3);
+	limitV.SetValueLimit(3,limitValue3);
+	limitV.SetFgColorLimit(3,limitFgColor3);
+
+	//
+	// setzen
+	//
+	limitH.SetQualityLimit(limitScaleQuality);
+	limitH.SetMax(limitScaleMax);
+	limitH.SetMin(limitScaleMin);
+	limitH.SetBgColorLimit(limitBgColor);
+
+	limitH.SetQualityLimit(1,limitQuality1);
+	limitH.SetValueLimit(1,limitValue1);
+	limitH.setFgColorLimit(1, limitFgColor1);
+
+	limitH.SetQualityLimit(3,limitQuality3);
+	limitH.SetValueLimit(3,limitValue3);
+	limitH.SetFgColorLimit(3,limitFgColor3);
+}
+
+
+function getSelColor(selectObj)
+{
+	return trendColors[selectObj.selectedIndex-1];
+}
+
+function getSelValue(selectObj)
+{
+	return selectObj.options[selectObj.selectedIndex].value;
+}
+
+function getSelFloat(selectObj)
+{
+	return parseFloat(getSelValue(selectObj));
+}
+
+function getSelBool(selectObj)
+{
+	status = "AHA"+getSelValue(selectObj);
+	return ( getSelValue(selectObj) == "true" ? true : false);
+}
+
+</script>
+
+</head>
+
+<body onload=init()>
+
+<h1>Testseite für Limits </h1>
+
+<hr>
+<table>
+<tr>
+<td><applet code=CP_ApBarGrafV.class id="limitV" width=120 height=240>
+<param name="BarGraf" value="false">
+<param name="Limits" value="true">
+</applet>
+<td><applet code=CP_ApBarGrafH.class id="limitH" width=240 height=100>
+<param name="BarGraf" value="false">
+<param name="Limits" value="true">
+</applet>
+</table>
+<hr>
+
+<table border=1>
+<tr>
+<td>Limit1
+<td>
+<td>Limit3
+<td>
+<td>global
+<td>
+
+<tr>
+<td>Value 
+<td><input id=limitValue1Input>
+<td>Value 
+<td><input id=limitValue3Input>
+<td>Scale Max
+<td><input id=limitScaleMaxInput>
+
+<tr>
+<td>Quality
+<td>
+<select id=limitQuality1Select>
+<option value=0>GOOD
+<option value=1>UNCERTAIN
+<option value=2>BAD
+</select>
+<td>Quality
+<td><select id=limitQuality3Select>
+<option value=0>GOOD
+<option value=1>UNCERTAIN
+<option value=2>BAD
+</select>
+<td>Scale Min
+<td><input id=limitScaleMinInput>
+
+<tr>
+<td>Forground
+<td>
+<select id=limitFg1Select>
+<option value=0>red
+<option value=1>green
+<option value=2>blue
+<option value=3>#ffff00
+</select>
+
+<td>Forground
+<td>
+<select id=limitFg3Select>
+<option value=0>red
+<option value=1>green
+<option value=2>blue
+<option value=3>#ffff00
+</select>
+
+<td>Quality
+<td><select id=limitQualitySelect>
+<option value=0>GOOD
+<option value=1>UNCERTAIN
+<option value=2>BAD
+</select>
+
+<tr>
+<td>
+<td>
+<td>
+<td>
+<td>Background
+<td><select id=limitBgSelect>
+<option value=0>white
+<option value=1>black
+<option value=2>grey
+<option value=3 selected>lightgrey
+<option value=4>darkgray
+<option value=5>#c0c0c0
+</select>
+</table>
+
+
+</body>
+</html>

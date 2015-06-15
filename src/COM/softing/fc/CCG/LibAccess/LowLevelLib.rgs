@@ -1,0 +1,35 @@
+HKCR
+{
+	4C_20_CCG.LibAccess.1 = s '4C_20: LibAccess Class'
+	{
+		CLSID = s '{4FEFAD0A-1771-11D5-A3B3-0008C79B568D}'
+        'Index' 
+        { 
+            val Version = s '2.0' 
+            val LCID = d '1033' 
+        } 
+	}
+	4C_20_CCG.LibAccess = s '4C_20: LibAccess Class'
+	{
+		CLSID = s '{4FEFAD0A-1771-11D5-A3B3-0008C79B568D}'
+		CurVer = s '4C_20_CCG.LibAccess.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {4FEFAD0A-1771-11D5-A3B3-0008C79B568D} = s '4C_20: LibAccess Class'
+		{
+			ProgID = s '4C_20_CCG.LibAccess.1'
+			VersionIndependentProgID = s '4C_20_CCG.LibAccess'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{4FEFACFD-1771-11D5-A3B3-0008C79B568D}'
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

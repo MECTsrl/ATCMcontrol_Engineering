@@ -1,0 +1,65 @@
+#H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/EXT/EXT.inf 1     28.02.07 19:01 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: EXT.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/EXT/EXT.inf $
+#
+# =PROJECT				CAK1020  ATCMControl V2.0
+#
+# =SWKE                EXT
+#
+# =COMPONENT           EXT
+#
+# =CURRENT      $Date: 28.02.07 19:01 $
+#               $Revision: 1 $
+#
+# =REFERENCES
+#
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+#    @DESCRIPTION@
+#==
+#----------------------------------------------------------------------------*
+# =MODIFICATION
+#  07.02.2001  JD      File created
+#  see history at end of file !
+#==
+#******************************************************************************
+#H<<
+
+
+SUBPROJECT=HTMLHelp\HTMLHelp.mak
+SUBPROJECT=papi\papi.mak
+
+#
+#----------------------------------------------------------------------------*
+#  $History: EXT.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:01
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/EXT
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:34
+# Created in $/4Control/COM/softing/fc/EXT
+# 
+# *****************  Version 2  *****************
+# User: Su           Date: 25.07.01   Time: 16:49
+# Updated in $/4Control/COM/softing/fc/EXT
+# Integrated Profibus API files (PAPI)
+# 
+# *****************  Version 1  *****************
+# User: Jd           Date: 7.02.01    Time: 11:50
+# Created in $/4Control/COM/softing/fc/EXT
+# First checkin.
+#==
+#----------------------------------------------------------------------------*
+#

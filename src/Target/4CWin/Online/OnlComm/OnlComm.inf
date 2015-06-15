@@ -1,0 +1,56 @@
+# $Header: /4CReleased/V2.20.00/Target/4CWin/ONLINE/OnlComm/OnlComm.inf 1     28.02.07 19:11 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: OnlComm.inf $
+#                        $Logfile: /4CReleased/V2.20.00/Target/4CWin/ONLINE/OnlComm/OnlComm.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Target / Online
+#
+# =COMPONENT            OnlServ
+#
+# =CURRENT      $Date: 28.02.07 19:11 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+
+
+
+#
+# ------------------------------------------------------------------------------
+#
+
+TARGET=$(EXE_DIR)\Engineering\bin\4CWin\OnlComm.dll
+TARGETTYPE=DLL
+UNICODE=0
+DEFINE=_AFXDLL
+PCHFILE=stdafx
+
+INCLUDE=..\..\inc
+INCLUDE=..\..\res
+
+INCLUDE=$(TARGET_BASE)\inc
+INCLUDE=$(TARGET_BASE)\online\inc
+INCLUDE=$(TARGET_BASE)\kernel\inc
+
+DEFLIB=ws2_32.lib
+DEFLIB=winmm.lib
+
+LIBRARY=$(TARGET_BASE)\lib\OnlLibComm.lib
+
+LIBRARY=$(TARGET_BASE)\kernel\lib\fc_tools.lib
+LIBRARY=$(TARGET_BASE)\kernel\lib\fc_util.lib
+LIBRARY=$(TARGET_BASE)\kernel\lib\tracea.lib
+
+#used for including vm headers
+DEFINE=INC_4C
+
+USER=makefirst:$(EXE_DIR)\Engineering\bin\4CWin
+USER=$(EXE_DIR)\Engineering\bin\4CWin:
+USER=  -md $@
+
+# -------------------------------------------------------------------------------

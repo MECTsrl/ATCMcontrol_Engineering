@@ -1,0 +1,89 @@
+(* Constant file *)
+CONST
+
+(* ---- Serial Line Line Field ------------------------------------ *)
+s_COM1                  : INT := 1;
+s_COM2                  : INT := 2;
+s_COM3                  : INT := 3;
+s_COM4                  : INT := 4;
+
+(* ---- Serial Line Setup BaudRate -------------------------------- *)
+s_BAUD_50               : DINT := 50;
+s_BAUD_75               : DINT := 75;
+s_BAUD_110              : DINT := 110;
+s_BAUD_134              : DINT := 134;
+s_BAUD_150              : DINT := 150;
+s_BAUD_300              : DINT := 300;
+s_BAUD_600              : DINT := 600;
+s_BAUD_1200             : DINT := 1200;
+s_BAUD_1800             : DINT := 1800;
+s_BAUD_2000             : DINT := 2000;
+s_BAUD_2400             : DINT := 2400;
+s_BAUD_3600             : DINT := 3600;
+s_BAUD_4800             : DINT := 4800;
+s_BAUD_7200             : DINT := 7200;
+s_BAUD_9600             : DINT := 9600;
+s_BAUD_14400            : DINT := 14400;
+s_BAUD_19200            : DINT := 19200;
+s_BAUD_38400            : DINT := 38400;
+s_BAUD_56000            : DINT := 56000;
+s_BAUD_57600            : DINT := 57600;
+s_BAUD_115200           : DINT := 115200;
+s_BAUD_128000           : DINT := 128000;
+s_BAUD_256000           : DINT := 256000;
+
+(* ---- Serial Line Setup Parity ---------------------------------- *)
+s_NOPARITY              : INT := 0;
+s_ODDPARITY             : INT := 1;
+s_EVENPARITY            : INT := 2;
+s_MARKPARITY            : INT := 3;
+s_SPACEARITY            : INT := 4;
+
+(* ---- Serial Line Setup ByteSize -------------------------------- *)
+s_BYTE5                 : INT := 5;
+s_BYTE6                 : INT := 6;
+s_BYTE7                 : INT := 7;
+s_BYTE8                 : INT := 8;
+
+(* ---- Serial Line Setup StopBit --------------------------------- *)
+s_ONESTOPBIT            : INT := 0;
+s_ONE5STOPBIT           : INT := 1;
+s_TWOSTOPBIT            : INT := 2;
+
+(* ---- Serial Line Setup Potocol --------------------------------- *)
+s_NORMAL                : INT := 0;
+s_XONXOFF               : INT := 1;
+
+(* ---- Serial Line Setup FlowCtrl -------------------------------- *)
+s_DTR                   : WORD := 16#0001;
+s_DTRHANDSHAKE          : WORD := 16#0002;
+s_RTS                   : WORD := 16#0004;
+s_RTSHANDSHAKE          : WORD := 16#0008;
+s_CTS                   : WORD := 16#0010;
+s_DSR                   : WORD := 16#0020;          
+s_DSRSENSITY            : WORD := 16#0040;          
+s_CONTINUEXONXOFF       : WORD := 16#0080;          
+s_FOUTX                 : WORD := 16#0100;         
+s_FINX                  : WORD := 16#0200;          
+s_TERMINATOR            : WORD := 16#0400;          
+s_FREEAutoRTSchar       : WORD := 16#8000;
+
+(* ---- Serial Line LineStatus ------------------------------------ *)
+s_NOTAVAIL              : INT := 0;
+s_DISCONNECTED          : INT := 1;
+s_CONNECTED             : INT := 2;
+s_ACTIVE                : INT := 3;
+s_INERROR               : INT := 4;
+
+(* ---- Serial Line TXStatus -------------------------------------- *)
+s_TX_IDLE               : INT := 0;
+s_TX_RUN                : INT := 1;
+s_TX_ERROR              : INT := 2;
+
+(* ---- Serial Line RXStatus -------------------------------------- *)
+s_RX_IDLE               : INT := 0;
+s_RX_RUN                : INT := 1;
+s_RX_ERROR              : INT := 2;
+s_RX_DATAIN             : INT := 3;
+
+END_CONST

@@ -1,0 +1,17 @@
+
+CONST
+    CFA_BOF : DINT          := 0;           (* Begin Of File *)
+    CFA_EOF : DINT          := -1;          (* End Of File *)
+    CFA_EOL : DINT          := -2;          (* End Of Line *)
+
+    CFA_READ                : DINT  := 2;   (* read file *)
+    CFA_READ_WRITE          : DINT  := 6;   (* read and write *)
+    CFA_APPEND              : DINT  := 7;   (* append to file *)
+
+    CFA_CommonError         : DINT  := 10;
+    CFA_InternalError       : DINT  := 11;
+    CFA_InvalidArgument     : DINT  := 20;
+    CFA_FileNotOpenError    : DINT  := 30;
+    CFA_Timeout             : DINT  := 40;
+    CFA_FileAlreadyOpen     : DINT  := 50;
+END_CONST

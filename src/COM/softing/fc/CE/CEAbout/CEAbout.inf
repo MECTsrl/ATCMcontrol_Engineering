@@ -1,0 +1,33 @@
+
+
+TARGETTYPE=DLL
+TARGET=$(EXE_DIR)\Engineering\bin\CEAbout.dll
+
+DEFINE=_ATL_STATIC_REGISTRY
+DEFINE=_ATL_NO_SECURITY
+DEFINE=_AFXDLL
+DEFINE=_MRCEXT_NOFORCELIBS
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\CE\inc
+INCLUDE=$(MAKEDIR)
+INCLUDE=$(MAKEDIR)\Inc
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+LIBPATH=$(LIB_DIR)
+
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\Lib\fc_util.lib
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\Lib\HTMLHelp.lib
+DEFLIB=winmm.lib
+
+MASTER_RC=CEAbout.RC
+PCHFILE=stdafx
+
+USER=precompile:
+USER=  $(CP) .\res\cred1.4cw $(EXE_DIR)\Engineering\bin\cred1.4cw
+USER=  $(CP) .\res\cred2.4cw $(EXE_DIR)\Engineering\bin\cred2.4cw
+USER=  $(CP) .\res\cred3.4cw $(EXE_DIR)\Engineering\bin\cred3.4cw
+USER=  $(CP) .\res\cred4.4cw $(EXE_DIR)\Engineering\bin\cred4.4cw
+USER=  $(CP) .\res\cred5.4cw $(EXE_DIR)\Engineering\bin\cred5.4cw
+USER=  $(CP) .\res\cred6.4cw $(EXE_DIR)\Engineering\bin\cred6.4cw
+USER=  $(CP) .\res\cred7.4cw $(EXE_DIR)\Engineering\bin\cred7.4cw
+USER=  $(CP) .\res\cred8.4cw $(EXE_DIR)\Engineering\bin\cred8.4cw
+USER=  $(CP) .\res\cred9.4cw $(EXE_DIR)\Engineering\bin\cred9.4cw

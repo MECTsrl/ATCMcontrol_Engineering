@@ -1,0 +1,11 @@
+(*[[
+    UserURL= "ATCMfile:INT_TO_UINT.htm"
+]]*)
+FUNCTION INT_TO_UINT : UINT
+VAR_INPUT
+    IN : INT;
+END_VAR
+
+inline{NOOP}
+
+END_FUNCTION

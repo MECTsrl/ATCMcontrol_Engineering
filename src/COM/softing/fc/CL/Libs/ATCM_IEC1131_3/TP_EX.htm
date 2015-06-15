@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>TP_EX</TITLE>
+<META content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
+<link rel="stylesheet" href="Lib.css"></head>
+
+<BODY bgColor=#ffffcc>
+<H2>TP_EX</H2>
+<P>Sets the output for a preset time to <i><b>TRUE</b></i> as a reaction to an 
+  input signal. Includes an additional visualization functionality. <BR>
+</P>
+<H3>Interface definition</H3>
+<PRE class=preforma>FUNCTION_BLOCK TP_EX
+
+VAR_INPUT   
+    IN : BOOL := FALSE; 
+    PT : TIME := T#0s;  
+END_VAR
+
+VAR_INPUT 
+    SCALEMIN : DINT := 0;   
+    SCALEMAX : DINT := 100; 
+END_VAR
+
+VAR_OUTPUT  
+    Q  : BOOL := FALSE; 
+    ET : TIME := T#0s;  
+    ERROR : DINT;       
+END_VAR</PRE>
+<H3>Parameters</H3>
+<H3>INPUT</H3>
+<DL> 
+  <DT><B>IN</B> 
+  <DD>Value of type<I> <i><b>BOOL<br>
+    </b></i></I>Input signal<b> </b><I><i><b><br>
+    </b></i></I>The default value is<I><i><b> </b></i><b><i>FALSE</i></b>.</I> 
+  <DT><B>PT</B> 
+  <DD>Value of type<I> <i><b>TIME</b></i><br>
+    </I>Determines the length of time during which<I> <b><i>Q</i></b> </I>is also 
+    set to the value<I> <i><b>TRUE</b></i></I> after<I> <b><i>IN</i></b> </I>has 
+    changed to <I><i><b>TRUE</b></i>.<i> <br>
+    </i></I>The default value is<b></b><I><i><i><b> T#0s</b></i></i>. </I> 
+  <DT><B>SCALEMIN</B> 
+  <DD>Value of type <b><i>DINT</i></b> <br>
+    Determines the lower value for the visualization scale. The default value 
+    is <i><b>0</b></i>. 
+  <DT><B>SCALEMAX</B> 
+  <DD>Value of type <i><b>DINT<br>
+    </b></i>Determines the upper value for the visualization scale. The default 
+    value is<b> <i>100</i></b>.<B></B> </DD>
+</DL>
+<H3>OUTPUT</H3>
+<DL> 
+  <DT><B></B><B>Q</B> 
+  <DD>Value of type <i><b>BOOL</b></i><br>
+    Is also set to <i><b>TRUE</b></i> for the length of time specified in <b><i>PT</i></b> 
+    after <b><i>IN</i></b> has changed to <i><b>TRUE</b></i>. If<i><b> ET &gt;= 
+    PT</b></i>, <b><i>Q</i></b> is reset to <i><b>FALSE</b></i>. 
+  <DT><B>ET</B> 
+  <DD>Value of type<b><i> <b><i>TIME</i></b><br>
+    </i></b> Is incremented time-dependent after counting has started; incrementing 
+    is carried out until<b><i> ET &gt;= PT</i></b>. 
+  <DT><B>ERROR</B> 
+  <DD>Value of type <i><b>DINT<br>
+    </b></i> Yields the value <i><b>0</b></i> if no error occurred. An error number 
+    <b><i>&lt;&gt; 0</i></b> is returned if an error occurred during visualization. 
+    In the current version of<i><b> ATCMControl</b></i>, only the event that the 
+    current value of <i><b>SCALEMIN</b> <b>&gt;= SCALEMAX</b></i> is encountered 
+    is evaluated as a visualization error. <BR>
+  </DD>
+</DL>
+<H3>Description</H3>
+<P>The function block <b><i>TP_EX</i></b> sets the output <b><i>Q</i></b> to <i><b>TRUE</b></i> 
+  for the length of time specified in <b><i>PT</i></b> if <b><i>IN</i></b> changes 
+  from <i><b>FALSE</b></i> to <i><b>TRUE</b></i>. On expiration of the time defined 
+  in <b><i>PT</i></b>, <b><i>Q</i></b> is reset to <i><b>FALSE</b></i> even if 
+  <b><i>IN</i></b> is still <i><b>TRUE</b></i>.<br>
+  Once the counting process has been initiated, it will be continued independent 
+  of the value of <b><i>IN</i></b> until <i> <b>ET &gt;= PT</b></i>; this has 
+  the effect that <b><i>Q</i></b> will in any case be <i><b>TRUE</b></i> during 
+  this period of time.</P>
+<P><b><i>TP_EX</i></b> is the extended version of the function block <b><i>TP</i></b>. 
+  As additional parameters, this function block features the two inputs <b><i>SCALEMIN</i></b> 
+  and <b><i>SCALEMAX</i></b>, which can be used for setting the scale of values 
+  of a bar chart represented in the faceplate, and the output <b><i>ERROR</i></b>, 
+  which returns an error code if a visualization error occurred.</P>
+</BODY></HTML>

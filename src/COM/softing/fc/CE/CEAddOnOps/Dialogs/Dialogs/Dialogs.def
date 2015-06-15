@@ -1,0 +1,7 @@
+; Dialogs.def : Declares the module parameters for the DLL.
+
+LIBRARY      "Dialogs"
+DESCRIPTION  'Dialogs Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here

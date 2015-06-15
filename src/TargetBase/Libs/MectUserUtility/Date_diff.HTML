@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>Mect User Utility Library</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css">
+</head>
+<body bgcolor="#FFFFCC">
+<h2>Date_diff</h2>
+<p>Perform diff operation between two date</p>
+<h3>Interface</h3>
+<pre class="preforma">
+FUNCTION Date_diff : UINT
+VAR_INPUT
+	initDate  : STRING; (*[ starting date in format "DD-MM-YYYY" ]*)
+	finalDate : STRING; (*[ end date in format "DD-MM-YYYY" ]*)
+	format    : STRING; (*[ "D" for days, "W" for weeks, "M" for months and "Y" for years ]*)
+END_VAR
+VAR_OUTPUT
+	diff      : DINT; (*[ difference between start date and end date expressed in "format" ]*)
+END_VAR
+</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>UINT</b></i><br>
+<br>
+<table border="1">
+<tr>
+	<td>
+		0 :
+	</td>
+ 	<td>
+		<b>Success</b>
+ 	</td>
+ </tr>
+<tr>
+	<td>
+		1 :
+	</td>
+ 	<td>
+		Error
+ 	</td>
+ </tr>
+ </table>
+ </p>
+
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl>
+  <dt><b>initDate</b></dt>
+  <dd>Value of type <b><i>STRING</i></b><br>
+      starting date in format "DD-MM-YYYY"<br></dd>
+</dl>
+<dl>
+  <dt><b>format</b></dt>
+  <dd>Value of type <b><i>STRING</i></b><br>
+      describe in which format is the diff value: "D" for days, "W" for weeks, "M" for months and "Y" for years<br></dd>
+</dl>
+  <dt><b>diff</b></dt>
+  <dd>Value of type <b><i>INT</i></b><br>
+      value to subtract described by format parameter<br></dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl>
+  <dt><b>finalDate</b></dt>
+  <dd>Value of type <b><i>STRING</i></b><br>
+      final date in format "DD-MM-YYYY"<br></dd>
+</dl>
+<h3>Description</h3>
+<p><b>Date_diff</b> perform diff operation between two date</p>
+</body>
+</html>

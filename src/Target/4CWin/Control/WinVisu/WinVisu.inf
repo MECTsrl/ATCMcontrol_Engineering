@@ -1,0 +1,43 @@
+# $Header: /4CReleased/V2.20.00/Target/4CWin/Control/WinVisu/WinVisu.inf 3     24.02.08 18:12 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: WinVisu.inf $
+#                        $Logfile: /4CReleased/V2.20.00/Target/4CWin/Control/WinVisu/WinVisu.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 RunTime
+#
+# =COMPONENT            WinVisu
+#
+# =CURRENT      $Date: 24.02.08 18:12 $
+#           $Revision: 3 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+TARGET=$(EXE_DIR)\Engineering\bin\4CWin\WinVisu.exe
+TARGETTYPE=con 
+UNICODE=0
+DEFINE=_AFXDLL
+PCHFILE=stdafx
+
+INCLUDE=..\inc
+INCLUDE=..\inc.vis
+INCLUDE=..\..\inc
+INCLUDE=..\..\res
+
+DEFLIB=ws2_32.lib
+
+LIBRARY=..\lib\visLib.lib
+LIBRARY=..\lib\osShared.lib
+
+USER=makefirst:$(EXE_DIR)\Engineering\bin\4CWin
+USER=$(EXE_DIR)\Engineering\bin\4CWin:
+USER=  -md $@
+
+# -------------------------------------------------------------------------------
+
+
+

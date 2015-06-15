@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>  </TITLE>
+<META NAME="Template" CONTENT="D:\!!job\code\AutoDoc\prot\logic17.dot">
+</HEAD>
+<BODY BGCOLOR="#ffffcc">
+
+<B><FONT FACE="Arial"><P>Profibus_GetEmcyNode</P>
+</B></FONT><FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">La funzione Profibus_GetEmcyNode consente di testare o ritornare l’eventuale nodo in errore.</P>
+<P ALIGN="JUSTIFY"></P>
+<B><P>Sintassi</P>
+</B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<I><P>ret_code</I>&nbsp;:=  Profibus_GetEmcyNode(<I>ExecMode</I>, <I>ExecStatus</I>, <I>Board</I>, <I>NodeID</I>);</P>
+<P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Parametri di ingresso</P>
+<P ALIGN="JUSTIFY"></P>
+</B><I><P ALIGN="JUSTIFY">ExecMode</I> (INT)&#9;Modalita di esecuzione del comando [MODE_NOWAIT, </P>
+<P ALIGN="JUSTIFY">&#9;&#9;&#9;&#9;MODE_WAIT, MODE_WAIT_ACCEPT, MODE_NOWAIT_ACK].</P>
+<I><P ALIGN="JUSTIFY">Board</I> (INT)&#9;&#9;Scheda master su cui opera la funzione.</P>
+<I><P ALIGN="JUSTIFY">NodeId</I> (INT)&#9;&#9;Identificativo del nodo da testare</P>
+<P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Parametri di uscita</P>
+</B><I><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">ExecStatus</I> (DWORD)&#9;Stato di esecuzione del comando in modalit&agrave; MODE_NOWAIT_ACK.</P>
+<I><P ALIGN="JUSTIFY">NodeId</I> (INT)&#9;&#9;Identificativo del nodo ritornato dalla funzione</P>
+<B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Modalit&agrave; di esecuzione</P>
+<P ALIGN="JUSTIFY"></P>
+</B><P>La funzione deve essere eseguita in modalit&agrave; <B>MODE_WAIT</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Uso</P>
+</B><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">Se il parametro <I>NodeId</I> e’ uguale a zero e se esiste almeno un nodo in errore la funzione ritorna in <I>NodeId</I> il primo nodo in errore. </P>
+<P ALIGN="JUSTIFY">Se invece il parametro <I>NodeId</I> viene impostato ad un valore diverso da zero, la funzione controlla se tale nodo e’ in errore.</P>
+<P ALIGN="JUSTIFY">Questa funzione pu&ograve; essere utilizzata solo se la scheda identificata dal parametro <I>Board </I>&egrave; una scheda Profibus master.</P>
+<P ALIGN="JUSTIFY"></P>
+<B><P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Valori di ritorno</P>
+</B><P ALIGN="JUSTIFY"></P></FONT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=5 WIDTH=641>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Valore (HEX)</B></FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Descrizione</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Nessun nodo in errore</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">0x00370005</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Il nodo e’ in errore</FONT></TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">  0x0037003F</FONT></TD>
+<TD WIDTH="83%" VALIGN="TOP">
+<FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY">Parametro <I>Board</I> non valido</FONT></TD>
+</TR>
+</TABLE>
+
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY">Esempio</P>
+<P ALIGN="JUSTIFY"></P>
+</B><P ALIGN="JUSTIFY">VAR</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">ExecStatus  :  DWORD;</P>
+<P ALIGN="JUSTIFY">Board           :  INT;</P>
+<P ALIGN="JUSTIFY">NodeId         :  INT;</P>
+<P ALIGN="JUSTIFY">RetCode      :  DWORD&nbsp;;</P>
+<P ALIGN="JUSTIFY"></P>
+<P ALIGN="JUSTIFY">END_VAR</P>
+<P>&nbsp;</P>
+<P>RetCode&nbsp;:=  Profibus_GetEmcyNode(MODE_WAIT, ExecStatus, Board, NodeId);</P></FONT></BODY>
+</HTML>

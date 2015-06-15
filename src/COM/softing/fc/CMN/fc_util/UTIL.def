@@ -1,0 +1,11 @@
+; UTIL.def : Declares the module parameters for the DLL.
+
+LIBRARY      "FC_UTIL"
+DESCRIPTION  'FC_UTIL Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here
+	regfree
+	regerror
+	regexec
+	regcomp

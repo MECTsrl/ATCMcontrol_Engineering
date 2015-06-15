@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>BYTE_STRING_SUBSTR</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>BYTE_STRING_SUBSTR</h2>
+<p>Extrahiert einen Teilstring aus dem &uuml;bergebenen Ausgangs-Bytestring.</p>
+<h3>Schnittstelle</h3>
+<pre class="preforma">FUNCTION BYTE_STRING_SUBSTR
+    VAR_INPUT
+        BSTR : BYTE_STRING;
+        POS : DINT;
+        NUM : DINT;
+    END_VAR
+    VAR_IN_OUT
+        BSTR_SUB : BYTE_STRING;
+    END_VAR</pre>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>BSTR</b></dt>
+  <dd>Instanz von <i><b><a href="BYTE_STRING.htm">BYTE_STRING</a></b></i><br>
+    Bytestring, aus dem ein Teilstring extrahiert werden soll.</dd>
+  <dt><b>POS</b></dt>
+  <dd>Wert vom Typ <i><b>DINT</b></i><br>
+    Definiert die Position, ab der der Teilstring aus dem an <i><b>BSTR</b></i> 
+    &uuml;bergebenen Ausgangstring extrahiert werden soll. Die Position bezeichnet 
+    das nte Byte des Ausgangsstrings. Das erste Byte im Ausgangstring hat die 
+    Position 0.</dd>
+  <dt><b>NUM</b></dt>
+  <dd>Wert vom Typ <i><b>DINT</b></i><br>
+    Definiert die Anzahl Bytes, die aus dem an <i><b>BSTR</b></i> &uuml;bergebenen 
+    Ausgangsstrings extrahiert werden sollen. </dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl> 
+  <dt><b>BSTR_SUB</b></dt>
+  <dd>Instanz von <a href="BYTE_STRING.htm"><b><i>BYTE_STRING</i></b></a><br>
+    Bytestring, in dem der aus <b>BSTR</b> extrahierte Teilstring gespeichert 
+    wird.</dd>
+</dl>
+<h3>Beschreibung</h3>
+<p><i><b>BYTE_STRING_SUB </b></i>extrahiert aus dem an <i><b>BSTR</b></i> &uuml;bergebenen 
+  Ausgangsstring ab der in <i><b>POS</b></i> spezifizierten Position einen Teilstring 
+  der in <i><b>NUM</b></i> spezifizierten L&auml;nge und legt den Teilstring in 
+  <i> <b>BSTR_SUB</b></i> ab.</p>
+<p>Enth&auml;lt der Ausgangsstring ab der in <i><b>POS</b></i> angegebenen Position 
+  bis zum Ende des Ausgangsstrings weniger Bytes, als in <b><i>NUM</i></b> spezifiziert 
+  wurde, wird nur der Bereich in den Ergebnisstring kopiert, der innerhalb der 
+  in <i><b>POS</b></i> spezifizierten Position und dem letzten Byte des Ausgangsstrings 
+  liegt. </p>
+<p>Wird in <i><b>POS</b></i> eine Startposition f&uuml;r die Extraktion des Teilstrings 
+  spezifiziert, die hinter dem letzten Byte des Ausgangsstrings liegt, wird nichts 
+  in den an <i><b>BSTR_SUB </b></i>&uuml;bergebenen Teilstring kopiert. Der Teilstring 
+  hat in diesem Fall die Gr&ouml;&szlig;e 0 Bytes.</p>
+</body>
+</html>

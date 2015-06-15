@@ -1,0 +1,30 @@
+// ContainerDummy.idl : IDL source for ContainerDummy.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (ContainerDummy.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+import "CEContainer.idl";
+
+[
+	uuid(EB0423F1-F5DC-11D4-B8EE-002018641833),
+	version(1.0),
+	helpstring("ContainerDummy 1.0 Type Library")
+]
+library CONTAINERDUMMYLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(EB042401-F5DC-11D4-B8EE-002018641833),
+		helpstring("ContainerDummyComObj Class")
+	]
+	coclass ContainerDummyComObj
+	{
+		[default] interface ICEContainer;
+	};
+};

@@ -1,0 +1,6 @@
+# SUBPROJECT=ACC\acc.mak
+SUBPROJECT=SOFTING\Softing.mak
+
+USER=makefirst:$(MAKEDIR)\Lib
+USER=$(MAKEDIR)\Lib:
+USER=  -md $@

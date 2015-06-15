@@ -1,0 +1,24 @@
+TARGET=$(EXE_DIR)\Setup\Autorun.exe
+TARGETTYPE=GUI
+
+UNICODE=0
+
+MASTER_RC=AUTORUN.RC
+
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+
+DEFLIB=SHELL32.LIB
+STATIC_RUNTIME=1
+
+USER=LFLAGS        = $(LFLAGS) -SWAPRUN:CD
+
+USER=makefirst:$(EXE_DIR)\Setup
+USER=$(EXE_DIR)\Setup:
+USER=  -md $@
+
+USER=makelast: $(EXE_DIR)\Setup\Docu\*.*
+USER=$(EXE_DIR)\Setup\Docu\*.*:
+USER=  @xcopy $(MAKEDIR)\Docu\*.* $(EXE_DIR)\Setup\Docu\*.* /S /Y /Q 
+
+# -------------------------------------------------------------------------------

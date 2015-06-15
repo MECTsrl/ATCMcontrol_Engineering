@@ -1,0 +1,31 @@
+// OpcEnum.idl : IDL source for OpcEnum.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (OpcEnum.tlb)
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "comcat.idl";
+
+[
+	uuid(13486D43-4821-11D2-A494-3CB306C10000),
+	version(1.0),
+	helpstring("OpcEnum 1.0 Type Library")
+]
+library OPCENUMLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+	importlib("opccomn.tlb");
+//    import "opcComn.idl";
+
+	[
+		uuid(13486D51-4821-11D2-A494-3CB306C10000),
+		helpstring("Opc ServerList Class")
+	]
+	coclass OPCServerList
+	{
+		[default] interface IOPCServerList;
+	};
+};

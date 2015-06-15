@@ -1,0 +1,31 @@
+REGEDIT
+;   Diese .REG-Datei kann von Ihrem SETUP-Programm verwendet werden.
+;   Falls kein SETUP-Programm verfügbar ist, werden die unten stehenden Einträge
+;   automatisch in InitInstance registriert, mit einem Aufruf an 
+;   CWinApp::RegisterShellFileTypes and COleObjectFactory::UpdateRegistryAll.
+
+HKEY_CLASSES_ROOT\.4cl = CELibrarian.Document
+HKEY_CLASSES_ROOT\CELibrarian.Document\shell\open\command = CELIBRARIANV2.EXE %1
+HKEY_CLASSES_ROOT\CELibrarian.Document\shell\open\ddeexec = [open("%1")]
+HKEY_CLASSES_ROOT\CELibrarian.Document\shell\open\ddeexec\application = CELIBRARIANV2
+    ; Hinweis: die Anwendung ist optional
+    ;  (als Standardwert wird der Name der Anwendung in "command" verwendet)
+
+HKEY_CLASSES_ROOT\CELibrarian.Document = ATCMControl Library Document
+HKEY_CLASSES_ROOT\CELibrarian.Document\protocol\StdFileEditing\server = CELIBRARIANV2.EXE
+HKEY_CLASSES_ROOT\CELibrarian.Document\protocol\StdFileEditing\verb\0 = &Edit
+HKEY_CLASSES_ROOT\CELibrarian.Document\Insertable =
+HKEY_CLASSES_ROOT\CELibrarian.Document\CLSID = {49070009-D886-4491-8574-70E98FAB8C6B}
+
+
+HKEY_CLASSES_ROOT\CLSID\{49070009-D886-4491-8574-70E98FAB8C6B} = ATCMControlV2 Library Document
+HKEY_CLASSES_ROOT\CLSID\{49070009-D886-4491-8574-70E98FAB8C6B}\DefaultIcon = CELIBRARIANV2.EXE,1
+HKEY_CLASSES_ROOT\CLSID\{49070009-D886-4491-8574-70E98FAB8C6B}\LocalServer32 = CELIBRARIANV2.EXE
+HKEY_CLASSES_ROOT\CLSID\{49070009-D886-4491-8574-70E98FAB8C6B}\ProgId = CELibrarian.Document
+HKEY_CLASSES_ROOT\CLSID\{49070009-D886-4491-8574-70E98FAB8C6B}\MiscStatus = 32
+HKEY_CLASSES_ROOT\CLSID\{49070009-D886-4491-8574-70E98FAB8C6B}\AuxUserType\3 = CELibrarian
+HKEY_CLASSES_ROOT\CLSID\{49070009-D886-4491-8574-70E98FAB8C6B}\AuxUserType\2 = ATCM Library
+HKEY_CLASSES_ROOT\CLSID\{49070009-D886-4491-8574-70E98FAB8C6B}\Insertable = 
+HKEY_CLASSES_ROOT\CLSID\{49070009-D886-4491-8574-70E98FAB8C6B}\verb\1 = &Öffnen,0,2
+HKEY_CLASSES_ROOT\CLSID\{49070009-D886-4491-8574-70E98FAB8C6B}\verb\0 = &Bearbeiten,0,2
+HKEY_CLASSES_ROOT\CLSID\{49070009-D886-4491-8574-70E98FAB8C6B}\InprocHandler32 = ole32.dll

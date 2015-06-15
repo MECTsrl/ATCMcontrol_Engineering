@@ -1,0 +1,11 @@
+(*[[
+    UserURL= "ATCMfile:WORD_TO_UDINT.htm"
+]]*)
+FUNCTION WORD_TO_UDINT : UDINT
+VAR_INPUT
+    IN : WORD;
+END_VAR
+
+inline{ VMOP }
+
+END_FUNCTION

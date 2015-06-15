@@ -1,0 +1,22 @@
+# $Header: /4CReleased/V2.20.00/Target/TEMPLATES/Online/Online.inf 1     28.02.07 18:54 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: Online.inf $
+#                        $Logfile: /4CReleased/V2.20.00/Target/TEMPLATES/Online/Online.inf $
+#
+# =PROJECT              4CONTROL V2.x
+#
+# =SWKE                 Target
+#
+# =COMPONENT            Online
+#
+# =CURRENT      $Date: 28.02.07 18:54 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+SUBPROJECT=OnlComm\OnlComm.mak
+SUBPROJECT=OnlServ\OnlServ.mak
+
+# -------------------------------------------------------------------------------

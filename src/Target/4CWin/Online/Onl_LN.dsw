@@ -1,0 +1,94 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "OnlComm"=.\OnlComm\OnlComm.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/4CReleased/V2.20.00/Target/4CWin/Online", HFXFAAAA
+    .
+    end source code control
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name OnlLibComm
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "OnlLibComm"=..\..\..\TargetBase\Online\OnlLibComm\OnlLibComm.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/4CReleased/V2.20.00/Target/4CWin/Online", HFXFAAAA
+    .
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "OnlLibServ"=..\..\..\TargetBase\Online\OnlLibServ\OnlLibServ.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/4CReleased/V2.20.00/Target/4CWin/Online", HFXFAAAA
+    .
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "OnlServ"=.\OnlServ\OnlServ.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/4CReleased/V2.20.00/Target/4CWin/Online", HFXFAAAA
+    .
+    end source code control
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name OnlLibServ
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name OnlComm
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+    begin source code control
+    "$/4CReleased/V2.20.00/Target/4CWin/Online", HFXFAAAA
+    .
+    end source code control
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

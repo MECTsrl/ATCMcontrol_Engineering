@@ -1,0 +1,331 @@
+//----  Local Defines:   -------------------------------------------*
+//----  Includes:   -------------------------------------------*
+import "oaidl.idl";
+import "ocidl.idl";
+
+//------------------------------------------------------------------*
+/**
+ * @file io_4cvm_config.idl common interface(s) between SW-Unit 4CVM and 
+ * the IO-Configurators.
+ * <b>Usage:</b><br> contains <b>NO</b> coclass, create your own IDL for each configurator
+ * and insert <b>import "io_4cvm_config.idl";</b> in the library section, before you 
+ * actually define your coclass.
+ * 
+*/
+//interface predeclarations
+interface I4CVMCompile2;
+
+//----  I4CVMCompile2 Interface:    -----------------------------------------------*
+	[
+		object,
+		uuid(4A7BAF29-B3E4-4011-8929-0D47F8AB294B),
+		oleautomation,
+		helpstring("I4CVMCompile2 Interface called by SW-Unit 4CVM"),
+		pointer_default(unique)
+	]
+	//------------------------------------------------------------------*
+	/**
+	 *  interface I4CVMCompile2 - 
+	 *	Denotes the interface to the SW-Unit 4CVM. 
+	*/
+	interface I4CVMCompile2 : IUnknown
+	{
+        //------------------------------------------------------------------*
+        /**
+         * Opens and loads the IO configuration file maintained by the 
+         * IO-Configurator for an IO-Layer. The full path to the IO configuration
+         * file has to be specified. This method should be called prior to calling 
+         * the interface methods Compile() (see section 4.1.1.1.2) and CheckAddress() 
+         * (see section 4.1.1.1.3).
+         * 
+         * @param       sSrcFile - Full path to the IO-Configurators IO 
+         *              configuration file.
+         *
+         * @param       plChannelNum - reference to a long. Tell the compiler the 
+         *              channel number of this IO-Layer. Shall not be NULL.
+         *              If the returned value is >=0: the compiler will pass all %-Addresses
+         *              that have this channel number as the first numerical field to this 
+         *              IO-Layer.
+         *              If the returned value is =-1: the compiler will not use the concept of 
+         *              channel numbers. This is only allowed if at most one IO-Layer is 
+         *              configured for the target.
+         *              Example: FCDP Board0 has ChannelNumber 0  %IW0.<slaveNr.>.<byteoff>
+         *                       FCDP Board1 has ChannelNumber 1  %IX1.<slaveNr.>.<byteoff>.<bitoff>
+         *                       FCDP Board2 has ChannelNumber 2  %ID2.<slaveNr.>.<byteoff>
+         *                       FCDP Board3 has ChannelNumber 3  %ID3.<slaveNr.>.<byteoff>
+         *                       FCBAC       has ChannelNumber 4  %ID4.<byteoff>
+         *
+         * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+         *              S_OK - success<br>
+         *              E_POINTER - sSrcFile argument invalid.
+         *              E_FAIL - XML could not be loaded
+         *              Note: to report an XML parse error or the error that the XML file
+         *                    is not of the correct version or type you may return S_OK
+         *                    and in the following Compile() use the psDiagMsg output. 
+         * @see         Compile(), CheckAddress()
+        */
+		[helpstring("Opens and loads the IO configuration file into Compiler")]
+		HRESULT Load(
+            [in, string] BSTR sSrcFile,
+            [out] long*       plChannelNum
+        );
+
+
+
+        //------------------------------------------------------------------*
+        /**
+		 * Compile IO configuration domains and info from IO-Configurator.
+         * During the compile process (see configuration cycle flow chart figure 5) 
+         * The method Load() should be called prior to calling Compile().
+         *
+		 * @param       lTargetVersion - the version number of the controller firmware.
+         *              Examples: 20800 or 21020.
+         *
+         * @param       sDestDir - Directory path where the configuration domains 
+         *              must be stored. Shall not be NULL.
+         *
+         * @param       lInputOffset - the byte offset in the global input segment where this 
+         *              IO-Layer is placed. This value is only for information. 
+         *              This value is always >=0.
+         *
+         * @param       lInputSize - the number of bytes in the global input segment 
+         *              that are reserved for this IO-Layer. This value is always >=0,
+         *              the value 0 indicates that input variables are not enabled.
+         *              This is the ISEG_SIZE= information from the compiler KAD.
+         *
+         * @param       lOutputOffset - the byte offset in the global output segment where this 
+         *              IO-Layer is placed. This value is only for information. 
+         *              This value is always >=0.
+         *
+         * @param       lOutputSize - the number of bytes in the global output segment 
+         *              that are reserved for this IO-Layer. This value is always >=0,
+         *              the value 0 indicates that output variables are not enabled.
+         *              This is the OSEG_SIZE= information from the compiler KAD.
+         *
+         * @param       lMemoryOffset - the byte offset in the global memory segment where this 
+         *              IO-Layer is placed. This value is only for information. 
+         *              This value is always >=0.
+         *
+         * @param       lMemorySize - the number of bytes in the global memory segment 
+         *              that are reserved for this IO-Layer. This value is always >=0,
+         *              the value 0 indicates that memory variables are not enabled.
+         *              This is the GMSEG_SIZE= information from the compiler KAD.
+         *
+         * @param       pDomainFiles - reference to a safe array of BSTR. The array 
+         *              contains the names of the created configuration domain files. 
+         *              Shall not be NULL.
+         *
+         * @param       plInputSize - reference to a long. Should be set to the actually used 
+         *              number of input bytes. This is intended as a hint for the compiler for
+         *              certain optimizations. It is allowed to return -1 to indicate that 
+         *              this information is not available.   
+         *
+         * @param       plOutputSize - reference to a long. Should be set to the actually used 
+         *              number of output bytes. This is intended as a hint for the compiler for
+         *              certain optimizations. It is allowed to return -1 to indicate that 
+         *              this information is not available.   
+         *
+         * @param       plMemorySize - reference to a long. Should be set to the actually used 
+         *              number of memory bytes. This is intended as a hint for the compiler for
+         *              certain optimizations. It is allowed to return -1 to indicate that 
+         *              this information is not available.   
+         *
+         * @param       psDiagMsg - An additional diagnostic message will be returned with
+         *              this BSTR in case of an error. The diagnostic message shall contain 
+         *              a unique identifier for the IO-System type (e.g. DP,FF). 
+         *              Pointer shall not be NULL. If the returned value is NULL, no extra 
+         *              diagnostic is printed to stdout. 
+         *              Example: "DP: input segment too small: used=5060 bytes, max=4096 bytes"  
+         *              The compiler will prepend either "error: " or "warning: " and a location
+         *              to this string.
+         * 
+         * @param       pbIsError - reference to a boolean. Shall not be NULL. If *psDiagMsg
+         *              is not NULL then *pbIsError is used to distinguish between
+         *              a warning and an error (that will stop the compile process). 
+         *              If *pbIsError == TRUE: psDiagMsg is an error
+         *              If *pbIsError == FALSE: psDiagMsg is a warning
+         *
+         * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+         *              S_OK - success<br>
+         *              E_POINTER - Invalid argument for one of the parameters sDestDir.
+         *
+         *              Note: the returned HRESULT shall only be used to signal severe internal 
+         *              errors like  E_POINTER or E_OUTOFMEMORY. All errors/warnings that 
+         *              are related to compiling the IO-Layer database must be reported via 
+         *              the output variables psDiagMsg and pbIsError and the return value 
+         *              should be S_OK. For example there is a syntax error in the 
+         *              IOComponent1.fcdp file, then you should return S_OK but set: 
+         *                psDiagMsg = "FCDP: syntax error: 'IOComponent1.fcdp' line 67"
+         *                *pbIsError =  TRUE.
+         *
+         * @see         sections 3.2.1.3 and 3.2.1.5,Load()
+        */
+		[helpstring("Compiles IO configuration domains and info from IO-Configurator")]
+        HRESULT Compile(
+            [in]  long             lTargetVersion,       
+            [in, string] BSTR      sDestDir,
+            [in]  long             lInputOffset, 
+            [in]  long             lInputSize,
+            [in]  long             lOutputOffset, 
+            [in]  long             lOutputSize, 
+            [in]  long             lMemoryOffset, 
+            [in]  long             lMemorySize, 
+            [out] SAFEARRAY(BSTR) *pDomainFiles,
+            [out] long*            plInputSize,
+            [out] long*            plOutputSize,
+            [out] long*            plMemorySize,
+            [out, string] BSTR*    psDiagMsg,
+            [out] BOOL*            pbIsError 
+         );
+		
+        //------------------------------------------------------------------*
+        /**
+         * Check direct % address and obtain IO-Layer initialization data.
+         * The compiler/code generator 4CVM will analyze the GVL file returned 
+         * by the IO-Layers IO-Configurator. 4CVM will also analyze variables 
+         * with direct addresses declared within the source code of a POU. 
+         * 4CVM will call the IO-Configurators I4CVMCompile2::CheckAddress() method 
+         * during the compilation process to validate the direct address and to 
+         * obtain the final byte and bit offset.
+         * 
+         * @param       sAddress - Direct address of an IO-Variable. Direct address will
+         *              be validated with CheckAddress(). Shall not be NULL.
+         *
+         * @param       sIECType - String denoting the IEC datatype of the IO-Variable. 
+         *              This is either a simple basic type name (BOOL, BYTE, STRING,...) 
+         *              or the name of a user defined structure. Shall not be NULL.
+         *              
+         * @param       bIsStruct - TRUE if the data type is a user defined structure.
+         *
+         * @param       bIsArray - TRUE if the data type is an array.
+         *
+         * @param       lArrayElements - if bIsArray is TRUE this input is the number of
+         *              array elements. If bIsArray is FALSE lArrayElements is -1.
+         *
+         * @param       lStringLen - if data type (or array element type) is a STRING
+         *              this input contains the string length, else -1.
+         *
+         *              Example 1: if the IO Variable has data type "ARRAY[1..5] OF myStruct"
+         *              then CheckAddress is called like this:
+         *              sIECType="myStruct", bIsStruct=TRUE, bIsArray=TRUE, lArrayElements=5, lStringLen=-1.
+         *
+         *              Example 2: if the IO Variable has data type "ARRAY[1..5] OF STRING[20]"
+         *              then CheckAddress is called like this:
+         *              sIECType="myStruct", bIsStruct=TRUE, bIsArray=TRUE, lArrayElements=5, lStringLen=20.
+         * 
+         * @param       lBitSizeOfType - the size of the data type in bits, this value 
+         *              is:
+         *               - the size of a simple data type if bIsStruct is FALSE and bIsArray is FALSE.
+         *               - the size of a structure if bIsStruct is TRUE.
+         *               - the size of the array if bIsArray is TRUE (including any array size 
+         *                 fields prepended to the array data).
+         *               - the size of a STRING[20] in bytes (including the [len,usedlen] 
+         *                 info prepended to the string data).
+         *
+         * @param       sInstancePath - Instance path of the IO-Variable. Shall not be NULL. 
+         *
+         * @param       plByteOffset - The byte offest of the variable will be returned. 
+		 *				Shall not be NULL. 
+         *
+         * @param       plBitOffset - The bit offest of the variable will be returned. 
+		 *				Shall not be NULL. 
+         *
+         * @param       psDiagMsg - An additional diagnostic message will be returned with
+         *              this BSTR in case of an error. The diagnostic message shall contain 
+         *              a unique identifier for the IO-System type (e.g. DP,FF). 
+         *              Pointer shall not be NULL.
+         *
+         * @param       pbIsError - reference to a boolean. Shall not be NULL. If *psDiagMsg
+         *              is not NULL then *pbIsError is used to distinguish between
+         *              a warning and an error (that will stop the compile process). 
+         *              If *pbIsError == TRUE: psDiagMsg is an error
+         *              If *pbIsError == FALSE: psDiagMsg is a warning
+         *
+         * @param       plErrorPos - Additional error information. Denotes the character
+         *              offset in the direct address that caused the error. Returned position
+         *              shall be >= 0. Pointer shall not be NULL.
+         *
+         * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+         *              S_OK - success<br>
+         *              E_POINTER - one of the pointer arguments specified an invalid argument.<br>
+         * 
+         *              Note: the returned HRESULT shall only be used to signal severe internal 
+         *              errors like  E_POINTER or E_OUTOFMEMORY. All errors/warnings that 
+         *              are related to address checking must be reported via the output 
+         *              variables psDiagMsg and pbIsError and the return value should be S_OK.
+         *                   
+         * @see         4CCG Architecture sections 2.3,2.4 ,4.1.2.3.1
+         * @see         4CIO Architecture section 3.2.1.6, Load()
+        */
+		[helpstring("Check direct % address and obtain IO-Layer initialization data")] 
+        HRESULT CheckAddress(
+            [in, string] BSTR sAddress,
+            [in, string] BSTR sIECType,
+            [in] BOOL         bIsStruct,
+            [in] BOOL         bIsArray,
+            [in] long         lArrayElements,
+            [in] long         lStringLen,
+            [in] long         lBitSizeOfType,
+            [in, string] BSTR sInstancePath, 
+            [out] long*       plByteOffset,
+            [out] long*       plBitOffset,
+            [out,string]BSTR* psDiagMsg,
+            [out] BOOL*       pbIsError, 
+            [out] long*       plErrorPos
+        );
+
+        //------------------------------------------------------------------*
+        /**
+         * GetVarsByChannel() delivers information about all existing variables
+		 * of the given Channel.
+		 * The data is delivered as a SAFEARRAY of BSTR
+		 * each BSTR contains the variable name and its % address.
+		 * To get more detailed information about a single variable call the 
+         * CheckAddress() function of this interface
+         * 
+         * @param       lChannel - Number of the channel to deliver the variables from.
+         *              array elements. If bIsArray is FALSE lArrayElements is -1.
+		 *
+         * @param       psVariables - reference to a safe array of BSTR. The array 
+         *              contains the names and the direct % addresses of of all variables of the given channel. 
+		 *              Format of each BSTR returned: <Name> | <direct % address>
+         *              Shall not be NULL.
+		 *
+         * @param       psDiagMsg - An additional diagnostic message will be returned with
+         *              this BSTR in case of an error. The diagnostic message shall contain 
+         *              a unique identifier for the IO-System type (e.g. DP,FF). 
+         *              Pointer shall not be NULL.
+         *
+         * @param       pbIsError - reference to a boolean. Shall not be NULL. If *psDiagMsg
+         *              is not NULL then *pbIsError is used to distinguish between
+         *              a warning and an error (that will stop the compile process). 
+         *              If *pbIsError == TRUE: psDiagMsg is an error
+         *              If *pbIsError == FALSE: psDiagMsg is a warning
+         *
+         * @param       plErrorPos - Additional error information. Denotes the character
+         *              offset in the direct address that caused the error. Returned position
+         *              shall be >= 0. Pointer shall not be NULL.
+         *
+         * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+         *              S_OK - success<br>
+         *              E_POINTER - one of the pointer arguments specified an invalid argument.<br>
+         * 
+         *              Note: the returned HRESULT shall only be used to signal severe internal 
+         *              errors like  E_POINTER or E_OUTOFMEMORY. All errors/warnings that 
+         *              are related to address checking must be reported via the output 
+         *              variables psDiagMsg and pbIsError and the return value should be S_OK.
+         *                   
+        */
+		[helpstring("delivers name and direct % address of all variables of the given channel")] 
+        HRESULT GetVarsByChannel(
+            [in] long				lChannel,
+            [out] SAFEARRAY(BSTR)*	pVariables,
+            [out,string]BSTR*		psDiagMsg,
+            [out] BOOL*				pbIsError, 
+            [out] long*				plErrorPos
+        );
+		
+	};
+
+
+

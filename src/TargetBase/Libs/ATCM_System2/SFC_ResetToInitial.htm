@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>SFCResetToInitialStep</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1"><LINK 
+href="Lib.css" rel=stylesheet>
+<META content="MSHTML 6.00.2800.1458" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffcc>
+<BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+  <H2>SFC_ResetToInitial&nbsp;</H2>
+  <P>Resets a SFC program section.</P>
+  <H3>Interface definition</H3><PRE class=preforma>FUNCTION SFC_ResetToInitial</PRE><PRE class=preforma>VAR_INPUT<BR>&nbsp;&nbsp;&nbsp; bEnable : BOOL; (* reset only if bEnable = TRUE *)<BR>END_VAR</PRE>
+  <H3>Parameters</H3>
+  <H3><FONT size=3><B>[IN] bEnable</B> </FONT></H3>
+  <DL>
+    <DD>Value of type <I><B>BOOL</B></I><BR>Starts the operation.<BR>Potential 
+    values:<BR><I><B>TRUE</B></I>: Operation is started.<BR><I><B>FALSE</B></I>: 
+    Operation is not started. </DD></DL>
+  <H3>Description</H3>
+  <P>Resets an <I><B>SFC</B></I> program section if the passed parameter 
+  is<I><B> TRUE</B></I>; with <I><B>FALSE</B></I>, no reset is carried out. If 
+  an <I><B>SFC</B></I> program section is reset, the program evolution is 
+  restarted from the initial step. All transitions and variables are reset to 
+  their initial values. This function may only be used within <I><B>POU</B></I>s 
+  that contain an <I><B>SFC</B></I> program section. The reset triggered by this 
+  function always resets the <I><B>SFC</B></I> network within which the function 
+  was called</P></BLOCKQUOTE></BODY></HTML>

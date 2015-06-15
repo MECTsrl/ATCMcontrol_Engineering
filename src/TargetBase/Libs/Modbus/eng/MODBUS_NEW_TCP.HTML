@@ -1,0 +1,52 @@
+<html>
+
+<head>
+<title>FNC_Sceleton</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Help.css">
+</head>
+
+<body bgcolor="#FFFFCC">
+<BLOCKQUOTE> 
+  <h2>Function Name</h2>
+  <p> modbus_new_tcp - create a libmodbus context for TCP/IPv4</p>
+  <h3>Interface</h3>
+  <p class="interface">FUNCTION MODBUS_NEW_TCP : UINT</p>
+  <p class="interface">&nbsp;</p>
+  
+  <p class="interface">VAR_INPUT </p>
+  <BLOCKQUOTE class="structinterface"> 
+    <p class="interface">ip_address:STRING;</p>
+  </BLOCKQUOTE>
+   <BLOCKQUOTE class="structinterface"> 
+    <p class="interface">port:UINT;</p>
+  </BLOCKQUOTE> 
+  <p class="interface">END_VAR</p>
+  
+  <h3>Return value</h3>
+  <p>Value of type <i><b>UINT</b></i> </p>
+  <p>0 for success 1 for error </p>
+  
+  <h3>Parameters </h3>
+  <h3>INPUT </h3>
+  <p><strong>ip_address</strong></p>
+  <p class="indent"> Value of type <i><b>STRING</b></i> </p>
+  <p class="indent"> server ip address to connect to </p>
+  <p><strong>port</strong></p>
+  <p class="indent"> Value of type <i><b>UINT</b></i> </p>
+  <p class="indent"> tcp port to use, standard port is 502 </p>
+  <h3>Description </h3>
+  <p>The MODBUS_NEW_TCP function shall allocate and initialize a modbus_t
+structure to communicate with a Modbus TCP/IPv4 server.
+
+The ip_adrress argument specifies the IP address of the server to which the client
+wants etablish a connection.
+
+The port argument is the TCP port to use. Set the port to 502 to use the default one. 
+It's convenient to use a port number greater than or equal to 1024 because it's not necessary to have
+administrator privileges.
+
+ </p>
+</BLOCKQUOTE>
+</body>
+</html>

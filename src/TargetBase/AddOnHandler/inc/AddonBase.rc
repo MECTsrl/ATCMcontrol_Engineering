@@ -1,0 +1,707 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "AddonBaseResource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "AddonBaseResource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""ProjectWizardRes.rc""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_PROJECT_INFO_UPLOAD DIALOG DISCARDABLE  0, 0, 158, 162
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Project Info Upload"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Project Info",IDC_STATIC,7,7,144,129
+    LTEXT           "Version:",IDC_STATIC,14,21,29,10
+    EDITTEXT        IDC_EDIT_PI_VERSION,49,19,93,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Name;",IDC_STATIC,14,35,29,10
+    EDITTEXT        IDC_EDIT_PI_NAME,49,33,93,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Modified:",IDC_STATIC,14,49,29,10
+    EDITTEXT        IDC_EDIT_PI_MOD,49,47,93,13,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Created:",IDC_STATIC,14,63,29,10
+    EDITTEXT        IDC_EDIT_PI_CREATED,49,61,93,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Owner:",IDC_STATIC,14,77,29,10
+    EDITTEXT        IDC_EDIT_PI_OWNER,49,75,93,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Text1:",IDC_STATIC,14,91,29,10
+    EDITTEXT        IDC_EDIT_PI_TEXT1,49,89,93,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Text2:",IDC_STATIC,14,105,29,10
+    EDITTEXT        IDC_EDIT_PI_TEXT2,49,103,93,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Text3:",IDC_STATIC,14,119,29,10
+    EDITTEXT        IDC_EDIT_PI_TEXT3,49,117,93,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    DEFPUSHBUTTON   "OK",IDOK,101,141,50,14
+END
+
+IDD_PROPPAGE_CUSTDOWNLOAD DIALOG DISCARDABLE  0, 0, 222, 151
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Download"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Custom Download",IDC_STATIC,7,7,208,137
+    LTEXT           "Directory:",IDC_STATIC,23,36,33,10
+    EDITTEXT        IDC_PPCD_DIR,60,35,123,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse",IDC_PPCD_BTN_BROWSE,144,53,39,15
+END
+
+IDD_PROP_PAGE_COMM_NETBUI DIALOG DISCARDABLE  0, 0, 187, 96
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "NetBEUI"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Communication Properties",IDC_STATIC,7,7,173,82
+    LTEXT           "CN Address:",IDC_STATIC,21,33,47,10
+    EDITTEXT        IDC_EDIT_CN_ADDRES,69,31,85,14,ES_AUTOHSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_PROJECT_INFO_UPLOAD, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 151
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 155
+    END
+
+    IDD_PROPPAGE_CUSTDOWNLOAD, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 215
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 144
+    END
+
+    IDD_PROP_PAGE_COMM_NETBUI, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 89
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ADDON_BASE_ID       "AddonBase"
+    IDS_ERR_GET_DESC        "Can't get object description."
+    IDS_ERR_DELETE_LINK     "Error deleting link of file %1. "
+    IDS_ERR_DELETE_FILE     "Error deleting file: %1."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ERR_RENAME_LINK     "Error renaming kink of file %1."
+    IDS_ERR_RENAME_FILE     "Error renaming file %1."
+    IDS_ERR_ID_EXISTS       "Error: node with the same id (%1)\ndoes already exist."
+    IDS_ERR_CREATE_LINK     "Error creating link in parent file."
+    IDS_ERR_FILE_NOT_FOUND  "Error: File not found: %1."
+    IDS_ERR_SYNTAX_ERROR    "Error: Syntax error in source file: %1."
+    IDS_ERR_SAVE_TARGET     "Error saving target file: %1."
+    IDS_PROP_TITLE_NEW      "New"
+    IDS_PROP_TITLE          "Properties"
+    IDS_STD_RESOURCE        "Resource%d"
+    IDS_STD_PROGRAM         "Program%d"
+    IDS_STD_TASK            "Task%d"
+    IDS_4CWIZ_NTH_RESOURCE  "%d. Resource"
+    IDS_LIBSPAGE_CAPTION    "ATCMControl Project Wizard - Step 2 / 4"
+    IDS_PROPSPAGE_CAPTION   "ATCMControl Project Wizard - Step 4 / 4"
+    IDS_SETTINGS_TITLE      "Target Settings"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_DELETE_DIALOG_TEXT  "Do you really want to delete target %s\nand the corresponding file?"
+    IDS_COMM_PROP_CAP       "Communication Properties"
+    IDS_COMM_SOCKET         "TCP/IP"
+    IDS_COMM_RS232          "RS232"
+    IDS_ERROR_NOPROJMAN     "Fatal Error: Could not access project manager."
+    IDS_ERROR_NOPROJPATH    "Fatal Error: Could not get projetc path."
+    IDS_ERROR_FAIL_INITRESOURCE 
+                            "Fatal Error: Could not get resources of project."
+    IDS_ERROR_FAIL_GETCONT  "Failed to get container interface for file: %1."
+    IDS_ERROR_FAIL_RENAMEINCONT "Failed to rename file in container."
+    IDS_ERROR_FAIL_REMOVEFILE "Could not remove file: %1."
+    IDS_ERROR_FAIL_DELETEINCONT "Failed to delete file in container."
+    IDS_ERROR_FILE_ALREADY_EXITS "File already exists: %1."
+    IDS_ERROR_FAIL_CREATEINCONT "Failed to create file in container."
+    IDS_ERROR_ADD_TO_PROJECT "Error: could not add target file to project!"
+    IDS_NO_ASSIGN           "<no assignment>"
+    IDS_STRING_URL_FILE     "Select File as URL"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_STRING_URL_FILTER   "HTML files (*.htm; *.html)|*.htm; *.html|All files (*.*)|*.*||"
+    IDS_URL_FILEHEADER      "ATCMFile:"
+    IDS_ERROR_IDENTIFIER_TOO_LONG 
+                            """%1"" is no valid IEC identifier: identifier is too long."
+    IDS_ERROR_IDENTIFIER_SYNTAX_ERROR 
+                            """%1"" is no valid IEC identifier: syntax error."
+    IDS_ERROR_IDENTIFIER_IS_KEYWORD 
+                            """%1"" is no valid IEC identifier: it  is a IEC keyword."
+    IDS_ERROR_IDENTIFIER    "Error testing IEC identifier."
+    IDS_ERROR_FILE_EXISTS   "File already exists: %1.\nOverwrite?"
+    IDS_ERROR_CONFIG_FILE_CORRUPT 
+                            "The target file is corrupt. \nDelete target node and create a new target."
+    IDS_ERROR_TARGET_EXISTS "A target with the name %1 does already exist!"
+    IDS_ERROR_SAVING_FILE   "Error: could not save file."
+    IDS_INVALID_IP_ADDRESS  "Caution: This is not a valid IP-Address!\nProceed anyway?"
+    IDS_ERROR_PARAMETER_INIT 
+                            "Fatal error: Addon handler could not be initialized from KAD."
+    IDS_DEFAULT_RESOURCE    "Resource"
+    IDS_DEFAULT_TARGET      "Target"
+    IDS_COMM_CHANNEL_DESC_RS232 "RS232"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_COMM_CHANNEL_DESC_TCP "TCP/IP"
+    IDS_NO_COMM_CHANNEL     "No communication channel specified!"
+    IDS_ERROR_LOADING_TARGETFILE "Error: Could not open target file."
+    IDS_INTERNAL_ERROR      "Internal Error!"
+    IDS_INFORM_GENRATING_DD "generating domain: '%1'"
+    IDS_WARNING_NOSPECIFIED_CDD 
+                            "warning: no path specified for additional download files."
+    IDS_ERROR_NOEXST_DLDIR  "Error: Download directory '%1' does not exist"
+    IDS_ERROR_FAILED_CREATE_CDD 
+                            "Fatal Error: Failed to create domain. Assumed reason: (%1) - '%2'"
+    IDS_ERROR_8_3_FILENAME  "Error custom download: Filename %1 does not fit into 8.3 naming schema."
+    IDS_ERROR_HR            "Error: %1\n\rhr: 0x%2!X!"
+    IDS_PROJ_INFO_FAILED    "Project Info Upload failed!\n(error: 0x%1!X!)."
+    IDS_PROJ_UP_FAILED      "Project Upload failed!\n(error: 0x%1!X!)."
+    IDS_EXEC_CMD            "Executing external command failed,\ndetails see system tab in message view."
+    IDS_ERR_ACCESS_FILE     "Error accessing file %1."
+    IDS_PROJ_DOWN_FAILED    "Project download failed!\n(error: 0x%1!X!)."
+    IDS_ERR_FILENAME_TOO_LONG 
+                            "File name too long, only %1!i! characters allowed:\n\r%2."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_4GHFILE_READ_ERR    "Error: could not read POU protection data.\nAbort."
+    IDS_WRONG_PASSWORD      "Password incorrect."
+    IDS_4GHFILE_CANCEL      "POU Protection Dialog cannot be opened\nwithout valid password."
+    IDS_INVALID_PASSWORD    "Invalid password.\nPassword must be at least 3 characters long."
+    IDS_PASSWORD_MISSTYPED  "Password confirmation error.\nPassword and confirmation must be exactly the same."
+    IDS_4GHFILE_PROJCONFILCT 
+                            "Error: The POU protection data does not\nbelong to the current project."
+    IDS_COMM_CHANNEL_DESC_NETBUI "NetBEUI"
+END
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_PROPPAGE_TARGET_GENERAL DIALOG DISCARDABLE  0, 0, 230, 183
+STYLE DS_MODALFRAME | WS_CAPTION | WS_SYSMENU
+CAPTION "General"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Information",IDC_STATIC,7,7,216,113
+    LTEXT           "&Name:",IDC_STATIC,14,22,50,11
+    EDITTEXT        IDC_PROPGEN_NAME,82,22,134,12,ES_AUTOHSCROLL
+    LTEXT           "&OPC Server:",IDC_STATIC,14,42,50,11
+    EDITTEXT        IDC_PROPGEN_OPCSERVER,82,42,134,12,ES_AUTOHSCROLL
+    LTEXT           "&Assigned Resource:",IDC_STATIC,14,62,68,11
+    COMBOBOX        IDC_PROPGEN_RESOURCES,82,61,134,50,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Protocol:",IDC_STATIC,14,102,62,11
+    COMBOBOX        IDC_PROPGEN_COMM_CHANNEL_CB,82,101,134,50,
+                    CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Firmware Version:",IDC_PROPGEN_STATIC_FIRMWARE,14,82,62,
+                    11
+    COMBOBOX        IDC_PROPGEN_FIRMWARE,82,81,134,50,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "History",IDC_STATIC,7,124,216,52
+    LTEXT           "Created:",IDC_STATIC,14,138,44,10
+    LTEXT           "Create Date",IDC_PROPGEN_CREATEDATE,64,138,81,10
+    LTEXT           "by:",IDC_STATIC,147,138,16,10
+    LTEXT           "CreateUser",IDC_PROPGEN_CREATEUSER,169,138,47,10
+    LTEXT           "Last modified:",IDC_STATIC,14,156,46,10
+    LTEXT           "LastModDate",IDC_PROPGEN_LASTMODDATE,64,156,81,10
+    LTEXT           "by:",IDC_STATIC,147,156,15,10
+    LTEXT           "LastModUser",IDC_PROPGEN_LASTMODUSER,169,156,47,10
+END
+
+IDD_PROPPAGE_INFO DIALOG DISCARDABLE  0, 0, 222, 151
+STYLE DS_MODALFRAME | WS_CAPTION | WS_SYSMENU
+CAPTION "Info"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_PROPINFO_TEXT1,51,21,157,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PROPINFO_TEXT2,51,37,157,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PROPINFO_TEXT3,51,53,157,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PROPINFO_ALIAS,51,69,157,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PROPINFO_URL,51,105,157,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse",IDC_PROPGEN_BROWSE,168,123,40,13
+    GROUPBOX        "Object Information",IDC_STATIC,7,7,208,80
+    LTEXT           "Text1:",IDC_STATIC,14,21,36,10
+    LTEXT           "Text2:",IDC_STATIC,14,37,36,10
+    LTEXT           "Text3:",IDC_STATIC,14,53,36,10
+    LTEXT           "Alias:",IDC_STATIC,14,69,36,10
+    GROUPBOX        "Links",IDC_STATIC,7,91,208,53
+    LTEXT           "Url:",IDC_STATIC,14,105,31,9
+END
+
+IDD_ASSIGNMENTDIALOG DIALOG DISCARDABLE  0, 0, 112, 137
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Resource Assignment"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Resources:",IDC_STATIC,5,4,70,10
+    LISTBOX         IDC_LIST_RESOURCES,4,16,105,95,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL | 
+                    WS_TABSTOP
+    DEFPUSHBUTTON   "OK",ID_OK,4,118,50,14
+    PUSHBUTTON      "Cancel",ID_CANCEL,59,118,50,14
+END
+
+IDD_PROPPAGE_COMMRS232 DIALOG DISCARDABLE  0, 0, 225, 132
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "RS232"
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_PROPGEN_SERIALPORT_CB,20,31,53,57,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Port:",IDC_STATIC,20,21,16,8
+    GROUPBOX        "Communication Properties",IDC_STATIC,7,7,211,96
+    LTEXT           "Bits per second:",IDC_STATIC,82,33,52,8
+    LTEXT           "Data bits:",IDC_STATIC,82,65,31,8
+    LTEXT           "Parity:",IDC_STATIC,82,49,20,8
+    LTEXT           "Stop bits:",IDC_STATIC,82,81,30,8
+    COMBOBOX        IDC_PROPGEN_BAUDRATE_CB,146,31,59,60,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_PROPGEN_DATABITS_CB,146,63,59,66,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_PROPGEN_STOPBITS_CB,146,79,59,53,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_PROPGEN_PARITY_CB,146,47,59,63,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_PROPPAGE_COMM_SOCKET DIALOG DISCARDABLE  0, 0, 225, 132
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "TCP/IP"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Communication Properties",IDC_STATIC,7,7,211,96
+    LTEXT           "Control Address:",IDC_STATIC,24,26,52,8
+    EDITTEXT        IDC_PROPGEN_IPADDR_EDIT,88,24,109,14,ES_AUTOHSCROLL
+END
+
+IDD_CONNECT_PROPPAGE DIALOG DISCARDABLE  0, 0, 187, 98
+STYLE DS_MODALFRAME | WS_CAPTION | WS_SYSMENU
+CAPTION "Connect"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Connection Timeout (sec):",IDC_STATIC,15,36,83,9
+    EDITTEXT        IDC_CONNECT_TIMEOUT,102,34,45,11,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+END
+
+IDD_DEBUG_PROPPAGE DIALOG DISCARDABLE  0, 0, 219, 141
+STYLE DS_MODALFRAME | WS_CAPTION | WS_SYSMENU
+CAPTION "Debug"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "&None",IDC_SETTINGS_BP_NONE,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,50,26,69,13
+    CONTROL         "&Simple",IDC_SETTINGS_BP_SIMPLE,"Button",
+                    BS_AUTORADIOBUTTON,50,45,69,13
+    CONTROL         "Ad&vanced",IDC_SETTINGS_BP_ADVANCED,"Button",
+                    BS_AUTORADIOBUTTON,50,64,69,13
+    CONTROL         "Disable code optimization",IDC_CHECK_NCC_DISABLED,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,50,87,108,12
+    LTEXT           "Please re-compile and download the project after changing this option.",
+                    IDC_STATIC,33,109,134,19
+    GROUPBOX        "Breakpoint Support",IDC_STATIC,7,7,205,127
+END
+
+IDD_4CWIZ_NAMES DIALOG DISCARDABLE  0, 0, 360, 191
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "ATCMControl Project Wizard - Step 3 / 4"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "ATCMControl Project Wizard generates a new project with the following names and properties",
+                    IDC_STATIC,14,18,317,8
+    CONTROL         "List1",IDC_4CWIZ_LCONFS,"SysListView32",LVS_SMALLICON | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | 
+                    WS_BORDER | WS_TABSTOP,11,32,339,50
+    LTEXT           "Resource",IDC_STATIC,11,96,32,8
+    EDITTEXT        IDC_4CWIZ_RESOURCE,51,94,50,12,ES_AUTOHSCROLL
+    LTEXT           "Task",IDC_STATIC,11,118,17,8
+    EDITTEXT        IDC_4CWIZ_TASK,51,116,50,12,ES_AUTOHSCROLL
+    LTEXT           "Program",IDC_STATIC,11,140,27,8
+    EDITTEXT        IDC_4CWIZ_PROGRAM,51,138,50,12,ES_AUTOHSCROLL
+    LTEXT           "in",IDC_STATIC,108,140,8,8
+    COMBOBOX        IDC_4CWIZ_LANGUAGE,134,138,68,55,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Target",IDC_STATIC,108,96,25,8
+    EDITTEXT        IDC_4CWIZ_TARGET,134,94,68,12,ES_AUTOHSCROLL
+    LTEXT           "OPC-Server-",IDC_STATIC,208,95,40,8
+    LTEXT           "Address",IDC_STATIC,208,103,26,8
+    EDITTEXT        IDC_4CWIZ_ADDRESS,252,94,98,12,ES_AUTOHSCROLL
+    LTEXT           "Firmware-",IDC_STATIC,208,116,31,8
+    LTEXT           "Version",IDC_STATIC,208,124,24,8
+    COMBOBOX        IDC_4CWIZ_FIRMWARE_VERSION,252,116,98,55,
+                    CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Protocol",IDC_STATIC,208,137,27,8
+    COMBOBOX        IDC_4CWIZ_COMM_CHANNEL,252,138,98,55,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Parameters",IDC_4CWIZ_COMMPROP,270,158,80,14
+    GROUPBOX        "Names and Properties",IDC_STATIC,2,4,357,186
+END
+
+IDD_4CWIZ_RESOURCES DIALOG DISCARDABLE  0, 0, 360, 162
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "ATCMControl Project Wizard - Step 1 / 4"
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_4CWIZ_NUMBER_RESOURCES,65,50,111,65,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "How many resources would you like to use in your project?",
+                    -1,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,23,25,208,9
+    GROUPBOX        "Resource Settings",-1,0,5,359,156
+END
+
+IDD_CHANGE_PASSWORD DIALOG DISCARDABLE  0, 0, 186, 111
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Change Password"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_PASSWORD_CH1_EDIT,72,22,95,14,ES_PASSWORD | 
+                    ES_AUTOHSCROLL
+    EDITTEXT        IDC_PASSWORD_CH2_EDIT,72,46,95,14,ES_PASSWORD | 
+                    ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,73,90,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,90,50,14
+    GROUPBOX        "",IDC_STATIC,7,7,172,72
+    LTEXT           "New password:",IDC_STATIC,18,25,50,8
+    LTEXT           "Confirmation:",IDC_STATIC,18,49,42,8
+END
+
+IDD_POUPROTECTION DIALOG DISCARDABLE  0, 0, 327, 180
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "POU Protection"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Add A&ll >>",IDC_ADD_ALL_POUS,135,42,55,14
+    PUSHBUTTON      "&Add >",IDC_ADD_POU,135,65,55,14
+    PUSHBUTTON      "< &Remove ",IDC_REMOVE_POU,135,88,55,14
+    PUSHBUTTON      "<< Remo&ve All",IDC_REMOVE_ALL_POUS,135,111,55,14
+    LISTBOX         IDC_UNPROTECTED_POUS,21,35,105,99,LBS_NOINTEGRALHEIGHT | 
+                    LBS_EXTENDEDSEL | WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_PROTECTED_POUS,199,35,105,99,LBS_NOINTEGRALHEIGHT | 
+                    LBS_EXTENDEDSEL | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,211,157,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,268,157,50,14
+    LTEXT           "Unprotected",IDC_STATIC,52,19,40,8
+    LTEXT           "Protected",IDC_STATIC,236,19,32,8
+    GROUPBOX        "",IDC_STATIC,8,3,310,146
+END
+
+IDD_ENTER_PASSWORD DIALOG DISCARDABLE  0, 0, 186, 82
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Enter Password"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_PASSWORD_EDIT,21,22,91,14,ES_PASSWORD | 
+                    ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,73,61,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,61,50,14
+    PUSHBUTTON      "Change",IDC_CHANGE_PASSWD,121,22,50,14
+    GROUPBOX        "",IDC_STATIC,7,7,172,45
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_PROPPAGE_TARGET_GENERAL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 223
+        VERTGUIDE, 14
+        VERTGUIDE, 64
+        VERTGUIDE, 82
+        VERTGUIDE, 147
+        VERTGUIDE, 169
+        VERTGUIDE, 216
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 176
+    END
+
+    IDD_PROPPAGE_INFO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 215
+        VERTGUIDE, 14
+        VERTGUIDE, 51
+        VERTGUIDE, 208
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 144
+    END
+
+    IDD_ASSIGNMENTDIALOG, DIALOG
+    BEGIN
+        RIGHTMARGIN, 109
+    END
+
+    IDD_PROPPAGE_COMMRS232, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 218
+        VERTGUIDE, 20
+        VERTGUIDE, 82
+        VERTGUIDE, 146
+        VERTGUIDE, 205
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 125
+    END
+
+    IDD_CONNECT_PROPPAGE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 91
+    END
+
+    IDD_DEBUG_PROPPAGE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 212
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 134
+    END
+
+    IDD_4CWIZ_NAMES, DIALOG
+    BEGIN
+        RIGHTMARGIN, 346
+    END
+
+    IDD_CHANGE_PASSWORD, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 104
+    END
+
+    IDD_POUPROTECTION, DIALOG
+    BEGIN
+        LEFTMARGIN, 8
+        RIGHTMARGIN, 318
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 171
+    END
+
+    IDD_ENTER_PASSWORD, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 75
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_PROPPAGE_COMMRS232 DLGINIT
+BEGIN
+    IDC_PROPGEN_SERIALPORT_CB, 0x403, 5, 0
+0x4f43, 0x314d, "\000" 
+    IDC_PROPGEN_SERIALPORT_CB, 0x403, 5, 0
+0x4f43, 0x324d, "\000" 
+    IDC_PROPGEN_SERIALPORT_CB, 0x403, 5, 0
+0x4f43, 0x334d, "\000" 
+    IDC_PROPGEN_SERIALPORT_CB, 0x403, 5, 0
+0x4f43, 0x344d, "\000" 
+    IDC_PROPGEN_BAUDRATE_CB, 0x403, 4, 0
+0x3131, 0x0030, 
+    IDC_PROPGEN_BAUDRATE_CB, 0x403, 4, 0
+0x3033, 0x0030, 
+    IDC_PROPGEN_BAUDRATE_CB, 0x403, 4, 0
+0x3036, 0x0030, 
+    IDC_PROPGEN_BAUDRATE_CB, 0x403, 5, 0
+0x3231, 0x3030, "\000" 
+    IDC_PROPGEN_BAUDRATE_CB, 0x403, 5, 0
+0x3432, 0x3030, "\000" 
+    IDC_PROPGEN_BAUDRATE_CB, 0x403, 5, 0
+0x3834, 0x3030, "\000" 
+    IDC_PROPGEN_BAUDRATE_CB, 0x403, 5, 0
+0x3639, 0x3030, "\000" 
+    IDC_PROPGEN_BAUDRATE_CB, 0x403, 6, 0
+0x3431, 0x3034, 0x0030, 
+    IDC_PROPGEN_BAUDRATE_CB, 0x403, 6, 0
+0x3931, 0x3032, 0x0030, 
+    IDC_PROPGEN_BAUDRATE_CB, 0x403, 6, 0
+0x3833, 0x3034, 0x0030, 
+    IDC_PROPGEN_BAUDRATE_CB, 0x403, 6, 0
+0x3635, 0x3030, 0x0030, 
+    IDC_PROPGEN_BAUDRATE_CB, 0x403, 6, 0
+0x3735, 0x3036, 0x0030, 
+    IDC_PROPGEN_BAUDRATE_CB, 0x403, 7, 0
+0x3131, 0x3235, 0x3030, "\000" 
+    IDC_PROPGEN_BAUDRATE_CB, 0x403, 7, 0
+0x3231, 0x3038, 0x3030, "\000" 
+    IDC_PROPGEN_BAUDRATE_CB, 0x403, 7, 0
+0x3532, 0x3036, 0x3030, "\000" 
+    IDC_PROPGEN_DATABITS_CB, 0x403, 2, 0
+0x0034, 
+    IDC_PROPGEN_DATABITS_CB, 0x403, 2, 0
+0x0035, 
+    IDC_PROPGEN_DATABITS_CB, 0x403, 2, 0
+0x0036, 
+    IDC_PROPGEN_DATABITS_CB, 0x403, 2, 0
+0x0037, 
+    IDC_PROPGEN_DATABITS_CB, 0x403, 2, 0
+0x0038, 
+    IDC_PROPGEN_STOPBITS_CB, 0x403, 2, 0
+0x0031, 
+    IDC_PROPGEN_STOPBITS_CB, 0x403, 4, 0
+0x2e31, 0x0035, 
+    IDC_PROPGEN_STOPBITS_CB, 0x403, 2, 0
+0x0032, 
+    IDC_PROPGEN_PARITY_CB, 0x403, 5, 0
+0x6f4e, 0x656e, "\000" 
+    IDC_PROPGEN_PARITY_CB, 0x403, 4, 0
+0x644f, 0x0064, 
+    IDC_PROPGEN_PARITY_CB, 0x403, 5, 0
+0x7645, 0x6e65, "\000" 
+    IDC_PROPGEN_PARITY_CB, 0x403, 5, 0
+0x614d, 0x6b72, "\000" 
+    IDC_PROPGEN_PARITY_CB, 0x403, 6, 0
+0x7053, 0x6361, 0x0065, 
+    0
+END
+
+IDD_4CWIZ_NAMES DLGINIT
+BEGIN
+    IDC_4CWIZ_LANGUAGE, 0x403, 3, 0
+0x5453, "\000" 
+    IDC_4CWIZ_LANGUAGE, 0x403, 4, 0
+0x4246, 0x0044, 
+    IDC_4CWIZ_LANGUAGE, 0x403, 3, 0
+0x444c, "\000" 
+    IDC_4CWIZ_LANGUAGE, 0x403, 4, 0
+0x4653, 0x0043, 
+    IDC_4CWIZ_LANGUAGE, 0x403, 3, 0
+0x4c49, "\000" 
+    IDC_4CWIZ_COMM_CHANNEL, 0x403, 1, 0
+"\000" 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_WIZARD_IMAGE_LIST   BITMAP  DISCARDABLE     "clvwimag.bmp"
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#include "ProjectWizardRes.rc"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

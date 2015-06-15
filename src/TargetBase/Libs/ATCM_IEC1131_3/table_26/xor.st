@@ -1,0 +1,15 @@
+(*[[
+    UserURL= "ATCMfile:XOR.htm"
+]]*)
+
+FUNCTION XOR : ANY_BIT
+VAR_INPUT 
+    IN1 : ANY_BIT; 
+END_VAR
+VAR_IN_EXT 
+    IN2 : ANY_BIT; 
+END_VAR
+
+inline XOR
+
+END_FUNCTION

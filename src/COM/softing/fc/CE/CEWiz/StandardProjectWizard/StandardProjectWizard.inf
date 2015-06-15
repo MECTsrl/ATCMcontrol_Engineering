@@ -1,0 +1,24 @@
+TARGETTYPE=DLL
+TARGET=$(EXE_DIR)\Engineering\bin\StandardProjectWizard.dll
+
+DEFINE=_ATL_STATIC_REGISTRY
+DEFINE=_ATL_NO_SECURITY
+DEFINE=_AFXDLL
+DEFINE=_MRCEXT_NOFORCELIBS
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\CE\inc
+INCLUDE=$(MAKEDIR)
+INCLUDE=$(MAKEDIR)\..\inc
+INCLUDE=$(MAKEDIR)\Inc
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\lib\fc_tools.lib
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\lib\fc_util.lib
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\ce\cewiz\lib\ProjectWizardCore.lib
+LIBPATH=$(LIB_DIR)
+
+MASTER_RC=StandardProjectWizard.RC
+PCHFILE=stdafx
+
+USER=makefirst:$(MAKEDIR)\Lib
+USER=$(MAKEDIR)\Lib:
+USER=  -md $@

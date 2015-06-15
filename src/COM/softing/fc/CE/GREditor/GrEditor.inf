@@ -1,0 +1,21 @@
+TARGET=$(EXE_DIR)\Engineering\bin\GrEditorV2.exe
+
+DEFINE=_ATL_NO_SECURITY
+STATIC_RUNTIME=0
+UNICODE=0
+DEFINE=_AFXDLL
+DEFINE=_WINDLL
+DEFINE=_USRDLL
+
+INCLUDE=$(MAKEDIR)\inc
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\ce\inc
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+
+MASTER_RC=GrEditor.rc
+PCHFILE=stdafx
+
+# use COPY from STEditor !!
+#COPY=stkeywords.ini $(EXE_DIR)\Engineering\bin\stkeywords.ini
+#COPY=4chkeywords.ini $(EXE_DIR)\Engineering\bin\4chkeywords.ini
+

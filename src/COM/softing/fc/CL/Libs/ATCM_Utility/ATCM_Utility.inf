@@ -1,0 +1,8 @@
+USER=libname=ATCM_Utility
+USER=make_lib: force
+
+USER= xcopy  $(BUILT_LIB_DIR)\ATCM_System.4cl $(MAKEDIR)\*.* /Y
+USER= xcopy  $(BUILT_LIB_DIR)\ATCM_IEC1131_3.4cl $(MAKEDIR)\*.* /Y
+USER= $(4CG) $(MAKEDIR)\$(libname).4cp  -ml:0 $(4CL_DIR)\$(libname).4cl
+
+# -------------------------------------------------------------------------------

@@ -1,0 +1,59 @@
+Funktionsbaustein Name
+
+Kurzbeschreibung
+
+Schnittstelle
+
+FUNCTION_BLOCK FBName   
+
+VAR_INPUT
+    ...
+
+END_VAR
+
+VAR_OUTPUT
+    ...
+
+END_VAR
+
+VAR_IN_OUT
+    ...
+
+END_VAR
+
+
+Parameter 
+
+INPUT
+
+ParameterName 
+
+	Wert vom Typ Datentyp
+	Beschreibung 
+
+	... 
+
+
+OUTPUT
+
+ParameterName 
+
+	Wert vom Typ Datentyp
+	Beschreibung 
+
+... 
+
+
+IN_OUT
+
+ParameterName 
+
+	Wert vom Typ Datentyp
+	Beschreibung 
+
+	... 
+
+
+Beschreibung
+
+Beschreibungstext

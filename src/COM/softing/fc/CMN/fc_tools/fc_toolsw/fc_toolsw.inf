@@ -1,0 +1,9 @@
+TARGET=$(LIB_DIR)\fc_toolsw.lib
+TARGETTYPE=lib
+UNICODE=1
+
+INCLUDE=$(INCLUDE_DIR) 
+
+
+
+

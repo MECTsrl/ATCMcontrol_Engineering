@@ -1,0 +1,80 @@
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+	[
+        object,
+        uuid(07F5C453-3B8D-4c2f-94AD-264B0EEEEA09),
+        dual,
+        helpstring("IConfigGSDHelp: invoke help on Profibus GSD configurator"),
+        pointer_default(unique)
+    ]
+	interface IConfigGSDHelp : IUnknown
+	{
+		
+		[id(1), helpstring("method SetHelpEntrypoint")]
+			HRESULT CallHelpWithIndex(DWORD dwHelpIndex);
+	};
+
+    [
+        object,
+        uuid(A7CE736A-19B7-4ae5-92C1-BB5C9B89DF11),
+        dual,
+        helpstring("IConfigGSDBasic: Configure GSD interface"),
+        pointer_default(unique)
+    ]
+    interface IConfigGSDBasic : IDispatch
+    {
+        [id(1), helpstring("method StartConfigGSD")]
+            HRESULT StartConfigGSD([in,optional] BSTR sFileGSD);
+        [id(2), helpstring("method SetGSDFileName")]
+            HRESULT SetGSDFileName([in,optional] BSTR sFileGSD);
+        [propget, id(3), helpstring("property Ident_Number")]
+            HRESULT Ident_Number([out, retval] long *pVal);
+        [propget, id(4), helpstring("property FileName")]
+            HRESULT FileName([out, retval] BSTR *pVal);
+        [propget, id(5), helpstring("property ConfigBytes")]
+            HRESULT ConfigBytes([out, retval] VARIANT *pVal);
+        [propget, id(6), helpstring("property UserPrmData")]
+            HRESULT UserPrmData([out, retval] VARIANT *pVal);
+        [id(7), helpstring("method SetHelpConnection")]
+	        HRESULT SetHelpConnection(IConfigGSDHelp* pHelp);
+        [propget, id(8), helpstring("property GSDObject")]
+	        HRESULT GSDObject([out, retval] LPUNKNOWN *pVal);
+        [propget, id(9), helpstring("property DialogState")]
+	        HRESULT DialogState([out, retval] BSTR *pVal);
+        [id(10), helpstring("method StartConfigGSDEx")]
+            HRESULT StartConfigGSDEx([in,optional] BSTR sFileGSD, [in,optional] BSTR sDialogState);
+    };
+
+
+[
+    uuid(CA59AF59-1C36-4d68-A170-82987E70827B),
+    version(2.0),
+    helpstring("4C_20: Profibus GSD Configurator Type Library")
+]
+library CONFIGGSDLib
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+
+    [
+        uuid(1541E6BF-D1A8-46fb-A9FE-BF3AA3FC876A),
+        helpstring("4C_20: Profibus GSD configurator")
+    ]
+    coclass ConfigGSDBasic
+    {
+        [default] interface IConfigGSDBasic;
+    };
+
+    [
+        uuid(AA93368B-4ED3-41c8-9D73-889209FF2636),
+        helpstring("4C_20: Profibus GSD configurator help")
+    ]
+    coclass ConfigGSDHelp
+    {
+        [default] interface IConfigGSDHelp;
+    };
+};
+
+

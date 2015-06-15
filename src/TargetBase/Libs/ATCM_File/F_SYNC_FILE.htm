@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>F_SYNC_FILE</title>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="stylesheet" href="Lib.css">
+</head>
+<body bgcolor="#ffffcc">
+<h2>F_SYNC_FILE</h2>
+<p>Represents a file for synchronous file operations.</p>
+<h3>Interface</h3>
+<pre class="preforma">TYPE<br>    F_SYNC_FILE : STRUCT<br>        FILENAME    : STRING[255];      (* File Name                            *)<br>        MODE        : DINT;             (* File access mode                     *)<br>        POSITION    : DINT;             (* Start at position; returns last pos. *)<br>        LSTERRCD    : DINT;             (* Last error code                      *)<br>        ISOPEN      : BOOL;             (* File open                            *)<br>    END_STRUCT;<br>END_TYPE</pre>
+<h3>Structure elements</h3>
+<p><b><a name="Filename"></a>FILENAME</b></p>
+<p>Value of the type <b><i>STRING[255]</i></b><br>
+Specifies the name of the file. <br>
+The file name must be indicated by a fully qualified path (for
+example: /control/Test.txt).
+If no path is specified, final destination is undefined.<br>
+The compiler does not check whether the syntax of the file name and
+path information is correct and whether they are plausible. </p>
+<p><b><a name="Mode"></a>MODE</b> </p>
+<p>Value of the type <b><i>DINT</i></b><br>
+Specifies the mode for accessing a newly generated or opened file. <br>
+The possible values are defined in the <a href="Const_Mode.htm">access
+mode constants</a>. </p>
+<p><b><a name="Position"></a>POSITION</b> </p>
+<p>Value of the type <i><b>DINT</b></i><br>
+Contains the byte position on which the file pointer is placed after
+the last file operation executed. This is always one byte after the
+last byte read or written. The value of <i><b>POSITION</b></i> is
+automatically updated after each file operation. The first valid
+writing or reading position is 0. <br>
+<i><b>POSITION</b></i> can also be set to define the writing or reading
+position before the next file operation. <br>
+<a href="Const_Pos.htm">Position constants</a> are defined for the
+beginning and end of a file and for the end of a line. </p>
+<p><b>LSTERRCD </b></p>
+<p>Value of the type <b><i>DINT</i></b><br>
+Contains an error number if an error occurred during the last operation
+that was performed on a file represented by a structure instance of <i><b>F_SYNC_FILE</b></i>.
+If no error occurred, this structure variable has the value <b>0</b>.<br>
+</p>
+<p><b>ISOPEN</b></p>
+<p>Value of the type <i><b>BOOL</b></i><br>
+Indicates whether the file is currently open.<br>
+Possible values:<br>
+<i><b>TRUE</b></i>: File is open.<br>
+<i><b>FALSE</b></i>: File is not open.</p>
+<h3><a name="Description"></a>Description</h3>
+<p>Structure instances of <i><b>F_SYNC_FILE</b></i> represent a file
+on which synchronous reading and writing operations are performed.
+Every function of the group of blocks for elementary synchronous file
+operations requires an instance of the<i><b> F_SYNC_FILE</b></i>
+structure as a parameter to be able to identify the file to be
+accessed. </p>
+<p>Before initializing an access cycle it is necessary to initialize at
+least the parameters <i><b>FILENAME</b></i> and <i><b>MODE</b></i> of
+the instance of <i><b>F_SYNC_FILE</b></i> passed to <i><b><a
+ href="F_SYNC_OPENFILE.htm">F_SYNC_OPENFILE</a></b></i> with values. </p>
+<p>Error monitoring can be implemented with the help of the parameter <i><b></b></i><i><b>LSTERRCD</b></i>.
+These variables are automatically updated after each file operation
+and, in the case of an error, contain error number for the operation
+that was last executed with the corresponding instance of<i><b>
+F_SYNC_FILE</b></i>. To implement error monitoring for a specific file
+operation, you therefore need to evaluate this variable at the latest
+before the next file operation to be executed. This is because the
+error variable is always overwritten by the value of the operation that
+was last executed.</p>
+<p>Note that instances of&nbsp; <b>F_SYNC_FILE</b> cannot be copied.
+The following assignment is therefore not permitted:</p>
+<pre class="preforma">VAR<br>	FirstFile  : F_SYNC_FILE;<br>	SecondFile : F_SYNC_FILE;<br>END_VAR<br><br>FirstFile := SecondFile; (* assignment not permitted! *) </pre>
+</body>
+</html>

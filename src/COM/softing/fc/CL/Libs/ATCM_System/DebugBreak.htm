@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>DebugBreak</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>DebugBreak</h2>
+<p>Interrupts the program at the position at which it is called. Functions as 
+  a breakpoint.</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION DebugBreak
+VAR_INPUT
+    IN : BOOL; 
+END_VAR</pre>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+  <dl> 
+    <dt><b>IN</b></dt>
+    <dd>Value of type <i><b>BOOL</b></i><br>
+    Determines whether the program run is to be interrupted or not.<br>
+      Potential values:<br>
+    <i><b>TRUE</b></i>: The program run is interrupted.<br>
+    <i><b>FALSE</b></i>: The program run isn&acute;t interrupted. </dd>
+  </dl>
+<h3>Description</h3>
+<p>Has the function of a breakpoint that is set directly in the source code. Interrupts 
+  the program at the position at which <i><b>DebugBreak</b></i> is called and 
+  outputs a message in a dialog box indicating in which program instance the breakpoint 
+  was reached if the passed parameter is <i><b>TRUE</b></i>. If the passed parameter 
+  is <b><i>FALSE</i></b>, the function body of DebugBreak is not executed. This 
+  function has no effect if no debug connection exists. </p>
+</body>
+</html>

@@ -1,0 +1,46 @@
+
+; FUN       SYSTEM       80 -   115 -   119
+; FB        SYSTEM          -    20 -    24   
+; -----------------------------------------------------------------------
+
+; FUNCTIONs
+; -----------------------------------------------------------------------
+copy_dword_from_byte_array      80          0 99999
+copy_dword_to_byte_array        81          0 99999    
+copy_lword_from_byte_array      82          0 99999
+copy_lword_to_byte_array        83          0 99999
+copy_dint_to_byte_array         84          0 99999
+copy_dint_from_byte_array       85          0 99999
+copy_lint_to_byte_array         86          0 99999
+copy_lint_from_byte_array       87          0 99999
+copy_lreal_to_byte_array        88          0 99999
+copy_lreal_from_byte_array      89          0 99999
+copy_bool_to_byte_array         90          0 99999
+copy_bool_from_byte_array       91          0 99999
+copy_time_from_byte_array       92          0 99999
+copy_time_to_byte_array         93          0 99999
+copy_byte_from_byte_array       94          0 99999
+copy_byte_to_byte_array         95          0 99999
+copy_word_from_byte_array       96          0 99999
+copy_word_to_byte_array         97          0 99999
+copy_string_from_byte_array     98          0 99999
+copy_string_to_byte_array       99          0 99999
+copy_int_to_byte_array          100         0 99999
+copy_int_from_byte_array        101         0 99999
+copy_real_to_byte_array         102         0 99999
+copy_real_from_byte_array       103         0 99999
+byte_swap_word                  104         0 99999
+byte_swap_dword                 105         0 99999
+byte_swap_lword                 106         0 99999
+hi_byte                         107         0 99999
+hi_word                         108         0 99999
+hi_dword                        109         0 99999
+lo_byte                         110         0 99999
+lo_word                         111         0 99999
+lo_dword                        112         0 99999
+make_word                       113         0 99999
+make_dword                      114         0 99999
+make_lword                      115         0 99999
+
+; FUNCTION BLOCKs
+; -----------------------------------------------------------------------

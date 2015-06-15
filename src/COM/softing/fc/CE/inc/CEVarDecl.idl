@@ -1,0 +1,126 @@
+cpp_quote("//+---------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  ATCMControl 4CE")
+cpp_quote("//  Copyright 2000 - 2001 SoftingGmbH.")
+cpp_quote("//")
+cpp_quote("//----------------------------------------------------------------")
+
+
+#ifndef DO_NO_IMPORTS
+import "unknwn.idl";
+#endif
+
+import "CEProjInfo.idl";
+
+//------------------------------------------------------------------*
+/**
+ * ICEVarDecl
+ * This is the interface for an VarDecl-Operation.
+ * Each AddOn Handler that wants to support automatic variable declaration
+ * has to implement this interface.
+ */
+
+cpp_quote("//+---------------------------------------------------------------")
+cpp_quote("// The interface to an variable declaration operation:")
+[
+    object,
+    oleautomation,
+    uuid(4F3DAF34-438C-487f-ACA7-8AFF946EB57F)
+]
+interface ICEVarDecl : IUnknown
+{
+    //------------------------------------------------------------------*
+    /**
+     * InsertVariable: Insert a new variable into a variable declaration
+     * in a source file.
+     *
+     * @param           sFileName : the source file to be modified
+     * @param           pProjInfo : a pointer to the project manager interface
+     * @param           sName     : the name of the new variable
+     * @param           sVarClass : the storage class of the variable
+     * @param           sDataType : the data type of the variable
+     * @param           sAlias    
+     * @param           sComment
+     * @param           sInitValue
+     * @exception       -
+     * @see             
+    */
+    HRESULT InsertVariable ([in, string] BSTR sFileName,
+                            [in] ICEProjInfo* pProjInfo,
+                            [in, string] BSTR sName,
+                            [in, string] BSTR sVarClass,
+                            [in, string] BSTR sDataType,
+                            [in, string] BSTR sAddress,
+                            [in, string] BSTR sAlias,
+                            [in, string] BSTR sComment,
+                            [in, string] BSTR sInitValue);
+
+    //------------------------------------------------------------------*
+    /**
+     * DeleteVariable: Delete an existing variable from a variable 
+     * declaration of a source file.
+     *
+     * @param           sFileName : the source file to be modified
+     * @param           pProjInfo : a pointer to the project manager interface
+     * @param           sName     : the name of the variable to be deleted
+     * @return          
+     * @exception       -
+     * @see             
+    */
+    HRESULT DeleteVariable ([in, string] BSTR sFileName,
+		            [in] ICEProjInfo* pProjInfo,
+                            [in, string] BSTR sName);
+
+    //------------------------------------------------------------------*
+    /**
+     * ModifyVariable: Modify an existing variable in a variable declaration
+     * of a source file.
+     *
+     * @param           sFileName : the source file to be modified
+     * @param           pProjInfo : a pointer to the project manager interface
+     * @param           sOldName  : the name of the old variable to be deleted
+     * @param           sName     : the name of the new variable
+     * @param           sVarClass : the storage class of the variable
+     * @param           sDataType : the data type of the variable
+     * @param           sAlias    
+     * @param           sComment     
+     * @param           sInitValue     
+     * @return          
+     * @exception       -
+     * @see             
+    */
+    HRESULT ModifyVariable ([in, string] BSTR sFileName,
+                            [in] ICEProjInfo* pProjInfo,
+                            [in, string] BSTR sOldName,
+                            [in, string] BSTR sName,
+                            [in, string] BSTR sVarClass,
+                            [in, string] BSTR sDataType,
+                            [in, string] BSTR sAddress,
+                            [in, string] BSTR sAlias,
+                            [in, string] BSTR sComment,
+                            [in, string] BSTR sInitValue);
+
+};
+
+
+
+
+//-----------------------------------------------------
+// This TYPELIB is generated as a convenience to users of high level tools
+// which are capable of using or browsing TYPELIBs. 
+// 'Smart Pointers' in VC6 is one example.
+//-----------------------------------------------------
+
+[
+    uuid(51CB0071-AB6E-49ec-B53D-C7B3ACB830CB),
+    version(2.0),
+    helpstring("4CONTROL: CEVarDecl 2.0 Type Library")
+]
+library CE_VarDeclLib
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+
+    interface ICEVarDecl;
+};
+

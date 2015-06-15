@@ -1,0 +1,132 @@
+// FindInFiles.idl : IDL source for FindInFiles.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (FindInFiles.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+import "CEProjInfo.idl";
+import "CEMsg.idl";
+	[
+		object,
+		uuid(B8682190-DF6F-4114-9FDD-6A3638C24F5A),
+		dual,
+		helpstring("ICEFindInFiles Interface"),
+		pointer_default(unique)
+	]
+	interface ICEFindInFiles : IUnknown
+	{
+
+    //------------------------------------------------------------------*
+    /**
+     *  AddFileType()
+     *  add a file type and an edit interface GUID for the search.
+     *
+     *  @param  sExtension: file extension
+     *  @param  sEditGUID: GUID string for editor interface to use
+     *         
+     * @return  S_OK : ok
+     *
+    */
+    HRESULT AddFileType([in,string] BSTR    sExtension,
+                        [in,string] BSTR    sEditGUID);
+
+    
+    //------------------------------------------------------------------*
+    /**
+     *  StartFind()
+     *
+     * @param   sExpression: expression to be found
+     * @param   sDirectory: search directory
+     * @param   dwFlags: search option flags
+     *                      FIF_OPTION_WHOLEWORD | 
+     *                      FIF_OPTION_CASESENSITIVE |
+     *                      FIF_OPTION_REGEXP
+     *                        (see FindFileDlg.h)
+     *         
+     * @return  S_OK : ok
+     *          E_FAIL : start find failed.
+     *
+    */
+    HRESULT StartFind([in,string] BSTR  sExpression,
+                      [in,string] BSTR  sDirectory,
+                      [in]        DWORD dwFlags);
+
+    //------------------------------------------------------------------*
+    /**
+     *  StopFind()
+     *  stops running find thread.
+     *         
+     * @return  S_OK : ok
+     *          E_FAIL : stop failed (should never occur)
+     *
+    */
+    HRESULT StopFind();
+
+
+    //------------------------------------------------------------------*
+    /**
+     *  IsFindActive()
+     *         
+     * @param   pbActive: is find active?
+     * @return  S_OK : ok
+     *
+    */
+    HRESULT IsFindActive([out]  BOOL*   pbActive);
+
+    //------------------------------------------------------------------*
+    /**
+     *  Reset()
+     *  stops the thread, if it is running
+     *  and removes all added file types
+     *
+     * @return  S_OK : ok
+     *          E_FAIL : reset failed (should never occur)
+    */
+    HRESULT Reset();
+	};
+
+
+	[
+		object,
+		uuid(A59021FA-13F1-444a-B234-2141A1B42F33),
+		dual,
+		helpstring("IFIFMsgInternal Interface"),
+		pointer_default(unique)
+	]
+	interface IFIFMsgInternal : IUnknown
+    {
+    //------------------------------------------------------------------*
+    /**
+     *
+     * @param   sMessage: new FIF message
+     *         
+     * @return  S_OK : ok
+     *
+    */
+    HRESULT NewFIFMessage([in,string] BSTR  sMessage);
+    };
+
+[
+	uuid(82AB4A81-91A6-43b4-844A-8740D62B5BA9),
+	version(1.0),
+	helpstring("FindInFiles 1.0 Type Library")
+]
+library FINDINFILESLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(40E9A48E-D892-4858-B183-A68F290F7BA1),
+		helpstring("CEFindInFiles Class")
+	]
+	coclass CEFindInFiles
+	{
+		[default] interface ICEFindInFiles;
+        interface IFIFMsgInternal;
+        [default, source] interface _ICEMessageEvent;
+	};
+};

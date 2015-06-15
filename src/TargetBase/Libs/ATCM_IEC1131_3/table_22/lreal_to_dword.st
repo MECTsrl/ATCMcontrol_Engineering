@@ -1,0 +1,12 @@
+(*[[
+    UserURL= "ATCMfile:LREAL_TO_DWORD.htm"
+]]*)
+
+FUNCTION LREAL_TO_DWORD : DWORD
+VAR_INPUT 
+    IN : LREAL; 
+END_VAR
+
+inline{VMOP}
+
+END_FUNCTION

@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>BYTE_STRING</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>BYTE_STRING</h2>
+<p>Represents a byte string.</p>
+<h3>Interface definition</h3>
+<pre class="preforma">TYPE
+    BYTE_STRING : STRUCT
+        size  : DINT := 0;   
+    END_STRUCT;
+END_TYPE</pre>
+<h3>Structure elements</h3>
+<p><b>size</b></p>
+<p>Value of type <b><i>DINT</i></b>.<br>
+  Contains the length of the byte string.<br>
+  The default length is 0.</p>
+<h3>Description</h3>
+<p>The structure<i><b> BYTE_STRING</b></i> is used for transporting information 
+  between the communication partners. Although it is not laid open in the structure 
+  definition but implemented at a lower level, the main component of this structure 
+  consist of a dynamic byte string whose size is automatically adjusted to the 
+  contents stored in the byte string. Since the byte string is not outwardly visible, 
+  it can only be accessed indirectly via an instance of the <i><b>BYTE_STRING</b></i> 
+  structure. Not outwardly visible, the byte string, however, cannot be addressed 
+  directly as a data element of this structure but can only be manipulated with 
+  the help of corresponding byte-string functions. To manipulate the byte string, 
+  an instance of the<i><b> BYTE_STRING</b></i> structure is passed to these functions 
+  as a parameter.</p>
+<p> In contrast to the byte string itself, the current size of the byte string 
+  that is stored as a structure element of <i><b>BYTE_STRING</b></i> in the structure 
+  variable size is laid open in the structure definition and is thus outwardly 
+  visible. It can be addressed over the corresponding structure instance and can 
+  be read as well as written. </p>
+<p>The data stored in a byte string are managed in byte units. Read or write access 
+  to a byte string is performed via the index at which a byte is present in the 
+  byte string (functions <a href="BYTE_STRING_SET.htm">BYTE_STRING_SET</a> and 
+  <a href="BYTE_STRING_GET.htm">BYTE_STRING_GET</a>). Byte strings, however, can 
+  be initialized with an ASCII string (function <a href="BYTE_STRING_INIT.htm">BYTE_STRING_INIT</a>) 
+  and the contents of the entire byte string can be converted back into ASCII 
+  format (function <a href="BYTE_STRING_TO_WSTRING.htm">BYTE_STRING_TO_WSTRING</a>). 
+</p>
+</body>
+</html>

@@ -1,0 +1,12 @@
+(*[[
+    UserURL= "ATCMfile:REAL_TO_BYTE.htm"
+]]*)
+
+FUNCTION REAL_TO_BYTE : BYTE
+VAR_INPUT 
+    IN : REAL; 
+END_VAR
+
+inline{VMOP}
+
+END_FUNCTION 

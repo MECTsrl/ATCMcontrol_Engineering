@@ -1,0 +1,75 @@
+cpp_quote("//+---------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  ATCMControl 4CE")
+cpp_quote("//  Copyright 2000 - 2001 SoftingGmbH.")
+cpp_quote("//")
+cpp_quote("//----------------------------------------------------------------")
+
+
+#ifndef DO_NO_IMPORTS
+import "unknwn.idl";
+#endif
+
+import "CEProjInfo.idl";
+
+//------------------------------------------------------------------*
+/**
+ * ICEDragDrop 
+ * This is the interface for an Drag-Drop operation.
+ * Each AddOn Handler that wants to support drag drop operations
+ * has to implement this interface.
+ */
+
+cpp_quote("//+---------------------------------------------------------------")
+cpp_quote("// The interface for drag drop operations:")
+[
+    object,
+    oleautomation,
+    uuid(869116D5-E9F4-46d5-8065-E63C6F8E8C92)
+]
+interface ICEDragDrop : IUnknown
+{
+    //------------------------------------------------------------------*
+    /**
+     * OnDrop: drop a node onto another node
+     *
+     * @param           pDragNode:      pointer to drag node (IXMLDOMElement)
+     *                                  this pointer is only temporary and may only
+     *                                  be used to get attribute values
+     * @param           sDropSource:    the source file of the drop node
+     * @param           sDropId:        the id path to the drop node
+     * @param           sDropType:      the KAD type of the drop node
+     * @param           dwDropEffect:   the drop effect of the operation
+     *                                  1: COPY (CTRL), 2: MOVE (SHIFT), 4: LINK (NOTHING)
+     * @param           pICEProjectInfo : pointer to project info interface
+     * @exception       -
+     * @see             
+    */
+    HRESULT OnDrop  (   [in]        IUnknown*       pDragNode,
+                        [in,string] BSTR            sDropSource,
+                        [in,string] BSTR            sDropId,
+                        [in,string] BSTR            sDropType,
+                        [in]        DWORD           dwDropEffect,
+                        [in]        ICEProjInfo*    pICEProjectInfo);
+
+};
+
+
+//-----------------------------------------------------
+// This TYPELIB is generated as a convenience to users of high level tools
+// which are capable of using or browsing TYPELIBs. 
+// 'Smart Pointers' in VC6 is one example.
+//-----------------------------------------------------
+
+[
+    uuid(A6E3338F-2A2E-4112-86F0-A59233A37F75),
+    version(2.0),
+    helpstring("4CONTROL: CEDragDrop 2.0 Type Library")
+]
+library CE_DragDropLib
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+
+    interface ICEDragDrop;
+};

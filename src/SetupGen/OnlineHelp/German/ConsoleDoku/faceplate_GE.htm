@@ -1,0 +1,492 @@
+<html>
+<head>
+<title>Displays</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Manual_GE.css">
+</head>
+
+<body bgcolor="#FFFFFF" background="pic/backgrnd.jpg">
+<h1>Displays</h1>
+<hr>
+<h3><a name="overview"></a>&Uuml;bersicht</h3>
+<ul>
+  <a href="#intro">Einf&uuml;hrung</a><br>
+  <a href="#ConfigurationList">Die Configuration List</a><br>
+  <a href="#Ressource">Die Ressource</a> 
+  <ul class="inul">
+    <a href="#RessourceFP">Faceplate</a><br>
+    <a href="#RessourceFP">Tuning Display</a> 
+  </ul>
+  <a href="#TaskList">Die Task List</a><br>
+  <a href="#MessageHistory">Die Message History</a><br>
+  <a href="#Tasks">Tasks</a> 
+  <ul class="inul">
+    <a href="#TasksFP">Faceplate</a><br>
+    <a href="#TasksTD">Tuning Display</a> 
+  </ul>
+  <a href="#FInst">Instanzen von Funktionsbausteinen</a><br>
+  <a href="#SInst">Instanzen von Strukturen</a><br>
+  <a href="#SFC">SFC-Bausteine in ATCM Console</a> 
+  <ul class="inul">
+    <a href="#SFCFP">Faceplate</a><br>
+    <a href="#SFCTD">Tuning Display</a> 
+  </ul>
+  <a href="#ChangeValue">Variablenwerte im Display ändern </a> 
+</ul>
+<hr style="margin-left: 44px">
+<h2><a name="intro"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Einf&uuml;hrung</h2>
+<p>Displays sind die Visualisierungseinheiten innerhalb der Visualisierungs-Ansicht, 
+  in denen jeweils ein Objekt des in ATCM Console beobachteten Projekts geladen 
+  werden kann. Jeder Objektart (z.B. Task, Funktionsbaustein-Instanz) sind bestimmte 
+  Visualisierungschemata zugeordnet, die regeln, welche Daten im Display zur Darstellung 
+  kommen (einen &Uuml;berblick &uuml;ber die in der Visualisierungs-Ansicht darstellbaren 
+  Objekte erhalten Sie im Abschnitt <a href="Interface_GE.htm#TabProject">Die 
+  Registerkarte Project</a>), und die daf&uuml;r sorgen, da&szlig; Objekte, die 
+  der gleichen Objektart angeh&ouml;ren, immer auf die gleiche Weise dargestellt 
+  werden.</p>
+<p>F&uuml;r eine gro&szlig;e Anzahl von Objekten stehen zwei Visualisierungsschemata 
+  zur Verf&uuml;gung:<br>
+  das <b>Tuning Display</b> und das <b>Faceplate</b>: </p>
+<ul>
+  <li><a name="TuningDisplay"></a> Das <b>Tuning Display</b> dient der Anzeige 
+    von Werten des in ein Display geladenen Objekts. Diese Werte werden im Tuning 
+    Display in Feldern angezeigt. In Instanzen von Funktionsbausteinen und Strukturen 
+    k&ouml;nnen diese Werte zum Teil zur Laufzeit des Control ver&auml;ndert werden. 
+    <br>
+    Siehe auch die Abschnitte <a href="#FInst">Instanzen von Funktionsbausteinen</a> 
+    und <a href="#SInst">Instanzen von Strukturen</a>.</li>
+  <li><a name="Faceplate"></a>Wie das Tuning Display zeigt auch das <b>Faceplate</b> 
+    Werte eines in ein Display geladenen Objekts an. Gegen&uuml;ber dem Tuning 
+    Display bietet das Faceplate eine weitere Palette von Visualisierungselementen. 
+    Dar&uuml;berhinaus kann auch der Laufzeitstatus einiger Objekte &uuml;ber 
+    Schaltfl&auml;chen beeinflu&szlig;t werden. </li>
+</ul>
+<p>Standardm&auml;&szlig;ig steht f&uuml;r die Visualisierung von Funktionsbaustein-Instanzen 
+  nur ein Tuning Display zur Verf&uuml;gung Einige erweiterte Funktionsbausteine 
+  der IEC-Standard- und der 4C_Application-Bibliothek verf&uuml;gen jedoch f&uuml;r 
+  die Visualisierung zus&auml;tzlich zum Tuning Display &uuml;ber ein Faceplate 
+  mit zus&auml;tzlichen Elementen zur grafischen Darstellung von Werten.<br>
+  <br>
+  Benutzerdefinierte Displays k&ouml;nnen analog zu den Displays der erweiterten 
+  Funktionsbausteine erzeugt werden. Voraussetzung daf&uuml;r sind allerdings 
+  vertiefte Kenntnisse in HTML, Java, Java Script, ASP und der OPC-Schnittstelle. 
+</p>
+<p>SFC-Bausteinen, die mit Hilfe des Grafik-Editors programmiert wurden verf&uuml;gen 
+  &uuml;ber zus&auml;tzliche Visualierungselemente. N&auml;heres hierzu siehe 
+  <a href="#SFC">SFC-Bausteine in ATCM Console</a>.</p>
+<p>Standardm&auml;&szlig;ig wird beim Laden eines Objekts in ein Display zuerst 
+  das Faceplate (sofern f&uuml;r das Objekt implementiert) angezeigt. Um von der 
+  Darstellung des Objekts im Faceplate zur Darstellung im Tuning Display zu wechseln, 
+  steht Ihnen am rechten Ende der Kopfleiste des Displays ein Link mit der Beschriftung 
+  <b>TD</b> zur Verf&uuml;gung. Nach dem Wechsel zum Tuning Display enth&auml;lt 
+  die Kopfleiste des Displays einen Link mit der Beschriftung <b>FP</b>, &uuml;ber 
+  den Sie wieder zum Faceplate wechseln k&ouml;nnen. </p>
+<img src="pic/TD.gif" width="162" height="204" class="inP"> <img src="pic/FP.gif" width="162" height="204" class="inP"> 
+<h2><a name="ConfigurationList"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Die Configuration List</h2>
+<img src="pic/ConfList.gif" width="400" height="111" class="inP"> 
+<p>Die Configuration List zeigt in jeder Zeile die Daten einer auf ein ATCM Control 
+  geladenen Ressource an. Alle auf ein Control geladenen Ressourcen, die zum aktuell 
+  beobachteten Projekt geh&ouml;ren, werden hier aufgef&uuml;hrt. In den Spalten 
+  werden folgende Informationen zu jeder Ressource ausgegeben:</p>
+<dl> 
+  <dt><b>Status</b></dt>
+  <dd>Zeigt den Laufzeitstatus einer Ressource an. Es werden 4 Laufzeitzust&auml;nde 
+    unterschieden: 
+    <ul>
+      <li>Gr&uuml;ne Farbe und Meldung <b>Running</b>: Das Control, auf das die 
+        Ressource geladen wurde, l&auml;uft.</li>
+      <li>Gelbe Farbe und Meldung <b>Stopped</b>: Das Control, auf das die Ressource 
+        geladen wurde, wurde gestoppt.</li>
+      <li>Gelbe Farbe und Meldung <b>Loading</b>: Die Ressource wird auf ein Control 
+        geladen.</li>
+      <li>Rote Farbe und Meldung <b>Error</b>: Bei der Ausf&uuml;hrung der Ressource 
+        auf dem Control ist ein Fehler aufgetreten. </li>
+    </ul>
+  </dd>
+  <dt><b>Machine</b></dt>
+  <dd> Zeigt den PC an, dem die Ressource zugeordnet wurde.</dd>
+  <dt><b>Resource</b> </dt>
+  <dd>Zeigt den Namen der Ressource an. Der Ressource-Name wird in blauer Farbe 
+    und unterstrichen dargestellt und signalisiert damit, da&szlig; es sich bei 
+    dem Namen um einen Hyperlink handelt. Wenn Sie auf den Namen einer hier aufgef&uuml;hrten 
+    Ressource klicken, wird statt der Configuration List die angeklickte Ressource 
+    in das Display geladen. </dd>
+  <dt><b>Memory (kB)</b></dt>
+  <dd>Zeigt die Speichermenge in Kilobyte an, die die Ressource auf dem Control 
+    ben&ouml;tigt. </dd>
+  <dt><b>Project</b></dt>
+  <dd>Zeigt den Namen des Projekts an, zu dem die Ressource geh&ouml;rt.</dd>
+</dl>
+<h2><a name="Ressource"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Die Ressource</h2>
+<p>Das Display f&uuml;r eine Ressource zeigt Daten zum Laufzeitstatus des zugeordneten 
+  Controls an. &Uuml;ber die zwei Schaltfl&auml;chen im Faceplate kann das Control, 
+  auf dem die Ressource geladen wurde, gestartet und gestoppt werden. </p>
+<h3><a name="RessourceFP"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Faceplate</h3>
+<img src="pic/ResourceFP.gif" width="330" height="228" class="inP"> 
+<dl> 
+  <dt><b>Laufzeitstatus</b></dt>
+  <dd>Die vier farbigen Quadrate zeigen Laufzeitstatus der Ressource an. Es werden 
+    4 Laufzeitzust&auml;nde unterschieden: 
+    <ul>
+      <li>Gr&uuml;ne Farbe und Meldung <b>Running</b>: Das Control, auf das die 
+        Ressource geladen wurde, l&auml;uft.</li>
+      <li>Gelbe Farbe und Meldung <b>Stopped</b>: Das Control, auf das die Ressource 
+        geladen wurde, wurde gestoppt.</li>
+      <li>Gelbe Farbe und Meldung <b>Loading</b>: Die Ressource wird auf ein Control 
+        geladen.</li>
+      <li>Rote Farbe und Meldung <b>Error</b>: Bei der Ausf&uuml;hrung der Ressource 
+        auf dem Control ist ein Fehler aufgetreten. </li>
+    </ul>
+  </dd>
+  <dt><b>Memory (kB)</b></dt>
+  <dd>Zeigt die Speichermenge in Kilobyte an, die die Ressource auf dem Control 
+    ben&ouml;tigt. </dd>
+  <dt><b>Project</b></dt>
+  <dd>Zeigt den Namen des Projekts an, zu dem die Ressource geh&ouml;rt.</dd>
+  <dt><img src="pic/StopTask.gif" width="40" height="22"></dt>
+  <dd>Diese Schaltfl&auml;che stoppt das der Ressource zugeordnete Control. Die 
+    Schaltfl&auml;che ist deaktiviert, wenn das Control bereits gestoppt ist.</dd>
+  <dt><img src="pic/StartTaskl.gif" width="40" height="22"></dt>
+  <dd>Diese Schaltfl&auml;che startet das der Ressource zugeordnete Control. Die 
+    Schaltlfl&auml;che ist deaktiviert, wenn das Control l&auml;uft.</dd>
+  <dt><b>Configuration List</b></dt>
+  <dd>Bei Klick auf diesen Link wechselt das Display zur <a href="#ConfigurationList">Configuration 
+    List</a>. </dd>
+</dl>
+<h3><a name="RessourceTD"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Tuning Display</h3>
+<img src="pic/ResourceTD.gif" width="330" height="227" class="inP"> 
+<dl> 
+  <dt><b>__state</b></dt>
+  <dd>Zeigt den Laufzeitstatus des Controls an, auf das die Ressource geladen 
+    wurde.</dd>
+  <dt><b>__memused</b></dt>
+  <dd>Zeigt die Speichermenge in Byte an, die die Ressource auf dem Control ben&ouml;tigt. 
+  </dd>
+  <dt><b>__projectname</b></dt>
+  <dd>Zeigt den Namen des Projekts an, zu dem die Ressource geh&ouml;rt. </dd>
+</dl>
+<h2><a name="TaskList"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Die Task List</h2>
+<p>Die Task List listet alle unter einer Ressource enthaltenen Tasks auf und zeigt 
+  deren Laufzeitstatus, Zykluszeit und Priorit&auml;t an. Alle in der Task List 
+  aufgef&uuml;hrten Tasks k&ouml;nnen &uuml;ber Schaltfl&auml;chen gestartet und 
+  gestoppt werden. </p>
+<img src="pic/TaskList.gif" width="402" height="203" class="inP"> 
+<dl> 
+  <dt><b>Status</b></dt>
+  <dd>Zeigt den Laufzeitstatus einer Task an. Es werden 4 Laufzeitzust&auml;nde 
+    unterschieden: 
+    <ul>
+      <li>Gr&uuml;ne Farbe und Meldung <b>Running</b>: Das Control, auf das die 
+        Ressource geladen wurde, l&auml;uft.</li>
+      <li>Gelbe Farbe und Meldung <b>Stopped</b>: Das Control, auf das die Ressource 
+        geladen wurde, wurde gestoppt.</li>
+      <li>Gelbe Farbe und Meldung <b>Loading</b>: Die Ressource wird auf ein Control 
+        geladen.</li>
+      <li>Rote Farbe und Meldung <b>Error</b>: Bei der Ausf&uuml;hrung der Ressource 
+        auf dem Control ist ein Fehler aufgetreten. </li>
+    </ul>
+  </dd>
+  <dt><b>Name</b></dt>
+  <dd>Name der Task. Bei Mausklick auf den Tasknamen wechselt das Display zu dem 
+    Faceplate der angeklickten Task.</dd>
+  <dt><b>Cycle Time(ms)</b></dt>
+  <dd>Zeigt die der Task zugeordnete Zykluszeit in Millisekunden an. </dd>
+  <dt><b>Priority</b></dt>
+  <dd>Zeigt die der Task zugeordnete <a href="glossary_GE.htm#priority">Taskpriorit&auml;t</a> 
+    an.</dd>
+  <dt><img src="pic/StopTask.gif" width="40" height="22"></dt>
+  <dd>Diese Schaltfl&auml;che stoppt alle in der Task List aufgef&uuml;hrten. 
+    Die Schaltfl&auml;che ist deaktiviert, wenn alle Tasks gestoppt sind.</dd>
+  <dt><img src="pic/StartTaskl.gif" width="40" height="22"></dt>
+  <dd>Diese Schaltfl&auml;che startet alle in der Tasklist aufgef&uuml;hrten Tasks. 
+    Die Schaltlfl&auml;che ist deaktiviert, wenn alle Tasks laufen.</dd>
+</dl>
+<h2><a name="MessageHistory"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Die Message History</h2>
+<p>In der Message History werden alle in der Message-Ansicht von ATCM Engineering 
+  ausgegebenen Meldungen angezeigt und gesammelt. Zus&auml;tzlich zu den in ATCM 
+  Engineering ausgegebenen Meldungen erscheint auf der linken Seite des jeweiligen 
+  Meldungstextes die Nummer der Meldung und Datum und Uhrzeit, zu der die Meldung 
+  ausgegeben wurde. Z&auml;hlung der Meldungsnummern beginnt bei 0, soda&szlig; 
+  bspw. die 20. Meldung die Nummer 19 hat. Fehlermeldungen und Warnungen werden 
+  farblich hervorgehoben.</p>
+<img src="pic/MessageHistory.gif" width="624" height="203" class="inP"> 
+<p>Die Anzeige von Meldungen in der Message-Ansicht erfolgt seitenweise. Ein Seite 
+  umfa&szlig;t jeweils 100 Meldungseintr&auml;ge, die zusammen in der Message-Ansicht 
+  angezeigt werden. Wenn Sie mit Hilfe der vertikalen Scrolleiste durch die Meldungen 
+  scrollen, umfa&szlig;t der scrollbare Bereich also genau 100 Meldungen (Ausnahme 
+  siehe <a href="#exception">unten</a>). Wollen Sie anderen Meldungen als die 
+  der aktuell geladenen Seite anzeigen, m&uuml;ssen Sie zu diesen Meldungen mit 
+  Hilfe der Schaltf&auml;chen unterhalb des Anzeigebereichs der Message-Ansicht 
+  navigieren. Die Schaltfl&auml;chen haben folgende Funktionen:</p>
+<table >
+  <tr> 
+    <td valign="top"><img src="pic/Begin.gif" width="50" height="23" style="margin-right: 10px"></td>
+    <td valign="top">L&auml;dt die erste Seite. Es werden also die ersten 100 
+      Meldungen angezeigt. </td>
+  </tr>
+  <tr> 
+    <td valign="top"><img src="pic/Back.gif" width="50" height="22" style="margin-right: 10px"></td>
+    <td valign="top">L&auml;dt die vorhergehende Seite. Es wird um 100 Meldungen 
+      zur&uuml;ck navigiert.</td>
+  </tr>
+  <tr> 
+    <td valign="top"><img src="pic/Forward.gif" width="51" height="22" style="margin-right: 10px"></td>
+    <td valign="top">L&auml;dt die n&auml;chste Seite. Es wird um 100 Meldungen 
+      vorw&auml;rts navigiert (Ausnahme siehe <a href="#exception">unten</a>). 
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top"><img src="pic/End.gif" width="50" height="21" style="margin-right: 10px"></td>
+    <td valign="top">L&auml;dt die letzte Seite. Es werden die letzten 100 Meldungen 
+      angezeigt. </td>
+  </tr>
+  <tr> 
+    <td valign="top"><img src="pic/Goto.gif" width="51" height="23" style="margin-right: 10px"></td>
+    <td valign="top">Zeigt die Meldung mit der im Feld rechts neben dieser Schaltfl&auml;che 
+      eingegebenen Nummer an. </td>
+  </tr>
+</table>
+<p>Die Anzeige der Meldungen in der Message History wird nicht automatisch aktualisiert. 
+  Um auch die aktuellen Meldungen zu sehen, m&uuml;ssen Sie diese &uuml;ber die 
+  Schaltfl&auml;che zur Ansteuerung der letzten Seite einblenden.<a name="exception"></a> 
+  Falls seit der letzten Aktualisierung weniger als 100 Meldungen ausgegeben wurden, 
+  k&ouml;nnen Sie die Anzeige in der Message History auch &uuml;ber die Schaltfl&auml;che 
+  zur Navigation zu n&auml;chsten Seite aktualisieren. In diesem Fall betr&auml;gt 
+  die Anzahl der auf einer Seite enthaltenen Meldungen nur die Differenz zwischen 
+  der Nummer der letzten ausgegebenen Meldung und der letzten auf der Vorg&auml;ngerseite 
+  ausgegebenen Meldung. Hatte bspw. die letzte auf der Ausgangsseite angezeigte 
+  Meldung die Nummer 1500 w&auml;hrend die letzte vom Control ausgegebene Meldung 
+  die Nummer 1518 hat, enth&auml;lt die Folgeseite nur 18 Meldungen. </p>
+<p>Ausgegebene Meldungen werden von ATCM Control in einem Ringpuffer gespeichert. 
+  Dieser Puffer kann bis zu 100000 Meldungen speichern. Wird diese Anzahl &uuml;berschritten, 
+  werden die zuerst ausgegebenen Meldungen aus dem Puffer entfernt, um Platz f&uuml;r 
+  die aktuellsten Meldungen im Puffer zu schaffen.<br>
+  In der Kopfleiste der Message History werden die Anzahl der auf der aktuell 
+  geladenen Seite enthaltenen Meldungen und die Gesamtanzahl der im Ringpuffer 
+  gespeicherten Meldungen angezeigt. Beachten Sie bitte, da&szlig; die vom Control 
+  ausgegebenen Meldungen weitergez&auml;hlt werden, auch wenn die maximale Anzahl 
+  von 100000 Meldungen bereits &uuml;berschritten wurde. In diesem Fall wird in 
+  der Kopfleiste der Message History bspw. 100 of 99999 ausgegeben, w&auml;hrend 
+  die aktuellste Meldung bereits die Nummer 120000 hat. </p>
+<h2><a name="Tasks"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Tasks</h2>
+<p>Die Task-Displays visualisieten Werte zu Laufzeitzustand und Laufzeiteigenschaften 
+  der selektierten Task.</p>
+<h3><a name="TasksFP"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Faceplate</h3>
+<img src="pic/TaskFP.gif" width="362" height="279" class="inP"> 
+<dl> 
+  <dt><b>Laufzeitstatus</b></dt>
+  <dd>Die f&uuml;nf farbigen Quadrate zeigen den Laufzeitstatus der Task an. Es 
+    werden 5 Laufzeitzust&auml;nde unterschieden: 
+    <ul>
+      <li>Gr&uuml;ne Farbe und Meldung <b>Running</b>: Die Task l&auml;uft.</li>
+      <li>Gelbe Farbe und Meldung <b>Stopped</b>: Die Task wurde gestoppt</li>
+      <li>Gelbe Farbe und Meldung <b>Break</b>: Die Task wurde an einem Breakpoint 
+        angehalten. </li>
+      <li>Gelbe Farbe und Meldung <b>Loading</b>: Die Task wird geladen.</li>
+      <li>Rote Farbe und Meldung <b>Error</b>: Bei der Task ist ein Fehler aufgetreten. 
+      </li>
+    </ul>
+  </dd>
+  <dt><b>Cycle Time</b></dt>
+  <dd>Zeigt die der Task zugeordnete Zykluszeit an. </dd>
+  <dt><b>Elapsed Time</b></dt>
+  <dd>Zeigt die Zeit in Millisekunden an, die die Task f&uuml;r die Ausf&uuml;hrung 
+    eines Zyklus ben&ouml;tigt.</dd>
+  <dt><b>Priority</b></dt>
+  <dd>Zeigt die der Task zugeordnete <a href="glossary_GE.htm#priority">Taskpriorit&auml;t</a> 
+    an.</dd>
+  <dt><img src="pic/StopTask.gif" width="40" height="22"></dt>
+  <dd>Diese Schaltfl&auml;che die Ausf&uuml;hrung der Task. Die Schaltfl&auml;che 
+    ist deaktiviert, wenn Task bereits gestoppt ist.</dd>
+  <dt><img src="pic/StartTaskl.gif" width="40" height="22"></dt>
+  <dd>Diese Schaltfl&auml;che startet eine Task. Die Schaltlfl&auml;che ist deaktiviert, 
+    wenn die Taskl&auml;uft.</dd>
+  <dt><b>Task List</b></dt>
+  <dd>Bei Klick auf diesen Link wechselt das Display zur <a href="#TaskList">Task 
+    List</a>. </dd>
+</dl>
+<h3><a name="TasksTD"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Tuning Display</h3>
+<img src="pic/TaskTD.gif" width="362" height="281" class="inP"> 
+<dl> 
+  <dt><b>__state</b></dt>
+  <dd>Zeigt den Laufzeitstatus der Task an.</dd>
+  <dt><b>__prio</b></dt>
+  <dd>Zeigt die der Task zugeordnete <a href="glossary_GE.htm#priority">Taskpriorit&auml;t</a> 
+    an.</dd>
+  <dt><b>__cyle</b></dt>
+  <dd>Zeigt die der Task zugeordnete Zykluszeit an. </dd>
+  <dt><b>__etmax</b></dt>
+  <dd>Zeigt die Zeit in Millisekunden an, die die Task f&uuml;r die Ausf&uuml;hrung 
+    eines Zyklus ben&ouml;tigt.</dd>
+  <dt><b>__errno</b></dt>
+  <dd>Zeigt den Fehlerstatus der Task an. Eine Fehlernummer ungleich 0 signalisiert 
+    einen Fehler.</dd>
+</dl>
+<h2><a name="FInst"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Instanzen von Funktionsbausteinen</h2>
+<p>Funktionsbausteininstanzen werden, sofern in einem benutzerdefinierten Funktionsbaustein 
+  keine zus&auml;tzlichen Visualisierungsfunktionen implementiert wurden, nur 
+  als <a href="#TuningDisplay">Tuning Display</a> dargestellt. Die Kopfleiste 
+  des Displays enth&auml;lt deshalb keinen Link zu einem entsprechenden <a href="#Faceplate">Faceplate</a>. 
+</p>
+<img src="pic/FBUserdefined.gif" width="351" height="216" class="inP"> 
+<p>Im Display werden nur Daten vom Typ <i>ANY_SIMPLE</i> visualisiert, die zu 
+  der &ouml;ffentlichen Schnittstelle des Funktionsbaustein geh&ouml;ren, also 
+  Variablen, die in einem <i>VAR_INPUT</i>- , <i>VAR_IN_OUT</i>, oder <i>VAR_OUTPUT</i>-Abschnitt 
+  deklariert wurden. </p>
+<p>Grunds&auml;tzlich <u>nicht</u> visualisiert werden:</p>
+<ul>
+  <li>Arrays und Arrayelemente</li>
+  <li>Instanzen von Strukturen und Strukturelemente, die in dem betreffenden Funktionsbaustein 
+    deklariert wurden. Diese werden in einem separaten Display dargestellt.</li>
+  <li>Instanzen von Funktionsbausteinen, die in dem betreffenden Funktionsbaustein 
+    deklariert wurden. Diese werden in einem separaten Display dargestellt (siehe 
+    <a href="#SInst">Instanzen von Strukturen</a>).</li>
+</ul>
+<p>Variablen, deren Werte zur Laufzeit ver&auml;ndert werden k&ouml;nnen, sind 
+  in blauer Farbe und unterstrichen dargestellt. Variablen mit nicht ver&auml;nderbaren 
+  Werten erscheinen dagegen in normaler Schrift. </p>
+<p>Variablen mit ver&auml;nderbaren Werten sind Variablen, die in dem visualisierten 
+  Funktionsbaustein als <i>VAR_INPUT</i> deklariert wurden, und beim Aufruf einer 
+  Instanz dieses Funktionbausteins <u>nicht</u> mit Aktualparametern initialisiert 
+  werden.<br>
+  Die Werte aller anderen Variablen k&ouml;nnen in ATCM Console nicht ver&auml;ndert 
+  werden. Nicht ver&auml;nderbar sind also bspw. Werte von Variablen, die in <i>VAR_OUTPUT</i>-Abschnitten 
+  deklariert wurden, oder Werte von <i>VAR_INPUT</i>-Variablen, die beim Aufruf 
+  der Instanz des visualisierten Funktionsbausteins mit Aktualparametern initialisiert 
+  werden. </p>
+<p>Siehe auch <a href="#ChangeValue">Variablenwerte im Display &auml;ndern</a>.</p>
+<h2><a name="SInst"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Instanzen von Strukturen</h2>
+<p>Strukturinstanzen werden nur als <a href="#TuningDisplay">Tuning Display</a> 
+  dargestellt. Es werden alle Strukturelemente vom Typ <i>ANY_SIMPLE</i> dargestellt. 
+</p>
+<p>Grunds&auml;tzlich <u>nicht</u> visualisiert werden:</p>
+<ul>
+  <li>Arrays und Arrayelemente</li>
+  <li>Instanzen von Strukturen, die in der visulisierten Struktur deklariert werden.</li>
+</ul>
+<p>Grunds&auml;tzlich sind alle im Display dargestellten Werte von Strukturinstanzen 
+  ver&auml;nderbar. Die Variablen werden deshalb in blauer Farbe und unterstrichen 
+  dargestellt. </p>
+<img src="pic/StructVisu.gif" width="371" height="142" class="inP"> 
+<h2><a name="SFC"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  SFC-Bausteine in ATCM Console</h2>
+<h3><a name="SFCFP"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Faceplate</h3>
+<p>Funktionsbausteine oder Programme, die im Grafik-Editor als SFC-Ablaufdiagramme 
+  programmiert wurden, werden im Faceplate analog zur Darstellung im Grafik-Editor 
+  visualisiert, d.h. die grafischen Repr&auml;sentationen, die der Grafik-Editor 
+  zur Darstellung von SFC-Bausteinen verwendet, werden auch zur Visualisierung 
+  im Faceplate genutzt. Dies betrifft auch die Position und die Verbindungslinien 
+  von SFC-Bausteinen, soda&szlig; die grafische Repr&auml;sentation in Grafik-Editor 
+  und Faceplate weitgehend identisch ist. Eine Ausnahme bilden allerdings Aktionen, 
+  deren Rumpf im Faceplate im Gegensatz zum Grafik-Editor nicht gezeigt wird. 
+  Operationen, die in Aktionen ausgef&uuml;hrt werden und Datenelemente in Aktionen 
+  werden daher im Faceplate nicht dargestellt. </p>
+<img src="pic/SFCDisplay.gif" width="692" height="334" class="inP"> 
+<p>Wie in der Instanz-Ansicht des Grafik-Editors werden auch im Faceplate aktive 
+  Schritte in grauer Farbe dargestellt. Ebenso bietet das <b>Kontext</b>-Men&uuml; 
+  des Faceplates, das Sie durch Klicken mit der rechten Maustaste in den Visualisierungsbereich 
+  des Faceplates aufrufen, alle Optionen zum Beobachten und Steuern von SFC-Programmteilen, 
+  die auch der der Grafik-Editor zur Verf&uuml;gung stellt. So finden Sie im <b>Kontext</b>-Men&uuml; 
+  einen Men&uuml;punkt zum Aktivieren des SFC-Beobachtungsmodus und Optionen zu 
+  Steuerung von Aktionen und Transitionen. <br>
+  Zus&auml;tzlich bietet Ihnen das <b>Kontext</b>-Men&uuml; drei Optionen zu Zoomen 
+  des Faceplate-Visualisierungsbereichs. Die aktuell aktive Auswahl des Zoomfaktors 
+  ist mit einem H&auml;kchen markiert. </p>
+<img src="pic/note.gif"
+        width="32" height="31" align="left"> 
+<div style="margin-left: 5; position: relative; top: 0"> 
+  <table border="0" cellpadding="0" class="tabhinweis">
+    <tr> 
+      <td class="HinweisText"> Beachten Sie, da&szlig; Sie das <b>Kontext</b>-Men&uuml; 
+        zum Beobachten und Steuern von SFC-Programmteilen nur dann aufrufen, wenn 
+        die sich die Position des Cursors beim Klick mit der rechten Maustaste 
+        in einem Bereich befindet, der in horizontaler Richung zwischen dem &auml;u&szlig;ersten 
+        rechten und &auml;u&szlig;ersten linken SFC-Element befindet. Klicken 
+        Sie dagegen au&szlig;erhalb dieses Bereichs, wird stattdessen das <b>Kontext</b>-Men&uuml; 
+        des Internet Explorers aufgerufen. </td>
+    </tr>
+  </table>
+</div>
+<br>
+<img src="pic/SFCDisplayCon.gif" width="694" height="334" class="inP"> 
+<p>Die Vorgehensweise bei der Arbeit im <a href="SFCDebug_GE.htm#SingleStep">SFC-Beobachtungsmodus</a> 
+  und mit den Optionen zum Steuern von SFC-Programmteilen im Faceplate ist identisch 
+  mit der entsprechenden Vorgehensweise im Editor von ATCM Engineering. <br>
+  Sie dazu Kapitel <a href="SFCDebug_GE.htm">SFC-Programmteile beobachten 
+  und steuern</a>.</p>
+<img src="pic/note.gif"
+        width="32" height="31" align="left"> 
+<div style="margin-left: 5; position: relative; top: 0"> 
+  <table border="0" cellpadding="0" class="tabhinweis">
+    <tr> 
+      <td class="HinweisText"> Ausschlie&szlig;lich SFC-Programmteile, die im 
+        Grafik-Editor programmiert wurden, k&ouml;nnen als Faceplate visualisiert 
+        werden. Im ST-Editor programmierte SFC-Programmteile werden dagegen nur 
+        als Tuning Display dargestellt. <br>
+        Instanzen von SFC-Programmen, die im Grafik-Editor programmiert wurden, 
+        werden im Gegensatz zu Nicht-SFC-Programminstanzen in der Navigator-Ansicht 
+        als Hyperlink angezeigt und k&ouml;nnen genauso wie Funktionsbausteininstanzen 
+        in ATCM Console visualisiert werden. Nicht-SFC-Programminstanzen k&ouml;nnen 
+        dagegen nicht in ATCM Console visualisiert werden. </td>
+    </tr>
+  </table>
+  <h3><a name="SFCTD"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+    Tuning Display</h3>
+</div>
+<p>Die Darstellung von im Grafik-Editor programmierten SFC-Programmteilen als 
+  Tuning Display entspricht der generellen <a href="#FInst">Darstellung von Funktionsbausteinen 
+  als Tuning Display</a>. </p>
+<h2><a name="#ChangeValue"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Variablenwerte im Display ändern</h2>
+<p>Werte von Variablen, die in den Displays mit blauer Farbe und unterstrichen 
+  dargestellt werden, k&ouml;nnen zur Laufzeit auf dem Control ver&auml;ndert 
+  werden. </p>
+<p>So ver&auml;ndern Sie einen Variablenwert:</p>
+<ol>
+  <li>Klicken Sie im Display auf die gew&uuml;nschte Variable, um den Dialog zum 
+    &Auml;ndern einer Variable aufzurufen.<br>
+    <br>
+  </li>
+  <li>Im &Auml;nderungsdialog zeigt das Feld <b>Current</b> den aktuellen Wert 
+    der Variable an <br>
+    <br>
+    <img src="pic/WriteValue.gif" width="450" height="160"><br>
+    <br>
+    Geben Sie den Wert, den Sie der Variable zuweisen wollen, im Feld <b>New</b> 
+    ein. Beachten Sie, da&szlig; das Format des eingegeben Formats dem Datentyp 
+    der Variablen entsprechen mu&szlig;. Wenn die Variable bspw. dem Datentyp 
+    <i>LREAL</i> angeh&ouml;rt, mu&szlig; der Variablenwert in Punktschreibweise 
+    erfolgen. Am einfachsten orientieren Sie sich bei der Eingabe an der Schreibweise 
+    des aktuellen Werts im Feld <b>Current</b>. <br>
+    <br>
+    <img src="pic/WriteBoolValue.gif" width="450" height="150"> <br>
+    <br>
+    Beim &Auml;ndern des Werts einer Variablen vom Typ <i>BOOL</i> erscheinen 
+    im &Auml;nderungsdialog statt dem Eingabefeld zwei runde Optionsfelder, &uuml;ber 
+    die Sie per Mausklick den neuen Wert festlegen k&ouml;nnen. In diesem Fall 
+    ergibt sich das korrekte Eingabeformat nat&uuml;rlich automatisch.<br>
+    <br>
+  </li>
+  <li>Wenn das Format des von Ihnen eingegebenen Werts dem Datentyp der Variable 
+    entspricht, wird die Schaltfl&auml;che <b>Write</b> aktiviert. Klicken Sie 
+    auf diese Schaltfl&auml;che, um die Variable mit dem neuen Wert zu aktualisieren. 
+    <br>
+    <br>
+  </li>
+  <li>Um den Dialog zu schlie&szlig;en, klicken Sie auf <b>Close</b>.</li>
+</ol>
+</body>
+</html>

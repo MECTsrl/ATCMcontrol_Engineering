@@ -1,0 +1,61 @@
+// This file will be processed by the MIDL tool to
+// produce the type library (XRef.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "cemsg.idl";
+#include "olectl.h"
+	
+
+	[
+		object,
+		uuid(2CDECD59-44A1-4973-8705-B4E03E79A78E),
+		dual,
+		helpstring("IXRefCtrl Interface"),
+		pointer_default(unique)
+	]
+	interface IXRefCtrl : IDispatch
+	{
+		[id(1), helpstring("method LinkXRef")] HRESULT LinkXRef();
+		[id(2), helpstring("method ChangeRefPosition")] HRESULT ChangeRefPosition([in] BOOL bForward);
+		[id(3), helpstring("method SetActiveQuery")] HRESULT SetActiveQuery([in,string] BSTR sVariableName);
+		[id(4), helpstring("method InitXRef")] HRESULT InitXRef();
+		[id(5), helpstring("method GetPrintString")] HRESULT GetPrintString([out,string] BSTR* psContent, [in] int iLineLength, [in] int iMode);
+	};
+
+[
+	uuid(A8028156-4FBB-4F89-B540-7CD4F5830FFE),
+	version(1.0),
+	helpstring("XRef 1.0 Type Library")
+]
+library XREFLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(442037C6-7105-4E12-992D-C9D8F5D0B4DA),
+        dual,
+		helpstring("_IXRefCtrlEvents Interface")
+	]
+    interface _IXRefCtrlEvents : IDispatch
+	{
+		[id(1), helpstring("method GetProjectManager")] 
+			HRESULT GetProjectManager([out]IUnknown** ppUnk);
+		[id(2), helpstring("method ShowInEditor")] 
+			HRESULT ShowInEditor([in,string] BSTR sEdiPosInfo);
+		[id(3), helpstring("method OnPrint")] 
+			HRESULT OnPrint();
+	};
+
+	[
+		uuid(ADC08007-5182-4324-939A-D773834FDE93),
+		helpstring("XRefCtrl Class")
+	]
+	coclass XRefCtrl
+	{
+		[default] interface IXRefCtrl;
+		[default, source] dispinterface _IXRefCtrlEvents;
+		[source] dispinterface _ICEMessageEvent;
+	};
+};

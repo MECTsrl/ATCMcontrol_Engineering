@@ -1,0 +1,232 @@
+<html>
+<head>
+<title>ATCM Control</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Manual_GE.css">
+</head>
+
+
+<body background="pic/backgrnd.jpg" bgproperties="fixed">
+<h1>ATCM Control</h1>
+<div style="margin-left: 20px"> 
+  <h3><a name="overview"><font
+        face="arial">Overview </font></a></h3>
+  <ul>
+    <a href="#connect">Establishing and Interrupting a Connection/Enabling and 
+    Disabling a Debug Connection </a> <br>
+    <a href="#start">Starting/Stopping all Tasks </a> <br>
+    <a href="#run">Running/Stopping ATCM Control</a> <br>
+    <a href="#warmcold">Reset with Cold Start/Warm Start </a> <br>
+    <a href="#clear">Initializing/Deleting</a> <br>
+    <a href="#menu">Context Menu of ATCM Control </a> 
+  </ul>
+  <hr style="margin-left: 44px">
+</div>
+<h2><a name="connect"></a><a href="#overview"><img src="pic/jump.gif" border="0" width="11" height="9"></a> 
+  Establishing/Interrupting a Connection </h2>
+<h4>Establishing a connection</h4>
+<p class="nachoben">For initialization of the variables, each ATCM Control must 
+  be connected with ATCM Engineering. In ATCM Engineering, ATCM Control is represented 
+  as a PC. To be able to monitor the variable and its messages in the Watch view 
+  of ATCM Engineering, you have to be connected to the corresponding ATCM Control 
+  (PC). In this case, you work online, i.e. with an established connection.</p>
+<p> Go to the Message view and click on the respective <strong>PC</strong> tab.<br>
+  Then click on the <img src="pic/IcConnect.gif" width="22"  height="22"> <strong>Connect</strong> 
+  button to establish the connection to the PC. </p>
+<p> <i>- OR - </i></p>
+<p>click on <strong>Connect</strong> and the desired PC in the menu item <strong>Control</strong> 
+  in the main menu. </p>
+<p>As soon as the PC is connected with the ATCM Engineering tool, the <img src="pic/IcPC.gif" width="17" height="14"> 
+  <strong>PC</strong> symbol in the Navigator view changes to the <img src="pic/IcPCconnect.gif" width="20"        height="14"> 
+  <strong>PC-Connect </strong> symbol. </p>
+<h4><a name="ruptus"></a>Interrupting a connection</h4>
+<p>If you interrupt the connection between the PC and the ATCM Engineering tool, 
+  you can no longer monitor its variables and messages in the Watch view of the 
+  ATCM Engineering tool. You can also work offline, i.e. without connection to the 
+  PC; it is not necessary for you to be online when you edit or compile a project. 
+</p>
+<p>Go to the Message view and click on the respective <strong>PC</strong> tab.<br>
+  Then click on the <img src="pic/IcConnect.gif" width="22" height="22"> <strong>Disconnect</strong> 
+  button to interrupt the connection to the PC</p>
+<p> <i>- OR - </i></p>
+<p>click on <strong>Disconnect</strong> and the desired PC in the menu item <strong>Control</strong> 
+  in the main menu. </p>
+<h4><a name="debugact"></a>Enabling a debug connection</h4>
+<p class="nachoben">Before you can debug and download your code onto ATCM Control, 
+  a <strong>Debug connection</strong> must be established. During a debug connection, 
+  only <strong>one</strong> ATCM Engineering is permitted to be connected to one 
+  ATCM Control. Remember to interrupt the debug connection after having finished 
+  a download or a debugging session so that a connection can be established from 
+  other ATCM Engineerings as well. </p>
+<p>Go to the Message view and click on the respective <strong>PC</strong> tab.<br>
+  Click on the <img src="pic/debug.gif" width="22" height="19"><strong> Enable 
+  Debug</strong> button to establish a new debug connection, </p>
+<p><i>- OR -</i></p>
+<p>click on <strong>Enable Debug</strong> in the <strong>Control</strong> menu 
+  in the menu bar. Then select the desired PC. </p>
+<p>When the debug connection has been established, the connection symbol in the 
+  Message view changes to the <img src="pic/DebugInfo.gif" width="25" height="19"> 
+  symbol. </p>
+<h4><a name="debugend"></a>Interrupting a debug connection</h4>
+<p class="nachoben">When you interrupt the debug connection, the exclusive connection 
+  to the control is also interrupted. This means that the control continues to 
+  be connected to ATCM Engineering, but other ATCM Engineerings now have access to 
+  the control as well. </p>
+<p>Go to the Message view and click on the respective <strong>PC</strong> tab.<br>
+  Click on the <strong><img src="pic/DebugRemove.gif" width="22" height="19"> 
+  Disable Debug</strong> button to interrupt the exclusive connection </p>
+<p><i>- OR -</i></p>
+<p>click on <strong>Disable Debug</strong> in the <strong>Control</strong> menu 
+  in the menu bar and select the desired PC. </p>
+<h2> <a name="start"></a><a href="#overview"><img src="pic/jump.gif" border="0" width="11" height="9"></a> 
+  Starting/Stopping all Tasks</h2>
+<img src="pic/note.gif"
+        width="32" height="31" align="left"> 
+<div style="margin-left: 5; position: relative; top: 0"> 
+  <table border="0" cellpadding="0" class="tabhinweis">
+    <tr> 
+      <td class="HinweisText"> Before you can use the start/stop function, a connection 
+        to the PC must have been established. </td>
+    </tr>
+  </table>
+</div>
+<p> For trouble shooting during project installation, it may be necessary to start 
+  and stop ATCM Control on a PC. Starting or stopping ATCM Control means to start 
+  or stop, respectively, all resources of the assigned configuration simultaneously.<br>
+  The starting/stopping function should not be used during normal operation but 
+  only during the installation of the project. </p>
+<p>In the main menu, go to the menu item <strong>Control</strong>. Depending on 
+  the current action of the configuration, click either on <strong>Start all Tasks</strong> 
+  or on <strong>Stop all Tasks</strong>. <br>
+  If ATCM Console is opened, you can monitor the status signals of the tasks in 
+  the <a href="faceplate.htm#tasklist">Task list</a> faceplate and 
+  in the <a href="faceplate.htm#ressource">Resource list</a>. You 
+  can display these by clicking on the <img src="pic/IcProject.gif" width="16" height="15"> 
+  project symbol in the Navigator of ATCM Console.<br>
+  Now you have started or stopped, respectively, all tasks of this resource.</p>
+<h2><a name="run"></a><a href="#overview"><img src="pic/jump.gif" border="0" width="11" height="9"></a> 
+  Running/Stopping ATCM Control </h2>
+<p>To stop a running ATCM Control, go to the menu item <strong>Control</strong> 
+  in the main menu and click on <strong>Stop Control</strong>. ATCM Control is stopped 
+  as shown by its symbol <font face="arial"><img src="pic/iccontrolyellow.gif" width="16" height="16"></font>. 
+</p>
+<p> Stopping ATCM Control offers the following advantages: </p>
+<ul>
+  <li> The connection to all PROFIBUS slaves is interrupted. This gives you the 
+    possibility of reconfiguring the slaves or configuring additional ones.</li>
+  <li>You can operate or write all variables in ATCM Console or ATCM Engineering, 
+    even when ATCM Control is in a resting phase. </li>
+  <li>All current variable values are stored. You can change the value of each 
+    variable without changing the project. This gives you the possibility of trying 
+    out different values and observing the results. If the values do not fit, 
+    just reset them. As soon as you start ATCM Control, all altered variables are 
+    reset to their previous values. </li>
+  <li>The configuration components do not start automatically after the download. 
+    You can compile the entire configuration and start after having configured 
+    all components.</li>
+</ul>
+<p> To start ATCM Control, go to the menu item <strong>Control</strong> in the main 
+  menu and click on <strong>Run Control</strong>. <br>
+  The ATCM Control symbol changes from yellow to green.</p>
+<h2> <a name="warmcold"></a><a href="#overview"><img src="pic/jump.gif" border="0" width="11" height="9"></a> 
+  Reset with Cold Start/Warm Start </h2>
+<h4><a name="StartingCold"></a>Cold start</h4>
+<p class="nachoben">If the current project does not run properly on ATCM Control, 
+  it may be necessary to reset all variables. By means of the cold start function, 
+  you can restart the project; this means that all variables are reset to their 
+  initial values. </p>
+<img src="pic/note.gif"
+        width="32" height="31" align="left"> 
+<div style="margin-left: 5; position: relative; top: 0"> 
+  <table border="0" cellpadding="0" class="tabhinweis">
+    <tr> 
+      <td class="HinweisText"> This includes even variables secured against system 
+        failure (VAR RETAIN). </td>
+    </tr>
+  </table>
+</div>
+<p> In the menu item <strong>Control</strong> of the main menu, click on <strong>Cold 
+  Start Reset</strong> and the desired PC. <br>
+  All variables are reset and the project is restarted with the initial values. 
+</p>
+<h4><a name="StartingWarm"></a>Warm start</h4>
+<p class="nachoben">With the warm start function, you can reset all variables 
+  loaded onto ATCM Control to their initial values. The only exception are the retain 
+  variables (VAR RETAIN) which are written on the hard disk in regular intervals 
+  for reasons of safety. They are initialized with the last valid value before 
+  the warm start.</p>
+<img src="pic/note.gif"
+        width="32" height="31" align="left"> 
+<div style="margin-left: 5; position: relative; top: 0"> 
+  <table border="0" cellpadding="0" class="tabhinweis">
+    <tr> 
+      <td class="HinweisText"> Only the variables secured against system failure 
+        (VAR RETAIN) retain their values during restart; all other variables are 
+        reset to their initial values during this process. </td>
+    </tr>
+  </table>
+</div>
+<p> In the menu item <strong>Control</strong> of the main menu, click on <strong>Warm 
+  Start Reset</strong> and the desired PC. </p>
+<h2><a name="clear"></a><a href="#overview"><img
+        src="pic/jump.gif" border="0" width="11" height="9"></a><font
+        face="arial"> </font>Initializing/Deleting </h2>
+<p>If you have to delete the running project from ATCM Control, use the Clear function 
+  to do this. This function deletes the entire ATCM Control. All project components 
+  are deleted so that ATCM Control retains no parts of the project. </p>
+<p>Go to the Message view, click on the tab of the corresponding <strong>PC</strong> 
+  and then on the <strong>Initialize/Clear</strong> button.</p>
+<p> <i>- OR -</i></p>
+<p> click on <strong>Initialize/Clear</strong> in the menu item <strong>Control</strong> 
+  of the main menu.<br>
+  The ATCM Control on the selected PC is deleted. </p>
+<h2><a name="menu"></a><a href="#overview"><img src="pic/jump.gif" border="0" width="11" height="9"></a> 
+  Context Menu of ATCM Control </h2>
+<p>The ATCM <strong>Context</strong> symbol <font face="arial"><img src="pic/iccontrolgreen.gif" width="16" height="16"></font> 
+  in the task menu of Windows NT includes three different menu items. <br>
+  <br>
+  Go to the ATCM Control symbol in the task menu and press the right mouse button.<br>
+  The <strong>Context</strong> menu is displayed:</p>
+<img src="pic/iconmenu.gif" width="213" height="75" class="inP"> 
+<p> To use one of the following menu items, just click on it. </p>
+<p><a name="open"></a><font face="arial"><strong>Open ATCM Console&nbsp;</strong></font></p>
+<p>You can call ATCM Console by means of a mouse click on this menu item. </p>
+<p><a name="4Clicense"></a><font face="arial"><strong>ATCM Control License&nbsp;</strong></font> 
+</p>
+<p>If you click on this menu item, a message dialog with information about your 
+  license is displayed. </p>
+<img src="pic/licenseInfo.gif" width="434"
+        height="186" class="inP"> 
+<p>You will see all types of information concerning your license.<br>
+  To be able to use ATCM Control with a full license, you also have to enter the 
+  enable code here. <br>
+  For this purpose, send the product serial no. to Softing GmbH.<br>
+  Click on <strong>Clipboard</strong> to copy the product serial no. to the clipboard.<br>
+  Send this number to <a href="contact.htm">ATCM, c/o ATCMControl</a>. 
+  <br>
+  As soon as you have received your enable code from Softing GmbH, click on <strong>Enable</strong> 
+  to enter the code.</p>
+<img src="pic/enablecode.gif" width="350" height="149" class="inP"> 
+<p>Enter the enable code and confirm with <strong>OK</strong>. </p>
+<p><a name="tray"></a><font face="arial"><strong>Close ATCM Tray&nbsp;</strong></font></p>
+<p> Click on this menu item to hide the ATCM Control symbol. This does not stop 
+  or close ATCM Control; it only causes the symbol to disappear.</p>
+<img src="pic/note.gif" width="32" height="31" align="left"> 
+<div style="margin-left: 5; position: relative; top: 0"> 
+  <table border="0" cellpadding="0" class="tabhinweis">
+    <tr> 
+      <td class="HinweisText" style="margin-bottom: 10px"> If you want to redisplay 
+        the ATCM Control symbol, go to the Windows start menu. 
+        <ol style="margin-top: 5px; margin-left: 50px">
+          <li>Click on <strong>Run...</strong> . </li>
+          <li>Enter the path and the file name &quot;4ctray.exe&quot;, e.g.: <br>
+            <i>C:/Program/4CONTROL/CTL/4Ctray.exe</i> </li>
+          <li> Click on <strong>OK</strong>.</li>
+          <li> The ATCM Control symbol reappears.</li>
+        </ol>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!--ATCM. All rights reserved-->
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Developer Studio">
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=iso-8859-1">
+<TITLE> Faceplate Header </TITLE>
+<script language="JavaScript" src="CP_Panel.js"></script>
+<script language="JavaScript" src="CP_View.js"></script>
+
+<link rel=stylesheet href="CP_Style.css" type="text/css">
+
+<script language="JavaScript">
+
+var m_bCanMerge;
+var m_bCanSplit;
+var m_Name = "";
+var m_Text = "";
+var m_Parent;
+
+function init() 
+{
+	m_Parent = parent;
+	//IE5.5 HACK ++
+	if (parent.frames[0] == null && parent.parent.frames[0] != null)
+		m_Parent = parent.parent;
+	//IE5.5 HACK --
+	init2();
+}
+
+function init2()
+{
+	if (CP_isPanelContext())
+	{
+		if (isAllLoaded())
+		{
+			calculateEnableStatus();
+			if (CP_getMainWindow().getFocusFrame() == m_Parent)
+				public_setFocus(1);
+			CP_getMainWindow().updateView(m_Parent.location.toString(), m_Parent.name);
+			setMenu();
+		}
+		else
+		{
+			setTimeout("init2()", 500);
+		}
+	}
+}
+
+function exit() 
+{
+}
+
+function public_setName(ClassName, InstanceName)
+{
+	if (ClassName.length > 0)
+		
+		m_Name = ClassName + " : " + InstanceName;
+	else
+		m_Name = InstanceName;
+	
+	HeadLine.innerText = m_Name + " " + m_Text;
+	document.title = HeadLine.innerText;
+}
+
+function public_getName()
+{
+	return m_Name;
+}
+
+function public_setText(Text)
+{
+	m_Text = Text;
+	HeadLine.innerText = m_Name + " " + m_Text;
+	document.title = HeadLine.innerText;
+}
+
+function public_setToolTip(tip)
+{
+	HeadLine.title = tip;
+}
+
+function public_setFocus(bOn)
+{
+	if (bOn != 0)
+	{
+		IdTable.className = "FaceplateHeaderSelected";
+//		IdBody.className = "FaceplateHeaderSelected";
+	}
+	else
+	{
+		IdTable.className = "FaceplateHeader";
+//		IdBody.className = "FaceplateHeader";
+	}
+}
+
+function public_setFocusFrame()
+{
+	if (CP_isPanelContext())
+	{
+		CP_getMainWindow().setFocusFrame(m_Parent);
+	}
+}
+
+function clearFrame()		{ CP_getMainWindow().clearFrame(m_Parent); }
+function clearAllFrames()	{ CP_getMainWindow().clearAllFrames(); }
+function mergeLeft()		{ CP_getMainWindow().merge(m_Parent, 0); }
+function mergeRight()		{ CP_getMainWindow().merge(m_Parent, 2); }
+function mergeUp()			{ CP_getMainWindow().merge(m_Parent, 1); }
+function mergeDown()		{ CP_getMainWindow().merge(m_Parent, 3); }
+function splitLeft()		{ CP_getMainWindow().split(m_Parent, 0); }
+function splitRight()		{ CP_getMainWindow().split(m_Parent, 2); }
+function splitUp()			{ CP_getMainWindow().split(m_Parent, 1); }
+function splitDown()		{ CP_getMainWindow().split(m_Parent, 3); }
+function editLayout()		{ CP_getHeaderWindow().onEditLayout();    }
+function saveLayout()		{ CP_getHeaderWindow().onSaveLayout(0);    }
+
+
+function calculateEnableStatus()
+{
+	var View = CP_getMainWindow().getView();
+	var ImageLabel = CPView_FrameNameToLabel(m_Parent.name);
+
+	m_bCanMerge = new Array(4);
+	m_bCanSplit = new Array(4);
+	for (var direction = 0; direction < 4; direction++)
+	{
+		m_bCanMerge[direction] = View.canMerge(ImageLabel, direction);
+		m_bCanSplit[direction] = View.canSplit(ImageLabel, direction);
+	}
+}
+
+function setMenu()
+{
+	menuItems = new Array();
+	var ii = 0;
+
+	menuItems[ii++] = "&Clear";     
+	menuItems[ii++] = "clearFrame";
+	menuItems[ii++] = "Clear &All";
+	menuItems[ii++] = "clearAllFrames";
+
+	if (m_bCanMerge[0])
+	{
+		menuItems[ii++] = "Expand &Left";
+		menuItems[ii++] = "mergeLeft";
+	}
+	if (m_bCanMerge[2])
+	{
+		menuItems[ii++] = "Expand &Right";
+		menuItems[ii++] = "mergeRight";
+	}
+	if (m_bCanMerge[1])
+	{
+		menuItems[ii++] = "Expand &Up";
+		menuItems[ii++] = "mergeUp";
+	}
+	if (m_bCanMerge[3])
+	{
+		menuItems[ii++] = "Expand &Down";
+		menuItems[ii++] = "mergeDown";
+	}
+	if (m_bCanSplit[0])
+	{
+		menuItems[ii++] = "Insert Le&ft";
+		menuItems[ii++] = "splitLeft";
+	}
+	if (m_bCanSplit[2])
+	{		
+		menuItems[ii++] = "Insert R&ight";
+		menuItems[ii++] = "splitRight";
+	}
+	if (m_bCanSplit[1])
+	{
+		menuItems[ii++] = "Insert &Above";
+		menuItems[ii++] = "splitUp";
+	}
+	if (m_bCanSplit[3])
+	{
+		menuItems[ii++] = "Insert &Below";
+		menuItems[ii++] = "splitDown";
+	}
+
+	menuItems[ii++] = "&Edit Layout";
+	menuItems[ii++] = "editLayout";
+	menuItems[ii++] = "&Save Layout";
+	menuItems[ii++] = "saveLayout";
+
+	window.external.setContextMenu(menuItems);
+}
+
+function public_boldText(bBold)
+{
+	HeadLine.style.fontWeight = ( bBold ? "bold" : "normal" );
+}
+
+function onBodyClick()
+{
+	window.event.cancelBubble = true;
+	public_setFocusFrame();
+}
+
+function public_setLink(href, text, title)
+{
+	IdLink.href = href;	
+	IdLink.title = title;	
+	IdLink.innerText = text;
+}
+
+function onLoadNewFaceplate()
+{
+	if (IdLink.href.length > 0)
+		m_Parent.navigate(IdLink.href); 
+	window.event.returnValue = false;
+}
+
+</script>
+
+</head>
+
+<body TOPMARGIN=0 LEFTMARGIN=0 LINK="#0000FF" ALINK="#0000FF" VLINK="#0000FF" onload="init()" onunload="exit()" onclick="onBodyClick()">
+
+<table cellpadding="2" cellspacing="0" border=0 ID=IdTable class=FaceplateHeader width="100%" height="100%" >
+<td valign="top" align="left"  nowrap><div id=HeadLine title=""> </div></td>
+<td valign="top" align="right" nowrap><a id="IdLink" href="" onClick="onLoadNewFaceplate()"></a></NOBR></td>
+</table>
+
+</body>
+</html>
+

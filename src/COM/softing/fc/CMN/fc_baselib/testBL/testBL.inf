@@ -1,0 +1,8 @@
+TARGET=$(EXE_DIR)\pub\testBL.exe
+TARGETTYPE=CON
+UNICODE=1
+INCLUDE=$(INCLUDE_DIR) 
+LIBRARY=$(LIB_DIR)\fc_baselib.lib
+DEFLIB=ole32.lib
+DEFLIB=oleaut32.lib
+DEFLIB=uuid.lib

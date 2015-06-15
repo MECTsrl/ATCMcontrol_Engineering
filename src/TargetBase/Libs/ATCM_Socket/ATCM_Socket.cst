@@ -1,0 +1,11 @@
+(* Constant file *)
+CONST
+
+(* address family parameter values: *)
+	SCK_AF_IPv4	: DINT := 0;	(* Internet Protocol version 4 *)
+
+(* protocol type parameter values: *)
+	SCK_PROTO_TCP	: DINT := 1;
+	SCK_PROTO_UDP	: DINT := 2;
+
+END_CONST

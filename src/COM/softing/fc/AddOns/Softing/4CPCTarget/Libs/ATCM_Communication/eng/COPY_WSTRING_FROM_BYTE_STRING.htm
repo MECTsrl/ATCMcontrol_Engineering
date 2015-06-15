@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>COPY_WSTRING_FROM_BYTESTRING</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>COPY_WSTRING_FROM_BYTE_STRING</h2>
+<p>Reads a defined number of characters from a determined position within a bytestring, 
+  converts them and copies the bytes read into a WSTRING.</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION COPY_WSTRING_FROM_BYTE_STRING : WSTRING
+    VAR_INPUT
+        NUM : DINT;
+    END_VAR
+    VAR_IN_OUT
+        POS : DINT;
+        BSTR : BYTE_STRING;
+    END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>WSTRING</b></i><br>
+  Value that has been read out of the bytestring.</p>
+<h3>Parameters</h3>
+
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>NUM</b></dt>
+  <dd>Value of type <i><b>DINT</b></i><br>
+    Specifies the number of the characters to be returned in the return value.</dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl>
+  <dt><b>POS</b></dt>
+  <dd>Value of type <i><b>DINT</b></i><br>
+    Specifies the position in the bytestring from which the value is to be read. 
+    Counting starts from 0 on for the first position within the bytestring and is carried out in the unit bytes. <br>
+    After the function has been carried out successfully, <b><i>POS</i></b> is overwritten with the value of the first position in the bytestring that follows the last byte that has been read. If the operation was a failure, <b><i>POS</i></b> has the value -1.</dd>
+  <dt><b>BSTR</b></dt>
+  <dd>Instance of the structure <i><b><a href="BYTE_STRING.htm">BYTE_STRING</a></b></i><br>
+    Bytestring from which a value is to be read.</dd>
+</dl>
+<h3>Description</h3>
+<p><b><i>COPY_WSTRING_FROM_BYTE_STRING </i></b>reads a value of type <i><b>WSTRING 
+  </b></i> from the position passed in <b><i>POS</i></b> on from the bytestring 
+  passed in <i><b>BSTR</b></i>, converts and copies the bytes read into a <i><b>WSTRING</b></i>, 
+  and returns it as return value. The number of characters that are returned by 
+  the function in this <i><b>WSTRING</b></i> is defined in the parameter <i><b>NUM</b></i>. 
+</p>
+<p>In contrast to the function<b><i> <b>BYTE_STRING_TO_WSTRING</b></i></b>, which 
+  is also included in the <i><b>4C_Communication</b></i> library,<b><i><b> </b>COPY_WSTRING_FROM_BYTE_STRING</i></b> 
+  supports the correct interpretation of umlauts. For this reason, use <i><b> 
+  COPY_WSTRING_FROM_BYTE_STRING</b></i> in order to read strings from textfiles 
+  with function blocks of the <b><i>4C_FileAccess</i></b> library. On the other 
+  side, the function <a href="BYTE_STRING_TO_WSTRING.htm"><i><b>BYTE_STRING_TO_WSTRING</b></i></a> 
+  should be used for reading bytestrings at serial communication and communication 
+  via UDP. </p>
+</body>
+</html>

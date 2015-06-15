@@ -1,0 +1,130 @@
+
+
+ // Generated .IDL file (by the OLE/COM Object Viewer)
+// 
+// typelib filename: <could not determine filename>
+// 
+// as dumped from msxml.dll Version 4.72.3110.0 (delivered in IE4.01 SP1)
+// the interfaces below are additional to the msxml.h declared IFs as delivered in VS6.0 !!!
+
+#include <olectl.h>
+import "oaidl.idl";
+import "msxml.idl";
+
+/*
+[
+  uuid(70B2D960-6C4A-11d2-A871-0000B459DC11),
+  version(1.0),
+  helpstring("Microsoft XML 1.0")
+]
+*/
+interface IXMLDocument2;
+interface IXMLElement2;
+interface IXMLAttribute;
+
+    [
+      odl,
+      uuid(2B8DE2FE-8D2D-11D1-B2FC-00C04FD915A9)
+    ]
+    interface IXMLDocument2 : IDispatch {
+        [propget]
+        HRESULT _stdcall root([out, retval] IXMLElement2** p);
+        [propget]
+        HRESULT _stdcall fileSize([out, retval] BSTR* p);
+        [propget]
+        HRESULT _stdcall fileModifiedDate([out, retval] BSTR* p);
+        [propget]
+        HRESULT _stdcall fileUpdatedDate([out, retval] BSTR* p);
+        [propget]
+        HRESULT _stdcall URL([out, retval] BSTR* p);
+        [propput]
+        HRESULT _stdcall URL([in] BSTR p);
+        [propget]
+        HRESULT _stdcall mimeType([out, retval] BSTR* p);
+        [propget]
+        HRESULT _stdcall readyState([out, retval] long* pl);
+        [propget]
+        HRESULT _stdcall charset([out, retval] BSTR* p);
+        [propput]
+        HRESULT _stdcall charset([in] BSTR p);
+        [propget]
+        HRESULT _stdcall version([out, retval] BSTR* p);
+        [propget]
+        HRESULT _stdcall doctype([out, retval] BSTR* p);
+        [propget]
+        HRESULT _stdcall dtdURL([out, retval] BSTR* p);
+        HRESULT _stdcall createElement(
+                        [in] VARIANT vType, 
+                        [in, optional] VARIANT var1, 
+                        [out, retval] IXMLElement2** ppElem);
+        [propget]
+        HRESULT _stdcall async([out, retval] VARIANT_BOOL* pf);
+        [propput]
+        HRESULT _stdcall async([in] VARIANT_BOOL pf);
+    };
+
+    [
+      odl,
+      uuid(2B8DE2FF-8D2D-11D1-B2FC-00C04FD915A9)
+    ]
+    interface IXMLElement2 : IDispatch {
+        [propget]
+        HRESULT _stdcall tagName([out, retval] BSTR* p);
+        [propput]
+        HRESULT _stdcall tagName([in] BSTR p);
+        [propget]
+        HRESULT _stdcall parent([out, retval] IXMLElement2** ppParent);
+        HRESULT _stdcall setAttribute(
+                        [in] BSTR strPropertyName, 
+                        [in] VARIANT PropertyValue);
+        HRESULT _stdcall getAttribute(
+                        [in] BSTR strPropertyName, 
+                        [out, retval] VARIANT* PropertyValue);
+        HRESULT _stdcall removeAttribute([in] BSTR strPropertyName);
+        [propget]
+        HRESULT _stdcall children([out, retval] IXMLElementCollection** pp);
+        [propget]
+        HRESULT _stdcall type([out, retval] long* plType);
+        [propget]
+        HRESULT _stdcall text([out, retval] BSTR* p);
+        [propput]
+        HRESULT _stdcall text([in] BSTR p);
+        HRESULT _stdcall addChild(
+                        [in] IXMLElement2* pChildElem, 
+                        long lIndex, 
+                        long lReserved);
+        HRESULT _stdcall removeChild([in] IXMLElement2* pChildElem);
+        [propget]
+        HRESULT _stdcall attributes([out, retval] IXMLElementCollection** pp);
+    };
+
+    [
+      odl,
+      uuid(D4D4A0FC-3B73-11D1-B2B4-00C04FB92596)
+    ]
+    interface IXMLAttribute : IDispatch {
+        [propget]
+        HRESULT _stdcall name([out, retval] BSTR* n);
+        [propget]
+        HRESULT _stdcall value([out, retval] BSTR* v);
+    };
+
+
+    [
+      odl,
+      uuid(12A22D96-75DA-11D1-BC2A-00C04FB925F3),
+      helpstring("Gets error messages if there is any."),
+      hidden,
+      dual,
+      oleautomation
+    ]
+    interface IXMLError2 : IDispatch {
+        [id(0x000101f5), propget]
+        HRESULT reason([out, retval] BSTR* p);
+        [id(0x000101f6), propget]
+        HRESULT line([out, retval] long* p);
+        [id(0x000101f7), propget]
+        HRESULT pos([out, retval] long* p);
+    };
+
+

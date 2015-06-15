@@ -1,0 +1,174 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1 TYPELIB ""CEAbout.tlb""\r\n"
+    "#include ""version.rc2""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_ABOUTDLG            REGISTRY DISCARDABLE    "AboutDlg.rgs"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PROJNAME            "CEAbout"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ADDRESS             "ATCM ATCMControl"
+    IDS_DISCLAIMER1         "ATCM\r\n\r\nLICENSE AGREEMENT FOR SOFTWARE PRODUCTS\r\n\r\n\r\nSUBJECT MATTER OF AGREEMENT\r\n\r\nSUBJECT MATTER OF AGREEMENT is the computer program stored on the disk and the corresponding program documentation.  (Hereinafter referred to as ""SOFTWARE"".)\r\n\r\nATCM points out that it is not possible, at the state of the art, to produce computer programs with high complexity which work free of errors in all applications and combinations.\r\n\r\n\r\n"
+    IDS_DISCLAIMER2         "RIGHTS OF USE\r\n\r\nDuring the term of this Agreement, ATCM grants the non-exclusive right to use the SOFTWARE only on a single computer and only at one place.  The LICENSEE may transfer the SOFTWARE from one computer to another at any time, provided that the use of the SOFTWARE on the original computer was terminated.\r\n\r\nThe privilege to use the SOFTWARE is not permissible for applications in nuclear power stations, aircrafts or airplanes and vehicles, for navigation and for production of weapons of any kind, as well as for applications involving production, processing, storage and conveyance of water damaging materials and installations in accordance with the environmental liability law as well as in medical applications in which injury to human beings may be caused. Any exceptions require our express written approval.\r\n\r\n"
+    IDS_DISCLAIMER3         "If the single computer is a multi-user system, the SOFTWARE can be used by all users of this system.\r\r\n\r\r\nWithout prior written permission of ATCM it is not allowed to transfer the rights of use the software to third parties, to grant sublicenses, to submit or make the SOFTWARE accessible in any other way to third parties.\r\r\n\r\r\n\r\r\n"
+    IDS_DISCLAIMER4         "If the single computer is a multi-user system, the SOFTWARE can be used by all users of this system.\r\n\r\nWithout prior written permission of ATCM it is not allowed to transfer the rights of use the software to third parties, to grant sublicenses, to submit or make the SOFTWARE accessible in any other way to third parties.\r\n\r\n\r\nSpecial Restrictions\r\n\r\nThe LICENSEE agrees not\r\n\r\na) without the prior written consent of ATCM to change, to compile, to reverse develop, to decompile, to disassemble the SOFTWARE, to produce derived products.\r\n\r\nb) without the prior written consent of ATCM to loan, rent, sub-license, grant any rights or otherwise transfer the SOFTWARE in any form\r\n\r\nc) to remove any proprietary, originator or copyright notices, labels or marks on the SOFTWARE or the documentation.\r\n\r\n"
+    IDS_DISCLAIMER5         "PROPERTY RIGHTS\r\n\r\nWith the purchase of the product the LICENSEE acquires only property of the medium on which the SOFTWARE is stored.\r\n\r\nATCM retains all ownership rights in and to the SOFTWARE and any copies thereof.  All rights not specifically granted herein are retained by ATCM.\r\n\r\n"
+    IDS_DISCLAIMER6         "REPRODUCTION\r\n\r\nThe SOFTWARE and all associated documentation are protected by the copyright law.\r\n\r\nThe LICENSEE may duplicate/copy the SOFTWARE only as far as this is necessary for the intended use of the SOFTWARE (e.g.  installation of the SOFTWARE and loading into the memory) and/or for the production of a backup copy.  Other duplications, including printing the program code and copying the documentation, are only allowed with the prior written consent of ATCM.\r\n\r\nOn all complete or partial reproductions of the SOFTWARE (including data medium), die LICENSEE shall attach the copyright notice and all other remarks concerning commercial protection rights in the same manner as these are contained in the original version of the SOFTWARE.\r\n\r\n\r\n"
+    IDS_DISCLAIMER7         "RECORDS\r\n\r\nThe LICENSEE is obligated to maintain accurate records which document the SOFTWARE including the current version, the place where it is installed or located and the number of produced copies.  The LICENSEE will submit the record to ATCM on request.\r\n\r\n\r\n"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_DISCLAIMER8         "TERM OF AGREEMENT\r\n\r\nThe rights to use the SOFTWARE are granted for an indefinite term.\r\n\r\nThe LICENSE and the LICENSEE's right to use the SOFTWARE is valid until terminated by the LICENSEE, but is automatically terminated if the LICENSEE fails to comply with any provision of this Agreement.  In this case, ATCM will cancel this agreement by written notice.  In less severe cases, ATCM will send a written notice to the LICENSEE describing the breach and asking to cure the cause and possible consequences.  In case of a repetition, ATCM will declare the termination without granting any term.\r\n\r\nUpon termination, the LICENSEE is obligated to destroy all copies of the SOFTWARE being in his possession, including all documentation, disks and copies thereof.\r\n\r\n\r\n"
+    IDS_DISCLAIMER9         "WARRANTY OF ATCM S.p.A.\r\n\r\nThe period of warranty is six (6) months from the date of delivery.\r\n\r\nATCM warrants that the SOFTWARE will operate in substantial conformance with ATCM's published specifications.  The SOFTWARE was designed and produced carefully and with professional knowledge.  The specifications and details about the SOFTWARE do not represent warranted quantities, unless ATCM has confirmed them as such in writing.\r\n\r\nThe responsibility for the selection and the use of the SOFTWARE and of the documentation as well as the results achieved herewith is assumed by the LICENSEE.\r\n\r\nIf the software has a defect which does not insignificantly impair the intended use of the SOFTWARE, ATCM will, at its choice, provide a rectification of the defect, when applicable, by providing a new version of the SOFTWARE or repurchase the SOFTWARE against refund of payment.\r\n\r\n"
+    IDS_DISCLAIMER10        "The warranty is excluded if the SOFTWARE was modified by the LICENSEE or a third party, or was improperly installed, maintained, repaired or used, unless the LICENSEE proves that these circumstances are not caused by the reprehended defect.\r\n\r\nIf the review of a notice of defect shows that a warranty situation does not exist, ATCM will charge the costs for the review and rectification according to its currently prevailing hourly rates.\r\n\r\n\r\n"
+    IDS_DISCLAIMER11        "LIABILITY OF ATCM S.p.A.\r\n\r\nATCM does not know any rights of third parties that could be an obstacle for the contractual use of the development results.\r\n\r\nATCM will assist the LICENSEE with the judicial defense against claims arisen by third parties and, if necessary, will release the LICENSEE from existing claims of third parties.  Further claims of the LICENSEE are dependent on the following rules of this section 0.\r\n\r\nATCM is liable - independent of the grounds - without limitations, if guaranteed qualities are missing as well as for intend and gross negligence.\r\n\r\n"
+    IDS_DISCLAIMER12        "ATCM is liable for slight negligence insofar an obligation is broken, the obedience of which is of particular significance to the achievement of the aim of the contract (cardinal obligation).  The liability is limited to five times of the reimbursement and to those damages on which emergence ATCM has to reckon in the content of a software license agreement.  The same limitation shall be in force for initial inability.\r\n\r\nFurthermore, ATCM is liable if damages are covered by ATCM's liability insurance.\r\n\r\nClaims for damages - independent of the grounds - shall be time-barred twelve (12) months after the damage becomes known, except there exist a shorter legal period of prescription.\r\n\r\nClaims resulting from the product liability law are not affected.\r\n\r\n\r\n"
+    IDS_DISCLAIMER13        "MISCELLANEOUS\r\n\r\nThe SOFTWARE is delivered exclusively in accordance with the terms of this License Agreement.  Any purchase conditions of the LICENSEE are not applicable, even if the LICENSEE refers to it in its order.  Place of jurisdiction shall be Munich; place of performance shall be Haar. German law shall apply.  The Hague convention on contracts for international sale of good (UNICITARL) is excluded.\r\n\r\nPlease address questions regarding this Agreement to the address above.\r\n\r\n"
+    IDS_INTERNET_ADDRESS    ""
+    IDS_INTERNET_ADDRESS_SOFTING ""
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "ATCMControl Engineering"
+END
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUT_GENERAL DIALOG DISCARDABLE  0, 0, 422, 306
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About ATCMControl..."
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "&OK",IDOK,310,290,50,14
+    PUSHBUTTON      "&Help",IDHELP,365,290,50,14
+    PUSHBUTTON      "homepage",IDC_HOMEPAGE_BUTTON_SOFTING,160,190,
+                    102,14
+    CTEXT           "Address",ID_ADDRESS,123,150,174,31
+    CTEXT           "Version",ID_VERSION_NUMBER,15,116,391,15,SS_CENTERIMAGE
+    CTEXT           "ATCMControl",ID_VERSION_TITLE,15,100,391,13,SS_CENTERIMAGE
+    CONTROL         9604,IDC_STATIC,"Static",SS_BITMAP,67,48,285,41
+    CTEXT           "Copyright",ID_COPYRIGHT_NOTE,14,223,391,15,
+                    SS_CENTERIMAGE
+    GROUPBOX        "General Info",IDC_FRAME,5,5,410,280
+    CTEXT           "Credits",IDC_CREDITS,15,15,392,261,NOT WS_VISIBLE
+END
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 277, 222
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About ATCMControl Engineering"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         9506,IDC_STATIC_ABOUT,"Static",SS_BITMAP,0,0,277,240
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// HTML
+//
+
+COMMON.CSS              HTML    DISCARDABLE     "res\\common.css"
+ABOUT_BOX.GIF           HTML    DISCARDABLE     "res\\about_box.gif"
+IDR_HTML_ABOUT          HTML    DISCARDABLE     "res\\about_en.htm"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_4CONTROL            BITMAP  DISCARDABLE     "res\\log4ctr1small.bmp"
+IDB_ABOUT_BOX           BITMAP  DISCARDABLE     "res\\about_box.bmp"
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "CEAbout.tlb"
+#include "version.rc2"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

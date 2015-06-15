@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>CONNECT</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css">
+</head>
+
+<body bgcolor="#FFFFCC">
+<h2>CONNECT</h2>
+<p>Is used for establishing and breaking a serial connection</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION_BLOCK CONNECT      
+VAR_INPUT
+	EN_C    : BOOL := FALSE;   
+	PARTNER : COMM_PARTNER;    
+END_VAR
+VAR_OUTPUT
+	VALID  : BOOL := FALSE;    
+	ERROR  : BOOL := FALSE;    
+        STATUS : DINT := CFB_NoError;   
+	ID     : COMM_CHANNEL;     
+END_VAR</pre>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>EN_C</b></dt>
+  <dd>Value of type <i><b>BOOL</b></i><br>
+    Determines whether a connection is to be established or broken.<br>
+    Possible values:<br>
+    <i><b>TRUE</b></i>: Connection is to be established.<br>
+    <i><b>FALSE</b></i>: Connection is to be broken.</dd>
+  <dt><b>PARTNER</b></dt>
+  <dd>Instance of the structure <a href="COMM_PARTNER.htm"><i><b>COMM_PARTNER</b></i></a><br>
+    Represents the connection to be established. </dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b>VALID</b></dt>
+  <dd>Value of type <i><b>BOOL</b></i><br>
+    Signals the connection status.<br>
+    Possible values:<br>
+    <i><b>TRUE</b></i>: Connection is established.<br>
+    <i><b>FALSE</b></i>: Connection isn&acute;t established.</dd>
+  <dt><b>ERROR</b></dt>
+  <dd>Value of type <i><b>BOOL</b></i><br>
+    Signals the error status.<br>
+    Possible values:<br>
+    <i><b>TRUE</b></i>: An error occurred.<br>
+    <i><b>FALSE</b></i>: No error occurred.</dd>
+  <dt><b>STATUS</b></dt>
+  <dd>Value of type <i><b>DINT</b></i>.<br>
+    Contains a status code. <br>
+    Possible values are defined within the <a href="ConstState.htm">state constants</a>.<br>
+    Default value is <i><b>CFB_NoError</b></i>.</dd>
+  <dt><b>ID</b></dt>
+  <dd>Instance of the structure <i><b><a href="COMM_CHANNEL.htm">COMM_CHANNEL</a></b></i>.<br>
+    Represents the connection established with <i><b>CONNECT</b></i>. An instance 
+    of <i><b>COMM_CHANNEL</b></i> is generated automatically and initialized with 
+    values when a connection is being established. Delivers the<i><b> ID</b></i> 
+    of the communication channel; must be indicated in all subsequent <i><b>READ 
+    </b></i>and <i><b>WRITE</b></i> requests. </dd>
+</dl>
+<h3>Description</h3>
+<p>A connection is established/broken with a call of an instance of <b><i>CONNECT</i></b>. 
+  Whether a connection is to be established or broken is determined with the parameter 
+  <i><b>EN_C</b></i>. The properties of a connection are defined by the structure 
+  instance of <a href="COMM_PARTNER.htm"><i><b>COMM_PARTNER</b></i></a> passed 
+  to the parameter <i><b>PARTNER</b></i>. Therefore, an instance of this structure 
+  has to be created and initialized with values before <i><b>CONNECT</b></i> may 
+  be called. Central connection properties are defined in the connection string 
+  <b><i>sParam</i></b> of <i><b>COMM_PARTNER</b></i>. </p>
+<p>When the connection has been established successfully, an instance of the structure 
+  <i><b><a href="COMM_CHANNEL.htm">COMM_CHANNEL</a></b></i> is generated automatically 
+  and initialized with the connection values. This instance serves as handle for 
+  the connection for following read/write requests and is put at the output <i><b>ID</b></i>. 
+  The instance of <b><i>COMM_CHANNEL</i></b> is passed to the parameter <i> <b>ID</b></i> 
+  of the function blocks <a href="SER_READ.htm"><b><i>SER_READ</i></b></a> and 
+  <a href="SER_WRITE.htm"><b><i>SER_WRITE</i></b></a> in order to identify the 
+  connection to be used. </p>
+<p>When a connection is being established, all read and write requests are cancelled.</p>
+</body>
+</html>

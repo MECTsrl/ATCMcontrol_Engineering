@@ -1,0 +1,59 @@
+# $Header: /4CReleased/V2.20.00/Target/TEMPLATES/Libs/4C_IEC1131_3/4C_IEC1131_3.inf 1     28.02.07 18:54 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: 4C_IEC1131_3.inf $
+#                        $Logfile: /4CReleased/V2.20.00/Target/TEMPLATES/Libs/4C_IEC1131_3/4C_IEC1131_3.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Target
+#
+# =COMPONENT            Libs
+#
+# =CURRENT      $Date: 28.02.07 18:54 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+
+
+
+#
+# ------------------------------------------------------------------------------
+#
+
+
+USER=libname=ATCM_IEC1131_3
+USER=targettype=ATHW119
+
+USER=makefirst: force
+USER= xcopy $(TARGET_BASE)\Libs\$(libname)\*.st   $(MAKEDIR)\*.st   /S /Y
+USER= xcopy $(TARGET_BASE)\Libs\$(libname)\*.cst  $(MAKEDIR)\*.cst  /S /Y
+USER= xcopy $(TARGET_BASE)\Libs\$(libname)\*.sdt  $(MAKEDIR)\*.sdt  /S /Y
+# only if necessary
+USER= copy  $(TARGET_BASE)\Libs\$(libname)\FunFbId.txt     $(MAKEDIR)\FunFbId.txt     /Y
+
+USER=make_lib: force
+USER= xcopy  $(MAKEDIR)\table_22\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_23\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_24\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_25\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_26\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_27\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_28\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_29\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_30\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_34\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_35\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_36\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_37\*.*     $(MAKEDIR)\*.* /Y
+
+USER= $(4CG) $(MAKEDIR)\$(libname).4cp  -ml:$(targettype) $(ENGBIN_DIR)\$(targettype)\libs\de\$(libname).$(targettype).4cl
+USER= $(4CG) $(MAKEDIR)\$(libname).4cp  -ml:$(targettype) $(ENGBIN_DIR)\$(targettype)\libs\eng\$(libname).$(targettype).4cl
+USER= $(4CG) $(MAKEDIR)\$(libname).4cp  -ml:$(targettype) $(ENGBIN_DIR)\$(targettype)\libs\$(libname).$(targettype).4cl
+# merge this target specific english lib into the final (we need this later for other libs of this target)
+USER= $(4CG) -al $(ENGBIN_DIR)\$(targettype)\libs\eng\$(libname).$(targettype).4cl  $(4CL_DIR)\$(libname).4cl
+
+# -------------------------------------------------------------------------------

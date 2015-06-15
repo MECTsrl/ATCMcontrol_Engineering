@@ -1,0 +1,38 @@
+# $Header: /4CReleased/V2.20.00/TargetBase/PROJECTWIZARDBASE/ProjectWizardBase.inf 1     28.02.07 19:06 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: ProjectWizardBase.inf $
+#                        $Logfile: /4CReleased/V2.20.00/TargetBase/PROJECTWIZARDBASE/ProjectWizardBase.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Targetbase
+#
+# =COMPONENT            ProjectWizardBase
+#
+# =CURRENT      $Date: 28.02.07 19:06 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+TARGET=$(TARGET_BASE)\Lib\ProjectWizardBase.lib
+
+TARGETTYPE=LIB
+DEFINE=_ATL_NO_SECURITY
+DEFINE=_AFXDLL
+
+PCHFILE=stdafx
+
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\res
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\inc
+
+INCLUDE=$(TARGET_BASE)\inc
+INCLUDE=$(TARGET_BASE)\AddonHandler\inc
+
+USER=makefirst:$(TARGET_BASE)\lib
+USER=$(TARGET_BASE)\lib:
+USER=  -md $@
+
+# -------------------------------------------------------------------------------

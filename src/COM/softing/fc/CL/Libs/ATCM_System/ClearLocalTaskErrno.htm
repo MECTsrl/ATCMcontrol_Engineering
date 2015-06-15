@@ -1,0 +1,32 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<html>
+<head>
+<title>ClearLocalTaskErrno</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="lib.css"></head>
+
+
+<body bgcolor="#FFFFCC" link="#0000CE" vlink="#0000CE" alink="#0000CE">
+<h2>ClearLocalTaskErrno</h2>
+<p>Resets the error number of a task passed as a parameter to 0.</p>
+<h3>Interface</h3>
+<pre class="preforma">FUNCTION ClearLocalTaskErrno
+VAR_INPUT
+    NAME : ANY_STRING; 
+END_VAR</pre>
+<h3>Return value</h3>
+<p>None</p>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+
+ <dt><b>NAME</b></dt>
+
+ <dd>Value of the type <i><b>ANY_STRING</b></i><br> Name of the task whose error number is to be reset. <br> If the task name passed as the parameter does not correspond to any existing task of the current project, a runtime error is generated. </dd>
+</dl>
+
+
+<h3>Description</h3>
+<p><b><i>ClearLocalTaskErrno</i></b> resets the error number of the task passed to the <i><b>NAME</b></i> parameter to 0. This function<i></i> should always be called before querying the error number with <i><b>GetLocalTaskErrno</b></i> since the error number of the calling task is not automatically reset to 0 when an error has occurred. If an error has already occurred previously in the calling task and <i><b>ClearLocalTaskErrno</b></i> has not been called, <i><b>GetLocalTaskErrno</b></i> will return the error number of the last occurred error even if no new error has occurred in a subsequent task cycle. </p>
+</body>
+</html>

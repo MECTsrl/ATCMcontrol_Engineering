@@ -1,0 +1,700 @@
+//----  Local Defines:   -------------------------------------------*
+
+//----  Includes:   -------------------------------------------*
+import "oaidl.idl";
+import "ocidl.idl";
+
+//------------------------------------------------------------------*
+/**
+ * @file io_layer.idl IDL file for integration of IO-Layers into 4CC.
+ * see 4CIO_Architecture(V2.0).doc section 4.1.4.1<br>
+ * <b>Usage:</b><br> contains <b>NO</b> coclass, create your own IDL for each IO-Layer
+ * and insert <b>import "io_layer.idl";</b> in the library section, before you 
+ * actually define your coclass.
+ * 
+*/
+
+//interface predeclarations
+interface IIO_Var;
+interface IIO_Layer;
+interface IIO_Queue;
+interface IIO_Message;
+
+cpp_quote("// enumeration IO_Q_State for the queue state (see IIO_Queue)")
+
+/**
+ * type IO_Q_STATE - enumeration IO_Q_State for the queue state (see IIO_Queue).
+ *
+*/
+typedef enum tagIO_Q_STATE
+{ 
+        Q_FULL = 0x1,       /**<Queue is full */
+		Q_EMPTY = 0x2,      /**<Queue is empty */
+		Q_OVERFLOW = 0x4    /**<Queue overflow due to write operations of the IO-Layer and Read() does not keep track*/
+} IO_Q_STATE;
+
+//----  IIO_Layer Interface:    -----------------------------------------------*
+    [
+        object,
+        uuid(386A8B1E-F5DC-4dd3-8729-881B574CF6EC),
+        oleautomation,
+        helpstring("Interface to IO-Layer"),
+        pointer_default(unique)
+    ]
+
+	//------------------------------------------------------------------*
+	/**
+	 *  interface IIO_Layer - 
+	 *	Main management interface of an IO-Layer.
+	 *  <b>NOTE:<br></b>
+	 *  References mentioned in interface method descriptions refer to
+	 *	the document 4CIO_Architecture(V2.0).doc
+	 *  @see    4CIO_Architecture(V2.0).doc section 4.1.4.1
+	*/
+    interface IIO_Layer  : IUnknown
+    {
+            //------------------------------------------------------------------*
+			/**
+			 * Initializes the IO-Layer instance. Initialize shall not perform 
+			 * any initialization operations if the IO-Layer has been initialized 
+			 * already. According to the operating modes listed with table 6 and 
+			 * the state diagram shown with figure 14 on p.25 the operating mode 
+			 * after successful initialization of the IO-Layer shall be offline.
+			 *
+			 * @param			pMessage - reference to IIO_Message  interface. 
+			 *					The interface will be used to propagate error 
+			 *					messages to the target 4CC. Shall not be NULL.
+			 *					Call AddRef() with the passed interface pointer 
+			 *					if its desired to hold a reference to the interface. 
+			 *					It is recommended to hold the reference to the 
+			 *					interface until Terminate() is called.
+			 * @return			HRESULT indicating success or failure. 
+			 *					Possible HRESULT codes are:<br>
+			 *					S_OK - success<br>
+			 *                  E_POINTER - Invalid pointer pPrint.<br>
+			 *					Other error codes are possible.
+			 * @see Terminate(), mode behaviour section 3.2.2.3
+			*/
+            [helpstring("Initialize IO-Layer")]			
+			HRESULT Initialize([in] IIO_Message  *pMessage);
+
+
+			//------------------------------------------------------------------*
+			/**
+			 * Terminates the IO-Layer. Terminate shall not perform any termination
+			 * operations if the IO-Layer has been terminated already. According 
+			 * to the operating modes listed with table 6 and the state diagram 
+			 * shown with figure 14 on p.25 the operating mode after successful 
+			 * initialization of the IO-Layer shall be offline. If the operating mode
+			 * upon invocation of Terminate is online the following operations will 
+			 * be performed implicitly:<br>
+			 * - Transition to operating mode offline. Involves withdrawal from 
+			 * the corresponding IO system (fieldbus etc.).<br>
+			 * - Drop the configuration via DropConfiguration()<br>
+			 * Terminate() should release the reference to the IIO_Message  
+			 * interface passed with Initialize().
+			 *
+			 * @return			HRESULT indicating success or failure. Possible HRESULT 
+			 *					codes are:<br>
+			 *					S_OK - success. Other error codes are possible.
+			 * @see	Initialize(), DropConfiguration(), Mode behaviour section 3.2.2.3
+			*/
+            [helpstring("Terminate IO-Layer")]			
+            HRESULT Terminate();
+
+			//------------------------------------------------------------------*
+			/**
+			 * Loads the configuration into the IO-Layer. The configuration domains 
+			 * loaded are the ones that are returned with the call to the 
+			 * IO-Configurators Compile interface. Multiple configuration domains resp. 
+			 * files can be loaded into the IO-Layer. The safe array of parameter 
+			 * arrConfigChanged shall indicate whether a configuration domain has changed
+			 * since the last call to this interface or not. This provides for incremental 
+			 * online change operation. According to the operating modes listed with table 6
+			 * and the state diagram shown with figure 14 on p.25 new IO-Layer configurations 
+			 * (created by the IO-Configurator) can be conveyed to the IO-Layer in offline 
+			 * or the fail-safe mode if the fail safe mode is supported.
+			 *
+			 * @param		arrConfigDomains - SAFEARRAY of BSTR containing the path to the 
+			 *				configuration domains for the IO-Layer. 
+			 *				The configuration domains are returned from the IO-Configurator 
+			 *				with the call to the interface method Compile of the ICompile interface. 
+			 *				The IO-Layer initializes itself with the configuration domains. 
+			 *				Shall not be NULL.
+			 * @param		arrConfigChanged - SAFEARRAY of BOOL indicating whether a 
+			 *				configuration domain has changed (=VARIANT_TRUE) or not (=VARIANT_FALSE).
+			 *				Shall not be NULL.
+			 * @return		HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+			 *				S_OK - success<br>
+			 *				E_POINTER - invalid pointer arrConfigDomains or arrConfigChanged.<br>
+			 *				E_OUTOFMEMORY - out of memory situation.<br>
+			 *				Other error codes are possible
+			 * @see	DropConfiguration(), Mode behaviour section 3.2.2.3
+			*/
+            [helpstring("Add configuration into IO-Layer")]			
+            HRESULT AddConfiguration([in] SAFEARRAY(BSTR) * arrConfigDomains, [in] SAFEARRAY(BOOL) * arrConfigChanged);
+
+            //------------------------------------------------------------------*
+            /**
+             * Drops an IO-Layer configuration loaded according with AddConfiguration(). 
+             * According to the operating modes listed with table 6 and the state diagram 
+             * shown with figure 14 on p.25 an IO-Layer configuration can only be dropped 
+             * in the modes offline or fail safe (if fail safe is supported).
+             *
+             * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+             *              S_OK - success<br>
+             *              Other error codes are possible.
+             * @see         AddConfiguration(), Mode behaviour section 3.2.2.3
+            */
+            [helpstring("Drop configuration loaded with AddConfiguration from IO-Layer")]            
+            HRESULT DropConfiguration();
+
+            //------------------------------------------------------------------*
+            /**
+             * To support the operating modes modes listed with table 6 and the 
+             * state diagram shown with figure 14 on p.25 the method StartOnline() 
+             * is provided. StartOnline() performs transition from offline to 
+             * online mode according to table 6. Shall not perform any operations 
+             * if actual mode is already online. Shall fail if no IO-Layer configuration
+             * is loaded with AddConfiguration() or the IO-Layer is not initialized. 
+             * By means of StartOnline() 4CC is able to control the operating mode of 
+             * an IO-Layer.
+             *
+             * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+             *              S_OK - success<br>
+             *              Other error codes are possible.
+             * @see         StopOnline(), Mode behaviour section 3.2.2.3
+            */
+            [helpstring("Start online mode of IO-Layer")]            
+            HRESULT StartOnline();
+
+            //------------------------------------------------------------------*
+            /**
+             * To support the operating modes modes listed with table 6 and the 
+             * state diagram shown with figure 14 on p.25 the method StopOnline() 
+             * is provided. StopOnline() performs transition from online or 
+             * fail safe to offline mode with the semantics according to table 6. 
+             * Shall not perform any operations if actual mode is already offline. 
+             * Does not drop the configuration. Involves withdrawal from the 
+             * corresponding IO system (fieldbus etc.). By means of StopOnline() 
+             * 4CC is able to control the operating mode of an IO-Layer.
+             *
+             * @return          HRESULT indicating success or failure.<br>
+             *                  Possible HRESULT codes are:<br>
+             *                  S_OK - success<br>
+             *                  Other error codes are possible.
+             * @see             StartOnline(),Mode behaviour section 3.2.2.3
+            */
+            [helpstring("Stop online mode of IO-Layer")]
+            HRESULT StopOnline();
+
+            //------------------------------------------------------------------*
+            /**
+             * Creates a variable instance within the IO-Layer. The interface to 
+             * the IO variable will be returned with parameter ppNewVar. The 
+             * variable to create will be identified by the initialization string 
+             * sInitDetails and the variable name sVarName. 4CCG will call the 
+             * IO-Configurators ICompile::CheckAddress() method during the 
+             * compilation process to validate the direct address and to obtain an 
+             * initialization string for each IO-Variable. CheckAddress() will return 
+             * the initialization string.The compiler in turn will write the initialization 
+             * string for instantiation of the IO-Variable in one of it's initialization 
+             * domains.This process is also shown with the configuration cycle flow chart
+             * (see figure 5 on p.12). During instantiation of an IO-Variable 4CC will 
+             * call into the IO-Manager passing the initialization string to the IO-Manager. 
+             * The IO-Manager has to analyze the initialization string in order to get the 
+             * channel number. The channel number will then be used to identify the IO-Layer. 
+             * Subsequently the IO-Manager calls the IO-Layers interface method CreateVariable() 
+             * to create the IO-Variable inside the IO-Layer. IIO_Layer::CreateVariable() 
+             * will return a reference to an object exposing the interface IIO_Var. 
+             * This object represents the IO-Variable. A two step creation process will be 
+             * performed. 4CC will first call CreateVariable() only to create a 
+             * variable instance. Then 4CC will call AssociateVariable() during the 
+             * commit online change operation of a reconfiguration process in order to 
+             * associate the variable to its configuration data and activate it. 
+             * 
+             * @param       ppNewVar - Reference to an IIO_Var interface. The created 
+             *              IO variable instance will be returned with this interface. 
+             *              In case of an error the returned reference is NULL. 
+             *              Pointer shall not be NULL. <br><b>NOTE:</b><br>
+             *              Add an own reference of the returned 
+             *              IIO_Var interface to an internal map of the IO-Layer. Keep the 
+             *              reference until DropVariable is called. Return an error if 
+             *              DropVariable() or AssociateVariable() is called with a reference 
+             *              to IIO_Var that does not exist in the map.
+             * @param       vtControlType - Indicates the variant type of the representation
+             *              in the target 4CC. Shall not be VT_EMPTY. Created variable should 
+             *              store the variant type in the IO variable instance to determine 
+             *              if a subsequent read or write needs changing of the type.
+             * @param       sInitDetails - Initialization string for the IO variable instance 
+             *              to create. The string is returned from the CheckAddress() method 
+             *              of the interface ICompile and in turn passed to CreateVariable(). 
+             *              Used by the IO-Layer to identify the IO variable with its configuration.
+             * @param       sVarName - String containing the name/identifier of the IO-variable.             
+             * @return      HRESULT indicating success or failure. 
+             *              Possible HRESULT codes are:<br>
+             *              S_OK - success<br>
+             *              E_POINTER - invalid pointer passed – applies to ppNewVar, sInitDetails and sVarName.<br>
+             *              E_INVALIDARG - invalid argument for vtControlType.<br>
+             *              E_OUTOFMEMORY - out of memory situation.<br>
+             *              Other error codes are possible:<br>
+             *              Error code indicating the wrong channel number in sInitDetails etc.
+             * @see         section 3.2.1.6,AssociateVariable(), DropVariable()
+            */
+            [helpstring("Create IO variable in IO-Layer")]            
+			HRESULT CreateVariable([out] IIO_Var** ppNewVar,[in] VARTYPE vtControlType, [in,string] BSTR sInitDetails,[in,string] BSTR sVarName);
+
+            //------------------------------------------------------------------*
+            /**
+             * Associates a created IO variable instance with the configuration 
+             * data during a commit online change operation. A two step creation 
+             * process will be performed. 4CC will first call CreateVariable() 
+             * only to create a variable instance. Then 4CC will call AssociateVariable()
+             * during the commit online change operation of a reconfiguration process 
+             * in order to associate the variable to its configuration data and activate it.
+             * 
+             * @param       pVar - Reference to an IIO_Var interface created previously 
+             *              with CreateVariable(). Shall not be NULL.<br><b>NOTE:</b><br>
+             *              Maintain a map of IIO_Var references in the IO-Layer. 
+             *              Keep an individual reference until DropVariable() is called. 
+             *              Return an error if AssociateVariable() is called with a reference 
+             *              to IIO_Var that does not exist in the map.
+             * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+             *              S_OK - success<br>
+             *              E_POINTER - invalid pointer pVar.<br>
+             *              Other error codes are possible:<br>
+             *              Error code indicating the passed IIO_Var interface does not exist 
+             *              within the IO-Layer etc.
+             * @see         section 3.2.1.6, CreateVariable(), DropVariable()
+            */
+            [helpstring("Associate IO variable to IO-Layer configuration data")]            
+            HRESULT AssociateVariable([in] IIO_Var *pVar);
+            
+            //------------------------------------------------------------------*
+            /**
+             * Removes a created IO variable instance from the administration of
+             * the IO-Layer. It is noted that the corresponding variable instance 
+             * will be deleted with the last Release() call to the IIO_Var interface.
+             * 
+             * @param       pVar - Reference to an IIO_Var interface created 
+             *              previously with CreateVariable(). Shall not be NULL.
+             *              <br><b>NOTE:</b><br>
+             *              Maintain a map of IIO_Var references in the IO-Layer. 
+             *              Keep an individual reference until DropVariable() 
+             *              is called. Return an error if DropVariable() is called with 
+             *              a reference to IIO_Var that does not exist in the map.
+             * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+             *              S_OK - success<br>
+             *              E_FAIL - failure<br>
+             *              E_POINTER - invalid pointer pVar.<br>
+             *              Other error codes are possible:<br>
+             *              Error code indicating the passed IIO_Var interface does not exist 
+             *              within the IO-Layer etc.
+             * @see         section 3.2.1.6, CreateVariable(), AssociateVariable()
+            */
+            [helpstring("Remove IO variable from IO-Layer")]            
+            HRESULT DropVariable([in] IIO_Var *pVar);
+            HRESULT GetState([in, string] BSTR sNodeAddress, [out] long *plState, [out, string] BSTR *psStatus);
+            
+            //------------------------------------------------------------------*
+            /**
+             * Creates the task cache. The thread context is the Java thread of 
+             * the 4CC associated to a TASK object. The task name will be passed 
+             * to that method. The IO-Layer shall create the task cache and store 
+             * the reference to the task cache with the thread ID of the invoking 
+             * thread (in an IO-Layer internal map). Further details see section 
+             * 3.2.2.4. If an OEM provider implementing an IO-Layer does not 
+             * support a task cache the OEM provider shall document this lack and 
+             * indicate that inconsistencies might occur. In that case the OEM 
+             * provider has to return from createTaskCache() with result S_OK but 
+             * without performing any operation.
+             * 
+             * @param   sTaskName - Name of the associated IEC task.
+             * @return  HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+             *          S_OK - success<br>
+             *          E_OUTOFMEMORY - out of memory situation.<br>
+             *          E_POINTER - invalid BSTR specified.<br>
+             * @see     section 3.2.2.4, cleanupTaskCache()
+            */
+            [helpstring("Create task/thread specific cache in IO-Layer")]
+            HRESULT createTaskCache([in, string] BSTR sTaskName);
+
+            //------------------------------------------------------------------*
+            /**
+             * Actualizes the thread specific task cache. Reads
+             * IO Variables from the IO system according to the actual configuration 
+             * and writes the QVT values to the task cache. prepareTaskCache() will 
+             * be called by the target 4CC immediately before a task cycle is executed
+             * by the target 4CC. Further details see section 3.2.2.4. If an OEM 
+             * provider implementing an IO-Layer does not support a task cache the OEM 
+             * provider shall document this lack and indicate that inconsistencies might
+             * occur. In that case the OEM provider has to return from prepareTaskCache() 
+             * with result S_OK but without performing any operation.
+             * <br><b>NOTE:</b><br>
+             * Locate the task cache by obtaining the thread ID of the invoking thread 
+             * and perform a lookup for the task cache in an IO-Layer internal map.
+             * 
+             * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+             *              S_OK - success
+             * @see         section 3.2.2.4, flushTaskCache()
+            */
+            [helpstring("Actualize task/thread specific cache with data from IO-System")]            
+            HRESULT prepareTaskCache();
+            
+            //------------------------------------------------------------------*
+            /**
+             * Writes the thread specific task cache to the IO System. The IO 
+             * variables will be written from the task cache to the IO System 
+             * according to the actual configuration. flushTaskCache() will be 
+             * called by the target 4CC immediately after a task cycle is executed 
+             * by the target 4CC. Further details see section 3.2.2.4. If an OEM 
+             * provider implementing an IO-Layer does not support a task cache the 
+             * OEM provider shall document this lack and indicate that inconsistencies 
+             * might occur. In that case the OEM provider has to return from flushTaskCache()
+             * with result S_OK but without performing any operation.
+             * <br><b>NOTE:</b><br>
+             * Locate the task cache by obtaining the thread ID of the invoking thread 
+             * and perform a lookup for the task cache in an IO-Layer internal map.
+             * 
+             * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+             *              S_OK - success
+             * @see         section 3.2.2.4, prepareTaskCache()
+            */
+            [helpstring("Write task/thread specific cache to IO-System")]            
+            HRESULT flushTaskCache();
+
+            //------------------------------------------------------------------*
+            /**
+             * Deinitializes the task cache and deletes the task cache. Further 
+             * details see section 3.2.2.4. If an OEM provider implementing an 
+             * IO-Layer does not support a task cache the OEM provider shall document 
+             * this lack and indicate that inconsistencies might occur. In that case 
+             * the OEM provider has to return from cleanupTaskCache() with result S_OK 
+             * but without performing any operation.
+             * <br><b>NOTE:</b><br>
+             * Locate the task cache by obtaining the thread ID of the invoking thread 
+             * and perform a lookup for the task cache in an IO-Layer internal map.
+             * 
+             * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+             *              S_OK - success
+             * @see         section 3.2.2.4, createTaskCache()
+            */
+            [helpstring("Delete task/thread specific cache in IO-Layer")]            
+            HRESULT cleanupTaskCache();
+            
+            //------------------------------------------------------------------*
+            /**
+             * Creates a new queue instance inside the IO-Layer. CreateQueue() 
+             * will return a reference to an object exposing the interface IIO_Queue. 
+             * This object represents the queue. All entries of the queue have the 
+             * same size.
+             * 
+             * @param       ppQ - Reference to an IIO_Queue interface. The created 
+             *              queue will be returned with this interface. In case of 
+             *              an error the returned reference is NULL. 
+             *              Pointer shall not be NULL.
+             * @param       sInit - Initialization string for the queue to create.  
+             *              The string will be configured with the IO-Configurator and the 
+             *              configuration is stored in one of the configuration domains. 
+             *              The initialization string should contain the channel number 
+             *              and an identification (e.g. an index) to find the configuration
+             *              data for that queue in the configuration domains.
+             * @param       sName - String containing the name/identifier of the queue.
+             * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+             *              S_OK - success<br>
+             *              E_POINTER - invalid argument ppQ (NULL) , sInit or sName.<br>
+             *              E_OUTOFMEMORY - out of memory situation.<br>
+             *              Other error codes are possible.
+             * @see         section 4.1.4.3, interface IIO_Queue
+            */
+            [helpstring("Create queue in IO-Layer")]            
+			HRESULT CreateQueue([out]IIO_Queue** ppQ, [in] BSTR sInit,[in] BSTR sName);
+    };
+
+//----  IIO_Var Interface:    -----------------------------------------------*
+    [
+        object,
+        uuid(C64BA24D-945B-4a79-A18E-DE0C751D9816),
+        oleautomation, 
+        helpstring("Interface to IO variables"),
+        pointer_default(unique)
+    ]
+	//------------------------------------------------------------------*
+	/**
+	 *  interface IIO_Var
+	 *	Represents IO variable instance in IO-Layer.
+	 *  <b>NOTE:<br></b>
+	 *  References mentioned in interface method descriptions refer to
+	 *	the document 4CIO_Architecture(V2.0).doc
+	 *  @see    4CIO_Architecture(V2.0).doc section 4.1.4.2
+	*/
+    interface IIO_Var  : IUnknown
+    {
+        //------------------------------------------------------------------*
+        /**
+         * Reads the value of an IO variable from the task cache if the task 
+         * cache is supported. Otherwise ReadValue() has to read directly 
+         * from the IO-System supported by the IO-Layer. The vt field of the 
+         * passed argument pvtValue shall be set to the data type that is requested.
+         * This vt datatype will be compared with the native datatype information 
+         * (VARENUM) stored in the variable instance. If the datatypes differ 
+         * ReadVariable() will try to change the datatype to the requested datatype 
+         * by calling ::VariantChangeType().<br>
+         * <b>Task cache behaviour:</b><br>
+         * If prepareTaskCache() has been called successfully the the values 
+         * for the IO variable are stored in the task cache. In turn ReadValue() 
+         * accesses the task cache to query the value. Applies only if a task cache 
+         * is implemented.
+         * 
+         * @param       pvtValue - Pointer to a variant for storing the value.
+         *              Shall not  be NULL. 
+         * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+         *              S_OK - success<br>
+         *              E_POINTER - invalid pvtValue argument<br>
+         * @see         ReadQVTValue(), IIO_Layer::prepareTaskCache()
+        */
+		[helpstring("Read value from task cache or IO-System")]
+		HRESULT ReadValue([out,retval] VARIANT *pvtValue);
+
+        //------------------------------------------------------------------*
+        /**
+         * Reads the QVT value of an IO variable from the task cache if the 
+         * task cache is supported. Otherwise ReadQVTValue() has to read directly 
+         * from the IO-System supported by the IO-Layer (see term QVT p.6). 
+         * The vt field of the passed argument pvtValue shall be set to the data type 
+         * that is requested. This vt datatype will be compared with the native datatype
+         * information (VARENUM) stored in the variable instance. If the datatypes 
+         * differ ReadQVTVariable() will try to change the datatype to the requested 
+         * datatype by calling ::VariantChangeType(). The time stamp shall be time stamp
+         * when the value has been read from the IO-System (and not the time stamp when 
+         * ReadQVTValue() was called).
+         * <br><b>Task cache behaviour:</b><br> If prepareTaskCache() has been called 
+         * successfully the the values for the IO variable are stored in the task cache. 
+         * In turn ReadQVTValue() accesses the task cache to query the value. 
+         * Applies only if a task cache is implemented.
+         * 
+         * @param       pvtValue - Pointer to a variant for storing the value.
+         *              Shall not  be NULL. 
+         * @param       pwQuality - Pointer to a WORD for storing the Quality of 
+         *              the IO Variable. Shall not be NULL.
+         * @param       pdtTimeStamp - Pointer to a DATE type for storing the timestamp. 
+         *              Shall not be NULL.
+         * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+         *              S_OK - success<br>
+         *              E_POINTER - invalid pvtValue, pwQuality or pdtTimeStamp argument.<br>
+         * @see         ReadValue(), IIO_Layer::prepareTaskCache()
+        */
+		[helpstring("Read QVT value from task cache or IO-System")]
+		HRESULT ReadQVTValue([out] VARIANT *pvtValue,[out] WORD *pwQuality,[out] DATE *pdtTimeStamp);
+
+        //------------------------------------------------------------------*
+        /**
+         * Writes the value of an IO variable passed with vtValue to the task 
+         * cache if the task cache is supported. Otherwise WriteValue() has to 
+         * write directly to the IO-System supported by the IO-Layer. The vt 
+         * field of the passed argument vtValue shall be set to the data type 
+         * of value stored in the VARIANT. This vt datatype will be compared 
+         * with the native datatype information (VARENUM) stored in the variable 
+         * instance. If the datatypes differ WriteVariable() will try to change 
+         * the datatype to the native datatype by calling ::VariantChangeType().
+         * <br><b>Task cache behaviour:</b><br> 
+         * WriteValue() does not write directly to the 
+         * IO-System if a task cache is implemented. Rather it writes to the 
+         * task cache. The task cache in turn will be written to the IO-System 
+         * if 4CC invokes flushTaskCache(). 
+         * Applies only if a task cache is implemented.
+         *
+         * @param       vtValue - variant containing the value that should 
+         *              be written to the IO-system. vt field of the VARIANT 
+         *              shall not contain VT_EMPTY. 
+         * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+         *              S_OK - success<br>
+         *              E_INVALIDARG - invalid parameter vtValue
+         * @see         WriteQVTValue(),IIO_Layer::flushTaskCache()
+        */
+		[helpstring("Write value to task cache or IO-System")]
+		HRESULT WriteValue([in] VARIANT vtValue);
+
+        //------------------------------------------------------------------*
+        /**
+         * Writes the QVT value of an IO variable passed with vtValue, 
+         * wQuality and dtTimeStamp to the task cache if the task cache is supported. 
+         * Otherwise WriteQVTValue() has to write directly to the IO-System supported 
+         * by the IO-Layer. The vt field of the passed argument vtValue shall be set
+         * to the data type of value stored in the VARIANT. This vt datatype will be
+         * compared with the native datatype information (VARENUM) stored in the 
+         * variable instance. If the datatypes differ WriteVariable() will try to change
+         * the datatype to the native datatype by calling ::VariantChangeType(). 
+         * The quality wQuality can be used to emulate a specific quality on an output 
+         * to the IO-System.
+         * <br><b>Task cache behaviour:</b><br> 
+         * WriteQVTValue() does not write directly to the IO-System if a task cache 
+         * is implemented. Rather it writes to the task cache. The task cache in turn 
+         * will be written to the IO-System if 4CC invokes flushTaskCache(). 
+         * Applies only if a task cache is implemented.
+         *
+         * @param       vtValue - variant containing the value that should be written 
+         *              to the IO-system. vt field of the VARIANT shall not contain 
+         *              VT_EMPTY. 
+         * @param       wQuality - WORD for storing the Quality of the IO Variable.
+         * @param       dtTimeStamp - DATE type for storing the timestamp.
+         * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+         *              S_OK - success<br>
+         *              E_INVALIDARG - invalid parameter vtValue, invalid quality wQuality.
+         * @see         WriteValue(), IIO_Layer::flushTaskCache()
+        */
+		[helpstring("Write QVT value to task cache or IO-System")]
+		HRESULT WriteQVTValue([in] VARIANT vtValue,[in] WORD wQuality,[in]DATE dtTimeStamp);
+    };
+
+//----  IIO_Queue Interface:    -----------------------------------------------*
+    [
+        object,
+        uuid(4467F2EF-AC6A-46eb-8D6E-6FAD2272E5D0),
+        oleautomation,
+        helpstring("Queue Interface for IO-Layer"),
+        pointer_default(unique)
+    ]
+	//------------------------------------------------------------------*
+	/**
+	 *  interface IIO_Queue
+	 *	Represents queue instance in IO-Layer.
+	 *  <b>NOTE:<br></b>
+	 *  References mentioned in interface method descriptions refer to
+	 *	the document 4CIO_Architecture(V2.0).doc
+	 *  @see    4CIO_Architecture(V2.0).doc section 4.1.4.3
+	*/
+    interface IIO_Queue : IUnknown
+    {
+        //------------------------------------------------------------------*
+        /**
+         * Reads n entries from the IO-Layers queue instance and stores the 
+         * entries at the location referred by argument pbDest. The number
+         * of entries requested will be passed with argument plEntries. The
+         * number of entries actually read will also be returned with plEntries.
+         * 
+         * @param       pbDest - Pointer to the buffer receiving the data of the 
+         *              queue entries to read. Shall not be NULL.
+         * @param       lEntrySize - size of one entry in bytes.
+         * @param       plEntries - The input argument specifies the number of 
+         *              entries to read. The output argument denotes how many 
+         *              entries have been read with this call. Shall not be NULL.
+         * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+         *              S_OK - success<br>
+         *              S_FALSE - Read() may not be successful. Call State() 
+         *              to query the state of the queue.<br>
+         *              E_POINTER - invalid argument pDest or plEntries.
+         * @see         Write(),State()
+        */
+        [helpstring("Reads n entries from the IO-Layers queue instance")]
+        HRESULT Read([out] BYTE* pbDest, [in] long lEntrySize,[in,out] long *plEntries); 
+        
+        //------------------------------------------------------------------*
+        /**
+         * Writes n entries to the IO-Layers queue. The entry data will be 
+         * copied from the location referred by argument pbSource. The number
+         * of entries requested for write will be passed with argument plEntries.
+         * The number of entries written with this call will also be returned with 
+         * plEntries.
+         * 
+         * @param       pbSource - Pointer to the buffer containing the data of 
+         *              the queue entries to write to the queue.Shall not be NULL.
+         * @param       lEntrySize - size of one entry in bytes.
+         * @param       plEntries - The input argument specifies the number of 
+         *              entries to write. The output argument denotes how many 
+         *              entries have been written with this call. Shall not be NULL.
+         * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+         *              S_OK - success<br>
+         *              S_FALSE - Write() may not be successful. Call State() to query 
+         *              the state of the queue.<br>
+         *              E_POINTER - invalid argument pbSource or plEntries.
+         * @see         Read(),State()
+        */
+        [helpstring("Writes n entries to the IO-Layers queue")]
+        HRESULT Write([in] BYTE* pbSource,[in] long lEntrySize,[in, out] long * plEntries);
+
+        //------------------------------------------------------------------*
+        /**
+         * Queries the state of the queue. The queue configuration data will 
+         * be returned. Returns also the state of the queue described with 
+         * the enumeration IO_Q_STATE. see type IO_Q_STATE.
+         * 
+         * @param       plEntries - Returns number of entries in the queue. 
+         *              Pointer shall not be NULL.
+         * @param       pState - Returns the state of the queue. See enumeration 
+         *              IO_Q_STATE table 22. Pointer shall not be NULL.
+         * @param       plEntrySize - Returns the size of one entry of the queue. 
+         *              Pointer shall not be NULL.
+         * @param       psInit - Returns the initializiation string for the queue 
+         *              passed with CreateQueue(). Shall not be NULL.
+         * @param       psName - Returns the name of the queue passed with 
+         *              CreateQueue(). Shall not be NULL.
+         * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+         *              S_OK - success<br>
+         *              E_POINTER - one of the passed pointer arguments is NULL.
+         * @see         Read(),Write(),IIO_Layer::CreateQueue(), table 22
+        */
+        [helpstring("Queries the state of the queue")]
+        HRESULT State([out] long * plEntries, [out] IO_Q_STATE * pState , 
+        [out] long* plEntrySize, [out] BSTR* psInit, [out] BSTR* psName);
+
+    };
+    
+//----  IIO_Message  Interface:    -----------------------------------------------*
+    [
+        object,
+        uuid(A05BC1D0-8F01-4904-A749-5FD2F9F414A5),
+        oleautomation,
+        helpstring("Interface to pass a Message to 4CC")
+    ]
+	//------------------------------------------------------------------*
+	/**
+	 *  interface IIO_Message 
+	 *	Interface to pass a Message from IO-Layer to 4CC.
+	 *  <b>NOTE:<br></b>
+	 *  References mentioned in interface method descriptions refer to
+	 *	the document 4CIO_Architecture(V2.0).doc
+	 *  @see    4CIO_Architecture(V2.0).doc section 4.1.4.4
+	*/
+    interface IIO_Message  : IUnknown
+    {
+        //------------------------------------------------------------------*
+        /**
+         * Passes a message to IO-Manager and in turn to 4CC. The reference to 
+         * the interface IIO_Message  will be passed with IIO_Layer::Initialize(). 
+         * The IO-Manager implements that interface and uses it to propagate messages 
+         * from the IO-Layers to the target 4CC.
+         * 
+         * @param       sMessage - message reference.
+         *              Shall not be NULL.
+         * @return      HRESULT indicating success or failure. Possible HRESULT codes are:<br>
+         *              S_OK - success<br>
+         *              E_POINTER - one of the passed BSTR arguments is NULL.
+         * @see         interface IIO_Layer, IIO_Layer::Initialize()
+        */
+    	[helpstring("pass a message to 4CC")]
+        HRESULT print([in, string] BSTR sMessage);
+    };
+
+//-----------------------------------------------------
+// This TYPELIB is generated as a convenience to users of high level tools
+// which are capable of using or browsing TYPELIBs. 
+// 'Smart Pointers' in VC6 is one example.
+//-----------------------------------------------------
+
+[
+    uuid(6749821B-D7F1-4f49-8B50-3F0D2C82001C),
+    version(2.0),
+    helpstring("4C_20: IO-Layer 2.0 Type Library")
+]
+library IO_LayerLib
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+
+    interface IIO_Var;
+    interface IIO_Layer;
+    interface IIO_Queue;
+    interface IIO_Message;
+};
+

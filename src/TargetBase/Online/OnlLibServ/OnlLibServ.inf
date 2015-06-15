@@ -1,0 +1,47 @@
+# $Header: /4CReleased/V2.20.00/TargetBase/ONLINE/OnlLibServ/OnlLibServ.inf 1     28.02.07 19:06 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: OnlLibServ.inf $
+#                        $Logfile: /4CReleased/V2.20.00/TargetBase/ONLINE/OnlLibServ/OnlLibServ.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Targetbase / Online
+#
+# =COMPONENT            OnlLibServ
+#
+# =CURRENT      $Date: 28.02.07 19:06 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+TARGET=$(TARGET_BASE)\lib\OnlLibServ.lib
+
+TARGETTYPE=lib
+UNICODE=0
+PCHFILE=stdafx
+
+DEFINE=_USRDLL
+DEFINE=_AFXDLL
+DEFINE=_ATL_STATIC_REGISTRY
+
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\res
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\inc
+
+INCLUDE=..\inc
+INCLUDE=..\..\inc
+
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\CE\inc
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\CSC\opcEngine\include
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\CSC\opcEngine\engine
+
+#used for including vm headers
+DEFINE=INC_4C
+
+USER=makefirst:$(TARGET_BASE)\lib
+USER=$(TARGET_BASE)\lib:
+USER=  -md $@
+
+# -------------------------------------------------------------------------------

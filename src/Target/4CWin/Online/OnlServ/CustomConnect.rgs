@@ -1,0 +1,28 @@
+HKCR
+{
+	4C_20_Win.CustomConnect = s '4CONTROL: 4C Win Custom Connect'
+	{
+		CLSID = s '{126a81fd-4b8e-4a44-96cb-e78c0c741258}'
+		CurVer = s '4C_20_Win.CustomConnect.1'
+	}
+	4C_20_Win.CustomConnect.1 = s '4CONTROL: 4C Win Custom Connect'
+	{
+		CLSID = s '{126a81fd-4b8e-4a44-96cb-e78c0c741258}'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {126a81fd-4b8e-4a44-96cb-e78c0c741258} = s '4CONTROL: 4C Win Custom Connect'
+		{
+			ProgID = s '4C_20_Win.CustomConnect.1'
+			VersionIndependentProgID = s '4C_20_Win.CustomConnect'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '{cc473905-0371-4868-ba16-44190dbcd8bf}'
+
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

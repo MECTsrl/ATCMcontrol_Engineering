@@ -1,0 +1,12 @@
+(*[[
+    UserURL= "ATCMfile:LWORD_TO_LINT.htm"
+]]*)
+
+FUNCTION LWORD_TO_LINT : LINT
+VAR_INPUT
+    IN : LWORD;
+END_VAR
+
+inline{%1}
+
+END_FUNCTION

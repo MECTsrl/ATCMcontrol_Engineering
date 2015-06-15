@@ -1,0 +1,11 @@
+(*[[
+]]*)
+TYPE
+    InRemapStructType : STRUCT
+		PhysWord:  UINT;
+		PhysBit:   BYTE;
+		LogicWord: UINT;
+		LogicBit:  BYTE;
+		Mode:      BYTE;
+    END_STRUCT;
+END_TYPE

@@ -1,0 +1,24 @@
+HKCR
+{
+	TestProjectWizard.WizardComObj.1 = s 'WizardComObj Class'
+	{
+		CLSID = s '{D7A9EADA-E537-11D4-B368-0008C77981F8}'
+	}
+	TestProjectWizard.WizardComObj = s 'WizardComObj Class'
+	{
+		CLSID = s '{D7A9EADA-E537-11D4-B368-0008C77981F8}'
+		CurVer = s 'TestProjectWizard.WizardComObj.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {D7A9EADA-E537-11D4-B368-0008C77981F8} = s 'WizardComObj Class'
+		{
+			ProgID = s 'TestProjectWizard.WizardComObj.1'
+			VersionIndependentProgID = s 'TestProjectWizard.WizardComObj'
+			InprocServer32 = s '%MODULE%'
+			{
+			}
+			'TypeLib' = s '{D7A9EACA-E537-11D4-B368-0008C77981F8}'
+		}
+	}
+}

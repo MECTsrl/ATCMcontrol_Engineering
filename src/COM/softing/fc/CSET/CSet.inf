@@ -1,0 +1,21 @@
+# $Header: /4CReleased/V2.20.00/COM/softing/fc/CSET/CSet.inf 1     28.02.07 19:00 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: CSet.inf $
+#                        $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CSET/CSet.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 CSET
+#
+# =COMPONENT            CSET
+#
+# =CURRENT      $Date: 28.02.07 19:00 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+SUBPROJECT=Tools\Tools.mak
+
+# -------------------------------------------------------------------------------

@@ -1,0 +1,958 @@
+cpp_quote("//+---------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  ATCMControl 4CE")
+cpp_quote("//  Copyright 2000 - 2001 SoftingGmbH.")
+cpp_quote("//")
+cpp_quote("//----------------------------------------------------------------")
+
+
+#ifndef DO_NO_IMPORTS
+import "objidl.idl";
+import "oaidl.idl";
+#endif
+
+import "CEContainer.idl";
+
+enum E_IEC_IDENTIFIER_ERROR {
+        IDENTIFIER_OK,
+        IDENTIFIER_SYNTAX_ERROR,           
+        IDENTIFIER_IS_KEYWORD,
+        IDENTIFIER_TOO_LONG  
+};
+
+
+cpp_quote("//+---------------------------------------------------------------")
+cpp_quote("// The interface of the project manager:")
+[
+    object,
+    oleautomation,
+    uuid(be6590f0-abd2-11d4-94f6-0008c779d265)
+]
+/**
+ * This interface will be implemented by the Project Manager of the 
+ * Engineering. It contains methods to get project related information 
+ * and other global information. It is the central point for all AddOnOps 
+ * to get information from the engineering.
+ */
+interface ICEProjInfo : IUnknown
+{
+    // path information:
+
+    //------------------------------------------------------------------*
+    /**
+     * getProjectPath returns the path of the current project directory
+     * without '\' at the end.
+     *
+     * @param   psProjectPath: The project directory.
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getProjectPath ([out,string] BSTR* psProjectPath);
+
+ 
+    //------------------------------------------------------------------*
+    /**
+     * getProjectName returns the name of the project without path information
+     * and file extention.
+     *
+     * @param   psProjectName: Name of the project
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getProjectName ([out,string] BSTR* psProjectName);
+
+   
+    //------------------------------------------------------------------*
+    /**
+     * getProjectGenPath returns the path of the gen folder, where all 
+     * generated information has to be stored. All information in this 
+     * folder can be recreated from the source files, i. e. after deleting 
+     * this folder, the information can be created again.
+     *
+     * @param   psGenPath: The path fo the gen folder.
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getProjectGenPath ([out,string] BSTR* psGenPath);
+
+    
+    //------------------------------------------------------------------*
+    /**
+     * getLibraryPath returns the standard library path. This path normally 
+     * references a sub directory of the ATCMControl installation directory.
+     *
+     * @param   psPath: standard library path
+     *         
+     * @return          
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getLibraryPath ([out,string] BSTR* psPath);
+
+    
+    //------------------------------------------------------------------*
+    /**
+     * getInstallationPath returns the path where the ATCMControl system is installed.
+     *
+     * @param   psPath: ATCMControl installation path
+     *         
+     * @return          
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getInstallationPath ([out,string] BSTR* psPath);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * The back parsers may store additional information 
+     * in the xml representation of a node to be used by the add-on 
+     * operations. This information will not be interpreted by the kernel. 
+     * To access this information the DOM pointer on that node can be 
+     * obtained by an add-on operation using this method.
+     * Caution: The add-on operation may only read information from that 
+     * DOM pointer and is not allowed to perform any changes on 
+     * the DOM pointer.
+     *
+     * @param   ppXMLPtr - pointer to the DOM of the node
+     * @param   sID      - the ID-Path of the node for which the xml-
+     *                     representation should be returned
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getXMLNodePtr ([in,string]BSTR sId,
+                           [out]IUnknown** ppXMLPtr);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * getContainerIF returns a pointer to the container interface of a node 
+     * and all necessary information to call the IContainer methods.
+     *
+     * @param   sSourceFile    - The source file for which the Container 
+     *                           should be found
+     * @param   sId            - The id-path of the node.  
+     * @param   ppIContainer   - Pointer to the container interface pointer
+     * @param   psParentSource - The source file of the parent.
+     * @param   psParentId     - The id of the parent.
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getContainerIF ([in,string]  BSTR  sSourceFile, 
+                            [in,string]  BSTR  sId,  
+                            [out]        ICEContainer** ppICEContainer,
+                            [out,string] BSTR* psParentSource, 
+                            [out,string] BSTR* psParentId);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * getContainerIFforFile returns a pointer to the container inteface for
+     * a source file, or for a special kind of source files, specified by the 
+     * file extension, the interface is selceted by the file extention in the
+     * engineering kad
+     *
+     * @param   sContainerFile -  the source file, or the file extension
+     * @param   ppIECContainer -  Pointer to the container interface 
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getContainerIFforFile ([in,string]BSTR sContainerFile, 
+                                   [out]ICEContainer** ppICEContainer);
+
+    
+
+    //main class and object information: 
+
+    //------------------------------------------------------------------*
+    /**
+     * getAllTargetTypes return all target types defined in the 
+     * engineering kad. 
+     *
+     * @param   parrNames - The target type names
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getAllTargetTypes ([out] SAFEARRAY(BSTR) *parrNames);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * getAllTargets gets the file name of all targets defined in the project.
+     *
+     * @param   parrTargets - All targets defined in the project.
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getAllTargets ([out] SAFEARRAY(BSTR) *parrTargets);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * getAllTargets gets the id paths of all targets defined in the project.
+     *
+     * @param   parrTargets - All targets defined in the project.
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getAllTargetsAsIdPaths ([out] SAFEARRAY(BSTR) *parrTargets);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * getExtForTargetType returns the extension of files for a target type
+     *
+     * @param           sTargetType: the target type
+     * @param           psExt: the file extension
+     * @return          
+     * @exception       -
+     * @see             
+    */
+    HRESULT getExtForTargetType([in,string] BSTR sTargetType, [out, string]BSTR* psExt);
+
+    //------------------------------------------------------------------*
+    /**
+     * getAllClassTypes returns all ClassTypes defined in the engineering KAD.
+     *
+     * @param   pArrNames - Class type names.
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getAllClassTypes ([out] SAFEARRAY(BSTR) *parrNames);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * getTextForClassType returns the text to display for a class type.
+     *
+     * @param   sType  - The class type for which the text should be displayed
+     * @param   psText - The text
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getTextForClassType ([in,string] BSTR sType, 
+                                 [out]       BSTR* psText);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * getAllClasses returns all Classes defined in the project. That means 
+     * the first hirarchy under the class folders in the class view. 
+     *
+     * @param    parrFileNames - The file names of the classes defined 
+     *                           in the project
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getAllClasses ([out] SAFEARRAY(BSTR) *parrFileNames);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * getAllClasses returns all Classes defined in the project. That means 
+     * the first hirarchy under the class folders in the class view. This
+     * method returns the classes as id paths in the tree.
+     *
+     * @param    parrClasses   - The id paths of the classes defined 
+     *                           in the project
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getAllClassesAsIdPaths ([out] SAFEARRAY(BSTR) *parrClasses);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * getClassesOfType returns all classes of a special type 
+     * defined in the project. Example: getClassesOfType(L"RESOURCE", $sa)
+     * returns all filenames (with extension) of all resources in the project.
+     *
+     * @param   sClassType    - The class type to search. The class names
+     *                          are those form the 4ceng.kad. 
+     *                          Note:  sClassType is case sensitive. 
+     * 
+     * @param   parrFileNames - The classes of that type defined 
+     *                          in the project 
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getClassesOfType   ([in,string] BSTR sClassType, 
+                                [out]       SAFEARRAY(BSTR)* parrFileNames);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * getClassesOfTypeAsIdPaths returns all classes of a special type 
+     * defined in the project as id paths
+     *
+     * @param   sClassType    - The class type
+     * @param   parrClasses   - The classes of that type defined 
+     *                          in the project 
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getClassesOfTypeAsIdPaths   ([in,string] BSTR sClassType, 
+                                         [out]       SAFEARRAY(BSTR)* parrClasses);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * getAllLibraries returns all libraries included in the project.     
+     * 
+     * @param   parrLibraries - The library file names with 
+     *                          path information.
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getAllLibraries    ([out]  SAFEARRAY(BSTR) *parrLibraries);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * getClassesOfTypeFromLib gets all classes of a special type 
+     * from a library.
+     *
+     * @param   sLibraryName  - The name of the library
+     * @param   sClassType    - The name of the class type
+     * @param   parrFileNames - The names of the classes defined 
+     *                          in the library 
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getClassesOfTypeFromLib([in,string] BSTR sLibraryName, 
+                                    [in,string] BSTR sClassType, 
+                                    [out]       SAFEARRAY(BSTR) *parrFileNames);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * getTypeOfTarget returns the type of a target.
+     *
+     * @param   sTargetName  - The name of the target
+     * @param   psTargetType - The type of the target
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getTypeOfTarget([in,string]  BSTR   sTargetName,
+                            [out,string] BSTR*  psTargetType);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * getAddressStringForTarget returns the address string 
+     * for a target of the project. 
+     *
+     * @param   sTargetName  - The name of the target
+     * @param   psAddrString - The address string
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getAddressStringForTarget([in,string]  BSTR  sTargetName, 
+                                      [out,string] BSTR* psAddrString);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * getUserAddressStringForTarget returns the address string of a target, 
+     * that can be displayed to a user
+     *
+     * @param   sTargetName  - The name of the target
+     * @param   psAddrString - The address string to display to the user
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getUserAddressStringForTarget([in,string]  BSTR  sTargetName, 
+                                          [out,string] BSTR* psAddrString);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * getTargetNameForAddr tries to find the target in the project for 
+     * a special address
+     *
+     * @param   sAddr        - The address information
+     * @param   psTargetName - The target name
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getTargetNameForAddr ([in,string] BSTR  sAddr, 
+                                 [out,string] BSTR* psTargetName);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * getResourceNameForTarget returns the Resource that is assigned 
+     * to a target.
+     *
+     * @param   sTarget        - The target name
+     * @param   psResourceName - The Resource name
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getResourceNameForTarget([in,string]  BSTR sTarget, 
+                                     [out,string] BSTR* psResourceName);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * In a new IOComponent-wizard a user has to choose a name for the 
+     * IOComponent and a channel number. To allow the wizard to propose 
+     * a free channel number for the user, the project manager offers 
+     * this function. The first two arguments are the arguments passed 
+     * to the AddonAction that is executed for the "Insert IODPComponent" 
+     * context menu for example. The engineering needs this information 
+     * to know where it has to search for a free number.
+     *
+     * @param   sPCName	    - The name of the pc for which the 
+     *                        IOComponent should be inserted (id path of the pc node)
+     * @param   piChannelNr - A free channel number for a new IOComponent 
+     *                        for that PC        
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getFreeChannelNrForPC ([in,string]  BSTR sPCName,
+                                   [out]        long* plChannelNr);
+
+
+
+    //helper functions:
+
+    //------------------------------------------------------------------*
+    /**
+     * This is a helper function for wizards to create a name for a new 
+     * object that has not been used in the project yet. The function gets 
+     * a basis for the name as input and will add a number to that string. 
+     * The resulting string will be unique in the project.
+     *
+     * @param   sBasis - The basis for the name to create
+     * @param   psName - The created name proposal 
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getGlobalNameProposal([in,string]  BSTR  sBasis, 
+                                  [out,string] BSTR* psName);
+
+
+
+    //------------------------------------------------------------------*
+    /**
+     * fileChangedHint informs the project manager that 
+     * a source file has changed and should be reparsed
+     * sSourceFile: the name of the source file
+     *
+     * @param   sSourceFile - the name of the source file
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT fileChangedHint([in,string]  BSTR  sSourceFile); 
+
+
+    //------------------------------------------------------------------*
+    /**
+     * fileParseNow informs the project manager that 
+     * a source file has changed and should be reparsed immediately.
+     * sSourceFile: the name of the source file
+     *
+     * @param   sSourceFile - the name of the source file
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT fileParseNow([in,string]  BSTR  sSourceFile); 
+
+
+    //------------------------------------------------------------------*
+    /**
+     * getFileNameFromIdPath returns the file name of the source file
+     * from which a node with the given id path has been generated.
+     *
+     * @param     sIdPath - the id path to the node in the tree
+     * @param     psFileName - the name of the source file
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getFileNameFromIdPath([in,string]  BSTR  sIdPath,
+                                  [out,string] BSTR* psFileName); 
+
+
+
+    //------------------------------------------------------------------*
+    /**
+     * getFileNameFromIdPath returns the file name of the source file
+     * from which a node with the given id path has been generated.
+     *
+     * @param     sFileName - the name of the source file
+     * @param     psIdPath - the id path to the node in the tree
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getIdPathFromFileName([in,string]  BSTR  sFileName,
+                                  [out,string] BSTR* psIdPath); 
+
+
+
+    // 4cp project file functions
+
+    //------------------------------------------------------------------*
+    /**
+     * Insert a new line in the 4cp project file. In the section <sSection> 
+     * a new line: <sKey>=<sValue> will be created. 
+     * If the section does not exist, a new section will be created. 
+     * This function does not check if a line <sKey>=<sValue> does already 
+     * exist in the section.
+     *
+     * @param   sSection    - The name of the section in the 4cp project file
+     * @param   sKey        - The key of the entry in the section in the 4cp 
+     *                        project file
+     * @param   sValue      - The value for that entry
+     *
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT CPInsertToSection([in,string] BSTR sSection,
+                              [in,string] BSTR sKey,
+                              [in,string] BSTR sValue);
+
+
+
+    //------------------------------------------------------------------*
+    /**
+     * Delete a line in the 4cp project file. In the section <sSection> 
+     * a line with the key <sKey> is searched and this line will be deleted. 
+     * If the section does not exist, or the key in the section does not exist, 
+     * nothing happens. This function does not check if multiple lines 
+     * with <sKey> do exist in the section, only the first occurrence 
+     * of the key will be deleted. 
+     *
+     * @param   sSection    - The name of the section in the 4cp project file
+     * @param   sKey        - The key of the entry in the section in the 4cp 
+     *                        project file
+     *
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT CPDeleteFromSection([in,string] BSTR    sSection,
+                                [in,string] BSTR    sKey);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * Delete a new line in the 4cp project file. In the section <sSection> 
+     * a line with the key <sKey> is searched and this line will be deleted. 
+     * If the section does not exist, or the key in the section does not exist, 
+     * nothing happens. This function can be used if multiple lines with <sKey> 
+     * do exist in the section. If no entry <sKey>=<sValue> does exist nothing 
+     * happens, if multiple lines <sKey>=<sValue> exist, only the 
+     * first occurrence will be deleted.
+     *
+     * @param   sSection  - The name of the section in the 4cp project file	
+     * @param   sKey	  - The key of the entry in the section in the 
+     *                      4cp project file
+     * @param   sValue    - The value of the entry in the section in the 
+     *                      4cp project file
+     *
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT CPDeleteKeyWithValueFromSection([in,string] BSTR sSection,
+                                            [in,string] BSTR sKey,
+                                            [in,string] BSTR sValue);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * Search a line with the key <sKey> in the section <sSection> in the 4cp 
+     * project file and returns the value of that key. If multiple lines 
+     * with the key exist in the section only the first occurrence of the key 
+     * will be used.
+     *
+     * @param   sSection    - The name of the section in the 4cp project file
+     * @param   sKey        - The key of the entry in the section in the 4cp 
+     *                        project file   
+     * @param   psValue     - The value of the key, if it has been found
+     *
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT CPGetValueForKeyFromSection([in,string]  BSTR  sSection,
+                                        [in,string]  BSTR  sKey,
+                                        [out,string] BSTR* psValue);
+
+
+
+    //------------------------------------------------------------------*
+    /**
+     * This function returns all values for a key in a section of 
+     * the 4cp project file. For all lines in the section starting with 
+     * the key <sKey> the value of that key will be added to the array. 
+     * This function is for example for the sections "Classes.XYZ" and 
+     * "Targets" of the 4cp file.
+     *
+     * @param   sSection       - The name of the section in the 
+     *                           4cp project file
+     * @param   sKey           - The name of the key, for which the entries 
+     *                           in the section should be found.	
+     * @param   parrFileNames  - The files referenced in this section. 
+     *                           Referenced files are marked with a key="file".
+     *
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT CPGetAllValuesForKeyFromSection([in,string] BSTR      sSection,
+                                            [in,string] BSTR      sKey,
+                                            [out]SAFEARRAY(BSTR)* parrFileNames);
+
+
+
+    //------------------------------------------------------------------*
+    /**
+     * GetNodesOfTypeUnderNode returns all nodes of a special type which
+     * are rested in the part of the tree under the given start node.
+     *
+     * @param           sStartNode: The id path of node to start the search
+     * @param           sType: the type of the nodes searched
+     * @param           parrNodes: the id path of found nodes
+     * @return          S_OK: ok
+     * @exception       -
+     * @see             
+    */
+    HRESULT GetNodesOfTypeUnderNode([in,string] BSTR sStartNode,
+                                    [in,string] BSTR sType,
+                                    [out] SAFEARRAY(BSTR)* parrNodes);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * CheckIECIdentifier checks if a string is a valid iec identifier
+     *
+     * @param           sIdentifier: the string to check
+     * @param           lError: 
+     *                      IDENTIFIER_OK                no error 
+     *                      IDENTIFIER_SYNTAX            the pure syntax is incorrect
+     *                      IDENTIFIER_IS_KEYWORD        syntax is ok, but pszId is a keyword
+     *                      IDENTIFIER_TOO_LONG          syntax is ok, but pszId is too long
+     * @return          
+     * @exception       -
+     * @see             
+    */
+    HRESULT CheckIECIdentifier([in,string] BSTR sIdentifier,
+                               [out] enum E_IEC_IDENTIFIER_ERROR* pErrorFlag);
+
+     //------------------------------------------------------------------*
+    /**
+     * getSupportedIECDataTypes returns all data types that are supported 
+     * by one of the installed target types
+     *
+     * @param   parrClasses   - The supported data types
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getSupportedIECDataTypes   ([out]       SAFEARRAY(BSTR)* parrDataTypes);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * getSupportedIECDataTypesForTarget returns all data types that are supported 
+     * by the given target type
+     *
+     * @param   sTargetType   - The target type
+     * @param   parrClasses   - The supported data types
+     *         
+     * @return  S_OK : ok
+     *          E_CEPROJMAN_NO_PROJECT_LOADED : no project loaded
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT getSupportedIECDataTypesForTarget([in,string] BSTR sTargetType, 
+                                              [out]       SAFEARRAY(BSTR)* parrDataTypes);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * getSupportedIECLanguages returns all supported IEC languages supported
+     * by the installed target types
+     *
+     * @param           parrLanguages: the supported languages: 
+     *                              possible values: ST,FBD,LD,SFC
+     * @return          
+     * @see             
+    */
+    HRESULT getSupportedIECLanguages([out] SAFEARRAY(BSTR)* parrLanguages);
+    
+    
+    //------------------------------------------------------------------*
+    /**
+     * getSupportedIECLanguagesForTarget returns all supported IEC languages supported
+     * by one installed target type
+     *
+     * @param           sTargetType   - The target type
+     * @param           parrLanguages: the supported languages: 
+     *                              possible values: ST,FBD,LD,SFC
+     * @return          
+     * @see             
+    */
+    HRESULT getSupportedIECLanguagesForTarget([in, string] BSTR sTargetType,
+                                              [out]        SAFEARRAY(BSTR)* parrLanguages);
+
+    //------------------------------------------------------------------*
+    /**
+     * getSupportRetain returns if retain is supported by one target
+     *
+     * @param           parrVarClasses: the supported var classes
+     * @return          
+     * @see             
+    */
+    HRESULT getSupportRetain([out] BOOL* pbRetain);
+    
+    
+    //------------------------------------------------------------------*
+    /**
+     * getSupportRetainForTarget returns if retain is supported by the given target
+     *
+     * @param           sTargetType   - The target type
+     * @param           parrVarClasses: the supported var classes
+     * @return          
+     * @see             
+    */
+    HRESULT getSupportRetainForTarget([in, string] BSTR sTargetType,
+                                      [out] BOOL* pbRetain);
+
+    //------------------------------------------------------------------*
+    /**
+     * ReplaceMacros: Replaces all macros in a string, macros are:
+     *  $(PRJDIR), $(LIBDIR), $env(<envstring>) ...
+     *  defined in System\Interfaces.doc.
+     *
+     * @param           sIn: the string in which the macros should be replaced
+     * @param           sOut: the string with the macros replaced
+     * @return          S_OK, or error
+     * @see             
+    */
+    HRESULT ReplaceMacros([in,string] BSTR sIn, [out,string] BSTR* psOut);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * GetFileAbsolute completes the file name with path to absolute path.
+     * Relative file paths will be seen relative to the project path.
+     * $(xxx) macros will be replaced.
+     *
+     * @param           sFileName: A file name
+     * @param           psAbsFileName: the absolute path and file name      
+     * @return          
+     * @exception       -
+     * @see             
+    */
+    HRESULT GetFileAbsolute([in, string] BSTR sFileName, [out, string] BSTR* psAbsFileName);
+    
+    
+    //------------------------------------------------------------------*
+    /**
+     * GetFileRelative will strip path information from a file name. If the 
+     * can be found under the project path, the returned path will be relative 
+     * to the project path, if the file is in the standard library path, this 
+     * will be replaced by the $(LIBDIR) macro, else the path will bre returned
+     * unchanged.
+     *
+     * @param           sFileName: The file name
+     * @param           psRelFileName: the relative file name
+     * @return          
+     * @exception       -
+     * @see             
+    */
+    HRESULT GetFileRelative([in, string] BSTR sFileName, [out, string] BSTR* psRelFileName);
+
+    //------------------------------------------------------------------*
+    /**
+     * GetVersionOfProjectFile returns the version of a project, no projetc 
+     * has to be open for this operation.
+     *
+     * @param           sPrjFileName: the name of the project file 
+     *                                with absolute path information
+     * @param           psVersion: the version string if found
+     * @return          
+     * @exception       -
+     * @see             
+    */
+    HRESULT GetVersionOfProjectFile([in, string] BSTR sPrjFileName, [out, string] BSTR* psVersion);
+
+    //------------------------------------------------------------------*
+    /**
+     * ShowContextHelp shows the context help for a dialog for example
+     *
+     * @param           dwContextId : The context id passed to the online help
+     * @return          
+     * @exception       -
+     * @see             
+    */
+    HRESULT ShowContextHelp([in] DWORD dwContextId);
+};

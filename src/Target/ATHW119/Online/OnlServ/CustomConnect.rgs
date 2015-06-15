@@ -1,0 +1,28 @@
+HKCR
+{
+	4C_20_HW119.CustomConnect = s '4CONTROL: 4C HW119 Custom Connect'
+	{
+		CLSID = s '{C31E31A7-567C-49a2-B393-CEC8F2E17F99}'
+		CurVer = s '4C_20_HW119.CustomConnect.1'
+	}
+	4C_20_HW119.CustomConnect.1 = s '4CONTROL: 4C HW119 Custom Connect'
+	{
+		CLSID = s '{C31E31A7-567C-49a2-B393-CEC8F2E17F99}'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {C31E31A7-567C-49a2-B393-CEC8F2E17F99} = s '4CONTROL: 4C HW119 Custom Connect'
+		{
+			ProgID = s '4C_20_HW119.CustomConnect.1'
+			VersionIndependentProgID = s '4C_20_HW119.CustomConnect'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '{3FF3B137-CFCD-40a7-9D09-17127B1DAFC4}'
+
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

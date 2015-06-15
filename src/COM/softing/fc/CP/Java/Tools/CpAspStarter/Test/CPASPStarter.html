@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>CPASPStarter</title>
+</head>
+
+<script language="JavaScript">
+
+function startASP()
+{
+    CP_ASPStarter.startASP("http://w-sn/CPASPStarter/ServerScript.asp"
+						   );
+	output1.innerText = CP_ASPStarter.getASPOutput();
+
+    CP_ASPStarter.startASP("http://w-sn/CPASPStarter/ServerScript.asp",
+	                       "parameter1", "value1a"
+						   );
+	output2.innerText = CP_ASPStarter.getASPOutput();
+
+    CP_ASPStarter.startASP("http://w-sn/CPASPStarter/ServerScript.asp",
+	                       "parameter1", "value1b",
+	                       "parameter2", "value2b",
+	                       "parameter3", "value3b"
+						   );
+	output3.innerText = CP_ASPStarter.getASPOutput();
+
+    CP_ASPStarter.startASP("http://w-sn/CPASPStarter/ServerScript.asp",
+	                       "parameter1", "value1c",
+	                       "parameter2", "value2c",
+	                       "parameter3", "value3c",
+	                       "parameter4", "value4c",
+	                       "parameter5", "value5c"
+						   );
+	output4.innerText = CP_ASPStarter.getASPOutput();
+}
+
+</script>
+
+<body onload="startASP()">
+<applet
+    code=CP_ASPStarter.class
+    name=CP_ASPStarter
+    width=0
+    height=0>
+</applet>
+<hr>
+<div id=output1></div>
+<hr>
+<div id=output2></div>
+<hr>
+<div id=output3></div>
+<hr>
+<div id=output4></div>
+<hr>
+</body>
+</html>

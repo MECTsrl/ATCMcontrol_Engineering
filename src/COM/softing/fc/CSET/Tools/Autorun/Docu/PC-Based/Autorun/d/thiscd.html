@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+		<title>ATCMControl v2.1</title>
+		<script language="javascript" type="text/javascript">
+
+	pic1 = new Image();
+	pic1.src = "../pic/nav1d.gif";
+	pic2 = new Image();
+	pic2.src = "../pic/nav2d.gif";
+	pic3 = new Image();
+	pic3.src = "../pic/nav3d.gif";
+	pic6 = new Image();
+	pic6.src = "../pic/nav6d.gif";
+	pic8 = new Image();
+	pic8.src = "../pic/nav8d.gif";
+	pic7 = new Image();
+	pic7.src = "../pic/nav7d.gif";
+	pic9 = new Image();
+	pic9.src = "../pic/nav9d.gif";
+
+	pic11 = new Image();
+	pic11.src = "../pic/nav11d.gif";
+	pic22 = new Image();
+	pic22.src = "../pic/nav22d.gif";
+	pic33 = new Image();
+	pic33.src = "../pic/nav33d.gif";
+	pic66 = new Image();
+	pic66.src = "../pic/nav66d.gif";
+	pic88 = new Image();
+	pic88.src = "../pic/nav88d.gif";
+	pic77 = new Image();
+	pic77.src = "../pic/nav77d.gif";
+	pic99 = new Image();
+	pic99.src = "../pic/nav99d.gif";
+
+function drauf(wert)
+{
+	switch (wert)
+	{
+		case 1:	document.nav1.src = pic11.src;
+		break;
+		case 2: document.nav2.src = pic22.src;
+		break;
+		case 3: document.nav3.src = pic33.src;
+		break;
+		case 6: document.nav6.src = pic66.src;
+		break;
+		case 8: document.nav8.src = pic88.src;
+		break;
+		case 7: document.nav7.src = pic77.src;
+		break;
+		case 9: document.nav9.src = pic99.src;
+		break;
+	}
+}
+function runter(wert)
+{
+	switch (wert)
+	{
+		case 1:document.nav1.src = pic1.src;
+		break;
+		case 2:document.nav2.src = pic2.src;
+		break;
+		case 3:document.nav3.src = pic3.src;
+		break;
+		case 6:document.nav6.src = pic6.src;
+		break;
+		case 8:document.nav8.src = pic8.src;
+		break;
+		case 7:document.nav7.src = pic7.src;
+		break;
+		case 9: document.nav9.src = pic9.src;
+		break;
+
+	}
+}
+</script>
+		<link rel="stylesheet" href="../text.css">
+	</head>
+
+	<body leftmargin="2" topmargin="2" marginwidth="2" marginheight="2" bgcolor="#CCCCCC" link="#003366" vlink="#003366" alink="#003366">
+		<!--hauptmenue-->
+		<table width="760" height="25" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="155" align="right" valign="bottom"><img src="../pic/4clogo.gif" width="14" height="16" alt="" border="0"><img src="../pic/clearpix.gif" width="2" height="1" alt="" border="0"></td>
+				<!--kurze laengsline-->
+				<td align="left" valign="bottom"><img src="../pic/linien.gif" width="2" height="25" alt="" border="0"></td>
+				<!--ende-->
+				<td colspan="4">&nbsp;</td>
+			</tr>
+		</table>
+		<!--querline-->
+		<table width="760" height="2" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><img src="../pic/linien.gif" width="760" height="2" alt="" border="0"></td>
+			</tr>
+		</table>
+		<!--ende-->
+		<table width="760" height="94%" border="0" cellpadding="0" cellspacing="0">
+			<tr><!--navigation-->
+				<td width="155" valign="top">
+					<table width="155" height="60" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="24" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td valign="center"><img src="../pic/4clayout-kl.jpg" width="152" height="134" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><img src="../pic/nav1d.gif" name="nav1" width="120" height="25" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><img src="../pic/nav2d.gif" name="nav2" width="120" height="25" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="cinstall.html" onmouseover="drauf(3)" onmouseout="runter(3)"><img src="../pic/nav3d.gif" name="nav3" width="120" height="25" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="license.html" onmouseover="drauf(6)" onmouseout="runter(6)"><img src="../pic/nav6d.gif" name="nav6" width="120" height="25" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="knownbugs.html" onmouseover="drauf(8)" onmouseout="runter(8)"><img src="../pic/nav8d.gif" name="nav8" width="150" height="25" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="contact.html" onmouseover="drauf(7)" onmouseout="runter(7)"><img src="../pic/nav7d.gif" name="nav7" width="120" height="25" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="60" valign="center"><a href="readme_dep.htm" onmouseover="drauf(9)" onmouseout="runter(9)"><img src="../pic/nav9d.gif" name="nav9" width="120" height="50" border="0"></a></td>
+						</tr>
+					</table>
+				</td>
+				<!--navigation ende--><!--lange vertikalline-->
+				<td bgcolor="#999999">
+					<table width="2" height="94%" valign="top" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="1" alt="" border="0"></td>
+						</tr>
+					</table>
+				</td>
+				<!--ende--><!--inhalt-->
+				<td width="603" valign="top">
+					<table border="0" cellpadding="0" cellspacing="0" align="center" valign="middle" width="570">
+						<tr>
+							<td><a name="overview"><img src="../pic/clearpix.gif" width="1" height="24" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td align="center"><span class="headblau">Inhalt dieser CD</span></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left"><span class="zwitiblau">&Uuml;bersicht</span>
+								<ul>
+									<li><span class="zwitiblack"><A HREF="#philosophy">Produktphilosophie</A></span>
+								</ul>
+								<ul>
+									<li><span class="zwitiblack"><A HREF="#parts">Systemaufbau</A></span>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+
+							<td><a name="philosophy"><span class="zwitiblau">Produktphilosophie</span></a>
+								<p class="text">Diese CD enth&auml;lt <span class="textblaubold">Softing ATCMControl</span>, ein Highlight der Produktreihe f&uuml;r die Automatisierungstechnik aus dem Hause Softing. Basierend auf langj&auml;hriger Automatisierungstechnik-Erfahrung und der gezielten und effektiven Integration bew&auml;hrter Produkte wie <span class="textgruenbold">SoftControl</span>, <span class="textblaubold"><span class="textgruenbold">OPC, PROFIBUS</span></span> und <span class="textgruenbold">Ethernet TCP/IP Feldbus-Koppler/-Controller</span> stellt <span class="textgruenbold">Softing ATCMControl</span> ein Software-System zur Programmierung, Steuerung, Inbetriebnahme und Visualisierung allgemeiner technischer Prozesse dar.</p>
+								<p><a name="parts"><span class="zwitiblau">ATCMControl Systemaufbau</span></a></p>
+								<p><span class="text">Softing </span><span class="textblaubold">4CONTROL</span><span class="text"> umfasst folgende </span><span class="textblaubold">4 C&acute;s</span><span class="text">:<br>
+									</span></p>
+								<ul>
+									<li><span class="textblaubold">Control</span><span class="text"><br>
+										</span><span class="text">Steuerung von verteilten Prozessen<br>
+										</span><span class="text">Echtzeit mit Standard-Windows 2000 / XP<br>
+										</span><span class="text">Designed f&uuml;r inkrementelle Online-Changes<br>
+										</span><span class="text">Umfangreiche Bibliotheken zur Erweiterung der Steuerungs-Funktionalit&auml;t<br>
+										</span>
+									<li><span class="textblaubold">Console</span><span class="text"><br>
+										</span><span class="text">Small-Footprint Visualisierung durch Einsatz von Internet-Technologien<br>
+										</span><span class="text">Bediener-Zugang durch Standard-Internet-Browser<br>
+										</span><span class="text">Zero-Engineering durch automatisch generierte Bedienbilder<br>
+										</span>
+									<li><span class="textblaubold">Configuration</span><span class="text"><br>
+										</span><span class="text">IEC 1131-3 konformes Programmieren mit ST, FBD, SFC und LD.<br>
+										</span><span class="text">Integrierte Feldbus-Konfiguration<br>
+										</span><span class="text">Wizard-orientierte Microsoft State-of-the-Art Oberfl&auml;che<br>
+										</span>
+									<li><span class="textblaubold">Connectivity</span><span class="text"><br>
+										</span><span class="text">Anbindung aller wichtigen Feldbusse via OPC-Client<br>
+										</span><span class="text">Optimale Integration von PROFIBUS-DP/PA und Modbus IP<br>
+										</span><span class="text">OPC-Server zur Integration in Visualisierungs-Systeme<br>
+											<a href="#overview"><img src="../pic/back.gif" width="25" height="25" border="0" align="right"></a><br>
+										</span><img src="../pic/clearpix.gif" width="1" height="200" border="0">
+								</ul>
+
+							</td>
+						</tr>
+
+
+
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>

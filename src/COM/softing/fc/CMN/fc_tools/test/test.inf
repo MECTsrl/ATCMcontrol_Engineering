@@ -1,0 +1,14 @@
+TARGET=$(MAKEDIR)\test.exe
+TARGETTYPE=con
+UNICODE=0
+ 
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+
+LIBRARY=$(LIB_DIR)\fc_tools.lib 
+LIBRARY=$(LIB_DIR)\fc_todebug.lib
+
+DEFLIB=ole32.lib 
+
+
+

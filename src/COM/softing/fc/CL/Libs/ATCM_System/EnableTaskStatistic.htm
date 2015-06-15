@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>EnableTaskStatistic</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>EnableTaskStatistic</h2>
+<p>Controls the output of status reports in the message view.</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION EnableTaskStatistic
+VAR_INPUT
+    ENABLE     : BOOL;  
+END_VAR</pre>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>ENABLE</b></dt>
+  <dd>Value of type <i><b>BOOL</b></i><br>
+    Determines whether the output of the task reports is to be executed or suppressed.<br>
+    Potential values:<br>
+    <i><b>TRUE</b></i>: The output of the task statistics is executed.<br>
+    <i><b>FALSE</b></i>: The output of the task statistics is suppressed.</dd>
+</dl>
+<h3>Description</h3>
+<p><b><i>EnableTaskStatistic </i></b> controls the output of task reports in the 
+  message view of ATCM Engineering. On default, task reports are put out in the 
+  message view of ATCM Engineering after a download, a cold start or a warm start. 
+  <i><b>EnableTaskStatistic</b></i> can determine user defined if these messages 
+  are to be put out or suppressed.</p>
+</body>
+</html>

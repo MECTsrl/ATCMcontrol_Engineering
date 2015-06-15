@@ -1,0 +1,35 @@
+HKCR
+{
+	4C_20_CE.CEDL.1 = s '4C_20: Standard downloader - target type PC'
+	{
+		CLSID = s '{88AD4524-E2B2-4853-A081-5CDBF5732E09}'
+		'Index' 
+        { 
+            val Version = s '2.0' 
+            val LCID = d '1033' 
+        } 
+	}
+	4C_20_CE.CEDL = s '4C_20: Standard downloader - target type PC'
+	{
+		CurVer = s '4C_20_CE.CEDL.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {88AD4524-E2B2-4853-A081-5CDBF5732E09} = s '4C_20: Standard downloader - target type PC'
+		{
+			ProgID = s '4C_20_CE.CEDL.1'
+			VersionIndependentProgID = s '4C_20_CE.CEDL'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+            'TypeLib' = s '{0C244F50-51CB-4c47-8E4B-9DD4C3234E55}'
+            'Implemented Categories'
+            {
+				{01C36A78-C95B-44c6-BC55-F32082893C24}                
+            }
+
+		}
+	}
+}

@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>SUB_DT_DT</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>SUB_DT_DT</h2>
+<p>Subtracts two values of type <i><b>DATE_AND_TIME</b></i>.<br>
+</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION SUB_DT_DT : TIME
+VAR_INPUT  
+    IN1 : DT;
+    IN2 : DT;
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>TIME</b></i><br>
+  Result of the subtraction of <b><i> IN2</i></b> from <i><b>IN1</b></i> in ms.</p>
+
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>IN1</b></dt>
+  <dd>Value of type <b><i>DT</i></b><br>
+    Value from which <b><i>IN2</i></b> is to be subtracted.</dd>
+  <dt><b>IN2</b></dt>
+  <dd>Value of type <i><b>DT</b></i><br>
+    Value which is subtracted from <i><b>IN1</b></i>.</dd>
+  <dt><b><i> </i></b></dt>
+</dl>
+<h3> Description</h3>
+<p>Subtracts <i><b>IN2</b></i> from <i><b>IN1</b> </i>and yields the result in 
+  ms. Instead of using the <i><b>SUB_DT_DT</b></i> function, you can also use 
+  the minus operator <b><i>-</i></b> to subtract one value of type<b> <i>DATE_AND_TIME</i></b> 
+  from another.</p>
+</body>
+</html>

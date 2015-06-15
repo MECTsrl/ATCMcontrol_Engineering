@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>TP</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>TP</h2>
+<p>Sets the output for a preset time to <i><b>TRUE</b></i> as a reaction to an 
+  input signal.<br>
+</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION_BLOCK TP
+
+VAR_INPUT   
+    IN : BOOL := FALSE; 
+    PT : TIME := T#0s;  
+END_VAR
+
+VAR_OUTPUT  
+    Q  : BOOL := FALSE; 
+    ET : TIME := T#0s;  
+END_VAR</pre>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>IN</b></dt>
+  <dd>Value of type <i><b>BOOL<br>
+    </b></i>Input signal<i><b> <br>
+    </b></i>The default value is<i><b> </b></i><b><i>FALSE</i></b><i>.</i></dd>
+  <dt><b>PT</b></dt>
+  <dd>Value of type <i><b>TIME</b></i><br>
+    Determines the length of time during which <b><i>Q</i></b> is also set to 
+    the value <i><b>TRUE</b></i> after <b><i>IN</i></b> has changed to <i><b>TRUE</b></i>.<i> 
+    <br>
+    </i>The default value is<i><i><b> T#0s</b></i>. </i></dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b></b><b>Q</b></dt>
+  <dd>Value of type <i><b>BOOL</b></i><br>
+    Is also set to <i><b>TRUE</b></i> for the length of time specified in <b><i>PT</i></b> 
+    after <b><i>IN</i></b> has changed to <i><b>TRUE</b></i>. If<i><b> ET &gt;= 
+    PT</b></i>, <b><i>Q</i></b> is reset to <i><b>FALSE</b></i>.</dd>
+  <dt><b>ET</b></dt>
+  <dd>Value of type<b><i> <b><i>TIME</i></b><br>
+    </i></b> Is incremented time-dependent after counting has started; incrementing 
+    is carried out until<b><i> ET &gt;= PT</i></b>. <br>
+  </dd>
+</dl>
+<h3>Description</h3>
+<p>The function block <b><i>TP</i></b> sets the output <b><i>Q</i></b> to <i><b>TRUE</b></i> 
+  for the length of time specified in <b><i>PT</i></b> if <b><i>IN</i></b> changes 
+  from <i><b>FALSE</b></i> to <i><b>TRUE</b></i>. On expiration of the time defined 
+  in <b><i>PT</i></b>, <b><i>Q</i></b> is reset to <i><b>FALSE</b></i> even if 
+  <b><i>IN</i></b> is still <i><b>TRUE</b></i>.<br>
+  Once the counting process has been initiated, it will be continued independent 
+  of the value of <b><i>IN</i></b> until <i> <b>ET &gt;= PT</b></i>; this has 
+  the effect that <b><i>Q</i></b> will in any case be <i><b>TRUE</b></i> during 
+  this period of time.</p>
+</body>
+</html>

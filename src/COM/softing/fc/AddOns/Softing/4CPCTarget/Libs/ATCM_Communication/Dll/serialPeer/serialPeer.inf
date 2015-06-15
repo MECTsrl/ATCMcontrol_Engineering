@@ -1,0 +1,15 @@
+
+TARGET=$(EXE_DIR)\Control\bin\serialPeer.dll
+TARGETTYPE=DLL 
+PCHFILE=stdafx
+INCLUDE=$(INCLUDE_DIR) 
+INCLUDE=$(MAKEDIR)
+INCLUDE=$(RESOURCE_DIR) 
+STATIC_RUNTIME=0
+UNICODE=1
+DEFINE=_AFXDLL
+DEFLIB=msjava.lib
+deflib=ws2_32.lib
+LIBRARY=$(PROJECT_ROOT)\com\softing\fc\lib\fc_tools.lib
+JAVAH=COM.softing.fc.CC.io.SerialPeer
+JAVAH=COM.softing.fc.CC.io.IODatagram

@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>SYS_TraceStat</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>SYS_TraceStat</h2>
+<p>Traces the actual load statistics to the Engineering.</p>
+<h3>Interface</h3>
+<pre class="preforma">FUNCTION_BLOCK SYS_TraceStat
+
+VAR_INPUT
+    tCycle : TIME := t#5s;
+END_VAR
+</pre>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl>
+  <dt><b>tCycle</b></dt>
+  <dd>Value of type <b><i>TIME</i></b><br>
+   Cycle time for tracing.</dd>
+</dl>
+<h3>Description</h3>
+<p><b>SYS_TraceStat</b> traces the actual load statistics to the Engineering.</p>
+<p><b>Warning</b>: This function block is not thread safe and creates a significant amount of processor load itself!</p>
+</body>
+</html>

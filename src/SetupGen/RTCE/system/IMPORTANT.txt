@@ -1,0 +1,4 @@
+IMPORTANT:
+
+The corresponding lib PBTools.lib is included in SourceSafe within $/4CONTROL/COM/softing/fc/EXT/papi.
+So, when the DLL is to be upgraded, also the lib in SourceSafe must be updated!

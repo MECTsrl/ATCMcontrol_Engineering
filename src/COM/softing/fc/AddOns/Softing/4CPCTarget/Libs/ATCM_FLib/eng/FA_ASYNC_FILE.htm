@@ -1,0 +1,69 @@
+<html>
+<head>
+<title>FA_ASYNC_FILE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css">
+</head>
+
+
+<body bgcolor="#FFFFCC">
+<h2>FA_ASYNC_FILE</h2>
+<p>Represents a file for asynchronous file operations.</p>
+<h3>Interface</h3>
+<pre class="preforma">TYPE
+    FA_ASYNC_FILE : STRUCT
+    FILENAME        : WSTRING;
+    MODE            : DINT;
+    TEXTMODE        : BOOL;
+    TOUT            : TIME;
+    POSITION        : DINT;
+    LSTOP           : WSTRING;
+    LSTINST         : WSTRING;
+    ISERROR         : BOOL;
+    LSTERRCD        : DINT;
+    LSTERRTXT       : WSTRING;
+    ISOPEN          : BOOL;
+    END_STRUCT;
+END_TYPE</pre>
+<h3>Structure elements</h3>
+<p><b><a name="Filename"></a>FILENAME</b></p>
+<p>Value of the type <b><i>WSTRING</i></b><br> Specifies the name of the file. <br> The file name can be indicated by a fully qualified path (for example, <font face="Courier New, Courier, mono"> C:\Projects\Test.txt</font>). If no path is specified, the standard working directory of ATCMControl is internally added as the path. The standard working directory is the directory <font face="Courier New, Courier, mono">data</font> directly under the ATCMControl installation directory.<br> The compiler does not check whether the syntax of the file name and path information is correct and whether they are plausible. </p>
+<p><b><a name="Mode"></a>MODE</b> </p>
+<p>Value of the type <b><i>DINT</i></b><br> Specifies the mode for accessing a newly generated or opened file.<br> The possible values are defined in the <a href="Const_Mode.htm">access mode constants</a>. <br>
+</p>
+<p><b><a name="textmode"></a>TEXTMODE</b> </p>
+<p>Value of the type <i><b>BOOL</b></i><br>
+  Specifies whether the file is opened in text mode or in binary mode. <br>
+   Possible values:<br> <i><b>TRUE</b></i>: File is opened in text mode.<br> <i><b>FALSE</b></i>: File is opened in binary mode.<br> The default value is <i><b>FALSE</b></i>.</p>
+<p><b><a name="Timeout"></a>TOUT</b></p>
+<p>Value of the type <b><i>TIME</i></b><br> Specifies the time after which the attempt of a function block instance or function to execute an operation on a file represented by a structure instance of<i><b> FA_ASYNC_FILE</b></i> is aborted. <br> The default value is T#0ms. During an initialization with this value, no timeout is set. This means that the length of time during which the execution of a file operation is attempted is not monitored. </p>
+<p><b><a name="Position"></a>POSITION</b> </p>
+<p>Value of the type <i><b>DINT</b></i><br> Contains the byte position on which the file pointer is placed after the last file operation executed. This is always one byte after the last byte read or written. The value of <i><b>POSITION</b></i> is automatically updated after each file operation. The first valid writing or reading position is 0. <br> <i><b>POSITION</b></i> can also be set to define the writing or reading position before the next file operation. <br><a href="Const_Pos.htm">Position constants</a> are defined for the beginning and end of a file and for the end of a line. </p>
+<p><b>LSTOP</b></p>
+<p>Value of the type <i><b>WSTRING</b></i><br> Contains the name of the block class from which a block instance was last called with this instance of <i><b>FA_ASYNC_FILE</b></i>.</p>
+<p><b>LSTINST</b></p>
+<p>Value of the type <i><b>WSTRING</b></i><br> Contains the name of the block instance which was last called with this instance of <i><b>FA_ASYNC_FILE</b></i>.</p>
+<p><b>LSTERROR</b> </p>
+<p>Value of the type <i><b>BOOL</b></i><br> Contains the error status of the last operation that was performed on a file represented by a structure instance of <i><b>FA_ASYNC_FILE</b></i>.<br> Possible values:<br> <b>TRUE</b>: An error has occurred.<br> <b>FALSE</b>: No error has occurred.</p>
+<p><b>LSTERRCD </b></p>
+<p>Value of the type <b><i>DINT</i></b><br> Contains an error number if an error occurred during the last operation that was performed on a file represented by a structure instance of <i><b>FA_ASYNC_FILE</b></i>. If no error occurred, this structure variable has the value <b>0</b>.<br> The possible values are defined in the <a href="Const_Error.htm">error constants</a>.</p>
+<p><b>LSTERRTXT</b></p>
+<p>Value of the type <b><i>WSTRING</i></b><br> Contains an error description if an error occurred during the last operation that was performed on a file represented by a structure instance of <i><b>FA_ASYNC_FILE</b></i>. If no error occurred, this structure variable contains an empty string.</p>
+<p><b>ISOPEN</b></p>
+<p>Value of the type <i><b>BOOL</b></i><br> Indicates whether the file is currently open.<br> Possible values:<br> <i><b>TRUE</b></i>: File is open.<br> <i><b>FALSE</b></i>: File is not open.</p>
+<h3><a name="Description"></a>Description</h3>
+<p>Structure instances of <i><b>FA_ASYNC_FILE</b></i> represent a file on which 
+  asynchronous reading and writing operations are performed. Every function block 
+  of the group of blocks for elementary asynchronous file operations requires 
+  an instance of the<i><b> FA_ASYNC_FILE</b></i> structure as a parameter to be 
+  able to identify the file to be accessed. </p>
+<p>Before initializing an access cycle it is necessary to initialize at least 
+  the parameters <i><b>FILENAME</b></i> and <i><b>MODE</b></i> of the instance 
+  of <i><b>FA_ASYNC_FILE</b></i> passed to <i><b><a href="FA_ASYNC_OPENFILE.htm">FA_ASYNC_OPENFILE</a></b></i> 
+  with values. </p>
+<p>Error monitoring can be implemented with the help of the parameters <i><b>LSTERROR</b></i>, <i> <b>LSTERRCD</b></i> and <i><b>LSTERRTXT</b></i>. These variables are automatically updated after each file operation and, in the case of an error, contain the error status, error number and the error text for the operation that was last executed with the corresponding instance of<i><b> FA_ASYNC_FILE</b></i>. 
+
+ To implement error monitoring for a specific file operation, you therefore need to evaluate these variables at the latest before the next file operation to be executed. This is because the error variables are always overwritten by the values of the operation that was last executed.</p>
+<p>Note that instances of <b>FA_ASYNC_FILE</b> cannot be copied. </p>
+</body>
+</html>

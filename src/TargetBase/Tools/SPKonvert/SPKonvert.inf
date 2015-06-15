@@ -1,0 +1,42 @@
+# $Header: /4CReleased/V2.20.00/TargetBase/TOOLS/SPKonvert/SPKonvert.inf 1     28.02.07 19:07 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: SPKonvert.inf $
+#                        $Logfile: /4CReleased/V2.20.00/TargetBase/TOOLS/SPKonvert/SPKonvert.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Target / Online
+#
+# =COMPONENT            OnlServ
+#
+# =CURRENT      $Date: 28.02.07 19:07 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+#
+# ------------------------------------------------------------------------------
+#
+
+TARGET=$(EXE_DIR)\Engineering\bin\SPKonvert.exe
+
+TARGETTYPE=con
+UNICODE=0
+
+PCHFILE=stdafx
+
+DEFINE=_AFXDLL
+DEFINE=_WINDLL
+DEFINE=_USRDLL
+
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\res
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\inc
+
+LIBRARY=$(PROJECT_ROOT)\com\softing\fc\lib\fc_util.lib
+
+USER=makefirst:$(EXE_DIR)\Engineering\bin
+USER=$(EXE_DIR)\Engineering\bin:
+USER=  -md $@
+
+# -------------------------------------------------------------------------------

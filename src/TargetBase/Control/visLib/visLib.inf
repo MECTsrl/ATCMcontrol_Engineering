@@ -1,0 +1,43 @@
+# $Header: /4CReleased/V2.20.00/TargetBase/Control/visLib/visLib.inf 1     28.02.07 19:14 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: visLib.inf $
+#                        $Logfile: /4CReleased/V2.20.00/TargetBase/Control/visLib/visLib.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Targetbase / Control
+#
+# =COMPONENT            VisuTest
+#
+# =CURRENT      $Date: 28.02.07 19:14 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+
+
+
+#
+# ------------------------------------------------------------------------------
+#
+
+TARGET=$(TARGET_BASE)\lib\visLib.lib
+TARGETTYPE=lib
+UNICODE=0
+
+INCLUDE=..\inc
+INCLUDE=..\inc.vis
+INCLUDE=..\..\inc
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\res
+
+USER=makefirst:$(TARGET_BASE)\lib
+USER=$(TARGET_BASE)\lib:
+USER=  -md $@
+
+# -------------------------------------------------------------------------------
+
+
+

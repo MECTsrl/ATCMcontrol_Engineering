@@ -1,0 +1,56 @@
+
+// STEditor.odl : type library source for STEditor.exe
+
+// This file will be processed by the MIDL compiler to produce the
+// type library (STEditor.tlb).
+
+import "cewatchbe.idl";
+import "CEMsg.idl";
+
+[ uuid(80F9D240-F22A-4771-938B-D8B609E66FBA), version(1.0) ]
+library STEditor
+{
+	importlib("stdole32.tlb");
+	
+
+	//  Primary dispatch interface for CSTEditorDoc
+	 
+	[ uuid(80F9D241-F22A-4771-938B-D8B609E66FBA) ]
+	dispinterface ISTEditor
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CSTEditorDoc)
+			//}}AFX_ODL_PROP
+			
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CSTEditorDoc)
+			//}}AFX_ODL_METHOD
+
+	};
+
+#include "PrgEditorIF.idl"
+
+	//  Class information for CSTEditorDoc
+	
+	[ uuid(80F9D242-F22A-4771-938B-D8B609E66FBA) ]
+	coclass Document
+	{
+		[default] dispinterface ISTEditor;
+		interface ICEEdit;
+        interface ICEPrint;
+		interface ICEPrgEdit;
+		interface ICEDebug;
+		interface ICEMonitor;
+		interface ICEWatchNotify;
+		[source] interface ICEEditNotify;
+		[source] interface _ICEMessageEvent;
+	};
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};
+

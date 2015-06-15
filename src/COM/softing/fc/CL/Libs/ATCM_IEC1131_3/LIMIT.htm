@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>LIMIT</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>LIMIT</h2>
+<p>Used for limiting a value.<br>
+</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION LIMIT : ANY_ELEMENTARY
+VAR_INPUT 
+    MN : ANY_ELEMENTARY; 
+    IN : ANY_ELEMENTARY; 
+    MX : ANY_ELEMENTARY; 
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>ANY_ELEMENTARY</b></i><br>
+  A value out of the range determined by <i><b>MN</b></i> and <i><b>MX</b></i>.</p>
+
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>MN</b></dt>
+  <dd>Value of type <b><i>ANY_ELEMENTARY</i></b><br>
+    Limits the lower value range.</dd>
+  <dt><b>IN</b></dt>
+  <dd>Value of type <i><b>ANY_ELEMENTARY</b></i><br>
+    Returned if the value is not outside the value range specified in <i><b>MN</b></i> 
+    and <i><b>MX.</b></i></dd>
+  <dt><b>MX</b></dt>
+  <dd>Value of type <b><i>ANY_ELEMENTARY <br>
+    </i></b>Limits the upper value range.<b><i> </i></b></dd>
+</dl>
+<h3> Description</h3>
+<p>The limit values are specified in the first (<i><b>MN</b></i>) and third (<i><b>MX</b></i>) 
+  parameters. As the second parameter (<i><b>IN</b></i>), the value that is passed 
+  is to be checked as to whether it exceeds or falls below the limit values. If 
+  this value is outside the specified limits, the value defined as the upper or 
+  lower limit is returned, depending on whether the value range was exceeded or 
+  fallen below. If the value range is fallen below, the value of the lower limit 
+  is returned; if the value exceeds the value range, the value of the upper limit 
+  is returned. If the value is within the value range defined in the first and 
+  third parameters, the value is returned unchanged.</p>
+</body>
+</html>

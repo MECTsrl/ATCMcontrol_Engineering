@@ -1,0 +1,52 @@
+TARGET=$(EXE_DIR)\Engineering\bin\4ceng.exe
+#STATIC_RUNTIME=0
+DEFINE=_ATL_NO_SECURITY
+DEFINE=_AFXDLL
+DEFINE=_MRCEXT_NOFORCELIBS
+INCLUDE=$(PROJECT_ROOT)\TargetBase\inc
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\CE\inc
+INCLUDE=$(MAKEDIR)
+INCLUDE=$(MAKEDIR)\Inc
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\CE\inc\stingray
+LIBPATH=$(LIB_DIR)
+LIBPATH=$(PROJECT_ROOT)\COM\softing\fc\CE\lib
+LIBPATH=$(PROJECT_ROOT)\COM\softing\fc\CE\lib\stingray
+#DEFINE=_DLL
+#DEFINE=_WINDLL
+
+MASTER_RC=CEMAIN.RC
+#DEFLIB=winmm.lib
+DEFLIB=imagehlp.lib
+DEFLIB=wininet.lib
+DEFLIB=mpr.lib
+
+DEFLIB=fc_util.lib
+DEFLIB=cesubscr.lib
+DEFLIB=fc_tools.lib
+DEFLIB=fc_todebug.lib
+DEFLIB=fc_baselib.lib
+DEFLIB=htmlhelp.lib
+PCHFILE=stdafx
+
+
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\CE\Lib\CEUtil.lib
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\CE\Lib\CEUTIL_KAD.lib
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\CE\Lib\CEUTIL_XML.lib
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\CE\Lib\CEUTIL_DragDrop.lib
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\Lib\ProjectWizardSelection.lib
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\CE\Lib\CEMsgView.lib
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\CE\Lib\CEWatch.lib
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\Lib\tracea.lib
+
+COPY=cecompmanev.h ..\inc\cecompmanev.h
+COPY=cecompmanev_i.c ..\inc\cecompmanev_i.c
+COPY=CEAddOnActionEvents.h ..\inc\CEAddOnActionEvents.h
+COPY=CEAddOnActionEvents_i.c ..\inc\CEAddOnActionEvents_i.c
+COPY=.\res\4Control3.bmp $(EXE_DIR)\Engineering\bin\4Control3.bmp
+COPY=.\res\fix_dlls.bat $(EXE_DIR)\Engineering\bin\fix_dlls.bat
+COPY=.\res\run_hmibuilder.bat $(EXE_DIR)\Engineering\bin\run_hmibuilder.bat
+COPY=.\res\run_hmitools.bat $(EXE_DIR)\Engineering\bin\run_hmitools.bat
+
+

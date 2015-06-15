@@ -1,0 +1,28 @@
+TARGETTYPE=DLL
+TARGET=$(EXE_DIR)\Engineering\bin\CEProjMan.dll
+
+DEFINE=_ATL_STATIC_REGISTRY
+DEFINE=_ATL_NO_SECURITY
+DEFINE=_AFXDLL
+DEFINE=_MRCEXT_NOFORCELIBS
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\CE\inc
+INCLUDE=$(MAKEDIR)
+INCLUDE=$(MAKEDIR)\Inc
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+LIBPATH=$(LIB_DIR)
+
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\CE\Lib\CEUtil_XML.lib
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\Lib\fc_tools.lib
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\Lib\fc_util.lib
+
+
+MASTER_RC=CEProjMan.RC
+PCHFILE=stdafx
+
+USER=precompile:
+USER=  $(CP) CEProjMan.h ..\inc\CEProjMan.h
+USER=  $(CP) CEProjMan_i.c ..\inc\CEProjMan_i.c
+USER=  $(CP) CEProjInfo.h ..\inc\CEProjInfo.h
+USER=  $(CP) CEProjInfo_i.c ..\inc\CEProjInfo_i.c
+

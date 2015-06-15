@@ -1,0 +1,44 @@
+# $Header: /4CReleased/V2.20.00/Target/4CWin/LIBS/4C_System2/4C_System2.inf 1     28.02.07 19:11 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: ATCM_System2.inf $
+#                        $Logfile: /ATCMReleased/V2.20.00/Target/ATCMWin/LIBS/ATCM_System2/ATCM_System2.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Target
+#
+# =COMPONENT            Libs
+#
+# =CURRENT      $Date: 28.02.07 19:11 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+
+
+
+#
+# ------------------------------------------------------------------------------
+#
+
+USER=libname=ATCM_System2
+USER=targettype=4CWin
+
+USER=makefirst: force
+USER= xcopy $(TARGET_BASE)\Libs\$(libname)\*.st   $(MAKEDIR)\*.st   /Y
+USER= xcopy $(TARGET_BASE)\Libs\$(libname)\*.cst  $(MAKEDIR)\*.cst  /Y
+USER= xcopy $(TARGET_BASE)\Libs\$(libname)\*.sdt  $(MAKEDIR)\*.sdt  /Y
+# only if necessary
+USER= copy  $(TARGET_BASE)\Libs\$(libname)\FunFbId.txt     $(MAKEDIR)\FunFbId.txt     /Y
+
+USER=make_lib: force
+USER= $(4CG) $(MAKEDIR)\$(libname).4cp  -ml:$(targettype) $(ENGBIN_DIR)\$(targettype)\libs\de\$(libname).$(targettype).4cl
+USER= $(4CG) $(MAKEDIR)\$(libname).4cp  -ml:$(targettype) $(ENGBIN_DIR)\$(targettype)\libs\eng\$(libname).$(targettype).4cl
+
+# merge this target specific english lib into the final (we need this later for other libs of this target)
+USER= $(4CG) -al $(ENGBIN_DIR)\$(targettype)\libs\eng\$(libname).$(targettype).4cl  $(4CL_DIR)\$(libname).4cl
+
+# -------------------------------------------------------------------------------

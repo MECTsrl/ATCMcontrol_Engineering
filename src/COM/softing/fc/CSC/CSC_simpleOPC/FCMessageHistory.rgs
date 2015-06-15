@@ -1,0 +1,31 @@
+HKCR
+{
+	4C_20_CSC.Messages.1 = s 'ATCMControl 2: Message history from Control'
+	{
+		CLSID = s '{D8BA2C15-8B10-11d5-8798-00010209D2BC}'
+	}
+	4C_20_CSC.Messages = s 'ATCMControl 2: Message history from Control'
+	{
+		CurVer = s '4C_20_CSC.Messages.1'
+		CLSID = s '{D8BA2C15-8B10-11d5-8798-00010209D2BC}'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {D8BA2C15-8B10-11d5-8798-00010209D2BC} = s 'ATCMControl 2: Message history from Control'
+		{
+			ProgID = s '4C_20_CSC.Messages.1'
+			VersionIndependentProgID = s '4C_20_CSC.Messages'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+                            
+			'TypeLib' = s '{D8BA2C13-8B10-11d5-8798-00010209D2BC}'
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

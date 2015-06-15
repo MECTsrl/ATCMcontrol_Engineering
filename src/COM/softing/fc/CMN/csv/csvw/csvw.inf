@@ -1,0 +1,66 @@
+#*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CMN/csv/csvw/csvw.inf 1     28.02.07 19:00 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: csvw.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CMN/csv/csvw/csvw.inf $
+#
+# =PROJECT             CAK1020 ATCMControlV2.0
+#
+# =SWKE                CMN
+#
+# =COMPONENT           CSVW
+#
+# =CURRENT      $Date: 28.02.07 19:00 $
+#               $Revision: 1 $
+#
+# =REFERENCES
+#
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+#    @DESCRIPTION@
+#==
+#----------------------------------------------------------------------------*
+# =MODIFICATION
+#  27.03.2001  SU      File created
+#  see history at end of file !
+#==
+#******************************************************************************
+#H<<*/
+
+TARGET=$(LIB_DIR)\csvw.lib
+TARGETTYPE=LIB
+STATIC_RUNTIME=0
+UNICODE=1
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\CMN\CSV
+PCHFILE=stdafx
+DEFINE=_AFXDLL
+
+COPY=..\csvif.h $(INCLUDE_DIR)\csvif.h
+
+#
+#----------------------------------------------------------------------------*
+#  $History: csvw.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:00
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CMN/csv/csvw
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:33
+# Created in $/4Control/COM/softing/fc/CMN/csv/csvw
+# 
+# *****************  Version 1  *****************
+# User: Su           Date: 27.03.01   Time: 18:52
+# Created in $/4Control/COM/softing/fc/CMN/csv/csvw
+#==
+#----------------------------------------------------------------------------*
+#

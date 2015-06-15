@@ -1,0 +1,12 @@
+(*[[
+    UserURL= "ATCMFile:BOOL_TO_DINT.htm"
+]]*)
+
+FUNCTION BOOL_TO_DINT : DINT
+VAR_INPUT 
+    IN : BOOL; 
+END_VAR
+
+inline{%1?1:0}
+
+END_FUNCTION

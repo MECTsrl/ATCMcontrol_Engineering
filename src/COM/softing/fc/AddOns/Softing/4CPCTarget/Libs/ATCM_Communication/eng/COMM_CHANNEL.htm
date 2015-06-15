@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>COMM_CHANNEL</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>COMM_CHANNEL </h2>
+<p>Represents a communication channel for serial communication.</p>
+<h3>Interface definition</h3>
+<pre class="preforma">TYPE
+     COMM_CHANNEL : STRUCT
+        hChannel    : DINT;             
+        iCommType   : DINT;             
+        iTimeout    : DINT;              
+     END_STRUCT;
+END_TYPE</pre>
+<h3>Parameters</h3>
+<p><b>hChannel</b></p>
+<p>Value of type <i><b>DINT</b></i>. <br>
+  Determines the handle of the channel used. </p>
+<p><b>iCommType</b></p>
+<p>Value of type <i><b>DINT</b></i>. <br>
+  Determines the type of communication. At present, only serial communication 
+  is supported.</p>
+<p><b>iTimeout</b></p>
+<p>Value of type <i><b>DINT</b></i>. <br>
+  Determines the timeout for read and write requests. If iTimeout has the value 
+  0, no timeout is used. </p>
+<h3>Description</h3>
+<p> <i><b>COMM_CHANNEL</b></i> represents a communication channel. An instance 
+  of <i><b>COMM_CHANNEL</b></i> is generated and initialized with values automatically 
+  when a connection is established with <a href="CONNECT.htm"><i><b>CONNECT</b></i></a>. 
+  In order to indentify the communication channel used, the instance of <i><b>COMM_CHANEL</b></i>, 
+  which has been generated when the connection was established, is passed to the 
+  paramter <i><b>ID</b></i> of <a href="SER_READ.htm"><i><b>SER_READ</b></i></a> 
+  and <a href="SER_WRITE.htm"><i><b>SER_WRITE</b></i></a> in case of a read or 
+  write request.</p>
+</body>
+</html>

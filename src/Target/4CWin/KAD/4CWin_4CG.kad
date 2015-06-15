@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<KADCGFRONT>
+    <TARGETS>
+        <TARGET EXT="4cwin" BACKEND="4cwin\4cvm.exe"/>
+    </TARGETS>
+</KADCGFRONT>
+

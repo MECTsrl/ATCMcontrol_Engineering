@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>FA_SYNC_EXISTSFILE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+
+<body bgcolor="#FFFFCC">
+<h2>FA_SYNC_EXISTSFILE</h2>
+<p>Checks whether a file exists.</p>
+<h3>Interface</h3>
+<pre class="preforma">FUNCTION FA_SYNC_EXISTSFILE:BOOL
+VAR_INPUT
+    EXEC        : BOOL;
+END_VAR
+VAR_IN_OUT
+    FILE        : FA_SYNC_FILE;
+END_VAR
+VAR_OUTPUT
+    EXISTS      : BOOL;
+END_VAR</pre>
+<h3>Return value</h3>
+
+
+<p>Value of the type <i><b>BOOL</b></i><br> Signalizes the error status.<br> Possible values:<br> <i><b>TRUE</b></i>: An error has occurred.<br> <i><b>FALSE</b></i>: No error has occurred.</p>
+
+
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+
+ <dt><b>EXEC</b></dt>
+
+ <dd>Value of the type <i><b>BOOL</b></i><br> Starts the operation. </dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl> 
+
+ <dt><b><a name="File"></a>FILE</b></dt>
+
+  <dd>Instance of the <a href="FA_SYNC_FILE.htm"><i><b>FA_SYNC_FILE</b></i></a> 
+    structure<br>
+    In contrast to most of the other functions provided in the group of blocks 
+    for elementary synchronous file operations, the structure instance passed 
+    to <i><b>FILE</b></i> does not represent a file object on which the corresponding 
+    file operation is performed. The <i><b>FILENAME</b></i> element of the <i><b>FA_SYNC_FILE</b></i> 
+    structure is used instead for defining the name of the file to be found. </dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+
+ <dt><b>EXISTS</b></dt>
+
+ <dd>Value of the type <i><b>BOOL</b></i><br> Indicates, after executing the operation, whether the file specified in the element <i><b>FILENAME</b></i> of the structure instance of <i><b>FA_SYNC_FILE</b></i> passed to <i><b>FILE</b></i> exists. <br> Possible values:<br> <i><b>TRUE</b></i>: The file exists.<br> <i><b>FALSE</b></i>: The file does not exist.</dd>
+</dl>
+<h3>Description</h3>
+<p> <i><b>FA_SYNC_EXISTSFILE </b></i> checks whether a file exists.</p>
+<p>The name of the file to be found is passed to <i><b>FA_SYNC_EXISTSFILE </b></i>in 
+  the parameter <b><i>FILE</i></b>. <i><b>FILE</b></i> expects an instance of 
+  the <a href="FA_SYNC_FILE.htm"><i><b>FA_SYNC_FILE</b></i></a> structure. This 
+  structure includes the structure element <b><i>FILENAME</i></b> which specifies 
+  a file name and must be initialized before the structure instance is passed 
+  to <i><b>FA_SYNC_EXISTSFILE </b></i>. </p>
+<p>The call of <i><b>FA_SYNC_EXISTSFILE </b></i> is independent of an access cycle, 
+  which means that a previous call of <i><b>FA_SYNC_OPENFILE </b></i>is not required. 
+</p>
+</body>
+</html>

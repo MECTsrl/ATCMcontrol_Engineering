@@ -1,0 +1,643 @@
+/*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/inc/CSC_Online.idl 1     28.02.07 19:01 Ln $
+ *----------------------------------------------------------------------------*
+ *
+ * =FILENAME            $Workfile: CSC_Online.idl $
+ *                       $Logfile: /4CReleased/V2.20.00/COM/softing/fc/inc/CSC_Online.idl $
+ *
+ * =PROJECT				CAK1020  ATCMControl V2.0
+ *
+ * =SWKE                4CSC
+ *
+ * =COMPONENT           CSC_Online
+ *
+ * =CURRENT      $Date: 28.02.07 19:01 $
+ *           $Revision: 1 $
+ *
+ * =REFERENCES
+ *
+ *----------------------------------------------------------------------------*
+ *
+
+ 
+
+
+
+ *==
+ *----------------------------------------------------------------------------*
+ * =DESCRIPTION
+ *    @DESCRIPTION@
+ *==
+ *----------------------------------------------------------------------------*
+ * =MODIFICATION
+ *  31.01.01  SU      File created
+ *  see history at end of file !
+ *==
+ *******************************************************************************
+H<<*/
+
+
+#include <olectl.h>
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (CSC_Online.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+cpp_quote("//  state enumerator of online session to control")
+typedef enum tagCSC_SESSION_STATE
+{ 
+    not_connected = 0,      // no session
+    waiting_for_connect,    // about to establish a R/W online session
+    RW_established,         // variable R/W online session to control is established
+    interrupted,            // established session is interrupted, will be restored
+    waiting_for_exclusive,  // trying to establish an exclusive connection to control
+    exclusive_established,  // exclusive session to control for download etc
+    regular_shutdown        // regular shutdown of connection
+} CSC_SESSION_STATE;
+
+
+cpp_quote("#ifndef __CSC_TRANSFER_TARGET__DEFINED__")
+cpp_quote("#define __CSC_TRANSFER_TARGET__DEFINED__")
+cpp_quote("//  enumerator for transfer target: either W3-Server or Control")
+typedef enum tagCSC_TRANSFER_TARGET
+{ 
+    ProgramDomains = 0,     // transfer program domains to/from control
+    VisualDomains           // transfer visualization domains to/from WebServer
+} CSC_TRANSFER_TARGET;
+cpp_quote("#endif // __CSC_TRANSFER_TARGET__DEFINED__")
+
+cpp_quote("//  enumerator for transfer state while up- or downloading domains")
+typedef enum tagCSC_TRANSFER_STATE
+{ 
+    idle = 0,               // no transfer is busy
+    initiating,             // transfer is initiated, about to start
+    transfering_domain,     // a single domain is transfered
+    deleted_domain,         // a single domain was deleted
+    aborting,               // transfer is aborted or interupted, will clean up
+    cleanup                 // transfer is cleaning up
+} CSC_TRANSFER_STATE;
+
+
+
+//----  Variable Interfaces:    ----------------------------------------------*
+//----  CoClass:    FCVariableCollection
+
+    //-------------------------------------------------------------------------
+    [
+        object,
+        uuid(D103E7AB-585F-4d55-AB61-729AC3F1E54D),
+        dual,
+        oleautomation,
+        helpstring("Interface to access 4C control variable collection"),
+        pointer_default(unique)
+    ]
+    interface IFCVariableCollection : IDispatch
+    {
+        [id(1), helpstring("Subscribe a variable for read/write access and change notification")]
+            HRESULT Subscribe([in, string] BSTR sItem, [out, retval] long *phServer);
+        [id(2), helpstring("Unsubscribe and remove variable from accessing, using server supplied handle")]
+            HRESULT UnsubscribeWithHandle([in] long hServer);
+        [id(3), helpstring("Read current value of variable, referred by handle")]
+            HRESULT ReadWithHandle([in] long hServer, [out, optional] short *pQuality, [out, optional] DATE *pDate, [out, retval] VARIANT *pVal);
+        [id(4), helpstring("method WriteWithHandle")]
+            HRESULT WriteWithHandle([in] long hServer, [in] VARIANT newVal);
+    };
+
+
+//----  Session Interfaces:    ----------------------------------------------*
+//----  CoClass:    FCSession
+    [
+        object,
+        uuid(B0DB0006-C299-42d9-80EF-2B4B2336DE56),
+        dual,
+        oleautomation,
+        helpstring("Interface to online sessions to 4C control"),
+        pointer_default(unique)
+    ]
+    interface IFCSessions : IDispatch
+    {
+        [id(1), helpstring("Open a watch (variable R/W) session to given machine/control")]
+            HRESULT OpenVarSession([in, string] BSTR sAddress, [out, retval] LPUNKNOWN *pUnk);
+        [id(2), helpstring("Open a commissioning session to given machine/control")]
+            HRESULT OpenCommissioningSession([in, string] BSTR sAddress, [out, retval] LPUNKNOWN *pUnk);
+        [id(3), helpstring("Open a message session to given machine/control")]
+            HRESULT OpenMessageSession([in, string] BSTR sAddress, [out, retval] LPUNKNOWN *pUnk);
+        [id(4), helpstring("query for already opened IFCVarSession by machine- and config-name")]
+            HRESULT LookupVarSession([in, string] BSTR sAddress, [out, retval] LPUNKNOWN *pUnk);
+        [id(5), helpstring("query for already opened IFCCommissioningSession by machine- and config-name")]
+            HRESULT LookupCommissioningSession([in, string] BSTR sAddress, [out, retval] LPUNKNOWN *pUnk);
+        [id(6), helpstring("query for already opened IFCMessageSession by machine- and config-name")]
+            HRESULT LookupMessageSession([in, string] BSTR sAddress, [out, retval] LPUNKNOWN *pUnk);
+        [id(7), helpstring("Disconnect everything and wait a reasonable amount of time until all connection threads have terminated")]
+            HRESULT Shutdown_Gracefully();
+    };
+
+    
+    //-------------------------------------------------------------------------
+    [
+        object,
+        uuid(C8C96D40-54D6-4d81-B8D5-042E218971A1),
+        dual,
+        oleautomation,
+        helpstring("Interface for variable R/W session to 4C control"),
+        pointer_default(unique)
+    ]
+    interface IFCVarSession : IDispatch
+    {
+        [id(1), helpstring("Start given resource on control")]
+            HRESULT StartResource();
+        [id(2), helpstring("Stop given resource on control")]
+            HRESULT StopResource();
+        [id(3), helpstring("Do coldstart on given resource")]
+            HRESULT ColdstartResource();
+        [id(4), helpstring("Do warmstart on given resource")]
+            HRESULT WarmstartResource();
+        [id(5), helpstring("Start task on given resource on control")]
+            HRESULT StartTaskOnResource([in, string] BSTR sTask);
+        [id(6), helpstring("Stop task on given resource on control")]
+            HRESULT StopTaskOnResource([in, string] BSTR sTask);
+        [id(7), helpstring("method StartAllTasksOnResource")]
+            HRESULT StartAllTasksOnResource();
+        [id(8), helpstring("method StopAllTasksOnResource")]
+            HRESULT StopAllTasksOnResource();
+    };
+
+
+//----  Commissioning Interfaces:    -----------------------------------------*
+//----  CoClass:    FCCommissioningSession
+    //-------------------------------------------------------------------------
+    [
+        object,
+        uuid(A19D3379-002D-4aff-BDF7-E40F7AD00345),
+        dual,
+        oleautomation,
+        helpstring("Interface to control connection of session to 4C control"),
+        pointer_default(unique)
+    ]
+    interface IFCConnect : IDispatch
+    {
+        [id(1), helpstring("Connect a commissioning session to given machine/control")]
+            HRESULT Connect([in, string] BSTR sUserName,[in,string] BSTR sPassword);
+        [id(2), helpstring("Disconnect commissioning session from control")]
+            HRESULT Disconnect();
+        [propget, id(3), helpstring("query current session state")]
+            HRESULT SessionState([out, retval] CSC_SESSION_STATE *pVal);
+        [propget, id(4), helpstring("Query name of user currently holding exclusive access to control")]
+            HRESULT CurrentUser([out, retval] BSTR *pVal);
+        [propget, id(5), helpstring("Query for MachineName")]
+            HRESULT MachineName([out, retval] BSTR *pVal);
+        [propget, id(6), helpstring("IsConnected returns TRUE if connection to control is established")]
+            HRESULT IsConnected([out, retval] BOOL *pVal);
+        [id(7), helpstring("Force disconnect of commissioning session from control")]
+            HRESULT ForceDisconnect([in, string] BSTR sUserName,[in,string] BSTR sPassword, [in, string] BSTR sEngMachineName);
+    };
+
+
+    //-------------------------------------------------------------------------
+    [
+        object,
+        uuid(AA98656F-5592-456d-99BA-B8F6B9446653),
+        dual,
+        oleautomation,
+        helpstring("Interface for up/download domains to 4C control"),
+        pointer_default(unique)
+    ]
+    interface IFCDownload : IDispatch
+    {
+        [id(1), helpstring("method DownloadDomainList")]
+            HRESULT UploadDomainList([in] CSC_TRANSFER_TARGET src, [in, string] BSTR sListFileName, [out, retval] DWORD *dwCookie);
+        [id(2), helpstring("method UploadDomainList")] 
+            HRESULT DownloadDomainList([in] CSC_TRANSFER_TARGET target, [in, string] BSTR sListFileName, [out, retval] DWORD *dwCookie);
+        [id(3), helpstring("method AbortTransfer")]
+            HRESULT AbortTransfer([in] DWORD dwCookie);
+        [id(4), helpstring("method StartOnlineChange")]
+            HRESULT StartOnlineChange([in] CSC_TRANSFER_TARGET target);
+        [id(5), helpstring("method CommitOnlineChange")]
+            HRESULT CommitOnlineChange([in] CSC_TRANSFER_TARGET target, [in, string] BSTR sResource,[in, string] BSTR sProjectName ,[in, string] BSTR sProjectGUID, [in, string] BSTR sDownloadGUID);
+        [id(6), helpstring("method CancelOnlineChange")]
+            HRESULT CancelOnlineChange([in] CSC_TRANSFER_TARGET target);
+        [id(7), helpstring("method DeleteAllDomains")]
+            HRESULT DeleteAllDomains([in] CSC_TRANSFER_TARGET target);
+        [id(8), helpstring("method DeleteDomainList")]
+            HRESULT DeleteDomainList([in] CSC_TRANSFER_TARGET src, [in, string] BSTR sListFileName, [out, retval] DWORD *dwCookie);
+        [propget, id(9), helpstring("property DLoadAttribute")]
+            HRESULT DLoadAttribute([in] CSC_TRANSFER_TARGET src, [in, string] BSTR sAtributeName, [out, retval] VARIANT *pVal);
+		[id(10), helpstring("method ClearResource")]
+            HRESULT ClearResource([in] CSC_TRANSFER_TARGET target);
+		[id(11), helpstring("method FlashResource")]
+            HRESULT FlashResource(); 
+
+    };
+
+
+//-------------------------------------------------------------------------
+    [
+        object,
+        uuid(D8D41031-2ED7-4504-AA9F-2ABF1508BDA8),
+        dual,
+        oleautomation,
+        helpstring("Interface for up/download domains to 4C control"),
+        pointer_default(unique)
+    ]
+    interface IFCCustOnlCmds : IDispatch
+    {
+        [id(1), helpstring("method CustDownUpLoad")]
+            HRESULT CustDownUpLoad([in] SAFEARRAY(unsigned char) *dataDown, [out] SAFEARRAY(unsigned char) *dataUp);  
+        [id(2), helpstring("method ProjectInfoUpload")]
+            HRESULT ProjectInfoUpload([out, string] BSTR* psProjVers,
+	                                  [out, string] BSTR* psProjName,
+	                                  [out, string] BSTR* psModified,
+	                                  [out, string] BSTR* psCreated,
+                                      [out, string] BSTR* psOwner,
+	                                  [out, string] BSTR* psComment1,
+	                                  [out, string] BSTR* psComment2,
+	                                  [out, string] BSTR* psComment3);
+        [id(3), helpstring("method ProjectDownload")]
+            HRESULT ProjectDownload([in] SAFEARRAY(unsigned char)* dataDown);
+        [id(4), helpstring("method ProjectUpload")]
+            HRESULT ProjectUpload([out] SAFEARRAY(unsigned char)* dataUp);
+        [id(5), helpstring("method CustCmd1")]
+            HRESULT CustCmd1([in] SAFEARRAY(unsigned char) *dataDown, [out] SAFEARRAY(unsigned char) *dataUp);  
+        [id(6), helpstring("method CustCmd2")]
+            HRESULT CustCmd2([in] SAFEARRAY(unsigned char) *dataDown, [out] SAFEARRAY(unsigned char) *dataUp);  
+        [id(7), helpstring("method CustCmd3")]
+            HRESULT CustCmd3([in] SAFEARRAY(unsigned char) *dataDown, [out] SAFEARRAY(unsigned char) *dataUp);  
+        [id(8), helpstring("method CustCmd4")]
+            HRESULT CustCmd4([in] SAFEARRAY(unsigned char) *dataDown, [out] SAFEARRAY(unsigned char) *dataUp);  
+        [id(9), helpstring("method CustCmd5")]
+            HRESULT CustCmd5([in] SAFEARRAY(unsigned char) *dataDown, [out] SAFEARRAY(unsigned char) *dataUp);  
+        [id(10), helpstring("method LoadFile")]
+            HRESULT LoadFile([in, string] BSTR sName, [out] SAFEARRAY(unsigned char) * data);
+        [id(11), helpstring("method SaveFile")]
+            HRESULT SaveFile([in, string] BSTR sName, [in] SAFEARRAY(unsigned char)* data);
+        [id(12), helpstring("method Dir")]
+            HRESULT Dir([out] SAFEARRAY(unsigned char)* fileNames);
+
+    };
+
+    //-------------------------------------------------------------------------
+    [
+        object,
+        uuid(50173A98-4C48-4cef-81F5-57E65D7A785A),
+        dual,
+        oleautomation,
+        helpstring("Interface to set/reset breakpoints in 4C control"),
+        pointer_default(unique)
+    ]
+    interface IFCBreakpoint : IDispatch
+    {
+		[id(1), helpstring("method SetBreakpoint")]
+            HRESULT SetBreakpoint([in,string] BSTR sInstanceName, [in] long lBreakpointNumber, [out, retval] long *hBP);
+		[id(2), helpstring("method ClearBreakpoint")]
+            HRESULT ClearBreakpoint([in] long hBP);
+		[id(3), helpstring("method ClearAllBreakpoints")]
+            HRESULT ClearAllBreakpoints();
+		[id(4), helpstring("method ContinueTask")]
+            HRESULT ContinueTask([in, string] BSTR sTaskName);
+		[id(5), helpstring("method Single step")]
+            HRESULT SingleStep([in, string] BSTR sTaskName);
+		[id(6), helpstring("method Step over")]
+            HRESULT StepOver([in, string] BSTR sTaskName);
+		[id(7), helpstring("method Step out")]
+            HRESULT StepOut([in, string] BSTR sTaskName);
+		[propput, id(8), helpstring("set Connection ID (usually something like 'PC1')")]
+            HRESULT ConnectionID([in, string] BSTR sId);
+    };
+
+//----  Messages Interfaces:    -----------------------------------------*
+//----  CoClass:    
+//-------------------------------------------------------------------------
+    [
+        object,
+        uuid(18D3DBED-5767-41da-A588-1A3496BD9B3E),
+        dual,
+        oleautomation,
+        helpstring("Interface to transfer messages and error codes from 4CC error log"),
+        pointer_default(unique)
+    ]
+    interface IFCMessageHistory : IDispatch
+    {
+        [id(1), helpstring("method GetMinMaxHistoryIDs")]
+            HRESULT GetMinMaxHistoryIDs([out] long *pFirst, [out] long *pLast);
+        [id(2), helpstring("method GetHistoryMessage")]
+            HRESULT GetHistoryMessage([in] long idHistory,[out] BSTR *sMessage, [out] DATE *dt);
+        [propget, id(3), helpstring("property MaxHistoryLength")]
+            HRESULT MaxHistoryLength([out, retval] long *pVal);
+        [propput, id(3), helpstring("property MaxHistoryLength")]
+            HRESULT MaxHistoryLength([in] long newVal);
+        [id(4), helpstring("method ClearHistoryBuffer")]
+            HRESULT ClearHistoryBuffer();
+    };
+
+    //-------------------------------------------------------------------------
+    [
+        object,
+        uuid(A0B27256-5675-48bd-805C-923CB076AC88),
+        oleautomation,
+        helpstring("Internal notification interface between the VarSessionThread and the VarSession, usually called from connect (MTA) threads to tell main apartments"),
+        pointer_default(unique)
+    ]
+    interface _FCVarSessionNotificationInternal : IUnknown
+    {
+        [helpstring("Notify client that a session has a new state")]
+            HRESULT OnStateChanged([in] long cookie, [in] CSC_SESSION_STATE newState, [in] HRESULT hrError);
+        [helpstring("Notify client that new data have been received")]
+            HRESULT OnDataReceived([in] long cookie, [in] long hglobal);
+    }
+
+    //-------------------------------------------------------------------------
+    [
+        object,
+        uuid(89CA65F7-231F-4bdb-BB0A-055881B93891),
+        oleautomation,
+        helpstring("Internal notification interface between the MsgSessionThread and the MsgSession, usually called from connect (MTA) threads to tell main apartments"),
+        pointer_default(unique)
+    ]
+    interface _FCMessageSessionNotificationInternal : IUnknown
+    {
+        [helpstring("Notify client that a session has a new state")]
+            HRESULT OnStateChanged([in] long cookie, [in] CSC_SESSION_STATE newState, [in] HRESULT hrError);
+        [helpstring("Notify client that a new Message has arrived")] 
+			HRESULT OnMessageReceived([in] long cookie, BSTR sMessage);
+    }
+
+
+    //-------------------------------------------------------------------------
+    [
+        object,
+        uuid(CF0CDE15-624F-493d-B806-F14293DB54E9),
+        dual,
+        oleautomation,
+        helpstring("Event interface for 4C variable change notification")
+    ]
+    interface _FCVariableNotification : IDispatch
+    {
+        [id(1), helpstring("Notify client that variable values have changed")]
+            HRESULT OnChanged();
+        [id(2), helpstring("Notify client that a variable has a new value, quality and/or timestamp")]
+            HRESULT OnNewData([in] long hServer, [in] VARIANT newVal, [in] short Quality, [in] DATE Date);
+    };
+
+
+    //-------------------------------------------------------------------------
+    [
+        object,
+        uuid(56CE115F-34CC-45aa-A9B7-F7DA081FD1E7),
+        dual,
+        oleautomation,
+        helpstring("Event interface for 4C domain transfer change notification")
+    ]
+    interface _FCTransferNotification : IDispatch
+    {
+        [id(1), helpstring("Notify client that a user has logged in or out of control")]
+            HRESULT OnUserLoggedIn([in, string] BSTR sUserName, [in, string] BSTR sHostName, [in] BOOL bLoggedIn);
+
+        [id(2), helpstring("Notify client that state of transfer or transfered file or progress has changed")]
+            HRESULT OnTransferStateChanged([in] DWORD dwCookie, [in, string] BSTR sCurrentDomainName, [in] CSC_TRANSFER_STATE state, [in] float fltPercentDone);
+        
+        [id(3), helpstring("Notify client that there was an error while transfering a domain")]
+            HRESULT OnTransferError([in] DWORD dwCookie, [in, string] BSTR sCurrentDomainName, [in] CSC_TRANSFER_STATE state, [in] HRESULT hError);
+    };
+
+
+    //-------------------------------------------------------------------------
+    [
+        object,
+        uuid(6282F0C1-64CB-4225-AB06-635661E7A5F6),
+        dual,
+        oleautomation,
+        helpstring("Event interface for 4C breakpoint notifications")
+    ]
+    interface _FCBreakpointNotification : IDispatch
+    {
+        [id(1), helpstring("Notification breakpoint reached - bpQuality: 0=user bp, 1=single step -1= breakpoint left")]
+            HRESULT OnBreakpointReached([in] BSTR sInstanceName, [in] long lBreakpointNumber,
+                                        [in] long bpQuality, [in] BSTR sTaskName);
+		[id(2), helpstring("OnConfigurationChanged - called during download, coldstart")]
+            HRESULT OnConfigurationChanged([in,string] BSTR sAddress);
+    }
+
+    //-------------------------------------------------------------------------
+    [
+        object,
+        uuid(D20DEB4C-066F-4eb3-9DB0-1BE8E2095A74),
+        oleautomation,
+        helpstring("internal callback interface for 4C domain transfer change notification")
+    ]
+    interface _FCInternalTransferProgress : IUnknown
+    {
+        [id(1), helpstring("Notify client that state of transfer or transfered file or progress has changed")]
+            HRESULT OnTransferProgress([in] DWORD dwCookie, [in, string] BSTR sCurrentDomainName, [in] CSC_TRANSFER_STATE state, [in] float fltPercentDone);
+        [id(2), helpstring("Notify client that there was an error while transfering a domain")]
+            HRESULT OnTransferError([in] DWORD dwCookie, [in, string] BSTR sCurrentDomainName, [in] CSC_TRANSFER_STATE state, [in] HRESULT hError);
+    };
+
+
+    //-------------------------------------------------------------------------
+    [
+        object,
+        uuid(CCEFA300-7909-4552-91F1-E56B18F38798),
+        dual,
+        oleautomation,
+        helpstring("Event interface for 4C session change notification")
+    ]
+    interface _FCSessionNotification : IDispatch
+    {
+        [id(1), helpstring("Notify client that any session has changed")]
+            HRESULT OnChanged();
+        [id(2), helpstring("Notify client that a session has a new state")]
+            HRESULT OnStateChanged([in] LPUNKNOWN pSession, [in] CSC_SESSION_STATE newState, [in] HRESULT hrError);
+    };
+
+
+//----  Type Library:    -----------------------------------------------------*
+[
+    uuid(3025E740-9D36-4574-9E69-5FA3244DC6F2),
+    version(2.0),
+    helpstring("ATCMControl V2.0 CSC_ONLINE Type Library")
+]
+library CSC_ONLINELib
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+    //-------------------------------------------------------------------------
+    // interface declaration for message notification to Engineering
+    import "CEMsg.idl";
+
+    interface _FCCommissioningMgtNotificationInternal;
+    interface _FCTransferSessionNotificationInternal;
+    interface _FCVarSessionNotificationInternal;
+    interface _FCMessageSessionNotificationInternal;
+    interface _FCInternalTransferProgress;
+
+//----  Component Classes:    ------------------------------------------------*
+    [
+        uuid(1AC09BA6-8C6C-4dd4-8B3A-3ED3F90545FD),
+        helpstring("4Control: Online access to Control")
+    ]
+    coclass FCVariableCollection
+    {
+        [default] interface IFCVariableCollection;
+        [default, source] dispinterface _FCVariableNotification;
+    };
+
+    //-------------------------------------------------------------------------
+    [
+        uuid(1A992907-8F0E-42f9-A247-E424C98394D6),
+        helpstring("FCSession Class")
+    ]
+    coclass FCSessions
+    {
+        [default] interface IFCSessions;
+    };
+
+    //-------------------------------------------------------------------------
+    // this coclass cannot be instanciated via CoCreateInstance(),
+    // but only by means of FCSessions::OpenCommissioningSession
+    [
+        uuid(035F9FF1-BFD7-419a-9177-7087074580A5),
+        helpstring("FCCommissioningSession Class"),
+        noncreatable,
+        hidden
+    ]
+    coclass FCCommissioningSession
+    {
+        [default] interface IFCConnect;
+        [default, source] interface _FCSessionNotification;
+        [source] interface _FCTransferNotification;
+        [source] interface _FCBreakpointNotification;
+        interface IFCDownload;
+        interface IFCBreakpoint;
+    };
+
+    //-------------------------------------------------------------------------
+    // this coclass cannot be instanciated via CoCreateInstance(),
+    // but only by means of FCSessions::OpenMessageSession
+    [
+        uuid(F6AA6F43-1F4E-4fa0-B6A4-1CED6FD450BE),
+        helpstring("FCMessages Class"),
+        noncreatable,
+        hidden
+    ]
+    coclass FCMessages
+    {
+        [default] interface IFCConnect;
+        interface           IFCMessageHistory;
+        [default, source] interface _ICEMessageEvent;
+        [source] interface _FCSessionNotification;
+    };
+
+    //-------------------------------------------------------------------------
+    // this coclass cannot be instanciated via CoCreateInstance(),
+    // but only by means of FCSessions::OpenVarSession
+    [
+        uuid(45C700B5-D018-4daa-86C1-628669230B05),
+        helpstring("FCVarSession Class"),
+        noncreatable,
+        hidden
+    ]
+    coclass FCVarSession
+    {
+        [default] interface IFCConnect;
+        interface           IFCVarSession;
+        interface           IFCCustOnlCmds;
+        [default, source] interface _FCSessionNotification;
+    };
+
+};
+
+
+// 1997-11-25/Je  Generated by PERL5 script d:\bin\perl5/mkproto.bat Version 1.2
+// ***************************  E O F  ******************************
+// $Workfile: CSC_Online.idl $
+
+/*
+ *----------------------------------------------------------------------------*
+ *  $History: CSC_Online.idl $
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.02.07   Time: 19:01
+ * Created in $/4CReleased/V2.20.00/COM/softing/fc/inc
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.08.03   Time: 16:34
+ * Created in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 16  *****************
+ * User: Jd           Date: 1.04.03    Time: 16:34
+ * Updated in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 15  *****************
+ * User: Jd           Date: 20.03.03   Time: 16:47
+ * Updated in $/4Control/COM/softing/fc/inc
+ * More custom online commands.
+ * 
+ * *****************  Version 14  *****************
+ * User: Jd           Date: 25.02.03   Time: 11:51
+ * Updated in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 13  *****************
+ * User: Jd           Date: 4.02.03    Time: 14:40
+ * Updated in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 12  *****************
+ * User: Jd           Date: 4.02.03    Time: 13:02
+ * Updated in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 11  *****************
+ * User: Jd           Date: 4.02.03    Time: 9:20
+ * Updated in $/4Control/COM/softing/fc/inc
+ * Changes for custom online commands.
+ * 
+ * *****************  Version 10  *****************
+ * User: Ed           Date: 6/14/02    Time: 11:43a
+ * Updated in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 9  *****************
+ * User: Su           Date: 12.09.01   Time: 15:26
+ * Updated in $/4Control/COM/softing/fc/Inc
+ * Renamed OnNewDownload to OnConfigurationChanged and removed parameters
+ * really not used.
+ * 
+ * *****************  Version 8  *****************
+ * User: Su           Date: 17.07.01   Time: 17:57
+ * Updated in $/4Control/COM/softing/fc/inc
+ * OnConfigurationChanged not necessary. OnNewDownload has new argument
+ * sAddress for resynchronization of debug services with the debug
+ * information.
+ * 
+ * *****************  Version 7  *****************
+ * User: Su           Date: 13.07.01   Time: 17:49
+ * Updated in $/4Control/COM/softing/fc/Inc
+ * Revised interfaces for Version 2.0
+ * 
+ * *****************  Version 6  *****************
+ * User: Su           Date: 10.07.01   Time: 12:26
+ * Updated in $/4Control/COM/softing/fc/inc
+ * Revised interfaces for Version 2.0
+ * 
+ * *****************  Version 5  *****************
+ * User: Su           Date: 4.04.01    Time: 15:27
+ * Updated in $/4Control/COM/softing/fc/Inc
+ * 
+ * *****************  Version 4  *****************
+ * User: Su           Date: 19.03.01   Time: 19:05
+ * Updated in $/4Control/COM/softing/fc/Inc
+ * Var session object implements IFCConnect, hence some methods of
+ * IFCVarSession became obsolete.
+ * 
+ * *****************  Version 3  *****************
+ * User: Su           Date: 15.03.01   Time: 19:48
+ * Updated in $/4Control/COM/softing/fc/inc
+ * Revised interfaces and interface structure, removed not
+ * used/implemented interface methods, assigned new GUIDs.
+ * 
+ * *****************  Version 2  *****************
+ * User: Scd          Date: 31.01.01   Time: 12:22
+ * Updated in $/4Control/COM/softing/fc/inc
+ * new headers added
+ *==
+ *----------------------------------------------------------------------------*
+*/

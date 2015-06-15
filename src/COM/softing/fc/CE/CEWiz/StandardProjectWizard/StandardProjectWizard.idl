@@ -1,0 +1,30 @@
+
+// StandardProjectWizard.idl : IDL source for StandardProjectWizard.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (StandardProjectWizard.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "CEProjWiz.idl";
+
+[
+	uuid(F3B04131-CB7F-11D4-B353-0008C77981F8),
+	version(1.0),
+	helpstring("StandardProjectWizard 1.0 Type Library")
+]
+library STANDARDPROJECTWIZARDLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(F3B04141-CB7F-11D4-B353-0008C77981F8),
+		helpstring("ProjectWizardComObj Class")
+	]
+	coclass ProjectWizardComObj
+	{
+		[default] interface ICEProjectWizard;
+	};
+};

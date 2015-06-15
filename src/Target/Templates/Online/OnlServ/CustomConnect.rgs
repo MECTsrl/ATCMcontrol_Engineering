@@ -1,0 +1,28 @@
+HKCR
+{
+	4C_20_[*TN].CustomConnect = s '4CONTROL: 4C [*TN] Custom Connect'
+	{
+		CLSID = s '{[*CG]}'
+		CurVer = s '4C_20_[*TN].CustomConnect.1'
+	}
+	4C_20_[*TN].CustomConnect.1 = s '4CONTROL: 4C [*TN] Custom Connect'
+	{
+		CLSID = s '{[*CG]}'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {[*CG]} = s '4CONTROL: 4C [*TN] Custom Connect'
+		{
+			ProgID = s '4C_20_[*TN].CustomConnect.1'
+			VersionIndependentProgID = s '4C_20_[*TN].CustomConnect'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '{[*AP]}'
+
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

@@ -1,0 +1,15 @@
+(*[[
+    GUID= "{3E7EB464-1793-11D5-A0C2-006008736ABF}",
+    Alias="abcde",
+    UserText1= "a",
+    UserText2= "b",
+    UserText3= "c",
+    UserURL= "d"
+]]*)
+
+TYPE
+    Structure3 : STRUCT
+        x (*[[Alias="x"]]*) : DINT := 5;
+        y (*[[Alias="y"]]*) : DINT := 6;
+    END_STRUCT;
+END_TYPE

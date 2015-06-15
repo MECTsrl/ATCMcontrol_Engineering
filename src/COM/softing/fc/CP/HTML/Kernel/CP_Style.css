@@ -1,0 +1,188 @@
+<!--ATCM. All rights reserved-->
+.ConsoleObject
+{ 
+	font-family: "MS Sans Serif";
+	font-size: 9pt ;
+}
+
+.HeaderObject
+{ 
+	color: #000000;
+	background: #C0C0C0; 
+	font-family: "MS Sans Serif" ;
+	font-size: 9pt ;
+	margin-top: 0 ;
+	margin-left: 0 ;
+}
+
+.DialogObject
+{ 
+	color: #000000;
+	background: #E0E0E0; 
+	font-family: "MS Sans Serif" ;
+	font-size: 9pt ;
+}
+
+BODY.Header
+{ 
+	color: #000000;
+	background: #C0C0C0; 
+	font-family: "MS Sans Serif" ;
+	font-size: 9pt ;
+	margin-top: 0 ;
+	margin-left: 0 ;
+	margin-right: 0 ;
+}
+
+BODY.StatusLine
+{ 
+	color: #000000;
+	background: #C0C0C0; 
+	font-family: "MS Sans Serif" ;
+	font-size: 9pt ;
+	margin-top: 0 ;
+	margin-left: 0 ;
+	margin-right: 0 ;
+}
+
+TABLE.Statusline
+{	
+	font-family:MS Sans Serif;
+	font-size: 9pt ;
+}
+
+.FaceplateObject
+{ 
+	color: #000000;
+	background: #E0E0E0; 
+	font-family: "MS Sans Serif" ;
+	font-size: 9pt ;
+	margin-top: 0 ;
+	margin-left: 0 ;
+}
+
+TABLE.Faceplate
+{	
+	font-family:MS Sans Serif;
+	font-size: 9pt ;
+}
+
+BODY.FaceplateSfcAuto
+{ 
+	color: #000000;
+	background: #ffffc8; 
+	font-family: "MS Sans Serif" ;
+	font-size: 9pt ;
+	margin-top: 0 ;
+	margin-left: 4 ;
+}
+
+BODY.FaceplateSfcManual
+{ 
+	color: #000000;
+	background: #e6f2ff; 
+	font-family: "MS Sans Serif" ;
+	font-size: 9pt ;
+	margin-top: 0 ;
+	margin-left: 4 ;
+}
+
+BODY.Faceplate
+{ 
+	color: #000000;
+	background: #E0E0E0; 
+	font-family: "MS Sans Serif" ;
+	font-size: 9pt ;
+	margin-top: 0 ;
+	margin-left: 4 ;
+}
+
+TABLE.FaceplateHeader
+{ 
+	color: #000000;
+	background: #A6CAF0; 
+	font-family: "MS Sans Serif" ;
+	font-size: 9pt ;
+}
+
+TABLE.FaceplateHeaderSelected
+{ 
+	color: #000000;
+	background: #FFFFCC; 
+	font-family: "MS Sans Serif" ;
+	font-size: 9pt ;
+}
+
+
+TD.TextOutFieldSunken
+{	
+	background: #C0C0C0; 
+	font-family:MS Sans Serif;
+	font-size: 9pt ;
+	padding-right: 1;
+	padding-left: 1;
+	border-left:outset thin gray;
+	border-top:outset thin gray;
+	border-right:inset thin white;
+	border-bottom:inset thin white;
+}
+TD.TextOutField
+{	
+	background: #E0E0E0; 
+	font-family:MS Sans Serif;
+	font-size: 9pt ;
+}
+TD.NegativeButton
+{	
+	font-family:MS Sans Serif;
+	font-size:9pt;
+	text-align:center;
+	font-weight:normal;
+	cursor:default;
+
+	background: #C0C0C0; 
+	border-left:outset thin gray;
+	border-top:outset thin gray;
+	border-right:inset thin white;
+	border-bottom:inset thin white;
+}
+TD.NegativeLightGreyButton
+{	
+	font-family:MS Sans Serif;
+	font-size:9pt;
+	text-align:center;
+	font-weight:normal;
+	cursor:default;
+
+	background: #E0E0E0; 
+	border-left:inset thin gray;
+	border-top:inset thin gray;
+	border-right:inset thin white;
+	border-bottom:inset thin white;
+}
+TD.PositiveButton
+{	
+	font-family:MS Sans Serif;
+	font-size:9pt;
+	text-align:center;
+	font-weight:normal;
+	cursor:default;
+
+	border-left:outset thin white;
+	border-top:outset thin white;
+	border-right:inset thin gray;
+	border-bottom:inset thin gray;
+}
+TD.FlatButton
+{	
+	font-family:MS Sans Serif;
+	font-size:9pt;
+	text-align:center;
+	font-weight:normal;
+	cursor:default;
+
+	border-left:solid thin #C0C0C0;
+	border-top:solid thin #C0C0C0;
+	border-right:solid thin #C0C0C0;
+	border-bottom:solid thin #C0C0C0;
+}

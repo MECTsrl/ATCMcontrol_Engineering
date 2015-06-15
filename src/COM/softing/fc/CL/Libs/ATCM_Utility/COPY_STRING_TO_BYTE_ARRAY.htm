@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>COPY_STRING_TO_BYTE_ARRAY</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>COPY_STRING_TO_BYTE_ARRAY</h2>
+<p>Writes a value of the type <i><b>STRING</b></i> at a specific position within
+a byte string.</p>
+<h3>Interface</h3>
+<pre class="preforma">FUNCTION COPY_STRING_TO_BYTE_ARRAY
+VAR_INPUT
+    VALUE : STRING; 
+END_VAR
+VAR_IN_OUT
+    POS : DINT;                                 
+    BYTES : ARRAY OF BYTE;
+END_VAR
+</pre>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl>
+  <dt><b>VALUE</b>
+  <dd>Value of the type <i><b>STRING</b></i><br>
+    String to be inserted at the byte array position passed in <i><b>POS</b></i>.</dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl>
+  <dt><b>POS</b>
+  <dd>Value of the type <i><b>DINT</b></i><br>
+    Specifies at which position in the byte array the string passed to <i><b>VALUE</b></i>
+    is to be inserted. Counting starts from 0 for the first position in the byte
+    array and is performed in byte units.<br>
+    After the successful execution of the function, <i><b>POS</b></i> is
+    overwritten by the value of the first byte array position that follows the
+    last byte written. If the execution of the function failed, <i><b>POS</b></i>
+    receives the value -1.
+  <dt><b>BYTES</b>
+  <dd>Array of the type <i><b>BYTE</b></i><br>
+    Byte array in which a value is to be written.</dd>
+</dl>
+<h3>Description</h3>
+<p><b><i>COPY_STRING_TO_BYTE_ARRAY </i></b>writes a value of the type <i><b>STRING</b></i> 
+  in the byte array passed to <i><b>BYTES</b></i> at the position passed to <i><b>POS</b></i>. 
+  Values that are located in the byte array at the position specified in <i><b>POS</b></i> 
+  are overwritten by the value defined in <i><b>VALUE</b></i>. </p>
+<p>The number of bytes that are copied from the string to the byte array always 
+  corresponds to the size of the string in the declaration (maximum size). If, 
+  for example, a string is declared by <b><i>TestString : String[30]</i></b>, 
+  30 bytes will be copied to the byte array. First, the string is transferred 
+  into the byte array up to the current size of the string. The byte array is 
+  then filled with 0s up to the maximum size of the string and thus terminated 
+  by 0. When reading the byte array contents back into a string by using the <b><i><a href="COPY_STRING_FROM_BYTE_ARRAY.htm">COPY_STRING_FROM_BYTE_ARRAY</a></i></b> 
+  function, the execution of the function will be stopped at the first 0.</p>
+<p><b>Please note:</b></p>
+<ul>
+  <li>The number of characters that are to be written to the byte array is defined 
+    by the maximum size of the string, i.e. by the size which was specified in 
+    the definition or declaration.<br>
+    <br>
+  </li>
+  <li>The definition <i><b>str : STRING</b></i> is equivalent to <i><b>str : STRING[MAX_STRING_LEN]</b></i>, 
+    where <i><b>MAX_STRING_LEN</b></i> depends on which target system is being 
+    used. The default value for <i><b>MAX_STRING_LEN</b></i> is <i>255</i>.<br>
+    <br>
+  </li>
+  <li>The byte array must be sufficiently large since, otherwise, no characters 
+    will be copied and the task will be stopped with a fatal error.</li>
+</ul>
+</body>
+</html>

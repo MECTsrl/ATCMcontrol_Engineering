@@ -1,0 +1,101 @@
+<html>
+<head>
+<title>UDP_USEND</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>UDP_USEND </h2>
+<p>Sends a message to a communication partner.</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION_BLOCK UDP_USEND
+
+VAR_INPUT
+    REQ          : BOOL;             
+    PARTNER_ADDR : WSTRING;          
+    PARTNER_PORT : DINT;             
+    SD_1         : BYTE_STRING;     
+END_VAR
+
+VAR_IN_OUT
+    SOCKET_HANDLE : UDP_SOCKET_HANDLE; 
+END_VAR
+
+VAR_OUTPUT
+    ERROR        : BOOL;             
+    ERROR_NR     : DINT;
+    ERROR_STRING : WSTRING;
+END_VAR</pre>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>REQ</b></dt>
+  <dd>Value of type <i><b>BOOL</b></i>.<br>
+    Initializes the sending of a message.<br>
+    Possible values:<br>
+    <i><b>TRUE</b></i>: Message will be sent.<br>
+    <i><b>FALSE</b></i>: Message won&acute;t be sent.</dd>
+  <dt><b>PARTNER_ADDR</b></dt>
+  <dd>Value of type <i><b>WSTRING</b></i>.<br>
+    Determines the host adress of the communication partner to whom a message 
+    is to be sent. </dd>
+  <dt><b>PARTNER_PORT</b></dt>
+  <dd>Value of type <i><b>DINT</b></i>.<br>
+    Determines the port adress of the communication partner to whom a message 
+    is to be sent. </dd>
+  <dt><b>SD_1</b></dt>
+  <dd>Instance of the structure <i><b><a href="BYTE_STRING.htm">BYTE_STRING</a></b></i>.<br>
+    Specifies the data to be sent. The size of the packet sent complies to the 
+    size of the bytestring sent. Use the function <i><b><a href="BYTE_STRING_INIT.htm">BYTE_STRING_INIT</a></b></i> 
+    in order to initialize the bytestring.</dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl> 
+  <dt><b>SOCKET_HANDLE</b></dt>
+  <dd>Instance of the structure <a href="UDP_SOCKET_HANDLE.htm"><i><b>UDP_SOCKET_HANDLE</b></i></a>.<br>
+    Specifies the socket by which the data is to be sent. </dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b>ERROR</b></dt>
+  <dd>Value of type <i><b>BOOL</b></i>.<br>
+    Signals the error state.<br>
+    Possible values:<br>
+    <i><b>TRUE</b></i>: An error occurred.<br>
+    <i><b>FALSE</b></i>: No error occurred.</dd>
+  <dt><b>ERROR_NR</b></dt>
+  <dd>Value of type <i><b>DINT</b></i>.<br>
+    Contains an error number if an error occurred. <br>
+    If no error ocurred, this variable has the value 0.<br>
+    Possible values are defined within the <a href="ConstUDPErr.htm">UDP-error 
+    constants</a>.</dd>
+  <dt><b>ERROR_STRING</b></dt>
+  <dd>Value of type <i><b>WSTRING</b></i>.<br>
+    Contains an error text in case of an error. <br>
+    this variable contains an empty string if no error occurred. </dd>
+</dl>
+<h3>Description</h3>
+<p>The call of an instance of <i><b>UDP_USEND</b></i> sends a message to a communication 
+  partner. In order to identify the communication partner wanted, his host adress 
+  is passed to <i><b>PARTNER_ADDR</b></i> and the port number of the socket by 
+  which the communication partner receives messages is passed to <i><b>PARTNER_PORT</b></i>. 
+  If the host adress of the communication partner is unknown, it can be detected 
+  by the function block <i><b><a href="UDP_LOOKUP.htm">UDP_LOOKUP</a></b></i>. 
+</p>
+<p>In order to be able to send messages, the socket passed to <i><b>SOCKET_HANDLE</b></i> 
+  has to be initialized with an instance of <a href="UDP_CONNECT.htm"><i><b>UDP_CONNECT</b></i></a>. 
+</p>
+<p><b><i>UDP_USEND</i></b> supports the sending of <i><b>broadcasts</b></i>. A 
+  broadcast is the sending of a message to all computers communicating via socket. 
+  In order to enable the sending of broadcasts, the parameter <i><b>BroadcastSocket</b></i> 
+  of the instance of <i><b><a href="UDP_SOCKET_HANDLE.htm">UDP_SOCKET_HANDLE</a></b></i> 
+  representing the socket has to be initialized with the value <i><b>TRUE</b></i>. 
+  When calling an instance of <i><b>UDP_USEND</b></i> the adress '255.255.255.255' 
+  is passed to the parameter <i><b>PARTNER_ADDR</b></i>. All communication partners, 
+  that are to receive the broadcast, must have an initialized socket that receives 
+  messages over the same port number. This number is passed to the parameter <i><b>PARTNER_PORT</b></i> 
+  when an instance of <i><b>UDP_USEND </b></i>is called. For this reason it must 
+  be verified that all communication partners that are to receive broadcasts use 
+  a socket with an identical port number before broadcasts are sent.</p>
+</body>
+</html>

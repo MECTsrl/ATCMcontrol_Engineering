@@ -1,0 +1,9 @@
+; Libray MECT
+; <Funzione> <id> <versione min> <versione max>
+MECT_sread        230 0 99999
+MECT_H_sread      231 0 99999
+MECT_swrite       232 0 99999
+MECT_H_swrite     233 0 99999
+MECT_get_enquiry  234 0 99999
+MECT_get_flag     235 0 99999
+MECT_get_status   236 0 99999

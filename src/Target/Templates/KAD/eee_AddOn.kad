@@ -1,0 +1,30 @@
+<ADDON>
+   <PROPERTIES  FILEEXT="[*PR]"
+                FILEPREFIX="[*TNUC]"
+                KADTYPE="[*TNUC]"
+
+                DESCRIPTION="[*TT]"
+
+                SUPPORTNCC="[*NC]"
+
+                WIZARDNAME="[*WN]"
+                WIZARDDESC="[*WD]"
+
+                CUSTOM_DOWNLOAD="1"
+                CUSTOM_DOWNLOAD_DIR="Download"
+                CUSTOM_DOWNLOAD_GUI="1"
+
+                ENDIAN="[*ENDIAN]"
+    />
+
+    <FIRMWARE VERSION="[*FI]"
+             DESCRIPTION="[*FD]"
+             CUSTOMCONNECT="[*CG]"
+             DOWNLOAD="[*DG]">
+             <COMMCHANNEL ID="[*CC]"
+                          PROTOCOL="[*PS]"
+                          PROTOCOLPAR="[*PP]"/>
+   </FIRMWARE>
+
+
+</ADDON>               

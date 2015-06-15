@@ -1,0 +1,33 @@
+(*
+ * ATCMControl Embedded - System Library
+ * ----------------------------------------------------------------------------
+ *
+ 
+ *)
+
+CONST
+    (* Task Error Numbers / Task Exceptions
+     * ----------------------------------------------------------------------------------------------------
+     * See TSK_GetError.
+     *)
+   TSK_ERR_ILLEGAL_OPCODE    : DINT := dint#16#0020;    (* Illegal Opcode exception                         *)
+   TSK_ERR_STACK_OVERFLOW    : DINT := dint#16#0021;    (* Interpreter stack overflow exception             *)
+   TSK_ERR_STACK_UNDERFLOW   : DINT := dint#16#0022;    (* Interpreter stack underflow exception            *)
+   TSK_ERR_DIVISION_BY_ZERO  : DINT := dint#16#0023;    (* Division by zero exception                       *)
+   TSK_ERR_ARRAY_RANGE       : DINT := dint#16#0024;    (* Array index out of bounds exception              *)
+   TSK_ERR_STRING_LEN        : DINT := dint#16#0025;    (* String length out of bounds exception            *)
+   TSK_ERR_NULL_PTR          : DINT := dint#16#0026;    (* Null pointer exception                           *)
+   TSK_ERR_CALL_OVERFLOW     : DINT := dint#16#0027;    (* Call Stack overflow (Too many nested calls)      *)
+   TSK_ERR_INVALID_LIB_CALL  : DINT := dint#16#0028;    (* Illegal firmware function/FB call exception      *)
+   TSK_ERR_INVALID_ARG       : DINT := dint#16#0029;    (* Invalid function argument exception              *)
+   TSK_ERR_MATH              : DINT := dint#16#002a;    (* General mathematic/floating point exception      *)
+   TSK_ERR_WATCHDOG          : DINT := dint#16#002b;    (* Watchdog triggered for corresponding task        *)
+   TSK_ERR_EXE_TIME_OVERRUN  : DINT := dint#16#002c;    (* Task execution time overrun                      *)
+   TSK_ERR_USER_EXCEPTION    : DINT := dint#16#002d;    (* User Exception TSK_Exception()                   *)
+   TSK_ERR_TASK_IMAGE        : DINT := dint#16#002e;    (* Task image access exception                      *)
+   TSK_ERR_TASK_TIMER        : DINT := dint#16#002f;    (* Error activating the timer task                  *)
+   TSK_ERR_TASK_INIT         : DINT := dint#16#0030;    (* Task initialization exception                    *)
+   TSK_ERR_TASK_BREAK        : DINT := dint#16#0031;    (* Task in break when closing debug connection      *)
+   TSK_ERR_UNKOWN            : DINT := dint#16#0032;    (* Everything else                                  *)
+
+END_CONST

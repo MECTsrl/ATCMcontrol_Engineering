@@ -1,0 +1,257 @@
+// cewatchbe.idl : IDL source for cewatchbe.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (cewatchbe.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+
+typedef enum
+{
+	CEGoodWatchItem,
+	CESyntaxError,
+	CEBadNumber,
+	CEFormatInvalid,
+	CERangeInvalid
+} CEWatchItemState;
+
+
+typedef enum
+{
+    CEGoodExpression,
+    CEEmptyValue,
+    CELoadingValue,
+    CEReloadingValue,
+    CENotConnected,
+    CESubscribeError,
+    CEUnknownSubscription,
+    CEValueTypeError,
+    CEInvalidAggregateType,
+    CEUnknownField,
+    CEContainsInOut,
+    CENotArrayType,
+    CEUnknownElementType,
+    CEInvalidIndexType,
+    CEIndexRangeError,
+    CEInvalidPlusOperandType,
+    CEInvalidMinusOperandType,
+    CEInvalidNotOperandType,
+    CEInvalidAddLeftType,
+    CEInvalidAddRightType,
+    CEInvalidAddTypeCombi,
+    CEInvalidSubLeftType,
+    CEInvalidSubRightType,
+    CEInvalidSubTypeCombi,
+    CEInvalidMultLeftType,
+    CEInvalidMultRightType,
+    CEInvalidMultTypeCombi,
+    CEInvalidDivLeftType,
+    CEInvalidDivRightType,
+    CEInvalidDivTypeCombi,
+    CEDivisionByZero,
+    CEInvalidModLeftType,
+    CEInvalidModRightType,
+    CEInvalidModTypeCombi,
+    CEModuloZero,
+    CEInvalidEQLeftType,
+    CEInvalidEQRightType,
+    CEInvalidEQTypeCombi,
+    CEInvalidNELeftType,
+    CEInvalidNERightType,
+    CEInvalidNETypeCombi,
+    CEInvalidLTLeftType,
+    CEInvalidLTRightType,
+    CEInvalidLTTypeCombi,
+    CEInvalidLELeftType,
+    CEInvalidLERightType,
+    CEInvalidLETypeCombi,
+    CEInvalidGTLeftType,
+    CEInvalidGTRightType,
+    CEInvalidGTTypeCombi,
+    CEInvalidGELeftType,
+    CEInvalidGERightType,
+    CEInvalidGETypeCombi,
+    CEInvalidAndLeftType,
+    CEInvalidAndRightType,
+    CEInvalidAndTypeCombi,
+    CEInvalidOrLeftType,
+    CEInvalidOrRightType,
+    CEInvalidOrTypeCombi,
+    CEInvalidXorLeftType,
+    CEInvalidXorRightType,
+    CEInvalidXorTypeCombi,
+    CEInvalidPowerLeftType,
+    CEInvalidPowerRightType,
+    CEInvalidConvOperandType,
+    CEInvalidConvTargetType
+} CEExpressionState;
+
+
+typedef enum
+{
+	CEGoodFormat
+} CEFormatState;
+
+
+typedef enum
+{
+	CEGoodRanges
+} CERangesState;
+
+
+typedef enum
+{
+	CEBase2,
+	CEBase8,
+	CEBase10,
+	CEBase16
+} CENumberBase;
+
+
+typedef enum
+{
+	CENotWriteable,
+	CEMaybeWriteable,
+	CEWriteable
+} CEWriteState;
+
+
+typedef enum
+{
+	CEExpandNever,
+	CEExpandFirst,
+	CEExpandQuery
+} CEExpandMode;
+
+
+[ 
+	uuid(CBE4BA20-FB6C-49f8-8029-470C28F03ADD),
+	version(1.0),
+	helpstring("cewatchbe 1.0 Type Library")
+]
+library CEWATCHBELib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		object,
+		uuid(CBE4BA21-FB6C-49f8-8029-470C28F03ADD),
+		dual,
+		helpstring("ICEWatch Interface"),
+		pointer_default(unique)
+	]
+	interface ICEWatch : IDispatch
+	{
+		[id(1), helpstring("method Init")]
+			HRESULT Init([in, string] BSTR sSymbolFile);
+		[id(2), helpstring("method Cleanup")]
+			HRESULT Cleanup();
+		[id(3), helpstring("method GetDebugInfo")]
+			HRESULT GetDebugInfo([out] IUnknown **ppDebugInfo);
+		[id(4), helpstring("method AddItem: adds new watch expression")]
+			HRESULT AddItem([in, string] BSTR sText, [out] long *plHandle);
+		[id(5), helpstring("method RemoveItem: removes watch expression")]
+			HRESULT RemoveItem([in] long lHandle);
+		[id(6), helpstring("method GetItemText")]
+			HRESULT GetItemText([in] long lHandle, [out, string] BSTR *psText);
+		[id(7), helpstring("method GetItemState")]
+			HRESULT GetItemState([in] long lHandle, [out] CEWatchItemState *pState);
+		[id(8), helpstring("method GetExpressionText")]
+			HRESULT GetExpressionText([in] long lHandle, [out, string] BSTR *psText);
+		[id(9), helpstring("method GetExpressionState")]
+			HRESULT GetExpressionState([in] long lHandle, [out] CEExpressionState *pState);
+		[id(10), helpstring("method GetFormatText")]
+			HRESULT GetFormatText([in] long lHandle, [out] BSTR *psText);
+		[id(11), helpstring("method GetFormatState")]
+			HRESULT GetFormatState([in] long lHandle, [out] CEFormatState *pState);
+		[id(12), helpstring("method GetFormatBase")]
+			HRESULT GetFormatBase([in] long lHandle, [out] CENumberBase *pBase);
+		[id(13), helpstring("method GetRangeText")]
+			HRESULT GetRangesText([in] long lHandle, [out, string] BSTR *psText);
+		[id(14), helpstring("method GetRangesState")]
+			HRESULT GetRangesState([in] long lHandle, [out] CERangesState *pState);
+		[id(15), helpstring("method GetRangeCount")]
+			HRESULT GetRangeCount([in] long lHandle, [out] unsigned long *pulCount);
+		[id(16), helpstring("method GetRange")]
+			HRESULT GetRange([in] long lHandle, [in] unsigned long lIndex, [out] long *plLower, long *plUpper);
+		[id(17), helpstring("method GetType")]
+			HRESULT GetType([in] long lHandle, [out] IUnknown **ppType);
+		[id(18), helpstring("method GetSubItemCount")]
+			HRESULT GetSubItemCount([in] long lHandle, [out] unsigned long *pulCount);
+		[id(19), helpstring("method GetSubItem")]
+			HRESULT GetSubItem([in] long lHandle, [in] unsigned long ulIndex, [out] long *plSubItemHandle);
+		[id(20), helpstring("method Connect: subscribes expression parts")]
+			HRESULT Connect([in] long lHandle);
+		[id(21), helpstring("method Disconnect: unsubscribes expression parts")]
+			HRESULT Disconnect([in] long lHandle);
+		[id(22), helpstring("method GetData")]
+			HRESULT GetData([in] long lHandle, [out] VARIANT *pvarValue, [out] short *psQuality, [out] DATE *pDate);
+		[id(23), helpstring("method GetDataText")]
+			HRESULT GetDataText([in] long lHandle, [in] BOOL bFormatted, [out, string] BSTR *psValue, [out] short *psQuality, [out] DATE *pTimestamp);
+		[id(24), helpstring("method GetWriteState")]
+			HRESULT GetWriteState([in] long lHandle, [out] CEWriteState *pState);
+		[id(25), helpstring("method Write")]
+			HRESULT Write([in] long lHandle, [in] VARIANT varValue);
+		[id(26), helpstring("method AddItemWithScope")]
+			HRESULT AddItemWithScope([in, string] BSTR sText, [in, string] BSTR sScope, [out] long *plHandle);
+		[id(27), helpstring("method GetClientData")]
+			HRESULT GetClientData([in] long lHandle, [out] long *plClientData);
+		[id(28), helpstring("method SetClientData")]
+			HRESULT SetClientData([in] long lHandle, [in] long lClientData);
+		[id(29), helpstring("method SetFormatText")]
+			HRESULT SetFormatText([in] long lHandle, [in, string] BSTR sText);
+		[id(30), helpstring("method AddItemExpand")]
+			HRESULT AddItemExpand([in, string] BSTR sText, [in] CEExpandMode expandMode, [out] long *plHandle);
+	};
+
+
+	[
+		//dual,
+		//oleautomation,
+		uuid(CBE4BA22-FB6C-49f8-8029-470C28F03ADD),
+		helpstring("ICEWatchNotify Interface")
+	]
+	interface ICEWatchNotify : IUnknown
+	{
+		[helpstring("method OnExpressionChanged")]
+			HRESULT OnExpressionChanged([in] long lHandle);
+	};
+
+
+	[
+		uuid(CBE4BA23-FB6C-49f8-8029-470C28F03ADD),
+		helpstring("CEWatch Class")
+	]
+	coclass CEWatchBE
+	{
+		[default] interface ICEWatch;
+		[default, source] interface ICEWatchNotify;
+	};
+
+
+	[
+		object,
+		uuid(CBE4BA24-FB6C-49f8-8029-470C28F03ADD),
+		dual,
+		helpstring("ICEWatchAdmin Interface"),
+		pointer_default(unique)
+	]
+	interface ICEWatchAdmin : IDispatch
+	{
+		[id(1), helpstring("method Resubscribe")]
+			HRESULT Resubscribe();
+	};
+
+
+	[
+		uuid(CBE4BA25-FB6C-49f8-8029-470C28F03ADD),
+		helpstring("CEWatchAdmin Class")
+	]
+	coclass CEWatchAdminBE
+	{
+		[default] interface ICEWatchAdmin;
+	};
+};

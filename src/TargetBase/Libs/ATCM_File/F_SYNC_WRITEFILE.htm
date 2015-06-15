@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>F_SYNC_WRITEFILE</title>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="stylesheet" href="Lib.css">
+</head>
+<body bgcolor="#ffffcc">
+<h2>F_SYNC_WRITEFILE</h2>
+<p>Writes data from the given string to the specified file.</p>
+<h3>Interface</h3>
+<pre class="preforma">FUNCTION F_SYNC_WRITEFILE:BOOL     <br>VAR_INPUT<br>    DATA        : STRING;<br>END_VAR<br>VAR_IN_OUT<br>    FILE        : F_SYNC_FILE;<br>END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of the type <i><b>BOOL</b></i><br>
+Signalizes the error status.<br>
+Possible values:<br>
+<i><b>TRUE</b></i>: An error has occurred.<br>
+<i><b>FALSE</b></i>: No error has occurred.</p>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl>
+  <dt><b></b><br>
+  </dt>
+  <dt><b>DATA</b></dt>
+  <dd>Value of type STRING.<br>
+Specifies the value to be written.<br>
+    <br>
+  </dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl>
+  <dt><b><a name="File"></a>FILE</b></dt>
+  <dd>Instance of the <a href="F_SYNC_FILE.htm"><i><b>F_SYNC_FILE</b></i></a>
+structure<br>
+File object on which the operation is performed.</dd>
+</dl>
+<h3>Description</h3>
+<p><b><i>F_SYNC_WRITEFILE</i></b> writes the value passed to <i><b>DATA</b></i>
+in the file passed to <i><b>FILE</b></i>. Before writing in a file,
+the file must be opened with <i><b><a href="F_SYNC_OPENFILE.htm">F_SYNC_OPENFILE</a></b></i>.
+To allow write access, the access mode must be set to <i><b><a
+ href="Const_Mode.htm#ReadWrite">CF_READ_WRITE</a></b></i> or <a
+ href="Const_Mode.htm#Append"><b><i>CF_APPEND</i></b></a> in the <a
+ href="F_SYNC_FILE.htm#Mode"><i><b>MODE</b></i></a> parameter of the
+structure instance of <i><b><a href="F_SYNC_FILE.htm">F_SYNC_FILE</a></b></i>
+passed to <i> <b>F_SYNC_OPENFILE</b></i> before you open the file. </p>
+<p>The file pointer which indicates the current write position is
+represented by the structure variable <a
+ href="F_SYNC_FILE.htm#Position"> <i> <b>POSITION</b></i></a> of the
+structure instance of <i><b>F_SYNC_FILE</b></i> passed to <i><b>FILE</b></i>.
+The first write access following the opening of a file is always
+performed at the position defined by the access mode unless the file
+pointer has been explicitly set to a different position (see below). </p>
+<p> After each write access, the value of <i><b>POSITION</b></i> is
+automatically set to a position directly after the last byte written.
+This allows you to write sequentially in a file without having to
+explicitly set the file pointer to the new position. </p>
+<p>The position of a write access can be explicitly set by assigning a
+value to the structure variable <i> <b>POSITION</b></i>. For this
+purpose, the value of <i><b>POSITION</b></i> must be set to the
+desired writing position after opening a file and before the write
+access. On conclusion of the writing operation, the value of <i><b>POSITION</b></i>
+is again set to the position directly after the last byte written. </p>
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>F_SYNC_OPENFILE</title>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="stylesheet" href="Lib.css">
+</head>
+<body bgcolor="#ffffcc">
+<h2>F_SYNC_OPENFILE</h2>
+<p>Opens a file for editing.</p>
+<h3>Interface</h3>
+<pre class="preforma">FUNCTION F_SYNC_OPENFILE:BOOL<br>VAR_IN_OUT<br>    FILE        : F_SYNC_FILE;<br>END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of the type <i><b>BOOL</b></i><br>
+Signalizes the error status.<br>
+Possible values:<br>
+<i><b>TRUE</b></i>: An error has occurred.<br>
+<i><b>FALSE</b></i>: No error has occurred.</p>
+<h3>Parameter</h3>
+<h3>IN_OUT</h3>
+<dl>
+  <dt><b><a name="File"></a>FILE</b></dt>
+  <dd>Instance of the <a href="F_SYNC_FILE.htm"><i><b>F_SYNC_FILE</b></i></a>
+structure.<br>
+File object on which the operation is performed.</dd>
+</dl>
+<h3><a name="Description"></a>Description</h3>
+<p><i><b>F_SYNC_OPENFILE </b></i>opens the file passed to <i><b>FILE</b></i>
+for read or write access. <i><b>F_SYNC_OPENFILE </b></i>initiates an
+access cycle and therefore must always be called before a read or write
+access can be executed via other function block instances of the group
+of blocks for elementary synchronous file operations. </p>
+<p>The file to be opened is represented by an instance of the <a
+ href="F_SYNC_FILE.htm"><i><b>F_SYNC_FILE</b></i></a> structure. This
+structure contains the <b><i>MODE</i></b> element with which you
+define the access mode a file is to be opened with. The possible values
+are defined in the <a href="Const_Mode.htm">access mode constants</a>.
+</p>
+<p>Before you open a file, you need to set the access mode in the
+structure instance of <i><b>F_SYNC_FILE</b></i> passed to <i><b>F_SYNC_OPENFILE</b></i>.
+The access mode set during opening remains in effect until the file is
+closed again with <i><b>F_SYNC_CLOSEFILE</b></i>. All functions which
+are called between the opening and closing of a file and which work on
+the file object passed to <i><b>F_SYNC_OPENFILE</b></i> are subject to
+the access authorizations that have been set in <i><b>MODE</b></i>
+when opening the file. </p>
+<p>When a file is opened, the position of th file pointer always
+depends on the access mode, which is set in the instance of <i><b>F_SYNC_FILE</b></i>
+passed to <i><b>F_SYNC_OPENFILE</b></i>. When opening a file with <i><b>F_SYNC_OPENFILE</b></i>,
+an initialization of the element variable <i><b>POSITION</b></i> of
+the <i><b>F_SYNC_FILE</b></i> structure with a user-defined value is
+overwritten by the value that is assigned to the corresponding access
+mode. If a file access is to be executed at a specific position after
+having opened the file, you therefore need to explicitly set the value
+of <i><b>POSITION</b></i> anew <u>after opening</u>. </p>
+</body>
+</html>

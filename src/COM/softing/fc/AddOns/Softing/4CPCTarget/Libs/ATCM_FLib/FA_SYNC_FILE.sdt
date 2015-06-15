@@ -1,0 +1,25 @@
+
+(*[[
+    UserURL= "ATCM:FA_SYNC_FILE.htm",
+    javaclass = "~COM.softing.fclib.flib.SyncFLib",
+    deepcopy = "disable"
+]]*)
+
+(* 
+ *  ATCMControl FileAccess Datatype FA_SYNC_FILE
+ *  Purpose: Represents a file for synchronous file access.
+ *)
+TYPE
+    FA_SYNC_FILE : STRUCT
+    FILENAME        : WSTRING;          (* filename *)
+    MODE            : DINT;             (* file access mode *)
+    TEXTMODE        : BOOL;             (* read / write mode, TEXT or BINARY *)
+    TOUT            : TIME;             (* timeout for operation *)	
+    POSITION        : DINT;             (* start at position; returns last position *)
+    LSTOP           : WSTRING;          (* last operation *)
+    ISERROR         : BOOL;             (* last operation finished with error *)
+    LSTERRCD        : DINT;             (* last error code *)
+    LSTERRTXT       : WSTRING;          (* last error text *)
+    ISOPEN          : BOOL;             (* file open *)
+    END_STRUCT;
+END_TYPE

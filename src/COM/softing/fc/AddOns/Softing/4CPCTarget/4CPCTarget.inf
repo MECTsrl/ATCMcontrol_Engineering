@@ -1,0 +1,17 @@
+SUBPROJECT=inc\inc.mak
+SUBPROJECT=AddonHandler\4CPCTarget.mak
+SUBPROJECT=KAD\KAD.mak
+SUBPROJECT=CSC_OnlSrv\CSC_OnlSrv.mak
+SUBPROJECT=Libs\Libs.mak
+SUBPROJECT=cedl\cedl.mak
+SUBPROJECT=IoManag\IoManag.mak
+SUBPROJECT=OPCutil\OPCutil.mak
+SUBPROJECT=IO_OPC\IO_OPC.mak
+SUBPROJECT=ConfigOPC\ConfigOPC.mak
+SUBPROJECT=IO_DP\IO_DP.mak
+SUBPROJECT=ConfigDP\ConfigDP.mak
+SUBPROJECT=ConfigGSD\ConfigGSD.mak
+SUBPROJECT=ParseGSD\ParseGSD.mak
+SUBPROJECT=4rtc\4rtc.mak
+SUBPROJECT=IO_CANopen\IO_CANopen.mak
+SUBPROJECT=IO_ModbusIP\IO_ModbusIP.mak

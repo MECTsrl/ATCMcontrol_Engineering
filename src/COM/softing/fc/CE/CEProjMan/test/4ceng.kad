@@ -1,0 +1,342 @@
+<KAD4CE>
+ 
+<GENERAL COMPILERPATH="4CG.EXE"
+         SPLASHSCREEN="4CONTROL.bmp"
+         ICON="4CONTROLIcon.ico"
+         ABOUT="{A8FFBF10-D586-11d4-9503-0008C779D265}"
+       
+>
+</GENERAL>
+
+<FILES>
+  
+    <FILE EXT="res" PARSER="{7F67495D-E14B-11D4-9505-0008C779D265}" 
+                    STDEDITOR="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+    <FILE EXT="st"  PARSER="{7F67495D-E14B-11D4-9505-0008C779D265}" 
+                    PRGEDITOR="{A8FFBF10-D586-11d4-9503-0008C779D265}" />
+    <FILE EXT="cst" PARSER="{7F67495D-E14B-11D4-9505-0008C779D265}" 
+                    STDEDITOR="{A8FFBF10-D586-11d4-9503-0008C779D265}" />
+    <FILE EXT="gvl" PARSER="{7F67495D-E14B-11D4-9505-0008C779D265}" 
+                    PRGEDITOR="{A8FFBF10-D586-11d4-9503-0008C779D265}" />
+    <FILE EXT="sdt" PARSER="{7F67495D-E14B-11D4-9505-0008C779D265}" 
+                    PRGEDITOR="{A8FFBF10-D586-11d4-9503-0008C779D265}" />
+    <FILE EXT="4gr" PARSER="{7F67495D-E14B-11D4-9505-0008C779D265}" 
+                    PRGEDITOR="{A8FFBF10-D586-11d4-9503-0008C779D265}" />
+    <FILE EXT="html;htm" EXEEDITOR="{A8FFBF10-D586-11d4-9503-0008C779D265}"/> 
+    <FILE EXT="gif;bmp;jpg" EXEEDITOR="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+
+    <FILE EXT="pc" PARSER="{7F67495D-E14B-11D4-9505-0008C779D265}" 
+                   CONTAINER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+    <FILE EXT="iodp" PARSER="{7F67495D-E14B-11D4-9505-0008C779D265}" 
+                     EXEEDITOR="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+    <FILE EXT="ioopc" PARSER="{7F67495D-E14B-11D4-9505-0008C779D265}" 
+                      EXEEDITOR="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+    
+    <FILE EXT="pn" PARSER="{7F67495D-E14B-11D4-9505-0008C779D265}" 
+                   PRGEDITOR="{A8FFBF10-D586-11d4-9503-0008C779D265}" />
+    <FILE EXT="pam" PARSER="{7F67495D-E14B-11D4-9505-0008C779D265}" 
+                    CONTAINER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+    <FILE EXT="iopam" PARSER="{7F67495D-E14B-11D4-9505-0008C779D265}" 
+                      EXEEDITOR="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+    <FILE EXT="cam" STDEDITOR="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+</FILES>
+
+
+<CLASSES TYPE="PROJECT_CLASS"> 
+
+    <CLASS TYPE="GLOBAL_VAR_GROUP" 
+           TEXT="Global Variables"
+           SECTION="Classes.Gvl"
+           CLASS_TYPE="GLOBAL_VAR_FILES"/>
+    <CLASS TYPE="CONSTANT_GROUP" 
+           TEXT="Constants"
+           SECTION="Classes.Constants"
+           CLASS_TYPE="CONSTANT_FILES"/>
+    <CLASS TYPE="DATA_TYPE_GROUP" 
+           TEXT="Data Types"
+           SECTION="Classes.DataTypes"
+           CLASS_TYPE="DATA_TYPE"/>
+    <CLASS TYPE="RESOURCE_GROUP" 
+           TEXT="Resources"
+           SECTION="Classes.Resources"
+           CLASS_TYPE="RESOURCE"/>
+    <CLASS TYPE="PROGRAM_GROUP" 
+           TEXT="Programs"
+           SECTION="Classes.Programs"
+           CLASS_TYPE="PROGRAM"/>
+    <CLASS TYPE="FUNCTION_BLOCK_GROUP" 
+           TEXT="Function Blocks"
+           SECTION="Classes.FunctionBlocks"
+           CLASS_TYPE="FUNCTION_BLOCK"/>
+    <CLASS TYPE="FUNCTION_GROUP" 
+           TEXT="Functions"
+           SECTION="Classes.Functions"
+           CLASS_TYPE="FUNCTION"/>
+    <CLASS TYPE="LIBRARY_GROUP" 
+           TEXT="Libraries"
+           SECTION="Classes.Libraries"
+           CLASS_TYPE="LIBRARY"/>
+</CLASSES >
+
+
+<TARGETS TYPE="PROJECT_TARGET">
+    <TARGET TYPE="PC"/>
+</TARGETS>
+
+
+<MAINMENU>
+     <MENU ID="Create">
+	<MENUITEM DISPID="OnNewFunctionBlock" 
+                  TEXT="Function Block"
+                  ICON="fb.ico" 
+                  HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        <MENUITEM DISPID="OnNewProgram" 
+                  TEXT="Program"
+                  ICON="prog.ico" 
+                  HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        <MENUITEM DISPID="OnNewFunction" 
+                  TEXT="Function"
+                  ICON="func.ico" 
+                  HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        <MENUITEM DISPID="OnNewPipeNetwork" 
+                  TEXT="Pipe Network"
+                  ICON="pn.ico" 
+                  HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        <MENUITEM SEPARATOR="1"/>
+        <MENUITEM DISPID="OnNewPC" 
+                  TEXT="PC"
+                  ICON="pc.ico" 
+                  HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        <MENUITEM DISPID="OnNewPAM"  
+                  TEXT="Pam"
+                  ICON="pam.ico" 
+                  HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        <MENUITEM SEPARATOR="1"/>
+        <MENUITEM DISPID="OnNewLibrary" 
+                  TEXT="Add Library"
+                  ICON="lib.ico" 
+                  HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        <MENUITEM DISPID="OnNewFile" 
+                  TEXT="Add Additional File"
+                  ICON="file.ico" 
+                  HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+    </MENU>
+    <MENU ID="Tools">
+        <MENUITEM TEXT="Librarian"
+                  EXEHANDLER="$(instdir)\\Engineering\\bin\\4clibrarian.exe"/>
+        <MENUITEM TEXT="Field PC Configuration"
+		  EXEHANDLER="$(instdir)\\Engineering\\bin\\4clibrarian.exe"/>
+    </MENU>
+</MAINMENU>
+
+
+<TOOLBARS>
+   <TOOLBAR ID="">
+        <TOOLBARITEM ICON=""
+                     HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"
+                     DISPID=""
+                     STBARTXT=""
+                     TOOLTIP=""/>
+   </TOOLBAR>
+   <TOOLBAR ID="">
+        <TOOLBARITEM ICON=""
+                     HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"
+                     DISPID=""
+                     STBARTXT=""
+                     TOOLTIP=""/>
+   </TOOLBAR>
+</TOOLBARS>
+
+<TYPES>
+   <TYPE ID="PROJECT_CLASS" ICON="project.ico">
+        <MENU>
+            <MENUITEM DISPID="OnNew&amp;Prog" TEXT="Insert Program" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+            <MENUITEM DISPID="OnNew&amp;FB" TEXT="Insert Function Block" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+            <MENUITEM DISPID="OnNewF&amp;un" TEXT="Insert Function" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+            <MENUITEM DISPID="OnNew&amp;Struct" TEXT="Insert Structure" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+            <MENUITEM DISPID="OnNew&amp;Const" TEXT="Insert Constants" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+            <MENUITEM DISPID="OnNew&amp;Resource" TEXT="Insert Resource" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+            <MENUITEM DISPID="OnNew&amp;Pipe" TEXT="Insert Pipe Network" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}" />
+        </MENU>
+   </TYPE>
+   <TYPE ID="GLOBAL_VAR_GROUP" ICON="gvlgroup.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="GLOBAL_VAR_FILE" ICON="gvlfile.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="GLOBAL_VAR" VISIBILITY="0">
+   </TYPE>
+   <TYPE ID="CONSTANT_GROUP" ICON="constgroup.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="CONSTANT_FILE" ICON="constfile.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="CONSTANT" VISIBILITY="0">
+   </TYPE>
+   <TYPE ID="DATA_TYPE_GROUP" ICON="dtgroup.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="DATA_TYPE" ICON="dt.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="RESOURCE_GROUP" ICON="resgroup.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="RESOURCE" ICON="res.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="TASK" ICON="task.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="GLOB_VAR_FILE_REF" ICON="glvref.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="PROGRAM_REF" ICON="prgref.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="PROGRAM_GROUP" ICON="prggroup.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="PROGRAM" ICON="prg.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="FUNCTION_BLOCK_GROUP" ICON="fbgroup.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="FUNCTION_BLOCK" ICON="fb.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="VAR" ICON="var.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="FUNCTION_GROUP" ICON="fungroup.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="FUNCTION" ICON="fun.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="LIBRARY_GROUP" ICON="libgroup.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="LIBRARY" ICON="lib.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+
+
+   <TYPE ID="PROJECT_INSTANCE" ICON="projinst.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="PC_INST" ICON="pcinst.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="RESOURCE_INST" ICON="resinst.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="TASK_INST" ICON="taskinst.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="PROGRAM_INST" ICON="prginst.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="FUNCTION_BLOCK_INST" ICON="fbinst.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="DATA_TYPE_INST" ICON="dtinst.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+
+
+   <TYPE ID="PROJECT_TARGET" ICON="projtarget.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="PC" ICON="pc.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+        <TARGETONLINE CONNECT="{A8FFBF10-D586-11d4-9503-0008C779D265}"
+                      DEBUGCONNECT="{A8FFBF10-D586-11d4-9503-0008C779D265}"	
+                      STARTSTOPCONTROL="{A8FFBF10-D586-11d4-9503-0008C779D265}"
+                      STARTSTOPTASKS="{A8FFBF10-D586-11d4-9503-0008C779D265}"
+                      WARMSTART="{A8FFBF10-D586-11d4-9503-0008C779D265}"
+                      COLDSTART="{A8FFBF10-D586-11d4-9503-0008C779D265}"
+                      INITIALIZECLEAR="{A8FFBF10-D586-11d4-9503-0008C779D265}"
+                      DOWNLOAD="{A8FFBF10-D586-11d4-9503-0008C779D265}"
+                      DLCHANGES="{A8FFBF10-D586-11d4-9503-0008C779D265}"
+                      DLSELECTION="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+   </TYPE>
+   <TYPE ID="IO_OPC" ICON="ioopc.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="IO_DP" ICON="iode.ico">
+         <MENU>
+            <MENUITEM DISPID="" TEXT="" HANDLER="{A8FFBF10-D586-11d4-9503-0008C779D265}"/>
+        </MENU>
+   </TYPE>
+
+</TYPES>
+
+
+
+
+</KAD4CE>
+ 

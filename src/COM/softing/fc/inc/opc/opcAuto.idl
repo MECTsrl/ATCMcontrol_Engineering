@@ -1,0 +1,798 @@
+// OPCAuto.idl : OPC Automation 2.0 interface
+// Version 2.19.00
+//
+// The following naming is used to make Visual Basic see the correct names:
+//    OPCxxx is the name used in the spec, IOPCxxx is an interface
+//    OPCBrowser, OPCGroups, OPCItems are unchanged from the spec
+//    OPCServer is the name of the coclass containing IOPCAutoServer
+//       IOPCAutoServer is the actual interface (IOPCServer is already used!)
+//    OPCGroup is the name of the coclass
+//       IOPCGroup is the actual interface
+//       DIOPCGroupEvent is the group's event disp-interface
+
+// This file will be processed by the MIDL tool to
+// produce the type library (OPCAuto.tlb) and marshalling code.
+#define DISPID_NEWENUM -4
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+interface OPCBrowser;   // Forward references
+interface OPCGroups;
+interface OPCGroup;
+interface OPCItems;
+interface OPCItem;
+
+//*********************************************************
+   [
+      object,
+      dual,
+      uuid(28E68F90-8D75-11d1-8DC3-3C302A000000),
+      helpstring("OPC Server Event"),
+      pointer_default(unique),
+      oleautomation
+   ]
+   interface IOPCServerEvent : IDispatch
+   {
+      HRESULT ServerShutDown(
+                        [in,string] BSTR Reason );
+
+   };
+
+//*********************************************************
+   [
+      object,
+      dual,
+      uuid(28E68F9C-8D75-11d1-8DC3-3C302A000000),
+      helpstring("OPCGroups Event"),
+      pointer_default(unique),
+      oleautomation
+   ]
+   interface IOPCGroupsEvent : IDispatch
+   {
+                        [helpstring("Event to update item data from any group")]
+      HRESULT GlobalDataChange(
+                        [in] LONG               TransactionID,
+                        [in] LONG               GroupHandle,
+                        [in] LONG               NumItems,
+                        [in] SAFEARRAY(LONG)  * ClientHandles,
+                        [in] SAFEARRAY(VARIANT)* ItemValues,
+                        [in] SAFEARRAY(LONG)  * Qualities,
+                        [in] SAFEARRAY(DATE)  * TimeStamps);
+   };
+
+//*********************************************************
+   [
+      object,
+      dual,
+      uuid(28E68F90-8D75-11d1-8DC3-3C302A000001),
+      helpstring("OPCGroup Events"),
+      pointer_default(unique),
+      oleautomation
+   ]
+   interface IOPCGroupEvent : IDispatch
+   {
+                        [helpstring("Event to notify when active data has changed")]
+      HRESULT DataChange(
+                        [in] LONG               TransactionID,
+                        [in] LONG               NumItems,
+                        [in] SAFEARRAY(LONG)  * ClientHandles,
+                        [in] SAFEARRAY(VARIANT)* ItemValues,
+                        [in] SAFEARRAY(LONG)  * Qualities,
+                        [in] SAFEARRAY(DATE)  * TimeStamps);
+
+                        [helpstring("Event to update item data when a read request was completed")]
+      HRESULT AsyncReadComplete(
+                        [in] LONG               TransactionID,
+                        [in] LONG               NumItems,
+                        [in] SAFEARRAY(LONG)  * ClientHandles,
+                        [in] SAFEARRAY(VARIANT)* ItemValues,
+                        [in] SAFEARRAY(LONG)  * Qualities,
+                        [in] SAFEARRAY(DATE)  * TimeStamps,
+                        [in] SAFEARRAY(LONG)  * Errors);
+
+                        [helpstring("Event to notify when a write request was completed")]
+      HRESULT AsyncWriteComplete(
+                        [in] LONG               TransactionID,
+                        [in] LONG               NumItems,
+                        [in] SAFEARRAY(LONG)  * ClientHandles,
+                        [in] SAFEARRAY(LONG)  * Errors);
+
+                        [helpstring("Event to notify when a cancel transaction request was completed")]
+      HRESULT AsyncCancelComplete(
+                        [in] LONG TransactionID);
+   };
+
+//*********************************************************
+[
+   uuid(28E68F91-8D75-11d1-8DC3-3C302A000000),
+   version(1.0),
+   helpstring("OPC Automation 2.0")
+]
+library OPCAutomation
+{
+   importlib("stdole32.tlb");
+   importlib("stdole2.tlb");
+
+   enum OPCNamespaceTypes { OPCHierarchical = 1, OPCFlat};
+   enum OPCDataSource { OPCCache = 1, OPCDevice};
+   enum OPCAccessRights { OPCReadable = 1, OPCWritable};
+   enum OPCServerState{ OPCRunning = 1, OPCFailed,
+                        OPCNoconfig, OPCSuspended,
+                        OPCTest, OPCDisconnected };
+   enum OPCErrors{ OPCInvalidHandle = 0xC0040001L,
+                   OPCBadType = 0xC0040004L,
+                   OPCPublic = 0xC0040005L,
+                   OPCBadRights = 0xC0040006L,
+                   OPCUnknownItemID = 0xC0040007L,
+                   OPCInvalidItemID = 0xC0040008L,
+                   OPCInvalidFilter = 0xC0040009L,
+                   OPCUnknownPath = 0xC004000AL,
+                   OPCRange = 0xC004000BL,
+                   OPCDuplicateName = 0xC004000CL,
+                   OPCUnsupportedRate = 0xC004000DL,
+                   OPCClamp = 0xC004000EL,
+                   OPCInuse = 0x00040200L,
+                   OPCInvalidConfig = 0xC0040201L,
+                   OPCNotFound = 0xC0040202L,
+                   OPCInvalidPID = 0xC0040203L };
+
+//*********************************************************
+   // OPCServer Interface
+   [
+      object,
+      dual,oleautomation,
+      uuid(28E68F92-8D75-11d1-8DC3-3C302A000000),
+      helpstring("OPCServer Object"),
+      pointer_default(unique)
+   ]
+   interface IOPCAutoServer : IDispatch
+   {
+      // Properties
+                        [propget,helpstring("Time the Server Started")]
+      HRESULT StartTime([out, retval] DATE * StartTime );
+
+                        [propget]
+      HRESULT CurrentTime([out, retval] DATE * CurrentTime );
+
+                        [propget,helpstring("Last time the server sent data")]
+      HRESULT LastUpdateTime([out, retval] DATE * LastUpdateTime );
+
+                        [propget]
+      HRESULT MajorVersion([out, retval] short * MajorVersion );
+
+                        [propget]
+      HRESULT MinorVersion([out, retval] short * MinorVersion );
+
+                        [propget]
+      HRESULT BuildNumber([out, retval] short * BuildNumber );
+
+                        [propget,helpstring("Server Vendor's name")]
+      HRESULT VendorInfo([out, retval] BSTR * VendorInfo );
+
+                        [propget,helpstring("Returns an OPCServerState")]
+      HRESULT ServerState([out, retval] LONG * ServerState );
+
+                        [propget,helpstring("Returns this server's name")]
+      HRESULT ServerName([out, retval] BSTR * ServerName );
+
+                        [propget,helpstring("Returns this server's node")]
+      HRESULT ServerNode([out, retval] BSTR * ServerNode );
+
+                        [propget,helpstring("Identify the client")]
+      HRESULT ClientName([out, retval] BSTR * ClientName );
+                        [propput]
+      HRESULT ClientName([in] BSTR ClientName );
+
+                        [propget]
+      HRESULT LocaleID([out, retval] LONG * LocaleID );
+                        [propput]
+      HRESULT LocaleID([in] LONG LocaleID );
+
+                        [propget,helpstring("Might possibly be Percent utilization")]
+      HRESULT Bandwidth([out, retval] LONG * Bandwidth );
+
+                        [id(0),propget,helpstring("The collection of OPCGroup Objects")]
+      HRESULT OPCGroups([out, retval] OPCGroups ** ppGroups );
+
+                        [propget,helpstring("Returns an array of names")]
+      HRESULT PublicGroupNames([out, retval] VARIANT * PublicGroups );
+
+      // Methods
+
+                        [helpstring("Returns an array of Server names, optionally on another node")]
+      HRESULT GetOPCServers(
+                        [in, optional]    VARIANT  Node,
+                        [out, retval]     VARIANT * OPCServers );
+
+                        [helpstring("Connect to a named OPC Server")]
+      HRESULT Connect(
+                        [in, string]      BSTR     ProgID,
+                        [in, optional]    VARIANT  Node);
+
+                        [helpstring("End Connection with OPC Server")]
+      HRESULT Disconnect();
+
+                        [helpstring("Create a new OPCBrowser Object")]
+      HRESULT CreateBrowser(
+                        [out, retval]     OPCBrowser ** ppBrowser );
+
+                        [helpstring("Convert an error code to a descriptive string")]
+      HRESULT GetErrorString(
+                        [in]              LONG    ErrorCode,
+                        [out, retval]     BSTR *  ErrorString );
+
+                        [helpstring("The LocaleIDs supported by this server")]
+      HRESULT QueryAvailableLocaleIDs(
+                        [out, retval]     VARIANT * LocaleIDs );
+
+      HRESULT QueryAvailableProperties(
+                        [in, string]      BSTR              ItemID,
+                        [out]             LONG            * Count,
+                        [out]             SAFEARRAY(LONG) * PropertyIDs,
+                        [out]             SAFEARRAY(BSTR) * Descriptions,
+                        [out]             SAFEARRAY(SHORT) * DataTypes );
+
+      HRESULT GetItemProperties(
+                        [in, string]      BSTR              ItemID,
+                        [in]              LONG              Count,
+                        [in]              SAFEARRAY(LONG) * PropertyIDs,
+                        [out]             SAFEARRAY(VARIANT)* PropertyValues,
+                        [out]             SAFEARRAY(LONG) * Errors );
+
+      HRESULT LookupItemIDs(
+                        [in, string]      BSTR              ItemID,
+                        [in]              LONG              Count,
+                        [in]              SAFEARRAY(LONG) * PropertyIDs,
+                        [out]             SAFEARRAY(BSTR) * NewItemIDs,
+                        [out]             SAFEARRAY(LONG) * Errors );
+   };
+
+//*********************************************************
+   // OPCServer's Event fired back to the client
+   [
+      uuid(28E68F93-8D75-11d1-8DC3-3C302A000000),
+      nonextensible,
+      helpstring("OPC Server Event")
+   ]
+   dispinterface DIOPCServerEvent
+   {
+      properties:
+      methods:
+      [id(1)] void ServerShutDown(
+                        [in,string] BSTR Reason );
+
+   };
+
+
+//*********************************************************
+   // OPCBrowser Interface
+   [
+      object,
+      dual, oleautomation,
+      uuid(28E68F94-8D75-11d1-8DC3-3C302A000000),
+      helpstring("OPC Browser"),
+      pointer_default(unique)
+   ]
+   interface OPCBrowser : IDispatch
+   {
+      // Properties
+                        [propget,helpstring("Returns one of OPCNamespaceTypes")]
+      HRESULT Organization([out, retval] LONG * Organization );
+
+                        [propget,helpstring("Filter narrows the search results")]
+      HRESULT Filter([out, retval] BSTR * Filter );
+                        [propput]
+      HRESULT Filter([in] BSTR Filter );
+
+                        [propget,helpstring("Data type used in ShowLeafs (any Variant type)")]
+      HRESULT DataType([out, retval] SHORT * DataType );
+                        [propput]
+      HRESULT DataType([in] SHORT DataType );
+
+                        [propget,helpstring("Access Rights used in ShowLeafs ()")]
+      HRESULT AccessRights([out, retval] LONG * AccessRights );
+                        [propput]
+      HRESULT AccessRights([in] LONG AccessRights );
+
+                        [propget,helpstring("Position in the Tree")]
+      HRESULT CurrentPosition([out, retval] BSTR * CurrentPosition );
+
+                        [propget,helpstring("Number of items in the Collection")]
+      HRESULT Count([out, retval] LONG * Count );
+
+                        [propget, restricted, id( DISPID_NEWENUM )]
+      HRESULT _NewEnum([out, retval] IUnknown ** ppUnk );
+
+      // Methods
+
+      HRESULT Item(
+                        [in]              VARIANT ItemSpecifier,
+                        [out, retval]     BSTR * Item );
+
+                        [helpstring("Get all of the branch names that match the filter")]
+      HRESULT ShowBranches();
+
+                        [helpstring("Get all of the leaf names that match the filter")]
+      HRESULT ShowLeafs(
+                        [in, optional]    VARIANT Flat);
+
+                        [helpstring("Move up a level in the tree")]
+      HRESULT MoveUp();
+
+                        [helpstring("Move up to the top (root) of the tree")]
+      HRESULT MoveToRoot();
+
+                        [helpstring("Move down into this branch")]
+      HRESULT MoveDown(
+                        [in, string]      BSTR        Branch );
+
+                        [helpstring("Move to this absolute position")]
+      HRESULT MoveTo(
+                        [in]              SAFEARRAY(BSTR) * Branches );
+
+                        [helpstring("Converts a leaf name to an ItemID")]
+      HRESULT GetItemID(
+                        [in, string]      BSTR        Leaf,
+                        [out, retval]     BSTR *      ItemID );
+
+                        [helpstring("Returns an array of Access Paths for an ItemID")]
+      HRESULT GetAccessPaths(
+                        [in, string]      BSTR        ItemID,
+                        [out, retval]     VARIANT *   AccessPaths );
+   };
+
+
+//*********************************************************
+   // OPCGroups Interface
+   [
+      object,
+      dual,oleautomation,
+      uuid(28E68F95-8D75-11d1-8DC3-3C302A000000),
+      helpstring("Collection of OPC Group objects"),
+      pointer_default(unique)
+   ]
+   interface IOPCGroups : IDispatch
+   {
+      // Properties
+                        [propget,helpstring("Returns the parent OPCServer")]
+      HRESULT Parent([out, retval] IOPCAutoServer ** ppParent );
+
+                        [propget]
+      HRESULT DefaultGroupIsActive([out, retval] VARIANT_BOOL * DefaultGroupIsActive );
+                        [propput]
+      HRESULT DefaultGroupIsActive([in] VARIANT_BOOL DefaultGroupIsActive );
+
+                        [propget]
+      HRESULT DefaultGroupUpdateRate([out, retval] LONG * DefaultGroupUpdateRate );
+                        [propput]
+      HRESULT DefaultGroupUpdateRate([in] LONG DefaultGroupUpdateRate );
+
+                        [propget]
+      HRESULT DefaultGroupDeadband([out, retval] float * DefaultGroupDeadband );
+                        [propput]
+      HRESULT DefaultGroupDeadband([in] float DefaultGroupDeadband );
+
+                        [propget]
+      HRESULT DefaultGroupLocaleID([out, retval] LONG * DefaultGroupLocaleID );
+                        [propput]
+      HRESULT DefaultGroupLocaleID([in] LONG DefaultGroupLocaleID );
+
+                        [propget]
+      HRESULT DefaultGroupTimeBias([out, retval] LONG * DefaultGroupTimeBias );
+                        [propput]
+      HRESULT DefaultGroupTimeBias([in] LONG DefaultGroupTimeBias );
+
+                        [propget,helpstring("Number of items in the Collection")]
+      HRESULT Count([out, retval] LONG * Count );
+
+                        [propget, restricted, id( DISPID_NEWENUM )]
+      HRESULT _NewEnum([out, retval] IUnknown ** ppUnk );
+
+      // Methods
+
+                        [id(0),helpstring("Returns an OPCGroup by index (starts at 1) or name")]
+      HRESULT Item(
+                        [in]              VARIANT     ItemSpecifier,
+                        [out, retval]     OPCGroup ** ppGroup );
+
+                        [helpstring("Adds an OPCGroup to the collection")]
+      HRESULT Add(
+                        [in,optional]     VARIANT     Name,
+                        [out, retval]     OPCGroup ** ppGroup );
+
+                        [helpstring("Returns an OPCGroup specified by server handle or name")]
+      HRESULT GetOPCGroup(
+                        [in]              VARIANT     ItemSpecifier,
+                        [out, retval]     OPCGroup ** ppGroup );
+
+                        [helpstring("Remove all groups and their items")]
+      HRESULT RemoveAll();
+
+                        [helpstring("Removes an OPCGroup specified by server handle or name")]
+      HRESULT Remove(
+                        [in]              VARIANT     ItemSpecifier );
+
+                        [helpstring("Adds an existing public OPCGroup to the collection")]
+      HRESULT ConnectPublicGroup(
+                        [in]              BSTR        Name,
+                        [out, retval]     OPCGroup ** ppGroup );
+
+                        [helpstring("Removes a public OPCGroup specified by server handle or name")]
+      HRESULT RemovePublicGroup(
+                        [in]              VARIANT     ItemSpecifier );
+
+   };
+
+//*********************************************************
+   // OPCGroup's Events fired back to the client
+   [
+      uuid(28E68F9D-8D75-11d1-8DC3-3C302A000000),
+      nonextensible,
+      helpstring("OPC Groups Event")
+   ]
+   dispinterface DIOPCGroupsEvent
+   {
+      properties:
+      methods:
+      [id(1)] void GlobalDataChange(
+                        [in] LONG               TransactionID,
+                        [in] LONG               GroupHandle,
+                        [in] LONG               NumItems,
+                        [in] SAFEARRAY(LONG)  * ClientHandles,
+                        [in] SAFEARRAY(VARIANT)* ItemValues,
+                        [in] SAFEARRAY(LONG)  * Qualities,
+                        [in] SAFEARRAY(DATE)  * TimeStamps);
+   };
+
+//*********************************************************
+   // IOPCGroup Interface
+   [
+      object,
+      dual,oleautomation,
+      uuid(28E68F96-8D75-11d1-8DC3-3C302A000000),
+      helpstring("OPC Group Object"),
+      pointer_default(unique)
+   ]
+   interface IOPCGroup : IDispatch
+   {
+      // Properties
+                        [propget,helpstring("Returns the parent OPCServer")]
+      HRESULT Parent([out, retval] IOPCAutoServer ** ppParent );
+
+                        [propget]
+      HRESULT Name([out, retval] BSTR * Name );
+                        [propput]
+      HRESULT Name([in] BSTR Name );
+
+                        [propget,helpstring("True if this group is public")]
+      HRESULT IsPublic([out, retval] VARIANT_BOOL * IsPublic );
+
+                        [propget,helpstring("True if this group is active")]
+      HRESULT IsActive([out, retval] VARIANT_BOOL * IsActive );
+                        [propput]
+      HRESULT IsActive([in] VARIANT_BOOL IsActive );
+
+                        [propget,helpstring("True if this group will get asynchronous data updates")]
+      HRESULT IsSubscribed([out, retval] VARIANT_BOOL * IsSubscribed );
+                        [propput]
+      HRESULT IsSubscribed([in] VARIANT_BOOL IsSubscribed );
+
+                        [propget]
+      HRESULT ClientHandle([out, retval] LONG * ClientHandle );
+                        [propput]
+      HRESULT ClientHandle([in] LONG ClientHandle );
+
+                        [propget]
+      HRESULT ServerHandle([out, retval] LONG * ServerHandle );
+
+                        [propget]
+      HRESULT LocaleID([out, retval] LONG * LocaleID );
+                        [propput]
+      HRESULT LocaleID([in] LONG LocaleID );
+
+                        [propget]
+      HRESULT TimeBias([out, retval] LONG * TimeBias );
+                        [propput]
+      HRESULT TimeBias([in] LONG TimeBias );
+
+                        [propget]
+      HRESULT DeadBand([out, retval] FLOAT * DeadBand );
+                        [propput]
+      HRESULT DeadBand([in] FLOAT DeadBand );
+
+                        [propget,helpstring("Rate data can be returned to an application (in mSec)")]
+      HRESULT UpdateRate([out, retval] LONG * UpdateRate );
+                        [propput]
+      HRESULT UpdateRate([in] LONG UpdateRate );
+
+                        [id(0),propget,helpstring("Returns the OPCItems collection")]
+      HRESULT OPCItems([out, retval] OPCItems ** ppItems );
+
+      // Methods
+
+      HRESULT SyncRead(
+                        [in]              SHORT             Source,
+                        [in]              LONG              NumItems,
+                        [in]              SAFEARRAY(LONG) * ServerHandles,
+                        [out]             SAFEARRAY(VARIANT) * Values,
+                        [out]             SAFEARRAY(LONG) * Errors,
+                        [out,optional]    VARIANT         * Qualities,
+                        [out,optional]    VARIANT         * TimeStamps);
+
+      HRESULT SyncWrite(
+                        [in]              LONG              NumItems,
+                        [in]              SAFEARRAY(LONG) * ServerHandles,
+                        [in]              SAFEARRAY(VARIANT) * Values,
+                        [out]             SAFEARRAY(LONG) * Errors);
+
+      HRESULT AsyncRead(
+                        [in]              LONG              NumItems,
+                        [in]              SAFEARRAY(LONG) * ServerHandles,
+                        [out]             SAFEARRAY(LONG) * Errors,
+                        [in]              LONG              TransactionID,
+                        [out]             LONG            * CancelID);
+
+      HRESULT AsyncWrite(
+                        [in]              LONG              NumItems,
+                        [in]              SAFEARRAY(LONG) * ServerHandles,
+                        [in]              SAFEARRAY(VARIANT) * Values,
+                        [out]             SAFEARRAY(LONG) * Errors,
+                        [in]              LONG              TransactionID,
+                        [out]             LONG            * CancelID);
+
+      HRESULT AsyncRefresh(
+                        [in]              SHORT             Source,
+                        [in]              LONG              TransactionID,
+                        [out]             LONG            * CancelID);
+
+      HRESULT AsyncCancel(
+                        [in]              LONG              CancelID);
+
+   };
+
+//*********************************************************
+   // OPCGroup's Events fired back to the client
+   [
+      uuid(28E68F97-8D75-11d1-8DC3-3C302A000000),
+      nonextensible,
+      helpstring("OPC Group Events")
+   ]
+   dispinterface DIOPCGroupEvent
+   {
+      properties:
+      methods:
+      [id(1)] void DataChange(
+                        [in] LONG               TransactionID,
+                        [in] LONG               NumItems,
+                        [in] SAFEARRAY(LONG)  * ClientHandles,
+                        [in] SAFEARRAY(VARIANT)* ItemValues,
+                        [in] SAFEARRAY(LONG)  * Qualities,
+                        [in] SAFEARRAY(DATE)  * TimeStamps);
+
+      [id(2)] void AsyncReadComplete(
+                        [in] LONG               TransactionID,
+                        [in] LONG               NumItems,
+                        [in] SAFEARRAY(LONG)  * ClientHandles,
+                        [in] SAFEARRAY(VARIANT)* ItemValues,
+                        [in] SAFEARRAY(LONG)  * Qualities,
+                        [in] SAFEARRAY(DATE)  * TimeStamps,
+                        [in] SAFEARRAY(LONG)  * Errors);
+
+      [id(3)] void AsyncWriteComplete(
+                        [in] LONG               TransactionID,
+                        [in] LONG               NumItems,
+                        [in] SAFEARRAY(LONG)  * ClientHandles,
+                        [in] SAFEARRAY(LONG)  * Errors);
+
+      [id(4)] void AsyncCancelComplete(
+                        [in] LONG CancelID);
+   };
+
+//*********************************************************
+   // OPCItems Collection Interface
+   [
+      object,
+      dual,oleautomation,
+      uuid(28E68F98-8D75-11d1-8DC3-3C302A000000),
+      helpstring("Collection of OPC Item objects"),
+      pointer_default(unique)
+   ]
+   interface OPCItems : IDispatch
+   {
+      // Properties
+                        [propget,helpstring("Returns the parent OPCGroup")]
+      HRESULT Parent([out, retval] OPCGroup ** ppParent );
+
+                        [propget]
+      HRESULT DefaultRequestedDataType([out, retval] SHORT * DefaultRequestedDataType );
+                        [propput]
+      HRESULT DefaultRequestedDataType([in] SHORT DefaultRequestedDataType );
+
+                        [propget]
+      HRESULT DefaultAccessPath([out, retval] BSTR * DefaultAccessPath );
+                        [propput]
+      HRESULT DefaultAccessPath([in, string] BSTR DefaultAccessPath );
+
+                        [propget]
+      HRESULT DefaultIsActive([out, retval] VARIANT_BOOL * DefaultIsActive );
+                        [propput]
+      HRESULT DefaultIsActive([in] VARIANT_BOOL DefaultIsActive );
+
+                        [propget,helpstring("Number of items in the Collection")]
+      HRESULT Count([out, retval] LONG * Count );
+
+                        [propget, restricted, id( DISPID_NEWENUM )]
+      HRESULT _NewEnum([out, retval] IUnknown ** ppUnk );
+
+      // Methods
+
+                        [id(0),helpstring("Returns an OPCItem by index (starts at 1)")]
+      HRESULT Item(
+                        [in]              VARIANT    ItemSpecifier,
+                        [out, retval]     OPCItem ** ppItem );
+
+                        [helpstring("Returns an OPCItem specified by server handle")]
+      HRESULT GetOPCItem(
+                        [in]              LONG       ServerHandle,
+                        [out, retval]     OPCItem ** ppItem );
+
+                        [helpstring("Adds an OPCItem object to the collection")]
+      HRESULT AddItem(
+                        [in, string]      BSTR ItemID,
+                        [in]              LONG ClientHandle,
+                        [out, retval]     OPCItem ** ppItem );
+
+                        [helpstring("Adds OPCItem objects to the collection")]
+      HRESULT AddItems(
+                        [in]              LONG              NumItems,
+                        [in]              SAFEARRAY(BSTR) * ItemIDs,
+                        [in]              SAFEARRAY(LONG) * ClientHandles,
+                        [out]             SAFEARRAY(LONG) * ServerHandles,
+                        [out]             SAFEARRAY(LONG) * Errors,
+                        [in, optional]    VARIANT           RequestedDataTypes,
+                        [in, optional]    VARIANT           AccessPaths);
+
+                        [helpstring("Removes OPCItem objects from the collection")]
+      HRESULT Remove(
+                        [in]              LONG              NumItems,
+                        [in]              SAFEARRAY(LONG) * ServerHandles,
+                        [out]             SAFEARRAY(LONG) * Errors);
+
+                        [helpstring("?")]
+      HRESULT Validate(
+                        [in]              LONG              NumItems,
+                        [in]              SAFEARRAY(BSTR) * ItemIDs,
+                        [out]             SAFEARRAY(LONG) * Errors,
+                        [in, optional]    VARIANT           RequestedDataTypes,
+                        [in, optional]    VARIANT           AccessPaths);
+
+                        [helpstring("Set the active state of OPCItem objects")]
+      HRESULT SetActive(
+                        [in]              LONG              NumItems,
+                        [in]              SAFEARRAY(LONG) * ServerHandles,
+                        [in]              VARIANT_BOOL      ActiveState,
+                        [out]             SAFEARRAY(LONG) * Errors);
+
+                        [helpstring("Set the Client handles of OPCItem objects")]
+      HRESULT SetClientHandles(
+                        [in]              LONG              NumItems,
+                        [in]              SAFEARRAY(LONG) * ServerHandles,
+                        [in]              SAFEARRAY(LONG) * ClientHandles,
+                        [out]             SAFEARRAY(LONG) * Errors);
+
+                        [helpstring("Set the Data Types of OPCItem objects")]
+      HRESULT SetDataTypes(
+                        [in]              LONG              NumItems,
+                        [in]              SAFEARRAY(LONG) * ServerHandles,
+                        [in]              SAFEARRAY(LONG) * RequestedDataTypes,
+                        [out]             SAFEARRAY(LONG) * Errors);
+
+   };
+
+//*********************************************************
+   // OPCItem Interface
+   [
+      object,
+      dual,oleautomation,
+      uuid(28E68F99-8D75-11d1-8DC3-3C302A000000),
+      helpstring("OPC Item object"),
+      pointer_default(unique)
+   ]
+   interface OPCItem : IDispatch
+   {
+      // Properties
+                        [propget,helpstring("Returns the parent OPCGroup")]
+      HRESULT Parent([out, retval] OPCGroup ** Parent );
+
+                        [propget]
+      HRESULT ClientHandle([out, retval] LONG * ClientHandle );
+                        [propput]
+      HRESULT ClientHandle([in] LONG ClientHandle );
+
+                        [propget]
+      HRESULT ServerHandle([out, retval] LONG * ServerHandle );
+
+                        [propget]
+      HRESULT AccessPath([out, retval] BSTR * AccessPath );
+
+                        [propget]
+      HRESULT AccessRights([out, retval] LONG * AccessRights );
+
+                        [propget]
+      HRESULT ItemID([out, retval] BSTR * ItemID );
+
+                        [propget]
+      HRESULT IsActive([out, retval] VARIANT_BOOL * IsActive );
+                        [propput]
+      HRESULT IsActive([in] VARIANT_BOOL IsActive );
+
+                        [propget]
+      HRESULT RequestedDataType([out, retval] SHORT * RequestedDataType );
+                        [propput]
+      HRESULT RequestedDataType([in] SHORT RequestedDataType );
+
+                        [id(0),propget]
+      HRESULT Value([out, retval] VARIANT * CurrentValue );
+
+                        [propget]
+      HRESULT Quality([out, retval] LONG * Quality );
+
+                        [propget]
+      HRESULT TimeStamp([out, retval] DATE * TimeStamp );
+
+                        [propget]
+      HRESULT CanonicalDataType([out, retval] SHORT * CanonicalDataType );
+
+                        [propget]
+      HRESULT EUType([out, retval] SHORT * EUType );
+
+                        [propget]
+      HRESULT EUInfo([out, retval] VARIANT * EUInfo );
+
+      // Methods
+
+      HRESULT Read(
+                        [in]              SHORT      Source,
+                        [out,optional]    VARIANT  * Value,
+                        [out,optional]    VARIANT  * Quality,
+                        [out,optional]    VARIANT  * TimeStamp);
+
+      HRESULT Write(
+                        [in]              VARIANT  Value);
+   };
+
+
+//*********************************************************
+   [
+      uuid(28E68F9A-8D75-11d1-8DC3-3C302A000000),
+      helpstring("OPC Automation Server")
+   ]
+   coclass OPCServer
+   {
+      [default]         interface IOPCAutoServer;
+      [source, default] dispinterface DIOPCServerEvent;
+   };
+
+//*********************************************************
+   [
+      uuid(28E68F9E-8D75-11d1-8DC3-3C302A000000),
+      helpstring("OPC Automation Groups Collection")
+   ]
+   coclass OPCGroups
+   {
+      [default]         interface IOPCGroups;
+      [source, default] dispinterface DIOPCGroupsEvent;
+   };
+
+//*********************************************************
+   [
+      uuid(28E68F9B-8D75-11d1-8DC3-3C302A000000),
+      helpstring("OPC Automation Group")
+   ]
+   coclass OPCGroup
+   {
+      [default]         interface IOPCGroup;
+      [source, default] dispinterface DIOPCGroupEvent;
+   };
+};

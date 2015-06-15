@@ -1,0 +1,12 @@
+(*[[
+    UserURL= "ATCMFile:REAL_TO_DINT.htm"
+]]*)
+
+FUNCTION REAL_TO_DINT : DINT
+VAR_INPUT 
+    IN : REAL; 
+END_VAR
+
+inline{VMOP}
+
+END_FUNCTION

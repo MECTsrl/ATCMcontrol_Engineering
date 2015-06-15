@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>SetSystemTask</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>SetSystemTask</h2>
+<p>Declares the calling task as a system task. </p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION SetSystemTask</pre>
+<h3>Return value</h3>
+<p>None</p>
+<h3>Parameter</h3>
+<p>None</p>
+<h3>Description</h3>
+<p><b>SetSystemTask</b> declares the calling task as a system task. </p>
+<p>System tasks are given priority over other tasks. Declaring a task as a system 
+  task prevents, for example, that this task changes to an error state or is blocked 
+  if the system is already occupied with several tasks running parallelly. System 
+  tasks are therefore especially suitable for controlling important processes 
+  that must be executed in any case and for monitoring the execution of other 
+  tasks. </p>
+<p>Keep in mind that a system task must always be declared before all other statements 
+  of the corresponding <i><b>POU</b></i>. System tasks are not checked for deadlocks 
+  during runtime, which means that if a system task blocks, it can block the entire 
+  operating system. </p>
+</body>
+</html>

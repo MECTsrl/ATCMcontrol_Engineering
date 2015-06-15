@@ -1,0 +1,335 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "editres.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "editres.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_OE_FINDDLGORD DIALOG DISCARDABLE  30, 73, 236, 79
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Find"
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "Fi&nd What:",-1,4,8,36,8,NOT WS_GROUP
+    COMBOBOX        IDC_FINDCOMBO1,43,4,131,63,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Match &Case",IDC_OE_CHX2,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,13,26,83,12
+    CONTROL         "Regular &expression",IDC_REGULAR,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,13,42,76,10
+    CONTROL         "Wrap around search",IDC_FINDCHECK2,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,13,56,86,10
+    GROUPBOX        "Direction",IDC_OE_GRP1,107,26,68,39
+    CONTROL         "&Up",IDC_OE_RAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP | 
+                    WS_TABSTOP,115,35,30,12
+    CONTROL         "&Down",IDC_OE_RAD2,"Button",BS_AUTORADIOBUTTON,115,47,
+                    32,12
+    DEFPUSHBUTTON   "&Find Next",IDOK,182,5,50,14,WS_GROUP
+    PUSHBUTTON      "&Mark All",IDC_MARKALL,182,23,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,182,41,50,14,WS_GROUP
+    PUSHBUTTON      "&Help",IDC_OE_PSH_HELP,182,59,50,14,WS_GROUP
+    EDITTEXT        IDC_OE_EDT1,24,60,128,12,ES_AUTOHSCROLL | NOT WS_VISIBLE | 
+                    WS_GROUP
+    CONTROL         "Match &Whole Word Only",IDC_OE_CHX1,"Button",
+                    BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_GROUP | WS_TABSTOP,
+                    62,59,100,12
+    CONTROL         "Check1",IDC_FINDCHECK1,"Button",BS_AUTOCHECKBOX | NOT 
+                    WS_VISIBLE | WS_TABSTOP,147,62,41,10
+    EDITTEXT        IDC_OE_EDT2,0,60,114,12,ES_AUTOHSCROLL | NOT WS_VISIBLE | 
+                    WS_GROUP
+END
+
+IDD_OE_REPLACEDLGORD DIALOG DISCARDABLE  36, 44, 259, 97
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Replace"
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "Fi&nd What:",-1,4,9,35,8,NOT WS_GROUP
+    COMBOBOX        IDC_FINDCOMBO1,55,8,141,63,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Re&place With:",-1,4,26,48,8,NOT WS_GROUP
+    COMBOBOX        IDC_FINDCOMBO2,55,24,141,63,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Match &Case",IDC_OE_CHX2,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,44,59,12
+    CONTROL         "Regular &expression",IDC_REGULAR,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,12,61,76,10
+    CONTROL         "Wrap around search",IDC_FINDCHECK2,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,12,75,86,10
+    GROUPBOX        "Direction",IDC_OE_GRP1,127,42,68,39
+    CONTROL         "&Up",IDC_OE_RAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP | 
+                    WS_TABSTOP,134,52,30,12
+    CONTROL         "&Down",IDC_OE_RAD2,"Button",BS_AUTORADIOBUTTON,133,66,
+                    32,12
+    PUSHBUTTON      "&Find Next",IDOK,203,4,50,14,WS_GROUP
+    PUSHBUTTON      "&Replace",IDC_OE_PSH1,203,21,50,14,WS_GROUP
+    PUSHBUTTON      "Replace &All",IDC_OE_PSH2,203,38,50,14,WS_GROUP
+    PUSHBUTTON      "Cancel",IDCANCEL,203,55,50,14,WS_GROUP
+    PUSHBUTTON      "&Help",IDC_OE_PSH_HELP,203,75,50,14,WS_GROUP
+    EDITTEXT        IDC_OE_EDT1,83,79,114,12,ES_AUTOHSCROLL | NOT WS_VISIBLE | 
+                    WS_GROUP
+    EDITTEXT        IDC_OE_EDT2,87,79,114,12,ES_AUTOHSCROLL | NOT WS_VISIBLE | 
+                    WS_GROUP
+    CONTROL         "Match &Whole Word Only",IDC_OE_CHX1,"Button",
+                    BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_GROUP | WS_TABSTOP,
+                    98,79,104,12
+END
+
+IDD_PAGE_SETUP DIALOG DISCARDABLE  0, 0, 195, 73
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Page Setup"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Header:",IDC_STATIC,7,8,30,9
+    EDITTEXT        IDC_HEADER,37,7,106,13,ES_AUTOHSCROLL
+    CONTROL         "File Time",IDC_HEADER_FILE,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,6,23,49,10
+    CONTROL         "System Time",IDC_HEADER_SYSTEM,"Button",
+                    BS_AUTORADIOBUTTON,58,23,61,10
+    LTEXT           "&Footer:",IDC_STATIC,7,41,29,9
+    EDITTEXT        IDC_FOOTER,37,40,106,13,ES_AUTOHSCROLL
+    CONTROL         "File Time",IDC_FOOTER_FILE,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,6,56,49,10
+    CONTROL         "System Time",IDC_FOOTER_SYSTEM,"Button",
+                    BS_AUTORADIOBUTTON,58,56,61,10
+    DEFPUSHBUTTON   "OK",IDOK,147,5,42,14
+    PUSHBUTTON      "Cancel",IDCANCEL,147,23,42,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_SECEDIT_GUTTER      BITMAP  DISCARDABLE     "..\\res\\seceditgutter.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_SECEDIT_GUTTER      CURSOR  DISCARDABLE     "..\\res\\idccurso.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_SEC_DEVSTUDIO_ACCEL ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "A",            ID_EDIT_SELECTALL,      VIRTKEY, CONTROL, NOINVERT
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "F",            ID_EDIT_FIND,           VIRTKEY, CONTROL, NOINVERT
+    "H",            ID_EDIT_REPLACE,        VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_BACKSPACE,      VIRTKEY, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_BACK,        ID_EDIT_BACKSPACE,      VIRTKEY, SHIFT, NOINVERT
+    VK_DELETE,      ID_EDIT_CLEAR,          VIRTKEY, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_DOWN,        ID_EDIT_DOWN,           VIRTKEY, NOINVERT
+    VK_DOWN,        ID_EDIT_SELECT_DOWN,    VIRTKEY, SHIFT, NOINVERT
+    VK_END,         ID_EDIT_END,            VIRTKEY, NOINVERT
+    VK_END,         ID_EDIT_BOTTOMFILE,     VIRTKEY, CONTROL, NOINVERT
+    VK_END,         ID_EDIT_SELECT_END,     VIRTKEY, SHIFT, NOINVERT
+    VK_END,         ID_EDIT_SELECT_BOTTOMFILE, VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    VK_F2,          ID_BOOKMARKNEXT,        VIRTKEY, NOINVERT
+    VK_F2,          ID_BOOKMARKSET,         VIRTKEY, CONTROL, NOINVERT
+    VK_F3,          ID_EDIT_FINDNEXT,       VIRTKEY, NOINVERT
+    VK_HOME,        ID_EDIT_HOME,           VIRTKEY, NOINVERT
+    VK_HOME,        ID_EDIT_TOPFILE,        VIRTKEY, CONTROL, NOINVERT
+    VK_HOME,        ID_EDIT_SELECT_HOME,    VIRTKEY, SHIFT, NOINVERT
+    VK_HOME,        ID_EDIT_SELECT_TOPFILE, VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    VK_INSERT,      ID_INDICATOR_OVR,       VIRTKEY, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    VK_LEFT,        ID_EDIT_LEFT,           VIRTKEY, NOINVERT
+    VK_LEFT,        ID_EDIT_WORDLEFT,       VIRTKEY, CONTROL, NOINVERT
+    VK_LEFT,        ID_EDIT_SELECT_LEFT,    VIRTKEY, SHIFT, NOINVERT
+    VK_LEFT,        ID_EDIT_SELECT_WORDLEFT, VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    VK_NEXT,        ID_EDIT_PGDN,           VIRTKEY, NOINVERT
+    VK_NEXT,        ID_EDIT_SELECT_PGDN,    VIRTKEY, SHIFT, NOINVERT
+    VK_PRIOR,       ID_EDIT_PGUP,           VIRTKEY, NOINVERT
+    VK_PRIOR,       ID_EDIT_SELECT_PGUP,    VIRTKEY, SHIFT, NOINVERT
+    VK_RIGHT,       ID_EDIT_RIGHT,          VIRTKEY, NOINVERT
+    VK_RIGHT,       ID_EDIT_WORDRIGHT,      VIRTKEY, CONTROL, NOINVERT
+    VK_RIGHT,       ID_EDIT_SELECT_RIGHT,   VIRTKEY, SHIFT, NOINVERT
+    VK_RIGHT,       ID_EDIT_SELECT_WORDRIGHT, VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    VK_TAB,         ID_EDIT_TAB,            VIRTKEY, NOINVERT
+    VK_TAB,         ID_EDIT_BACKTAB,        VIRTKEY, SHIFT, NOINVERT
+    VK_UP,          ID_EDIT_UP,             VIRTKEY, NOINVERT
+    VK_UP,          ID_EDIT_SELECT_UP,      VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+    "Y",            ID_EDIT_REDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_OE_ATTOP            "Top of file."
+    IDS_OE_NOTEXT           "There is no text."
+    IDS_OE_STREAMONLY       "Stream Only."
+    IDS_OE_NOTFOUND         "The string '%s' was not found."
+    IDS_OE_WRAPPED          "Wrapped."
+    IDS_OE_FINISHEDSEARCH   "Finished searching for '%s'."
+    IDS_OE_JOINLINE         "Join line."
+    IDS_OE_DELETELINE       "Delete line."
+    IDS_OE_TABSIZE          "Tab size"
+    IDS_OE_KEEPTABS         "Keep tabs"
+    IDS_OE_SHOWTABS         "Show tabs"
+    IDS_OE_FONTNAME         "Font name"
+    IDS_OE_FONTSIZE         "Font size"
+    IDS_OE_WORDWRAP         "Word wrap"
+    IDS_OE_INSERT           "Insert"
+    IDS_OE_LOCKFILES        "Lock files"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_OE_READONLY         "The file is read only."
+    IDS_OE_EMPTYCLIPBOARD   "The clipboard is empty."
+    IDS_OE_CANTREAD         "Can't read data."
+    IDS_OE_LINETOOLONG      "Cannot complete operation.  Maximum line length would be exceeded."
+    IDS_OE_NOMEMORY2        "Out of memory."
+    IDS_OE_EOF              "End of file."
+    IDS_OE_NOSELECTION      "There is no selection."
+    IDS_OE_UNTITLED         "Untitled."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_OE_LINEENDTYPE      "Line end type"
+    IDS_OE_SETTINGSFIND     "Settings\\Find"
+    IDS_OE_REGULAR          "Regular expressions"
+    IDS_OE_MATCHCASE        "Match case"
+    IDS_OE_FORWARD          "Forward"
+    IDS_OE_FINDPERCENT      "Find%d"
+    IDS_OE_REPLACEPERCENT   "Replace%d"
+    IDS_OE_WRAPSEARCH       "Wrap search"
+    IDS_OE_CHROMA           "Chroma"
+    IDS_OE_CHROMACODE       "Chroma"
+    IDS_OE_NULLSFOUND       "Nulls encounterd in file.  Use another editor to edit this file."
+    IDS_OE_WRAPPINGLINES    "This file contains lines longer than the %d character maximum.\r\nThe lines will be wrapped."
+    IDS_OE_FONTWEIGHT       "Font weight"
+    IDS_OE_FONTITALIC       "Font Italic"
+    IDS_OE_FONTCHARSET      "CharSet"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_DOWN            "Moves the current position down one line\nDown"
+    ID_EDIT_UP              "Moves the current position up one line\nUp"
+    ID_EDIT_LEFT            "Moves the current position one character to the left\nLeft"
+    ID_EDIT_RIGHT           "Moves the current position one character to the right\nRight"
+    ID_EDIT_PGUP            "Moves the current position one screenful up\nPage Up"
+    ID_EDIT_PGDN            "Moves the current position one screenful down\nPage Down"
+    ID_EDIT_HOME            "Moves the current position to the beginning of the line\nHome"
+    ID_EDIT_END             "Moves the current position to the end of the line\nEnd"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_TOPFILE         "Moves the current position to the top of the file\nTop of File"
+    ID_EDIT_BOTTOMFILE      "Moves the current position or selection to the bottom of the file\nBottom of File"
+    ID_EDIT_WORDLEFT        "Moves the current position one word to the left\nWord Left"
+    ID_EDIT_WORDRIGHT       "Moves the current position one word to the right\nWord Right"
+    ID_FILE_MERGE           "Merges the contents of a disk file into this document at the current position\nMerge"
+    ID_EDIT_SELECT_UP       "Extends the selection one line up\nSelect Up"
+    ID_EDIT_SELECT_LEFT     "Extends the selection one character to the left\nSelect Left"
+    ID_EDIT_SELECT_DOWN     "Extends the selection down one line\nSelect Down"
+    ID_EDIT_SELECT_END      "Extends the selection to the end of the line\nSelect End"
+    ID_EDIT_SELECT_HOME     "Extends the selection to the beginning of the line\nSelect Home"
+    ID_EDIT_SELECT_PGDN     "Extends the selection one screenful down\nSelect Page Down"
+    ID_EDIT_SELECT_WORDLEFT "Extends the selection one word to the left\nSelect Word Left"
+    ID_EDIT_SELECT_PGUP     "Extends the selection one screenful up\nSelect Page Up"
+    ID_EDIT_SELECT_RIGHT    "Extends the selection one character to the right\nSelect Right"
+    ID_EDIT_SELECT_WORDRIGHT 
+                            "Extends the selection one word to the right\nSelect Word Right"
+    ID_EDIT_BACKSPACE       "Deletes the character to the left of the current position\nBackspace"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_TAB             "Moves the current position or selection one tabstop to the right\nTab"
+    ID_EDIT_BACKTAB         "Moves the current position or selection one tabstop to the left\nBackTab "
+    ID_EDIT_FINDNEXT        "Finds the next occurence of the search text\nFind Next"
+    ID_BOOKMARKSET          "Toggles a bookmark at the current line\nToggle Bookmark"
+    ID_BOOKMARKNEXT         "Moves to the next bookmark\nNext Bookmark"
+    ID_BOOKMARKPREV         "Moves to the previous bookmark\nPrevious Bookmark"
+    ID_BOOKMARKDELETE       "Clears all bookmarks in this window\nClear All Bookmarks"
+    ID_PAGESETUP            "Changes the page layout settings\nPage Setup"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>BYTE_STRING_SET</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>BYTE_STRING_SET </h2>
+<p>&Auml;ndert den Wert eines Bytes in einem Bytestring.</p>
+<h3>Schnittstelle</h3>
+<pre class="preforma">FUNCTION BYTE_STRING_SET
+VAR_IN_OUT 
+    BSTR  : BYTE_STRING; 
+END_VAR
+VAR_INPUT 
+    INDEX : DINT;
+    VALUE : BYTE;
+END_VAR</pre>
+<h3>Parameter</h3>
+<h3>IN_OUT</h3>
+<dl> 
+  <dt><b>BSTR</b></dt>
+  <dd>Instanz der Struktur <i><b><a href="BYTE_STRING.htm">BYTE_STRING</a></b></i>.<br>
+    Bytestring, in dem ein Wert ge&auml;ndert werden soll.</dd>
+</dl>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>INDEX</b></dt>
+  <dd>Wert vom Typ <i><b>DINT</b></i>.<br>
+    Definiert den Index des Bytes, dessen Wert im Bytestring ge&auml;ndert werden 
+    soll. </dd>
+  <dt><b>VALUE</b></dt>
+  <dd>Wert vom Typ <i><b>BYTE</b></i>.<br>
+    Definiert den zu schreibenden Wert. </dd>
+</dl>
+<h3>Beschreibung</h3>
+<p><b><i>BYTE_STRING_SET</i></b> schreibt den Wert von <i><b>VALUE</b></i> an 
+  das in <i><b>INDEX</b></i> angegebene Byte des an <i><b>BSTR</b></i> &uuml;bergebenen 
+  Bytestrings.</p>
+<p>Vor dem Aufruf von<i><b> BYTE_STRING_SET</b></i> muß die als Parameter übergebene 
+  Instanz von<i> <b><a href="BYTE_STRING.htm">BYTE_STRING</a></b></i> entweder 
+  mit der Funktion <i><b><a href="BYTE_STRING_INIT.htm">BYTE_STRING_INIT</a></b></i> 
+  initialisiert, oder die Strukturvariable <i><b>size</b></i> der an <i><b>BSTR</b></i> 
+  &uuml;bergebenen Instanz von<i><b> BYTE_STRING</b></i> auf einen Wert >= INDEX 
+  gesetzt werden, da beim Erzeugen einer Instanz von <i><b>BYTE_STRING</b></i> 
+  die Größe des Bytestrings standarmäßig mit dem Wert 0 initialisiert wird. Dies 
+  hat zur Folge, daß beim Aufruf von <i><b>BYTE_STRING_GET</b></i> mit INDEX > 
+  0 auf einen nicht existierenden Index zugegriffen und daher ein Laufzeitfehler 
+  ausgelöst wird.</p>
+</body>
+</html>

@@ -1,0 +1,1374 @@
+<KAD4CE>
+ 
+<!--  **************************************************************
+                        General
+      ************************************************************** -->
+
+
+
+
+<!--  **************************************************************
+                        Kernel
+      ************************************************************** -->
+
+<KERNEL>
+    <ADDON
+       NAME="ATCM Kernel"
+       VERSION="2.0"
+       VENDOR="ATCM"
+       KADFILE="Engineering\bin\Kernel_IEC_4ceng.kad"
+       DESC="ATCM Engineering Kernel ... "
+       LANGUAGE=""/>
+</KERNEL>
+
+
+
+<!--  **************************************************************
+                        Files
+      ************************************************************** -->
+
+
+<FILES>  
+    <FILE EXT="4cp"  STDEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}"
+                     FILTERTEXT="Project File"
+                     ORDERKEY="ca"
+                     PRINT="1"/>
+    <FILE EXT="res"  PARSER="{B2E9CA24-FC0B-11D4-A0A3-006008736ABF}" 
+                     PRGEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}"
+                     FILTERTEXT="Resource Files"
+                     ORDERKEY="rb"
+                     PRINT="1"/>
+    <FILE EXT="con"  PARSER="{B2E9CA24-FC0B-11D4-A0A3-006008736ABF}" 
+                     STDEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}"
+                     FILTERTEXT="Configuration Files"
+                     ORDERKEY="ra"
+                     PRINT="1"/>
+    <FILE EXT="st"   PARSER="{B2E9CA24-FC0B-11D4-A0A3-006008736ABF}" 
+                     PRGEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}"
+                     FILTERTEXT="ST-Files"
+                     ORDERKEY="la"
+                     PRINT="1"/>
+    <FILE EXT="il"   PARSER="{B2E9CA24-FC0B-11D4-A0A3-006008736ABF}" 
+                     PRGEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}"
+                     FILTERTEXT="IL-Files"
+                     ORDERKEY="lm"
+                     PRINT="1"/>
+    <FILE EXT="cst"  PARSER="{B2E9CA24-FC0B-11D4-A0A3-006008736ABF}" 
+                     STDEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}"
+                     FILTERTEXT="Constant Files"
+                     ORDERKEY="ub"
+                     PRINT="1"/>
+    <FILE EXT="gvl"  PARSER="{B2E9CA24-FC0B-11D4-A0A3-006008736ABF}" 
+                     PRGEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}"
+                     FILTERTEXT="Global Variable Files"
+                     ORDERKEY="ua"
+                     PRINT="1"/>
+    <FILE EXT="sdt"  PARSER="{B2E9CA24-FC0B-11D4-A0A3-006008736ABF}" 
+                     PRGEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}"
+                     FILTERTEXT="Data Type Files" 
+                     ORDERKEY="oa"
+                     PRINT="1"/>
+    <FILE EXT="4gr"  PARSER="{B2E9CA24-FC0B-11D4-A0A3-006008736ABF}" 
+                     PRGEDITOR="{F8F838B1-096A-11d5-94E1-00E02939A881}"
+                     FILTERTEXT="4GR-Files" 
+                     ORDERKEY="lb"
+                     PRINT="1"/>
+    <FILE EXT="4cl"  PARSER="{AA6A1A66-3AE2-49F2-9F9D-768B893A522A}"
+                     STDEDITOR="{49070009-D886-4491-8574-70E98FAB8C6B}"
+                     FILTERTEXT="Library Files"
+                     ORDERKEY="xa"/>
+    <FILE EXT="java" STDEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}"/>
+    <FILE EXT="map"  STDEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}"/>
+    <FILE EXT="ini"  STDEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}"/>
+    <FILE EXT="kad"  STDEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}"/>
+    <FILE EXT="pl"   STDEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}"/>
+    <FILE EXT="bat"  STDEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}"/>
+    <FILE EXT="hdr"  PARSER="{B2E9CA24-FC0B-11D4-A0A3-006008736ABF}" 
+                     STDEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}"
+                     FILTERTEXT="Library Header Files"
+                     ORDERKEY="xb"/>
+    <FILE EXT="4asm" STDEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}"/>
+    <FILE EXT="4cs"  VISIBILITY="0"/>
+    <FILE EXT="xml"  VISIBILITY="0"/>
+    <FILE EXT="inst" PARSER="{7F67495D-E14B-11D4-9505-0008C779D265}"/>
+    <FILE EXT="htm"  STDEDITOR="{FC41A9DA-8EA2-423e-A6C7-0075880EB896}"/>
+    <FILE EXT="html" STDEDITOR="{FC41A9DA-8EA2-423e-A6C7-0075880EB896}"/>
+    <FILE EXT="txt"  STDEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}"
+                     PRINT="1"/>
+    <FILE EXT="4clc" PARSER="{86046CB4-294D-4EB0-9411-13EB84F3888F}" 
+                     STDEDITOR="{86046CB4-294D-4EB0-9411-13EB84F3888F}" 
+                     FILTERTEXT="Latcomm. Configuration Files" 
+                     ORDERKEY="rc"/>
+</FILES>
+
+<!--  **************************************************************
+                        Classes
+      ************************************************************** -->
+
+
+<CLASSES TYPE="PROJECT_CLASS">
+    <CLASS TYPE="CONFIGURATION_GROUP" 
+           TEXT="Configurations"
+           SECTION="Classes.Configurations"
+           CLASS_TYPE="CONFIGURATION"/>
+    <CLASS TYPE="GLOBAL_VAR_GROUP" 
+           TEXT="Global Variables"
+           SECTION="Classes.GVLs"
+           CLASS_TYPE="GLOBAL_VAR_FILE"/>
+    <CLASS TYPE="CONSTANT_GROUP" 
+           TEXT="Constants"
+           SECTION="Classes.Constants"
+           CLASS_TYPE="CONSTANT_FILE"/>
+    <CLASS TYPE="DATA_TYPE_GROUP" 
+           TEXT="Data Types"
+           SECTION="Classes.DataTypes"
+           CLASS_TYPE="STRUCT"/>
+    <CLASS TYPE="PROGRAM_GROUP" 
+           TEXT="Programs"
+           SECTION="Classes.Programs"
+           CLASS_TYPE="PROGRAM"/>
+    <CLASS TYPE="FUNCTION_BLOCK_GROUP" 
+           TEXT="Function Blocks"
+           SECTION="Classes.FunctionBlocks"
+           CLASS_TYPE="FUNCTION_BLOCK"
+           POU_SEL="1"/>
+    <CLASS TYPE="FUNCTION_GROUP" 
+           TEXT="Functions"
+           SECTION="Classes.Functions"
+           CLASS_TYPE="FUNCTION"
+           POU_SEL="1"/>
+    <CLASS TYPE="LIBRARY_GROUP" 
+           TEXT="Libraries"
+           SECTION="LIBS"
+           CLASS_TYPE="LIBRARY"/>
+</CLASSES>
+
+
+<!--  **************************************************************
+                        Target
+      ************************************************************** -->
+
+
+<TARGETS TYPE="PROJECT_TARGET">
+
+</TARGETS>
+
+
+<!--  **************************************************************
+                       Main Menu
+      ************************************************************** -->
+
+
+<MAINMENU>
+    <MENU ID="file" TITLE="&amp;File">
+    </MENU>
+    <MENU ID="create" TITLE="&amp;Create">
+        <MENUITEM ID="CreateFunction" 
+                  ORDERKEY="fa" 
+                  TEXT="&amp;Function" 
+                  STBARTXT="Inserts a new function" 
+                  DISPID="InsertFunction" 
+                  HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                  ENABLE_EXPRESSION="project=open;project!=readonly"/>
+        <MENUITEM ID="CreateFunctionBlock"  
+                  ORDERKEY="fb" 
+                  TEXT="Function &amp;Block"  
+                  STBARTXT="Inserts a new function block" 
+                  DISPID="InsertFunctionBlock" 
+                  HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                  ENABLE_EXPRESSION="project=open;project!=readonly"/>
+        <MENUITEM ID="CreateProgram" 
+                  ORDERKEY="fc" 
+                  TEXT="Pr&amp;ogram" 
+                  STBARTXT="Inserts a new program" 
+                  DISPID="InsertProgram" 
+                  HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                  ENABLE_EXPRESSION="project=open;project!=readonly"/>
+        <MENUITEM ID="CreateGlobalVariableFile" 
+                  ORDERKEY="fd" 
+                  TEXT="&amp;Global Variable File" 
+                  STBARTXT="Inserts a new global variable file" 
+                  DISPID="InsertGlobalVariableList" 
+                  HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                  ENABLE_EXPRESSION="project=open;project!=readonly"/>
+        <MENUITEM ID="CreateConstantFile" 
+                  ORDERKEY="fe" 
+                  TEXT="&amp;Constant File" 
+                  STBARTXT="Inserts a new constant file" 
+                  DISPID="InsertConstantList" 
+                  HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                  ENABLE_EXPRESSION="project=open;project!=readonly"/>
+        <MENUITEM ID="CreateStructure" 
+                  ORDERKEY="ff" 
+                  TEXT="&amp;Data Type" 
+                  STBARTXT="Inserts a new data type" 
+                  DISPID="InsertStructure" 
+                  HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                  ENABLE_EXPRESSION="project=open;project!=readonly"/>
+        <MENUITEM ID="CreateResource" 
+                  ORDERKEY="fg" 
+                  TEXT="&amp;Resource" 
+                  STBARTXT="Inserts a new resource" 
+                  DISPID="InsertResource" 
+                  HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                  ENABLE_EXPRESSION="project=open;project!=readonly"/>
+        <MENUITEM ID="AddLibrary"
+                  ORDERKEY="fz"
+                  TEXT="Add Library"
+                  STBARTXT="Adds a library to the project"
+                  DISPID="AddLibrary"
+                  HANDLER="{AA6A1A66-3AE2-49F2-9F9D-768B893A522A}"
+                  ENABLE_EXPRESSION="project=open;project!=readonly"/>
+    </MENU>
+
+    <MENU ID="build" TITLE="&amp;Build">
+        <MENUITEM ID="BuildAll" 
+                  ORDERKEY="ia" 
+                  ACCELERATOR="VK_F7"
+                  TEXT="Build &amp;All" 
+                  STBARTXT="Build all targets" 
+                  STANDARDOP="BuildAll"/>
+        <MENUITEM ID="Build" 
+                  ORDERKEY="ib" 
+                  ACCELERATOR="SHIFT+VK_F7"
+                  TEXT="&amp;Build" 
+                  STBARTXT="Build a single target" 
+                  STANDARDOP="BuildSelect"/>
+        <MENUITEM ID="CompileFile" 
+                  ORDERKEY="ic" 
+                  ACCELERATOR="CTRL+VK_F7"
+                  TEXT="&amp;Compile File" 
+                  STBARTXT="Compile the active file" 
+                  STANDARDOP="CompileFile"/>
+	    <MENUITEM ID="BuildLibrary" 
+                  ORDERKEY="id" 
+                  ACCELERATOR="CTRL+SHIFT+VK_F7"
+                  TEXT="Build &amp;Library" 
+                  STBARTXT="Build a library from the project" 
+                  STANDARDOP="BuildLibrary"/>   
+        <MENUITEM ID="DownloadChangesAll" 
+                  ORDERKEY="ja" 
+                  TEXT="&amp;Download Changes All" 
+                  STBARTXT="Download changes on all targets" 
+                  STANDARDOP="DownloadChangesAll"/>
+        <MENUITEM ID="DownloadChangesSelect" 
+                  ORDERKEY="jb" 
+                  TEXT="D&amp;ownload Changes" 
+                  STBARTXT="Download changes on one or more targets" 
+                  STANDARDOP="DownloadChangesSelect"/>
+        <MENUITEM ID="DownloadFullAll" 
+                  ORDERKEY="jc" 
+                  TEXT="&amp;Full Download All" 
+                  STBARTXT="Full download on all targets" 
+                  STANDARDOP="DownloadFullAll"/>
+        <MENUITEM ID="DownloadFullSelect" 
+                  ORDERKEY="jd" 
+                  TEXT="F&amp;ull Download" 
+                  STBARTXT="Full download on one or more targets" 
+                  STANDARDOP="DownloadFullSelect"/>
+    </MENU>
+
+    <MENU ID="control" TITLE="C&amp;ontrol">
+        <MENUITEM ID="Connect" 
+                  ORDERKEY="ja" 
+                  TEXT="&amp;Connect" 
+                  STBARTXT="Connect to a target" 
+                  STANDARDOP="Connect"/>
+        <MENUITEM ID="Disconnect" 
+                  ORDERKEY="jb" 
+                  TEXT="&amp;Disconnect" 
+                  STBARTXT="Disconnect a target" 
+                  STANDARDOP="Disconnect"/>
+        <MENUITEM ID="ConnectExclusive" 
+                  ORDERKEY="jc" 
+                  TEXT="&amp;Enable Debug" 
+                  STBARTXT="Build up a debug connection to a control" 
+                  STANDARDOP="ConnectEx"/>
+        <MENUITEM ID="DisconnectExclusive" 
+                  ORDERKEY="jd" 
+                  TEXT="Di&amp;sable Debug" 
+                  STBARTXT="Close the debug connection to a control" 
+                  STANDARDOP="DisconnectEx"/>
+        <MENUITEM ID="StartControl" 
+                  ORDERKEY="la" 
+                  TEXT="St&amp;art Control" 
+                  STBARTXT="Start a control" 
+                  STANDARDOP="StartControl"/>
+        <MENUITEM ID="StopControl" 
+                  ORDERKEY="lb" 
+                  TEXT="St&amp;op Control" 
+                  STBARTXT="Stop a control" 
+                  STANDARDOP="StopControl"/>
+        <MENUITEM ID="StartAllTasks" 
+                  ORDERKEY="ma" 
+                  TEXT="Star&amp;t All Tasks" 
+                  STBARTXT="Start all tasks on a control" 
+                  STANDARDOP="StartAllTasks"/>
+        <MENUITEM ID="StopAllTasks" 
+                  ORDERKEY="mb" 
+                  TEXT="Sto&amp;p All Tasks" 
+                  STBARTXT="Stop a all tasks on a control" 
+                  STANDARDOP="StopAllTasks"/>
+        <MENUITEM ID="ColdstartReset" 
+                  ORDERKEY="oa" 
+                  TEXT="Co&amp;ldstart" 
+                  STBARTXT="Perform a coldstart of a control" 
+                  STANDARDOP="ColdstartReset"/>
+        <MENUITEM ID="WarmstartReset" 
+                  ORDERKEY="ob" 
+                  TEXT="Wa&amp;rmstart" 
+                  STBARTXT="Perform a warmstart of a control" 
+                  STANDARDOP="WarmstartReset"/>
+        <MENUITEM ID="InitializeClear" 
+                  ORDERKEY="pa" 
+                  TEXT="&amp;Initialize/Clear" 
+                  STBARTXT="Initialize and clear a control" 
+                  STANDARDOP="InitializeClear"/>
+    </MENU>
+
+    <MENU ID="settings" TITLE="&amp;Settings">
+        <MENUITEM ID="ResetDocking"
+                  ORDERKEY="aa"
+                  TEXT="&amp;Reset Docking Windows"
+                  STBARTXT="Reset Docking Windows to Standard Layout"
+                  STANDARDOP="settingsresetdocking"/>
+        <MENUITEM ID="SettingsLibrary"
+                  ORDERKEY="ab"
+                  TEXT="&amp;Library"
+                  STBARTXT="Edit Library Settings"
+                  STANDARDOP="settingslibrary"
+                  ENABLE_EXPRESSION="project!=readonly"/>
+        <MENUITEM ID="SettingsPassword" 
+                  ORDERKEY="ac" 
+                  TEXT="&amp;Password" 
+                  STBARTXT="Edit Password Settings"
+                  STANDARDOP="settingspassword"
+                  ENABLE_EXPRESSION="project!=readonly"/>
+        <MENUITEM ID="SettingsPrint" 
+                  ORDERKEY="ad" 
+                  TEXT="Pri&amp;nting" 
+                  STBARTXT="Edit Print Settings"
+                  STANDARDOP="settingsprint"
+                  ENABLE_EXPRESSION="project!=readonly"/>
+        <MENUITEM ID="SettingsEngineering" 
+                  ORDERKEY="ba" 
+                  TEXT="&amp;Extras"                   
+                  STBARTXT="Edit Extra Settings"
+                  STANDARDOP="settingsengineering"
+                  ENABLE_EXPRESSION="project!=readonly"/>
+	</MENU>
+	<MENU ID="tools" TITLE="&amp;Tools"/>
+	<MENU ID="help" TITLE="&amp;Help"/>
+</MAINMENU>
+
+
+
+<!--  **************************************************************
+                        Toolbars
+      ************************************************************** -->
+
+<TOOLBARS>
+    <TOOLBAR ID="Create">
+        <TOOLBARITEM MAINMENUID="CreateFunction" 
+                     TOOLTIP="Create Function" 
+                     ICON="createfun.bmp"/>
+        <TOOLBARITEM MAINMENUID="CreateFunctionBlock" 
+                     TOOLTIP="Create Function Block" 
+                     ICON="createfb.bmp"/>
+        <TOOLBARITEM MAINMENUID="CreateProgram" 
+                     TOOLTIP="Create Program" 
+                     ICON="createprg.bmp"/>
+        <TOOLBARITEM MAINMENUID="CreateGlobalVariableFile" 
+                     TOOLTIP="Create Global Variable File" 
+                     ICON="creategvlfile.bmp"/>
+        <TOOLBARITEM MAINMENUID="CreateConstantFile" 
+                     TOOLTIP="Create Constant File" 
+                     ICON="createconstfile.bmp"/>
+        <TOOLBARITEM MAINMENUID="CreateStructure" 
+                     TOOLTIP="Create Data Type" 
+                     ICON="createdt.bmp"/>
+        <TOOLBARITEM MAINMENUID="CreateResource" 
+                     TOOLTIP="Create Resource" 
+                     ICON="createres.bmp"/>
+        <TOOLBARITEM MAINMENUID="AddLibrary"
+                     TOOLTIP="Add Library"
+                     ICON="addlib.bmp"/>
+    </TOOLBAR>
+
+    <TOOLBAR ID="build">
+        <TOOLBARITEM MAINMENUID="BuildAll" 
+                     TOOLTIP="Build all targets" 
+                     ICON="BuildAll.bmp"/>
+        <TOOLBARITEM MAINMENUID="Build" 
+                     TOOLTIP="Build target(s)" 
+                     ICON="BuildTarget.bmp"/>
+        <TOOLBARITEM MAINMENUID="CompileFile" 
+                     TOOLTIP="Compile file" 
+                     ICON="BuildCompFile.bmp"/>
+<!--    <TOOLBARITEM MAINMENUID="BuildLibrary" 
+                     TOOLTIP="Build library" 
+                     ICON="BuildLibrary.bmp"/>   
+  -->
+        <TOOLBARITEM MAINMENUID="DownloadChangesAll" 
+                     TOOLTIP="Download changes all targets" 
+                     ICON="BuildDlChangesAll.bmp"/>
+        <TOOLBARITEM MAINMENUID="DownloadChangesSelect" 
+                     TOOLTIP="Download changes target(s)" 
+                     ICON="BuildDlChanges.bmp"/>
+        <TOOLBARITEM MAINMENUID="DownloadFullAll" 
+                     TOOLTIP="Full Download all targets" 
+                     ICON="BuildDlFullAll.bmp"/>
+        <TOOLBARITEM MAINMENUID="DownloadFullSelect" 
+                     TOOLTIP="Full Download target(s)" 
+                     ICON="BuildDlFull.bmp"/>
+    </TOOLBAR>
+
+<!--    <TOOLBAR ID="control">
+        <TOOLBARITEM MAINMENUID="Connect" 
+                     TOOLTIP="Connect" 
+                     ICON="concon.bmp"/>
+        <TOOLBARITEM MAINMENUID="Disconnect" 
+                     TOOLTIP="Disconnect" 
+                     ICON="condiscon.bmp"/>
+        <TOOLBARITEM MAINMENUID="ConnectExclusive" 
+                     TOOLTIP="Enable Debug" 
+                     ICON="conconex.bmp"/>
+        <TOOLBARITEM MAINMENUID="DisconnectExclusive" 
+                     TOOLTIP="Disable Debug" 
+                     ICON="condisconex.bmp"/>
+        <TOOLBARITEM MAINMENUID="StartControl" 
+                     TOOLTIP="Start Control" 
+                     ICON="constartres.bmp"/>
+        <TOOLBARITEM MAINMENUID="StopControl" 
+                     TOOLTIP="Stop Control" 
+                     ICON="constopres.bmp"/>
+        <TOOLBARITEM MAINMENUID="StartAllTasks" 
+                     TOOLTIP="Start All Tasks" 
+                     ICON="constartalltasks.bmp"/>
+        <TOOLBARITEM MAINMENUID="StopAllTasks" 
+                     TOOLTIP="Stop All Tasks" 
+                     ICON="constopalltasks.bmp"/>
+        <TOOLBARITEM MAINMENUID="ColdstartReset" 
+                     TOOLTIP="Coldstart Reset" 
+                     ICON="concoldstart.bmp"/>
+        <TOOLBARITEM MAINMENUID="WarmstartReset" 
+                     TOOLTIP="Warmstart Reset" 
+                     ICON="conwarmstart.bmp"/>
+        <TOOLBARITEM MAINMENUID="InitializeClear" 
+                     TOOLTIP="Initialize/Clear" 
+                     ICON="conclear.bmp"/>
+    </TOOLBAR>
+-->   
+</TOOLBARS>
+
+
+
+<TYPES>
+
+<!--  **************************************************************
+                        File View 
+      ************************************************************** -->
+
+   <TYPE ID="FV_PROJECT"
+         VIEW="FILE"
+         FILTERTEXT="Folders"
+         ICON="fileproject.bmp">
+   </TYPE>
+   <TYPE ID="FV_SOURCE_FILE_GROUP"
+         VIEW="FILE"
+         FILTERTEXT="Folders"
+         ICON="fldclose.bmp">
+       <STATE ICON="fldopen.bmp" STATE_VAL="1"/>
+   </TYPE>
+   <TYPE ID="FV_HELP_FILE_GROUP"       
+         VIEW="FILE"
+         FILTERTEXT="Folders"                
+         ICON="fldclose.bmp">
+       <STATE ICON="fldopen.bmp" STATE_VAL="1"/>
+   </TYPE>
+   <TYPE ID="FV_ADDITIONAL_FILE_GROUP" 
+         VIEW="FILE"
+         FILTERTEXT="Folders"                
+         ICON="fldclose.bmp">
+       <STATE ICON="fldopen.bmp" STATE_VAL="1"/>
+   </TYPE>
+   <TYPE ID="FV_FOLDER"
+         VIEW="FILE"
+         FILTERTEXT="Folders"                
+         ICON="fldclose.bmp">
+       <STATE ICON="fldopen.bmp" STATE_VAL="1"/>
+   </TYPE>
+   <TYPE ID="FV_FILE"                  
+         ICON="file.bmp"/>
+
+
+   <TYPE ID="ERROR_NODE"
+         ICON="errorNode.bmp">
+      <MENU>
+              <MENUITEM TEXT="Open"
+                        ORDERKEY="ca"
+                        STANDARDOP="Open"
+                        KEYMOUSEEVENT="open"
+                        ENABLE_EXPRESSION="project!=readonly"/>
+              <MENUITEM TEXT="Delete"
+                        ORDERKEY="xc"
+                        STANDARDOP="Delete"
+                        KEYMOUSEEVENT="delete"
+                        ENABLE_EXPRESSION="project!=readonly;source!=readonly"/>
+      </MENU>
+   </TYPE>
+
+
+<!--  **************************************************************
+                        Class View 
+      ************************************************************** -->
+
+
+   <TYPE ID="PROJECT_CLASS" 
+          ICON="classproject.bmp" 
+          TEXT="Project" 
+          PROJ_LIST_VIEW="1">
+        <MENU>
+            <MENUITEM DISPID="InsertFunction" 
+                      ORDERKEY="fa" 
+                      TEXT="Insert Function" 
+                      KEYMOUSEEVENT="insert" 
+                      HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                      ENABLE_EXPRESSION="project!=readonly"/>
+            <MENUITEM DISPID="InsertFunctionBlock" 
+                      ORDERKEY="fb" 
+                      TEXT="Insert Function Block" 
+                      KEYMOUSEEVENT="insert" 
+                      HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                      ENABLE_EXPRESSION="project!=readonly"/>
+            <MENUITEM DISPID="InsertProgram" 
+                      ORDERKEY="fc" 
+                      TEXT="Insert Program" 
+                      KEYMOUSEEVENT="insert" 
+                      HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                      ENABLE_EXPRESSION="project!=readonly"/>
+            <MENUITEM DISPID="InsertGlobalVariableList" 
+                      ORDERKEY="fd" 
+                      TEXT="Insert Global Variable File" 
+                      KEYMOUSEEVENT="insert" 
+                      HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                      ENABLE_EXPRESSION="project!=readonly"/>
+            <MENUITEM DISPID="InsertConstantList" 
+                      ORDERKEY="fe" 
+                      TEXT="Insert Constant File" 
+                      KEYMOUSEEVENT="insert" 
+                      HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                      ENABLE_EXPRESSION="project!=readonly"/>
+            <MENUITEM DISPID="InsertStructure" 
+                      ORDERKEY="ff" 
+                      TEXT="Insert Data Type" 
+                      KEYMOUSEEVENT="insert" 
+                      HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                      ENABLE_EXPRESSION="project!=readonly"/>
+            <MENUITEM DISPID="InsertResource" 
+                      ORDERKEY="fg" 
+                      TEXT="Insert Resource" 
+                      KEYMOUSEEVENT="insert" 
+                      HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                      ENABLE_EXPRESSION="project!=readonly"/>
+            <MENUITEM TEXT="Goto URL" 
+                      ORDERKEY="ra" 
+                      STANDARDOP="OpenUrl"/>
+            <MENUITEM TEXT="Properties" 
+                      ORDERKEY="xa"
+                      DISPID="ProjectProperties"
+                      HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"/>
+        </MENU>
+    </TYPE>
+
+
+   <TYPE ID="GLOBAL_VAR_GROUP" 
+         ICON="gvlgroup.bmp">
+         <MENU>
+              <MENUITEM DISPID="InsertGlobalVariableList" 
+                        ORDERKEY="fa" 
+                        TEXT="Insert Global Variable File"
+                        KEYMOUSEEVENT="insert" 
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="project!=readonly"/> 
+        </MENU>
+   </TYPE>
+   <TYPE ID="GLOBAL_VAR_FILE" 
+         ICON="gvlfile.bmp" 
+         TEXT="Global Variable File" PROJ_LIST_VIEW="1" 
+         VIEW="CLASS" FILTERTEXT="Global Variable Files">
+        <MENU>
+              <MENUITEM STANDARDOP="Open" 
+                        ORDERKEY="ca" 
+                        TEXT="Open" 
+                        KEYMOUSEEVENT="open"/> 
+              <MENUITEM DISPID="InsertGlobalVariable" 
+                        ORDERKEY="fa" 
+                        TEXT="Insert Global Variable" 
+                        KEYMOUSEEVENT="insert"
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="source!=readonly"/>
+              <MENUITEM DISPID="DeleteGlobalVariableList" 
+                        ORDERKEY="ua" 
+                        TEXT="Delete Global Variable File" 
+                        KEYMOUSEEVENT="delete"
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="project!=readonly;source!=readonly"/>
+        </MENU>
+        <VAR_DECL HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                  INPUT="0"
+                  OUTPUT="0"
+                  INOUT="0"
+                  RETAIN="1"/>
+   </TYPE>
+   <TYPE ID="VAR_GLOBAL" 
+         VISIBILITY="0">
+   </TYPE>
+
+   <TYPE ID="CONSTANT_GROUP" 
+         ICON="constgroup.bmp">
+        <MENU>
+              <MENUITEM DISPID="InsertConstantList" 
+                        ORDERKEY="fa" 
+                        TEXT="Insert Constant File"
+                        KEYMOUSEEVENT="insert" 
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="project!=readonly"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="CONSTANT_FILE" 
+         ICON="constfile.bmp" 
+         TEXT="Constant File" 
+         PROJ_LIST_VIEW="1" 
+         VIEW="CLASS" 
+         FILTERTEXT="Constant Files">
+        <MENU>
+              <MENUITEM STANDARDOP="Open" 
+                        ORDERKEY="ca" 
+                        TEXT="Open"
+                        KEYMOUSEEVENT="open"/> 
+              <MENUITEM DISPID="InsertConstant" 
+                        ORDERKEY="fa" 
+                        TEXT="Insert Constant"
+                        KEYMOUSEEVENT="insert" 
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="source!=readonly"/>
+              <MENUITEM DISPID="DeleteConstantList" 
+                        ORDERKEY="ub" 
+                        TEXT="Delete Constant File"
+                        KEYMOUSEEVENT="delete" 
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="project!=readonly;source!=readonly"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="CONST" 
+         VISIBILITY="0">
+   </TYPE>
+
+   <TYPE ID="DATA_TYPE_GROUP" 
+         ICON="dtgroup.bmp">
+        <MENU>
+              <MENUITEM DISPID="InsertStructure" 
+                        ORDERKEY="fa" 
+                        TEXT="Insert Data Type"
+                        KEYMOUSEEVENT="insert" 
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="project!=readonly"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="STRUCT" 
+         ICON="dt.bmp" 
+         TEXT="Data Type" 
+         PROJ_LIST_VIEW="1" 
+         VIEW="CLASS" 
+         FILTERTEXT="Data Types">
+        <MENU>
+              <MENUITEM STANDARDOP="Open" 
+                        ORDERKEY="ca" 
+                        TEXT="Open"
+                        KEYMOUSEEVENT="open"/>
+              <MENUITEM STANDARDOP="OpenUrl" 
+                        ORDERKEY="ra" 
+                        TEXT="Goto URL" />
+              <MENUITEM STANDARDOP="OpenUserHelp" 
+                        ORDERKEY="rb" 
+                        TEXT="Show User Help" />
+              <MENUITEM DISPID="RenameStructure" 
+                        ORDERKEY="ua" 
+                        TEXT="Rename"
+                        KEYMOUSEEVENT="rename" 
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="project!=readonly;source!=readonly"/>
+              <MENUITEM DISPID="DeleteStructure" 
+                        ORDERKEY="ub" 
+                        TEXT="Delete" 
+                        KEYMOUSEEVENT="delete"
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="project!=readonly;source!=readonly"/>
+              <MENUITEM DISPID="PropertiesStructure" 
+                        ORDERKEY="xa" 
+                        TEXT="Properties" 
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"/>
+        </MENU>
+   </TYPE>
+
+   <TYPE ID="CONFIGURATION_GROUP" 
+         VISIBILITY="0"/>
+         
+   <TYPE ID="CONFIGURATION" 
+         ICON="configuration.bmp" 
+         TEXT="Configuration" 
+         PROJ_LIST_VIEW="1">
+        <MENU>
+              <MENUITEM DISPID="InsertResource" 
+                        ORDERKEY="fa" 
+                        TEXT="Insert Resource"
+                        KEYMOUSEEVENT="insert" 
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="project!=readonly"/>
+        </MENU>
+   </TYPE>
+
+   <TYPE ID="RESOURCE_GROUP" 
+         ICON="resgroup.bmp">
+        <MENU>
+              <MENUITEM DISPID="InsertResource" 
+                        ORDERKEY="fa" 
+                        TEXT="Insert Resource"
+                        KEYMOUSEEVENT="insert" 
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="project!=readonly"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="RESOURCE" 
+         ICON="res.bmp" 
+         TEXT="Resource" 
+         PROJ_LIST_VIEW="1" 
+         VIEW="CLASS" 
+         FILTERTEXT="Resources">
+        <MENU>
+                <MENUITEM   STANDARDOP="Open" 
+                            ORDERKEY="ca" 
+                            TEXT="Open" 
+                            KEYMOUSEEVENT="open"/>
+                <MENUITEM   DISPID="InsertGlobalVariableListRef" 
+                            ORDERKEY="fa" 
+                            TEXT="Insert Global Variable Import"
+                            HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                            ENABLE_EXPRESSION="source!=readonly"/>
+                <MENUITEM   DISPID="DeleteGlobalVariableListRef" 
+                            ORDERKEY="fb" 
+                            TEXT="Delete Global Variable Import"
+                            HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="project!=readonly;source!=readonly"/>
+                <MENUITEM   DISPID="InsertTask" 
+                            ORDERKEY="fc" 
+                            TEXT="Insert Task"
+                            KEYMOUSEEVENT="insert"
+                            HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                            ENABLE_EXPRESSION="source!=readonly"/>
+                <MENUITEM   STANDARDOP="OpenUrl" 
+                            ORDERKEY="ra" 
+                            TEXT="Goto URL"/>
+                <MENUITEM   DISPID="RenameResource" 
+                            ORDERKEY="ua" 
+                            TEXT="Rename"
+                            KEYMOUSEEVENT="rename"
+                            HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                            ENABLE_EXPRESSION="project!=readonly;source!=readonly"/>
+                <MENUITEM   DISPID="DeleteResource" 
+                            ORDERKEY="ub" 
+                            TEXT="Delete"
+                            KEYMOUSEEVENT="delete" 
+                            HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="project!=readonly;source!=readonly"/>
+                <MENUITEM   DISPID="PropertiesResource" 
+                            ORDERKEY="xa" 
+                            TEXT="Properties"
+                            HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="TASK" 
+         ICON="task.bmp" 
+         TEXT="Task" 
+         PROJ_LIST_VIEW="1" 
+         VIEW="CLASS" 
+         FILTERTEXT="Tasks">
+        <MENU>
+                <MENUITEM   STANDARDOP="Goto" 
+                            ORDERKEY="ca" 
+                            TEXT="Open" 
+                            KEYMOUSEEVENT="open"/>
+                <MENUITEM   DISPID="InsertProgramInstance" 
+                            ORDERKEY="fa" 
+                            TEXT="Insert Program Instance"
+                            KEYMOUSEEVENT="insert"
+                            HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                            ENABLE_EXPRESSION="source!=readonly"/>
+                <MENUITEM   STANDARDOP="OpenUrl" 
+                            ORDERKEY="ra" 
+                            TEXT="Goto URL"/>
+                <MENUITEM   DISPID="RenameTask" 
+                            ORDERKEY="ua" 
+                            TEXT="Rename"
+                            KEYMOUSEEVENT="rename"
+                            HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                            ENABLE_EXPRESSION="source!=readonly"/>
+                <MENUITEM   DISPID="DeleteTask" 
+                            ORDERKEY="ub" 
+                            TEXT="Delete"
+                            KEYMOUSEEVENT="delete"
+                            HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                            ENABLE_EXPRESSION="source!=readonly"/>
+                <MENUITEM   DISPID="PropertiesTask" 
+                            ORDERKEY="xa" 
+                            TEXT="Properties"
+                            HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="GLOB_VAR_FILE_REF"
+         ICON="gvlref.bmp"
+         VIEW="CLASS"
+         FILTERTEXT="Global Variable File References">
+        <MENU>
+                <MENUITEM   STANDARDOP="Open"
+                            ORDERKEY="ca"
+                            TEXT="Open"
+                            KEYMOUSEEVENT="open"/>
+                <MENUITEM   DISPID="DeleteGlobalVariableListRef"
+                            ORDERKEY="ua"
+                            TEXT="Delete"
+                            KEYMOUSEEVENT="delete"
+                            HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                            ENABLE_EXPRESSION="source!=readonly"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="PROGRAM_REF" 
+         ICON="prgref.bmp" 
+         VIEW="CLASS" 
+         FILTERTEXT="Program References">
+        <MENU>
+		<MENUITEM   STANDARDOP="GotoDefinition" 
+                            ORDERKEY="ca" 
+                            TEXT="Open"
+                            KEYMOUSEEVENT="open"/>
+                <MENUITEM   STANDARDOP="Goto" 
+                            ORDERKEY="cb" 
+                            TEXT="Open Resource"/>
+                <MENUITEM   DISPID="RenameProgramInstance" 
+                            ORDERKEY="ua" 
+                            TEXT="Rename"
+                            KEYMOUSEEVENT="rename"
+                            HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                            ENABLE_EXPRESSION="source!=readonly"/>
+                <MENUITEM   DISPID="DeleteProgramInstance" 
+                            ORDERKEY="ub" 
+                            TEXT="Delete"
+                            KEYMOUSEEVENT="delete"
+                            HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                            ENABLE_EXPRESSION="source!=readonly"/>
+                <MENUITEM   DISPID="PropertiesProgramInstance" 
+                            ORDERKEY="xa" 
+                            TEXT="Properties"
+                            HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"/>
+        </MENU>
+   </TYPE>
+
+   <TYPE ID="PROGRAM_GROUP" 
+         ICON="prggroup.bmp">
+        <MENU>
+              <MENUITEM DISPID="InsertProgram" 
+                        ORDERKEY="fa" 
+                        TEXT="Insert Program"
+                        KEYMOUSEEVENT="insert" 
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="project!=readonly"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="PROGRAM" 
+         ICON="prg.bmp" 
+         TEXT="Program" 
+         PROJ_LIST_VIEW="1" 
+         VIEW="CLASS" FILTERTEXT="Programs">
+        <MENU>
+              <MENUITEM STANDARDOP="Open" 
+                        ORDERKEY="ca" 
+                        TEXT="Open" 
+                        KEYMOUSEEVENT="open"/> 
+              <MENUITEM STANDARDOP="OpenUrl" 
+                        ORDERKEY="ra" 
+                        TEXT="Goto URL" />
+              <MENUITEM STANDARDOP="OpenUserHelp" 
+                        ORDERKEY="rb" 
+                        TEXT="Show User Help" />
+              <MENUITEM DISPID="RenameProgram" 
+                        ORDERKEY="ua" 
+                        TEXT="Rename Program"
+                        KEYMOUSEEVENT="rename" 
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="project!=readonly;source!=readonly"/>
+              <MENUITEM DISPID="DeleteProgram" 
+                        ORDERKEY="ub" 
+                        TEXT="Delete" 
+                        KEYMOUSEEVENT="delete"
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="project!=readonly;source!=readonly"/>
+              <MENUITEM DISPID="PropertiesProgram" 
+                        ORDERKEY="xa" 
+                        TEXT="Properties" 
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"/>         
+        </MENU>
+	<VAR_DECL HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                  INPUT="0"
+                  OUTPUT="0"
+                  INOUT="0"
+                  RETAIN="1"/>
+   </TYPE>
+
+   <TYPE ID="FUNCTION_BLOCK_GROUP" 
+         ICON="fbgroup.bmp">
+        <MENU>
+              <MENUITEM DISPID="InsertFunctionBlock" 
+                        ORDERKEY="fa" 
+                        TEXT="Insert Function Block" 
+                        KEYMOUSEEVENT="insert"
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="project!=readonly"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="FUNCTION_BLOCK" 
+         ICON="fb.bmp" 
+         TEXT="Function Block" 
+         PROJ_LIST_VIEW="1" 
+         VIEW="CLASS" 
+         FILTERTEXT="Function Blocks">
+        <MENU>
+              <MENUITEM STANDARDOP="Open" 
+                        ORDERKEY="ca" 
+                        TEXT="Open" 
+                        KEYMOUSEEVENT="open"/>
+              <MENUITEM STANDARDOP="OpenUrl" 
+                        ORDERKEY="ra" 
+                        TEXT="Goto URL" />
+              <MENUITEM STANDARDOP="OpenUserHelp" 
+                        ORDERKEY="rb" 
+                        TEXT="Show User Help" />
+              <MENUITEM DISPID="RenameFunctionBlock" 
+                        ORDERKEY="ua" 
+                        TEXT="Rename"
+                        KEYMOUSEEVENT="rename" 
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="project!=readonly;source!=readonly"/>
+              <MENUITEM DISPID="DeleteFunctionBlock" 
+                        ORDERKEY="ub" 
+                        TEXT="Delete"
+                        KEYMOUSEEVENT="delete" 
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="project!=readonly;source!=readonly"/>
+              <MENUITEM DISPID="PropertiesFunctionBlock" 
+                        ORDERKEY="xa" 
+                        TEXT="Properties" 
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"/>
+        </MENU>
+        <VAR_DECL HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                  INPUT="1"
+                  OUTPUT="1"
+                  INOUT="1"
+                  RETAIN="1"/>
+   </TYPE>
+
+   <TYPE ID="VAR" 
+         VISIBILITY="0">
+   </TYPE>
+   <TYPE ID="VAR_INPUT" 
+         ICON="var_input.bmp">
+        <MENU>
+              <MENUITEM STANDARDOP="Goto" 
+                        ORDERKEY="ca" 
+                        TEXT="Edit Variable" 
+                        KEYMOUSEEVENT="open"/>
+              <MENUITEM DISPID="DeleteVariable" 
+                        ORDERKEY="ua" 
+                        TEXT="Delete Variable"
+                        KEYMOUSEEVENT="delete" 
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="source!=readonly"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="VAR_OUTPUT" 
+         ICON="var_output.bmp">
+        <MENU>
+              <MENUITEM STANDARDOP="Goto" 
+                        ORDERKEY="ca" 
+                        TEXT="Edit Variable" 
+                        KEYMOUSEEVENT="open"/>
+              <MENUITEM DISPID="DeleteVariable" 
+                        ORDERKEY="ua" 
+                        TEXT="Delete Variable"
+                        KEYMOUSEEVENT="delete" 
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="source!=readonly"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="VAR_IN_OUT" 
+         ICON="var_in_out.bmp">
+        <MENU>
+              <MENUITEM STANDARDOP="Goto" 
+                        ORDERKEY="ca" 
+                        TEXT="Edit Variable" 
+                        KEYMOUSEEVENT="open"/>
+              <MENUITEM DISPID="DeleteVariable" 
+                        ORDERKEY="ua" 
+                        TEXT="Delete Variable"
+                        KEYMOUSEEVENT="delete" 
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="source!=readonly"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="VAR_IN_EXT" 
+         ICON="var_in_ext.bmp">
+        <MENU>
+              <MENUITEM STANDARDOP="Goto" 
+                        ORDERKEY="ca" 
+                        TEXT="Edit Variable" 
+                        KEYMOUSEEVENT="open"/>
+              <MENUITEM DISPID="DeleteVariable" 
+                        ORDERKEY="ua" 
+                        TEXT="Delete Variable"
+                        KEYMOUSEEVENT="delete" 
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="source!=readonly"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="VAR_OUT_EXT" 
+         ICON="var_out_ext.bmp">
+        <MENU>
+              <MENUITEM STANDARDOP="Goto" 
+                        ORDERKEY="ca" 
+                        TEXT="Edit Variable" 
+                        KEYMOUSEEVENT="open"/>
+              <MENUITEM DISPID="DeleteVariable" 
+                        ORDERKEY="ua" 
+                        TEXT="Delete Variable"
+                        KEYMOUSEEVENT="delete" 
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="source!=readonly"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="VAR_EXTERNAL" 
+         VISIBILITY="0">
+   </TYPE>
+   <TYPE ID="VAR_TEMP" 
+         VISIBILITY="0">
+   </TYPE>
+  
+   <TYPE ID="FUNCTION_GROUP" 
+         ICON="fungroup.bmp">
+        <MENU>
+              <MENUITEM DISPID="InsertFunction" 
+                        ORDERKEY="fa" 
+                        TEXT="Insert Function"
+                        KEYMOUSEEVENT="insert" 
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="project!=readonly"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="FUNCTION" 
+         ICON="fun.bmp" 
+         TEXT="Function" 
+         PROJ_LIST_VIEW="1" 
+         VIEW="CLASS" 
+         FILTERTEXT="Functions">
+        <MENU>
+              <MENUITEM STANDARDOP="Open" 
+                        ORDERKEY="ca" 
+                        TEXT="Open" 
+                        KEYMOUSEEVENT="open"/> 
+              <MENUITEM STANDARDOP="OpenUrl" 
+                        ORDERKEY="ra" 
+                        TEXT="Goto URL" />
+              <MENUITEM STANDARDOP="OpenUserHelp"  
+                        ORDERKEY="rb" 
+                        TEXT="Show User Help" />
+              <MENUITEM DISPID="RenameFunction" 
+                        ORDERKEY="ua" 
+                        TEXT="Rename" 
+                        KEYMOUSEEVENT="rename"
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="project!=readonly;source!=readonly"/> 
+              <MENUITEM DISPID="DeleteFunction" 
+                        ORDERKEY="ub" 
+                        TEXT="Delete" 
+                        KEYMOUSEEVENT="delete"
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                        ENABLE_EXPRESSION="project!=readonly;source!=readonly"/>
+              <MENUITEM DISPID="PropertiesFunction" 
+                        ORDERKEY="xa" 
+                        TEXT="Properties" 
+                        HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"/>        
+        </MENU>
+        <VAR_DECL HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"
+                  INPUT="1"
+                  OUTPUT="1"
+                  INOUT="1"
+                  RETAIN="0"/>
+   </TYPE>
+
+   <TYPE ID="LIBRARY_GROUP" 
+         ICON="libgroup.bmp">
+        <MENU>
+              <MENUITEM DISPID="AddLibrary" 
+                        ORDERKEY="fa" 
+                        TEXT="Add Library"
+                        KEYMOUSEEVENT="insert" 
+                        HANDLER="{AA6A1A66-3AE2-49F2-9F9D-768B893A522A}"
+                        ENABLE_EXPRESSION="project!=readonly"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="LIBRARY" 
+         ICON="lib.bmp" 
+         PROJ_LIST_VIEW="1" 
+         TEXT="Library"
+         VIEW="CLASS" 
+         FILTERTEXT="Libraries">
+        <MENU>
+              <MENUITEM STANDARDOP="Open" 
+                        ORDERKEY="ca" 
+                        TEXT="Open Library" 
+                        KEYMOUSEEVENT="open"/> 
+              <MENUITEM DISPID="RemoveLibrary" 
+                        ORDERKEY="ua" 
+                        TEXT="Remove Library" 
+                        KEYMOUSEEVENT="delete"
+                        HANDLER="{AA6A1A66-3AE2-49F2-9F9D-768B893A522A}"
+                        ENABLE_EXPRESSION="project!=readonly;source!=readonly"/>
+        </MENU>
+   </TYPE>
+
+
+<!--  **************************************************************
+                        Target View
+      ************************************************************** -->
+
+
+ <TYPE ID="PROJECT_TARGET" 
+         ICON="targetproject.bmp">
+        <MENU>
+            <MENUITEM TEXT="Goto URL" 
+                      ORDERKEY="ra" 
+                      STANDARDOP="OpenUrl"/>
+            <MENUITEM TEXT="Properties" 
+                      ORDERKEY="xa"
+                      DISPID="ProjectProperties"
+                      HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}"/>
+            <MENUITEM TEXT="Build All" 
+                      ORDERKEY="ia"  
+                      STBARTXT="Builds all targets" 
+                      STANDARDOP="BuildAll"/>
+            <MENUITEM TEXT="Build" 
+                      ORDERKEY="ib"  
+                      STBARTXT="Builds a single target" 
+                      STANDARDOP="BuildSelect"/>
+            <MENUITEM TEXT="Download Changes All" 
+                      ORDERKEY="ja"  
+                      STBARTXT="Downloads changes on all targets" 
+                      STANDARDOP="DownloadChangesAll"/>
+            <MENUITEM TEXT="Download Changes" 
+                      ORDERKEY="jb"  
+                      STBARTXT="Downloads changes one or more targets" 
+                      STANDARDOP="DownloadChangesSelect"/>
+            <MENUITEM TEXT="Full Download All" 
+                      ORDERKEY="jc" 
+                      STBARTXT="Full Download on all targets" 
+                      STANDARDOP="DownloadFullAll"/>
+            <MENUITEM TEXT="Full Download" 
+                      ORDERKEY="jd"  
+                      STBARTXT="Downloads changes one or more targets" 
+                      STANDARDOP="DownloadFullSelect"/>
+        </MENU>
+    </TYPE>
+
+
+
+<!--  **************************************************************
+                        Instance View 
+      ************************************************************** -->
+
+   <TYPE ID="PROJECT_INSTANCE" 
+         ICON="instanceproject.bmp">
+        <MENU>
+            <MENUITEM TEXT="Goto URL" 
+                      ORDERKEY="ra" 
+                      STANDARDOP="OpenUrl"/>
+            <MENUITEM TEXT="Build All" 
+                      ORDERKEY="ia"  
+                      STBARTXT="Builds all targets" 
+                      STANDARDOP="BuildAll"/>
+            <MENUITEM TEXT="Build" 
+                      ORDERKEY="ib"  
+                      STBARTXT="Builds a single target" 
+                      STANDARDOP="BuildSelect"/>
+            <MENUITEM TEXT="Download Changes All" 
+                      ORDERKEY="ja"  
+                      STBARTXT="Downloads changes on all targets" 
+                      STANDARDOP="DownloadChangesAll"/>
+            <MENUITEM TEXT="Download Changes" 
+                      ORDERKEY="jb"  
+                      STBARTXT="Downloads changes one or more targets" 
+                      STANDARDOP="DownloadChangesSelect"/>
+            <MENUITEM TEXT="Full Download All" 
+                      ORDERKEY="jc" 
+                      STBARTXT="Full Download on all targets" 
+                      STANDARDOP="DownloadFullAll"/>
+            <MENUITEM TEXT="Full Download" 
+                      ORDERKEY="jd"  
+                      STBARTXT="Downloads changes one or more targets" 
+                      STANDARDOP="DownloadFullSelect"/>
+        </MENU>
+    </TYPE>
+
+
+
+   <TYPE ID="CONFIGURATION_INST" 
+         ICON="config.bmp"/>
+   <TYPE ID="RESOURCE_INST" 
+         ICON="res.bmp">
+        <STATE ICON="reserror.bmp" 
+               STATE_VAL="-1"/>
+        <STATE ICON="resstop.bmp" 
+               STATE_VAL="1"/>
+        <STATE ICON="resrun.bmp" 
+               STATE_VAL="2"/>
+        <MENU>
+            <MENUITEM STANDARDOP="Open" 
+                      ORDERKEY="ca" 
+                      TEXT="Open" 
+                      KEYMOUSEEVENT="open"/>
+            <MENUITEM STANDARDOP="OpenConsole"
+                      ORDERKEY="cb"
+                      TEXT="Open Console"/>
+            <MENUITEM STANDARDOP="StartControl" 
+                      ORDERKEY="la" 
+                      TEXT="Start"/>
+            <MENUITEM STANDARDOP="StopControl" 
+                      ORDERKEY="lb" 
+                      TEXT="Stop"/>
+            <MENUITEM STANDARDOP="StartAllTasks" 
+                      ORDERKEY="lc" 
+                      TEXT="Start All Tasks"/>
+            <MENUITEM STANDARDOP="StopAllTasks" 
+                      ORDERKEY="ld" 
+                      TEXT="Stop All Tasks"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="TASK_INST" 
+         ICON="task.bmp">
+        <STATE ICON="taskerror.bmp" 
+               STATE_VAL="-1"/>
+        <STATE ICON="taskstop.bmp" 
+               STATE_VAL="1"/>
+        <STATE ICON="taskrun.bmp" 
+               STATE_VAL="2"/>
+        <STATE ICON="taskstopbp.bmp" 
+               STATE_VAL="3"/>
+        <STATE ICON="taskunloaded.bmp" 
+               STATE_VAL="16"/>
+        <MENU>
+            <MENUITEM STANDARDOP="Goto" 
+                      ORDERKEY="ca" 
+                      TEXT="Open" 
+                      KEYMOUSEEVENT="open"/>
+            <MENUITEM STANDARDOP="OpenConsole"
+                      ORDERKEY="cb"
+                      TEXT="Open Console"/>
+            <MENUITEM STANDARDOP="StartTask" 
+                      ORDERKEY="la" 
+                      TEXT="Start"/>
+            <MENUITEM STANDARDOP="StopTask" 
+                      ORDERKEY="lb" 
+                      TEXT="Stop"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="ACTASK_INST" ICON="task.bmp">
+		<STATE ICON="taskerror.bmp" STATE_VAL="-1"/>
+		<STATE ICON="taskstop.bmp" STATE_VAL="1"/>
+		<STATE ICON="taskrun.bmp" STATE_VAL="2"/>
+		<STATE ICON="taskstopbp.bmp" STATE_VAL="3"/>
+		<MENU>
+			<MENUITEM STANDARDOP="Goto" ORDERKEY="ca" TEXT="Open" KEYMOUSEEVENT="open"/>
+			<MENUITEM STANDARDOP="OpenInstance" ORDERKEY="cb" TEXT="Goto Wait"/>
+			<MENUITEM STANDARDOP="StartTask" ORDERKEY="la" TEXT="Start"/>
+			<MENUITEM STANDARDOP="StopTask" ORDERKEY="lb" TEXT="Stop"/>
+		</MENU>
+  </TYPE>
+   <TYPE ID="PROGRAM_INST" 
+         ICON="prg.bmp">
+        <MENU>
+            <MENUITEM STANDARDOP="OpenInstance" 
+                      ORDERKEY="ca" 
+                      TEXT="Open Instance" 
+                      KEYMOUSEEVENT="open"/>
+            <MENUITEM STANDARDOP="Open" 
+                      ORDERKEY="cb" 
+                      TEXT="Open" />
+            <MENUITEM STANDARDOP="OpenUserHelp" 
+                      ORDERKEY="rb" 
+                      TEXT="Open User Help"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="FUNCTION_BLOCK_INST" 
+         ICON="fb.bmp">
+        <MENU>
+            <MENUITEM STANDARDOP="OpenInstance" 
+                      ORDERKEY="ca" 
+                      TEXT="Open Instance" 
+                      KEYMOUSEEVENT="open"/>
+            <MENUITEM STANDARDOP="Open" 
+                      ORDERKEY="cb" 
+                      TEXT="Open" />
+            <MENUITEM STANDARDOP="OpenConsole" 
+                      ORDERKEY="ra" 
+                      TEXT="Open Console"/>
+            <MENUITEM STANDARDOP="OpenUserHelp" 
+                      ORDERKEY="rb" 
+                      TEXT="Open User Help"/>
+        </MENU>
+   </TYPE>
+   <TYPE ID="GLOBAL_VAR_FILE_INST" 
+         ICON="gvlfile.bmp">
+    <MENU>
+        <MENUITEM STANDARDOP="OpenInstance" 
+                  ORDERKEY="ca" 
+                  TEXT="Open Instance" 
+                  KEYMOUSEEVENT="open"/>
+        <MENUITEM STANDARDOP="Open" 
+                  ORDERKEY="cb" 
+                  TEXT="Open" />
+    </MENU>
+   </TYPE>
+   <TYPE ID="GLOBAL_VAR_INST" 
+         ICON="gvlinst.bmp"/>
+
+</TYPES>
+
+
+<!-- *********************************************************************************
+                       Drag and Drop
+     ********************************************************************************* -->
+
+<DRAGDROP>
+    <DRAGDROPMAP>
+            <DRAGDROPACTION DRAGTYPE="FUNCTION_BLOCK"/>
+            <DRAGDROPACTION DRAGTYPE="FUNCTION"/>
+            <DRAGDROPACTION DRAGTYPE="STRUCT"/>
+            <DRAGDROPACTION DRAGTYPE="PROGRAM" DROPTYPE="TASK" HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}" ENABLE_EXPRESSION="source!=readonly"/>
+            <DRAGDROPACTION DRAGTYPE="GLOBAL_VAR_FILE" DROPTYPE="RESOURCE" HANDLER="{C2EED755-E717-11D4-B8D2-002018641833}" ENABLE_EXPRESSION="source!=readonly"/>
+    </DRAGDROPMAP>
+</DRAGDROP>
+
+
+
+
+
+</KAD4CE>
+

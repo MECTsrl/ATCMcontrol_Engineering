@@ -1,0 +1,9 @@
+; <funtion name> <id> <version min> <version max>
+HW119_OpenCrossTable 280 0 99999
+HW119_CloseCrossTable 281 0 99999
+HW119_ReadCrossTableRecord 282 0 99999
+HW119_GetCrossTableField 283 0 99999
+HW119_GetAddr 284 0 99999
+HW119_float2dword 285 0 99999
+HW119_dword2float 286 0 99999
+HW119_WriteVar 287 0 99999

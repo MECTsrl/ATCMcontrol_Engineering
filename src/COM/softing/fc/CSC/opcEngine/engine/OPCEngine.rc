@@ -1,0 +1,77 @@
+#include "buildnr.h"
+#include "winres.h"
+#include "opcerror.rc"
+
+#ifdef APSTUDIO_INVOKED
+	#error this file is not editable by Microsoft Visual C++
+#endif //APSTUDIO_INVOKED
+
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION MAJOR_VERSION_NUMBER,MINOR_VERSION_NUMBER,0,BUILD_NUMBER
+ PRODUCTVERSION MAJOR_VERSION_NUMBER,MINOR_VERSION_NUMBER,0,0
+ FILEFLAGSMASK 0x3fL
+#if defined(_DEBUG)
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40000L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000004b0"
+        BEGIN
+            VALUE "CompanyName", "ATCM\0"
+
+#if defined(DEMO_VERSION)
+            VALUE "FileVersion", VERSION_TEXT "  Build " BUILD_NUMBER_STR " (demo)\0"
+#else
+#if defined(_DEBUG)
+            VALUE "FileVersion", VERSION_TEXT "  Build " BUILD_NUMBER_STR " (debug)\0"
+#else
+            VALUE "FileVersion", VERSION_TEXT "  Build " BUILD_NUMBER_STR "\0"
+#endif
+#endif
+
+#if defined(_AFXDLL)
+#if defined(_UNICODE)
+            VALUE "BuildOptions", "Shared UNICODE\0"
+#else
+            VALUE "BuildOptions", "Shared ASCII\0"
+#endif
+#else
+#if defined(_UNICODE)
+            VALUE "BuildOptions", "Static UNICODE\0"
+#else
+            VALUE "BuildOptions", "Static ASCII\0"
+#endif
+#endif
+
+#if defined(SOFTING)
+            VALUE "SpecialBuild", "Distribution\0"
+#endif
+
+#if _MSC_VER == 1100
+            VALUE "Compiler", "Microsoft Visual C++ 5.0\0"
+#endif
+#if _MSC_VER == 1200
+            VALUE "Compiler", "Microsoft Visual C++ 6.0\0"
+#endif
+
+            VALUE "LegalCopyright", "ATCM\0"
+            VALUE "FileDescription", "OPC Server Toolkit\0"
+            VALUE "ProductName", "OPC Server Toolkit\0"
+            VALUE "OriginalFilename", "OPCEGxxx.dll\0"
+            VALUE "InternalName", "OPC Engine\0"
+            VALUE "ProductVersion", VERSION_TEXT "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0, 1200
+    END
+END

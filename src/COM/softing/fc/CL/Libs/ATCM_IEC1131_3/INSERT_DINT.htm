@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>INSERT_DINT</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>INSERT_DINT</h2>
+<p>Inserts a string into another string at a set position.<br>
+</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION INSERT_DINT : ANY_STRING
+VAR_INPUT  
+    IN1 : ANY_STRING; 
+    IN2 : ANY_STRING; 
+    P   : DINT;
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>ANY_STRING</b></i><br>
+  Complete string from the joined strings.</p>
+
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>IN1</b></dt>
+  <dd>Value of type <b><i>ANY_STRING</i></b><br>
+    String in which the string passed in <i><b>IN2 </b></i>is inserted.</dd>
+  <dt><b>IN2</b></dt>
+  <dd>Value of type <b><i>ANY_STRING</i></b><br>
+    String which is inserted in the string passed in <i><b>IN1</b></i>.</dd>
+  <dt><b>P</b></dt>
+  <dd>Value of type <b><i>DINT</i></b><br>
+    Position of the character in<i><b> IN1</b></i> after which<b> <i>IN2</i> </b>is 
+    to be inserted in <i><b>IN1</b></i>. <br>
+  </dd>
+</dl>
+<h3>Description</h3>
+<p>Inserts the string passed in<b> <i>IN2</i> </b>after position<b> <i>P</i></b> 
+  of<b> <i>IN1</i></b>. If <i><b>P </b></i>contains a value that exceeds the number 
+  of characters contained in <i><b>IN1</b></i>, a runtime error is generated and 
+  the calling task is stopped. </p>
+</body>
+</html>

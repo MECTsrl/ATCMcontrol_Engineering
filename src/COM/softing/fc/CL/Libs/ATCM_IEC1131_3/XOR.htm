@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>XOR</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>XOR</h2>
+<p>Combines the values delivered as actual parameters with bitwise exclusive <b><i>OR</i></b>.<br>
+</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION XOR : ANY_BIT
+VAR_INPUT 
+    IN1 : ANY_BIT; 
+END_VAR
+VAR_IN_EXT 
+    IN2 : ANY_BIT; 
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>ANY_BIT</b></i><br>
+  Yields the value resulting from combining the actual parameters.</p>
+
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>IN1</b></dt>
+  <dd>Value of type <b><i>ANY_BIT</i></b><br>
+    Value to be combined.</dd>
+  <dt><b>IN2</b></dt>
+  <dd>Value of type <b><i>ANY_BIT</i></b><br>
+    Value to be combined. <br>
+    <i><b>IN_EXT</b></i>-variables are extensible. Optionally, further values 
+    can be stated to be combined.<br>
+  </dd>
+</dl>
+<h3>Description</h3>
+<p>The function <i><b>XOR</b></i> corresponds to the operators for bitwise exclusive 
+  <i> <b>OR</b></i>. With a bitwise exclusive <b><i>OR</i></b>, a bit is only 
+  set in the result if a bit is set exclusively in one of the operands that are 
+  combined. If, however, no or both bits are set at the same bit position of both 
+  operands, the result at this bit position is <i><b>0</b></i>, i.e. the corresponding 
+  bit is not set. Bit masks that are combined with the output value via<b> <i>XOR</i></b> 
+  can thus be used like switches that set bit values at specific positions to 
+  their opposite values..</p>
+</body>
+</html>

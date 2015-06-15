@@ -1,0 +1,468 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ARRAYEXPAND DIALOG DISCARDABLE  0, 0, 146, 87
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Expand Large Array"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,89,66,50,14
+    LTEXT           "Count:",IDC_STATIC,20,35,22,12,SS_CENTERIMAGE
+    LTEXT           "Offset:",IDC_STATIC,20,15,22,12,SS_CENTERIMAGE
+    EDITTEXT        IDC_OFFSET_EDT,50,15,75,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_COUNT_EDT,50,35,75,12,ES_AUTOHSCROLL
+    GROUPBOX        "",IDC_STATIC,7,4,132,53
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ARRAYEXPAND, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 139
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 80
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_PROPPAGE_CEWATCHVIEW DIALOG DISCARDABLE  0, 0, 250, 62
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "TODO: Place controls to manipulate properties of WatchView Control on this dialog.",
+                    IDC_STATIC,7,25,229,16
+END
+
+IDD_MAINDLG DIALOG DISCARDABLE  0, 0, 324, 136
+STYLE WS_CHILD | WS_VISIBLE
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "List1",IDC_LISTCTRL_VARLIST,"SysListView32",LVS_REPORT | 
+                    LVS_EDITLABELS | LVS_OWNERDRAWFIXED | LVS_NOSORTHEADER | 
+                    WS_BORDER | WS_GROUP | WS_TABSTOP,2,16,314,119
+    PUSHBUTTON      "Add Expression from List",IDM_ADD_VARIABLE_FROM_LIST,2,
+                    2,15,12,BS_ICON
+    PUSHBUTTON      "Remove selected expressions",
+                    IDM_REMOVE_SELECTED_VARIABLES,18,2,15,12,BS_ICON
+    PUSHBUTTON      "Remove all expressions",IDM_REMOVE_ALL_VARIABLES,34,2,
+                    15,12,BS_ICON
+    LTEXT           "Static",IDC_STATIC_SELVAR,56,3,126,11,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    COMBOBOX        IDC_CB_HISTORY,186,2,92,64,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Write",IDC_BTN_WRITE,283,2,33,13
+END
+
+IDD_INSVARLIST DIALOG DISCARDABLE  0, 0, 304, 209
+STYLE WS_CHILD | WS_CAPTION
+CAPTION "List View"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "List1",IDC_LIST_VARNAME,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_OWNERDATA | WS_BORDER | 
+                    WS_TABSTOP,6,8,290,196
+END
+
+IDD_INSVARTREE DIALOG DISCARDABLE  0, 0, 304, 209
+STYLE WS_CHILD | WS_CAPTION
+CAPTION "Tree View"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Tree1",IDC_TREE_VARNAME,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_SHOWSELALWAYS | WS_BORDER | 
+                    WS_TABSTOP,7,8,290,196
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_PROPPAGE_CEWATCHVIEW, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 243
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+
+    IDD_MAINDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 317
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 129
+    END
+
+    IDD_INSVARLIST, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 296
+        TOPMARGIN, 8
+        BOTTOMMARGIN, 203
+    END
+
+    IDD_INSVARTREE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 297
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 202
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1 TYPELIB ""CeWatchView.tlb""\r\n"
+    "#include ""version.rc2""\r\n"
+    "#include ""..\\inc\\CEUTILrc.h""\r\n"
+    "#include ""..\\inc\\CEUTIL.rc""\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_CEWATCHVIEW         BITMAP  DISCARDABLE     "CeWatchViewCtl.bmp"
+IDB_VAR_STATE           BITMAP  DISCARDABLE     "VarState.bmp"
+IDB_OBJECT_TYPES        BITMAP  DISCARDABLE     "ObjectTypes.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_DEL                 ICON    DISCARDABLE     "del.ico"
+IDI_INSERT              ICON    DISCARDABLE     "insert.ico"
+IDI_DEL_DISABLE         ICON    DISCARDABLE     "del_d.ico"
+IDI_DELALL_DISABLE      ICON    DISCARDABLE     "delall_d.ico"
+IDI_INSERT_DISABLE      ICON    DISCARDABLE     "insert_d.ico"
+IDI_DELALL              ICON    DISCARDABLE     "delall.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_WATCH_POPUP MENU DISCARDABLE 
+BEGIN
+    POPUP "Popup"
+    BEGIN
+        MENUITEM "&Add Variable / Expression",  IDM_ADD_VARIABLE
+        MENUITEM "Add Variable from &List...",  IDM_ADD_VARIABLE_FROM_LIST
+        MENUITEM "&Remove Selected Variables / Expressions", 
+                                                IDM_REMOVE_SELECTED_VARIABLES
+
+        MENUITEM "Re&move all Variables / Expressions", 
+                                                IDM_REMOVE_ALL_VARIABLES
+        MENUITEM SEPARATOR
+        MENUITEM "Edit &Expression",            IDM_EDIT_NAME
+        MENUITEM "Edit &Value",                 IDM_EDIT_VALUE
+        MENUITEM "Edit &Format",                IDM_EDIT_FORMAT
+        MENUITEM SEPARATOR
+        MENUITEM "&Increment Array Range",      IDM_INC_RANGE
+        MENUITEM "De&crement Array Range",      IDM_DEC_RANGE
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_ACCELERATORS ACCELERATORS DISCARDABLE 
+BEGIN
+    "C",            ID_COPY_ITEMS,          VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_PASTE_ITEMS,         VIRTKEY, CONTROL, NOINVERT
+    VK_ADD,         IDM_INC_RANGE,          VIRTKEY, SHIFT, NOINVERT
+    VK_SUBTRACT,    IDM_DEC_RANGE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_CUT_ITEMS,           VIRTKEY, CONTROL, NOINVERT
+END
+
+IDR_EDIT_ACCELERATORS ACCELERATORS DISCARDABLE 
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_ADD,         IDM_INC_RANGE,          VIRTKEY, SHIFT, NOINVERT
+    VK_SUBTRACT,    IDM_DEC_RANGE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CEWATCHVIEW         "4C_20: WatchView Class"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CEWATCHVIEW_PPG     "4C_20: WatchView Property Page"
+    IDS_CAPTION             "ATCMControlV2 Engineering"
+    IDS_HEADER_NAME         "Variable / Expression"
+    IDS_HEADER_TYPE         "Type"
+    IDS_HEADER_VALUE        "Value"
+    IDS_HEADER_TIME         "Time"
+    IDS_HEADER_QUALITY      "Quality"
+    IDS_HEADER_FORMAT       "Format"
+    IDS_HEADER_NAME_TYPICAL "[Station].Resource.Task.Program.FBlock.variable"
+    IDS_HEADER_TYPE_TYPICAL "WSTRING"
+    IDS_HEADER_VALUE_TYPICAL "Hello World"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_HEADER_TIME_TYPICAL "9999-99-99:99:99.999"
+    IDS_HEADER_QUALITY_TYPICAL "Uncertain"
+    IDS_HEADER_FORMAT_TYPICAL "16# ;hexa decimal"
+    IDS_CLOSE               "Close"
+    IDS_ADD                 "Add"
+    IDS_ASKFULLEXPAND       "This may take some time.\nFully expand?"
+    IDS_TIP_DEL             "Remove Selected Variables / Expressions"
+    IDS_TIP_DELALL          "Remove all Variables / Expressions"
+    IDS_TIP_INSERT          "Add Variable from List"
+    IDS_TIP_WRITE           "Write new Value"
+    IDS_TIP_HISTORY         "Select or Edit Value to Write"
+    IDS_CEWATCHVIEW_PPG_CAPTION "General"
+    IDS_INSERTVARIABLE      "Add Variable from List"
+    IDS_STORE_WATCH_TITLE   "Save Variable / Expression List"
+    IDS_LOAD_WATCH_TITLE    "Open Variable / Expression List"
+    IDS_WATCH_FILE_FILTERNAME1 "Watch list files (*.4cw)"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_WATCH_FILE_FILTEREXT1 "4cw"
+    IDS_WATCH_FILE_FILTERNAME2 "All files (*.*)"
+    IDS_WATCH_FILE_FILTEREXT2 "*"
+    IDS_QUAL_BAD            "Bad"
+    IDS_QUAL_UNCERTAIN      "Uncertain"
+    IDS_QUAL_GOOD           "Good"
+    IDS_QUAL_UNKNOWN        "Unknown"
+    IDS_QUAL_BAD_CONFIG_ERROR "config error"
+    IDS_QUAL_BAD_NOT_CONNECTED "not connected"
+    IDS_QUAL_BAD_DEV_FAILURE "device failure"
+    IDS_QUAL_BAD_SENSOR_FAILURE "sensor failure"
+    IDS_QUAL_BAD_LAST_KNOWN_VALUE "last known value"
+    IDS_QUAL_BAD_COMM_FAILURE "comm. failure"
+    IDS_QUAL_BAD_OUT_OF_SERVICE "out of service"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_QUAL_UNC_LAST_USABLE_VALUE "last usable value"
+    IDS_QUAL_UNC_SENSOR_NOT_ACCURATE "sensor inaccurate"
+    IDS_QUAL_UNC_ENG_UNITS_EXCEEDED "units exceeded"
+    IDS_QUAL_UNC_SUB_NORMAL "sub normal"
+    IDS_QUAL_GOOD_LOCAL_OVERRIDE "local override"
+    IDS_STATE_CONTAINSINOUT "<contains VAR_IN_OUT>"
+    IDS_STATE_EMPTYVALUE    "<Empty>"
+    IDS_STATE_LOADINGVALUE  "<Loading>"
+    IDS_STATE_RELOADINGVALUE "<Reloading>"
+    IDS_STATE_NOTCONNECTED  "<Not Connected>"
+    IDS_STATE_SUBSCRIBEERROR "<Subscribe Error>"
+    IDS_STATE_UNKNOWNSUBSCRIPTION "<Unknown Subscription>"
+    IDS_STATE_VALUETYPEERROR "<Value Type Error>"
+    IDS_STATE_INVALIDAGGREGATETYPE "<Invalid Aggregate Type>"
+    IDS_STATE_UNKNOWNFIELD  "<Unknown  Field>"
+    IDS_STATE_NOTARRAYTYPE  "<Not Array Type>"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_STATE_UNKNOWNELEMENTTYPE "<Unknown Element Type>"
+    IDS_STATE_INVALIDINDEXTYPE "<Invalid Index Type>"
+    IDS_STATE_INDEXRANGEERROR "<Index Range Error>"
+    IDS_STATE_INVALIDPLUSOPERANDTYPE "<Invalid Plus Operand Type>"
+    IDS_STATE_INVALIDMINUSOPERANDTYPE "<Invalid Minus Operand Type>"
+    IDS_STATE_INVALIDNOTOPERANDTYPE "<Invalid Not Operand Type>"
+    IDS_STATE_INVALIDADDLEFTTYPE "<Invalid Add Left Type>"
+    IDS_STATE_INVALIDADDRIGHTTYPE "<Invalid Add Right Type>"
+    IDS_STATE_INVALIDADDTYPECOMBI "<Invalid Add Type Combination>"
+    IDS_STATE_INVALIDSUBLEFTTYPE "<Invalid Sub Left Type>"
+    IDS_STATE_INVALIDSUBRIGHTTYPE "<Invalid Sub Right Type>"
+    IDS_STATE_INVALIDSUBTYPECOMBI "<Invalid Sub Type Combination>"
+    IDS_STATE_INVALIDMULTLEFTTYPE "<Invalid Mult Left Type>"
+    IDS_STATE_INVALIDMULTRIGHTTYPE "<Invalid Mult Right Type>"
+    IDS_STATE_INVALIDMULTTYPECOMBI "<Invalid Mult Type Combination>"
+    IDS_STATE_INVALIDDIVLEFTTYPE "<Invalid Div Left Type>"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_STATE_INVALIDDIVRIGHTTYPE "<Invalid Div Right Type>"
+    IDS_STATE_INVALIDDIVTYPECOMBI "<Invalid Div Type Combination>"
+    IDS_STATE_DIVISIONBYZERO "<Division By Zero>"
+    IDS_STATE_INVALIDMODLEFTTYPE "<Invalid Mod Left Type>"
+    IDS_STATE_INVALIDMODRIGHTTYPE "<Invalid Mod Right Type>"
+    IDS_STATE_INVALIDMODTYPECOMBI "<Invalid Mod Type Combination>"
+    IDS_STATE_MODULOZERO    "<Modulo Zero>"
+    IDS_STATE_INVALIDEQLEFTTYPE "<Invalid EQ Left Type>"
+    IDS_STATE_INVALIDEQRIGHTTYPE "<Invalid EQ Right Type>"
+    IDS_STATE_INVALIDEQTYPECOMBI "<Invalid EQ Type Combination>"
+    IDS_STATE_INVALIDNELEFTTYPE "<Invalid NE Left Type>"
+    IDS_STATE_INVALIDNERIGHTTYPE "<Invalid NE Right Type>"
+    IDS_STATE_INVALIDNETYPECOMBI "<Invalid NE Type Combination>"
+    IDS_STATE_INVALIDLTLEFTTYPE "<Invalid LT Left Type>"
+    IDS_STATE_INVALIDLTRIGHTTYPE "<Invalid LT Right Type>"
+    IDS_STATE_INVALIDLTTYPECOMBI "<Invalid LT Type Combination>"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_STATE_INVALIDLELEFTTYPE "<Invalid LE Left Type>"
+    IDS_STATE_INVALIDLERIGHTTYPE "<Invalid LE Right Type>"
+    IDS_STATE_INVALIDLETYPECOMBI "<Invalid LE Type Combination>"
+    IDS_STATE_INVALIDGTLEFTTYPE "<Invalid GT Left Type>"
+    IDS_STATE_INVALIDGTRIGHTTYPE "<Invalid GT Right Type>"
+    IDS_STATE_INVALIDGTTYPECOMBI "<Invalid GT Type Combination>"
+    IDS_STATE_INVALIDGELEFTTYPE "<Invalid GE Left Type>"
+    IDS_STATE_INVALIDGERIGHTTYPE "<Invalid GE Right Type>"
+    IDS_STATE_INVALIDGETYPECOMBI "<Invalid GE Type Combination>"
+    IDS_STATE_INVALIDANDLEFTTYPE "<Invalid And Left Type>"
+    IDS_STATE_INVALIDANDRIGHTTYPE "<Invalid And Right Type>"
+    IDS_STATE_INVALIDANDTYPECOMBI "<Invalid And Type Combination>"
+    IDS_STATE_INVALIDORLEFTTYPE "<Invalid Or Left Type>"
+    IDS_STATE_INVALIDORRIGHTTYPE "<Invalid Or Right Type>"
+    IDS_STATE_INVALIDORTYPECOMBI "<Invalid Or Type Combination>"
+    IDS_STATE_INVALIDXORLEFTTYPE "<Invalid Xor Left Type>"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_STATE_INVALIDXORRIGHTTYPE "<Invalid Xor Right Type>"
+    IDS_STATE_INVALIDXORTYPECOMBI "<Invalid Xor Type Combination>"
+    IDS_STATE_INVALIDPOWERLEFTTYPE "<Invalid Power Left Type>"
+    IDS_STATE_INVALIDPOWERRIGHTTYPE "<Invalid Power Right Type>"
+    IDS_STATE_UNKNOWN       "<unknown state: %d>"
+    IDS_ERROR_ARRAYINDEX    "Invalid array index expression"
+    IDS_ERROR_LOADSYMBOLS   "Loading symbols failed"
+    IDS_ERROR_INVALID_WRITE_EXPR "Invalid write expression"
+    IDS_ERROR_WRITE_FAILED  "Write request failed"
+    IDS_ERROR_INVALID_FORMAT_EXPR "Invalid format expression"
+    IDS_ERROR_DBI_NOT_FOUND "Could not open debug information for %1."
+    IDS_ERROR_VERSION       "Cannot read watch file %s\ndue to version conflict. Version found: %s - version expected: %s"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "ATCMControl Engineering"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDM_ADD_VARIABLE        "Add Variable / Expression"
+    IDM_ADD_VARIABLE_FROM_LIST "Add Variable from List"
+    IDM_REMOVE_SELECTED_VARIABLES "Remove Selected Variables / Expressions"
+    IDM_REMOVE_ALL_VARIABLES "Remove all Variables / Expressions"
+    IDM_LOAD_WATCHES        "Import Variable / Expression List from file"
+    IDM_STORE_WATCHES       "Export Variable / Expression List to file"
+    IDM_EDIT_VALUE          "Edit Value of selected Variable"
+    IDM_EDIT_FORMAT         "Edit Format String"
+    IDM_INC_RANGE           "Increments visible Range of Array Elements"
+    IDM_DEC_RANGE           "Decrements visible Range of Array Elements"
+    IDM_EDIT_NAME           "Edit Name or Expression of Variable"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "CeWatchView.tlb"
+#include "version.rc2"
+#include "..\inc\CEUTILrc.h"
+#include "..\inc\CEUTIL.rc"
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

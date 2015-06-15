@@ -1,0 +1,4 @@
+SUBPROJECT=Deploy\Deploy.mak
+SUBPROJECT=CBAR\CBAR.mak
+SUBPROJECT=PMTool\PMTool.mak
+

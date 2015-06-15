@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<KADCGFRONT>
+    <TARGETS>
+        <TARGET EXT="ATHW119" BACKEND="ATHW119\4cvm.exe"/>
+    </TARGETS>
+</KADCGFRONT>
+

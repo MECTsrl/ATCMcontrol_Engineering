@@ -1,0 +1,26 @@
+CONST
+    hfjhj : DINT := 5;  (*[ This is a variable comment. ]*)
+    fghj (*[[Alias="fghj"]]*) : DINT := 6;
+END_CONST
+
+CONST
+    mnbv : DINT := 5;
+END_CONST
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

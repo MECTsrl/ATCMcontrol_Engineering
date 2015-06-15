@@ -1,0 +1,827 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_NAMESPACE_TREE      BITMAP  DISCARDABLE     "res\\namespac.bmp"
+IDB_WIZIMAGELIST        BITMAP  DISCARDABLE     "res\\wizimage.bmp"
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_LINKS               BITMAP  DISCARDABLE     "res\\links.bmp"
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1 TYPELIB ""LATEDIF.tlb""\r\n"
+    "#include ""version.rc2""   // generic version resource\r\n"
+    "#include ""CELATEDError.rc""\r\n"
+    "\r\n"
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\LATED.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#include ""afxprint.rc""       // printing/print preview resources\r\n"
+    "#include ""afxolesv.rc""       // OLE server resources\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
+IDR_4CLCTYPE_SRVR_IP    BITMAP  MOVEABLE PURE   "res\\IToolbar.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\LATED.ico"
+IDR_4CLCTYPE            ICON    DISCARDABLE     "res\\lateddoc.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+IDR_4CLCTYPE_SRVR_IP TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM SEPARATOR
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About LATED...",             ID_APP_ABOUT
+    END
+END
+
+IDR_4CLCTYPE MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "Delete\tDel",                 IDM_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "Insert &Link...",             IDM_LINKGROUP_ADDLINK
+        MENUITEM "Insert Data &Type...",        IDM_ADD_DATA_TYPE
+        MENUITEM "&Assign Data Type...",        IDM_ASSIGN_DATATYPE
+        MENUITEM SEPARATOR
+        MENUITEM "&Generate...",                IDM_GEN
+        MENUITEM SEPARATOR
+        MENUITEM "Pr&operties",                 IDM_PROP
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&New Window",                 ID_WINDOW_NEW
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "&Tile",                       ID_WINDOW_TILE_HORZ
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+        MENUITEM "&About LATED...",             ID_APP_ABOUT
+    END
+END
+
+IDR_4CLCTYPE_SRVR_EMB MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM "&Update\tCtrl+S",             ID_FILE_UPDATE
+        MENUITEM "Save Copy &As...",            ID_FILE_SAVE_COPY_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&New Window",                 ID_WINDOW_NEW
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "&Tile",                       ID_WINDOW_TILE_HORZ
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About LATED...",             ID_APP_ABOUT
+    END
+END
+
+IDR_4CLCTYPE_SRVR_IP MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Delete\tDel",                IDM_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "Insert &Link...",             IDM_LINKGROUP_ADDLINK
+        MENUITEM "Insert Data &Type...",        IDM_ADD_DATA_TYPE
+        MENUITEM "&Assign Data Type...",        IDM_ASSIGN_DATATYPE
+        MENUITEM SEPARATOR
+        MENUITEM "&Generate...",                IDM_GEN
+        MENUITEM SEPARATOR
+        MENUITEM "Pr&operties",                 IDM_PROP
+    END
+    MENUITEM SEPARATOR
+    MENUITEM SEPARATOR
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+    END
+END
+
+IDR_POPUP_LINK_GROUP MENU DISCARDABLE 
+BEGIN
+    POPUP "Link group"
+    BEGIN
+        MENUITEM "Insert Link Sender...",       IDM_LINKGROUP_ADDLINK
+        MENUITEM "Generate...",                 IDM_GEN
+    END
+END
+
+IDR_POPUP_DATA_GROUP MENU DISCARDABLE 
+BEGIN
+    POPUP "Data Types"
+    BEGIN
+        MENUITEM "Insert Data Type...",         IDM_ADD_DATA_TYPE
+    END
+END
+
+IDR_POPUP_STD MENU DISCARDABLE 
+BEGIN
+    POPUP "Standard"
+    BEGIN
+        MENUITEM "Rename",                      IDM_RENAME
+        MENUITEM "Delete",                      IDM_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "Pr&operties",                 IDM_PROP
+    END
+END
+
+IDR_POPUP_MEMBER MENU DISCARDABLE 
+BEGIN
+    POPUP "Member"
+    BEGIN
+        MENUITEM "Rename",                      IDM_RENAME
+        MENUITEM "Delete",                      IDM_DELETE
+    END
+END
+
+IDR_POPUP_LINK MENU DISCARDABLE 
+BEGIN
+    POPUP "Sender Link"
+    BEGIN
+        MENUITEM "Assign Data Type...",         IDM_ASSIGN_DATATYPE
+        MENUITEM "Insert Link Receiver...",     IDM_INS_DEST_LINK
+        MENUITEM SEPARATOR
+        MENUITEM "Delete",                      IDM_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "Pr&operties",                 IDM_PROP
+    END
+END
+
+IDR_POPUP_DESTLINK MENU DISCARDABLE 
+BEGIN
+    POPUP "Receiver Link"
+    BEGIN
+        MENUITEM "Delete",                      IDM_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "Pr&operties",                 IDM_PROP
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+END
+
+IDR_4CLCTYPE_SRVR_IP ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_ESCAPE,      ID_CANCEL_EDIT_SRVR,    VIRTKEY, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+IDR_4CLCTYPE_SRVR_EMB ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_UPDATE,         VIRTKEY, CONTROL
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+END
+
+IDR_4CLCTYPE ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+IDR_LATACCEL ACCELERATORS DISCARDABLE 
+BEGIN
+    VK_DELETE,      IDM_DELETE,             VIRTKEY, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 221, 80
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About ATCMControl Lateral Communication Editor"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,7,20,16,16
+    CTEXT           "ATCMControl Lateral Communication Editor",IDC_STATIC,18,10,
+                    186,8,SS_NOPREFIX
+    LTEXT           "ATCM. All rights reserved.",
+                    IDC_STATIC,30,37,161,8
+    DEFPUSHBUTTON   "OK",IDOK,85,59,50,14,WS_GROUP
+    CTEXT           "Build(xxx)",IDC_LATED_BUILDSTR,29,23,171,8
+END
+
+IDD_OBJPROP_WIZ DIALOG DISCARDABLE  0, 0, 240, 150
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Wizards"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Name:",IDC_STATIC,7,13,22,8
+    EDITTEXT        IDC_OBJNAME,36,11,197,14,ES_AUTOHSCROLL
+    CONTROL         "List1",IDC_LIST1,"SysListView32",LVS_LIST | 
+                    LVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,7,30,226,115
+END
+
+IDD_OBJPROP_GEN DIALOG DISCARDABLE  0, 0, 240, 150
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "General"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Name:",IDC_STATIC,14,32,22,8
+    EDITTEXT        IDC_OBJNAME,45,29,180,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_ALIAS,45,65,180,14,ES_AUTOHSCROLL
+    LTEXT           "&Alias:",IDC_STATIC,14,67,18,8
+    GROUPBOX        "Object History",IDC_STATIC,10,105,226,40
+    LTEXT           "Created:",IDC_STATIC,15,116,28,8,NOT WS_GROUP
+    LTEXT           "DT#yyyy-mm-dd-hh:mm:ss.sss",IDC_OBJPROP_CREATEDATE,65,
+                    116,109,8,NOT WS_GROUP
+    LTEXT           "Last modified:",IDC_STATIC,15,130,44,8,NOT WS_GROUP
+    LTEXT           "DT#yyyy-mm-dd-hh:mm:ss.sss",IDC_OBJPROP_LASTMODDATE,65,
+                    130,109,8,NOT WS_GROUP
+    LTEXT           "by:",IDC_STATIC,177,116,10,8,NOT WS_GROUP
+    LTEXT           "Username",IDC_OBJPROP_CREATEUSER,193,116,36,8,NOT 
+                    WS_GROUP
+    LTEXT           "by:",IDC_STATIC,177,130,10,8,NOT WS_GROUP
+    LTEXT           "Username",IDC_OBJPROP_LASTMODUSER,193,130,36,8,NOT 
+                    WS_GROUP
+    GROUPBOX        "Object Information",IDC_STATIC,10,5,226,95
+END
+
+IDD_OBJPROP_INFO DIALOG DISCARDABLE  0, 0, 240, 150
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Info"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_EDIT_TEXT1,50,19,176,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_TEXT2,50,43,176,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_TEXT3,50,67,176,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_URL,50,106,155,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BROWSE_URL,212,106,15,14
+    EDITTEXT        IDC_EDIT_HELPURL,50,123,156,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BROWSE_HELPURL,212,123,15,14
+    GROUPBOX        "Object information",IDC_STATIC,7,5,226,88
+    GROUPBOX        "Links",IDC_STATIC,7,95,226,50
+    LTEXT           "Text &1:",IDC_STATIC,12,22,23,8
+    LTEXT           "Text &2:",IDC_STATIC,12,46,23,8
+    LTEXT           "Text &3:",IDC_STATIC,12,70,23,8
+    LTEXT           "&URL:",IDC_STATIC,12,109,18,8
+    LTEXT           "&Help URL:",IDC_STATIC,12,126,34,8
+END
+
+IDD_OBJPROP_DUTDECL DIALOG DISCARDABLE  0, 0, 240, 150
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Declaration"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "List1",IDC_MEMBERS,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_NOSORTHEADER | WS_BORDER | 
+                    WS_TABSTOP,7,16,226,91
+    PUSHBUTTON      "&Add Member",IDC_ADDMEMBER,7,113,53,14
+    PUSHBUTTON      "&Modify Member",IDC_MODIFYMEMBER,65,113,53,14,
+                    WS_DISABLED
+    PUSHBUTTON      "&Delete Member",IDC_DELETEMEMBER,121,113,53,14,
+                    WS_DISABLED
+END
+
+IDD_MODIFY_DUTMEMBER DIALOG DISCARDABLE  0, 0, 246, 129
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Modify Member"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_MEMBER_NAME,53,11,186,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_MEMBER_ALIAS,53,29,186,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_MEMBER_TYPE,53,47,186,70,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_MEMBER_INITVAL,53,64,186,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_MEMBER_COMMENT,53,84,186,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,62,108,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,128,108,50,14
+    LTEXT           "&Name:",IDC_STATIC,15,14,28,8
+    LTEXT           "&Alias:",IDC_STATIC,15,32,27,8
+    LTEXT           "&Type:",IDC_STATIC,15,50,28,8
+    LTEXT           "&Initial\nValue:",IDC_STATIC,15,64,28,17
+    LTEXT           "Comment:",IDC_STATIC,14,86,32,8
+END
+
+IDD_OBJPROP_TARGET DIALOG DISCARDABLE  0, 0, 240, 150
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Targets"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Targets:",IDC_STATIC,7,13,25,8
+    CONTROL         "List1",IDC_TARGETS,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_NOSORTHEADER | 
+                    WS_BORDER | WS_TABSTOP,7,30,226,115
+END
+
+IDD_ASSIGN_DATATYPE DIALOG DISCARDABLE  0, 0, 240, 150
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Assign Data Type"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Data Types:",IDC_STATIC,36,14,54,8
+    DEFPUSHBUTTON   "OK",IDOK,60,125,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,125,50,14
+    LISTBOX         IDC_DATATYPE_LIST,35,30,169,80,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_GEN DIALOG DISCARDABLE  0, 0, 240, 150
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Generate Lateral Communication Elements"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_GEN_MESSAGES,14,20,212,92,WS_VSCROLL | WS_HSCROLL | 
+                    WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,95,122,50,14
+    PUSHBUTTON      "Generate",IDC_GEN,151,122,50,14,NOT WS_VISIBLE | NOT 
+                    WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 214
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 73
+    END
+
+    IDD_GEN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 143
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDP_OLE_INIT_FAILED     "OLE initialization failed.  Make sure that the OLE libraries are the correct version."
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "Lateral Communication Editor"
+    IDR_4CLCTYPE            "\n4clc\n4clc\nLateral Comm. Files (*.4clc)\n.4clc\n4C_20_CE.LATED.Document\n4C_20: Latcomm Document"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "ATCMControl Lateral Communication Editor"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+    ID_FILE_UPDATE          "Update the container to show any changes\nUpdate"
+    ID_FILE_SAVE_COPY_AS    "Save a copy of the active document with a new name\nSave Copy"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+    ID_HELP_FINDER          "Invoke Help..."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WINDOW_NEW           "Open another window for the active document\nNew Window"
+    ID_WINDOW_ARRANGE       "Arrange icons at the bottom of the window\nArrange Icons"
+    ID_WINDOW_CASCADE       "Arrange windows so they overlap\nCascade Windows"
+    ID_WINDOW_TILE_HORZ     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_TILE_VERT     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+    AFX_IDS_MDICHILD        "Activate this window"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_LATED_LINKGROUP_LABEL "Links"
+    IDS_LATED_DATAGROUP_LABEL "Data Types"
+    IDS_LATED_LINKGROUP_TT  "Pool for lateral communication links\nInsert your Point-to-Point links here."
+    IDS_LATED_DATAGROUP_TT  "Pool for lateral communication data types\nDefine your data types for lateral communication here."
+    IDS_LATED_P2P_TT        "IP=%s"
+    IDS_LATED_PUBLISH_TT    "Publish to IP=%s"
+    IDS_LATED_SUBSCRIBE_TT  "Subscribe from IP=%s"
+    IDS_LATED_MEMBER_TT     "Data type = %s"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_INS_DATATYPE        "Insert Data Type"
+    IDS_POULANGUAGE_ST      "ST"
+    IDS_WIZARDNAME_ST       "Structured Text Data Type"
+    IDS_OBJ_NAME_MUST_NOT_EMPTY "Object name must not be empty"
+    IDS_OBJ_NAME_INVALID    "Object name '%s' is invalid."
+    IDS_PROPDECL_COLHEAD_2  "Name,Alias,Type,Initial Value,Comment,"
+    IDS_ADD_MEMBER          "Add member"
+    IDS_MOD_MEMBER          "Modify Member"
+    IDS_INVALID_NAME        "The 'Name' field is invalid!"
+    IDS_INVALID_DATATYPE    "The type '%s' is not supported or invalid"
+    IDS_INIT_VALUE          "Initial value: "
+    IDS_MEMBER_EXISTS       "Member ""%s"" already exists"
+    IDS_DUT_EXISTS          "Data type ""%s"" already exists"
+    IDS_MOD_DATATYPE        "Modify Data type"
+    IDS_INSERT_LINK         "Insert Link Sender"
+    IDS_TARGETS_COLHEAD     "Name,Type,IP,Assigned Resource,"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDM_LINKGROUP_ADDLINK   "Insert Point-to-Point lateral communication link."
+    IDM_ADD_DATA_STRUCTURE  "Insert Data Type for lateral communication"
+    IDM_ADD_DATA_TYPE       "Insert Data Type for lateral communication"
+    IDM_PROP                "Show Properties..."
+    IDM_ASSIGN_DATATYPE     "Assign data type to link"
+    IDM_INS_DEST_LINK       "Insert link to destination"
+    IDM_GEN                 "Generate lateral communication configuration."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_NOTARGET            "No target available, cannot create link."
+    IDS_SELTARGET           "Please select a target."
+    IDS_INSERT_DESTLINK     "Insert Link Receiver"
+    IDS_PROP_LINK           "Properties Link Sender"
+    IDS_PROP_DESTLINK       "Properties Link Receiver"
+    IDS_NO_ASSIGNMENT       "No assignment"
+    IDS_INVALID_LINK        "Invalid"
+    IDS_NUM_DATATYPE_EXCEED "You can declare up to %d user defined data types.\nThis number has been exceeded."
+    IDS_INVALID_HOST        "Invalid host"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "LATEDIF.tlb"
+#include "version.rc2"   // generic version resource
+#include "CELATEDError.rc"
+
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\LATED.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#include "afxprint.rc"       // printing/print preview resources
+#include "afxolesv.rc"       // OLE server resources
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

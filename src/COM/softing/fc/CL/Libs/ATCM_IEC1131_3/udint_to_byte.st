@@ -1,0 +1,11 @@
+(*[[
+    UserURL= "ATCMFile:UDINT_TO_BYTE.htm"
+]]*)
+FUNCTION UDINT_TO_BYTE : BYTE
+VAR_INPUT
+    IN : UDINT;
+END_VAR
+
+inline{ VMOP }
+
+END_FUNCTION

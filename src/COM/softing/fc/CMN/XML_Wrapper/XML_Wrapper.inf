@@ -1,0 +1,66 @@
+#H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CMN/XML_Wrapper/XML_Wrapper.inf 1     28.02.07 19:00 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: XML_Wrapper.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CMN/XML_Wrapper/XML_Wrapper.inf $
+#
+# =PROJECT             7VH102  ATCMControl V1
+#
+# =SWKE                4CMN
+#
+# =COMPONENT           CAK1020  ATCMControl V2.0
+#
+# =CURRENT             $Date: 28.02.07 19:00 $
+#                      $Revision: 1 $
+#
+# =REFERENCES
+#==
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+# 
+#
+#==
+#*****************************************************************************
+#H<<
+
+TARGET=$(LIB_DIR)\XML_Wrapper.lib
+TARGETTYPE=LIB
+STATIC_RUNTIME=0
+UNICODE=0
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+PCHFILE=stdafx
+DEFINE=_AFXDLL
+DEFINE=_WINDLL
+DEFINE=_USRDLL
+
+COPY=msXML_2.h      $(INCLUDE_DIR)\msXML_2.h
+
+#----------------------------------------------------------------------------*
+# =MODIFICATIONS
+# $History: XML_Wrapper.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:00
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CMN/XML_Wrapper
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:33
+# Created in $/4Control/COM/softing/fc/CMN/XML_Wrapper
+# 
+# *****************  Version 2  *****************
+# User: Scd          Date: 31.01.01   Time: 14:16
+# Updated in $/4Control/COM/softing/fc/CMN/XML_Wrapper
+# new headers added
+# 
+#==
+#----------------------------------------------------------------------------*

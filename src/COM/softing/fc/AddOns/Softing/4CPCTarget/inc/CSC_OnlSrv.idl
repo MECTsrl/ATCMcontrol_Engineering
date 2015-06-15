@@ -1,0 +1,81 @@
+cpp_quote("//+-------------------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  ATCMControl 4CSC Server")
+cpp_quote("//  ATCM.")
+cpp_quote("//")
+cpp_quote("//--------------------------------------------------------------------------")
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+//----  OPC Interfaces:    ---------------------------------------------------*
+//----  CoClass:    OPCServer
+// standard OPC V1.0a and DA V2.0 interfaces
+import "opcDA.idl";
+
+//----  Type Library:    -----------------------------------------------------*
+[
+    uuid(F6D1FD87-978E-4b50-9EC1-0736C849A209),
+    version(2.0),
+    helpstring("4C_20: ATCM Control Online Server type library")
+]
+library CSC_Srv_Lib
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+    //interfaces of the coclasses are defined here to keep them
+    //separate from the target specific implementation of the CSC Online Server
+    importlib("CSC_OnlineServer.tlb");
+    //-------------------------------------------------------------------------
+    [
+        uuid(5425B8A4-754D-496a-AF31-7D78A530E58D),
+        helpstring("4C_20: ATCM Control Online Server - OPC")
+    ]
+    coclass OPCServer
+    {
+        [default] interface IOPCServer;
+        interface IOPCBrowseServerAddressSpace;
+        interface IOPCServerPublicGroups;
+    };
+
+    //-------------------------------------------------------------------------
+    [
+        uuid(379165A5-C2BF-47a8-8F60-73EDE1FD6001),
+        helpstring("4C_20: ATCM Control Online Server - control management")
+    ]
+    coclass ControlMgt
+    {
+        [default] interface IControlMgt;
+        interface IMessages;
+        interface ILicenseMgt;
+        interface IConnection;
+        [default, source] interface _ICERemoteMessageEvent;
+    };
+
+    //-------------------------------------------------------------------------
+    [
+        uuid(3E99950A-9502-4a7c-B0AE-6B3C4C011DF4),
+        helpstring("4C_20: ATCM Control Online Server - commissioning management")
+    ]
+    coclass CommissioningMgt
+    {
+        [default] interface ICommissioningMgt;
+        interface IConnection;
+        [default, source] interface _FCCommissioningMgtNotification;
+    };
+    
+    //-------------------------------------------------------------------------
+    [
+        uuid(ADF092D7-DE30-4872-9892-7735A47D9D80),
+        helpstring("4C_20: ATCM Control Online Server - commissioning session, noncreatable"),
+		hidden,
+        noncreatable
+    ]
+    coclass CommissioningSession
+    {
+        [default] interface ITransfer;
+        interface IBreakpoint;
+        [default, source] interface _FCRemoteBreakpointNotification;
+    };
+};
+

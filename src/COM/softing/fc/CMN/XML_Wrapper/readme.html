@@ -1,0 +1,594 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 FINAL//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=iso-8859-1">
+<META NAME="Content-Language"   CONTENT="de">
+<META NAME="description" CONTENT="Readme zu ATCMControl XML-Wrapper. Internal Use Only!">
+<META NAME="keywords"    CONTENT="Readme XML Wrapper CMN Common XML_Wrapper">
+<META NAME="author"      CONTENT="david.jenny@4control.de">
+<META NAME="publisher"   CONTENT="ATCM ATCMControl">
+<META NAME="copyright"   CONTENT="ATCM ATCMControl">
+<META NAME="GENERATOR"   Content="Microsoft Developer Studio">
+<TITLE>ReadMe f&uuml;r ATCM XML-Wrapper Bibliothek</TITLE>
+<link rel=stylesheet type="text/css" href="je.css">
+<style type="text/css">
+
+*///-->
+</style>
+
+</HEAD>
+<BODY>
+
+<div style="width:18cm">
+
+<!-- Insert HTML here -->
+
+<table width=100% cellpadding=20>
+<tr>
+<td class="header" bgcolor=#FFFFE0>
+<h1>ReadMe f&uuml;r ATCM XML-Wrapper Bibliothek</h1>
+</td>
+</tr>
+</table>
+<hr noshade size=1>
+<h3>&Uuml;bersicht:</h2>
+<ol>
+<li class="overview"><a href="#a1">XML-Wrapper in Projekt einf&uuml;gen</a></li>
+<li class="overview"><a href="#a2">Anpassungen an abgeleiteter <i>CDocument</i> Klasse</a></li>
+<li class="overview"><a href="#a3">Anpassungen an Applikations-Objekten</a></li>
+<li class="overview"><a href="#ref">Referenz</a></li>
+<li class="overview"><a href="#history">&Auml;nderungsgeschichte</a></li>
+</ol>
+
+<hr noshade size=1>
+
+<!-- ********************************************************************************** -->
+<h2><a name="a1">XML-Wrapper in Projekt einf&uuml;gen</a></h2>
+<p>Die XML Wrapper Bibliothek ben&ouml;tigt ATL; deshalb in der Datei <tt>stdafx.h</tt> unbedingt
+die Datei <tt>atlbase.h</tt> einbinden.
+Am besten die für die Wrapper-Bibliothek notwendigen <tt>#include</tt>s auch gleich in <tt>stdafx.h</tt> vornehmen:
+</p>
+<!-- 
+<table width=300 cellpadding=2>
+<tr>
+<td bgcolor=#FFFFE0>
+-->
+<pre>
+#include &lt;atlbase&gt;
+
+#include &quot;XML_Wrapper.h&quot;
+</pre>
+<!-- 
+</td>
+</tr>
+</table>
+-->
+<br>
+<p>
+Der eigentliche Programmcode liegt in einer Library <tt>XML_Wrapper.lib</tt>. Sowohl Header als auch Lib
+liegen im 4C-allgemeinen <tt>.../COM/Softing/fc/<b>Inc</b></tt>,
+resp. <tt>.../COM/Softing/fc/<b>Lib</b></tt> Verzeichnissen (nach der Generierung!).
+Diese beiden Pfade sind standardm&auml;ssig in der Systemgenerierung enthalten.
+</p>
+<p>
+Die Bibliothek funktioniert sowohl mit dem beim <tt>IE4 SP1</tt>, als auch dem beim <tt>IE5 beta</tt>
+enthaltenen msXML.dll ActiveX Control, benutzt aber nur Funktionalit&auml;t des IE4 Controls.<br>
+Beim VisualStudio 6.0 ist bereits eine IDL-, resp Header-Datei
+enthalten. Das beim IE4 installierte msXML.dll kennt aber drei erweiterte Interfaces
+<tt>IXMLDocument2</tt>, <tt>IXMLElement2</tt> und <tt>IXMLAttribute</tt>, die speziell zum Schreiben
+des XML node trees notwendig sind. Die IDL, resp. Header f&uuml;r diese Zusatzschnittstellen sind
+in der Bibliothek enthalten.
+</p>
+<hr noshade size=1>
+
+<!-- ********************************************************************************** -->
+<h2><a name="a2">Anpassungen an abgeleiteter CDocument Klasse</a></h2>
+
+<p>
+Da XML-Dateien &uuml;ber ein modifiziertes <tt>CArchive</tt> (n&auml;mlich <tt>CXMLArchive</tt>) gelesen/geschrieben werden,
+ werden <tt>OnOpenDocument</tt> und <tt>OnSaveDocument</tt> neu implementiert.
+Eine spezielle Template-Klasse <tt>CXMLDocument</tt> enth&auml;lt diese und eine zu 
+<tt>CDocument::Serialize()</tt> analoge Methode <tt><nobr>SerializeXML()</nobr></tt>.
+<br>
+Anstatt direkt von <tt>CDocument</tt> (oder z.B. bei ActiveDoc-Servern von <tt>COleDocument</tt>) abzuleiten,
+wird via Template die XML-Wrapper-Klasse <tt>CXMLDocument</tt> dazwischen geschoben.
+<br>
+<br>
+<b>Original (Beispiel mit ActiveDoc-Server):</b>
+<pre>
+class CDemoDoc : COleServerDoc
+</pre>
+
+<br><b>Mit XML-Wrapper:</b>
+<pre>
+class CDemoDoc : public CXMLDocument<b>&lt;COleServerDoc&gt;</b>
+</pre>
+</p>
+<p>
+Es ist auch m&ouml;glich, sowohl im MFC-Serialize- als auch im XML-Format zu speichern.
+Dazu mu&szlig; die <tt>CDocument::OnOpenDocument()</tt> im eigenen Document &uuml;berladen werden.
+<i>Diese braucht im Normalfall nicht &uuml;berladen zu werden.</i>
+<br>
+Wird <tt>OnOpenDocument</tt>, resp. <tt>OnSaveDocument</tt> separat überladen, mu&szlig; die
+korrekte Implementierung der <i>superclass</i> aufgerufen werden:
+<pre>
+BOOL CDemoDoc::OnSaveDocument(LPCTSTR lpszPathName) 
+{
+    // save as MFC serialized file
+	if (!COleServerDoc::OnSaveDocument(lpszPathName))
+		return FALSE;
+
+    // save as XML file
+    CString strName = lpszPathName;
+    strName += _T(".xml");
+	return CXMLDocument&lt;COleServerDoc&gt;::OnSaveDocument(strName);
+}
+</pre>
+</p>
+<p>
+Zus&auml;tzlich mu&szlig; die Methode <tt>SerializeXML()</tt> definiert werden,
+da <tt>CXMLDocument</tt> eine abstrakte Klasse ist. Folgender Eintrag im Header :
+<pre>
+// Overrides
+    // ClassWizard generated virtual function overrides
+    //{{AFX_VIRTUAL(CDemoDoc)
+protected:
+    virtual COleServerItem* OnGetEmbeddedItem();
+    //}}AFX_VIRTUAL
+    <b>virtual void            SerializeXML(CXMLArchive& ar);</b>
+</pre>
+<p>
+In der <tt>SerializeXML</tt> wird, wie in der MFC &uuml;blich, der Objekt-Baum beim
+Speichern oder Laden von oben nach unten durchschritten; bei MFC i.d.R. mit den
+Stream-Operatoren <tt>operator&&lt;&lt;(CArchive &ar, ...)</tt>, resp. <tt>operator&gt;&gt;(....)</tt>.
+<br>
+<br>
+F&uuml;r die <tt>SerializeXML()</tt> Funktion dieser Bibliothek sind jedoch Anpassungen n&ouml;tig.
+Im Wesentlichen mu&szlig; der Document-Typ und -DTD gesetzt werden und dann der Objekt-Baum
+abgeschritten werden.<br>
+<b>NEU</b>: Bevor Listen, Arrays etc., aber auch einzelne <tt>CXMLObject</tt> mit den stream-Operatoren geschrieben/gelesen werden,
+m&uuml;ssen zwingend die Klassen (eigentlich deren <tt>CRuntimeClass</tt>) und die zuzuordnenden
+XML-Knotennamen in der <i>ClassMap</i> bekannt gemacht werden:
+<pre>
+    ar.AddToClassMap(RUNTIME_CLASS(CLevelOne), _T("LEVEL1"));
+</pre>
+Dies kann entweder zentral/geh&auml;uft an einer/verschiedenen Stellen in der Applikation geschehen
+oder, wie hier, unmittelbar bevor das Objekt geschrieben/gelesen wird.
+<pre>
+void 
+    CDemoDoc::SerializeXML(CXMLArchive& ar)
+{
+    // class and node name association must be set!!!!!!
+    <b>ar.AddToClassMap(RUNTIME_CLASS(CLevelOne), _T("LEVEL1"));</b>
+    if (ar.IsStoring())
+    {
+        try {
+            // set doctype once in document!!
+            ar.<b>SetDocType</b>(_T("SAMPLE"));
+            ar.<b>SetDTD</b>(_T("SAMPLE.dtd"));
+            ar.SetComment(_T("Copyright 1998 blablbalblabl............."));
+            // walk thru list of childs and serialize them
+            // this CList-template behind GetNodeList() is appl. specific !!!
+            ar &lt;&lt; m_pServerNodes->GetNodeList();
+        }
+        catch (HRESULT hr)
+        {
+            TRACE(_T("Cannot save to XML; hr=0x%08X\n"), hr);
+            throw hr;   // fire upstairs...
+        }
+    }
+    else
+    {
+        try {
+            if (m_pServerNodes == NULL) {
+                m_pServerNodes = new CLevelRoot;
+                assert(m_pServerNodes != NULL);
+            }
+            
+            // slurp in all child element nodes and create objects as necessary!!!
+            ar &gt;&gt; m_pServerNodes->GetNodeList();
+        }
+        catch (HRESULT hr)
+        {
+            TRACE(_T("Cannot load from XML; hr=0x%08X\n"), hr);
+            throw hr;   // fire upstairs...
+        }
+    }
+}
+</pre>
+<hr noshade size=1>
+
+<!-- ********************************************************************************** -->
+<h2><a name="a3">Anpassungen an Applikations-Objekten</a></h2>
+<p>
+Damit die ganze Chose nicht ein Selbstzweck bleibt, sollen auch die eigentlichen Datenobjekte 
+gespeichert werden. &Auml;nlich wie bei MFCs <tt>Serialize()</tt> sorgt auch hier jedes Objekt
+selbst f&uuml;r seine Persistenz.<br>
+Ein Objekt im Programm kann entweder nur ein XML-Element belegen (inkl. Attribute und/oder Text),
+aber auch einen ganzen Unterbaum erzeugen.<br>
+In der f&uuml;r jedes Objekt zu überladenden Funktion <tt>SerializeXML(CXMLArchive &amp;ar)</tt> 
+werden beim Speichern die notwendigen XML-Elemente (<tt>Node, Attribute, Comment, Text</tt>) erzeugt
+und die Schreibposition kontrolliert. Dazu dienen eine Reihe von Methoden der Klasse <tt>CXMLArchive</tt>.<br>
+Beim Einlesen des Objektes werden mit den <tt>CXMLArchive</tt>-Methoden die notwendigen XML-Elemente angesteuert
+und ausgelesen.<br>
+Wie auch bei MFC-<tt>Serialize()</tt> sorgen bei hierarchischen Objekten die Objekte selbst daf&uuml;,
+da&szlig; die Kind-Objekte gespeichert/gelesen werden, indem deren <tt>SerializeXML()</tt> aufgerufen wird
+(am einfachsten auch mit dem <tt>operator&lt;&lt;()</tt>, resp. <tt>operator&gt;&gt;()</tt>).<br>
+F&uuml;r Objekt-Container (d.h. Listen, Arrays, Maps basierend auf MFCs Container-Templates
+wie <tt>CList&lt;TYPE, ARG_TYPE&gt;</tt>) sind einige Templates in XML_Wrapper.h enthalten. Diese
+erlauben ein relativ simples Durchlaufen der Container, sowohl beim Speicher wie beim Lesen.
+</p>
+<p>
+Damit dies alles funktioniert, mu&szlig; analog zur MFC von einer gemeinsamen Klasse abgeleitet und
+einige Makros definiert werden:<br>
+<ul>
+<li>
+Eigene Objekte statt von <tt>CObject</tt> direkt <tt>CXMLObject</tt> ableiten (<tt>CXMLObject</tt> ist &uuml;brigens
+selbst direkt von <tt>CObject</tt> abgeleitet und fügt nur die virtuelle Methode <tt>SerializeXML()</tt> hinzu).</li>
+<li>
+Die Macros <tT>DECLARE_SERIAL()</tt> und <tt>IMPLEMENT_SERIAL()</tt> sind genauso notwendig wie bisher; bei
+<tt>IMPLEMENT_SERIAL()</tt> sollte jetzt aber statt <tt>CObject</tt> die Klasse <tt>CXMLObject</tt> als Vaterklasse
+eingetragen sein.</li>
+</ul>
+</p>
+<p>
+Kernst&uuml;ck ist die zu &uuml;berladende Methode <tt>SerializeXML()</tt>. Die Archive-Klasse <tt>CXMLArchive</tt>
+hat ebenso einen Richtungszustand <tt>IsStoring()</tt>, resp. <tt>IsLoading()</tt>. Damit bleit der Aufbau &auml;hnlich 
+wie bei der MFC:
+<pre>
+void 
+    CLevelOne::SerializeXML(CXMLArchive& ar)
+{
+    // <b>For both storing and loading, assume that current node is set,</b>
+    // <b>since caller (XML_Wrapper) has already</b>
+    // <b>walked to correct node in XML node tree!!</b>
+
+    // class and node name association must be set!!!!!!
+    <b>ar.AddToClassMap(RUNTIME_CLASS(CLevelTwo), _T("LEVEL2"));</b>
+    if (ar.<b>IsStoring()</b>)
+    {
+        // <b>all CXMLArchive fire HRESULT exceptions, which must be cought!!!</b>
+        <b>try</b> {
+            ar.SetAttribute(_T("Name"), GetName());
+            ar.SetAttribute(_T("Top"), m_ptTopLeft.x);
+            ar.SetAttribute(_T("Left"), m_ptTopLeft.y, CXMLArchive::hex);
+            ar.SetPCData(m_strPlain);
+            
+            // <b>give child objects a chance to serialize themselves</b>
+            ar <b>&lt;&lt;</b> GetNodeList();
+        }
+        catch (HRESULT hr)
+        {
+            TRACE(_T("Cannot save to XML; hr=0x%08X\n"), hr);
+            throw hr;   // fire upstairs...
+        }
+    }
+    else
+    {
+        try {
+            CString strName;
+            ar.GetAttribute(_T("Name"), strName);
+            SetName(strName);
+            ar.GetAttribute(_T("Top"), m_ptTopLeft.x);
+            ar.GetAttribute(_T("Left"), m_ptTopLeft.y, CXMLArchive::hex);
+            ar.GetCData(m_strPlain);
+            
+            // <b>walk thru parsed XML node list,</b>
+            << <b>create and seralize each node encountered</b>
+            ar <b>&gt;&gt;</b> GetNodeList();
+        }
+        catch (HRESULT hr)
+        {
+            TRACE(_T("Cannot load from XML; hr=0x%08X\n"), hr);
+            throw hr;   // fire upstairs...
+        }
+    }
+}
+</pre>
+<b>NEU</b>: Bei Eintritt in die <tt>SerializeXML()</tt> Funktion ist der aktuelle XML-Knoten
+sowohl beim Schreiben wie beim Lesen korrekt gesetzt; der Aufruf von <tt>CreateAndDown()</tt>
+ist somit nicht mehr notwendig (die Funktion ist auch entfernt!). <b>Der dazu korrespondierende
+Aufruf von <tt>MoveUp()</tt> mu&szlig; auch mit entfernt werden!!!</b><br>
+Sind unterschiedliche XML-Knotennamen in der selben Hierarchie-Ebene vorhanden, so werden
+die korrekten Klassen instanziiert und in den gleichen Container hinzugef&uuml;gt!!
+</p>
+<br>
+<hr noshade size=1>
+
+<!-- ********************************************************************************** -->
+<h2><a name="ref">Referenz</a></h2>
+
+<h3><a name="CXMLArchive">class CXMLArchive</a></h3>
+<ul>
+<li><a href="#xml-file">XML Datei lesen/schreiben</a></li>
+<li><a href="#tree">XML Knoten erzeugen/ Zeiger positionieren</a></li>
+<li><a href="#write">Schreiben von XML Elementen (Attribute, Text, Comment)</a></li>
+<li><a href="#read">Lesen von XML-Elementen</a></li>
+<li><a href="#access">Zugriff auf msXML Control</a></li>
+</ul>
+<p>
+<pre>
+// <b>all operations throw HRESULT exceptions !!!!!!!</b>
+// <a name="xml-file"><b><u>To/From XML file</u></b></a>
+        <b>CXMLArchive(</b><i>CFile* pFile, UINT nMode</i><b>)</b>;
+            // constructor, load also msXML.dll via CoCreateInstance()
+            // parameters as in <b>CArchive</b>
+void    <b>Load(</b><i></i><b>)</b>;
+            // parse XML file and prepare for walking thru tree
+
+void    <b>Flush(</b><i></i><b>)</b>;
+            // write tree in memory to XML file
+
+void    <b>AddToClassMap(</b><i>CXMLObject *pObj, LPCTSTR pszNodeName</i><b>)</b>;
+void    <b>AddToClassMap(</b><i>CRuntimeClass *pRT, LPCTSTR pszNodeName</i><b>)</b>;
+            // add runtime class info of pObj and XML node name to ClassMap
+            // <b>must be called prior to serialize objects for</b>
+            // <b>both storing and loading !! </b>
+
+void    <b>Clear(</b><i></i><b>)</b>;
+            // cleanup XML element tree in memory
+
+</pre>
+<pre>
+// <a name="tree"><b><u>work on tree in memory, good for read and write</b></u></a>
+BOOL    <b>MoveDown(</b><i>LPCTSTR pszElemName</i><b>)</b>;
+            // walk down one elem hierarchy to element
+            // will create new node, throws when not found in Class Map !!
+            // works for read and write !!
+            // returns TRUE if node exists (loading) or node was created (writing)
+
+void    <b>MoveUp(</b><i></i><b>)</b>;
+            // walk up one elem node level
+
+void    <b>MoveToSibling(</b><i>LPCTSTR pszAttrName, LPCTSTR pszAttrValue</i><b>)</b>;
+            // walk to siblings in same level,
+            // matching the given attribute and value
+            // valid in read mode only!
+
+void    <b>MoveNext(</b><i></i><b>)</b>;
+            // walk to siblings in same level,
+            // assume identical name from previous MoveDown()
+            // adds sibling elem node when in writing node
+</pre>
+<pre>
+// <a name="write"><b><u>writing to XML:</b></u></a>
+void    <b>SetDocType(</b><i>LPCTSTR pszDocType</i><b>)</b>;
+            // call once to set doc type
+            // <b>must</b> be called once before <b>Flush</b>()ing
+
+void    <b>SetDTD(</b><i>LPCTSTR pszDTD</i><b>)</b>;
+            // call once to set DTD URL
+
+void    <b>SetComment(</b><i>LPCTSTR pszText</i><b>)</b>;
+            // set comment, create as node
+
+void    <b>SetAttribute(</b><i>LPCTSTR pszAttrName, LPCTSTR pszAttrValue</i><b>)</b>;
+            // set attribute value of current elem node
+
+void    <b>SetAttribute(</b><i>LPCTSTR pszAttrName, long iAttrValue,
+                     enum NumericFormat fmt = decimal</i><b>)</b>;
+            // set attribute value of current elem node
+
+enum <b>NumericFormat</b> { // format to use when creating numeric string
+    <i>decimal</i>,     // decimal
+    <i>hex</i>,         // hex with leading "0x"
+    <i>bin</i>,         // binary with leading "%"
+    <i>oct</i>          // octal with leading "0"
+};
+
+void    <b>SetAttribute(</b><i>LPCTSTR pszAttrName, ULONG iAttrValue,
+                     enum NumericFormat fmt = decimal</i><b>)</b>;
+            // set attribute value of current elem node
+
+void    <b>SetAttribute(</b><i>LPCTSTR pszAttrName, CPoint ptAttrValue,
+                     enum NumericFormat fmt = decimal</i><b>)</b>;
+            // set attribute value of current elem node
+            // value is a ';' separated point tupel
+
+void    <b>SetCData(</b><i>LPCTSTR pszText</i><b>)</b>;
+            // set text element with CDATA handling
+            // honor whitespaces by wrapping in &lt;![CDATA[
+
+void    <b>SetPCData(</b><i>LPCTSTR pszText</i><b>)</b>;
+            // set text element with PCDATA handling
+            // strip whitespaces (when parsed, not when saving)
+
+    // <b>Operators:</b>
+inline CXMLArchive& 
+    <b>operator&lt;&lt;(</b><i>CXMLArchive&amp; ar, const CXMLObject* pObj</i><b>)</b>;
+            // calls SerializeXML() of pObj
+            // to work correctly, XML node name and CRuntimeClass of objects
+            // have to be added to ClassMap via <b>AddToClassMap(</b> 
+
+inline CXMLArchive&amp;
+    <b>operator&lt;&lt;(</b><i>CXMLArchive&amp; ar, const CPtrList *pPtrList</i><b>)</b>;
+            // iterate thru CPtrList and 
+            // call SerializeXML() on each object contained
+            // to work correctly, XML node name and CRuntimeClass of objects
+            // must have been added to ClassMap via <b>AddToClassMap()</b> 
+
+
+    // <b>Templates:</b>
+template&lt;class TYPE, class ARG_TYPE&gt;
+inline CXMLArchive&amp;
+    <b>operator&lt;&lt;(</b><i>CXMLArchive&amp; ar, const CList&lt;TYPE, ARG_TYPE&gt; * pList</i><b>)</b>;
+            // iterate thru <b>CList</b> and 
+            // call SerializeXML() on each object contained
+            // to work correctly, XML node name and CRuntimeClass of objects
+            // must have been added to ClassMap via <b>AddToClassMap()</b> 
+
+template&lt;class TYPE, class ARG_TYPE&gt;
+inline CXMLArchive&amp;
+    <b>operator&lt;&lt;(</b><i>CXMLArchive&amp; ar, const CArray&lt;TYPE, ARG_TYPE&gt; * pArray</i><b>)</b>;
+            // iterate thru <b>CArray</b> and
+            // call SerializeXML() on each object contained
+            // to work correctly, XML node name and CRuntimeClass of objects
+            // must have been added to ClassMap via <b>AddToClassMap()</b> 
+
+template&lt;class BASE_CLASS, class TYPE&gt;
+inline CXMLArchive&amp;
+    <b>operator&lt;&lt;(</b><i>CXMLArchive&amp; ar, const CTypedPtrArray&lt;BASE_CLASS, TYPE&gt; *pTypedPtrArray</i><b>)</b>;
+            // iterate thru <b>CTypedPtrArray</b> and
+            // call SerializeXML() on each object contained
+            // to work correctly, XML node name and CRuntimeClass of objects
+            // must have been added to ClassMap via <b>AddToClassMap()</b> 
+
+
+<!--
+template&lt;class KEY, class ARG_KEY, class VALUE, class ARG_VALUE&gt;
+inline CXMLArchive&amp;
+    <b>operator&lt;&lt;(</b><i>CXMLArchive&amp; ar, const CMap&lt;KEY, ARG_KEY, VALUE, ARG_VALUE&gt; * pMap</i><b>)</b>;
+            // iterate thru CMap and
+            // call SerializeXML() on each object contained
+            // to work correctly, XML node name and CRuntimeClass of objects
+            // must have been added to ClassMap via <b>AddToClassMap()</b> 
+-->
+</pre>
+<pre>
+    // <a name="read"><b><u>reading from XML</b></u></a>
+void    <b>GetDocType(</b><i>CString &amp;strType</i><b>)</b>;
+            // return parsed doc type, can be empty!
+
+void    <b>GetDTD(</b><i>CString &amp;strDTD</i><b>)</b>;
+            // return parsed DTD URL, can be empty!
+
+BOOL    <b>GetAttribute(</b><i>LPCTSTR pszAttrName, CString &amp;strAttrValue</i><b>)</b>;
+            // get attribute value of current elem node
+            // return TRUE if attribute found
+
+BOOL    <b>GetAttribute(</b><i>LPCTSTR pszAttrName, long &amp;iAttrValue,
+                     enum NumericFormat fmt = decimal</i><b>)</b>;
+            // get attribute value of current elem node,
+            // format is ignored, compatibility only!
+            // return TRUE if attribute found
+
+BOOL    <b>GetAttribute(</b><i>LPCTSTR pszAttrName, ULONG &amp;iAttrValue,
+                     enum NumericFormat fmt = decimal</i><b>)</b>;
+            // get attribute value of current elem node
+            // return TRUE if attribute found
+
+BOOL    <b>GetAttribute(</b><i>LPCTSTR pszAttrName, CPoint &amp;ptAttrValue,
+                     enum NumericFormat fmt = decimal</i><b>)</b>;
+            // get attribute value of current elem node
+            // value is a ';' separated point tupel
+            // return TRUE if attribute found
+
+void    <b>GetCData(</b><i>CString &amp;strText</i><b>)</b>;
+            // get text elemtent
+
+    // <b>Operators:</b>
+inline CXMLArchive& 
+    <b>operator&gt;&gt;(</b><i>CXMLArchive& ar, CXMLObject*&amp; pOb</i><b>)</b>;
+inline CXMLArchive& 
+    <b>operator&gt;&gt;(</b><i>CXMLArchive& ar, const CXMLObject*&amp; pOb</i><b>)</b>;
+            // calls SerializeXML() of pObj
+            // to work correctly, XML node name and CRuntimeClass of objects
+            // must have been added to ClassMap via <b>AddToClassMap()</b> 
+
+inline CXMLArchive&
+    <b>operator&gt;&gt;(</b><i>CXMLArchive&amp; ar, CPtrList *pList</i><b>)</b>;
+            // iterate thru children XML nodes of current XML node
+            // create CXMLObject-derived classes and add them to <b>CPtrList</b>
+            // to work correctly, XML node name and CRuntimeClass of objects
+            // must have been added to ClassMap via <b>AddToClassMap()</b> 
+
+    // <b>Templates:</b>
+template&lt;class TYPE, class ARG_TYPE&gt;
+inline CXMLArchive&amp;
+    <b>operator&gt;&gt;(</b><i>CXMLArchive&amp; ar, CList&lt;TYPE, ARG_TYPE&gt; * pList</i><b>)</b>;
+            // iterate thru children XML nodes of current XML node
+            // create CXMLObject-derived classes and add them to <b>CList</b>
+            // to work correctly, XML node name and CRuntimeClass of objects
+            // must have been added to ClassMap via <b>AddToClassMap()</b> 
+
+template&lt;class TYPE, class ARG_TYPE&gt;
+inline CXMLArchive&amp;
+    <b>operator&gt;&gt;(</b><i>CXMLArchive&amp; ar, CArray&lt;TYPE, ARG_TYPE&gt; * pArray</i><b>)</b>;
+            // iterate thru children XML nodes of current XML node
+            // create CXMLObject-derived classes and add them to <b>CArray</b>
+            // to work correctly, XML node name and CRuntimeClass of objects
+            // must have been added to ClassMap via <b>AddToClassMap()</b> 
+
+template&lt;class BASE_CLASS, class TYPE &gt;
+inline CXMLArchive&
+    <b>operator&gt;&gt;(</b><i>CXMLArchive& ar, CTypedPtrArray&lt;BASE_CLASS, TYPE&gt; * pTypedPtrArray</i><b>)</b>;
+            // iterate thru children XML nodes of current XML node
+            // create CXMLObject-derived classes and add them to <b>CPtrArray</b>
+            // to work correctly, XML node name and CRuntimeClass of objects
+            // must have been added to ClassMap via <b>AddToClassMap()</b> 
+
+</pre>
+<pre>
+    // <a name="access"><b><u>Access to msXML parser ActiveX control:</b></u></a>
+HRESULT <b>GetLastParseError(</b><i>CString &strLastError</i><b>)</b>;
+            // return string of last XML parser error
+
+HRESULT <b>GetCurrentElement(</b><i>IXMLElement2 **ppElem</i><b>)</b>;
+            // return ptr to current XML node element node in msXML.dll tree
+            // caller must Release() when no ore in use !!!
+
+HRESULT <b>GetXMLDocument(</b><i>IXMLDocument2 **ppDoc</i><b>)</b>;
+            // return ptr to current XML document in msXML.dll tree
+            // caller must Release() when no more in use !!!
+<!--
+HRESULT <b>SetCurrentElement(</b><i>IXMLElement2 *pElem</i><b>)</b>;
+            // set new current XML node in msXML.dll tree
+-->
+HRESULT <b>GetCurrentNodeName(</b><i>CString &strNodeName</i><b>)</b>;
+            // when loading/writing, return current active XML node name
+
+</pre>
+<pre>
+</pre>
+
+<hr noshade size=1>
+
+<!-- ********************************************************************************** -->
+<h2><a name="history">&Auml;nderungsgeschichte</a></h2>
+<p>
+$History: readme.html $<br>
+<p></p>
+<p>*****************  Version 1  *****************</p>
+<p>User: Ln           Date: 28.02.07   Time: 19:00</p>
+<p>Created in $/4CReleased/V2.20.00/COM/softing/fc/CMN/XML_Wrapper</p>
+<p></p>
+<p>*****************  Version 1  *****************</p>
+<p>User: Ln           Date: 28.08.03   Time: 16:33</p>
+<p>Created in $/4Control/COM/softing/fc/CMN/XML_Wrapper</p>
+<p></p>
+<p>*****************  Version 1  *****************</p>
+<p>User: Scd          Date: 30.01.01   Time: 11:27</p>
+<p>Created in $/4Control/COM/softing/fc/CMN/XML_Wrapper</p>
+<p></p>
+<p>*****************  Version 7  *****************</p>
+<p>User: Je           Date: 5.11.98    Time: 17:16</p>
+<p>Updated in $/4Control/COM/softing/fc/CMN/XML_Wrapper</p>
+<p>* GetAttribute() returns FALSE if attribute not found</p>
+*****************  Version 6  *****************</br>
+User: Je           Date: 5.11.98    Time: 12:12</br>
+Updated in $/4Control/COM/softing/fc/CMN/XML_Wrapper</br>
+* MoveDown() returns BOOL if node exists or not</br>
+*****************  Version 5  *****************</br>
+User: Je           Date: 4.11.98    Time: 18:07</br>
+Updated in $/4Control/COM/softing/fc/CMN/XML_Wrapper</br>
+* use iterator class in stream-in operators</br>
+* add support for CTypedPtrArray and CPtrList</br>
+* allow Set/GetAttribute of CPoint variables</br>
+*****************  Version 4  *****************</br>
+User: Je           Date: 3.11.98    Time: 21:47</br>
+Updated in $/4Control/COM/softing/fc/CMN/XML_Wrapper</br>
+* allow stream-in (<tt>ar &gt;&gt; m_myList;</tt>) for containers (lists,maps etc)</br>
+* removed ForEach() and CreateAndMoveDown()</br>
+</p>
+<br>
+<hr noshade size=1>
+
+<!-- ********************************************************************************** -->
+<p><nobr><a class="an" name="bottom">
+$Revision: 1 $ $Date: 28.02.07 19:00 $ / <a href="mailto:david.jenny@4control.de">david.jenny@4control.de</a><br>
+$Logfile: /4CReleased/V2.20.00/COM/softing/fc/CMN/XML_Wrapper/readme.html $<br>
+&copy;&nbsp;<a href=http://www.4control.de>ATCM ATCMControl</a>. All Rights Reserved. </a>
+</nobr></p>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+TARGETTYPE=LIB
+TARGET=$(TARGET_BASE)\lib\AddOnBase.lib
+
+DEFINE=_AFXDLL
+DEFINE=_ATL_STATIC_REGISTRY
+DEFINE=_ATL_NO_SECURITY
+DEFINE=_MRCEXT_NOFORCELIBS
+
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\res
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\inc
+
+INCLUDE=..\inc
+INCLUDE=..\..\inc
+
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\CE\inc
+INCLUDE=$(TARGET_BASE)\ProjectWizardBase
+
+LIBRARY=$(PROJECT_ROOT)\com\softing\fc\lib\fc_todebug.lib
+LIBRARY=$(PROJECT_ROOT)\com\softing\fc\lib\fc_tools.lib
+LIBRARY=$(PROJECT_ROOT)\com\softing\fc\lib\fc_util.lib
+LIBRARY=$(PROJECT_ROOT)\com\softing\fc\lib\fc_baselib.lib
+LIBRARY=$(PROJECT_ROOT)\com\softing\fc\CE\Lib\CEUtil_XML.lib
+LIBRARY=$(PROJECT_ROOT)\com\softing\fc\CE\Lib\CEUTIL.lib
+
+LIBRARY=$(TARGET_BASE)\lib\ProjectWizardBase.lib
+
+MASTER_RC=..\inc\AddonBase.RC
+PCHFILE=stdafx
+
+USER=makefirst:$(TARGET_BASE)\lib
+USER=$(TARGET_BASE)\lib:
+USER=  -md $@
+
+# -------------------------------------------------------------------------------

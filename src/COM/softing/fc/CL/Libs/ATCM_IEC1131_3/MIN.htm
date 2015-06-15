@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>MIN</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>MIN</h2>
+<p>Selects the lowest of the values passed as parameters.<br>
+</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION MIN : ANY_ELEMENTARY
+VAR_INPUT 
+    IN1 : ANY_ELEMENTARY; 
+END_VAR
+VAR_IN_EXT
+    IN2 : ANY_ELEMENTARY;
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>ANY_ELEMENTARY</b></i><br>
+  The lowest among the passed values.</p>
+
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>IN1</b></dt>
+  <dd>Value of type <b><i>ANY_ELEMENTARY</i></b><br>
+    Value to be compared.</dd>
+  <dt><b>IN2</b></dt>
+  <dd>Value of type <b><i>ANY_ELEMENTARY</i></b><br>
+    Value to be compared. <br>
+    <b><i>IN_EXT</i></b>-variables are extensible. Optional, further values can 
+    be stated to be compared.<br>
+  </dd>
+</dl>
+<h3>Description</h3>
+<p>The function <b>MIN </b>compares all indicated parameters and issues the smallest 
+  parameter.</p>
+</body>
+</html>

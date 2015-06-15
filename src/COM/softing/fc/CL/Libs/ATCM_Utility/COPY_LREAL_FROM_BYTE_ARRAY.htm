@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>COPY_LREAL_FROM_BYTE_ARRAY</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+
+<body bgcolor="#FFFFCC" link="#0000CE" vlink="#0000CE" alink="#0000CE">
+<h2>COPY_LREAL_FROM_BYTE_ARRAY</h2>
+<p>Reads a value of the type <i><b>LREAL</b></i> at a specific position within a byte array.</p>
+<h3>Interface</h3>
+<pre class="preforma">FUNCTION COPY_LREAL_FROM_BYTE_ARRAY : LREAL
+VAR_IN_OUT
+    POS : DINT;
+    BYTES : ARRAY OF BYTE;
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of the type <i><b>LREAL</b></i><br> Value that was read from the byte array.</p>
+<h3>Parameter</h3>
+<h3>IN_OUT</h3>
+<dl>
+
+ <dt><b>POS</b></dt>
+
+ <dd>Value of the type <i><b>DINT</b></i><br> Specifies as from which position in the byte array the value is to be read.
+
+   Counting starts from 0 for the first position in the byte array and is performed in byte units.<br> After the successful execution of the function, <i><b>POS</b></i> is overwritten by the value of the first byte array position that follows the last byte read. If the execution of the function failed, <i><b>POS</b></i> receives the value -1.</dd>
+
+ <dt><b>BYTES</b></dt>
+
+ <dd>Instance of an array of byte.<br> Byte array from which a value is to be read.</dd>
+</dl>
+<h3>Description</h3>
+<p>Starting from the position passed to <i><b>POS</b></i>, <b><i>COPY_LREAL_FROM_BYTE_ARRAY </i></b>reads a value of the type <i><b>LREAL </b></i> from the byte array passed to <i><b>BSTR</b></i> and delivers this value as the return value. </p>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<html>
+<head>
+<title>SER_WRITE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>SER_WRITE </h2>
+<p>Sendet Daten zum Remote-Partner.</p>
+<h3>Schnittstelle</h3>
+<pre class="preforma">FUNCTION_BLOCK SER_WRITE                  
+VAR_INPUT                                                  
+    REQ    : BOOL R_EDGE := FALSE;                        
+    ID     : COMM_CHANNEL;                  
+    SD_1   : BYTE_STRING ;           
+END_VAR                                                    
+                                                        
+VAR_OUTPUT                                                 
+    DONE   : BOOL;               
+    ERROR  : BOOL;         
+    STATUS : DINT;                 
+END_VAR</pre>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>REQ</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i>.<br>
+    Initialisiert das Senden einer Nachricht.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Nachricht wird gesendet.<br>
+    <i><b>FALSE</b></i>: Nachricht wird nicht gesendet.<br>
+    Standardwert ist <i><b>FALSE</b></i>.<br>
+    Nach dem Senden einer Nachricht muß <i><b>REQ</b></i> auf <i><b>FALSE</b></i> 
+    gesetzt werden, bevor eine weitere Nachricht mit <font face="Courier New, Courier, mono">REQ 
+    := TRUE</font> versendet werden kann. </dd>
+  <dt><b>ID</b></dt>
+  <dd>Instanz der Struktur <a href="COMM_CHANNEL.htm"><i><b>COMM_CHANNEL</b></i></a>.<br>
+    Identifiziert die Verbindung, &uuml;ber die eine Nachricht gesendet werden 
+    soll. </dd>
+  <dt><b>SD_1</b></dt>
+  <dd>Instanz der Struktur <i><b><a href="BYTE_STRING.htm">BYTE_STRING</a></b></i><br>
+    Enth&auml;lt die zu versendende Nachricht in Form eines Bytestrings. <br>
+    Verwenden Sie die Funktion <a href="BYTE_STRING_INIT.htm"><i><b>BYTE_STRING_INIT</b></i></a>, 
+    um den Bytestring mit einem Wert zu initialisieren.</dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b>DONE</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i>.<br>
+    Signalisiert den (erfolgreichen oder gescheiterten) Abschlu&szlig; der Operation.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Operation ist abgeschlossen.<br>
+    <i><b>FALSE</b></i>: Operation ist noch nicht abgeschlossen.</dd>
+  <dt><b>ERROR</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i>.<br>
+    Signalisiert den Fehlerstatus.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Ein Fehler ist aufgetreten.<br>
+    <i><b>FALSE</b></i>: Es ist kein Fehler aufgetreten.</dd>
+  <dt><b>STATUS</b></dt>
+  <dd>Wert vom Typ <i><b>DINT</b></i>.<br>
+    Enth&auml;lt einen Statuscode. <br>
+    M&ouml;gliche Werte sind in den <a href="ConstState.htm">Statuskonstanten</a> 
+    definiert. </dd>
+</dl>
+<h3>Beschreibung</h3>
+<p>Der Aufruf einer Instanz von<i><b> SER_WRITE</b></i> sendet einen Bytestring 
+  &uuml;ber die im Parameter <i><b>ID</b></i> spezifizierte Verbindung. Die Verbindung 
+  wird durch eine Instanz der Struktur <i><b>COMM_PARTNER</b></i> repr&auml;sentiert. 
+  Diese Instanz wird automatisch beim Herstellen einer Verbindung mit <a href="CONNECT.htm"><i><b>CONNECT</b></i></a> 
+  erzeugt und mit den entsprechenden Verbindungswerten initialisiert. </p>
+<p>Als Medium, das die zu übermittelnde Nachricht speichert, wird ein Bytestring 
+  genutzt, der von einer Instanz der Struktur <a href="BYTE_STRING.htm"><i><b>BYTE_STRING</b></i></a> 
+  verwaltet wird (in der Schnittstellendefinition der INPUT-Parameter <i><b>SD_1</b></i>). 
+  Diese Instanz wird dem Funktionsbaustein beim Aufruf übergeben. Die im Bytestring 
+  gespeicherte Nachricht wird über Funktionen, die auf den Bytestring über eine 
+  Instanz von <i><b>BYTE_STRING</b></i> zugreifen, manipuliert. </p>
+<p>Falls ein Timeout &uuml;berschritten wird, werden sowohl Write-Requests als 
+  auch Read-Requests abgebrochen. Der Timeout kann vor dem Herstellen einer Verbindung 
+  mit einer Instanz von <a href="CONNECT.htm"><i><b>CONNECT</b></i></a> im Parameter 
+  <i><b>iTimeout</b></i> der an <i><b>CONNECT</b></i> &uuml;bergebenen Instanz 
+  von <a href="COMM_PARTNER.htm"><b><i> COMM_PARTNER</i></b></a> gesetzt werden. 
+</p>
+</body>
+</html>

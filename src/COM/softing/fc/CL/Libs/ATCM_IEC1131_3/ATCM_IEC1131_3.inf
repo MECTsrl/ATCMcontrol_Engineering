@@ -1,0 +1,21 @@
+USER=libname=ATCM_IEC1131_3
+USER=make_lib: force
+
+USER= xcopy  $(BUILT_LIB_DIR)\ATCM_System.4cl $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_22\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_23\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_24\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_25\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_26\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_27\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_28\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_29\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_30\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_34\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_35\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_36\*.*     $(MAKEDIR)\*.* /Y
+USER= xcopy  $(MAKEDIR)\table_37\*.*     $(MAKEDIR)\*.* /Y
+
+USER= $(4CG) $(MAKEDIR)\$(libname).4cp  -ml:0 $(4CL_DIR)\$(libname).4cl
+
+# -------------------------------------------------------------------------------

@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>FA_ASYNC_OPENFILE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css">
+</head>
+
+<body bgcolor="#FFFFCC">
+<h2>FA_ASYNC_OPENFILE</h2>
+<p>&Ouml;ffnet eine Datei zur Bearbeitung.</p>
+<h3>Schnittstelle</h3>
+<pre class="preforma">FUNCTION_BLOCK FA_ASYNC_OPENFILE
+VAR_INPUT
+    EXEC        : BOOL;             
+END_VAR
+VAR_IN_OUT
+    FILE        : FA_ASYNC_FILE;    
+END_VAR
+VAR_OUTPUT
+    DONE        : BOOL;             
+    ERROR       : BOOL;
+    ERRCD       : DINT;
+    ERRTXT      : WSTRING;
+END_VAR</pre>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>EXEC</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i><br>
+    Startet die Operation bei steigender Flanke.</dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl> 
+  <dt><b>FILE</b></dt>
+  <dd>Instanz der Struktur <a href="FA_ASYNC_FILE.htm"><i><b>FA_ASYNC_FILE</b></i></a><br>
+    Dateiobjekt, auf das die Operation ausgef&uuml;hrt wird.</dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b>DONE</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i>.<br>
+    Signalisiert den (erfolgreichen oder gescheiterten) Abschlu&szlig; der Operation.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Operation ist abgeschlossen.<br>
+    <i><b>FALSE</b></i>: Operation ist noch nicht abgeschlossen.</dd>
+  <dt><b>ERROR</b></dt>
+  <dd>Wert vom Typ <i><b>BOOL</b></i>.<br>
+    Signalisiert den Fehlerstatus.<br>
+    M&ouml;gliche Werte:<br>
+    <i><b>TRUE</b></i>: Ein Fehler ist aufgetreten.<br>
+    <i><b>FALSE</b></i>: Es ist kein Fehler aufgetreten.</dd>
+  <dt><b>ERRCD</b></dt>
+  <dd>Wert vom Typ <i><b>DINT</b></i>.<br>
+    Enth&auml;lt eine Fehlernummer, falls ein Fehler aufgetreten ist. <br>
+    Ist kein Fehler aufgetreten, hat <i><b>ERRCD</b></i> den Wert <b>0</b>.<br>
+  </dd>
+  <dd>M&ouml;gliche Werte sind in den <a href="Const_Error.htm">Fehlerkonstanten</a> 
+    definiert. </dd>
+  <dt><b>ERRTXT</b></dt>
+  <dd>Wert vom Typ <i><b>WSTRING</b></i>.<br>
+    Enth&auml;lt einen Fehlertext, falls ein Fehler aufgetreten ist. <br>
+    Ist kein Fehler aufgetreten, enth&auml;lt <i><b>ERRTXT</b></i> einen Leerstring.</dd>
+</dl>
+<h3>Beschreibung</h3>
+<p><b><i>FA_ASYNC_OPENFILE</i></b><i><b> </b></i>&ouml;ffnet die an <i><b>FILE</b></i> 
+  &uuml;bergebene Datei f&uuml;r Nur-Lesezugriff oder Lese- und Schreibzugriff. 
+  <i><b>FA_ASYNC_OPENFILE </b></i>leitet einen Zugriffzyklus ein und mu&szlig; 
+  daher immer aufgerufen werden, bevor Lese- oder Schreibzugriffe &uuml;ber andere 
+  Funktionsbausteininstanzen der Bausteingruppe f&uuml;r elementare asynchrone 
+  Dateioperationen erfolgen k&ouml;nnen. </p>
+<p>Die zu &ouml;ffnende Datei wird durch eine Instanz der Struktur <a href="FA_ASYNC_FILE.htm"><i><b>FA_ASYNC_FILE</b></i></a> 
+  repr&auml;sentiert. Diese Struktur enth&auml;lt das Element <b><i>MODE</i></b>, 
+  &uuml;ber das festgelegt wird, mit welchem Zugriffsmodus eine Datei ge&ouml;ffnet 
+  wird. M&ouml;gliche Werte sind in den <a href="Const_Mode.htm">Zugriffsmodus-Konstanten</a> 
+  definiert. </p>
+<p>Vor dem &Ouml;ffnen einer Datei mu&szlig; der Zugriffsmodus in der an <i><b>FA_ASYNC_OPENFILE</b></i> 
+  &uuml;bergebenen Strukturinstanz von <i><b>FA_ASYNC_FILE</b></i> gesetzt werden. 
+  Der beim &Ouml;ffnen gesetzte Zugriffsmodus ist solange g&uuml;ltig, bis die 
+  Datei mit <i><b>FA_ASYNC_CLOSEFILE</b></i> wieder geschlossen wird. Alle zwischen 
+  dem &Ouml;ffnen und Schlie&szlig;en einer Datei aufgerufenen Funktionsbausteininstanzen, 
+  die auf das an <i><b>FA_ASYNC_OPENFILE</b></i> &uuml;bergebene Dateiobjekt arbeiten, 
+  unterliegen den beim &Ouml;ffnen der Datei in <i><b>MODE</b></i> gesetzten Zugriffsberechtigungen. 
+  Es ist daher nicht m&ouml;glich, w&auml;hrend eines Zugriffszyklus den Zugriffsmodus 
+  zu ver&auml;ndern. </p>
+<p>Die Position des Dateizeigers ist beim &Ouml;ffnen einer Datei immer abh&auml;ngig 
+  von dem in der &uuml;bergebenen Strukturinstanz von<i><b> FA_ASYNC_FILE</b></i> 
+  gesetzten Zugriffsmodus. Eine Initialisierung der Elementvariablen <i><b>POSITION</b></i> 
+  der Struktur <i><b>FA_ASYNC_FILE</b></i> mit einem benutzerdefinierten Wert 
+  wird beim &Ouml;ffnen mit <i><b>FA_ASYNC_OPENFILE</b></i> durch den dem entsprechenden 
+  Zugriffsmodus zugeordneten Wert <i><b></b></i> &uuml;berschrieben. Sollen Dateizugriffe 
+  nach dem &Ouml;ffnen einer Datei an einer bestimmten Position erfolgen, mu&szlig; 
+  daher <u>nach dem &Ouml;ffnen</u> der Wert von <i><b>POSITION</b></i> explizit 
+  neu gesetzt werden. </p>
+</body>
+</html>

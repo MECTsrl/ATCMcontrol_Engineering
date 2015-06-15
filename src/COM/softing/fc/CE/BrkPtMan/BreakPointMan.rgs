@@ -1,0 +1,35 @@
+HKCR
+{
+	4C_20_CE.BreakPointMan.1 = s '4C_20: BreakPointMan Class'
+	{
+		CLSID = s '{0F1D9CA0-5AC4-421e-8425-D81DE02172CD}'
+        'Index' 
+        { 
+            val Version = s '2.0' 
+            val LCID = d '1033' 
+        }
+	}
+	4C_20_CE.BreakPointMan = s '4C_20: BreakPointMan Class'
+	{
+		CLSID = s '{0F1D9CA0-5AC4-421e-8425-D81DE02172CD}'
+		CurVer = s '4C_20_CE.BreakPointMan.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {0F1D9CA0-5AC4-421e-8425-D81DE02172CD} = s '4C_20: BreakPointMan Class'
+		{
+			ProgID = s '4C_20_CE.BreakPointMan.1'
+			VersionIndependentProgID = s '4C_20_CE.BreakPointMan'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			'TypeLib' = s '{031D2BC7-1BA4-48d3-A088-F6E2243084D1}'
+			'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

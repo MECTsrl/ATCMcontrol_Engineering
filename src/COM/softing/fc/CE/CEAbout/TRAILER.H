@@ -1,0 +1,2 @@
+
+void  StartTrailer(CWnd *pParent);

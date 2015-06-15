@@ -1,0 +1,35 @@
+HKCR
+{
+	4C_20_CEFIF.CEFindInFiles.1 = s 'CEFindInFiles Class'
+	{
+		CLSID = s '{40E9A48E-D892-4858-B183-A68F290F7BA1}'
+        'Index' 
+        { 
+            val Version = s '2.0' 
+            val LCID = d '1033' 
+        } 
+	}
+	4C_20_CEFIF.CEFindInFiles = s 'CEFindInFiles Class'
+	{
+		CLSID = s '{40E9A48E-D892-4858-B183-A68F290F7BA1}'
+		CurVer = s '4C_20_CEFIF.CEFindInFiles.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {40E9A48E-D892-4858-B183-A68F290F7BA1} = s 'CEFindInFiles Class'
+		{
+			ProgID = s '4C_20_CEFIF.CEFindInFiles.1'
+			VersionIndependentProgID = s '4C_20_CEFIF.CEFindInFiles'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{82AB4A81-91A6-43b4-844A-8740D62B5BA9}'
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

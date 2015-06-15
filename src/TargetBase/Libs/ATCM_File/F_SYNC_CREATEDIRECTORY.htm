@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>F_SYNC_CREATEDIRECTORY</title>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="stylesheet" href="Lib.css">
+</head>
+<body bgcolor="#ffffcc">
+<h2>F_SYNC_CREATEDIRECTORY</h2>
+<p>Creates a new directory.</p>
+<h3>Interface</h3>
+<pre class="preforma">FUNCTION F_SYNC_CREATEDIRECTORY:BOOL<br>VAR_IN_OUT<br>    FILE        : F_SYNC_FILE;<br>END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of the type <i><b>BOOL</b></i><br>
+Signalizes the error status.<br>
+Possible values:<br>
+<i><b>TRUE</b></i>: An error has occurred.<br>
+<i><b>FALSE</b></i>: No error has occurred.</p>
+<h3>Parameter</h3>
+<h3>IN_OUT</h3>
+<dl>
+  <dt><b><a name="File"></a>FILE</b></dt>
+  <dd>Instance of the <a href="F_SYNC_FILE.htm"><i><b>F_SYNC_FILE</b></i></a>
+structure<br>
+In contrast to the other functions provided in the group of blocks for
+elementary synchronous file operations, the structure instance passed
+to <i><b>FILE</b></i> does not represent a file object on which the
+corresponding file operation is performed. The <i><b>FILENAME</b></i>
+element of the <i><b>F_SYNC_FILE</b></i> structure is instead used for
+defining the directory name. </dd>
+</dl>
+<h3>Description</h3>
+<p>With <i><b>F_SYNC_CREATEDIRECTORY</b></i> you create a new
+directory. A new file can only be generated with the function <i><b><a
+ href="F_SYNC_OPENFILE.htm">F_SYNC_OPENFILE</a></b></i> if the
+directory in which it is to be generated already exists. If you want to
+generate a new file in a directory that does not yet exist, use the
+function <i><b>F_SYNC_CREATEDIRECTORY</b></i> to create this
+directory. </p>
+<p>The name of the directory to be newly created is passed to <i><b>F_SYNC_CREATEDIRECTORY
+</b></i>in the parameter <b><i>FILE</i></b>. <i><b>FILE</b></i>
+expects an instance of the <a href="F_SYNC_FILE.htm"><i><b>F_SYNC_FILE</b></i></a>
+structure. This structure includes the structure element <b><i>FILENAME</i></b>
+which specifies a directory or file name and must be initialized before
+the structure instance is passed to <i><b>F_SYNC_CREATEDIRECTORY</b></i>.
+</p>
+<p>When you initialize the structure element <i><b>FILENAME</b></i>
+for creating a new directory, you must enter only the directory, <u>without</u>
+the file name. The path in which the directory is to be created must be
+fully qualified. The compiler does not check whether the syntax of the
+path and directory information is correct. If the directory information
+is not correct, an error will be output during runtime. This function
+creates multiple directories in one call, also it is not an error to
+create a directory that already exists.<br>
+</p>
+<p>The call of <i><b>F_SYNC_CREATEDIRECTORY</b></i> is independent of
+an access cycle, which means that a previous call of <i><b>F_SYNC_OPENFILE
+</b></i>is not required. </p>
+</body>
+</html>

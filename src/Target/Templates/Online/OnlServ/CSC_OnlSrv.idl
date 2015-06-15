@@ -1,0 +1,78 @@
+/* $Header: /4CReleased/V2.20.00/Target/TEMPLATES/Online/OnlServ/CSC_OnlSrv.idl 1     28.02.07 18:54 Ln $
+ * ------------------------------------------------------------------------------
+ *
+ * =FILENAME			$Workfile: CSC_OnlSrv.idl $
+ *						 $Logfile: /4CReleased/V2.20.00/Target/TEMPLATES/Online/OnlServ/CSC_OnlSrv.idl $
+ *
+ * =PROJECT 			ATCMControl V2.x
+ *
+ * =SWKE				Target / Online
+ *
+ * =COMPONENT			OnlServ
+ *
+ * =CURRENT 	 $Date: 28.02.07 18:54 $
+ *			 $Revision: 1 $
+ *
+ * ------------------------------------------------------------------------------
+ *
+ 
+ 
+
+ 
+ *	All Rights Reserved.
+ *
+ * ------------------------------------------------------------------------------
+ */
+
+/* ------------------------------------------------------------------------------
+ * Change Log
+ *
+ * Ref.		Date	 Author	Comment
+ *
+ * ##
+ * ------------------------------------------------------------------------------
+ */
+
+
+cpp_quote("//+-------------------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  ATCMControl 4CSC Server")
+cpp_quote("//  Copyright 2000 - 2006 SoftingAG.")
+cpp_quote("//")
+cpp_quote("//--------------------------------------------------------------------------")
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+//----  OPC Interfaces:    ---------------------------------------------------*
+//----  CoClass:    OPCServer
+// standard OPC V1.0a and DA V2.0 interfaces
+import "opcDA.idl";
+
+//----  Type Library:    -----------------------------------------------------*
+[
+    uuid([*OSTG]),
+    version(2.0),
+    helpstring("4C_20: 4CSC Server type library")
+]
+library CSC_Srv_Lib
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+    //interfaces of the coclasses are defined here to keep them
+    //separate from the target specific implementation of the CSC Online Server
+    importlib("CSC_OnlineServer.tlb");
+
+
+    //-------------------------------------------------------------------------
+    [
+        uuid([*CG]),
+        helpstring("4C_20: 4CSC Server custom connect object"),
+    ]
+    coclass CustomConnect
+    {
+        [default] interface ICustomConnect;
+    };
+};
+
+

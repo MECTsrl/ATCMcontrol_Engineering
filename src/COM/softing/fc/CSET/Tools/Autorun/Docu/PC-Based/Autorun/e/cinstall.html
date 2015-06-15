@@ -1,0 +1,300 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+		<title>ATCMControl v2.1</title>
+		<script language="javascript" type="text/javascript">
+
+	pic1 = new Image();
+	pic1.src = "../pic/nav1e.gif";
+	pic2 = new Image();
+	pic2.src = "../pic/nav2e.gif";
+	pic3 = new Image();
+	pic3.src = "../pic/nav3d.gif";
+	pic6 = new Image();
+	pic6.src = "../pic/nav6e.gif";
+	pic8 = new Image();
+	pic8.src = "../pic/nav5d.gif";
+	pic7 = new Image();
+	pic7.src = "../pic/nav7e.gif";
+	pic9 = new Image();
+	pic9.src = "../pic/nav9e.gif";
+
+	pic11 = new Image();
+	pic11.src = "../pic/nav11e.gif";
+	pic22 = new Image();
+	pic22.src = "../pic/nav22e.gif";
+	pic33 = new Image();
+	pic33.src = "../pic/nav33d.gif";
+	pic66 = new Image();
+	pic66.src = "../pic/nav66e.gif";
+	pic88 = new Image();
+	pic88.src = "../pic/nav55d.gif";
+	pic77 = new Image();
+	pic77.src = "../pic/nav77e.gif";
+	pic99 = new Image();
+	pic99.src = "../pic/nav99e.gif";
+
+function drauf(wert)
+{
+	switch (wert)
+	{
+		case 1:	document.nav1.src = pic11.src;
+		break;
+		case 2: document.nav2.src = pic22.src;
+		break;
+		case 3: document.nav3.src = pic33.src;
+		break;
+		case 6: document.nav6.src = pic66.src;
+		break;
+		case 8: document.nav8.src = pic88.src;
+		break;
+		case 7: document.nav7.src = pic77.src;
+		break;
+		case 9: document.nav9.src = pic99.src;
+		break;
+	}
+}
+function runter(wert)
+{
+	switch (wert)
+	{
+		case 1:document.nav1.src = pic1.src;
+		break;
+		case 2:document.nav2.src = pic2.src;
+		break;
+		case 3:document.nav3.src = pic3.src;
+		break;
+		case 6:document.nav6.src = pic6.src;
+		break;
+		case 8:document.nav8.src = pic8.src;
+		break;
+		case 7:document.nav7.src = pic7.src;
+		break;
+		case 9: document.nav9.src = pic9.src;
+		break;
+
+	}
+}
+</script>
+		<link rel="stylesheet" href="../text.css">
+	</head>
+
+	<body leftmargin="2" topmargin="2" marginwidth="2" marginheight="2" bgcolor="#CCCCCC" link="#003366" vlink="#003366" alink="#003366">
+		<!--hauptmenue-->
+		<table width="760" height="25" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="155" align="right" valign="bottom"><img src="../pic/4clogo.gif" width="14" height="16" alt="" border="0"><img src="../pic/clearpix.gif" width="2" height="1" alt="" border="0"></td>
+				<!--kurze laengsline-->
+				<td align="left" valign="bottom" colspan="5"><img src="../pic/linien.gif" width="2" height="25" alt="" border="0"></td>
+				<!--ende--></tr>
+		</table>
+		<!--querline-->
+		<table width="760" height="2" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><img src="../pic/linien.gif" width="760" height="2" alt="" border="0"></td>
+			</tr>
+		</table>
+		<!--ende-->
+		<table width="760" height="94%" border="0" cellpadding="0" cellspacing="0">
+			<tr><!--navigation-->
+				<td width="155" valign="top">
+					<table width="155" height="90" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="24" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td valign="center"><img src="../pic/4clayout-kl.jpg" width="152" height="134" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><img src="../pic/nav1e.gif" name="nav1" width="120" height="25" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="thiscd.html" onmouseover="drauf(2)" onmouseout="runter(2)"><img src="../pic/nav2e.gif" name="nav2" width="120" height="25" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="#" onmouseover="drauf(3)" onmouseout="runter(3)"><img src="../pic/nav3d.gif" name="nav3" width="120" height="25" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="license.html" onmouseover="drauf(6)" onmouseout="runter(6)"><img src="../pic/nav6e.gif" name="nav6" width="120" height="25" alt="" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="knownbugs.html" onmouseover="drauf(8)" onmouseout="runter(8)"><img src="../pic/nav5d.gif" name="nav8" width="120" height="25" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="30" valign="center"><a href="contact.html" onmouseover="drauf(7)" onmouseout="runter(7)"><img src="../pic/nav7e.gif" name="nav7" width="120" height="25" border="0"></a></td>
+						</tr>
+						<tr>
+							<td height="60" valign="center"><a href="readme_dep.htm" onmouseover="drauf(9)" onmouseout="runter(9)"><img src="../pic/nav9e.gif" name="nav9" width="120" height="50" border="0"></a></td>
+						</tr>
+					</table>
+				</td>
+				<!--navigation ende--><!--lange vertikalline-->
+				<td bgcolor="#999999">
+					<table width="2" height="94%" valign="top" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="1" alt="" border="0"></td>
+						</tr>
+					</table>
+				</td>
+				<!--ende--><!--inhalt-->
+				<td width="603" valign="top">
+					<table border="0" cellpadding="0" cellspacing="0" align="center" valing="middle" width="570">
+						<tr>
+							<td><img src="../pic/clearpix.gif" width="1" height="24" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center"><span class="headblau">ATCMControl Installation</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><img src="../pic/clearpix.gif" width="1" height="10" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="zwitiblack">
+								<p>Hardware Requirements</p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" align="center" colspan="2"><img src="../pic/clearpix.gif" width="1" height="10" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td colspan="2" valign="top" height="20"><span class="textblaubold">ATCM Control</span></td>
+						</tr>
+						<tr>
+                                                  	<td align="center">
+								<table cellpadding="1" border="1" width="250">
+									<tr>
+										<td colspan="2" align="center"><span class="textblaubold">Recommended</span></td>
+									</tr>
+									<tr>
+										<td width="140"><span class="text">Processor:</span></td>
+										<td width="140"><span class="text">Intel PIV</span></td>
+									</tr>
+									<tr>
+										<td width="140"><span class="text">Clock frequency:</span></td>
+										<td width="140"><span class="text">1.8 Ghz</span></td>
+									</tr>
+									<tr>
+										<td width="140"><span class="text">Main memory:</span></td>
+										<td width="140"><span class="text">512 Mbyte</span></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" align="center" colspan="2"><img src="../pic/clearpix.gif" width="1" height="10" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td colspan="2" valign="top" height="20"><span class="textblaubold">ATCM Engineering / ATCM Console</span></td>
+						</tr>
+						<tr>
+                                         		<td align="center">
+								<table cellpadding="1" border="1" width="250">
+									<tr>
+										<td colspan="2" align="center"><span class="textblaubold">Recommended</span></td>
+									</tr>
+									<tr>
+										<td width="140"><span class="text">Processor:</span></td>
+										<td width="140"><span class="text">Intel PIV</span></td>
+									</tr>
+									<tr>
+										<td width="140"><span class="text">Clock frequency:</span></td>
+										<td width="140"><span class="text">1.8 Ghz</span></td>
+									</tr>
+									<tr>
+										<td width="140"><span class="text">Main memory:</span></td>
+										<td width="140"><span class="text">512 Mbyte</span></td>
+									</tr>
+									<tr>
+										<td width="140"><span class="text">Graphics card:</span></td>
+										<td width="140"><span class="text">True Color 1024x768</span></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" align="center" colspan="2"><img src="../pic/clearpix.gif" width="1" height="10" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<p><span class="zwitiblack">Software Requirements</span></p>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" align="center" colspan="2"><img src="../pic/clearpix.gif" width="1" height="10" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td colspan="2" valign="top" height="20"><span class="textblaubold">Network</span></td>
+						</tr>
+						<tr>
+							<td colspan="2" valign="top" height="30"><span class="text">TCP/IP, HTTP, DCOM</span></td>
+						</tr>
+						<tr>
+							<td colspan="2" valign="top" height="20"><span class="textblaubold">ATCM Control / ATCM Engineering</span></td>
+						</tr>
+						<tr>
+							<td align="center" valign="top">
+								<table border="1" width="250">
+									<tr>
+										<td width="140" align="center"><span class="textblaubold">Recommended</span></td>
+									</tr>
+									<tr>
+										<td width="140"><span class="text">Windows 2000 SP4/ XP Professional SP2</span></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" align="center" colspan="2"><img src="../pic/clearpix.gif" width="1" height="10" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td colspan="2" valign="top" height="20"><span class="textblaubold">ATCM Console</span></td>
+						</tr>
+						<tr>
+							<td align="center" valign="top">
+								<table border="1" width="250">
+									<tr>
+										<td width="140" align="center"><span class="textblaubold">Recommended</span></td>
+									</tr>
+									<tr>
+										<td width="140"><span class="text">Windows 2000 SP4/ XP Professional SP2</span></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top" align="center" colspan="2"><img src="../pic/clearpix.gif" width="1" height="20" alt="" border="0"></td>
+						</tr>
+						<tr>
+							<td colspan="2"><span class="zwitiblack">Before installing the software, please read the following information thoroughly from beginning to end:</span>
+								<ul>
+									<li><span class="text">These installation instructions require an existing network. If your computer is not integrated into a network, you have to <a href="network.html">install a network adapter</a> first before you start installing all necessary components for ATCMControl.<br>
+											<br>
+										</span>
+
+									<li><span class="text">Installing ATCMControl requires that you have logged on to your computer with Windows administrator rights. If you do not have these rights, please contact your local system administrator.<br>
+											<br>
+										</span>
+
+
+									<li><span class="text">It is recommended that you uninstall all previous versions of ATCMControl before installing this new version. The uninstallation procedure can be started by selecting the <b>Uninstall ATCMControl</b> menu option in the ATCMControl program group.<br>
+											<br>
+										</span>
+									<li><span class="text">If you have installed any PROFIbus drivers delivered with an earlier version of ATCMControl, it is strongly recommended that you remove all of these drivers from your system before starting the setup program of ATCMControl. The installation of PROFIbus drivers is part of in the installation routine of ATCMControl. Leaving any previously installed ATCMControl PROFIbus drivers on your system will therefore quite probably cause conflicts with the new driver installation by the ATCMControl setup. After having uninstalled the PROFIbus drivers, you need to restart your computer. After restarting, you can start installing ATCMControl. </span>
+								</ul>
+								<p align="center"><span class="textblau"><b><a href="install.html">Click here to display the installation instructions</a></b></span></p>
+								<p><span class="zwitired"><u>Important Note:</u></span></p>
+								<p><span class="text">In some cases, especially when installing ATCMControl on a freshly installed system, ATCMControl may inform you that some system DLLs have been replaced and asks you to restart your computer. After restart, the Installation Wizard of ATCMControl appears again and indicates by the item 'Install ATCMControl' that ATCMControl has not yet been installed. The reason for this behavior is that the installation could not be completed because of the necessity of restarting the computer after replacing the system DLLs. To complete the installation, you have to start the installation process again by clicking the <b>Install Next</b> button. Unfortunately you need to confirm your agreement to the license terms again and reenter the name of your company and some other required information. After having done this, the installation of the still missing parts of ATCMControl is continued and the installation process is properly completed.<br>
+										<br>
+									</span></p>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>

@@ -1,0 +1,63 @@
+#H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CP/HTML/Html.inf 1     28.02.07 19:00 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: Html.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CP/HTML/Html.inf $
+#
+# =PROJECT             7VH102  ATCMControl
+#
+# =SWKE                XXX
+#
+# =COMPONENT           XXX
+#
+# =CURRENT             $Date: 28.02.07 19:00 $
+#                      $Revision: 1 $
+#
+# =ENVIRONMENT         perl5:
+#                      MS Windows NT 4.0
+#                      MSVC++ V5.0 / MFC 4.2 / ATL 2.0 / DAO 3.5
+#                      MS Java 2.0
+#                      MS Visual SourceSafe 5.0
+#
+# =REFERENCES
+#==
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+#==
+#----------------------------------------------------------------------------*
+# =MODIFICATIONS
+# $History: Html.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:00
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CP/HTML
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:33
+# Created in $/4Control/COM/softing/fc/CP/HTML
+# 
+# *****************  Version 1  *****************
+# User: Scd          Date: 19.03.01   Time: 12:15
+# Created in $/4Control/COM/softing/fc/CP/HTML
+##
+#*****************  Version 1  *****************#
+#User: Mkr          Date: 30.09.98   Time: 16:10#
+#Created in $/fc/CP/HTML#
+#==
+#*****************************************************************************
+#H<<
+
+SUBPROJECT=Faceplates\Faceplates.mak
+SUBPROJECT=Kernel\Kernel.mak
+SUBPROJECT=LedScriplet\LedScriplet.mak
+SUBPROJECT=ViewEditor\ViewEditor.mak
+SUBPROJECT=Navigator\Navigator.mak

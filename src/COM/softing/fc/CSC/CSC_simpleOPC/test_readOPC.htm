@@ -1,0 +1,111 @@
+<html>
+
+<head>
+<title>Test Sync Access to OPC server</title>
+</head>
+
+<!--
+<body onload="Init()">
+-->
+
+<h1>Test Sync Access to OPC server</h1>
+
+
+<object id="opc" width="0" height="0"
+classid="CLSID:D8BA2C14-8B10-11d5-8798-00010209D2BC">
+</object>      
+
+<script language="JavaScript">
+<!--
+      var   var1 = "[w-ef].__srt0.__system.dload.dloadGUID";
+      var   var2 = "[w-ef].__srt0.__memused";
+      var opc;
+
+    function Init()
+    {
+
+        document.opc.StopResource(var1);
+        document.opc.Subscribe(var1);
+        document.opc.Subscribe(var2);
+    }
+
+    function Close()
+    {
+        document.opc.Unsubscribe(var1);
+        document.opc.Unsubscribe(var2);
+        document.lbl1.caption = "<not initialized>";
+        document.lbl2.caption = "<not initialized>";
+    }
+// -->
+</script>
+
+<script language="JavaScript">
+<!--
+    function Read()
+    {
+        var vVal;
+        vVal = document.opc.Value(var1);
+        document.lbl1.caption = vVal;
+        vVal = document.opc.Value(var2);
+        document.lbl2.caption = vVal;
+    }
+// -->
+</script>
+
+
+<input type="submit"
+	   value="     I n i t     "
+	   language="JavaScript" onclick="Init();"
+	   >
+<input type="submit"
+	   value="  R e a d    "
+	   language="JavaScript" onclick="Read();"
+	   >
+<input type="submit"
+	   value="  C l o s e    "
+	   language="JavaScript" onclick="Close();"
+	   >
+<p>Current value</p>
+
+<table cellpadding="5">
+<tr>
+    <th>Var-Name</th>
+    <th>Value</th>
+</tr>
+<tr>
+    <td>
+    <script language="JavaScript">
+        document.write(var1);
+    </script>
+    </td>
+    <td>
+        <OBJECT ID="lbl1" WIDTH=400 HEIGHT=16
+         CLASSID="CLSID:99B42120-6EC7-11CF-A6C7-00AA00A47DD2">
+            <PARAM VALUE="<not initialized>">
+        </OBJECT>
+    </td>
+</tr>
+<tr>
+    <td>
+    <script language="JavaScript">
+        document.write(var2);
+    </script>
+    </td>
+    <td>
+        <OBJECT ID="lbl2" WIDTH=400 HEIGHT=16
+         CLASSID="CLSID:99B42120-6EC7-11CF-A6C7-00AA00A47DD2">
+            <PARAM VALUE="<not initialized>">
+        </OBJECT>
+    </td>
+</tr>
+</table>
+
+<!---
+<OBJECT ID="lblShowValue" WIDTH=100 HEIGHT=16
+ CLASSID="CLSID:99B42120-6EC7-11CF-A6C7-00AA00A47DD2">
+    <PARAM NAME="Caption" VALUE="- - - - - - ????">
+</OBJECT>
+--->
+
+</body>
+</html>

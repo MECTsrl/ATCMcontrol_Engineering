@@ -1,0 +1,118 @@
+/*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/inc/BaseLibCOM.idl 1     28.02.07 19:01 Ln $
+ *----------------------------------------------------------------------------*
+ *
+ * =FILENAME            $Workfile: BaseLibCOM.idl $
+ *                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/inc/BaseLibCOM.idl $
+ *
+ * =PROJECT             CAK1020  ATCMControl V2.0
+ *
+ * =SWKE                CMN
+ *
+ * =COMPONENT           BASELIB
+ *
+ * =CURRENT             $Date: 28.02.07 19:01 $
+ *                      $Revision: 1 $
+ *
+ * =REFERENCES
+ *
+ *----------------------------------------------------------------------------*
+ *
+
+ 
+
+
+
+ *==
+ *----------------------------------------------------------------------------*
+ * =DESCRIPTION
+ *    @DESCRIPTION@
+ *==COM interface to fc_baselib.dll
+ *----------------------------------------------------------------------------*
+ * =MODIFICATION
+ *  23.01.01  EF      File created
+ *  see history at end of file !
+ *==
+ *******************************************************************************
+ H<<*/
+
+ #include <olectl.h>
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (CSC_Online.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+//----  CoClass:    FCBaseLib
+    //-------------------------------------------------------------------------
+    [
+        object,
+        uuid(415cbbe0-f2a2-11d4-a537-0008c779c600),
+        dual,
+        oleautomation,
+        helpstring("COM wrapper to 4C BaseLib conversion functions"),
+        pointer_default(unique)
+    ]
+    interface IBL_Conversion : IDispatch
+    {
+        [id(1), helpstring("method StringToVariant")]
+            HRESULT StringToVariant([in, string] BSTR sValue, [in, string] BSTR sDatatype, [in, string] BSTR sFormat, long options, [out, retval] VARIANT *pvtOut);
+        [id(2), helpstring("method VariantToString")]
+            HRESULT VariantToString(VARIANT vtIn, [in, string] BSTR sDatatype, [in, string] BSTR sFormat, long options, long lMaxCharsWanted, [out, string, retval] BSTR *psOut);
+        [id(3), helpstring("method CheckString")]
+            HRESULT CheckString([in, string] BSTR sValue, [in, string] BSTR sDatatype, [in, string] BSTR sFormat, long options, [out, retval] long *phResult);
+        [id(4), helpstring("convert time in seconds since 1.1.1970 UTC to VariantTime (local timezone)")]
+            HRESULT ConvertSecondsToDate([in] long seconds, [out, retval] DATE *result);
+    }
+
+
+
+//----  Type Library:    -----------------------------------------------------*
+[
+    uuid(5504b050-f2a2-11d4-a537-0008c779c600),
+    version(1.0),
+    helpstring("ATCMControl Common BaseLib 2.0 Type Library")
+]
+library CMN_FCBaseLib
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+
+    //-------------------------------------------------------------------------
+    [
+        uuid(5e919c50-f2a2-11d4-a537-0008c779c600),
+        helpstring("Baselib Class: COM Wrapper to 4C Baselib")
+    ]
+    coclass FCBaseLib
+    {
+        [default] interface IBL_Conversion;
+    };
+};
+
+
+
+/*
+ *----------------------------------------------------------------------------*
+ *  $History: BaseLibCOM.idl $
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.02.07   Time: 19:01
+ * Created in $/4CReleased/V2.20.00/COM/softing/fc/inc
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.08.03   Time: 16:34
+ * Created in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 2  *****************
+ * User: Ef           Date: 25.01.01   Time: 10:17
+ * Updated in $/4Control/COM/softing/fc/inc
+ * new uuids for V2.0
+ * 
+ * *****************  Version 1  *****************
+ * User: Ef           Date: 23.01.01   Time: 17:09
+ * Created in $/4Control/COM/softing/fc/inc
+ * util and baselib from V1.3
+ *==
+ *----------------------------------------------------------------------------*
+*/

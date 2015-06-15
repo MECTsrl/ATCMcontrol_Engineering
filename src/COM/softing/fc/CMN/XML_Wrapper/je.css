@@ -1,0 +1,50 @@
+/* StyleSheet */
+body { margin-left:1.5cm; margin-top:10px; margin-bottom:10px; }
+/* margin-top = Abstand zwischen Fensterrand und Inhalt oben */
+/* margin-bottom = Abstand zwischen Fensterrand und Inhalt unten */
+
+p,h1,h2,h3,h4,ul,ol,li,div,td,th,address,blockquote,nobr,i
+     { font-family:Verdana,Arial,Helvetica,sans-serif; width:14cm; }
+
+h1 { font-size:16pt; font-variant:small-caps; }
+h2 { font-size:14pt; }
+h2.sh2 { font-size:14pt; }
+h3,h3.xmp,h3.xpl,h3.inf,h3.tip { font-size:12pt; }
+h4 { font-size:10pt; font-weight:bold; }
+
+p,ul,ol,li,div,td,th,address,nobr,b,i { font-size:10pt; }
+/* normaler Text */
+
+li.overview { font-weight:bold; }
+
+pre { font-family:Courier New,Courier; font-size:10pt; color:#0000C0; background-color:#FFFFE0; margin-left:.5cm; }
+/* Quelltext-Beispiele */
+
+tt { font-family:Courier New,Courier; font-size:10pt; color:#0000C0; }
+/* Quelltext-Befehle im normalen Fliesstext */
+
+td.xmpcode { border-width:1pt; border-style:solid; border-color:#999999; background-color:#FFFFE0; }
+/* Bereiche mit Beispiel-Quelltexten */
+
+.code { background-color:#FFFFE0; }
+/* Tabelleninhalte mit Quellcode */
+
+td.xplcode { background-color:#EEEEFF; }
+/* Tabelleninhalte mit Erklaerungen */
+
+td.header { background-color:#CCFFCC; }
+// #CCFF99;   Original 4C Farbe
+
+.doc { background-color:#EEEEEE; }
+/* Layout-Elemente mit hellgrauem Hintergrund */
+
+.qbar { background-color:#FFFFE0; font-size:9pt; font-family:Arial,sans-serif; }
+/* Layout-Elemente mit hellgrauem Hintergrund */
+
+pre.normal { color:#000000; }
+/* normale praeformatierte Bereiche, nicht fuer Quelltexte */
+
+a:link { color:#AA5522; text-decoration:underline; }
+a:visited { color:#772200; text-decoration:underline; }
+a:active { color:#000000; text-decoration:none; }
+a.an { text-decoration:none; }

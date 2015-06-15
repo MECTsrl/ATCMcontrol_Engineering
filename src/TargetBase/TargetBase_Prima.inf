@@ -1,0 +1,44 @@
+# $Header: /4CReleased/V2.20.00/TargetBase/TargetBase_Prima.inf 5     19.06.07 23:18 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: TargetBase_Prima.inf $
+#                        $Logfile: /4CReleased/V2.20.00/TargetBase/TargetBase_Prima.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Targetbase / AddOnHandler
+#
+# =COMPONENT            AddOnBase
+#
+# =CURRENT      $Date: 19.06.07 23:18 $
+#           $Revision: 5 $
+#
+# ------------------------------------------------------------------------------
+#
+#
+# ------------------------------------------------------------------------------
+#
+
+SUBPROJECT=CCG\CCG.mak
+SUBPROJECT=Tools\Tools.mak
+SUBPROJECT=Control\Control.mak
+SUBPROJECT=Online\Online.mak
+SUBPROJECT=AddonHandler\AddonHandler.mak
+SUBPROJECT=ProjectWizardBase\ProjectWizardBase.mak
+#SUBPROJECT=FBConfig\FBConfig.mak
+SUBPROJECT=Libs\Libs.mak
+
+USER=makefirst:$(PROJECT_ROOT)\TargetBase\bin
+USER=$(PROJECT_ROOT)\TargetBase\bin:
+USER=  -md $@
+
+USER=makefirst:$(PROJECT_ROOT)\TargetBase\lib
+USER=$(PROJECT_ROOT)\TargetBase\lib:
+USER=  -md $@
+
+USER=postmake: make_lib
+USER=make_lib: force
+USER=     cd $(PROJECT_ROOT)\TargetBase\Libs
+USER=     $(MAKE) -$(MAKEFLAGS) -f Libs.mak make_lib DEBUG=$(DEBUG)
+
+# -------------------------------------------------------------------------------

@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>FC_DEBUG</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>FC_DEBUG</h2>
+<p>Outputs a debug string in the message view and in the message history of the 
+  console. </p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION_BLOCK FC_DEBUG
+VAR_INPUT
+    ENABLE     : BOOL:=TRUE;  
+    STR        : WSTRING;     
+END_VAR</pre>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>ENABLE</b></dt>
+  <dd>Value of type <i><b>BOOL</b></i><br>
+    Starts or stops the output of a string.<br>
+    Potential values:<br>
+    <i><b>TRUE</b></i>: String is put out.<br>
+    <i><b>FALSE</b></i>: String isn&acute;t put out.<br>
+    The standard value is <i><b>TRUE</b></i>.</dd>
+  <dt><b>STR</b></dt>
+  <dd>Value of type <i><b>WSTRING</b></i><br>
+    String, which is put out in the message view of ATCM Engineering or in the message 
+    history of the console.</dd>
+</dl>
+<h3>Description</h3>
+<p><b><i>FC_DEBUG</i></b> outputs the string passed in <i><b>STR</b></i> in the 
+  message view of ATCM Engineering or in the message history of the console if the 
+  input <i><b>ENABLE</b></i> has the value<i><b> TRUE</b></i>. If <i><b>ENABLE</b></i> 
+  has the value <i><b>FALSE</b></i>, nothing is put out. </p>
+</body>
+</html>

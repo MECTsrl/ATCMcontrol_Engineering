@@ -1,0 +1,53 @@
+<KAD4CE>
+
+
+
+  <FILES>   
+    <FILE EXT="iocan" PARSER="{90E93DAE-B56B-4899-9FAA-2A42C83EFC28}" 
+          STDEDITOR="{80F9D242-F22A-4771-938B-D8B609E66FBA}" 
+          FILTERTEXT="IO-Configuration Files"
+          ORDERKEY="iac"/>
+  </FILES>
+
+
+
+  <TYPES>
+
+    <TYPE ID="PC">
+      <MENU>  
+        <MENUITEM TEXT="Insert CANopen IO Component" 
+                  ORDERKEY="hd" 
+                  DISPID="CREATE" 
+                  HANDLER="{90E93DAE-B56B-4899-9FAA-2A42C83EFC28}"/>
+      </MENU>
+    </TYPE> 
+
+    <TYPE ID="IO_CAN" ICON="4CPC\4cio_can.bmp" TEXT="CANOpen IO Component">
+      <MENU>
+          <MENUITEM TEXT="Edit" 
+                    ORDERKEY="ca" 
+                    KEYMOUSEEVENT="open" 
+                    STANDARDOP="Open"/>
+          <MENUITEM TEXT="Rename" 
+                    ORDERKEY="ua" 
+                    KEYMOUSEEVENT="rename" 
+                    DISPID="RENAME" 
+                    HANDLER="{90E93DAE-B56B-4899-9FAA-2A42C83EFC28}"/>
+          <MENUITEM TEXT="Delete" 
+                    ORDERKEY="ub" 
+                    KEYMOUSEEVENT="delete" 
+                    DISPID="DELETE" 
+                    HANDLER="{90E93DAE-B56B-4899-9FAA-2A42C83EFC28}"/>
+          <MENUITEM TEXT="Properties" 
+                    ORDERKEY="xa" 
+                    DISPID="PROPERTIES" 
+                    HANDLER="{90E93DAE-B56B-4899-9FAA-2A42C83EFC28}"/>
+      </MENU>
+    </TYPE>
+
+  </TYPES>
+
+
+
+</KAD4CE>
+ 

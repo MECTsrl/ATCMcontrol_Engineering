@@ -1,0 +1,434 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "STResource.h"
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_EDITVARIABLE DIALOGEX 0, 0, 246, 111
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Edit Variable"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    COMBOBOX        IDC_VARVALUE,35,50,200,60,CBS_DROPDOWN | CBS_AUTOHSCROLL | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP,WS_EX_RIGHT
+    DEFPUSHBUTTON   "&OK",IDOK,80,90,50,15
+    PUSHBUTTON      "&Cancel",IDCANCEL,135,90,50,15
+    PUSHBUTTON      "&Apply",IDC_APPLY,190,90,50,15
+    GROUPBOX        "New &Value for",IDC_STATIC,6,5,235,70
+    EDITTEXT        IDC_VARNAME,35,20,200,12,ES_AUTOHSCROLL,WS_EX_RIGHT
+    LTEXT           "Name:",IDC_STATIC,9,22,22,8
+    LTEXT           "Value:",IDC_STATIC,10,52,21,8
+END
+
+IDD_GOTOLINE DIALOG DISCARDABLE  0, 0, 152, 76
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Goto line"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_LINE_NUMBER,15,20,120,14,ES_AUTOHSCROLL | ES_NUMBER
+    DEFPUSHBUTTON   "OK",IDOK,5,55,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,95,55,50,14
+    GROUPBOX        "Line number",IDC_STATIC,5,5,140,40
+END
+
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 221, 80
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About STEditor"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    CTEXT           "ST-Editor",IDC_STATIC,40,7,173,8
+    CTEXT           PROD_FULL_VERSION_STR,IDC_STATIC,40,25,173,8
+    CTEXT           PROD_COPYRIGHT,IDC_STATIC,40,40,173,16
+    DEFPUSHBUTTON   "OK",IDOK,100,62,50,14
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_GOTOLINE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 145
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 69
+    END
+
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        RIGHTMARGIN, 217
+        BOTTOMMARGIN, 55
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_STTYPE MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM "&Redo\tCtrl+Y",               ID_EDIT_REDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "&Delete\tDel",                ID_EDIT_CLEAR
+        MENUITEM SEPARATOR
+        MENUITEM "&Find\tCtrl+F",               ID_EDIT_FIND
+        MENUITEM "R&eplace\tCtrl+H",            ID_EDIT_REPLACE
+        MENUITEM "Find &Next\tF3",              ID_EDIT_FINDNEXT
+        MENUITEM SEPARATOR
+        MENUITEM "&Goto Line\tCtrl+G",          IDM_GOTO_LINE
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&New Window",                 ID_WINDOW_NEW
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "&Tile",                       ID_WINDOW_TILE_HORZ
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+        MENUITEM SEPARATOR
+        MENUITEM "&About STEditor...",          ID_APP_ABOUT
+    END
+END
+
+IDR_STTYPE_SRVR_EMB MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM "&Update\tCtrl+S",             ID_FILE_UPDATE
+        MENUITEM "Save Copy &As...",            ID_FILE_SAVE_COPY_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM "&Redo\tCtrl+Y",               ID_EDIT_REDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "&Delete\tDel",                ID_EDIT_CLEAR
+        MENUITEM SEPARATOR
+        MENUITEM "&Find\tCtrl+F",               ID_EDIT_FIND
+        MENUITEM "R&eplace\tCtrl+H",            ID_EDIT_REPLACE
+        MENUITEM "Find &Next\tF3",              ID_EDIT_FINDNEXT
+        MENUITEM SEPARATOR
+        MENUITEM "&Goto Line\tCtrl+G",          IDM_GOTO_LINE
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&New Window",                 ID_WINDOW_NEW
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "&Tile",                       ID_WINDOW_TILE_HORZ
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+    END
+END
+
+IDR_STTYPE_SRVR_IP MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM "&Redo\tCtrl+Y",               ID_EDIT_REDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "&Delete\tDel",                ID_EDIT_CLEAR
+        MENUITEM SEPARATOR
+        MENUITEM "&Find\tCtrl+F",               ID_EDIT_FIND
+        MENUITEM "R&eplace\tCtrl+H",            ID_EDIT_REPLACE
+        MENUITEM "Find &Next\tF3",              ID_EDIT_FINDNEXT
+        MENUITEM SEPARATOR
+        MENUITEM "&Goto Line\tCtrl+G",          IDM_GOTO_LINE
+    END
+    POPUP "&Insert"
+    BEGIN
+        MENUITEM "&Programming Unit...",        IDM_INSERT_FB_CALL
+        POPUP "ST &Syntax"
+        BEGIN
+            MENUITEM "&VAR",                        IDM_INSERT_VAR
+            MENUITEM "&IF",                         IDM_INSERT_IF
+            MENUITEM "&CASE",                       IDM_INSERT_CASE
+            MENUITEM "&FOR",                        IDM_INSERT_FOR
+            MENUITEM "&WHILE",                      IDM_INSERT_WHILE
+            MENUITEM "&REPEAT",                     IDM_INSERT_REPEAT
+            MENUITEM "RE&TURN",                     IDM_INSERT_RETURN
+            MENUITEM "&EXIT",                       IDM_INSERT_EXIT
+            MENUITEM "&Assignment",                 IDM_INSERT_ASSIGNMENT
+            MENUITEM "INITIA&L_STEP",               IDM_INSERT_INITIALSTEP
+            MENUITEM "&STEP",                       IDM_INSERT_STEP
+            MENUITEM "ACTI&ON",                     IDM_INSERT_ACTION
+            MENUITEM "TRA&NSITION",                 IDM_INSERT_TRANSITION
+        END
+    END
+    MENUITEM SEPARATOR
+    POPUP "&Debug"
+    BEGIN
+        MENUITEM "Set &Watchpoint\tF8",         ID_GR_SET_WATCHPOINT
+        MENUITEM "Rem&ove All Watchpoints\tCtrl+Shift+F8", 
+                                                ID_GR_CLEAR_ALL_WATCHPOINTS
+        MENUITEM SEPARATOR
+        MENUITEM "Set / Remove &Breakpoint\tF9", ID_GR_TOGGLE_BREAKPOINT
+        MENUITEM "Remove &All Breakpoints\tCtrl+Shift+F9", 
+                                                ID_GR_REMOVE_ALL_BREAKPOINTS
+        MENUITEM "&Enable / Disable Breakpoint\tCtrl+F9", 
+                                                ID_GR_TOGGLE_BREAKPOINT_ENABLED
+
+        MENUITEM SEPARATOR
+        MENUITEM "SFC &Manual Mode",            ID_GR_TOGGLE_MANUAL_MODE
+        MENUITEM SEPARATOR
+        MENUITEM "&Continue\tF5",               ID_GR_CONTINUE_TASK
+        MENUITEM "Step &Into\tF11",             ID_GR_STEP_INTO
+        MENUITEM "Step &Over\tF10",             ID_GR_STEP_OVER
+        MENUITEM "Step O&ut\tShift+F11",        ID_GR_STEP_OUT
+        MENUITEM "Single SFC &Cycle\tF12",      ID_GR_PERFORM_CYCLE
+    END
+    MENUITEM SEPARATOR
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    VK_F1,          ID_HELP,                VIRTKEY, NOINVERT
+    VK_F1,          ID_CONTEXT_HELP,        VIRTKEY, SHIFT, NOINVERT
+    VK_F10,         IDM_CONTEXT_MENU,       VIRTKEY, SHIFT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+END
+
+IDR_STTYPE_SRVR_IP ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "G",            IDM_GOTO_LINE,          VIRTKEY, CONTROL, NOINVERT
+    VK_DOWN,        ID_EDIT_SCROLL_DOWN,    VIRTKEY, CONTROL, NOINVERT
+    VK_ESCAPE,      ID_CANCEL_EDIT_SRVR,    VIRTKEY, NOINVERT
+    VK_F1,          ID_HELP,                VIRTKEY, NOINVERT
+    VK_F1,          ID_CONTEXT_HELP,        VIRTKEY, SHIFT, NOINVERT
+    VK_F11,         ID_GR_STEP_INTO,        VIRTKEY, NOINVERT
+    VK_F10,         ID_GR_STEP_OVER,        VIRTKEY, NOINVERT
+    VK_F11,         ID_GR_STEP_OUT,         VIRTKEY, SHIFT, NOINVERT
+    VK_F10,         IDM_CONTEXT_MENU,       VIRTKEY, SHIFT, NOINVERT
+    VK_F12,         ID_GR_PERFORM_CYCLE,    VIRTKEY, NOINVERT
+    VK_F5,          ID_GR_CONTINUE_TASK,    VIRTKEY, NOINVERT
+    VK_F8,          ID_GR_SET_WATCHPOINT,   VIRTKEY, NOINVERT
+    VK_F8,          ID_GR_CLEAR_ALL_WATCHPOINTS, VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    VK_F9,          ID_GR_TOGGLE_BREAKPOINT,  VIRTKEY, NOINVERT
+    VK_F9,          ID_GR_TOGGLE_BREAKPOINT_ENABLED, VIRTKEY, CONTROL, 
+                                                    NOINVERT
+    VK_F9,          ID_GR_REMOVE_ALL_BREAKPOINTS, VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    VK_UP,          ID_EDIT_SCROLL_UP,      VIRTKEY, CONTROL, NOINVERT
+END
+
+IDR_STTYPE_SRVR_EMB ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "G",            IDM_GOTO_LINE,          VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_UPDATE,         VIRTKEY, CONTROL, NOINVERT
+    VK_DOWN,        ID_EDIT_SCROLL_DOWN,    VIRTKEY, CONTROL, NOINVERT
+    VK_F1,          ID_HELP,                VIRTKEY, NOINVERT
+    VK_F1,          ID_CONTEXT_HELP,        VIRTKEY, SHIFT, NOINVERT
+    VK_F10,         IDM_CONTEXT_MENU,       VIRTKEY, SHIFT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_UP,          ID_EDIT_SCROLL_UP,      VIRTKEY, CONTROL, NOINVERT
+END
+
+IDR_STTYPE ACCELERATORS DISCARDABLE 
+BEGIN
+    "G",            IDM_GOTO_LINE,          VIRTKEY, CONTROL, NOINVERT
+    VK_DOWN,        ID_EDIT_SCROLL_DOWN,    VIRTKEY, CONTROL, NOINVERT
+    VK_F1,          ID_HELP,                VIRTKEY, NOINVERT
+    VK_F1,          ID_CONTEXT_HELP,        VIRTKEY, SHIFT, NOINVERT
+    VK_F10,         IDM_CONTEXT_MENU,       VIRTKEY, SHIFT, NOINVERT
+    VK_UP,          ID_EDIT_SCROLL_UP,      VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// TYPELIB
+//
+
+//1                       TYPELIB MOVEABLE PURE   "STEditorIF.tlb"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_LOADVAR             "%s: %s <loading>"
+    IDS_CANNOT_CONTINUE_TASK "Failed to continue task"
+    IDS_CANNOT_STEP_INTO "Failed to perform step into"
+    IDS_CANNOT_STEP_OVER "Failed to perform step over"
+    IDS_CANNOT_STEP_OUT "Failed to perform step out"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDM_GOTO_LINE           "Goes to the specified line\nGoto Line"
+    IDM_SET_WATCHPOINT      "Sets a watchpoint at the current position\nSet Watchpoint"
+    IDM_CLEAR_ALL_WATCHPOINTS 
+                            "Removes all watchpoints of the current instance\nRemove All Watchpoints"
+    IDM_TOGGLE_BREAKPOINT   "Sets / removes a breakpoint at the current position\nSet / Remove Breakpoint"
+    IDM_TOGGLE_BREAKPOINT_ENABLED 
+                            "Enables / disables a breakpoint at the current position\nEnable / Disable Breakpoint"
+    IDM_INSERT_FB_CALL      "Opens the programming unit selection for inserting a programming unit at the current position\nInsert Programming Unit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDM_CONTINUE_TASK       "Continues the stopped task\nContinue"
+    IDM_STEP_INTO           "Steps into the next statement\nStep into"
+    IDM_STEP_OVER           "Steps over the next statement\nStep over"
+    IDM_STEP_OUT            "Steps out of the current function\nStep out"
+    IDM_INSERT_IF           "Inserts the correct ST syntax for an IF statement\nInsert IF"
+    IDM_INSERT_CASE         "Inserts the correct ST syntax for a CASE statement\nInsert CASE"
+    IDM_INSERT_FOR          "Inserts the correct ST syntax for a FOR statement\nInsert FOR"
+    IDM_INSERT_WHILE        "Inserts the correct ST syntax for a WHILE statement\nInsert WHILE"
+    IDM_INSERT_REPEAT       "Inserts the correct ST syntax for a REPEAT statement\nInsert REPEAT"
+    IDM_INSERT_ASSIGNMENT   "Inserts the correct ST syntax for an assignment\nInsert ASSIGNMENT"
+    IDM_INSERT_RETURN       "Inserts the correct ST syntax for a RETURN statement\nInsert RETURN"
+    IDM_INSERT_EXIT         "Inserts the correct ST syntax for an EXIT statement\nInsert EXIT"
+    IDM_INSERT_VAR          "Inserts the correct ST syntax for a variable declaration\nInsert VAR"
+    IDM_REMOVE_ALL_BREAKPOINTS 
+                            "Removes all breakpoints of the current instance\nRemove All Breakpoints"
+    IDM_SHOW_VAR_SELECTION  "Opens the variable selection for inserting a variable at the current position\nShow Variable Selection"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDM_INSERT_INITIALSTEP  "Inserts the correct ST syntax for a INITIAL_STEP statement\nInsert INITIAL_STEP"
+    IDM_INSERT_STEP         "Inserts the correct ST syntax for a STEP statement\nInsert STEP"
+    IDM_INSERT_ACTION       "Inserts the correct ST syntax for a ACTION statement\nInsert ACTION"
+    IDM_INSERT_TRANSITION   "Inserts the correct ST syntax for a TRANSITION statement\nInsert TRANSITION"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CANNOT_SET_MANUAL_MODE "Failed to set SFC manual mode."
+    IDS_CANNOT_RESET_MANUAL_MODE "Failed to reset SFC manual mode."
+    IDS_CANNOT_PERFORM_CYCLE "Failed to perform SFC cycle."
+    IDS_CANNOT_FORCE_TRANSITION "Failed to force transition."
+    IDS_CANNOT_BLOCK_TRANSITION "Failed to block transition."
+    IDS_CANNOT_FORCE_ACTION "Failed to force action."
+    IDS_CANNOT_BLOCK_ACTION "Failed to block action."
+    IDS_CANNOT_FORCE_TRANSITIONS "Failed to force all transitions."
+    IDS_CANNOT_BLOCK_TRANSITIONS "Failed to block all transitions."
+    IDS_CANNOT_REVERT_TRANSITIONS "Failed to revert all transitions."
+    IDS_CANNOT_FORCE_ACTIONS "Failed to force all actions."
+    IDS_CANNOT_BLOCK_ACTIONS "Failed to block all actions."
+    IDS_CANNOT_REVERT_ACTIONS "Failed to revert all actions."
+    IDS_READONLY_WARNING    "The file is readonly. Do you want to continue editing?"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+/*
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif
+*/
+#include "res\STEditor.rc2"  // non-Microsoft Visual C++ edited resources
+//#include "afxres.rc"         // Standard components
+//#include "afxprint.rc"       // printing/print preview resources
+//#include "afxolesv.rc"       // OLE server resources
+#endif
+//#include "secedit.rc"
+//#include "key.rc"
+//#include "cesterror.rc"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

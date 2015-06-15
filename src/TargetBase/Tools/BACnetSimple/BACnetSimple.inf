@@ -1,0 +1,37 @@
+# $Header: /4CReleased/V2.20.00/TargetBase/TOOLS/BACnetSimple/BACnetSimple.inf 1     28.02.07 19:07 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: BACnetSimple.inf $
+#                        $Logfile: /4CReleased/V2.20.00/TargetBase/TOOLS/BACnetSimple/BACnetSimple.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Target / Online
+#
+# =COMPONENT            OnlServ
+#
+# =CURRENT      $Date: 28.02.07 19:07 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+TARGET=$(TARGET_BASE)\bin\BACnetSimple.exe
+
+TARGETTYPE=con
+UNICODE=0
+
+PCHFILE=stdafx
+
+DEFINE=_AFXDLL
+DEFINE=_WINDLL
+DEFINE=_USRDLL
+
+INCLUDE=$(TARGET_BASE)\inc
+
+USER=makefirst:$(TARGET_BASE)\bin
+USER=$(TARGET_BASE)\bin:
+USER=  -md $@
+
+# -------------------------------------------------------------------------------

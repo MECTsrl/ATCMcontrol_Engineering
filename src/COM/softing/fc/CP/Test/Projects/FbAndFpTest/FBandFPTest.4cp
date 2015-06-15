@@ -1,0 +1,19 @@
+[attributes]
+GUID= "{CE4A3FB4-0F1D-11D2-AAB8-00A024399A66}"
+
+[files]
+file=Configuration1.con
+file=FBandFPTest.4ch
+file=Configuration1.gvl
+file=Program1.st
+file=Program2.ST
+
+[libs]
+lib=4C_System.4cl
+lib=4C_IEC1131_3.4cl
+lib=4C_Profibus_IO.4cl
+lib=4C_Application.4cl
+
+[MACHINES]
+
+

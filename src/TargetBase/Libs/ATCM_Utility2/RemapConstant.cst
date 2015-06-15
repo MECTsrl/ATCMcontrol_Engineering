@@ -1,0 +1,11 @@
+(*Constant file*)
+(*[[
+]]*)
+CONST
+	(* remap modes: *)
+	rmpIgnore     : BYTE := 0;
+	rmpCopy       : BYTE := 1;
+	rmpSetToTrue  : BYTE := 2;
+	rmpSetToFalse : BYTE := 3;
+	rmpNegate     : BYTE := 4;
+END_CONST

@@ -1,0 +1,12 @@
+ C:\4c2\Engineering\bin\4dl.exe
+ 
+Upload from Win
+ {W-EF,126a81fd-4b8e-4a44-96cb-e78c0c741258,W-EF,TCP(W-EF),SIMPLE(1000),VERSION(20500)} -up -v2
+
+
+Upload to Win
+C:\4c2\Projects\simpleLocRet\simpleLocRet.4cp -v2 -dp retain.4pl 
+
+
+
+

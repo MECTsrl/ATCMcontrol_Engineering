@@ -1,0 +1,35 @@
+HKCR
+{
+	4C_20_CEEXE.CEExecute.1 = s 'CEExecute Class'
+	{
+		CLSID = s '{F1F501D1-38D1-478B-B536-46609BD39366}'
+        'Index' 
+        { 
+            val Version = s '2.0' 
+            val LCID = d '1033' 
+        } 
+	}
+	4C_20_CEEXE.CEExecute = s 'CEExecute Class'
+	{
+		CLSID = s '{F1F501D1-38D1-478B-B536-46609BD39366}'
+		CurVer = s '4C_20_CEEXE.CEExecute.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {F1F501D1-38D1-478B-B536-46609BD39366} = s 'CEExecute Class'
+		{
+			ProgID = s '4C_20_CEEXE.CEExecute.1'
+			VersionIndependentProgID = s '4C_20_CEEXE.CEExecute'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{A2B3990B-FE1D-4A6F-9291-A43FC232972B}'
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

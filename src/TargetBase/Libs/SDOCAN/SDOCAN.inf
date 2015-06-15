@@ -1,0 +1,23 @@
+# $Header: /4CReleased/V2.20.00/TargetBase/LIBS/4C_Socket/4C_Socket.inf 1     28.02.07 19:05 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: 4C_Socket.inf $
+#                        $Logfile: /4CReleased/V2.20.00/TargetBase/LIBS/4C_Socket/4C_Socket.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Targetbase / Libs
+#
+# =COMPONENT            4C_Socket
+#
+# =CURRENT      $Date: 28.02.07 19:05 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+
+USER=libname=SDOCAN
+USER=make_lib: force
+
+USER= $(4CG) $(MAKEDIR)\$(libname).4cp  -ml:0 $(4CL_DIR)\$(libname).4cl
+
+# -------------------------------------------------------------------------------

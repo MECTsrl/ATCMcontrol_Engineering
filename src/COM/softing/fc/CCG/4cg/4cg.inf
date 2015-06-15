@@ -1,0 +1,28 @@
+TARGET=$(EXE_DIR)\Engineering\bin\4cg.exe
+TARGETTYPE=con
+UNICODE=0
+YACC_LEX_CG_STYLE=1
+
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\ccg\inc
+LIBPATH=$(LIB_DIR)
+
+
+
+#static libs:
+DEFLIB=fc_tools.lib cg_tools.lib 
+
+#own dlls:
+DEFLIB=fc_todebug.lib 
+
+#system dlls:
+DEFLIB=ole32.lib oleaut32.lib Version.lib
+
+#object for expanding *? in command line
+OBJECT=setargv.obj
+
+ 
+LATECOPY=4cg.kad $(EXE_DIR)\Engineering\bin\4cg.kad
+
+

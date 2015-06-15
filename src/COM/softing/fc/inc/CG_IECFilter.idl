@@ -1,0 +1,101 @@
+/*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/inc/CG_IECFilter.idl 1     28.02.07 19:01 Ln $
+ *----------------------------------------------------------------------------*
+ *
+ * =FILENAME            $Workfile: CG_IECFilter.idl $
+ *                       $Logfile: /4CReleased/V2.20.00/COM/softing/fc/inc/CG_IECFilter.idl $
+ *
+ * =PROJECT				CAK1020  ATCMControl V2.0
+ *
+ * =SWKE                CE
+ *
+ * =COMPONENT           CG_IECFilter
+ *
+ * =CURRENT      $Date: 28.02.07 19:01 $
+ *           $Revision: 1 $
+ *
+ * =REFERENCES
+ *
+ *----------------------------------------------------------------------------*
+ *
+
+ 
+
+
+
+ *==
+ *----------------------------------------------------------------------------*
+ * =DESCRIPTION
+ *    @DESCRIPTION@
+ *==
+ *----------------------------------------------------------------------------*
+ * =MODIFICATION
+ *  07.02.01  SCD      File created
+ *  see history at end of file !
+ *==
+ *******************************************************************************
+H<<*/
+
+
+cpp_quote("//+-------------------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  ATCMControl 4CE")
+cpp_quote("//  ATCM.")
+cpp_quote("//")
+cpp_quote("//--------------------------------------------------------------------------")
+
+#ifndef DO_NO_IMPORTS
+import "unknwn.idl";
+#endif
+
+cpp_quote("//+-------------------------------------------------------------------------")
+cpp_quote("// The interfaces of the pipe network compiler frontend:")
+
+
+[
+    object,
+    uuid(29325830-FD06-11d4-B382-0008C77981F8)
+]
+interface ICG_IECFilter : IUnknown
+{
+    HRESULT Compile(
+        [in] BSTR      sFileName,               /* source file, with project relative or full path             */
+        [in] IUnknown* pCompilerCore,           /* interface to ICG_IECFront                                   */ 
+        [in] BOOL      bCheckOnlyFlag,          /* true if -c option set, source should only be checked        */
+        [in] BOOL      bIncrementalCompileFlag, /* true if -i option set, build shall be incremental           */
+        [in] BSTR      sOutputDirectory,        /* where to store the IEC interface file, usually below gen    */ 
+        [out] BSTR*    psGeneratedFile,         /* full file and path of the generated file, can be NULL if -c */
+        [out] BSTR*    psExpectedCompilerClass, /* can be NULL if any 4CP [classes.*] or e.g. "FunctionBlocks" */
+                                                /* if not NULL the front end submitts a warning if mismatch    */
+        [out] long*    plNumberErrors,          /* >=0 the errors submitted by the filter                      */            
+        [out] long*    plNumberWarnings         /* >=0 the warnings submitted by the filter                    */
+    );
+};
+
+
+/*
+ *----------------------------------------------------------------------------*
+ *  $History: CG_IECFilter.idl $
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.02.07   Time: 19:01
+ * Created in $/4CReleased/V2.20.00/COM/softing/fc/inc
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.08.03   Time: 16:34
+ * Created in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 3  *****************
+ * User: Ef           Date: 13.03.01   Time: 10:43
+ * Updated in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 2  *****************
+ * User: Scd          Date: 13.03.01   Time: 9:26
+ * Updated in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 1  *****************
+ * User: Scd          Date: 15.02.01   Time: 15:16
+ * Created in $/4Control/COM/softing/fc/inc
+ * 
+ *==
+ *----------------------------------------------------------------------------*
+*/

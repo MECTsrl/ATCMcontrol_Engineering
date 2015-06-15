@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<KAD4VM> 
+    <TRGTYP EXT="4cwin" USECHANNELNUM="0">
+
+    <IEC_FEATURES 
+         DATA_TYPES         ="BOOL, INT, DINT, REAL, LREAL, BYTE, WORD, DWORD, TIME, STRING"
+         ARR_IDX_DATA_TYPES ="INT, DINT"
+         LOCAL_RETAIN       ="1"
+         LANGUAGES          ="ST, IL, FBD, LD, SFC" 
+    />
+    
+    <TASKIMAGE
+         USE_FOR_SEGMENT            ="INPUT, OUTPUT, RETAIN"
+         OPTIMIZE_FOR_SEGMENT       ="INPUT, OUTPUT, RETAIN"
+         MAX_READ_REGIONS_PER_SEGM  ="INPUT:25, OUTPUT:25, RETAIN:25"
+         MAX_WRITE_REGIONS_PER_SEGM ="OUTPUT:75, RETAIN:75" 
+    />
+
+    <IOCOMPONENTS>     
+        <CHANNEL NUM="0" INIT="1"  
+            EXT=""     CONFIGURATOR=""
+            ISEG_OFFS ="0x00000000" ICHN_SIZE ="0x00040000"
+            OSEG_OFFS ="0x00000000" OCHN_SIZE ="0x00040000"
+            GMSEG_OFFS="0x00040000" GMCHN_SIZE="0x00040000"
+        />
+        <CHANNEL NUM="1" INIT="1"  
+            EXT=""     CONFIGURATOR=""
+            ISEG_OFFS ="0x00040000" ICHN_SIZE ="0x00040000"
+            OSEG_OFFS ="0x00040000" OCHN_SIZE ="0x00040000"
+            GMSEG_OFFS="0x00080000" GMCHN_SIZE="0x00040000"
+        />
+    </IOCOMPONENTS>            
+
+    <VM_SETTINGS
+            ALIGN            ="2"
+            STACK            ="16"
+            CPU              ="16"
+
+            ENDIAN           ="LIT"
+
+            OP_MINSIZE       ="1"
+            DATATYPE_TIME    ="32M"
+
+            MAX_OBJECTS      ="4000"
+            MAX_CODE_OBJECTS ="2000"
+
+            ISEG_SIZE        ="0x00080000"
+            OSEG_SIZE        ="0x00080000"
+            GMSEG_SIZE       ="0x000C0000"
+            GMRSEG_SIZE      ="0x00008000"
+            LOCDATASEG_SIZE  ="0x00080000"
+            CODESEG_SIZE     ="0x00080000"
+    
+            GMIEC_OFFSET     ="0x00000000"      
+            GMIEC_SIZE       ="0x00040000" 
+    />
+
+    </TRGTYP>
+
+</KAD4VM>

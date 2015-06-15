@@ -1,0 +1,84 @@
+#*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CSC/OPCProxy/opcproxy.inf 1     28.02.07 19:00 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: opcproxy.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CSC/OPCProxy/opcproxy.inf $
+#
+# =PROJECT             CAK1020 ATCMControlV2.0
+#
+# =SWKE                4CSC
+#
+# =COMPONENT           OPC Data access
+#
+# =CURRENT      $Date: 28.02.07 19:00 $
+#               $Revision: 1 $
+#
+# =REFERENCES
+#
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+#    @DESCRIPTION@
+#== OPC COM proxy/stub dll for Interfaces exposed with opcDA.idl
+#== Used for mashalling the opcDA.idl interfaces and creating proxy and stub-
+#== objects
+#----------------------------------------------------------------------------*
+# =MODIFICATION
+#  20.03.2001  SU      File created
+#  see history at end of file !
+#==
+#******************************************************************************
+#H<<*/
+TARGET=$(EXE_DIR)\pub\opcProxy.dll
+TARGETTYPE=DLL
+UNICODE=0
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+INCLUDE=$(INCLUDE_DIR)\opc
+DEFLIB=ole32.lib
+DEFLIB=rpcndr.lib
+DEFLIB=rpcns4.lib
+DEFLIB=rpcrt4.lib 
+DEFLIB=oleaut32.lib
+DEFLIB=uuid.lib
+DEFINE=_WIN32_DCOM
+DEFINE=REGISTER_PROXY_DLL
+DEFINE=_WINDLL
+
+USER=makefirst:$(EXE_DIR)\pub
+USER=$(EXE_DIR)\pub:
+USER=  -md $@
+
+
+#----------------------------------------------------------------------------*
+# =MODIFICATIONS
+# $History: opcproxy.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:00
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CSC/OPCProxy
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:33
+# Created in $/4Control/COM/softing/fc/CSC/OPCProxy
+# 
+# *****************  Version 1  *****************
+# User: Su           Date: 20.03.01   Time: 11:49
+# Created in $/4Control/COM/softing/fc/CSC/OPCProxy
+# Moved from ATCMControl V1.x source safe database
+# 
+# *****************  Version 3  *****************
+# User: Ed           Date: 22.12.97   Time: 14:26
+# Updated in $/4Control/COM/softing/fc/CSC/OPCProxy
+# pragma some ((unneccessary)) warnings away...
+# 
+#==
+#----------------------------------------------------------------------------*
+

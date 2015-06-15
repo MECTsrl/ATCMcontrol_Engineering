@@ -1,0 +1,110 @@
+(* controler limits *)
+CONST
+    FC_MIN_TASK_PRIO : DINT := 0; (* numerically min priority, but is highest(!) execution priority *)
+    FC_MAX_TASK_PRIO : DINT := 9; (* numerically max priority, but is lowest(!) execution priority *)
+END_CONST
+
+(* Task state values see GetLocalTaskState *)
+CONST
+   FC_TASK_STATE_ERROR       : DINT := -1;
+   FC_TASK_STATE_ONCREATION  : DINT :=  0;
+   FC_TASK_STATE_STOPPED     : DINT :=  1;
+   FC_TASK_STATE_RUNNING     : DINT :=  2;
+   FC_TASK_STATE_BREAK       : DINT :=  3;
+END_CONST
+
+
+(* Errno values as returned by GetTaskErrno *)
+CONST
+   FC_ERRNO_NO_ERROR          : DINT := dint#16#0000; (* no error pending                                     *)
+   FC_ERRNO_DEADLOCK          : DINT := dint#16#0002; (* unterminated loop or multitasking deadlock           *)
+   FC_ERRNO_EXCEPTION         : DINT := dint#16#0003; (* unqualified runtime exception                        *)
+
+   (* qualified runtime exceptions: *)
+   FC_ERRNO_ILLEGAL_OPCODE    : DINT := dint#16#0020; (* an illegal op code was found                         *)
+   FC_ERRNO_STACK_OVERFLOW    : DINT := dint#16#0021; (* stack overflow                                       *)
+   FC_ERRNO_STACK_UNDERFLOW   : DINT := dint#16#0022; (* stack underflow                                      *)
+   FC_ERRNO_DIVISION_BY_ZERO  : DINT := dint#16#0023; (* division by zero                                     *)
+   FC_ERRNO_ARRAY_RANGE       : DINT := dint#16#0024; (* array index out of bounds                            *)
+   FC_ERRNO_STRING_LEN        : DINT := dint#16#0025; (* runtime string length was invalid                    *)
+   FC_ERRNO_NULL_PTR          : DINT := dint#16#0026; (* NULL pointer passed to function                      *)
+   FC_ERRNO_CALL_OVERFLOW     : DINT := dint#16#0027; (* Call Stack overflow, too many nested calls           *)
+   FC_ERRNO_INVALID_LIB_CALL  : DINT := dint#16#0028; (* library function/FB does not exists                  *)
+   FC_ERRNO_INVALID_ARG       : DINT := dint#16#0029; (* Invalid argument passed to fun/FB                    *)
+   FC_ERRNO_MATH              : DINT := dint#16#0030; (* General mathematic exception                         *)
+   FC_ERRNO_EXE_TIME_OVERRUN  : DINT := dint#16#0031; (* Task execution time overrun                          *)
+   FC_ERRNO_USER_EXCEPTION    : DINT := dint#16#0032; (* reserved for user code, see function's documentation *)
+
+END_CONST
+
+
+(* numeric limits *)
+CONST
+    (* min/max signed 16 bit signed integer *)
+    FC_MIN_INT : INT := -32768;
+    FC_MAX_INT : INT := +32767;
+
+    (* min/max signed 32 bit signed integer *)
+    FC_MIN_DINT : DINT := -2147483648;
+    FC_MAX_DINT : DINT := +2147483647;
+
+    FC_MIN_LINT : LINT := -9223372036854775808;
+    FC_MAX_LINT : LINT := 9223372036854775807;
+
+    (* min/max/precision of single and double precision floating point *)
+    FC_REAL_EPSILON : REAL := 1.192092896e-07;           (* smallest such that 1.0+FC_REAL_EPSILON != 1.0 *)
+    FC_MAX_REAL     : REAL := 3.402823466e+38;           (* max value *)
+    FC_MIN_REAL     : REAL := 1.175494351e-38;           (* min positive value *)
+
+    FC_LREAL_EPSILON: LREAL := 2.2204460492503131e-016;  (* smallest such that 1.0+FC_LREAL_EPSILON != 1.0 *)
+    FC_MAX_LREAL    : LREAL := 1.7976931348623158e+308;  (* max value *)
+    FC_MIN_LREAL    : LREAL := 2.2250738585072014e-308;  (* min positive value *)
+
+    (* min/max TIME, if time is a 32/64 bit signed integer *)
+    (* this depends on the target type, see target system library's definitions *)
+    FC_MIN_TIME32   : TIME  := T#-2147483648ms;
+    FC_MIN_TIME     : TIME  := T#-9223372036854775808ms;
+    FC_MAX_TIME32   : TIME  := T#2147483647ms;
+    FC_MAX_TIME     : TIME  := T#9223372036854775807ms;
+
+    (* special values for DT and DATE, used to signal an invalid value *)
+    FC_INVALID_DATE : DATE          := DATE#0001-01-01;
+    FC_INVALID_DT   : DATE_AND_TIME := DT#0001-01-01-00:00:00.000;
+END_CONST
+
+
+(* quality values *)
+(* the low 8 bits of the quality flags are defined in the form of three bit fields:
+        Quality:    bit 6,7     = 2 bits
+        Substatus:  bit 2-5     = 4 bits
+        Limit:      bit 0,1     = 2 bits
+   i.e. QQSSSSLL
+*)
+CONST                                           (*   QQ SSSS LL *)
+    FC_QUALITY_MASK           : DWORD := 16#C0; (* 2#11_0000_00 *)
+    FC_STATUS_MASK            : DWORD := 16#FC; (* 2#11_1111_00 *)
+    FC_LIMIT_MASK             : DWORD := 16#03; (* 2#00_0000_11 *)
+
+    FC_QUALITY_BAD            : DWORD := 16#00; (* 2#00_0000_00 *)
+    FC_QUALITY_CONFIG_ERROR   : DWORD := 16#04; (* 2#00_0001_00 *)
+    FC_QUALITY_NOT_CONNECTED  : DWORD := 16#08; (* 2#00_0010_00 *)
+    FC_QUALITY_DEVICE_FAILURE : DWORD := 16#0C; (* 2#00_0011_00 *)
+    FC_QUALITY_SENSOR_FAILURE : DWORD := 16#10; (* 2#00_0100_00 *)
+    FC_QUALITY_LAST_KNOWN     : DWORD := 16#14; (* 2#00_0101_00 *)
+    FC_QUALITY_COMM_FAILURE   : DWORD := 16#18; (* 2#00_0110_00 *)
+    FC_QUALITY_OUT_OF_SERVICE : DWORD := 16#1C; (* 2#00_0111_00 *)
+
+    FC_QUALITY_UNCERTAIN      : DWORD := 16#40; (* 2#01_0000_00 *)
+    FC_QUALITY_LAST_USABLE    : DWORD := 16#44; (* 2#01_0001_00 *)
+    FC_QUALITY_SENSOR_CAL     : DWORD := 16#50; (* 2#01_0100_00 *)
+    FC_QUALITY_EGU_EXCEEDED   : DWORD := 16#54; (* 2#01_0101_00 *)
+    FC_QUALITY_SUB_NORMAL     : DWORD := 16#58; (* 2#01_0110_00 *)
+
+    FC_QUALITY_GOOD           : DWORD := 16#C0; (* 2#11_0000_00 *)
+    FC_QUALITY_LOCAL_OVERRIDE : DWORD := 16#D8; (* 2#11_0110_00 *)
+
+    FC_LIMIT_OK               : DWORD := 16#00; (* 2#00_0000_00 *)
+    FC_LIMIT_LOW              : DWORD := 16#01; (* 2#00_0000_01 *)
+    FC_LIMIT_HIGH             : DWORD := 16#02; (* 2#00_0000_10 *)
+    FC_LIMIT_CONST            : DWORD := 16#03; (* 2#00_0000_11 *)
+END_CONST

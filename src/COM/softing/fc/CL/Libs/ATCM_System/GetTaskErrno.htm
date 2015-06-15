@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>GetTaskErrno</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>GetTaskErrno </h2>
+<p>Returns the last error number of the calling task. </p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION GetTaskErrno : DINT</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>DINT</b></i><br>
+  Last error number of the calling task.</p>
+<h3>Parameters</h3>
+<p>None</p>
+<h3>Description</h3>
+<p><b><i>GetTaskErrno</i></b> returns the last error number of the calling task. 
+  Error numbers <b><i><> 0</i></b> signalize an error. </p>
+<p>The function <i><b><a href="ClearTaskErrno.htm">ClearTaskErrno</a></b></i> 
+  should always be called before interrogating the error number with <i><b>GetTaskErrno</b></i> 
+  since the error number of the calling task is not automatically reset to <i><b>0</b></i> 
+  when an error has occurred. If an error has already occurred previously in the 
+  calling task and <i><b>ClearTaskErrno</b></i> has not been called, <i><b>GetTaskErrno</b></i> 
+  will return the error number of the last occurred error even if no new error 
+  has occurred in a subsequent task cycle </p>
+</body>
+</html>

@@ -1,0 +1,518 @@
+/*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/inc/CG_4CLAccess.idl 1     28.02.07 19:01 Ln $
+ *----------------------------------------------------------------------------*
+ *
+ * =FILENAME            $Workfile: CG_4CLAccess.idl $
+ *                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/inc/CG_4CLAccess.idl $
+ *
+ * =PROJECT             CAK1020  ATCMControl V2.0
+ *
+ * =SWKE                CL
+ *
+ * =COMPONENT           Lib
+ *
+ * =CURRENT             $Date: 28.02.07 19:01 $
+ *                      $Revision: 1 $
+ *
+ * =REFERENCES
+ *
+ *----------------------------------------------------------------------------*
+ *
+
+ 
+
+
+
+ *==
+ *----------------------------------------------------------------------------*
+ * =DESCRIPTION
+ *    @DESCRIPTION@
+ *==
+ *----------------------------------------------------------------------------*
+ * =MODIFICATION
+ *  26.02.2001  JD      File created
+ *  see history at end of file !
+ *==
+ *******************************************************************************
+H<<*/
+
+
+cpp_quote("//+---------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  ATCMControl 4CL")
+cpp_quote("//  Copyright 2000 - 2001 SoftingGmbH.")
+cpp_quote("//")
+cpp_quote("//----------------------------------------------------------------")
+
+
+#ifndef DO_NO_IMPORTS
+import "objidl.idl";
+import "oaidl.idl";
+#endif
+
+
+//+------------------------------------------------------------------
+// forward declarations
+//-------------------------------------------------------------------
+
+interface I4CLAccess;
+
+
+
+
+[
+    object,
+    local,
+    uuid(4FEFAD0C-1771-11D5-A3B3-0008C79B568D),
+    pointer_default(unique)
+]
+/**
+ * This is the interface to open and close a 4cl. 
+ * Will be used by:
+ * - the compiler front/backends 
+ * - user IF related library access used by engineering
+ * - the merge library interface used by setup/unistall.
+ * 
+ */
+interface I4CLOpen : IUnknown
+{
+    //------------------------------------------------------------------*
+    /**
+     * Open a library to get the contained information or insert new
+     * If open for writing the 4cl file will be locked.
+     * The function failes if attempting to open for writing and the file
+     * is in use. If open for reading only: the 4cl file is opened with 
+	 * 'share deny write' attributes, multiple open for read is ok.
+     *
+     * @param   sFileName:   the file name with full path information.
+     * @param   bWrite   :   true if open for write operations.
+     * @param   sErrorDescr: if any IO or format error a textual description
+	 *                       of the reason, example: 
+	 *                       error CL0012: version conflict: library binary 
+	 *                          format seems to be V1.X
+	 * 
+	 *                       The language is the calling thread's language id.
+	 *                       The CLXXXX error codes are from facility Librarian 
+	 *                       and the format conforms to the standard message format
+	 *                       used by compilers. 
+	 *                       Note: The textual description does not include the 
+	 *                       name of the library, this must be added by the caller.
+	 *
+     * @param   ppIAcc  receives an interface to access the lib, or NULL if any error.
+	 *
+     * @return  S_OK or a win32 error code corresponding to the error.
+	 *
+     *        There are two main error reasons that should be considered in detail, 
+     *        at least the user interface must display these errors including 
+	 *        the reason:
+	 *        1) any version conflict:  HRESULT_FROM_WIN32(ERROR_INVALID_DATA)
+	 *        2) sharing violation:     HRESULT_FROM_WIN32(ERROR_SHARING_VIOLATION)
+	 *                   
+	 *        All other codes are related to general file IO problems
+	 *        or hard OLE errors. In all cases of an error sErrorDescr
+	 *        contains the best estimate of the reason that can be made here.
+	 *              
+     * @see   <global inc>\CG_4CLAcMsg.h  contains all possible CLXXXX errors.          
+    */
+    HRESULT Open(
+		[in] BOOL           bWrite, 
+        [in, string] BSTR   sFileName,
+        [out,string] BSTR*  psErrorDescr,
+        [out] I4CLAccess**  ppIAcc   
+    );
+     
+    
+    //------------------------------------------------------------------*
+    /**
+     * Close an opened library. If it was opened for WRITE, the library
+     * is written to disc.
+     *
+     * @return         
+     * @see             
+    */
+    HRESULT Close(I4CLAccess* pIAccess);
+    
+};
+
+
+
+
+
+[
+    object,
+    local,
+    uuid(457DAA47-0AA2-4dfc-AE0F-575CCA809F56),
+    pointer_default(unique)
+]
+/**
+ * This is the interface of the library core implementation. 
+ * Will be used by:
+ * - the compiler front/backends 
+ * - user IF related library access used by engineering
+ * - the merge library interface used by setup/unistall.
+ */
+interface I4CLAccess : IUnknown
+{
+    //------------------------------------------------------------------*
+    /**
+     * GetLibFileName returns the library file name and full path.
+     * Used for convenience only. Returns empty string if not opened
+     * 
+     * @param           sFileName: the file name with full path information.
+     * @return         
+     * @exception       -
+     * @see             
+    */
+    HRESULT GetLibFileName([out, string] BSTR* sFileName);
+
+    //------------------------------------------------------------------*
+    /**
+     * GetLastModifiedFileTime returns the library last change file time.
+     * 
+     * @param           sFileName: the file name with full path information.
+     * @return          S_OK or win32 error code if any exception. 
+    */
+    HRESULT GetLastModifiedFileTime([out] __int64* pftLastModified);
+    
+    //------------------------------------------------------------------*
+    /**
+     * Get all POU names, includes also the __CONST, __CONSOLE, ...
+     * but no target type related information.
+     *
+     * @param           parrPOUs: array to receive all POU names.
+     * @return          S_OK or win32 error code if any exception.
+    */
+    HRESULT GetAllPOUs([out] SAFEARRAY(BSTR)* parrPOUs);
+    
+    
+                      
+    //------------------------------------------------------------------*
+    /**
+     * GetTargetTypesOfPOU create a list of all supported target types of 
+     * a named POU. The POU must exits.
+     *
+     * @param    sPOUName:    the name of the POU.
+     * @param    pasTrgTypes: if S_OK: receives the target type name list, 
+     *                        may be empty array if only the POU's IEC interface
+     *                        is stored in the lib. 
+     * @return   S_OK if POU exists.
+     *           S_FALSE if POU does not exist, then *pasTrgTypes is set to NULL.
+     *           or win32 error code if any exception.
+    */
+    HRESULT GetTargetTypesOfPOU(
+        [in, string] BSTR      sPOUName, 
+        [out] SAFEARRAY(BSTR)* pasTrgTypes
+    );
+    
+
+    //------------------------------------------------------------------*
+    /**
+     * ExistsPOU check if a named POU exists and if sTargetType
+     * is not empty supports a specific named target. The function 
+     * is a fast hash lookup typically used by the compiler.
+     * This function returns S_FALSE if e.g. called for POU CONST and 
+     * sTargetType not empty because CONST has no 'sub folders'.
+     *
+     * @param           sPOUName:    the name of the POU.
+     * @param           sTargetType: the target type name or empty.         
+     * @return          S_OK if exists 
+     *                  S_FALSE 
+     *                  or win32 error code if any hard exception.
+    */
+    HRESULT ExistsPOU([in, string] BSTR sPOUName, 
+                      [in, string] BSTR sTargetType);
+
+
+
+    //------------------------------------------------------------------*
+    /**
+     * GetFileNames get all file names stored in <POU-name> or 
+     * <POU-name>\<target type name>.
+     *
+     * @param           sPOUName:    the name of the POU.
+     * @param           sTargetType: the target type name or empty.
+     * @param           parrFiles:   if S_OK: receives a list of all files of 
+     *                               the POU. If the POU not found NULL is 
+     *                               returned.
+     * @return          S_OK if POU exits 
+     *                  S_FALSE if POU does not exist, then parrFiles is set to NULL.
+     *                  or a win32 error code if any exception.
+    */
+    HRESULT GetFileNames([in, string] BSTR      sPOUName, 
+                         [in, string] BSTR      sTargetType,
+                         [out] SAFEARRAY(BSTR)* parrFiles);
+    
+
+    //------------------------------------------------------------------*
+    /**
+     * ExistsFile checks if a named file exists. This function is 
+     * typically used to get interface hdr to compile (together with
+     * GetFileRaw)
+     *
+     * @param           sPOUName:    the name of the POU.
+     * @param           sTargetType: the target type name or NULL or empty.         
+     * @param           sFileName:   the name of the file wanted.
+     * @param           plFileByteSize: if not NULL receives the file
+     *                  size in bytes if the file exists or 0 if not exits.
+     * @return          S_OK if [sTargetTyp\]POU\sFileName exists 
+     *                  S_FALSE if not exists
+     *                  or win32 error code if any exception.
+    */
+    HRESULT ExistsFile([in, string] BSTR   sPOUName, 
+                       [in, string] BSTR   sTargetType,
+                       [in, string] BSTR   sFileName,
+                       [out, ptr]   DWORD* plFileByteSize);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * GetFileRaw checks out a file to memory can be used for binary too. 
+     * Typically used by the compiler to get the interface to parse without
+     * storing it on disk for performance.
+     *
+     * @param           sPOUName:    the name of the POU.
+     * @param           sTargetType: the target type name or empty.         
+     * @param           sFileName:   the name of the file wanted.
+     * @param           pBytes:      receives the file data
+     * @param           nBytes:      size of output buffer
+     * @return          S_OK if [sTargetTyp\]POU\sFileName exists and 
+     *                        buffer size ok. 
+     *                  S_FALSE if file does not exist
+     *                  TYPE_E_BUFFERTOOSMALL if buffer to short.
+     *                  or win32 error code if any exception.
+     *
+     * @see             ExistsFile how the get the file size.        
+    */
+    HRESULT GetFileRaw(
+        [in, string] BSTR   sPOUName, 
+        [in, string] BSTR   sTargetType,
+        [in, string] BSTR   sFileName,
+        [out, ptr]   byte*  pBytes,
+        [in]         DWORD  nBytes
+    );
+    
+
+    //------------------------------------------------------------------*
+    /**
+     * PutFileRaw checks in a file from memory, can be used for binary too. 
+     * If the POU does not exist it is created, existing content gets 
+     * overwritten.
+     *
+     * @param           sPOUName:    the name of the POU, must be given.
+     * @param           sTargetType: the target type name or NULL or empty.
+     * @param           sFileName:   the name of the file, must be given, file must 
+     *                               not contain a path.
+     * @param           pBytes:      pointer to file data
+     * @param           nBytes:      number of bytes in pBytes
+     * 
+     * @return          S_OK if ok or a win32 error code if any exception.
+     *                  especially E_ACCESSDENIED if was open for reading.
+     * @see             
+    */
+    HRESULT PutFileRaw(
+           [in, string] BSTR   sPOUName, 
+           [in, string] BSTR   sTargetType,
+           [in, string] BSTR   sFileName,
+           [in, ptr]    byte*  pBytes,
+           [in]         DWORD  nBytes
+    );
+
+
+    //------------------------------------------------------------------*
+    /**
+     * GetFileAsBSTR checks out a file to memory can only be used for 
+     * files that are known to be text files.
+     * Typically used by the engineereing to get the .link and interface files
+     *
+     * @param           sPOUName:    the name of the POU.
+     * @param           sTargetType: the target type name or empty or NULL.
+     * @param           sFileName:   if S_OK: the name of the file wanted.
+     * @param           sTextFile:   receives the file data
+     * @param           nBytes:      size of output buffer
+     * 
+     * @return          S_OK if [sTargetTyp\]POU\sFileName exists
+     *                  S_FALSE if file does not exist (then sTextFile is set to NULL)
+     *                  or win32 error code if any exception.
+     * @exception       -
+     * @see             
+    */
+    HRESULT GetFileAsBSTR(
+        [in, string] BSTR   sPOUName, 
+        [in, string] BSTR   sTargetType,
+        [in, string] BSTR   sFileName,
+        [out]        BSTR*  sTextFile
+    );
+
+
+
+
+
+    //------------------------------------------------------------------*
+    /**
+     * CheckOut: check out file(s) to disk. 
+     *
+     * @param   sPOUName:    the name of the POU.
+     * @param   sTargetType: the target type name or empty.         
+     * @param   sFileSpec:   the name(s) of the files wanted.
+     *                       may contain multiple * and ? wildcards.
+     * @param   sCheckOutDir: the full path where to check out.
+     *                       if this folder does not exist it will be created
+     *                       can also have multible directories to create.
+     * @param   parrFiles:  if S_OK and not NULL receives the names of files
+     *                      found via sFileSpec and successfully checked out.
+     *                      If POU does not exist or no files found an empty 
+     *                      array is returned not a NULL.
+     * @param  sErrorDescr: if any IO error a reasonable textual 
+     *                      description of the error that must at least contain 
+     *                      the file name that is in error.
+     * @return       S_OK if [sTargetTyp\]POU exists
+     *               S_FALSE if file does not exist (then sTextFile is set to NULL)
+     *               or win32 error code if any exception.
+     * @see             
+    */
+    HRESULT CheckOut([in, string] BSTR             sPOUName, 
+                     [in, string] BSTR             sTargetType,
+                     [in, string] BSTR             sFileSpec,
+                     [in]         BSTR             sCheckOutDir,
+                     [in, out]    SAFEARRAY(BSTR)* parrFiles,
+                     [out]        BSTR*            sErrorDescr);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * CheckIn: check in file(s) from disk. 
+     * Typically used to check in precompiled code of a POU or help files.
+     * If the POU or target folder does not exist it is created, if any file
+     * exists it is overwritten. 
+     * The function fails if the library was not opened with the bWrite=true.
+     * 
+     * @param           sPOUName:    the name of the POU.
+     * @param           sTargetType: the target type name or empty or NULL.         
+     * @param           sFileSpec: the name(s) of the files to be checked
+     *                  it may contain multiple * and ? wildcards.
+     *                  Example: "c:\4c\myProject\myFirst\pictures\*.gif"
+     *                  Should be a full path, if not use current working folder.
+     * @param           sErrorDescr: if any IO error a reasonable textual 
+     *                  description of the error that contains the file name that 
+     *                  is in error.
+     * @return          S_OK or a win32 error code if any exception.
+     *                  E_ACCESSDENIED if library is read only.
+     * @exception       -
+     * @see             
+    */
+    HRESULT CheckIn(
+        [in, string] BSTR  sPOUName, 
+        [in, string] BSTR  sTargetType,
+        [in, string] BSTR  sFileSpec,
+        [out]        BSTR* sErrorDescr
+    );
+
+
+    /**
+     * DeleteFiles: remove files from the library. 
+     * Typically used to delete a certain target.
+     * The function fails if the library was not opened with the bWrite=true.
+     * If the POU or target folder does not exist the function returns S_OK
+     * not S_FALSE.
+     * 
+     * @param           sPOUName:    the name of the POU.
+     * @param           sTargetType:    the target type name or empty or NULL.         
+     * @param           sFileSpec: the name(s) of the files to be removed
+     *                  it may contain multiple * and ? wildcards.
+     *                  Example: "*"
+     *                  if sFileSpec is NULL DeleteFile also removes 
+     *                  (recursively) the directory [sTargetType\]sPOUName 
+     *                  otherwise only files. Example:
+     *                  DeleteFiles(L"myPOU", NULL, NULL) removes the POU myPOU 
+     *                  completely from the lib.
+     * @return          S_OK or a win32 error code if any exception.
+     *                  E_ACCESSDENIED if library is read only.
+     * @exception       -
+     * @see             
+    */
+   HRESULT DeleteFiles(
+        [in, string] BSTR  sPOUName, 
+        [in, string] BSTR  sTargetType,
+        [in, string] BSTR  sFileSpec
+    );
+
+};
+
+
+
+
+[
+    uuid(4FEFACFD-1771-11D5-A3B3-0008C79B568D),
+    version(1.0),
+]
+library FC4CLAccessLib
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+
+    [
+        uuid(4FEFAD0A-1771-11D5-A3B3-0008C79B568D),
+        helpstring("ATCMControl 4cl library access implementation")
+    ]
+    coclass FC4CLAccess
+    {
+        [default] interface I4CLOpen;
+    };
+};
+
+
+
+/*
+ *----------------------------------------------------------------------------*
+ *  $History: CG_4CLAccess.idl $
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.02.07   Time: 19:01
+ * Created in $/4CReleased/V2.20.00/COM/softing/fc/inc
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.08.03   Time: 16:34
+ * Created in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 9  *****************
+ * User: Ef           Date: 23.10.01   Time: 15:49
+ * Updated in $/4Control/COM/softing/fc/inc
+ * updated comments (return codes!)
+ * 
+ * *****************  Version 8  *****************
+ * User: Ef           Date: 22.10.01   Time: 11:11
+ * Updated in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 7  *****************
+ * User: Ef           Date: 6.06.01    Time: 21:39
+ * Updated in $/4Control/COM/softing/fc/inc
+ * new methods for multi target libs.
+ * 
+ * *****************  Version 6  *****************
+ * User: Ef           Date: 31.03.01   Time: 19:22
+ * Updated in $/4Control/COM/softing/fc/inc
+ * CheckIn has ni directory input  any longer, but can now deal wild cards
+ * 
+ * *****************  Version 5  *****************
+ * User: Ef           Date: 30.03.01   Time: 15:28
+ * Updated in $/4Control/COM/softing/fc/inc
+ * removed safearray
+ * 
+ * *****************  Version 4  *****************
+ * User: Ef           Date: 30.03.01   Time: 9:17
+ * Updated in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 3  *****************
+ * User: Ef           Date: 27.03.01   Time: 17:21
+ * Updated in $/4Control/COM/softing/fc/inc
+ * rename the term 'lowlevel' is misleading
+ * 
+ * *****************  Version 2  *****************
+ * User: Ef           Date: 26.03.01   Time: 11:50
+ * Updated in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 1  *****************
+ * User: Ef           Date: 21.03.01   Time: 16:37
+ * Created in $/4Control/COM/softing/fc/inc
+ *==
+ *----------------------------------------------------------------------------*
+*/

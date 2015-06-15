@@ -1,0 +1,23 @@
+TARGETTYPE=DLL
+TARGET=$(EXE_DIR)\Engineering\bin\PouVarSelection.dll
+
+DEFINE=_ATL_STATIC_REGISTRY
+DEFINE=_ATL_NO_SECURITY
+DEFINE=_AFXDLL
+DEFINE=_MRCEXT_NOFORCELIBS
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\CE\inc
+INCLUDE=$(MAKEDIR)
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+LIBPATH=$(LIB_DIR)
+
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\CE\Lib\CEUtil_XML.lib
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\CE\Lib\CEUTIL_DragDrop.lib
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\Lib\fc_tools.lib
+LIBRARY=$(PROJECT_ROOT)\COM\softing\fc\Lib\fc_util.lib
+
+PCHFILE=stdafx
+
+USER=precompile:
+USER=  $(CP) PouVarSelection.h ..\inc\PouVarSelection.h
+USER=  $(CP) PouVarSelection_i.c ..\inc\PouVarSelection_i.c

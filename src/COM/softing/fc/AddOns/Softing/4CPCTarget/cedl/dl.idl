@@ -1,0 +1,46 @@
+
+// dl.idl : IDL source for cedl.dll
+//
+// This file will be processed by the MIDL tool to
+// produce the type library (cedl.tlb) and marshalling code.
+//
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(0C244F50-51CB-4c47-8E4B-9DD4C3234E55),
+	version(2.0),
+	helpstring("4C_20: Downloader type library for target 4CPC")
+]
+library DLLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+    //import standard downloader interfaces
+    importlib("cedl.tlb");
+
+//import standard message interface for message propagation in 4CE
+import"CEMsg.idl";
+
+	[
+		uuid(88AD4524-E2B2-4853-A081-5CDBF5732E09),
+		helpstring("4C_20: Standard downloader coclass - target type PC")
+	]
+
+    //------------------------------------------------------------------*
+    /**
+     *  coclass CEDL - Coclass respectively COM class of the downloader 
+     *  for target type PC.
+    */
+	coclass CEDL
+	{
+		[default] interface IDL;
+		[default,source] interface IDLEvents;
+		[source] interface _ICEMessageEvent;
+		interface IDLProperties;
+        interface IDLEx;
+
+	};
+
+};
+

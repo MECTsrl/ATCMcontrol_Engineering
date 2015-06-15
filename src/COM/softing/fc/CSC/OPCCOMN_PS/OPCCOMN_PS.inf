@@ -1,0 +1,82 @@
+#*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CSC/OPCCOMN_PS/OPCCOMN_PS.inf 1     28.02.07 19:00 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: OPCCOMN_PS.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CSC/OPCCOMN_PS/OPCCOMN_PS.inf $
+#
+# =PROJECT             CAK1020 ATCMControlV2.0
+#
+# =SWKE                4CSC
+#
+# =COMPONENT           OPC Common
+#
+# =CURRENT      $Date: 28.02.07 19:00 $
+#               $Revision: 1 $
+#
+# =REFERENCES
+#
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+#    @DESCRIPTION@
+#== OPC COM proxy/stub dll for Interfaces exposed with opcComn.idl
+#== Used for mashalling the opcComn.idl interfaces and creating proxy and stub-
+#== objects:
+#== Interfaces are: IOPCCommon, IOPCServerList, IOPCShutdown
+#----------------------------------------------------------------------------*
+# =MODIFICATION
+#  20.03.2001  SU      File created
+#  see history at end of file !
+#==
+#******************************************************************************
+#H<<*/
+
+TARGET=$(EXE_DIR)\pub\OPCCOMN_PS.DLL
+TARGETTYPE=DLL
+UNICODE=0
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+INCLUDE=$(INCLUDE_DIR)\opc
+DEFLIB=ole32.lib
+DEFLIB=rpcndr.lib
+DEFLIB=rpcns4.lib
+DEFLIB=rpcrt4.lib 
+DEFLIB=oleaut32.lib
+DEFLIB=uuid.lib
+DEFINE=_WIN32_DCOM
+DEFINE=REGISTER_PROXY_DLL
+DEFINE=_WINDLL
+
+USER=makefirst:$(EXE_DIR)\pub
+USER=$(EXE_DIR)\pub:
+USER=  -md $@
+
+#----------------------------------------------------------------------------*
+# =MODIFICATIONS
+# $History: OPCCOMN_PS.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:00
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CSC/OPCCOMN_PS
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:33
+# Created in $/4Control/COM/softing/fc/CSC/OPCCOMN_PS
+# 
+# *****************  Version 1  *****************
+# User: Su           Date: 20.03.01   Time: 12:55
+# Created in $/4Control/COM/softing/fc/CSC/OPCCOMN_PS
+# Moved from ATCMControl V1.x sourcesafe database
+# 
+# *****************  Version 1  *****************
+# User: Je           Date: 14.01.99   Time: 14:14
+# Created in $/4Control/COM/softing/fc/CSC/opcComn_PS
+#==
+#----------------------------------------------------------------------------*

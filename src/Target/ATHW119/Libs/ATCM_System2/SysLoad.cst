@@ -1,0 +1,69 @@
+(*
+ * ATCMControl Embedded - System Library
+ * ----------------------------------------------------------------------------
+ *
+ 
+ *)
+
+CONST
+
+    (* Types of load strings. (See LD_Get for details.)
+     * ------------------------------------------------------------------------
+     *)
+    LOAD_LOAD_AVERAGE   : WORD  :=  1;          (* System load average          *)
+    LOAD_MEM_OVERAL     : WORD  :=  2;          (* Memory usage whole FC/BC     *)
+    LOAD_CPU_SYSTEM     : WORD  :=  3;          (* CPU usage whole FC/BC        *)
+    
+    LOAD_CPU_TASK       : WORD  :=  4;          (* CPU usage of a spec. task    *)
+    LOAD_MEM_TASK       : WORD  :=  5;          (* Memory usage of a spec. task *)
+
+    LOAD_CPU_IEC        : WORD  :=  6;          (* CPU - All VM/IEC tasks       *)
+    LOAD_CPU_IO_BAC     : WORD  :=  7;          (* CPU - BACnet IO layer        *)
+    LOAD_CPU_IO_PDP     : WORD  :=  8;          (* CPU - Profibus DP IO layer   *)
+    LOAD_CPU_SYS        : WORD  :=  9;          (* CPU - System tasks           *)
+
+    LOAD_CPU_BAC        : WORD  := 10;          (* CPU - BACnet Driver          *)
+    LOAD_CPU_RTS        : WORD  := 11;          (* CPU - Whole Run Time System  *)
+
+
+    (* Maximum number of tasks.
+     * ------------------------------------------------------------------------
+     *)
+    MAX_COMM_TASKS      : UINT  :=  5;          (* Max. no. of COM_WORK tasks   *)
+    MAX_VM_TASKS        : UINT  := 25;          (* Max. no. of VM/IEC tasks     *)
+ 
+   
+    (* Task ID's to be used with LOAD_CPU_TASK and LOAD_MEM_TASK.
+     * ------------------------------------------------------------------------
+     *)
+    TASK_SYS_VMM        : UINT  :=  0;          (* Virtual Machine Manager      *)
+    TASK_SYS_TIM        : UINT  :=  1;          (* Timer                        *)
+    TASK_SYS_OCH        : UINT  :=  2;          (* Online Change                *)
+    TASK_SYS_RET        : UINT  :=  3;          (* Retain Handling              *)
+    TASK_SYS_LED        : UINT  :=  4;          (* LED Handling                 *)
+    TASK_COM_LIS        : UINT  :=  5;          (* Communication Listening      *)
+
+    TASK_IOL_BAC        : UINT  :=  6;          (* BACnet IO Layer              *)
+    TASK_IOL_TST        : UINT  :=  7;          (* Test IO Layer                *)
+    TASK_IOL_PDP        : UINT  :=  8;          (* Profibus DP IO Layer         *)
+
+    TASK_BAC_DEV        : UINT  :=  9;          (* BACnet Device Handling       *)
+    TASK_BAC_SCN        : UINT  := 10;          (* BACnet IEC Scanner           *)
+    TASK_BAC_COV        : UINT  := 11;          (* BACnet COV Handling          *)
+
+    TASK_BAC_MGT        : UINT  := 12;          (* BACnet Driver Main Task      *)
+    TASK_BAC_COM        : UINT  := 13;          (* BACnet/IP Communication Task *)
+
+    TASK_PDP_WRK        : UINT  := 14;          (* Profibus DP Handling         *)
+    TASK_PDP_MGT        : UINT  := 15;          (* Profibus DP Handling         *)
+
+    (* Up to MAX_COMM_TASKS communication tasks. Valid ID range is from         *)
+    (* TASK_COM_WRK up to (TASK_COM_WRK +  MAX_COMM_TASKS).                     *)
+    TASK_COM_WRK        : UINT  := 16;          (* Communication Handling       *)
+
+    (* Up to MAX_VM_TASKS VM/IEC tasks. Valid ID range is from                  *)
+    (* TASK_IEC_VM up to (TASK_IEC_VM +  MAX_VM_TASKS).                         *)
+    TASK_IEC_VM         : UINT  := 21;          (* VM/IEC tasks                 *)
+
+END_CONST
+

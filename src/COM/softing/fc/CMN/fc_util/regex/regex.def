@@ -1,0 +1,7 @@
+LIBRARY REGEX
+
+EXPORTS
+	regfree
+	regerror
+	regexec
+	regcomp

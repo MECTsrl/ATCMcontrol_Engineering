@@ -1,0 +1,178 @@
+cpp_quote("//+---------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  ATCMControl 4CE")
+cpp_quote("//  Copyright 2000 - 2001 SoftingGmbH.")
+cpp_quote("//")
+cpp_quote("//----------------------------------------------------------------")
+
+#ifndef DO_NO_IMPORTS
+import "unknwn.idl";
+import "oaidl.idl";
+import "ocidl.idl";
+#endif
+
+
+
+
+
+//------------------------------------------------------------------*
+/**
+ * @file Callback interface to 4CE component manager. Used for callbacks 
+ * from addons.
+ *
+*/
+
+
+cpp_quote("//+---------------------------------------------------------------")
+cpp_quote("// Addon callback interface to component manager")
+
+
+//------------------------------------------------------------------*
+/**
+ *  interface ICEAddOnActionEvents
+ *  Allows COM components to query for other COM components maintained
+ *  by the component manager residing in 4CE. The corresponding comp-
+ *  onents will be created on demand if they are not active.
+ *
+ *  @see    CECompMan.h, CECompMan.cpp
+*/
+[
+    object,
+    oleautomation,
+    uuid(1EDECA0B-868D-413f-822A-34B41AB3CB5E)
+]
+interface ICEAddOnActionEvents : IUnknown
+{
+	//------------------------------------------------------------------*
+	/**
+	 * OnEnsureTargetDisconnected:
+     *
+     *  The target addon handler will call this, to ensure that the 
+     *  target is disconnected before a change affecting the target online
+     *  object is preformed.
+     *  The user gets a message like this: "Target is disconnected now. Proceed?"
+     *  If the user cancels this dialog the return value is S_FALSE.
+     *  In this case the change must not be performed
+	 *
+	 * @param       [in] sTargetId: target id (name)
+	 * @param       [in] bRebuildHint: give rebuild hint?
+	 *
+	 * @return		S_OK:       address change is ok
+     *              S_FALSE:    address change is not ok (cancel)
+     *              E_FAIL:     something went wrong
+	 *
+	*/
+	HRESULT OnEnsureTargetDisconnected([in, string] BSTR sTargetId, [in] BOOL bRebuildHint);
+
+	//------------------------------------------------------------------*
+	/**
+	 * OnFileRemoved:
+     *
+     *  The addon handler must call this, after a file has
+     *  been removed
+	 *
+	 * @param       [in] sFilePath: file name incl path
+     *                              for project files: file name incl rel path
+	 *
+	 * @return		S_OK
+	 *
+	*/
+	HRESULT OnFileRemoved([in, string] BSTR sFilePath);
+
+	//------------------------------------------------------------------*
+	/**
+	 * OnFileRename:
+     *
+     *  The addon handler must call this, after a file has
+     *  been renamed to enable the engineering to update
+     *  the editor.
+	 *
+	 * @param       [in] sOldFilePath: old file name incl path
+     *                                 for project files: file name incl rel path
+	 * @param       [in] sNewFilePath: new file name incl path
+     *                                 for project files: file name incl rel path
+	 *
+	 * @return		S_OK: ok      
+	 *
+	*/
+    HRESULT OnFileRenamed([in, string] BSTR sOldFilePath, 
+                          [in, string] BSTR sNewFilePath);
+
+};
+
+enum E_FC_MsgTab{
+    FC_MSGTAB_COMPILE,
+    FC_MSGTAB_DOWNLOAD,
+    FC_MSGTAB_FINDINFILES,
+    FC_MSGTAB_SYSTEM
+};
+
+
+[
+    object,
+    oleautomation,
+    uuid(C101C4DE-8C15-43a2-A856-486407F30005)
+]
+interface ICEAddOnActionEvents2 : IUnknown
+{
+    HRESULT BuildAll();
+    HRESULT BuildTarget([in, string] BSTR sTargetId);
+    HRESULT ShowTargetMsgTab([in, string] BSTR sTargetId);
+    HRESULT ShowMsgTab([in] enum E_FC_MsgTab msgTab);
+    HRESULT IsConnected([in, string] BSTR sTargetId, [out] BOOL* pbStatus);
+    HRESULT IsExclusiveConnected([in, string] BSTR sTargetId, [out] BOOL* pbStatus);
+    HRESULT GetResourceState([in, string] BSTR sTargetId, [out] LONG* plStatus);
+    HRESULT Connect([in, string] BSTR sTargetId);
+    HRESULT Disconnect([in, string] BSTR sTargetId);
+    HRESULT ConnectExclusive([in, string] BSTR sTargetId);
+    HRESULT DisconnectExclusive([in, string] BSTR sTargetId);
+    HRESULT Download([in, string] BSTR sTargetId);
+    HRESULT Flash([in, string] BSTR sTargetId);
+    HRESULT StartControl([in, string] BSTR sTargetId);
+    HRESULT StopControl([in, string] BSTR sTargetId);
+    HRESULT StartAllTasks([in, string] BSTR sTargetId);
+    HRESULT StopAllTasks([in, string] BSTR sTargetId);
+    HRESULT ColdStart([in, string] BSTR sTargetId);
+    HRESULT WarmStart([in, string] BSTR sTargetId);
+    HRESULT InitClear([in, string] BSTR sTargetId);
+
+    HRESULT CustomOnlCmd([in, string] BSTR sTargetId, 
+                         [in] SAFEARRAY(unsigned char)* dataDown, 
+                         [out] SAFEARRAY(unsigned char)* dataUp);  
+    HRESULT ProjectInfoUpload([in, string] BSTR sTargetId, 
+                              [out, string] BSTR* psProjVers,
+	                          [out, string] BSTR* psProjName,
+	                          [out, string] BSTR* psModified,
+	                          [out, string] BSTR* psCreated,
+                              [out, string] BSTR* psOwner,
+	                          [out, string] BSTR* psComment1,
+	                          [out, string] BSTR* psComment2,
+	                          [out, string] BSTR* psComment3);
+    HRESULT ProjectDownload([in, string] BSTR sTargetId, 
+                            [in] SAFEARRAY(unsigned char)* dataDown);
+    HRESULT ProjectUpload([in, string] BSTR sTargetId, 
+                          [out] SAFEARRAY(unsigned char)* dataUp);
+    HRESULT CustCmd1([in, string] BSTR sTargetId, 
+                     [in] SAFEARRAY(unsigned char) *dataDown, 
+                     [out] SAFEARRAY(unsigned char) *dataUp);  
+    HRESULT CustCmd2([in, string] BSTR sTargetId, 
+                     [in] SAFEARRAY(unsigned char) *dataDown, 
+                     [out] SAFEARRAY(unsigned char) *dataUp);  
+    HRESULT CustCmd3([in, string] BSTR sTargetId, 
+                     [in] SAFEARRAY(unsigned char) *dataDown, 
+                     [out] SAFEARRAY(unsigned char) *dataUp);  
+    HRESULT CustCmd4([in, string] BSTR sTargetId, 
+                     [in] SAFEARRAY(unsigned char) *dataDown, 
+                     [out] SAFEARRAY(unsigned char) *dataUp);  
+    HRESULT CustCmd5([in, string] BSTR sTargetId, 
+                     [in] SAFEARRAY(unsigned char) *dataDown, 
+                     [out] SAFEARRAY(unsigned char) *dataUp);  
+    HRESULT LoadFile([in, string] BSTR sTargetId, 
+                     [in, string] BSTR sName, 
+                     [out] SAFEARRAY(unsigned char) * data); 
+    HRESULT SaveFile([in, string] BSTR sTargetId, 
+                     [in, string] BSTR sName, 
+                     [in] SAFEARRAY(unsigned char)* data);   
+    HRESULT Dir([in, string] BSTR sTargetId, 
+                [out] SAFEARRAY(BSTR)* fileNames);
+};

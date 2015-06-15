@@ -1,0 +1,118 @@
+import "oaidl.idl";
+import "ocidl.idl";
+#include "olectl.h"
+
+
+
+//----  Type Library:    -----------------------------------------------------*
+[
+	uuid(c6c09cc9-2f68-491d-a3b0-6733ad41f062),
+	version(1.0),
+	helpstring("OPCutil 1.0 Type Library")
+]
+library OPCUTILLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	//-------------------------------------------------------------------------
+	[
+		object,
+    	uuid(c6c09cca-2f68-491d-a3b0-6733ad41f062),
+		dual,
+        oleautomation,
+		helpstring("IBrowseOPCNamespace Interface"),
+		pointer_default(unique)
+	]
+	interface IBrowseOPCNamespace : IDispatch
+	{
+		[id(1), helpstring("method Connect")]
+            HRESULT Connect();
+		[id(2), helpstring("method Disconnect")]
+            HRESULT Disconnect();
+		[id(3), helpstring("method Refresh")]
+            HRESULT Refresh();
+//		[id(4), helpstring("method ValidateCurrentItem")]
+//            HRESULT ValidateCurrentItem();
+		[id(5), helpstring("method ValidateItem")]
+            HRESULT ValidateItem([in, string] BSTR sItemID);
+
+		[propget, id(10), helpstring("property MachineName")]
+            HRESULT MachineName([out, string, retval] BSTR *pVal);
+		[propput, id(10), helpstring("property MachineName")]
+            HRESULT MachineName([in, string] BSTR newVal);
+		[propget, id(11), helpstring("property ServerName: ProgID or CLSID of OPC Server")]
+            HRESULT ServerName([out, string, retval] BSTR *pVal);
+		[propput, id(11), helpstring("property ServerName: ProgID or CLSID of OPC Server")]
+            HRESULT ServerName([in, string] BSTR newVal);
+		[propget, id(12), helpstring("property ItemID")]
+            HRESULT ItemID([out, string, retval] BSTR *pVal);
+		[propput, id(12), helpstring("property ItemID")]
+            HRESULT ItemID([in, string] BSTR newVal);
+		[propget, id(13), helpstring("property IsHierarchical: Server namespace is hierarchical")]
+            HRESULT IsHierarchical([out, retval] BOOL *pVal);
+		[propget, id(14), helpstring("property IsBrowsable: Server supports namespace browsing")]
+            HRESULT IsBrowsable([out, retval] BOOL *pVal);
+		[propget, id(15), helpstring("property VendorInfo: server supplied vendor info")]
+            HRESULT VendorInfo([out, retval] BSTR *pVal);
+		[propget, id(16), helpstring("property NameFilter: namefilter in use when browsing")]
+            HRESULT NameFilter([out, retval] BSTR *pVal);
+		[propput, id(16), helpstring("property NameFilter: show only tags with matching names when browsing")]
+            HRESULT NameFilter([in] BSTR newVal);
+		[propget, id(17), helpstring("property DataTypeFilter: filter of datatypes when browsing")]
+            HRESULT DataTypeFilter([out, retval] VARTYPE *pVal);
+		[propput, id(17), helpstring("property DataTypeFilter: show only tags with matching datatype when browsing")]
+            HRESULT DataTypeFilter([in] VARTYPE newVal);
+		[propget, id(18), helpstring("property AccessRightsFilter: filter of access rights when browsing")]
+            HRESULT AccessRightsFilter([out, retval] long *pVal);
+		[propput, id(18), helpstring("property AccessRightsFilter: show only tags with matching access rights when browsing")]
+            HRESULT AccessRightsFilter([in] long newVal);
+		[propget, id(19), helpstring("property ForceFlatBrowsing: TRUE: do flat browse through OPC server namespace")]
+            HRESULT ForceFlatBrowsing([out, retval] BOOL *pVal);
+		[propput, id(19), helpstring("property ForceFlatBrowsing: TRUE: do flat browse through OPC server namespace")]
+            HRESULT ForceFlatBrowsing([in] BOOL newVal);
+		[propget, id(20), helpstring("property LCID")]
+            HRESULT LCID([out, retval] long *pVal);
+		[propput, id(20), helpstring("property LCID")]
+            HRESULT LCID([in] long newVal);
+		[propget, id(21), helpstring("property DataType: datatype of selected item")]
+            HRESULT DataType([out, retval] VARTYPE *pVal);
+		[propget, id(22), helpstring("property AccessRights: access rights of selected item")]
+            HRESULT AccessRights([out, retval] long *pVal);
+	};
+
+
+	//-------------------------------------------------------------------------
+	[
+		uuid(c6c09ccb-2f68-491d-a3b0-6733ad41f062),
+		helpstring("_IBrowseOPCNamespaceEvents Interface")
+	]
+	dispinterface _IBrowseOPCNamespaceEvents
+	{
+		properties:
+		methods:
+		[id(1), helpstring("method OnSelectedItem")]
+            HRESULT OnSelectedItem([in, string] BSTR sItemID);
+		[id(2), helpstring("method OnOpcError")]
+            HRESULT OnOpcError([in, string] BSTR sAction, [in, string] BSTR sError, [in] long hrError);
+		[id(3), helpstring("method OnConnectChanged")]
+            HRESULT OnConnectChanged(BOOL bConnected, long hrError);
+	};
+	
+
+//----  Component Classes:    ------------------------------------------------*
+
+	//-------------------------------------------------------------------------
+	[
+    	uuid(c6c09ccd-2f68-491d-a3b0-6733ad41f062),
+		helpstring("4CONTROL: Browse for OPC Servers in NT domain")
+	]
+	coclass BrowseOPCNamespace
+	{
+		[default] interface IBrowseOPCNamespace;
+		[default, source] dispinterface _IBrowseOPCNamespaceEvents;
+	};
+
+};
+
+

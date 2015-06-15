@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>FA_WRITEFILE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css">
+</head>
+
+
+<body bgcolor="#FFFFCC">
+<h2>FA_WRITEFILE</h2>
+<p>Writes a byte string in a file.</p>
+<h3>Interface</h3>
+<pre class="preforma">FUNCTION_BLOCK FA_WRITEFILE
+VAR_INPUT
+    EXEC        : BOOL;
+    FILENAME    : WSTRING;
+    TOUT        : TIME;
+    DATA        : BYTE_STRING;
+END_VAR
+VAR_IN_OUT
+    POSITION    : DINT;
+END_VAR
+VAR_OUTPUT
+    DONE        : BOOL;
+    ERROR       : BOOL;
+    ERRCD       : DINT;
+    ERRTXT      : WSTRING;
+END_VAR</pre>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+
+ <dt><b>EXEC</b></dt>
+
+ <dd>Value of the type <i><b>BOOL</b></i><br> Starts the operation at a rising edge.</dd>
+
+ <dt><b>FILENAME</b></dt>
+
+ <dd>Value of the type <i><b>WSTRING</b></i><br> Specifies the name of the file to be written in. 
+
+   The file name can be entered together with the fully qualified path, e.g. &quot;<font face="Courier New, Courier, mono">D:\Projects\Tests</font>&quot;. 
+
+   If no path is specified, the standard working directory of ATCMControl is internally added as the path. The standard working directory is the directory <font face="Courier New, Courier, mono">data</font> directly under the ATCMControl installation directory. 
+
+ </dd>
+
+ <dt><b>TOUT</b></dt>
+
+ <dd>Value of the type <i><b>TIME</b></i><br> Defines the length of time during which the execution of the writing process is to be attempted. On expiry of this period of time, the attempt to write in the file will be aborted. <br> The default value is T#0ms. In an initialization with this value no timeout is set. This means that the length of time during which the execution of a file operation is attempted is not monitored.</dd>
+
+ <dt><b>DATA</b></dt>
+
+  <dd>Instance of the <i><b>BYTE_STRING</b></i> structure.<br>
+
+ </dd>
+
+ <dd>Specifies the value to be written.<br>
+    Use the <b><i>COPY_WSTRING_TO_BYTE_STRING</i></b> function to initialize the 
+    byte string with a value. <br>
+    To convert a byte string into a <i><b>WSTRING</b></i>, you can use the <b><i>COPY_WSTRING_FROM_BYTE_STRING</i></b> 
+    function from the <i><b>4C_Communication</b></i> library.</dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl> 
+
+ <dt><b><a name="File"></a>POSITION</b></dt>
+
+ <dd>Value of the type <i><b>DINT</b></i><br> Starting position for the write access. On conclusion of the writing operation, <i><b>POSITION</b></i> is set to the byte following the last value written. The first valid writing position is 0. <br> <a href="Const_Pos.htm">Position constants</a> are defined for the beginning and end of a file and for the end of a line. </dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+
+ <dt><b>DONE</b></dt>
+
+ <dd>Value of the type <i><b>BOOL</b></i><br> Signalizes the (successful or failed) conclusion of the operation.<br> Possible values:<br> <i><b>TRUE</b></i>: Operation has been concluded.<br> <i><b>FALSE</b></i>: Operation has not yet been concluded.</dd>
+
+ <dt><b>ERROR</b></dt>
+
+ <dd>Value of the type <i><b>BOOL</b></i><br> Signalizes the error status.<br> Possible values:<br> <i><b>TRUE</b></i>: An error has occurred.<br> <i><b>FALSE</b></i>: No error has occurred.</dd>
+
+ <dt><b>ERRCD</b></dt>
+
+ <dd>Value of the type <i><b>DINT</b></i><br> Contains an error number if an error has occurred. <br> If no error has occurred, <i><b>ERRCD</b></i> has the value <b>0</b>.</dd>
+
+ <dt><b>ERRTXT</b></dt>
+
+ <dd>Value of the type <i><b>WSTRING</b></i><br> Contains an error text if an error has occurred. <br> If no error has occurred, <i><b>ERRTXT</b></i> contains an empty string.</dd>
+</dl>
+<h3>Description</h3>
+<p><b><i>FA_WRITEFILE</i></b> writes the value passed to <i><b>DATA</b></i> in 
+  the file passed to <i><b>FILE</b></i>. During the write access one complete 
+  access cycle is executed. </p>
+<p> The starting position of the write access is defined in <i><b>POSITION</b></i>. 
+
+ <i> <b>POSITION</b></i> represents the file pointer which indicates the current writing position. </p>
+<p>On conclusion of a writing operation, <i><b>POSITION</b></i> is automatically set to the byte following the last line written. This allows you to perform write access several times in succession without reinitializing <i> <b>POSITION</b></i> anew each time. For this purpose, you assign <i><b>POSITION</b></i> a variable when calling <i><b>FA_WRITEFILE</b></i> for the first time. In each subsequent call of <i><b>FA_WRITEFILE</b></i>, the variable is then reassigned to its instance variable <i> <b>POSITION</b></i>. The end position of the preceding write access thus becomes the starting position of the subsequent write access.</p>
+<p>The file to be written is opened in binary mode. </p>
+</body>
+</html>

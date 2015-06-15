@@ -1,0 +1,5 @@
+
+---------- BUILD.LOG
+SignalError              : update target 'ATHW119'
+TSK_GetError             : update target 'ATHW119'
+TSK_ClearError           : update target 'ATHW119'

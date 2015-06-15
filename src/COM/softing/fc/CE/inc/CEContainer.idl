@@ -1,0 +1,146 @@
+cpp_quote("//+---------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  ATCMControl 4CE")
+cpp_quote("//  Copyright 2000 - 2001 SoftingGmbH.")
+cpp_quote("//")
+cpp_quote("//----------------------------------------------------------------")
+#ifndef DO_NO_IMPORTS
+import "unknwn.idl";
+#endif
+
+
+//------------------------------------------------------------------*
+/**
+ * ICEContainer 
+ * If a source file can contain links to other files it must implement the 
+ * IContainer interface, so that linked components can create, rename and 
+ * delete their link in the source file.
+ */
+
+cpp_quote("//+---------------------------------------------------------------")
+cpp_quote("// The interface of a container:")
+[
+    object,
+    oleautomation,
+    uuid(db3ee3a0-abd3-11d4-94f6-0008c779d265)
+]
+interface ICEContainer : IUnknown
+{
+    //------------------------------------------------------------------*
+    /**
+     * createLink
+     * createLink will create a new link in the container source file.
+     *
+     * @param   sFileName - The source file name of the parent file, 
+     *                      this is returned by GetContainer method 
+     *                      of the IProjInfo interface
+     * @param   sLocation - This is the location in the source file, 
+     *                      this is also returned by the getContainer 
+     *                      method of the IProjInfo interface. It is the 
+     *                      concatination of the ids tarversed to get the 
+     *                      container from the link position.
+     * @param   sLinkName - The name of the linked file.
+     *         
+     * @return          
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT createLink ([in, string] BSTR sFileName,
+                        [in, string] BSTR sLocation,
+                        [in, string] BSTR sLinkName);
+
+    //------------------------------------------------------------------*
+    /**
+     * renameLink
+     * renameLink will rename an existing link in a container source file.
+     *
+     * @param   sFileName    - The source file name of the parent file, 
+     *                         this is returned by GetContainer method 
+     *                         of the IProjInfo interface
+     * @param   sLocation    - This is the location in the source file, 
+     *                         this is also returned by the getContainer 
+     *                         method of the IProjInfo interface. 
+     *                         It is the concatination of the ids tarversed 
+     *                         to get the container from the link position.
+     * @param   sOldLinkName - The old name of the linked file.
+     * @param   sNewLinkName - The new name of the linked file.
+     *         
+     * @return          
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT renameLink ([in, string] BSTR sFileName,
+                        [in, string] BSTR sLocation,
+                        [in, string] BSTR sOldLinkName,
+                        [in, string] BSTR sNewLinkName);
+
+    //------------------------------------------------------------------*
+    /**
+     * deleteLink
+     * deleteLink will delete an existing link in a container source file.
+     *
+     * @param   sFileName - The source file name of the parent file, 
+     *                      this is returned by GetContainer method of the 
+     *                      IProjInfo interface
+     * @param   sLocation - This is the location in the source file, 
+     *                      this is also returned by the getContainer 
+     *                      method of the IProjInfo interface. It is the 
+     *                      concatination of the ids tarversed to get the 
+     *                      container file from the link position.
+     * @param   sLinkName - The name of the linked file.
+     *         
+     * @return          
+     *
+     * @exception       -
+     *
+     * @see             
+    */
+    HRESULT deleteLink ([in, string] BSTR sFileName,
+                        [in, string] BSTR sLocation,
+                        [in, string] BSTR sLinkName);
+
+
+    //------------------------------------------------------------------*
+    /**
+     * setProjectInfo will be called just after creation of the container 
+     * handler. With the ProjInfo interface the container handler can get 
+     * information from the project manager, so it can use the functions
+     * GetAbsoluteFile and GetRelativeFile, so it irrelevent if the parameters
+     * passed to the other functions are relative or absolute file names.
+     *
+     * @param           pICEProjectInfo: pointer to the project info interface
+     * @return          
+     * @exception       -
+     * @see             
+    */
+    HRESULT setProjectInfo([in]IUnknown* pICEProjectInfo);
+};
+
+
+
+//-----------------------------------------------------
+// This TYPELIB is generated as a convenience to users of high level tools
+// which are capable of using or browsing TYPELIBs. 
+// 'Smart Pointers' in VC6 is one example.
+//-----------------------------------------------------
+
+[
+    uuid(D654D1EF-79DD-4669-8A1B-A464A6F84214),
+    version(2.0),
+    helpstring("4CONTROL: CEContainer 2.0 Type Library")
+]
+library CE_ContainerLib
+{
+    importlib("stdole32.tlb");
+    importlib("stdole2.tlb");
+
+    interface ICEContainer;
+};
+
+
+
+

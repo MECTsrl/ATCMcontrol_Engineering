@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>F_GET_DISKFREESPACE</title>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="stylesheet" href="Lib.css">
+</head>
+<body style="background-color: rgb(255, 255, 204);">
+<h2>F_GET_DISKFREESPACE</h2>
+<p>Retrieves the free disk space in kilo bytes for specified path.</p>
+<h3>Interface</h3>
+<pre class="preforma">FUNCTION F_GET_DISKFREESPACE:DINT<br>VAR_INPUT<br>    PATH : STRING;<br>END_VAR<br><br>VAR_OUTPUT<br>    FREE_KB : DINT;<br>END_VAR<br></pre>
+<h3>Return value</h3>
+<p>Value of the type <span style="font-style: italic;"><span
+ style="font-weight: bold;">DINT</span></span><span
+ style="font-weight: bold;"></span>, the error code, 0 if no error<span
+ style="font-style: italic;"><span style="font-weight: bold;">.</span></span><br>
+</p>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl>
+  <dt><span style="font-weight: bold;">PATH</span><br>
+  </dt>
+  <dd>Value of the type <i><b>STRING</b></i>.<br>
+The path for which to get the free disk space.</dd>
+</dl>
+<h3>OUTPUT</h3>
+<dl>
+  <dt><span style="font-weight: bold;">FREE_KB</span><br>
+  </dt>
+  <dd>Free disk space in kilo bytes.</dd>
+</dl>
+<h3>Description</h3>
+<dd>Retrieves the
+free disk space in kilo bytes for specified path.</dd>
+<br>
+<br>
+</body>
+</html>

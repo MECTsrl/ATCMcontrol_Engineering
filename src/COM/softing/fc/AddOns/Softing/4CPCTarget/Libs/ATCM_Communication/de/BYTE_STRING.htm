@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>BYTE_STRING</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>BYTE_STRING</h2>
+<p>Repr&auml;sentiert einen Bytestring.</p>
+<h3>Schnittstelle</h3>
+<pre class="preforma">TYPE
+    BYTE_STRING : STRUCT
+        size  : DINT := 0;   
+    END_STRUCT;
+END_TYPE</pre>
+<h3>Strukturelemente</h3>
+<p><b>size</b></p>
+<p>Wert vom Typ <b><i>DINT</i></b>.<br>
+  Enth&auml;lt die L&auml;nge des Bytestrings in Bytes.<br>
+  Standardwert ist 0.</p>
+<h3>Beschreibung</h3>
+<p>Instanzen der Struktur <i><b>BYTE_STRING</b></i> dienen vor allem dem Transport 
+  von Nachrichten zwischen Remote-Kommunikationspartnern. Obwohl in der Strukturdefinition 
+  nicht offengelegt, sondern auf einer tieferliegenden Ebene implemetiert, besteht 
+  die Hauptkomponente dieser Struktur aus einem dynamischen Bytestring, dessen 
+  Größe automatisch dem im Bytestring gespeicherten Inhalt angepaßt wird. Da der 
+  Bytestring nach außen hin nicht sichbar ist, kann nur über den Umweg einer Instanz 
+  der Struktur <i><b>BYTE_STRING</b></i> auf diesen zugegriffen werden. Allerdings 
+  ist der Bytestring, da nach außen nicht sichtbar, nicht direkt als Datenelement 
+  dieser Struktur ansprechbar, sondern kann nur über entsprechende Bytestring-Funktionen 
+  manipuliert werden. Diesen wird zur Manipulation des Bytestrings eine Instanz 
+  der Struktur <i><b>BYTE_STRING</b></i> als Parameter übergeben. </p>
+<p>Im Gegensatz zum Bytestring selbst ist die als Strukturelement von <i><b>BYTE_STRING</b></i> 
+  in der Strukturvariable <i><b>size</b></i> gespeicherte aktuelle Größe des Bytestrings 
+  in der Strukturdefinition offengelegt und somit nach außen hin sichtbar. Sie 
+  kann über die entsprechende Strukturinstanz angesprochen und sowohl gelesen 
+  als auch geschrieben werden.</p>
+<p> Die in einem Bystestring abgelegten Daten werden in Einheiten von Bytes verwaltet. 
+  Lesender oder schreibender Zugriff auf einen Bystestring erfolgt über den Index, 
+  an dem sich ein Byte im Bytestring befindet (Funktionen<i><b> <a href="BYTE_STRING_SET.htm">BYTE_STRING_SET</a></b></i> 
+  und <i><b><a href="BYTE_STRING_GET.htm">BYTE_STRING_GET</a></b></i>). <br>
+  Bytestrings können allerdings f&uuml;r den Einsatz in der seriellen Kommunikation 
+  mit einem ASCII-String initialisiert (Funktion <i><b><a href="BYTE_STRING_INIT.htm">BYTE_STRING_INIT</a></b></i>), 
+  und der Inhalt des gesamten Bytestrings kann wieder in ASCII-Format konvertiert 
+  werden (Funktion <i><b><a href="BYTE_STRING_TO_WSTRING.htm">BYTE_STRING_TO_WSTRING</a></b></i>). 
+  <br>
+  Werden Bytestrings zum Lesen und Schreiben von Textdaten mit den Bausteinen 
+  der Bibliothek <b><i>4C_FileAccess</i></b> verwendet, steht zur Initialisierung 
+  von Bytestrings mit Textdaten die Funktion <i><b><a href="COPY_WSTRING_TO_BYTE_STRING.htm">COPY_WSTRING_TO_BYTE_STRING</a> 
+  </b></i>und zum Konvertieren von in einen Bytestring eingelesenen Texdaten in 
+  einen <i><b>WSTRING</b></i> die Funktion <a href="COPY_WSTRING_FROM_BYTE_STRING.htm"><i><b>COPY_WSTRING_FROM_BYTE_STRING</b></i></a> 
+  zur Verf&uuml;gung. </p>
+</body>
+</html>

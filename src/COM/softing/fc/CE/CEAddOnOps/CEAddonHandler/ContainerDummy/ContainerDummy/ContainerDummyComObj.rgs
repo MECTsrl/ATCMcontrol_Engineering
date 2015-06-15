@@ -1,0 +1,25 @@
+HKCR
+{
+	ContainerDummy.ContainerDummyComObj.1 = s 'ContainerDummyComObj Class'
+	{
+		CLSID = s '{EB042401-F5DC-11D4-B8EE-002018641833}'
+	}
+	ContainerDummy.ContainerDummyComObj = s 'ContainerDummyComObj Class'
+	{
+		CLSID = s '{EB042401-F5DC-11D4-B8EE-002018641833}'
+		CurVer = s 'ContainerDummy.ContainerDummyComObj.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {EB042401-F5DC-11D4-B8EE-002018641833} = s 'ContainerDummyComObj Class'
+		{
+			ProgID = s 'ContainerDummy.ContainerDummyComObj.1'
+			VersionIndependentProgID = s 'ContainerDummy.ContainerDummyComObj'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{EB0423F1-F5DC-11D4-B8EE-002018641833}'
+		}
+	}
+}

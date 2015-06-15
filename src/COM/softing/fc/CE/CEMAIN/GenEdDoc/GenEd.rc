@@ -1,0 +1,336 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "..\inc\genedrc.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+#include "resource.h"
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_GENED_ADDINSTANCE DIALOG DISCARDABLE  0, 0, 246, 151
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Add instance"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,25,125,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,170,125,50,14
+    CONTROL         "List1",IDC_GENED_ADDINSTANCELIST,"SysListView32",
+                    LVS_REPORT | LVS_SHOWSELALWAYS | LVS_SORTASCENDING | 
+                    LVS_NOCOLUMNHEADER | WS_BORDER | WS_TABSTOP,10,15,225,94
+    GROUPBOX        "Instances",IDC_STATIC,5,5,235,110
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_GENED_ADDINSTANCE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 239
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 144
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "..\\inc\\genedrc.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "#include ""resource.h""\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_GENEDTYPE           ICON    DISCARDABLE     "..\\res\\idr_file.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_GENEDTYPE MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                IDM_FILE_NEW
+        MENUITEM SEPARATOR
+        MENUITEM "&Open...\tCtrl+O",            IDM_FILE_OPEN
+        MENUITEM "&Close",                      IDM_FILE_CLOSE
+        MENUITEM "&Save\tCtrl+S",               IDM_FILE_SAVE
+        MENUITEM "Save &As...",                 IDM_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "Op&en Project",               IDM_PROJECT_OPEN
+        MENUITEM "C&lose Project",              IDM_PROJECT_CLOSE
+        MENUITEM "Sa&ve Project",               IDM_PROJECT_SAVE
+        MENUITEM "Sa&ve Project As...",         IDM_PROJECT_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "...",                         ID_FILE
+        MENUITEM SEPARATOR
+        MENUITEM "&Find in Files\tCtrl+I",      ID_FINDINFILES
+        MENUITEM SEPARATOR
+        MENUITEM "Prin&t Project...\tCtrl+Shift+P", IDM_PROJECT_PRINT
+        MENUITEM "&Print File...\tCtrl+P",      IDM_PRJFILE_PRINT
+        MENUITEM "Print Cross &Reference",      IDM_XREF_PRINT
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM SEPARATOR
+        MENUITEM "&Full Screen\tAlt+0",         ID_VIEW_FULLSCREEN, INACTIVE
+        MENUITEM SEPARATOR
+        MENUITEM "&Navigator\tAlt+1",           ID_TOGGLE_NAVIGATOR
+        MENUITEM "&Messages\tAlt+2",            ID_TOGGLE_MSG_VIEW
+        MENUITEM "&POU/Variable Selection\tAlt+3", ID_TOGGLE_POU_SELECTION
+        MENUITEM "&Watch\tAlt+4",               ID_TOGGLE_WATCH_VIEW
+        MENUITEM "&Breakpoints\tAlt+5",         ID_TOGGLE_BREAKPT_VIEW
+        MENUITEM "&Cross Reference\tAlt+6",     ID_TOGGLE_XREF
+    END
+    MENUITEM "...",                         65535
+    POPUP "&Tools"
+    BEGIN
+        MENUITEM "...",                         ID_TOOLS
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "Tile &Horizontally",          ID_WINDOW_TILE_HORZ
+        MENUITEM "Tile &Vertically",            ID_WINDOW_TILE_VERT
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+        MENUITEM SEPARATOR
+        MENUITEM "Cl&ose All",                  ID_CLOSE_ALL_WINDOWS
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+        MENUITEM SEPARATOR
+        POPUP "ATCMControl on the &Web"
+        BEGIN
+            MENUITEM "&Home Page",                  ID_SOFT_HOMEPAGE
+        END
+        MENUITEM "...",                         ID_APP_ABOUT
+        MENUITEM SEPARATOR
+        MENUITEM "&About ATCMControl Engineering...", ID_APP_ABOUT
+    END
+END
+
+IDR_GENEDTYPE_CNTR_IP MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                IDM_FILE_NEW
+        MENUITEM SEPARATOR
+        MENUITEM "&Open...\tCtrl+O",            IDM_FILE_OPEN
+        MENUITEM "&Close",                      IDM_FILE_CLOSE
+        MENUITEM "&Save\tCtrl+S",               IDM_FILE_SAVE
+        MENUITEM "Save &As...",                 IDM_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "Op&en Project",               IDM_PROJECT_OPEN
+        MENUITEM "C&lose Project",              IDM_PROJECT_CLOSE
+        MENUITEM "Sa&ve Project",               IDM_PROJECT_SAVE
+        MENUITEM "Sa&ve Project As...",         IDM_PROJECT_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "...",                         ID_FILE
+        MENUITEM SEPARATOR
+        MENUITEM "&Find in Files\tCtrl+I",      ID_FINDINFILES
+        MENUITEM SEPARATOR
+        MENUITEM "Prin&t Project...\tCtrl+Shift+P", IDM_PROJECT_PRINT
+        MENUITEM "&Print File...\tCtrl+P",      IDM_PRJFILE_PRINT
+        MENUITEM "Print Cross &Reference",      IDM_XREF_PRINT
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    MENUITEM SEPARATOR
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM SEPARATOR
+        MENUITEM "&Full Screen\tAlt+0",         ID_VIEW_FULLSCREEN, INACTIVE
+        MENUITEM SEPARATOR
+        MENUITEM "&Navigator\tAlt+1",           ID_TOGGLE_NAVIGATOR
+        MENUITEM "&Messages\tAlt+2",            ID_TOGGLE_MSG_VIEW
+        MENUITEM "&POU/Variable Selection\tAlt+3", ID_TOGGLE_POU_SELECTION
+        MENUITEM "&Watch\tAlt+4",               ID_TOGGLE_WATCH_VIEW
+        MENUITEM "&Breakpoints\tAlt+5",         ID_TOGGLE_BREAKPT_VIEW
+        MENUITEM "&Cross Reference\tAlt+6",     ID_TOGGLE_XREF
+    END
+    MENUITEM "...",                         65535
+    MENUITEM SEPARATOR
+    POPUP "&Tools"
+    BEGIN
+        MENUITEM "...",                         ID_TOOLS
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "Tile &Horizontally",          ID_WINDOW_TILE_HORZ
+        MENUITEM "Tile &Vertically",            ID_WINDOW_TILE_VERT
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+        MENUITEM SEPARATOR
+        MENUITEM "Cl&ose All",                  ID_CLOSE_ALL_WINDOWS
+    END
+END
+
+IDR_GENED_TABFRAME MENU DISCARDABLE 
+BEGIN
+    POPUP "PopUp"
+    BEGIN
+        MENUITEM "&Add Instance Tab from List...", ID_GENED_ADDINSTANCE
+        MENUITEM "&Remove Instance Tab",        ID_GENED_REMOVEINSTANCE
+        MENUITEM "Remove All Instance Tab&s",   ID_GENED_REMOVEALL
+        MENUITEM "&Expand Instance Path",       ID_GENED_EXPAND_TABS
+        MENUITEM "&Collapse Instance Path",     ID_GENED_COLLAPSE_TABS
+        MENUITEM "Refresh All",                 ID_GENED_REFRESH_ALL
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_GENEDTYPE_CNTR_IP ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "0",            ID_VIEW_FULLSCREEN,     VIRTKEY, ALT, NOINVERT
+    "1",            ID_TOGGLE_NAVIGATOR,    VIRTKEY, ALT, NOINVERT
+    "2",            ID_TOGGLE_MSG_VIEW,     VIRTKEY, ALT, NOINVERT
+    "3",            ID_TOGGLE_POU_SELECTION, VIRTKEY, ALT, NOINVERT
+    "4",            ID_TOGGLE_WATCH_VIEW,   VIRTKEY, ALT, NOINVERT
+    "5",            ID_TOGGLE_BREAKPT_VIEW, VIRTKEY, ALT, NOINVERT
+    "6",            ID_TOGGLE_XREF,         VIRTKEY, ALT, NOINVERT
+    "I",            ID_FINDINFILES,         VIRTKEY, CONTROL, NOINVERT
+    "N",            IDM_FILE_NEW,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_NEXT_ERROR,          VIRTKEY, CONTROL, ALT, NOINVERT
+    "O",            IDM_FILE_OPEN,          VIRTKEY, CONTROL, NOINVERT
+    "P",            IDM_PRJFILE_PRINT,      VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_PREVIOUS_ERROR,      VIRTKEY, CONTROL, ALT, NOINVERT
+    "P",            IDM_PROJECT_PRINT,      VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    "S",            IDM_FILE_SAVE,          VIRTKEY, CONTROL, NOINVERT
+    VK_ESCAPE,      ID_BREAK,               VIRTKEY, NOINVERT
+    VK_F1,          ID_HELP,                VIRTKEY, NOINVERT
+    VK_F1,          ID_CONTEXT_HELP,        VIRTKEY, SHIFT, NOINVERT
+    VK_F10,         IDM_CONTEXT_MENU,       VIRTKEY, SHIFT, NOINVERT
+    VK_F5,          IDM_CONTINUE_TASK,      VIRTKEY, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_LEFT,        ID_GENED_PREVIOUS_TAB,  VIRTKEY, ALT, NOINVERT
+    VK_RIGHT,       ID_GENED_NEXT_TAB,      VIRTKEY, ALT, NOINVERT
+    VK_UP,          ID_GENED_PREVIOUS_SERVER, VIRTKEY, ALT, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDR_GENEDTYPE           "\n\nProject\n\n\n\nATCMControl Project"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_TABFRAME_ADDINSTANCE "Adds an instance tab from a list"
+    ID_TABFRAME_REMOVE      "Removes instance tab"
+    ID_GENED_ADDINSTANCE    "Add Instance Tab from List"
+    ID_GENED_REMOVEINSTANCE "Remove Instance Tab"
+    ID_GENED_REMOVEALL      "Remove all instance tabs"
+    ID_GENED_EXPAND_TABS    "Expand instance path by one level"
+    ID_GENED_COLLAPSE_TABS  "Collapse instance path by one level"
+    ID_GENED_REFRESH_ALL    "Refresh all instance tabs"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ADDTAB              "Add..."
+    IDS_ADDTAB_LONG         "Add Instance Tab from List..."
+    IDS_CANNOT_SAVE_TO_FILE_IN_PROJECT 
+                            "You cannot save to a file that belongs to the project."
+    IDS_RELOAD_DOCUMENT     "Document '%s' has been modified outside ATCMControl Engineering.\nDo you want to reload the document?"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_RELOAD_DOCUMENT_LOSE 
+                            "Document '%s' has been modified outside ATCMControl Engineering.\nDo you want to reload the document and lose your changes?"
+    IDS_RELOAD_FAILED       "Reload of document '%s' failed."
+    IDS_SAVE_TO_DIFFERENT_FILE_NAME 
+                            "The file is readonly. Save to different file name?"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

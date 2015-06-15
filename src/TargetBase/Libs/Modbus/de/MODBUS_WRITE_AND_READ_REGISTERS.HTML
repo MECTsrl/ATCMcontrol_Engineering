@@ -1,0 +1,88 @@
+<html>
+
+<head>
+<title>FNC_Sceleton</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Help.css">
+</head>
+
+<body bgcolor="#FFFFCC">
+<BLOCKQUOTE> 
+  <h2>Function Name</h2>
+  <p> modbus_write_and_read_registers - write and read many registers in a single transaction</p>
+  <h3>Interface</h3>
+  <p class="interface">FUNCTION MODBUS_WRITE_AND_READ_REGISTERS : UINT</p>
+  <p class="interface">&nbsp;</p>
+  
+  <p class="interface">VAR_INPUT </p>
+  <BLOCKQUOTE class="structinterface"> 
+    <p class="interface">ctx:STRING;</p>
+  </BLOCKQUOTE>
+  <BLOCKQUOTE class="structinterface"> 
+    <p class="interface">write_addr:DINT;</p>
+  </BLOCKQUOTE>  
+   <BLOCKQUOTE class="structinterface"> 
+    <p class="interface">src: ARRAY[0..259] of UINT;</p>
+  </BLOCKQUOTE>
+   <BLOCKQUOTE class="structinterface"> 
+    <p class="interface">write_nb:UINT;</p>
+  </BLOCKQUOTE>  
+     <BLOCKQUOTE class="structinterface"> 
+    <p class="interface">read_addr:DINT;</p>
+  </BLOCKQUOTE>  
+     <BLOCKQUOTE class="structinterface"> 
+    <p class="interface">read_nb:UINT;</p>
+  </BLOCKQUOTE>  
+  <p class="interface">END_VAR</p>
+  
+  <p class="interface">VAR_OUTPUT </p>
+  <BLOCKQUOTE class="structinterface"> 
+    <p class="interface">dest : ARRAY[0..259] of UINT;</p>
+  </BLOCKQUOTE>
+  <p class="interface">END_VAR</p>
+  
+  <h3>Return value</h3>
+  <p>Value of type <i><b>UINT</b></i> </p>
+  <p>0 for success 1 for error </p>
+  
+  <h3>Parameters </h3>
+  <h3>INPUT </h3>
+  <p><strong>ctx</strong></p>
+  <p class="indent"> Value of type <i><b>STRING</b></i> </p>
+  <p class="indent">Context for the current connection. Valid values are RTU, TCP, TCPRTU</p>
+  <p><strong>write_addr</strong></p>
+  <p class="indent"> Value of type <i><b>DINT</b></i> </p>
+  <p class="indent">Remote device starting address to be written </p>
+  <p><strong>src</strong></p>
+  <p class="indent"> Value of type <i><b>ARRAY[0..259] of UINT</b></i> </p>
+  <p class="indent">Content to be written</p> 
+  <p><strong>write_nb</strong></p>
+  <p class="indent"> Value of type <i><b>UINT</b></i> </p>
+  <p class="indent">number of register to be written </p>  
+    <p><strong>read_addr</strong></p>
+  <p class="indent"> Value of type <i><b>DINT</b></i> </p>
+  <p class="indent">Remote device starting address to be read </p>  
+    <p><strong>read_nb</strong></p>
+  <p class="indent"> Value of type <i><b>UINT</b></i> </p>
+  <p class="indent">number of register to be read </p>  
+  <h3>OUTPUT </h3>
+   <p><strong>dest</strong></p>
+  <p class="indent"> Value of type <i><b>ARRAY[0..259] of UINT</b></i> </p>
+  <p class="indent">Array where retrieven registers are stored</p>
+  
+  <h3>Description </h3>
+  <p>The MODBUS_WRITE_AND_READ_REGISTERS function shall write the content of the
+'write_nb' holding registers from the array 'src' to the address 'write_addr' of
+the remote device then shall read the content of the 'read_nb' holding registers
+to the address 'read_addr' of the remote device. The result of reading is stored
+in 'dest' array as word values (16 bits).
+
+'dest'must be at least (at least 'nb' * sizeof(uint16_t)).
+
+The function uses the Modbus function code 0x17 (write/read registers).
+
+
+ </p>
+</BLOCKQUOTE>
+</body>
+</html>

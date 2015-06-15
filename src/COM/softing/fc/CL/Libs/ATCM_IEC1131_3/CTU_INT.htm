@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>CTU_DINT</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>CTU</h2>
+<p>Counts rising edges. </p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION_BLOCK CTU
+VAR_INPUT  
+    CU         : BOOL R_EDGE; 
+    R          : BOOL;        
+    PV         : INT;        
+END_VAR
+VAR_OUTPUT 
+    Q          : BOOL;        
+    CV         : INT;     
+END_VAR</pre>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>CU</b></dt>
+  <dd>Value of type <i><b>BOOL </b></i>with the attribute<b> <i>R_EDGE</i></b><i><b><br>
+    </b></i>Input signal that is evaluated for edge detection.</dd>
+  <dt><i><b> </b></i></dt>
+  <dt><b>R</b></dt>
+  <dd>Value of type <i><b>BOOL<br>
+    </b></i> Resets the edge counter <i><b>CV</b></i> to zero if <i><b>TRUE</b></i>.</dd>
+  <dt><b>PV</b></dt>
+  <dd>Value of type <i><b>INT<br>
+    </b></i> Determines a maximum value for the counter variable <i><b>CV</b></i>; 
+    on reaching the maximum value, the output variable <i><b>Q</b></i> is set 
+    to<b> <i>TRUE</i></b>. This value has no effect on the counter variable <i><b>CV</b></i> 
+    itself.</dd>
+  <dt><i><b> </b></i></dt>
+</dl>
+<h3>OUTPUT</h3>
+<dl> 
+  <dt><b></b><b>Q</b></dt>
+  <dd>Value of type <b><i>BOOL</i></b><br>
+    Flag that is set to <i><b>TRUE</b></i> when the counter variable <i><b>CV</b></i> 
+    reaches or exceeds the maximum value defined in <i><b>PV</b></i>. </dd>
+  <dt><b>CV</b></dt>
+  <dd>Value of type <b><i>INT<br>
+    </i></b> Counts rising edges at input <i><b>CU</b></i>. </dd>
+  <dt>&nbsp; </dt>
+</dl>
+<h3>Description</h3>
+<p>This function block counts the rising edges at the input signal <i><b>CU</b></i> 
+  and saves the count to the counter variable <i><b>CV</b></i>. The counter variable 
+  is reset to zero when the flag <i><b>R</b></i> is set to<b> <i>TRUE</i></b>. 
+  This flag is not reset automatically. If counting is to be restarted after the 
+  reset, the flag must be reset to<b> <i>FALSE</i></b> beforehand. The variable<i> 
+  <b>Q</b></i> is set to <i><b>TRUE</b></i> when <i><b>CV</b></i> reaches or exceeds 
+  the value set in <i><b>PV</b></i>. </p>
+</body>
+</html>

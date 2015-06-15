@@ -1,0 +1,140 @@
+#H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CMN/fc_util/fc_util.inf 1     28.02.07 19:00 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: fc_util.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CMN/fc_util/fc_util.inf $
+#
+# =PROJECT             7VH102  ATCMControl
+#
+# =SWKE                CMN
+#
+# =COMPONENT           UTIL
+#
+# =CURRENT             $Date: 28.02.07 19:00 $
+#                      $Revision: 1 $
+#
+# =ENVIRONMENT         perl5:
+#                      MS Windows NT 4.0
+#                      MSVC++ V5.0 / MFC 4.2 / ATL 2.0 / DAO 3.5
+#                      MS Java 2.0
+#                      MS Visual SourceSafe 5.0
+#
+# =REFERENCES
+#==
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+#== inf-file for the UTIL component
+#	Utility functions for all SWKE's which have an visual part
+#----------------------------------------------------------------------------*
+# =MODIFICATIONS
+# $History: fc_util.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:00
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CMN/fc_util
+# 
+# *****************  Version 2  *****************
+# User: Ef           Date: 25.02.04   Time: 14:17
+# Updated in $/4Control/COM/softing/fc/CMN/fc_util
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:33
+# Created in $/4Control/COM/softing/fc/CMN/fc_util
+# 
+# *****************  Version 5  *****************
+# User: Wi           Date: 10.04.01   Time: 14:51
+# Updated in $/4Control/COM/softing/fc/CMN/fc_util
+# better distribution
+# 
+# *****************  Version 4  *****************
+# User: Su           Date: 10.04.01   Time: 12:32
+# Updated in $/4Control/COM/softing/fc/CMN/fc_util
+# 
+# *****************  Version 3  *****************
+# User: Jd           Date: 8.02.01    Time: 9:55
+# Updated in $/4Control/COM/softing/fc/CMN/fc_util
+# Changed to directory structure of ATCMControl V2.0.
+# 
+# *****************  Version 2  *****************
+# User: Su           Date: 30.01.01   Time: 16:59
+# Updated in $/4Control/COM/softing/fc/CMN/fc_util
+# 
+# *****************  Version 1  *****************
+# User: Ef           Date: 23.01.01   Time: 17:10
+# Created in $/4Control/COM/softing/fc/CMN/fc_util
+# utils and baselib from V1.3
+# 
+# *****************  Version 10  *****************
+# User: Ed           Date: 4/11/00    Time: 10:25a
+# Updated in $/4Control/COM/softing/fc/CMN/UTIL
+# 
+# *****************  Version 9  *****************
+# User: Ef           Date: 2.06.99    Time: 20:12
+# Updated in $/4Control/COM/softing/fc/CMN/UTIL
+# more st syntax
+# 
+# *****************  Version 8  *****************
+# User: Ef           Date: 1.06.99    Time: 19:16
+# Updated in $/4Control/COM/softing/fc/CMN/UTIL
+# started to integrate 4ccg sts_scan to util.dll
+# 
+# *****************  Version 7  *****************
+# User: Vo           Date: 3.11.98    Time: 11:41
+# Updated in $/4Control/COM/softing/fc/CMN/UTIL
+# Link MFC dynamically
+# 
+# *****************  Version 6  *****************
+# User: Vo           Date: 30.06.98   Time: 16:54
+# Updated in $/4Control/COM/softing/fc/CMN/UTIL
+# UTIL_GetDataTypeName
+# 
+# *****************  Version 5  *****************
+# User: Vo           Date: 9.06.98    Time: 14:12
+# Updated in $/4Control/COM/softing/fc/CMN/UTIL
+# New function UTIL_IsAdmin
+# 
+# *****************  Version 4  *****************
+# User: Su           Date: 4/02/98    Time: 7:28p
+# Updated in $/4Control/COM/softing/fc/CMN/UTIL
+# 
+# *****************  Version 3  *****************
+# User: Su           Date: 3/26/98    Time: 8:34p
+# Updated in $/4Control/COM/softing/fc/CMN/UTIL
+# 
+# *****************  Version 2  *****************
+# User: Su           Date: 3/26/98    Time: 11:44a
+# Updated in $/4Control/COM/softing/fc/CMN/UTIL
+# 
+# *****************  Version 1  *****************
+# User: Su           Date: 3/26/98    Time: 10:12a
+# Created in $/4Control/COM/softing/fc/CMN/UTIL
+#==
+#*****************************************************************************
+#H<<
+TARGET=$(EXE_DIR)\Pub\fc_util.dll
+TARGETTYPE=DLL
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(PROJECT_ROOT)\COM\softing\fc\CE\inc
+INCLUDE=$(RESOURCE_DIR)
+IMPLIB=$(LIB_DIR)\fc_util.lib
+#PCHFILE=stdafx
+DEFINE=_AFXDLL
+MASTER_RC=UTIL.RC
+yacc_lex_cg_style=1
+# do not 'exit' form lex/yacc
+DEFINE=YYEXIT
+USER=makefirst: $(INCLUDE_DIR)\IECKeywords.h
+USER=$(INCLUDE_DIR)\IECKeywords.h IECKeywordMap.cpp: IECKeywords.txt genkwmap.pl
+USER= perl -w genkwmap.pl IECkeywords.txt IECKeywordMap.cpp "$(INCLUDE_DIR)\IECKeywords.h" UTIL
+
+LATECOPY=$(EXE_DIR)\Pub\fc_util.dll $(EXE_DIR)\Engineering\bin\fc_util.dll
+

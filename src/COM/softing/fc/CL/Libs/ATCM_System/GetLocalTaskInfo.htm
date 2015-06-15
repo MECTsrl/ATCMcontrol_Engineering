@@ -1,0 +1,46 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<html>
+<head>
+<title>GetLocalTaskInfo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="lib.css"></head>
+
+
+<body bgcolor="#FFFFCC" link="#0000CE" vlink="#0000CE" alink="#0000CE">
+<h2>GetLocalTaskInfo</h2>
+<p>Provides information on the current task status.</p>
+<h3>Interface</h3>
+<pre class="preforma">FUNCTION GetLocalTaskInfo
+VAR_INPUT
+    NAME : ANY_STRING; 
+END_VAR
+
+VAR_IN_OUT
+    INFO : TASKINFO;
+END_VAR
+</pre>
+<h3>Return value</h3>
+<p>None</p>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl> 
+
+ <dt><b>NAME</b></dt>
+
+ <dd>Value of the type <i><b>ANY_STRING</b></i><br> Name of the task whose task status is to be determined. <br> If the task name passed as the parameter does not correspond to any existing task of the current project, a runtime error is generated. </dd>
+</dl>
+<h3>IN_OUT</h3>
+<dl> 
+
+ <dt><b>INFO</b></dt>
+
+ <dd>Instance of the <i><b>TASKINFO</b></i><br> Contains the information on the task status.</dd>
+</dl>
+
+
+<h3>Description</h3>
+<p><b><i>GetLocalTaskInfo</i></b> provides information on the current task status. 
+
+ The infomation is stored in an instance of the <i><b>TASKINFO</b></i> structure which must be passed to the <i><b>INFO</b></i> parameter.</p>
+</body>
+</html>

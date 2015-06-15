@@ -1,0 +1,134 @@
+/*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/inc/CG_AutoDecl.idl 1     28.02.07 19:01 Ln $
+ *----------------------------------------------------------------------------*
+ *
+ * =FILENAME            $Workfile: CG_AutoDecl.idl $
+ *                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/inc/CG_AutoDecl.idl $
+ *
+ * =PROJECT             CAK1020 ATCMControlV2.0
+ *
+ * =SWKE                4CCG
+ *
+ * =COMPONENT           CG_Autodecl
+ *
+ * =CURRENT      $Date: 28.02.07 19:01 $
+ *               $Revision: 1 $
+ *
+ * =REFERENCES
+ *
+ *----------------------------------------------------------------------------*
+ *
+
+
+
+
+
+ *==
+ *----------------------------------------------------------------------------*
+ * =DESCRIPTION
+ *    @DESCRIPTION@
+ *== Intercafe used to declare PLC predefined global variables
+ *   Can be used if there are so many decls that using a normal gvl 
+ *   is too inefficient.
+ *   Used by: - engineering watch backend
+ *            - compiler front/back ends 
+ *----------------------------------------------------------------------------*
+ * =MODIFICATION
+ *  16.05.01  EF      File created
+ *  see history at end of file !
+ *==
+ *******************************************************************************
+ H<<*/
+  
+// CG_AutoDecl.idl : IDL source for CG_AutoDecl.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (CG_AutoDecl.tlb) and marshalling code.
+
+//Conversion example:
+//  sID           sIECAddr          sIECType
+//M9711    ==>   %MW4.19422         WORD; 
+//M9711_0  ==>   %MX4.19422.0       BOOL; 
+//M9711_1  ==>   %MX4.19422.1       BOOL; 
+// .....................................
+//M9711_15  ==>   %MX4.19422.15     BOOL; 
+//
+//GD0      ==>    %ML2.1512         LREAL; 
+//A0       ==>    %MS5.0             STRING[40]; 
+//......................................
+//A1499    ==>    %MS5.1499*42       STRING[40]; 
+
+import "oaidl.idl";
+[
+    object,
+    uuid(AF69A70F-4874-11D5-8546-009027A31158),
+    helpstring("ICG_AutoDecl Interface"),
+    pointer_default(unique)
+]
+interface ICG_AutoDecl : IUnknown
+{
+    [id(1), helpstring("method init must be called once before the first call to getAddressInfo")] 
+    HRESULT init(       
+        [in,string] BSTR  sTargetTypeName,   // target type name as used by engineering
+        [in,string] BSTR  sConfigFile              //file and fullpath of the variable description file.
+    );
+        
+    [id(2), helpstring("method getAddressInfo: look up for a predefined global variable")] 
+    HRESULT getAddressInfo(       
+        [in,string] BSTR  sID,              //IEC identifier to test 
+        [out,string] BSTR*  sIECAddr,  //Target specific direct address to be used for OPC.
+        [out,string] BSTR*  sIECType,  //The IEC data type of the predefined variable
+        [out]    BOOL* bReadOnly       //true if not writable.
+    );
+    // returns S_OK if sID is predefined (OSAI) variable
+    //      or S_FALSE if not.
+    //      other values mean an internal error e.g. 
+    //          E_INVALIDARGS, E_UNEXPECTED, E_POINTER,...
+
+
+    [id(3), helpstring("method getOnlStringFromAddr: gets the OPC server address for an IEC-address")] 
+    HRESULT getOnlStringFromAddr(
+        [in,string]  BSTR sIECAddr,      //IEC direct address, example  %MW0.1
+        [in,string]  BSTR sIECType,      //the data type, example "WORD"
+        [out,string] BSTR* psOnlString   //addresses a directly data via OPC, example: __system.direct.W.2.2"
+    );
+
+
+};
+
+
+
+
+/*
+ *----------------------------------------------------------------------------*
+ *  $History: CG_AutoDecl.idl $
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.02.07   Time: 19:01
+ * Created in $/4CReleased/V2.20.00/COM/softing/fc/inc
+ * 
+ * *****************  Version 2  *****************
+ * User: Ef           Date: 12.02.04   Time: 19:29
+ * Updated in $/4Control/COM/softing/fc/inc
+ * osai: watch auto globals
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.08.03   Time: 16:34
+ * Created in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 4  *****************
+ * User: Ef           Date: 17.05.01   Time: 18:31
+ * Updated in $/4Control/COM/softing/fc/inc
+ * added init method
+ * 
+ * *****************  Version 3  *****************
+ * User: Ef           Date: 17.05.01   Time: 14:38
+ * Updated in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 2  *****************
+ * User: Ef           Date: 16.05.01   Time: 19:46
+ * Updated in $/4Control/COM/softing/fc/inc
+ * added comments
+ *==
+ *----------------------------------------------------------------------------*
+*/

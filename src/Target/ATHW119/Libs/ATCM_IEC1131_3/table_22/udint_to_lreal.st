@@ -1,0 +1,11 @@
+(*[[
+    UserURL= "ATCMfile:UDINT_TO_LREAL.htm"
+]]*)
+FUNCTION UDINT_TO_LREAL : LREAL
+VAR_INPUT
+    IN : UDINT;
+END_VAR
+
+inline{ VMOP }
+
+END_FUNCTION

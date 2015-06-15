@@ -1,0 +1,36 @@
+HKCR
+{
+	4C_20_CE.ProjectWizardComObj.1 = s '4C_20: ProjectWizardComObj Class'
+	{
+		CLSID = s '{F3B04141-CB7F-11D4-B353-0008C77981F8}'
+        'Index'
+        {
+            val Version = s '2.0'
+            val LCID = d '1033'
+        }
+	}
+	4C_20_CE.ProjectWizardComObj = s '4c_20: ProjectWizardComObj Class'
+	{
+		CLSID = s '{F3B04141-CB7F-11D4-B353-0008C77981F8}'
+		CurVer = s '4C_20_CE.ProjectWizardComObj.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {F3B04141-CB7F-11D4-B353-0008C77981F8} = s '4C_20: ProjectWizardComObj Class'
+		{
+			ProgID = s '4C_20_CE.ProjectWizardComObj.1'
+			VersionIndependentProgID = s '4C_20_CE.ProjectWizardComObj'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{F3B04131-CB7F-11D4-B353-0008C77981F8}'
+            'Implemented Categories'
+            {
+                {01C36A7a-C95B-44c6-BC55-F32082893C24}
+
+            }
+		}
+	}
+}

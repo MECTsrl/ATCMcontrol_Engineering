@@ -1,0 +1,3 @@
+VAR_GLOBAL
+	Dummy : BOOL ;
+END_VAR

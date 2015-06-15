@@ -1,0 +1,79 @@
+cpp_quote("//+---------------------------------------------------------------")
+cpp_quote("//")
+cpp_quote("//  ATCMControl 4CE")
+cpp_quote("//  Copyright 2000 - 2001 SoftingGmbH.")
+cpp_quote("//")
+cpp_quote("//----------------------------------------------------------------")
+
+#ifndef DO_NO_IMPORTS
+import "unknwn.idl";
+#endif
+
+
+//------------------------------------------------------------------*
+/**
+ * @file Callback interface to 4CE component manager. Used to query 
+ * additional COM components from the scope of other COM components.
+ *
+ * @see CECompMan.h, CECompMan.cpp
+*/
+
+
+cpp_quote("//+---------------------------------------------------------------")
+cpp_quote("// Callback interface to component manager")
+
+
+//------------------------------------------------------------------*
+/**
+ *  interface ICECompManEvents
+ *  Allows COM components to query for other COM components maintained
+ *  by the component manager residing in 4CE. The corresponding comp-
+ *  onents will be created on demand if they are not active.
+ *
+ *  @see    CECompMan.h, CECompMan.cpp
+*/
+[
+    object,
+    oleautomation,
+    uuid(3c28f88a-aa62-41b9-b56a-d55f86e9d3c9)
+]
+interface ICECompManEvents : IUnknown
+{
+	//------------------------------------------------------------------*
+	/**
+	 * OnComponentByCLSID returns the component identified by the class
+	 * id of the component. A strong reference will be returned with
+	 * the IUnknown pointer. If no COM component with the class id is registered
+	 * with the component manager, an error will be returned. If the COM
+	 * component with the class id is registered but not activated 
+	 * the activation will be performed.
+	 *
+	 * @param       sId - unique identifier to identify the component.
+	 * @param       ppUnk - reference to an IUnknown pointer receiving
+	 *              the default interface pointer of the component. Will
+	 *              be set to NULL in case of an error.
+	 *
+	 * @see			OnComponentById()			
+	*/
+	HRESULT OnComponentByCLSID([in] BSTR sCLSID, [out] IUnknown** ppUnk);
+
+	//------------------------------------------------------------------*
+	/**
+	 * OnComponentById returns the component identified by the unique
+	 * identifier string sId. A strong reference will be returned with
+	 * the IUnknown pointer. If no COM component with the id is registered
+	 * with the component manager, an error will be returned. If the COM
+	 * component with the id is registered but not activated the activation
+	 * will be performed.
+	 *
+	 * @param       sId - unique identifier to identify the component.
+	 * @param       ppUnk - reference to an IUnknown pointer receiving
+	 *              the default interface pointer of the component. Will
+	 *              be set to NULL in case of an error.
+	 *
+	 * @return		
+	 *
+	 * @see			OnComponentByCLSID()	
+	*/
+	HRESULT OnComponentById([in] BSTR sId, [out] IUnknown** ppUnk); 
+};

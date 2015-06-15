@@ -1,0 +1,26 @@
+HKCR
+{
+	4C_20_CE.KadManagerComObj.1 = s '4C_20: KadManagerComObj Class'
+	{
+		CLSID = s '{0569B97C-EC4D-11D4-B36F-0008C77981F8}'
+		'Index'
+		{
+			val Version = s '2.0'
+		}
+	}
+	4C_20_CE.KadManagerComObj = s '4C_20: KadManagerComObj Class'
+	{
+		CLSID = s '{0569B97C-EC4D-11D4-B36F-0008C77981F8}'
+		CurVer = s '4C_20_CE.KadManagerComObj.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {0569B97C-EC4D-11D4-B36F-0008C77981F8} = s '4C_20: KadManagerComObj Class'
+		{
+			ProgID = s '4C_20_CE.KadManagerComObj.1'
+			VersionIndependentProgID = s '4C_20_CE.KadManagerComObj'
+			InprocServer32 = s '%MODULE%'
+			'TypeLib' = s '{5BF1B281-D1A7-11D4-B35C-0008C77981F8}'
+		}
+	}
+}

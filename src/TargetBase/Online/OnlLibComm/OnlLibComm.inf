@@ -1,0 +1,44 @@
+# $Header: /4CReleased/V2.20.00/TargetBase/ONLINE/OnlLibComm/OnlLibComm.inf 1     28.02.07 19:06 Ln $
+# ------------------------------------------------------------------------------
+#
+# =FILENAME             $Workfile: OnlLibComm.inf $
+#                        $Logfile: /4CReleased/V2.20.00/TargetBase/ONLINE/OnlLibComm/OnlLibComm.inf $
+#
+# =PROJECT              ATCMControl V2.x
+#
+# =SWKE                 Targetbase / Online
+#
+# =COMPONENT            OnlLibComm
+#
+# =CURRENT      $Date: 28.02.07 19:06 $
+#           $Revision: 1 $
+#
+# ------------------------------------------------------------------------------
+#
+
+
+TARGET=$(TARGET_BASE)\lib\OnlLibComm.lib
+
+TARGETTYPE=lib
+UNICODE=0
+DEFINE=_AFXDLL
+PCHFILE=stdafx
+
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\res
+INCLUDE=$(PROJECT_ROOT)\com\softing\fc\inc
+
+INCLUDE=..\inc
+INCLUDE=..\..\inc
+
+DEFLIB=ws2_32.lib
+
+LIBRARY=$(LIB_DIR)\fc_tools.lib
+
+#used for including vm headers
+DEFINE=INC_4C
+
+USER=makefirst:$(TARGET_BASE)\lib
+USER=$(TARGET_BASE)\lib:
+USER=  -md $@
+
+# -------------------------------------------------------------------------------

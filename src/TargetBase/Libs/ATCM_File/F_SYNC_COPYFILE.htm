@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>F_SYNC_COPYFILE</title>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="stylesheet" href="Lib.css">
+</head>
+<body bgcolor="#ffffcc">
+<h2>F_SYNC_COPYFILE</h2>
+<p>Copies a file from a source pathname to a destination pathname.</p>
+<h3>Interface</h3>
+<pre class="preforma">FUNCTION F_SYNC_COPYFILE:BOOL<br>VAR_INPUT<br>    STRSOURCENAME   : STRING;<br><br>    STRDESTNAME     : STRING;<br>END_VAR<br></pre>
+<h3>Return value</h3>
+<p>Value of the type <span style="font-style: italic;"><span
+ style="font-weight: bold;">DINT</span></span><span
+ style="font-weight: bold;"></span>, the error code, 0 if no error<span
+ style="font-style: italic;"><span style="font-weight: bold;">.</span></span><br>
+</p>
+<h3>Parameter</h3>
+<h3>INPUT</h3>
+<dl>
+  <dt><b></b><br>
+  </dt>
+  <dt><b>SRCPATHNAME </b></dt>
+  <dd>Value of the type <i><b>STRING</b></i><br>
+Source file pathname. <br>
+The file name must be indicated by a fully qualified path (for example,
+    <font face="Courier New, Courier, mono">\control\Test.txt</font>).
+If no path is specified, the final position is undefined.<br> </dd>
+</dl>
+<dl>
+  <dt><b></b><br>
+  </dt>
+  <dt><b>DESTPATHNAME </b></dt>
+  <dd>Value of the type <i><b>STRING</b></i><br>
+Name to which the file is to be renamed. <br>
+The file name must be indicated by a fully qualified path (for example,
+    <font face="Courier New, Courier, mono">\control\Test.txt</font>).
+If no path is specified, the final position is undefined.<br>
+The compiler does not check whether the syntax of the file name and
+path information is correct or whether they are plausible. </dd>
+</dl>
+<h3>Description</h3>
+<p><b><i>F_SYNC_COPYFILE</i></b> copies a file the a source pathnema name specified in
+the parameter <i><b>SRCPATHNAME</b></i> to a destination pathname specified in
+the parameter <i><b>DESTPATHNAME</b></i>. The file to e copied must exist.</p>
+</body>
+</html>

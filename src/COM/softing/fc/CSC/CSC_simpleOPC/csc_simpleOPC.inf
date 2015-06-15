@@ -1,0 +1,75 @@
+#H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CSC/CSC_simpleOPC/csc_simpleOPC.inf 1     28.02.07 19:00 Ln $
+#----------------------------------------------------------------------------*
+#
+# =FILENAME            $Workfile: csc_simpleOPC.inf $
+#                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CSC/CSC_simpleOPC/csc_simpleOPC.inf $
+#
+# =PROJECT             CAK1020  ATCMControl V2.0
+#
+# =SWKE                4CSC
+#
+# =COMPONENT           CSC_simpleOPC
+#
+# =CURRENT             $Date: 28.02.07 19:00 $
+#                      $Revision: 1 $
+#
+# =ENVIRONMENT         MS Windows NT 4.0 / MS Windows 2000
+#                      MSVC++ V6.0
+#                      MS Java 3.2
+#                      MS Visual SourceSafe 6.0
+#                      Perl5
+#
+# =REFERENCES
+#==
+#----------------------------------------------------------------------------*
+#
+
+
+
+
+
+#==
+#
+#----------------------------------------------------------------------------*
+# =DESCRIPTION
+#==
+#----------------------------------------------------------------------------*
+# =MODIFICATIONS
+# $History: csc_simpleOPC.inf $
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.02.07   Time: 19:00
+# Created in $/4CReleased/V2.20.00/COM/softing/fc/CSC/CSC_simpleOPC
+# 
+# *****************  Version 1  *****************
+# User: Ln           Date: 28.08.03   Time: 16:33
+# Created in $/4Control/COM/softing/fc/CSC/CSC_simpleOPC
+# 
+# *****************  Version 2  *****************
+# User: Ef           Date: 8.08.01    Time: 20:25
+# Updated in $/4Control/COM/softing/fc/CSC/CSC_simpleOPC
+# 
+# *****************  Version 1  *****************
+# User: Ca           Date: 8.08.01    Time: 9:59
+# Created in $/4Control/COM/softing/fc/CSC/CSC_simpleOPC
+# copied from V1.3
+#==
+#*****************************************************************************
+#H<<
+
+
+TARGET=$(EXE_DIR)\pub\csc_simpleOPC.dll
+TARGETTYPE=DLL
+STATIC_RUNTIME=0
+UNICODE=0
+INCLUDE=$(INCLUDE_DIR)
+INCLUDE=$(RESOURCE_DIR)
+DEFLIB=ole32.lib
+DEFLIB=oleaut32.lib
+DEFLIB=uuid.lib
+PCHFILE=stdafx
+DEFINE=_AFXDLL
+DEFINE=_ATL_STATIC_REGISTRY
+DEFINE=_WINDLL
+DEFINE=_USRDLL
+

@@ -1,0 +1,534 @@
+<html>
+<head>
+<title>Project Management</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Manual_GE.css">
+</head>
+
+
+<BODY BACKGROUND="pic/backgrnd.jpg">
+<h1>Project Management</h1>
+<hr>
+<h3><a name="overview"></a><font face="arial">Overview </font></h3>
+<ul>
+  <a href="#create">Create a new Project</a> <br>
+  <a href="#open">Open a Project</a> <br>
+  <a href="#close">Close the Current Project</a><br>
+  <a href="#save">Save a Project</a> <br>
+  <a href="#delete">Delete the Current Project</a> <br>
+  <a href="#convert">Convert Projects Created with an Earlier ATCMControl Version</a> 
+  <br>
+  <a href="#print">Print the Project</a> <br>
+  <a href="#generate">Generate the Project</a> <br>
+  <a href="#downloadconfig">Download the Configuration of the Current Project</a> 
+  <ul class="inul">
+    <a href="#download">Download</a> <br>
+    <a href="#changes">Download Changes</a> <br>
+    <a href="#downloadselection">Download Selection</a> 
+  </ul>
+  <a href="#debug">Debug the Project</a> <br>
+  <a href="#exit">Exit ATCM Engineering</a> 
+</ul>
+<hr style="margin-left: 44px">
+<p>This chapter will show you how to manage projects. You will learn how to create, 
+  open, close, save, print and delete a project and how to generate, download 
+  and debug it. </p>
+<h2><a name="create"></a><a href="#overview"><img src="pic/jump.gif" border=0 ></a> 
+  Create a new Project</h2>
+<p> You can create a new project by going to the <strong>File</strong> menu and 
+  clicking on <strong>New Project</strong> </p>
+<p> <i>- OR -</i></p>
+<p> by clicking on the <font face="arial"><img src="pic/IcNew.gif" ></font><strong>New 
+  Project</strong> button in the tool bar. </p>
+<p> Follow the instructions of the Wizard to create a new project. </p>
+<h2> <a name="open"></a><a href="#overview"><img src="pic/jump.gif" border=0 ></a> 
+  Open a Project </h2>
+<p>You can open a project by going to the <strong>File</strong> menu and clicking 
+  on <strong>Open Project</strong> </p>
+<p><i>- OR -</i></p>
+<p> by clicking on the <font face="arial"><img src="pic/IcOpen.gif" width="16" height="15" ></font><strong>Open 
+  Project</strong> button in the tool bar.</p>
+<h2><a name="close"></a><a href="#overview"><img src="pic/jump.gif" border=0 ></a> 
+  Close a Project </h2>
+<p>If you want to close the current project, go to the <strong>File</strong> menu 
+  and click on <strong>Close Project</strong>. <br>
+  The project is closed.</p>
+<h2> <a name="save"></a><a href="#overview"><img src="pic/jump.gif" border=0 ></a> 
+  Save the Current Project </h2>
+<h4>Save</h4>
+<p class="nachoben">You can save the current project by going to the <strong>File</strong> 
+  menu and clicking on <strong>Save Project</strong> </p>
+<p> <i>- OR - </i></p>
+<p>by clicking on the <img src="pic/IcSaveProject.gif" width="23" height="22" > 
+  <strong>Save Project</strong> button in the tool bar. <br>
+  The project is saved. </p>
+<h2><a name="delete"></a><a href="#overview"><img src="pic/jump.gif" border=0 ></a> 
+  Delete the Current Project </h2>
+<p class="zusammenhalten">You have to open a project before you can delete it.<br>
+  Then click in the <strong>File</strong> menu on <strong>Delete Project</strong>. 
+  Acknowledge the safety inquiry with <strong>Yes</strong> to delete the project.</p>
+<img src="pic/note.gif" width="32" height="31" align="left"> 
+<div style="margin-left: 5; position: relative; top: 0"> 
+  <table border="0" cellpadding="0" class="tabhinweis">
+    <tr> 
+      <td class="HinweisText"> All files of this project are deleted. </td>
+    </tr>
+  </table>
+  <h2><a name="Convert"></a><a href="#overview"><img src="pic/jump.gif" border=0 ></a> 
+    Convert Projects Created with an Earlier ATCMControl Version </h2>
+  <p>Due to the numerous changes and new features in the current ATCMControl version, 
+    it has been necessary to substantially rearrange the design of the ATCMControl 
+    project file '*.4cp'. Projects which were created with one of the ATCMControl 
+    predecessor versions can therefore no longer be loaded with the current version. 
+    Naturally, though, it has been ensured that you can continue to work with 
+    your old projects without having to carry through any changes in the project 
+    yourself. Together with the new ATCMControl version, the conversion file <i>4Convert.exe</i> 
+    responsible for the convenient conversion of older projects has been installed 
+    in the 'Eng' directory directly underneath your ATCMControl directory. This file 
+    is automatically called if you try to load a project created with a predecessor 
+    version of V1.2.</p>
+  <p>Therefore, you can directly convert a project in ATCM Engineering that was 
+    created with an earlier version than V1.2:</p>
+  <ol>
+    <li>Start ATCM Engineering and call the dialog box for opening a project with 
+      the <b>Open Project</b> option.<br>
+      <br>
+    </li>
+    <li>In this dialog box, select the desired project file. You can recognize 
+      a project file by the file ending '.4cp'.<br>
+      <br>
+      <img src="pic/OpenProject.jpg" width="426" height="264"><br>
+      <br>
+      Click on the <b>Open</b> button. <br>
+      <br>
+    </li>
+    <li>A message box is displayed which informs you that you are trying to load 
+      a project created with an earlier ATCMControl version and which asks you whether 
+      you want to convert the project to the new format. <br>
+      <br>
+      <img src="pic/Convert.gif" width="384" height="139"> <br>
+      <br>
+      Confirm this message with <b>Yes</b>. Your project is now converted to the 
+      new format.<br>
+      <br>
+    </li>
+    <li> Messages about the conversion progress are displayed in a DOS box.<br>
+      <br>
+      <img src="pic/DosConvert.gif" width="652" height="331"> <br>
+      <br>
+      During the conversion, a backup directory is created which contains your 
+      old project in the unchanged format. The backup directory is part of the 
+      same higher-level directory as your original project directory. The name 
+      of the backup directory is made up of the name of your old project directory 
+      with the ending <i>BACKUP</i>, separated from the name by an underline character, 
+      and the date and time when the directory was created. If the directory with 
+      your old project file was called <i>Pump</i>, for instance, the backup directory 
+      might be called <i>Pump_BACKUP_Wed_Jul_21_16-38-39_1999</i>. The new project, 
+      on the other hand, is in the directory where your old project was before 
+      the conversion, i.e. in our example in the <i>Pump</i> directory. You can 
+      also see the name of the backup directory in the first line of the DOS box.<br>
+      After the message <i>conversion completed successfully</i> has been displayed 
+      in the DOS box, press the <b>Enter</b> key to close the box and finish the 
+      conversion process.<br>
+      <br>
+    </li>
+    <li>Open the converted project which is now located in the directory of the 
+      original project in order to load it in ATCM Engineering and make sure that 
+      it has been converted correctly. </li>
+  </ol>
+  <p>Instead of converting an old project in ATCM Engineering, you can also call 
+    <i>4Convert.exe</i> in the DOS box or in the Windows instruction menu.</p>
+  <p>This is how you can call <i>4Convert.exe</i> in the DOS box:</p>
+  <ol>
+    <li>Click on <b>Input Request</b> in the Windows <b>Start</b> menu <img src="pic/Dosprompt.gif" width="19" height="20" align="absbottom">.</li>
+    <li>Go to the Eng directory in your ATCMControl directory.</li>
+    <li>For parameters, <i>4Convert.exe </i> needs the path and the file name 
+      of the project to be converted. Therefore, enter <i>4Convert</i> and then 
+      the path and 4cp file of your project, e.g.<i> 4Convert C:\Programs\4Control\Projects\pump.4cp</i>.</li>
+    <li>Confirm your input by pressing the <b>Enter</b> key. As has been described 
+      in point 4, your project is now converted to the new format and a backup 
+      directory with your original project is created. </li>
+    <li>After the message <i>conversion completed successfully</i> has been displayed 
+      in the DOS box, press the <b>Enter</b> key to close the box and finish the 
+      conversion process.<br>
+    </li>
+  </ol>
+  <p>If you want to call <i>4Convert.exe</i> via the instruction menu, proceed 
+    as follows:</p>
+  <ol>
+    <li>Click on <b>Execute...</b> in the Windows <b>Start</b> menu . <img src="pic/Execute.gif" width="33" height="26" align="absbottom">.</li>
+    <li>Enter the complete path of <i>4Convert.exe</i> and, separated by an empty 
+      space, the complete path of the project file to be converted.</li>
+    <li>Confirm your input with <b>OK</b>. The DOS box is opened and messages 
+      on the conversion progress are issued. During conversion, a backup directory 
+      with your old project is created. </li>
+    <li>After the message <i>conversion completed successfully</i> has been displayed 
+      in the DOS box, press the <b>Enter</b> key to close the box and finish the 
+      conversion process.<br>
+    </li>
+  </ol>
+  <h2><a name="print"></a><a href="#overview"><img src="pic/jump.gif" border=0 ></a> 
+    Print the Project </h2>
+</div>
+<p>This function prints all files of your current project. </p>
+<h4>Print setup</h4>
+<p class="nachoben"> Before the first printing, you have to set up the printer. 
+</p>
+<ol>
+  <li>Click on <strong>Print Setup...</strong> in the <strong>File</strong> menu. 
+    <br>
+    The Setup dialog is displayed. <br>
+    <br>
+    <img src="pic/printsetup.gif" > <br>
+    <br>
+  </li>
+  <li>Enter all necessary information and confirm with <strong>OK</strong>. <br>
+    <i>For more details, see your printer manual. </i></li>
+</ol>
+<h4>Print</h4>
+<p class="nachoben">You can print a project by going to the <strong>File</strong> 
+  menu and clicking on <strong>Print Project</strong> </p>
+<p><i>- OR - </i></p>
+<p>by clicking on the <img src="pic/IcPrint.gif" width="17" height="15" > <strong>Print 
+  Project</strong> button in the tool bar. <br>
+  The project is printed.</p>
+<h2> <a name="generate"></a><a href="#overview"><img src="pic/jump.gif" border=0 ></a> 
+  Generate the Project </h2>
+<img src="pic/note.gif" width="32" height="31" align="left"> 
+<div style="margin-left: 5; position: relative; top: 0"> 
+  <table border="0" cellpadding="0" class="tabhinweis">
+    <tr> 
+      <td class="HinweisText"> You must assign every configuration (default: Configuration.CON) 
+        to a PC before you can generate the project. </td>
+    </tr>
+  </table>
+</div>
+<ol>
+  <li>Click on the Hardware tree in the Navigator view. </li>
+  <li>Click on the <img src="pic/IcBuiltAll.gif" width="18" height="16"> <strong>4CProject</strong> 
+    icon with the right mouse button to open the <strong>Context</strong> menu. 
+  </li>
+  <li>Select <strong>Insert PC...</strong>.<br>
+    The Add PC dialog is displayed.</li>
+  <li>Enter the name of the PC (if necessary, look in the network area of the 
+    NT system control) and confirm it with <strong>OK</strong>. </li>
+  <li>Go to the icon of the desired PC. </li>
+  <li>Click on it with the right mouse button to open the <strong>Context</strong> 
+    menu. </li>
+  <li> Select <strong>Assignment...</strong>. .<br>
+    The Assignment dialog appears.</li>
+  <li>Select the configuration which you want to assign to the PC and click <strong>OK</strong>.<br>
+    This configuration has now been prepared for continuation of the procedure.</li>
+</ol>
+<p> The efforts in generating the code with ATCM Engineering have been reduced to 
+  a minimum. If you want to display all error messages,</p>
+<p>go to the <strong>Build</strong> menu and click on <strong>Build All</strong></p>
+<p><i>- OR - </i></p>
+<p>click on the <img src="pic/IcBuiltAll.gif" width="18" height="16" > <strong>Build 
+  All</strong> button in the tool bar. </p>
+<p> The Message view is displayed in the lower part of the ATCM Engineering window; 
+  all error messages and warning signals are displayed here. <br>
+  For a download, the project must have been compiled without any errors. </p>
+<h2><a name="downloadconfig"></a><a href="#overview"><img src="pic/jump.gif" border=0 ></a> 
+  Download the Configuration of the Current Project </h2>
+<p>As soon as you have generated the code, you can download it very easily on 
+  ATCM Control. To do this, proceed as described in the following. <br>
+  Depending on how many configurations belong to the current project and how many 
+  are to be downloaded simultaneously on the PCs, you can download or update different 
+  numbers of configurations on the respective ATCM Controls. </p>
+<p>During project compilation, the compiler generates domains of each object. 
+  These domains are data packages containing information on the source code and 
+  the visual display of the object. The domains are displayed in the Selective 
+  Update dialog.</p>
+<p> In the standard setting, the configuration is started directly after the download.</p>
+<h3> <a name="download"></a><font face="arial"><a href="#overview"><img src="pic/jump.gif" border=0 ></a> 
+  Download&nbsp;</font></h3>
+<h4> All configurations</h4>
+<p class="nachoben">If you want to download all configurations on all ATCM Controls 
+  in one single step,</p>
+<p class="nachoben">go to the <strong>Build</strong> menu and click on <strong>Download/All 
+  Configurations</strong></p>
+<p> <i>- OR - </i></p>
+<p>click on the <img src="pic/IcDownLAll.gif" width="19" height="17" > <strong>All 
+  Configurations</strong> button in the tool bar. </p>
+<p>If there is no debug connection to ATCM Control yet, a dialog box appears on 
+  your screen to ask you whether such a connection is to be established.<br>
+  During a debug connection, only one ATCM Engineering has access to ATCM Control. 
+</p>
+<img src="pic/debugqu_GE.gif" height=119 width=402 class="inP"> 
+<p>Click <strong>Yes</strong> if you want to download a new project.</p>
+<p> ATCM Engineering now begins to establish a debug connection.</p>
+<img src="pic/connectbox.gif" height=77 width=390 class="inP"> 
+<p> You can abort this process by clicking on the <strong>Cancel</strong> button.</p>
+<p> If the debug connection cannot be established, e.g. because another user has 
+  already established one, the following message appears after some time:</p>
+<img src="pic/dwnlderror.gif" class="inP"> 
+<p> In this case, click on <strong>Yes</strong> to interrupt the existing connection. 
+</p>
+<p>You can change the time-out, i.e. the period of time during which a connection 
+  is attempted before an error message appears, in the tab of the <strong>Options</strong> 
+  dialog box. You can call the <strong>Options</strong> dialog box by clicking 
+  on <strong>Project Settings</strong> in the <strong>Tools </strong> menu. </p>
+<img src="pic/optimeout.gif" class="inP"> 
+<p>When a debug connection has been successfully established, the control code 
+  of all ATCM Controls is deleted and all configurations of the current project 
+  are downloaded simultaneously on all ATCM Controls. </p>
+<h4> <a name="downloadcontrol"></a> Selected configurations</h4>
+<p class="nachoben">To download an individual configuration on the assigned ATCM 
+  Control, go to the <strong>Build</strong> menu, click on <strong>Download</strong> 
+  and select the respective ATCM Control in the menu. The Message view at the bottom 
+  of the screen changes to the <strong>Download</strong> tab and displays the 
+  control messages. </p>
+<img src="pic/downloadpc.gif" class="inP" > 
+<p>The control code of the ATCM Control is deleted and the assigned configuration 
+  is downloaded on the selected ATCM Control. </p>
+<h3><a name="changes"></a><a href="#overview"><img src="pic/jump.gif" border=0 ></a> 
+  Download Changes </h3>
+<h4><a name="update"></a>All configurations </h4>
+<p class="nachoben">If you want to download the differences between the code of 
+  the running ATCM Control and the current status of the source code on your ATCM 
+  Engineering, you can update the running ATCM Controls.<br>
+  Other than Download All, this function takes into account only the differences 
+  between the data on ATCM Control and the current project on your ATCM Engineering. 
+  After the generation, ATCM Control is only updated in terms of the differences. 
+  This helps you save time during the download. All altered or new data are transferred 
+  to all ATCM Controls.<br>
+  Go to the <strong>Build</strong> menu and click on <strong>Download Changes 
+  / All Configurations</strong>.<br>
+  If there is no debug connection to ATCM Control yet, a dialog box appears on your 
+  screen to ask you whether such a connection is to be established.<br>
+  During a debug connection, only one ATCM Engineering has access to ATCM Control. 
+</p>
+<img src="pic/debugqu.gif" height=116 width=323 class="inP"> 
+<p>Click <strong>Yes</strong> if you want to download a new project.</p>
+<p> ATCM Engineering now begins to establish a debug connection.</p>
+<img src="pic/connectbox.gif" height=77 width=390 class="inP"> 
+<p> You can abort this process by clicking on the <strong>Cancel</strong> button.</p>
+<p>As soon as the connection has been established successfully, updating starts.</p>
+<h4><a name="updatecontrol"></a> Selected configurations</h4>
+<p class="nachoben">If you want to download the differences between the runtime 
+  code of an individual ATCM Control and the current status of the project on your 
+  ATCM Engineering, you can update each running ATCM Control separately.<br>
+  Other than Download/All Configurations, this function takes into account only 
+  the differences between the data on the selected ATCM Control and the current 
+  project on your ATCM Engineering. After the generation, ATCM Control is only updated 
+  in terms of the differences. This helps you save time during the download. All 
+  altered or new data are transferred to the selected ATCM Control. <br>
+  Go to the <strong>Build</strong> menu and click on the desired ATCM Control under 
+  <strong>Download Changes / Selected Configurations</strong>. </p>
+<img src="pic/updatecontrol.gif" class="inP" > 
+<p>The updating process begins directly after. </p>
+<h3> <a name="DownloadSelection"></a><a href="#overview"><img src="pic/jump.gif" border=0 ></a> 
+  Download Selection</h3>
+<h4><a name="overview"></a>Configuration survey</h4>
+<p class="nachoben">In the <strong>Download Overview</strong> dialog box, you 
+  can monitor the download status of all ATCM Controls of the project. You can call 
+  the dialog box by going to the <strong>Build</strong> menu and clicking on <strong>Configuration 
+  Overview</strong>. All ATCM Controls are listed with their names. You can obtain 
+  information on the name of the downloaded project, the last download, the user 
+  who last downloaded the project and the current status. </p>
+<img src="pic/downloadstate.gif" class="inP" > 
+<p>It is possible to view the differences between the data of the project on your 
+  ATCM Engineering and the content of ATCM Control by selecting the desired ATCM Control 
+  and clicking on <strong>Details</strong>. <br>
+  The Selective Update dialog is displayed. </p>
+<h4><a name="selective"></a> Selective update </h4>
+<img src="pic/selectupdate.gif" class="inP" > 
+<p> All domains of the project are listed with their names and types.<br>
+  ATCMControl compares all domains on ATCM Control with all domains of the current 
+  project on your ATCM Engineering. The differences are displayed in this dialog. 
+  In the <strong>Original Action to do</strong> column, you can obtain information 
+  on the currently proposed status of each domain on ATCM Control. This status is 
+  meant only as a proposal for each domain. It is, however, the action which ATCMControl 
+  would carry through next for the respective domain. If you click on <strong>Start 
+  Download</strong>, you will download all domains of the project on ATCM Control 
+  as they are proposed.<br>
+  You can also ignore these proposals, though,and determine precisely what is 
+  supposed to happen with the selected domain.<br>
+  To do this, click on the domain with the right mouse button. </p>
+<img src="pic/note.gif" width="32" height="31" align="left"> 
+<div style="margin-left: 5; position: relative; top: 0"> 
+  <table border="0" cellpadding="0" class="tabhinweis">
+    <tr> 
+      <td class="HinweisText"> Multiple selections are possible! Hold the Shift 
+        key down and select the desired domains. <br>
+        If several domains are selected, the <b>Context</b> menu which is displayed 
+        after a click with the right mouse button refers to all selected domains.</td>
+    </tr>
+  </table>
+</div>
+<p>The <strong>Context</strong> menu is displayed.</p>
+<img src="pic/selectiveUpdateRMaus.gif" class="inP" > 
+<p>&nbsp;</p>
+<TABLE BORDER CELLPADDING=8 BGCOLOR="#FFFFFF" width="693" >
+  <TR> 
+    <TD ALIGN=CENTER VALIGN=TOP><B><I>Status</I></B></TD>
+    <TD ALIGN=CENTER VALIGN=TOP COLSPAN="3"><B><I>Menu Item</I></B></TD>
+  </TR>
+  <TR> 
+    <TD VALIGN=TOP><B>Status of the Domain</B></TD>
+    <TD VALIGN=TOP><B>ignore</B></TD>
+    <TD VALIGN=TOP><B>delete</B></TD>
+    <TD VALIGN=TOP><B>download&nbsp;</B></TD>
+  </TR>
+  <TR> 
+    <TD VALIGN=TOP><I>New</I> <BR>
+      <IMG SRC="pic/icnewload.gif" width="17" height="15" ></TD>
+    <TD VALIGN=TOP>The new domain is not downloaded on ATCM Control.</TD>
+    <TD VALIGN=TOP>Deleting is currently not possible since this domain has not 
+      yet been downloaded on ATCM Control. Since it is not downloaded on ATCM Control 
+      anyway in this case, though, the result is the same as if the new domain 
+      had been deleted. </TD>
+    <TD VALIGN=TOP>The new domain is downloaded on ATCM Control.</TD>
+  </TR>
+  <TR> 
+    <TD VALIGN=TOP><I>Changed</I> <BR>
+      <IMG SRC="pic/icdownlall.gif" ></TD>
+    <TD VALIGN=TOP>The altered domain is not downloaded on ATCM Control. The old 
+      version of this domain remains the current one on ATCM Control.</TD>
+    <TD VALIGN=TOP>The last version of this domain which has been downloaded on 
+      ATCM Control previously is deleted. This altered version is not downloaded.</TD>
+    <TD VALIGN=TOP>The altered domain is downloaded.</TD>
+  </TR>
+  <TR> 
+    <TD VALIGN=TOP><I>Deleted</I> <BR>
+      <IMG SRC="pic/icdelete.gif" ></TD>
+    <TD VALIGN=TOP>The domain is not deleted on ATCM Control.</TD>
+    <TD VALIGN=TOP>The domain is deleted on ATCM Control.</TD>
+    <TD VALIGN=TOP>The domain is not downloaded on ATCM Control since it does not 
+      exist in the current project.</TD>
+  </TR>
+  <TR> 
+    <TD VALIGN=TOP><I>Unchanged</I><IMG SRC="pic/iccorrect.gif" ></TD>
+    <TD VALIGN=TOP>The unchanged domain is not downloaded since this is not necessary. 
+    </TD>
+    <TD VALIGN=TOP>The domain is not downloaded and the last version which is 
+      located on ATCM Control is deleted.</TD>
+    <TD VALIGN=TOP>The domain is downloaded even if it has not changed.</TD>
+  </TR>
+</TABLE>
+<p> Select the desired menu item by mouse click. The icon before the domain changes 
+  depending on the selection.</p>
+<p> To simplify the selection process, you can click on <strong>Select All</strong> 
+  and thus choose all listed domains at once. </p>
+<p>When you have changed all desired components, click on <strong>Start Donwload</strong> 
+  to start the selected actions. </p>
+<p>If you want to interrupt the download process, click on <strong>Abort Download</strong>.<br>
+  To close the dialog, click on <strong>Close</strong>. </p>
+<h2><a name="debug"></a><a href="#overview"><img src="pic/jump.gif" border=0 ></a> 
+  Debug the Project </h2>
+<p>Debugging a project helps you to find errors in your code. For debugging, you 
+  can set breakpoints and execute the code line per line in the <strong>Single 
+  Step Run</strong>.</p>
+<p> The use of breakpoints and <strong>Single Step Run</strong> is possible in 
+  the text editor as well as in the graphical editor.</p>
+<img src="pic/note.gif" width="32" height="31" align="left"> 
+<div style="margin-left: 5; position: relative; top: 0"> 
+  <table border="0" cellpadding="0" class="tabhinweis">
+    <tr> 
+      <td class="HinweisText"> You can only debug your code if a debug connection 
+        has been established. During a debug connection, only <u>one</u> ATCM Engineering 
+        may be connected to ATCM Control. To establish a debug connection, click 
+        on <strong>Enable Debug</strong> in the <strong>Control</strong> menu 
+        and select the desired <strong>configuration (the PC) </strong>.</td>
+    </tr>
+  </table>
+  <h4>Simple / advanced debugging</h4>
+  <p class="nachoben">Please note that intensive debugging affects the execution 
+    time of your code. For this reason, two debug modes are available in ATCMControl. 
+    You can determine the mode in the <strong>Debug</strong> tab in the <strong>Options</strong> 
+    dialog box. You can call this dialog box via the <strong>Project Settings 
+    </strong> option in the <strong>Tools</strong> menu. </p>
+  <img src="pic/debugsett.gif" height=284 width=344 class="inP"> 
+  <p>After you have changed the debug mode, you should recompile and download 
+    the project.</p>
+  <p> Whereas the <strong>Simple Debugging</strong> mode does not sensibly impair 
+    the runtime behavior of the control, the <strong>Advanced Debugging</strong> 
+    mode reduces system performance by approx. 30 %. The following differences 
+    exist between the two debug modes:</p>
+</div>
+<ul>
+  <li> 
+    <div style="margin-left: 5; position: relative; top: 0"> <strong>Simple debugging: 
+      </strong>Breakpoints are permitted at the beginning or end of a program 
+      or function block. In the <strong>ST</strong> code, these places are defined 
+      by the <i>first statement</i> (i.e. the first line in the code which is 
+      concluded by a semicolon after the variable declaration) and the <i>END_PROGRAM</i> 
+      or <i>END_FUNCTION_BLOCK</i> statement. In the <strong>FBD</strong> editor, 
+      specific places for the beginning and the end of a program or function block 
+      are defined in the upper left and lower right corners.<br>
+      <br>
+      <img src="pic/fbdbreak.gif" height=426 width=525> <br>
+      <br>
+    </div>
+  </li>
+  <li> 
+    <div style="margin-left: 5; position: relative; top: 0"> <strong>Advanced 
+      debugging:</strong> In this mode, breakpoints are permitted <i> in all statements 
+      </i>. Since this debug mode uses a large proportion of the system resources, 
+      system performance is reduced by approx. 30%. During compilation of a project 
+      whose debug mode has been set at <i>Advanced Debugging</i>, a message is 
+      therefore issued in the Message view that the project is compiled with advanced 
+      debug settings.<br>
+      <br>
+      <img src="pic/debugcode.gif"></div>
+  </li>
+</ul>
+<h4> <a name="breakpoint"></a>Set/remove breakpoint</h4>
+<p class="nachoben"> Breakpoints can be set for program instances and function 
+  blocks. <br>
+  To set a breakpoint,</p>
+<p> position the cursor in the source code editor in the place where you want 
+  to set the breakpoint and click on <strong>Set/Remove Breakpoint</strong> in 
+  the <strong>Context</strong> menu </p>
+<p><i>- OR -</i></p>
+<p>position the cursor in the source code editor in the place where you want to 
+  set the breakpoint and press the <strong>F9</strong> key. </p>
+<img src="pic/setbp.gif" height=431 width=510 class="inP"> 
+<p>The breakpoint is set in the editor in the nearest possible place to the current 
+  cursor position. You can recognize a set breakpoint by the red circle in the 
+  editor frame. </p>
+<img src="pic/bpaktiv.gif" height=431 width=510 class="inP"> 
+<p>To remove a breakpoint,</p>
+<p>position the cursor in the editor near the breakpoint that you want to remove 
+  and click on <strong>Set/Remove Breakpoint</strong> in the <b>Context</b> menu 
+</p>
+<p><i>- OR -</i></p>
+<p>place the cursor in the editor near the breakpoint that you want to remove 
+  and press the <strong>F9</strong> key. </p>
+<p>&nbsp;</p>
+<p>To remove all breakpoints,</p>
+<p>click on <strong>Remove All Breakpoints</strong> in the <strong>Context</strong> 
+  menu</p>
+<p> <i>- OR -</i> </p>
+<p>press the key combination <strong>Ctrl-Shift-F9</strong>. </p>
+<h4>Working with breakpoints</h4>
+<p class="nachoben">Breakpoints are represented in the editors by the following 
+  icons: </p>
+<p><img src="pic/bp2.gif" height=12 width=11> enabled breakpoint before the program 
+  execution is stopped at this position<br>
+  <img src="pic/bp1.gif" height=12 width=12> enabled breakpoint at which the program 
+  execution was stopped <br>
+  <img src="pic/bp3.gif" height=12 width=11> disabled breakpoint ignored during 
+  debugging </p>
+<p>To enable or disable a breakpoint, click on <strong>Enable/Disable Breakpoint</strong> 
+  in the <strong>Context</strong> menu</p>
+<p> <i>- OR -</i> </p>
+<p> press the key combination <strong>Ctrl-F9</strong>. 
+<p> After the breakpoint is reached, the running task changes to the <i>Break 
+  status</i>. There are two possibilities to continue program execution: </p>
+<p>Continue program execution to the next breakpoint. For this purpose, click 
+  in the <strong>Context</strong> menu on <strong>Continue</strong> or press the 
+  <strong>F5</strong> key. </p>
+<p>Execute the program up to the next place where a breakpoint is permitted (this 
+  place depends on whether advanced or simple debugging has been set). For this 
+  purpose, click in the <strong>Context</strong> menu on <strong>Single Step</strong> 
+  or press the <strong>F10</strong> key. </p>
+<h2><a name="exit"></a><a href="#overview"><img src="pic/jump.gif" border=0 ></a> 
+  Exit ATCM Engineering </h2>
+<p> To exit ATCM Engineering, go to the <strong>File</strong> menu and click on 
+  <strong>Exit</strong>. </p>
+<p>All changes which have not been saved are saved now, ATCM Engineering is closed 
+  and all connections to ATCM Control are interrupted. </p>
+</body>
+</html>

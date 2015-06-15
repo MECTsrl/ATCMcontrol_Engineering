@@ -1,0 +1,596 @@
+<html>
+<head>
+<title>Monitoring and Controlling SFC Program Sections</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Manual_GE.css">
+</head>
+
+
+<body bgcolor="#FFFFCC">
+<h1>10 Monitoring and Controlling SFC Program Sections</h1>
+<hr>
+<h3><a name="overview"></a>Overview</h3>
+<ul>
+  <a href="#SingleStep">SFC Watch Mode</a><br>
+  <a href="#MenuOptions">Menu Options for Controlling Actions and Transitions</a><a href="#forcing"><br>
+  Forcing and Blocking the Execution of Actions</a> 
+  <ul class="inul">
+    <a href="#ForceActionOnce">Forcing the one-time execution of an action</a><br>
+    <a href="#ForceActionPermanent">Forcing the permanent execution of an action</a><br>
+    <a href="#SuppressAction">Blocking the execution of an action permanently</a><br>
+    <a href="#ForceAllActions"> Forcing the permanent execution of all actions</a> 
+    <br>
+    <a href="#SuppressAllActions">Blocking the execution of all actions permanently</a> 
+    <br>
+    <a href="#RevertActions">Reverting all actions to their original states </a> 
+  </ul>
+  <a href="#ForceTransition">Forcing and blocking the execution of transitions 
+  </a> 
+  <ul class="inul">
+    <a href="#ForceTransitionOnce">Forcing a transition once</a><br>
+    <a href="#ForceTransPermanently">Forcing a transition permanently</a><br>
+    <a href="#SuppressTrans">Blocking a transition permanently</a><br>
+    <a href="#BlockAllTrans">Forcing all transitions permanently</a> <br>
+    <a href="#BlockAllTransitions">Blocking all transitions permanently</a><br>
+    <a href="#RevertTransitions">Reverting all transitions to their original states</a> 
+  </ul>
+</ul>
+<hr style="margin-left: 44px">
+<p>In general, you can use all of the possibilities for debugging SFC program 
+  sections that are available for debugging projects which do not contain SFC 
+  program sections. Furthermore, ATCMControl also offers a special SFC watch mode 
+  for SFC program sections and options with which you can influence and control 
+  specific actions and transitions in the debug mode or during the normal runtime 
+  of the project on ATCM Control. </p>
+<p>Independent of whether the normal runtime mode or the debug mode is active, 
+  the keyword <i>STEP</i> of the currently active steps and the keyword <i>ACTION</i> 
+  of the currently executed actions are highlighted in gray within the SFC program 
+  sections in the ST editor of the editor's Instance view. This shows you straight 
+  away which steps and which actions are currently being executed. </p>
+<img src="pic/markStep.gif" width="417" height="246" class="inP"> 
+<p>At the same time, the graphical representation of the active step and the upper 
+  part of the graphical representation of a currently active action are highlighted 
+  in gray in the graphic editor. If the statements associated with an action were 
+  defined in an action block, the fields for the qualifier and name of the action 
+  block are highlighted in gray. </p>
+<img src="pic/markStepGraph_Eng.gif" width="624" height="351" border="1" class="inP"> 
+<h2><a name="SingleStep"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  SFC Watch Mode</h2>
+<p>SFC program sections feature a watch mode which allows you to control switching 
+  from one step to the successor step within SFC program sections. During normal 
+  runtime, a cycle of the SFC program section is executed every time a POU (program 
+  or function block) calls an instance of an SFC program section. During this 
+  cycle, all statements within actions that are assigned to a step currently active 
+  during the execution of the cycle are executed exactly once (provided the actions 
+  are called with the qualifier <i>N</i>). If you add the value 1 to a variable 
+  within an action, for example, the variable value will be incremented by the 
+  value 1 during every cycle that is executed by an SFC program section, provided 
+  that a step assigned to the action is active.<br>
+  Basically, this also applies for the SFC watch mode, except that the transition 
+  conditions are not evaluated. A step thus does not switch to the successor step 
+  even if the corresponding transition condition is <i>TRUE</i>. Transactions 
+  are only evaluated in the SFC watch mode if you explicitly command to do so 
+  by a keystroke or menu option. In this case, the transaction evaluation is executed 
+  for exactly one SFC cycle. After that, the transition condition is suspended 
+  again until you initiate the next single step. You can thus use this procedure 
+  to execute SFC program sections step by step and determine by yourself when 
+  a transition to the next step is to be performed. </p>
+<p>When working in the SFC watch mode, please note:</p>
+<ul>
+  <li>Transitions are not forced if you activate a single SFC step. A single SFC 
+    step only serves to re-enable the transition evaluation for the duration of 
+    an SFC cycle. Only if the transition condition for activating the successor 
+    step is actually met, the successor step is activated and the predecessor 
+    step deactivated. The evaluation will only be performed for the transition 
+    whose predecessor step is currently active. </li>
+  <li>Since it is only the evaluation of the transition that is suspended in the 
+    SFC watch mode, the action assigned to the currently active step will continue 
+    to be executed.</li>
+  <li>In the SFC watch mode, the execution of all non-SFC program sections and 
+    of all SFC program sections for which the watch mode has not been activated 
+    is also continued at the normal task cycle of the assigned task. The SFC watch 
+    mode thus applies exclusively for the SFC program section for which you have 
+    activated the SFC watch mode. <br>
+  </li>
+</ul>
+<p>To activate the SFC watch mode, proceed as follows:</p>
+<ul>
+  <li>Ensure that the window of an SFC program section is displayed in the foreground 
+    of ATCM Engineering and that the Instance view of the window that is currently 
+    in the foreground is activated. <br>
+    <br>
+  </li>
+  <li>With the right mouse button, click into the window to open the <b>Context</b> 
+    menu and select the option <b>SFC Manual Mode</b><br>
+    <br>
+    <i>- OR -</i><br>
+    <br>
+    click the menu <b>Debug</b> in the menu bar of the ATCM Engineering main window 
+    and select the option <b>SFC Manual Mode</b>.<br>
+    The check that is now displayed next to the option <b>SFC Manual Mode</b> 
+    shows you that the SFC watch mode has been activated. </li>
+</ul>
+<img src="pic/note.gif"
+        width="32" height="31" align="left"> 
+<div style="margin-left: 5; position: relative; top: 0"> 
+  <table border="0" cellpadding="0" class="tabhinweis">
+    <tr> 
+      <td class="HinweisText"> POUs remain abstract data structures until a concrete 
+        instance of them is created. Variables declared in POUs will only be stored 
+        in the memory with values if instances of the corresponding POUs have 
+        been declared. For this reason, you should never forget to activate the 
+        Instance view of a window that you have opened in the editor before you 
+        start monitoring an SFC program section in the SFC watch mode. In the 
+        Class view of a POU, you are not able to assign a variable to a concrete 
+        instance. </td>
+    </tr>
+  </table>
+</div>
+<p>When the SFC watch mode is active, a blue stripe appears at the left edge of 
+  the editor in the ST editor.</p>
+<img src="pic/GraphicColor.gif" width="505" height="318" class="inP"> 
+<p>In the graphic editor, the background color changes to light blue on activation 
+  of the SFC watch mode. </p>
+<img src="pic/SingleStepColor_Eng.gif" width="640" height="357" class="inP"> 
+<p>To deactivate the SFC watch mode and return to the normal execution of the 
+  current SFC program section, click the option <b>SFC Manual Mode</b> once again 
+  in the <b>Context</b> menu or <b>Debug</b> menu. The check next to the option 
+  <b>SFC Manual Mode</b> disappears and the execution of the SFC program section 
+  is continued in the normal task cycle. </p>
+<p>If you want to execute a cycle in the SFC watch mode,</p>
+<p> go to the <b>Debug</b> menu or the <b>Context</b> menu and click the option 
+  <b>Single SFC Cycle</b><br>
+  <br>
+  <i>- OR -</i><br>
+  <br>
+  press the key <b>F11</b>.<br>
+  <br>
+  If the transaction condition for the transition to the next step is met, the 
+  actions associated with the next active step will be executed in the SFC watch 
+  mode just like during normal program run. </p>
+<p> To execute the statements contained in an action individually step by step, 
+  you can use breakpoints as usual to run one statement at a time within an action. 
+</p>
+<h2><a name="MenuOptions"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Menu Options for Controlling Actions and Transitions </h2>
+<p>The execution of actions and transitions can be controlled with the help of 
+  special menu options, independent of whether the SFC watch mode is active or 
+  whether an SFC program section is currently in normal runtime mode. You can, 
+  for example, force the execution of actions even if the associated step is not 
+  active or prevent the execution of transitions even if their transition conditions 
+  are met and the predecessor step is active. </p>
+<p>You find the options for forcing or preventing the execution of actions and 
+  transitions in the <b>Debug</b> menu of the toolbar of the ATCM Engineering main 
+  window and in the <b>Context</b> menu of the editor that is currently in the 
+  foreground. They are located in the bottom section of the <b>Context</b> menu.</p>
+<p> The options are context-sensitive which means that they are only available 
+  when your current work window in the foreground of ATCM Engineering contains the 
+  code of a POU with an SFC program section. Which action- and transition-specific 
+  menu options are available also depends on the cursor position within the ST 
+  or FBD editor window. <br>
+  These menu options can generally be divided into options that refer to all actions 
+  and transitions that exist in the current SFC program section and options that 
+  are only effective for a single action or transition. </p>
+<p>If you place the cursor on a line of the ST editor that does not contain the 
+  keywords <i>ACTION</i> or <i>TRANSITION</i>, the menu only offers options that 
+  refer to all actions and transitions.</p>
+<img src="pic/STAllOptions.gif" width="495" height="476" class="inP"> 
+<p>In the FBD editor, the menu options that refer to all transitions and actions 
+  are displayed when you place the cursor in a free area within the graphic editor. 
+</p>
+<p>In addition to the menu options that refer to all transitions and actions, 
+  options are available which refer to a specific transition or action when you 
+  place the cursor on a line of the ST editor which contains either the keyword 
+  <i>TRANSITION</i> or the keyword <i>ACTION</i>. In this case, all the options 
+  that are not of a general nature always refer to the transition or action which 
+  is located in the line on which the cursor is placed. The non-general menu options 
+  offered depend on whether a transition or an action is initiated in the line 
+  on which the cursor is currently positioned. In the first case, special options 
+  are only offered for transitions, in the latter case, they are only offered 
+  for actions. </p>
+<img src="pic/STSpecificOptions.gif" width="494" height="477" class="inP"> 
+<p><a name="so"></a>In the FBD editor, options that refer to a single transition 
+  or action are only displayed when you place the cursor on the heading area of 
+  the corresponding graphical representation. </p>
+<h2><a name="Forcing"></a><a href="#overview"><img src="pic/Jump.gif" width="10" height="9" border="0"></a> 
+  Forcing and Blocking the Execution of Actions</h2>
+<p>You can force the execution of one or several actions even if the steps assigned 
+  to these actions are currently not active and the actions would therefore not 
+  be executed in the normal sequence of the program evolution.<br>
+  You can also prevent an action from being executed even if the step assigned 
+  to an action is currently active and would therefore be executed in the normal 
+  sequence of the program evolution. </p>
+<p class="zusammenhalten">The following options are available for controlling 
+  actions: </p>
+<p class="nachoben">Options that refer to a single action:</p>
+<ul>
+  <li><a href="#ForceActionOnce">Forcing the one-time execution of an action</a></li>
+  <li><a href="#ForceActionPermanent">Forcing the permanent execution of an action</a></li>
+  <li><a href="#SuppressAction">Blocking the execution of an action permanently</a></li>
+</ul>
+<p>Options that refer to all actions contained in the current SFC program section:</p>
+<ul>
+  <li><a href="#ForceAllActions">Forcing the permanent execution of all actions</a></li>
+  <li><a href="#SuppressAllActions">Blocking the execution of all actions permanently</a></li>
+  <li><a href="#RevertActions">Reverting all actions to their original states</a></li>
+</ul>
+<h3><a name="ForceActionOnce"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Forcing the one-time execution of an action</h3>
+<p> If you force the one-time execution of an action, this action is executed 
+  exactly once during an SFC cycle with all statements it contains, independent 
+  of whether the step assigned to it is active. </p>
+<p>To force an action to be executed once, proceed as follows:</p>
+<ol>
+  <li>Ensure that the window of an SFC program section is displayed in the foreground 
+    of ATCM Engineering and that the Instance view of the window that is currently 
+    in the foreground is activated. </li>
+  <li>In the ST editor, place the cursor on the line containing the keyword <i>ACTION</i> 
+    of the action whose execution you want to force. <br>
+    In the graphic editor, place the cursor on the heading area of the graphical 
+    representation of the desired action or action block.</li>
+  <li>In the <b>Context</b> menu or <b>Debug</b> menu, click the option <b> Force 
+    Action Once</b>. <br>
+  </li>
+</ol>
+<p>An action whose execution you have forced is identified in the ST editor by 
+  displaying the keyword <i>ACTION</i> in green, together with a datatip indicating 
+  <i>forced</i>.</p>
+<img src="pic/ActionForced.gif" width="384" height="296" class="inP"> 
+<p>In the graphic editor, an action whose execution was forced is represented 
+  correspondingly: </p>
+<img src="pic/ActionForcedGr_Eng.gif" width="440" height="106" class="inP" border="1"> 
+<br>
+<br>
+<img src="pic/note.gif"
+        width="32" height="31" align="left"> 
+<div style="margin-left: 5; position: relative; top: 0"> 
+  <table border="0" cellpadding="0" class="tabhinweis">
+    <tr> 
+      <td class="HinweisText"> You usually only see the visual representation 
+        of an action whose execution was forced once if the task cycle of the 
+        calling task was set to a very high value since the time required for 
+        visualization is in most cases higher than the set task cycle. This also 
+        applies when the SFC watch mode is active since the SFC program section 
+        in this case is also called at the regular task cycle and executes actions 
+        according to the task cycle. </td>
+    </tr>
+  </table>
+  <p>An action that was forced once automatically reverts to its original state 
+    if an SFC cycle was executed after the action was forced. If the action, for 
+    example, had been blocked in the step before a one-time execution was forced, 
+    this step is reactivated after an SFC cycle was executed once. </p>
+</div>
+<h3><a name="ForceActionPermanent"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Forcing the permanent execution of an action</h3>
+<p>If you force the permanent execution of an action, this action is executed 
+  permanently with all the statements it contains in every cycle of an SFC program 
+  section, independent of whether the step assigned to it is active. Note that 
+  the permanently forced execution of an action has no effect on the transition 
+  conditions and activity of steps. The execution of all actions assigned to an 
+  active step during the cycle time of an SFC program section is thus continued 
+  besides the permanent action. </p>
+<p>To force an action to be executed permanently, proceed as follows:</p>
+<ol>
+  <li>Ensure that the window of an SFC program section is displayed in the foreground 
+    of ATCM Engineering and that the Instance view of the window that is currently 
+    in the foreground is activated. </li>
+  <li>In the ST editor, place the cursor on the line containing the keyword <i>ACTION</i> 
+    of the action whose execution you want to force. <br>
+    In the graphic editor, place the cursor on the heading area of the graphical 
+    representation of the desired action or action block.</li>
+  <li>In the <b>Context</b> menu or <b>Debug</b> menu, click the option <b> Force 
+    Action Permanently</b>. <br>
+  </li>
+</ol>
+<p> An action whose permanent execution you have forced is identified in the editor 
+  by displaying the keyword <i>ACTION</i> in green, together with a datatip indicating 
+  <i>forced permanently</i>. </p>
+<img src="pic/ActionForcedPermantly.gif" width="383" height="296" class="inP"> 
+<p>In the graphic editor, an action whose permanent execution was forced is represented 
+  correspondingly:</p>
+<img src="pic/ActionForcedPermantlyGr_Eng.gif" width="435" height="93" border="1" class="inP"> 
+<p>The action is executed permanently until you click the option <b>Force Action 
+  Permanently</b> once again so that the check that was inserted in front of the 
+  option in the <b>Context</b> menu when you selected this option disappears again. 
+</p>
+<h3><a name="SuppressAction"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Blocking the execution of an action permanently</h3>
+<p>If you block the execution of an action, this action is permanently not executed 
+  even if a step assigned to the action is active. Blocking the action only affects 
+  the action itself, not the steps assigned to the action or the conditions of 
+  transitions. The steps assigned to the action thus continue to be executed according 
+  to the regular program evolution; only the execution of the actions assigned 
+  to a step are inhibited. </p>
+<p>To block the execution of an action, proceed as follows:</p>
+<ol>
+  <li>Ensure that the window of an SFC program section is displayed in the foreground 
+    of ATCM Engineering and that the Instance view of the window that is currently 
+    in the foreground is activated. </li>
+  <li>In the ST editor, place the cursor on the keyword <i>ACTION</i> of the action 
+    whose execution you want to block. <br>
+    In the graphic editor, place the cursor on the graphical representation of 
+    the desired action or action block.</li>
+  <li>In the <b>Context</b> menu or <b>Debug</b> menu, click the option <b>Block 
+    Action Permanently</b>. <br>
+  </li>
+</ol>
+<p>An action whose execution you have blocked is identified in the editor by displaying 
+  the keyword <i>ACTION</i> in red, together with a datatip indicating <i>blocked</i>. 
+</p>
+<img src="pic/ActionBlocked.gif" width="386" height="297" class="inP"> 
+<p>In the graphic editor, an action whose execution was blocked permanently is 
+  represented correspondingly:</p>
+<img src="pic/ActionBlockedGr_Eng.gif" width="442" height="93" class="inP" border="1"> 
+<p>The execution of the action is blocked permanently until you click the option 
+  <b>Block Action Permanently</b> once again so that the check that was inserted 
+  in front of the option in the <b>Context</b> menu when you selected this option 
+  disappears again. </p>
+<h3><a name="ForceAllActions"></a> <a href="#overview"><img src="pic/Jump.gif" width="10" height="9" border="0"></a> 
+  Forcing the permanent execution of all actions</h3>
+<p>If you force the permanent execution of all actions, all actions in the current 
+  SFC program section are executed permanently in every cycle of an SFC program 
+  section, independent of whether the step assigned to them is active. Note that 
+  the permanently forced execution of an action has no effect on the transition 
+  conditions and activity of steps. </p>
+<p>To force all actions to be executed permanently, proceed as follows:</p>
+<ol>
+  <li>Ensure that the window of an SFC program section is displayed in the foreground 
+    of ATCM Engineering and that the Instance view of the window that is currently 
+    in the foreground is activated. </li>
+  <li>Place the cursor on any desired position in the ST editor or graphic editor. 
+  </li>
+  <li>In the <b>Context</b> menu or <b>Debug</b> menu, click the option <b> Force 
+    All Actions</b>. <br>
+  </li>
+</ol>
+<p>All actions are identified in the ST editor by displaying the keyword <i>ACTION</i> 
+  in green, together with a datatip indicating <i>forced permanently</i>.</p>
+<img src="pic/AllActionsForced.gif" width="388" height="401" class="inP"> 
+<p>In the graphic editor, actions whose permanent execution was forced are represented 
+  correspondingly:</p>
+<img src="pic/AllActionsForcedGr_Eng.gif" width="531" height="95" border="1" class="inP"> 
+<p>All actions are executed permanently until you click the option <b>Revert All 
+  Actions </b>to have all actions revert to their normal states. </p>
+<p> After having forced the execution of all actions, you can also have only individual 
+  actions revert to their previous states: </p>
+<ol>
+  <li>In the ST editor, place the cursor on the line containing the keyword <i>ACTION</i> 
+    of the desired action. In the graphic editor, place the cursor on the heading 
+    of the graphical representation of an action.</li>
+  <li>When you open the <b>Context</b> menu, you will see a check in front of 
+    the menu option<b> Force Action Permanently</b>. Since you have forced the 
+    permanent execution of all actions with the option<b> Force All Actions</b>, 
+    the <b>Context</b> menu of each action now shows this check. </li>
+  <li>In the <b>Context</b> menu of the desired action, click the checked option 
+    <b>Force Action Permanently</b>. The selected action now reverts to its normal 
+    state. All other actions remain in the state <i>forced</i>.</li>
+</ol>
+<h3><a name="SuppressAllActions"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Blocking the execution of all actions permanently</h3>
+<p>If you block the execution of all actions, none of the actions contained in 
+  the current SFC program section will be executed. Blocking all actions has no 
+  effect on the normal program evolution unless you set the transition conditions 
+  within the actions; this means that all steps continue to be run depending on 
+  the transition conditions, however, without executing the assigned actions.</p>
+<p>To block the execution of all actions, proceed as follows:</p>
+<ol>
+  <li>Ensure that the window of an SFC program section is displayed in the foreground 
+    of ATCM Engineering and that the Instance view of the window that is currently 
+    in the foreground is activated. </li>
+  <li>Place the cursor on any desired position in the ST editor and graphic editor. 
+  </li>
+  <li>In the <b>Context</b> menu or <b>Debug</b> menu, click the option <b>Block 
+    All Actions</b>. </li>
+</ol>
+<p>The execution of all actions is blocked permanently until you click the option 
+  <b>Block All Actions</b> once again so that the check that was inserted in front 
+  of the option when you selected this option disappears again.</p>
+<p> When you block all actions, the editor displays the keyword <i>ACTION</i> 
+  in red for each action, together with a datatip indicating <i>blocked</i> after 
+  each action name. </p>
+<img src="pic/ActionAllBlocked.gif" width="387" height="297" class="inP"> 
+<p>In the graphic editor, all actions and action blocks are written and framed 
+  in red when the execution of all actions has been blocked.</p>
+<img src="pic/ActionAllBlockedGr_Eng.gif" width="486" height="93" border="1" class="inP"> 
+<h3><a name="RevertActions"></a><a href="#overview"><img src="pic/Jump.gif" width="10" height="9" border="0"></a> 
+  Reverting all actions to their original states</h3>
+<p>Independent of whether the execution of individual actions or all actions of 
+  an SFC program section was forced or blocked, this option causes all actions 
+  to revert to their original states, which means that the forcing or blocking 
+  of all actions is canceled, and the SFC program section is executed again according 
+  to the normal program evolution. </p>
+<p>To have all actions revert to their original states, proceed as follows:</p>
+<ol>
+  <li>Ensure that the window of an SFC program section is displayed in the foreground 
+    of ATCM Engineering and that the Instance view of the window that is currently 
+    in the foreground is activated. </li>
+  <li>Place the cursor on any desired position in the ST editor and graphic editor. 
+  </li>
+  <li>In the <b>Context</b> menu or <b>Debug</b> menu, click the option <b> Revert 
+    All Actions</b>. </li>
+</ol>
+<p>The datatips of forced or blocked actions are no longer displayed, elements 
+  of actions that were highlighted in color change back to their original color.</p>
+<h2><a name="ForceTransition"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Forcing and Blocking the Execution of Transitions</h2>
+<p>You can force the execution of transitions even if the corresponding transition 
+  conditions are not met. <br>
+  You can also block the execution of transitions even if the corresponding transition 
+  conditions are met. </p>
+<p>The following options are available for controlling transitions:</p>
+<p>Options that refer to a single transition:</p>
+<ul>
+  <li> <a href="#ForceTransitionOnce">Forcing a transition once</a></li>
+  <li><a href="#ForceTransPermanently">Forcing a transition permanently</a></li>
+  <li><a href="#SuppressTrans">Blocking a transition permanently</a></li>
+</ul>
+<p>Options that refer to all transitions contained in the current SFC program 
+  section:</p>
+<ul>
+  <li><a href="#BlockAllTrans">Forcing all transitions permanently</a></li>
+  <li><a href="#BlockAllTransitions">Blocking all transitions permanently</a></li>
+  <li><a href="#RevertTransitions">Reverting all transitions to their original 
+    states</a></li>
+</ul>
+<h3><a name="ForceTransitionOnce"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Forcing a transition once</h3>
+<p>Forcing transitions is especially suitable for ensuring in the case of alternative 
+  sequences that the sequence selection leads to a specific step independent of 
+  the current transitions conditions. <br>
+  Apart from that you can use the forcing of a transition condition to cause the 
+  activation of a successor step without the transition condition, which would 
+  be required for this purpose in the normal program evolution, needing to be 
+  met. The step following the transition in this case becomes active after the 
+  transition was forced, independent of the transition condition. </p>
+<p>The status of a forced transition reverts automatically when the program evolution 
+  has reached the transition and the step following the transition has been activated. 
+  After that, the transition is again subject to the transition condition set 
+  in the normal program evolution. </p>
+<p>To force a transition once, proceed as follows:</p>
+<ol>
+  <li>Ensure that a window of an SFC program section is displayed in the foreground 
+    of ATCM Engineering and that the Instance view of the window that is currently 
+    in the foreground is activated. </li>
+  <li>In the ST editor, place the cursor on the line containing the keyword <i>TRANSITION</i> 
+    of the transition whose execution you want to force. <br>
+    In the graphic editor, place the cursor on the graphical representation of 
+    the desired transition. </li>
+  <li>In the <b>Context</b> menu or <b>Debug</b> menu, click the option <b> Force 
+    Transition Once</b>. <br>
+  </li>
+</ol>
+<p>In the ST editor, a transition whose execution you have forced is identified 
+  by displaying the keyword <i>TRANSITION</i> in green, together with a datatip 
+  indicating <i>forced</i>. </p>
+<img src="pic/TransBlockedgif.gif" width="385" height="297" class="inP"> 
+<p>In the graphic editor, a transition whose execution was forced is represented 
+  correspondingly:</p>
+<img src="pic/TransForcedGr_Eng.gif" width="643" height="247" border="1" class="inP"> 
+<h3><a name="ForceTransPermanently"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Forcing a transition permanently</h3>
+<p>If you force a transition permanently, this transition is executed whenever 
+  a step preceding the transition is active, independent of the assigned transition 
+  condition. In the case of alternative sequences, for example, you can use this 
+  method to force a specific sequence selection to always be executed independent 
+  of the transition conditions of the transitions activated in the sequence selection. 
+</p>
+<p>To force a transition permanently, proceed as follows:</p>
+<ol>
+  <li>Ensure that a window of an SFC program section is displayed in the foreground 
+    of ATCM Engineering and that the Instance view of the window that is currently 
+    in the foreground is activated. </li>
+  <li>In the ST editor, place the cursor on the line containing the keyword <i>TRANSITION</i> 
+    of the transition whose execution you want to force. <br>
+    In the graphic editor, place the cursor on the graphical representation of 
+    the desired transition. </li>
+  <li>In the <b>Context</b> menu or <b>Debug</b> menu, click the option <b> Force 
+    Transition Permanently</b>. <br>
+  </li>
+</ol>
+<p>The transition is executed permanently until you click the option <b>Force 
+  Transition Permanently</b> once again so that the check that was inserted in 
+  front of the option in the menu when you selected this option disappears again. 
+</p>
+<p>In the ST editor, a transition whose execution you have forced permanently 
+  is identified by displaying the keyword <i>TRANSITION</i> in green, together 
+  with a datatip indicating <i>forced permanently</i>. </p>
+<img src="pic/TransFordedPermanently.gif" width="390" height="301" class="inP"> 
+<p>In the graphic editor, a transition whose permanent execution was forced is 
+  represented correspondingly:</p>
+<img src="pic/TransForcedPermanentlyGr_Eng.gif" width="625" height="252" border="1" class="inP"> 
+<h3><a name="SuppressTrans"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Blocking a transition permanently</h3>
+<p>If you block a transition permanently, this transition will never be executed. 
+  In alternative sequences, for example, you can prevent a specific step from 
+  being activated by blocking the transition that precedes this step. <br>
+  Note that you can inhibit the normal program evolution of an SFC program section 
+  completely if you block a transition within a linear sequence structure. If 
+  the path from one step to the next leads exclusively over the blocked transition, 
+  for example, none of the subsequent steps can become active. The program evolution 
+  in this case stops.</p>
+<p>To block a transition permanently, proceed as follows:</p>
+<ol>
+  <li>Ensure that the window of an SFC program section is displayed in the foreground 
+    of ATCM Engineering and that the Instance view of the window that is currently 
+    in the foreground is activated. </li>
+  <li>In the ST editor, place the cursor on the line containing the keyword <i>TRANSITION</i> 
+    of the transition you want to block. <br>
+    In the graphic editor, place the cursor on the graphical representation of 
+    the desired transition. </li>
+  <li>In the <b>Context</b> menu or <b>Debug</b> menu, click the option <b> Block 
+    Transition Permanently</b>. </li>
+</ol>
+<p>A transition whose execution you have blocked permanently is identified in 
+  the editor by displaying the keyword <i>TRANSITION</i> in red, together with 
+  a datatip indicating <i>blocked</i>. </p>
+<img src="pic/TransBlocked.gif" width="385" height="296" class="inP"> 
+<p>In the graphic editor, the blocked transition is displayed correspondingly:</p>
+<img src="pic/TransBlockedGr_Eng.gif" width="612" height="254" border="1" class="inP"> 
+<h3><a name="BlockAllTrans"></a><a href="#overview"><img src="pic/Jump.gif" width="11" height="9" border="0"></a> 
+  Forcing all transitions permanently</h3>
+<p>If you force all transitions permanently, all transitions of the current SFC 
+  program section will be enabled permanently, independent of the transition conditions. 
+</p>
+<p>To force all transitions permanently, proceed as follows:</p>
+<ol>
+  <li>Ensure that a window of an SFC program section is displayed in the foreground 
+    of ATCM Engineering and that the Instance view of the window that is currently 
+    in the foreground is activated. </li>
+  <li>Place the cursor on any desired position in the ST editor and graphic editor. 
+  </li>
+  <li>In the <b>Context</b> menu or <b>Debug</b> menu, click the option <b> Force 
+    All Transitions</b>. </li>
+</ol>
+<p>When enabling all transitions, the editor displays the keyword <i>TRANSITION</i> 
+  in green for each transition, together with a datatip indicating <i>forced permanently</i> 
+  after each transition name. </p>
+<img src="pic/TransBlockedAll.gif" width="388" height="296" class="inP"> 
+<p>In the graphic editor, the representation is displayed correspondingly:</p>
+<img src="pic/TransAllForced_Eng.gif" width="609" height="256" border="1" class="inP"> 
+<h3><a name="BlockAllTransitions"></a><a href="#overview"><img src="pic/Jump.gif" width="10" height="9" border="0"></a> 
+  Blocking all transitions permanently</h3>
+<p>If you block all transitions permanently, no transition will be executed in 
+  the current SFC program section. The program evolution is suspended in the currently 
+  active step.</p>
+<p>To block all transitions permanently, proceed as follows:</p>
+<ol>
+  <li>Ensure that a window of an SFC program section is displayed in the foreground 
+    of ATCM Engineering and that the Instance view of the window that is currently 
+    in the foreground is activated. </li>
+  <li>Place the cursor on any desired position in the ST editor and graphic editor. 
+  </li>
+  <li>In the <b>Context</b> menu or <b>Debug</b> menu, click the option <b>Block 
+    All Transitions</b>. </li>
+</ol>
+<p>The execution of all transitions is blocked permanently until you click the 
+  option <b>Block All Transitions</b> once again so that the check that was inserted 
+  in front of the option in the <b>Context</b> menu when you selected this option 
+  disappears again.</p>
+<p> When you block all transitions, the editor displays the keyword <i>TRANSITION</i> 
+  in red for each transition, together with a datatip indicating <i>blocked</i> 
+  after each transition name. </p>
+<img src="pic/TransAllBlocked.gif" width="388" height="402" class="inP"> 
+<p>In the graphic editor, the representation is displayed correspondingly:</p>
+<img src="pic/TransBlockedAllGr_Eng.gif" width="615" height="253" class="inP" border="1"> 
+<h3><a name="RevertTransitions"></a><a href="#overview"><img src="pic/Jump.gif" width="10" height="9" border="0"></a> 
+  Reverting all transitions to their original states</h3>
+<p>Independent of whether the execution of individual transitions or all transitions 
+  of an SFC program section was forced or blocked, this option causes all transitions 
+  to revert to their original states, which means that the forcing or blocking 
+  of all transitions is canceled, and the SFC program section is executed again 
+  according to the normal program evolution. </p>
+<p>To have all transitions revert to their original states, proceed as follows:</p>
+<ol>
+  <li>Ensure that a window of an SFC program section is displayed in the foreground 
+    of ATCM Engineering and that the Instance view of the window that is currently 
+    in the foreground is activated. </li>
+  <li>Place the cursor on any desired position in the ST editor and graphic editor.<br>
+  </li>
+  <li>In the <b>Context</b> menu or <b>Debug</b> menu, click the option <b>Revert 
+    All Transitions</b>. </li>
+</ol>
+<p>The datatips of forced or blocked transitions are no longer displayed, elements 
+  of transitions that were highlighted in color change back to their original 
+  color.</p>
+</body>
+</html>

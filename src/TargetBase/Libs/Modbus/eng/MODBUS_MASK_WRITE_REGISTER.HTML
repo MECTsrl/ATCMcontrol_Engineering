@@ -1,0 +1,61 @@
+<html>
+
+<head>
+<title>FNC_Sceleton</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Help.css">
+</head>
+
+<body bgcolor="#FFFFCC">
+<BLOCKQUOTE> 
+  <h2>Function Name</h2>
+  <p> modbus_mask_write_register - mask a single register</p>
+  <h3>Interface</h3>
+  <p class="interface">FUNCTION MODBUS_MASK_WRITE_REGISTER : UINT</p>
+  <p class="interface">&nbsp;</p>
+  
+  <p class="interface">VAR_INPUT </p>
+  <BLOCKQUOTE class="structinterface"> 
+    <p class="interface">ctx:STRING;</p>
+  </BLOCKQUOTE>
+   <BLOCKQUOTE class="structinterface"> 
+    <p class="interface">addr:UINT;</p>
+  </BLOCKQUOTE>
+  <BLOCKQUOTE class="structinterface"> 
+    <p class="interface">and_mask:UINT;</p>
+  </BLOCKQUOTE>
+  <BLOCKQUOTE class="structinterface"> 
+    <p class="interface">or_mask:UINT;</p>
+  </BLOCKQUOTE>  
+  <p class="interface">END_VAR</p>
+  
+  <h3>Return value</h3>
+  <p>Value of type <i><b>UINT</b></i> </p>
+  <p>0 for success 1 for error </p>
+  
+  <h3>Parameters </h3>
+  <h3>INPUT </h3>
+  <p><strong>ctx</strong></p>
+  <p class="indent"> Value of type <i><b>STRING</b></i> </p>
+  <p class="indent">Context for the connection to be opened. Valid values are RTU, TCP, TCPRTU</p>
+  <p><strong>addr</strong></p>
+  <p class="indent"> Value of type <i><b>UINT</b></i> </p>
+  <p class="indent">Address of the holding register</p>
+    <p><strong>and_mask</strong></p>
+  <p class="indent"> Value of type <i><b>UINT</b></i> </p>
+  <p class="indent">AND MASK</p>
+    <p><strong>or_mask</strong></p>
+  <p class="indent"> Value of type <i><b>UINT</b></i> </p>
+  <p class="indent">OR MASK</p>
+  
+  <h3>Description </h3>
+  <p>The MODBUS_MASK_WRITE_REGISTER function shall modify the value of the
+holding register at the address 'addr' of the remote device using the algorithm:
+
+  new value = (current value AND 'and') OR ('or' AND (NOT 'and'))
+
+The function uses the Modbus function code 0x16 (mask single register).
+ </p>
+</BLOCKQUOTE>
+</body>
+</html>

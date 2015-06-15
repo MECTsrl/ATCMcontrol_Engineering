@@ -1,0 +1,133 @@
+/*H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/inc/OBJCONVERT.idl 1     28.02.07 19:01 Ln $
+ *----------------------------------------------------------------------------*
+ *
+ * =FILENAME            $Workfile: OBJCONVERT.idl $
+ *                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/inc/OBJCONVERT.idl $
+ *
+ * =PROJECT             7VH102  ATCMControl
+ *
+ * =SWKE                CMN
+ *
+ * =COMPONENT           OBJCONVERT
+ *
+ * =CURRENT             $Date: 28.02.07 19:01 $
+ *                      $Revision: 1 $
+ *
+ * =ENVIRONMENT         Win32:
+ *                      MS Windows NT 4.0
+ *                      MSVC++ V5.0 / MFC 4.2 / ATL 2.0 / DAO 3.5
+ *                      MS Java 2.0
+ *                      MS Visual SourceSafe 5.0
+ *
+ * =REFERENCES
+ *==
+ *----------------------------------------------------------------------------*
+ *
+
+ 
+
+ 
+
+ *==
+ *
+ *----------------------------------------------------------------------------*
+ * =DESCRIPTION
+ *== IDL source for OBJCONVERT.dll. COM-Objects: ObjConvert
+ *== Interfaces : IObjConvert,_IObjConvertEvents
+ *----------------------------------------------------------------------------*
+ * =MODIFICATIONS
+ * $History: OBJCONVERT.idl $
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.02.07   Time: 19:01
+ * Created in $/4CReleased/V2.20.00/COM/softing/fc/inc
+ * 
+ * *****************  Version 1  *****************
+ * User: Ln           Date: 28.08.03   Time: 16:34
+ * Created in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 1  *****************
+ * User: Oh           Date: 6/25/01    Time: 8:26a
+ * Created in $/4Control/COM/softing/fc/inc
+ * 
+ * *****************  Version 4  *****************
+ * User: Vo           Date: 22.03.99   Time: 11:42
+ * Updated in $/4Control/COM/softing/fc/Inc
+ * Added CXMLDescr object
+ * Interface function ReplaceObjectInXMLFile
+ * 
+ * *****************  Version 3  *****************
+ * User: Su           Date: 11/27/98   Time: 2:33p
+ * Updated in $/4Control/COM/softing/fc/Inc
+ * GetFileInBuffer loads file identified by object path into a buffer.
+ * 
+ * *****************  Version 2  *****************
+ * User: Su           Date: 11/02/98   Time: 4:26p
+ * Updated in $/4Control/COM/softing/fc/Inc
+ * 
+ * *****************  Version 1  *****************
+ * User: Su           Date: 11/02/98   Time: 2:24p
+ * Created in $/4Control/COM/softing/fc/Inc
+ * Initial rev.
+ *==
+ ******************************************************************************
+H<<*/
+
+// This file will be processed by the MIDL tool to
+// produce the type library (OBJCONVERT.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+cpp_quote("#define OBJPATH_CONSTID _T(\"CONST\")")
+cpp_quote("#define OBJPATH_4GRHEADER _T(\"header\")")
+
+	[
+		object,
+		uuid(C447DE44-7231-11D2-8A72-0060080993FF),
+		dual,
+        oleautomation,
+		helpstring("IObjConvert Interface"),
+		pointer_default(unique)
+	]
+	interface IObjConvert : IDispatch
+	{
+		[id(1), helpstring("Get XML description of an object (stream)")] 
+            HRESULT GetXMLFromObject([in] BSTR sObjPath,[out, retval] BSTR * psXMLStream);
+		[id(2), helpstring("Get XML description of an object (file)")] 
+            HRESULT GetXMLFileFromObject([in] BSTR sObjPath,[in] BSTR sFilePath);
+		[id(3), helpstring("method GetFileInBuffer")] HRESULT GetFileInBuffer([in] BSTR sObjPath, [out,retval] BSTR* psBuffer);
+		[id(4), helpstring("method ReplaceObjectInXMLFile")] 
+		    HRESULT ReplaceObjectInXMLFile([in] BSTR sObjPath, [in] BSTR sReplaceFile);
+	};
+
+[
+	uuid(C447DE36-7231-11D2-8A72-0060080993FF),
+	version(1.0),
+	helpstring("OBJCONVERT 1.0 Type Library")
+]
+library OBJCONVERTLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(C447DE46-7231-11D2-8A72-0060080993FF),
+		helpstring("_IObjConvertEvents Interface")
+	]
+	dispinterface _IObjConvertEvents
+	{
+		properties:
+		methods:
+	};
+
+	[
+		uuid(C447DE45-7231-11D2-8A72-0060080993FF),
+		helpstring("4Control: Object Converter class")
+	]
+	coclass ObjConvert
+	{
+		[default] interface IObjConvert;
+		[default, source] dispinterface _IObjConvertEvents;
+	};
+};

@@ -1,0 +1,42 @@
+HKCR
+{
+	4C_20.PouVarSelection.1 = s '4C_20: PouVarSelelction Class'
+	{
+		CLSID = s '{7AF62965-DB27-4AC9-8351-D71F0A839639}'
+        'Index' 
+        { 
+            val Version = s '2.0' 
+            val LCID = d '1033' 
+        } 
+	}
+	4C_20.PouVarSelection = s '4C_20: PouVarSelelction Class'
+	{
+		CLSID = s '{7AF62965-DB27-4AC9-8351-D71F0A839639}'
+		CurVer = s '4C_20.PouVarSelection.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {7AF62965-DB27-4AC9-8351-D71F0A839639} = s '4C_20: PouVarSelelction Class'
+		{
+			ProgID = s '4C_20.PouVarSelection.1'
+			VersionIndependentProgID = s '4C_20.PouVarSelection'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 102'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '131473'
+			}
+			'TypeLib' = s '{C8983993-8560-4BD1-8D29-598D0E90436A}'
+			'Version' = s '2.0'
+            'Implemented Categories'
+            {
+                {01C36A78-C95B-44c6-BC55-F32082893C24}
+            }
+		}
+	}
+}

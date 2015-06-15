@@ -1,0 +1,58 @@
+;H>> $Header: /4CReleased/V2.20.00/COM/softing/fc/CSC/CSC_simpleOPC/CSC_simpleOPC.def 1     28.02.07 19:00 Ln $
+;----------------------------------------------------------------------------*
+;
+; =FILENAME            $Workfile: CSC_simpleOPC.def $
+;                      $Logfile: /4CReleased/V2.20.00/COM/softing/fc/CSC/CSC_simpleOPC/CSC_simpleOPC.def $
+;
+; =PROJECT             CAK1020  ATCMControl V2.0
+;
+; =SWKE                4CSC
+;
+; =COMPONENT           simple sync OPC client
+;
+; =CURRENT             $Date: 28.02.07 19:00 $
+;                      $Revision: 1 $
+;
+; =ENVIRONMENT         MS Windows NT 4.0 / MS Windows 2000
+;                      MSVC++ V6.0
+;                      MS Java 3.2
+;                      MS Visual SourceSafe 6.0
+;                      Perl5
+;
+; =REFERENCES
+;==
+;----------------------------------------------------------------------------*
+;
+;
+;----------------------------------------------------------------------------*
+; =DESCRIPTION
+;==
+;----------------------------------------------------------------------------*
+; =MODIFICATIONS
+; $History: CSC_simpleOPC.def $
+; 
+; *****************  Version 1  *****************
+; User: Ln           Date: 28.02.07   Time: 19:00
+; Created in $/4CReleased/V2.20.00/COM/softing/fc/CSC/CSC_simpleOPC
+; 
+; *****************  Version 1  *****************
+; User: Ln           Date: 28.08.03   Time: 16:33
+; Created in $/4Control/COM/softing/fc/CSC/CSC_simpleOPC
+; 
+; *****************  Version 1  *****************
+; User: Ca           Date: 8.08.01    Time: 9:59
+; Created in $/4Control/COM/softing/fc/CSC/CSC_simpleOPC
+; copied from V1.3
+;==
+;*****************************************************************************
+;H<<
+
+; CSC_simpleOPC.def : Declares the module parameters.
+
+LIBRARY      "CSC_simpleOPC.DLL"
+
+EXPORTS
+	DllCanUnloadNow     @1 PRIVATE
+	DllGetClassObject   @2 PRIVATE
+	DllRegisterServer   @3 PRIVATE
+	DllUnregisterServer	@4 PRIVATE

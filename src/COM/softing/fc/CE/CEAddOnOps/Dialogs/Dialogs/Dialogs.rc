@@ -1,0 +1,952 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 7, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\Dialogs.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.deu\\afxres.rc""          // Standard components\r\n"
+    "#include ""version.rc2""   // generic version resource\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PROPDECL_COLHEAD_1  "Storage,Name,Alias,Type,Initial Value,Comment,"
+    IDS_4CONTROL_ENG        "ATCMControl Engineering"
+    IDS_INVALID_DATATYPE    "The 'Type' field is invalid!"
+    IDS_INVALID_NAME        "The 'Name' field is invalid!"
+    IDS_PROPDECL_COLHEAD_2  "Name,Alias,Type,Initial Value,Comment,"
+    IDS_VAR_EXISTS          "Variable name already exists"
+    IDS_INS_CONST_FILE      "Insert Constant File"
+    IDS_PROP_CONST_FILE     "Constant File Properties"
+    IDS_INS_CONST           "Insert Constant"
+    IDS_PROP_CONST          "Constant Properties"
+    IDS_INS_DATA_TYPE       "Insert Data Type"
+    IDS_PROP_DATA_TYPE      "Data Type Properties"
+    IDS_INS_FUNC            "Insert Function"
+    IDS_PROP_FUNC           "Function Properties"
+    IDS_INS_FB              "Insert Function Block"
+    IDS_PROP_FB             "Function Block Properties"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_INS_GLOB_VAR        "Insert Global Variable"
+    IDS_PROP_GLOB_VAR       "Global Variable Properties"
+    IDS_INS_GLOB_VAR_FILE   "Insert Global Variable File"
+    IDS_PROP_GLOB_VAR_FILE  "Global Variable File Properties"
+    IDS_INS_OPC_IO          "Insert OPC I/O Component"
+    IDS_PROP_OPC_IO         "OPC I/O Component Properties"
+    IDS_INS_PB_IO           "Insert PB I/O Component"
+    IDS_PROP_PB_IO          "PB I/O Component Properties"
+    IDS_INS_PC              "Insert PC"
+    IDS_PROP_PC             "PC Properties"
+    IDS_INS_PROG_INST       "Insert Program Instance"
+    IDS_PROP_PROG_INST      "Program Instance Properties"
+    IDS_INS_PROG            "Insert Program"
+    IDS_PROP_PROG           "Program Properties"
+    IDS_INS_RESOURCE        "Insert Resource"
+    IDS_PROP_RESOURCE       "Resource Properties"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_INS_TASK            "Insert Task"
+    IDS_PROP_TASK           "Task Properties"
+    IDS_SOFTING_ADDON       "IEC 6 1131-3 Add On"
+    IDS_PROP_PROJECT        "Project Properties"
+    IDS_ADD_MEMBER          "Add Member"
+    IDS_MOD_MEMBER          "Modify Member"
+    IDS_INIT_VALUE          "Initial value: "
+    IDS_OBJ_NAME_MUST_NOT_EMPTY "Object name must not be empty"
+    IDS_PROG_NAME_INVALID   "Program class name '%s' is invalid."
+    IDS_CONST_VALUE         "Constant value"
+    IDS_EMPTY_EVENTSTRING   "Error: Task type event driven but no events.\nPlease specify the triggering events."
+    IDS_TASK_TIME_INVALID   "Task interval time is invalid"
+    IDS_VALUE               "Value: "
+    IDS_SELECT_FILE_HELP_URL "Select File as Help URL"
+    IDS_SELECT_FILE_AS_URL  "Select File as URL"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_POULANGUAGE_ST      "ST"
+    IDS_WIZARDNAME_ST       "Structured Text Data Type"
+    IDS_POULANGUAGE_FBD     "FBD"
+    IDS_POULANGUAGE_LD      "LD"
+    IDS_WIZARDNAME_FBD_FUNC "Function Block Diagram Function"
+    IDS_WIZARDNAME_ST_FUNC  "Structured Text Function"
+    IDS_WIZARDNAME_LD_FUNC  "Ladder Diagram Function"
+    IDS_POULANGUAGE_SFC     "SFC"
+    IDS_WIZARDNAME_FBD_FB   "Function Block Diagram FB"
+    IDS_WIZARDNAME_SFC_FB   "Sequential Function Chart FB"
+    IDS_WIZARDNAME_ST_FB    "Structured Text FB"
+    IDS_WIZARDNAME_LD_FB    "Ladder Diagram FB"
+    IDS_WIZARDNAME_FBD_PROG "Function Block Diagram Program"
+    IDS_WIZARDNAME_SFC_PROG "Sequential Function Chart Program"
+    IDS_WIZARDNAME_ST_PROG  "Structured Text Program"
+    IDS_WIZARDNAME_LD_PROG  "Ladder Diagram Program"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "ATCMControl Engineering"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_OBJ_NAME_INVALID    "Object name '%s' is invalid."
+    IDS_ERR_NO_HELP_TEMPLATE 
+                            "No help template selected.\nPlease select a template."
+    IDS_TASK_PRIORITY_EMPTY "No task priority specified."
+    IDS_ERR_EMPTY_VALUE     "Value missing."
+    IDS_INVALID_STORAGE_CLASS 
+                            "Invalid storage class.\nBOOL R_EDGE / BOOL F_EDGE\nrequires VAR_INPUT ..."
+    IDS_INVALID_TASKPRIORITY 
+                            "Invalid task priority.\\Please choose a value between\n0 (highest) and 9 (lowest)"
+    IDS_POULANGUAGE_IL      "IL"
+    IDS_WIZARDNAME_IL_FUNC  "Instruction List Function"
+    IDS_WIZARDNAME_IL_FB    "Instruction List FB"
+    IDS_WIZARDNAME_IL_PROG  "Instruction List Program"
+    IDS_EMPTY_IOSYNC        "Error: Task type IO-Synchronized but no\nchannel number / IO-Comonent name specified.\nPlease specify channel number or IO-Component name."
+    IDS_INVALID_EVENTSTRING "Error: Event string is invalid.\nComma separated list of event numbers expected.\nEvent number range is 1..64."
+    IDS_WATCHDOG_INVALID    "Error: Watchdog time value is invalid."
+END
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_OBJPROP_WIZ DIALOG DISCARDABLE  0, 0, 240, 150
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Wizards"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Name:",IDC_STATIC,7,13,22,8
+    EDITTEXT        IDC_OBJNAME,36,11,197,14,ES_AUTOHSCROLL
+    CONTROL         "List1",IDC_LIST1,"SysListView32",LVS_LIST | 
+                    LVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,7,30,226,115
+END
+
+IDD_OBJPROP_INFO DIALOG DISCARDABLE  0, 0, 240, 150
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Info"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_EDIT_TEXT1,50,19,176,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_TEXT2,50,43,176,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_TEXT3,50,67,176,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_URL,50,106,155,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BROWSE_URL,212,106,15,14
+    EDITTEXT        IDC_EDIT_HELPURL,50,123,156,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BROWSE_HELPURL,212,123,15,14
+    GROUPBOX        "Object information",IDC_STATIC,7,5,226,88
+    GROUPBOX        "Links",IDC_STATIC,7,95,226,50
+    LTEXT           "Text &1:",IDC_STATIC,12,22,23,8
+    LTEXT           "Text &2:",IDC_STATIC,12,46,23,8
+    LTEXT           "Text &3:",IDC_STATIC,12,70,23,8
+    LTEXT           "&URL:",IDC_STATIC,12,109,18,8
+    LTEXT           "&Help URL:",IDC_STATIC_INFO_HELPURL,12,126,34,8
+END
+
+IDD_OBJPROP_HELP DIALOG DISCARDABLE  0, 0, 240, 150
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Help"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Help page",IDC_STATIC,7,7,226,134
+    CONTROL         "&Generate help page",IDC_GENERATE_HELP,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,17,23,133,10
+    EDITTEXT        IDC_EDIT_TEMPLATE,50,71,155,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BROWSE_TEMPLATE,212,71,15,14
+    LTEXT           "&Template:",IDC_STATIC,12,74,32,8
+END
+
+IDD_OBJPROP_GEN_TASK DIALOG DISCARDABLE  0, 0, 246, 215
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "General"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Type:",IDC_STATIC,13,18,19,8
+    CONTROL         "Cyclic",IDC_TASKTYPE_CYCLIC,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,51,18,35,10
+    CONTROL         "Event Driven",IDC_TASKTYPE_EVENT,"Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,108,18,57,10
+    CONTROL         "IO-Sync",IDC_TASKTYPE_IOSYNC,"Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,173,18,41,10
+    LTEXT           "&Name:",IDC_STATIC,14,39,22,8
+    EDITTEXT        IDC_OBJNAME,51,36,175,14,ES_AUTOHSCROLL
+    LTEXT           "&Alias:",IDC_STATIC,14,55,18,8
+    EDITTEXT        IDC_EDIT_ALIAS,51,53,175,14,ES_AUTOHSCROLL
+    LTEXT           "&Priority:",IDC_STATIC,14,71,24,8
+    EDITTEXT        IDC_PRIORITY,51,69,120,14,ES_AUTOHSCROLL
+    CONTROL         "A&uto Start:",IDC_AUTOSTART,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | WS_TABSTOP,180,69,46,8
+    LTEXT           "I/&O Sync:",IDC_STATIC,14,140,32,8
+    EDITTEXT        IDC_IOSYNC,51,137,175,14,ES_AUTOHSCROLL
+    GROUPBOX        "Object History",IDC_STATIC,10,167,226,40
+    LTEXT           "Created:",IDC_STATIC,13,178,28,8,NOT WS_GROUP
+    LTEXT           "DT#yyyy-mm-dd-hh:mm:ss.sss",IDC_OBJPROP_CREATEDATE,63,
+                    178,109,8,NOT WS_GROUP
+    LTEXT           "Last modified:",IDC_STATIC,13,192,44,8,NOT WS_GROUP
+    LTEXT           "DT#yyyy-mm-dd-hh:mm:ss.sss",IDC_OBJPROP_LASTMODDATE,63,
+                    192,109,8,NOT WS_GROUP
+    LTEXT           "by:",IDC_STATIC,175,178,10,8,NOT WS_GROUP
+    LTEXT           "Username",IDC_OBJPROP_CREATEUSER,191,178,36,8,NOT 
+                    WS_GROUP
+    LTEXT           "by:",IDC_STATIC,175,192,10,8,NOT WS_GROUP
+    LTEXT           "Username",IDC_OBJPROP_LASTMODUSER,191,192,36,8,NOT 
+                    WS_GROUP
+    GROUPBOX        "Object Information",IDC_STATIC,10,5,226,157
+    LTEXT           "&Events:",IDC_STATIC,14,108,25,8
+    EDITTEXT        IDC_EVENTSTRING,51,105,120,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Select",IDC_TASK_SELECTEVENTS_BTN,176,105,50,14
+    LTEXT           "&Interval:",IDC_STATIC,14,91,26,8
+    EDITTEXT        IDC_INTERVAL,51,89,175,14,ES_AUTOHSCROLL
+    LTEXT           "&Watchdog:",IDC_STATIC,13,125,36,14
+    EDITTEXT        IDC_WATCHDOG,51,121,175,14,ES_AUTOHSCROLL
+    CONTROL         "&Loaded:",IDC_LOADED,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | WS_TABSTOP,180,77,46,8
+END
+
+IDD_OBJPROP_GEN_RESOURCE DIALOG DISCARDABLE  0, 0, 240, 124
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "General"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Name:",IDC_STATIC,14,25,22,8
+    EDITTEXT        IDC_OBJNAME,45,22,180,14,ES_AUTOHSCROLL
+    GROUPBOX        "Object History",IDC_STATIC,7,81,226,40
+    LTEXT           "Created:",IDC_STATIC,13,92,28,8,NOT WS_GROUP
+    LTEXT           "DT#yyyy-mm-dd-hh:mm:ss.sss",IDC_OBJPROP_CREATEDATE,63,
+                    92,109,8,NOT WS_GROUP
+    LTEXT           "Last modified:",IDC_STATIC,13,106,44,8,NOT WS_GROUP
+    LTEXT           "DT#yyyy-mm-dd-hh:mm:ss.sss",IDC_OBJPROP_LASTMODDATE,63,
+                    106,109,8,NOT WS_GROUP
+    LTEXT           "by:",IDC_STATIC,175,92,10,8,NOT WS_GROUP
+    LTEXT           "Username",IDC_OBJPROP_CREATEUSER,191,92,36,8,NOT 
+                    WS_GROUP
+    LTEXT           "by:",IDC_STATIC,175,106,10,8,NOT WS_GROUP
+    LTEXT           "Username",IDC_OBJPROP_LASTMODUSER,191,106,36,8,NOT 
+                    WS_GROUP
+    GROUPBOX        "Object Information",IDC_STATIC,10,5,226,70
+    EDITTEXT        IDC_EDIT_ALIAS,45,47,180,14,ES_AUTOHSCROLL
+    LTEXT           "&Alias:",IDC_STATIC,14,49,18,8
+END
+
+IDD_OBJPROP_GEN_PC DIALOG DISCARDABLE  0, 0, 240, 150
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "General"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Name:",IDC_STATIC,14,22,22,8
+    EDITTEXT        IDC_OBJNAME,60,19,165,14,ES_AUTOHSCROLL
+    LTEXT           "&Address:",IDC_STATIC,14,61,28,8
+    EDITTEXT        IDC_ADDRESS,60,59,165,14,ES_AUTOHSCROLL
+    LTEXT           "A&ssignment:",IDC_STATIC,14,82,39,8
+    COMBOBOX        IDC_ASSIGNMENT,60,79,165,68,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Object History",IDC_STATIC,10,105,226,40
+    LTEXT           "Created:",IDC_STATIC,15,116,28,8,NOT WS_GROUP
+    LTEXT           "DT#yyyy-mm-dd-hh:mm:ss.sss",IDC_OBJPROP_CREATEDATE,65,
+                    116,109,8,NOT WS_GROUP
+    LTEXT           "Last modified:",IDC_STATIC,15,130,44,8,NOT WS_GROUP
+    LTEXT           "DT#yyyy-mm-dd-hh:mm:ss.sss",IDC_OBJPROP_LASTMODDATE,65,
+                    130,109,8,NOT WS_GROUP
+    LTEXT           "by:",IDC_STATIC,177,116,10,8,NOT WS_GROUP
+    LTEXT           "Username",IDC_OBJPROP_CREATEUSER,193,116,36,8,NOT 
+                    WS_GROUP
+    LTEXT           "by:",IDC_STATIC,177,130,10,8,NOT WS_GROUP
+    LTEXT           "Username",IDC_OBJPROP_LASTMODUSER,193,130,36,8,NOT 
+                    WS_GROUP
+    GROUPBOX        "Object Information",IDC_STATIC,10,5,226,95
+    EDITTEXT        IDC_EDIT_ALIAS,60,39,165,14,ES_AUTOHSCROLL
+    LTEXT           "&Alias:",IDC_STATIC,14,41,18,8
+END
+
+IDD_OBJPROP_GEN_PB DIALOG DISCARDABLE  0, 0, 240, 150
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "General"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Name:",IDC_STATIC,14,27,22,8
+    EDITTEXT        IDC_OBJNAME,45,24,180,14,ES_AUTOHSCROLL
+    LTEXT           "&Channel Number.:",IDC_STATIC,14,76,58,8
+    COMBOBOX        IDC_COMBO1,91,74,134,82,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Object History",IDC_STATIC,10,105,226,40
+    LTEXT           "Created:",IDC_STATIC,15,116,28,8,NOT WS_GROUP
+    LTEXT           "DT#yyyy-mm-dd-hh:mm:ss.sss",IDC_OBJPROP_CREATEDATE,65,
+                    116,109,8,NOT WS_GROUP
+    LTEXT           "Last modified:",IDC_STATIC,15,130,44,8,NOT WS_GROUP
+    LTEXT           "DT#yyyy-mm-dd-hh:mm:ss.sss",IDC_OBJPROP_LASTMODDATE,65,
+                    130,109,8,NOT WS_GROUP
+    LTEXT           "by:",IDC_STATIC,177,116,10,8,NOT WS_GROUP
+    LTEXT           "Username",IDC_OBJPROP_CREATEUSER,193,116,36,8,NOT 
+                    WS_GROUP
+    LTEXT           "by:",IDC_STATIC,177,130,10,8,NOT WS_GROUP
+    LTEXT           "Username",IDC_OBJPROP_LASTMODUSER,193,130,36,8,NOT 
+                    WS_GROUP
+    GROUPBOX        "Object Information",IDC_STATIC,10,5,226,95
+    EDITTEXT        IDC_EDIT_ALIAS,45,49,180,14,ES_AUTOHSCROLL
+    LTEXT           "&Alias:",IDC_STATIC,14,51,18,8
+END
+
+IDD_OBJPROP_GEN_GLOBVAR DIALOG DISCARDABLE  0, 0, 240, 174
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "General"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_OBJNAME,53,20,175,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_ALIAS,53,38,175,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_COMBO1,53,56,110,138,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO2,53,71,110,122,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_VALUE,53,87,175,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_COMMENT,53,106,175,14,ES_AUTOHSCROLL
+    LTEXT           "&Name:",IDC_STATIC,14,21,22,8
+    LTEXT           "&Modifier:",IDC_STATIC,14,72,28,8
+    LTEXT           "&Typ:",IDC_STATIC,14,57,15,8
+    LTEXT           "&Initial Value:",IDC_STATIC,14,88,39,8
+    GROUPBOX        "Object History",IDC_STATIC,7,131,226,40
+    LTEXT           "Created:",IDC_STATIC,12,142,28,8,NOT WS_GROUP
+    LTEXT           "DT#yyyy-mm-dd-hh:mm:ss.sss",IDC_OBJPROP_CREATEDATE,62,
+                    142,109,8,NOT WS_GROUP
+    LTEXT           "Last modified:",IDC_STATIC,12,156,44,8,NOT WS_GROUP
+    LTEXT           "DT#yyyy-mm-dd-hh:mm:ss.sss",IDC_OBJPROP_LASTMODDATE,62,
+                    156,109,8,NOT WS_GROUP
+    LTEXT           "by:",IDC_STATIC,174,142,10,8,NOT WS_GROUP
+    LTEXT           "Username",IDC_OBJPROP_CREATEUSER,190,142,36,8,NOT 
+                    WS_GROUP
+    LTEXT           "by:",IDC_STATIC,174,156,10,8,NOT WS_GROUP
+    LTEXT           "Username",IDC_OBJPROP_LASTMODUSER,190,156,36,8,NOT 
+                    WS_GROUP
+    GROUPBOX        "Object Information",IDC_STATIC,7,4,226,126
+    LTEXT           "&Alias:",IDC_STATIC,14,39,18,8
+    LTEXT           "Comment:",IDC_STATIC,14,107,32,8
+END
+
+IDD_OBJPROP_GEN_CONST DIALOG DISCARDABLE  0, 0, 240, 150
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "General"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_OBJNAME,48,16,185,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_ALIAS,48,32,185,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_COMBO1,48,48,185,126,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_VALUE,48,63,185,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_COMMENT,48,79,185,14,ES_AUTOHSCROLL
+    LTEXT           "&Name:",IDC_STATIC,14,19,22,8
+    LTEXT           "&Type:",IDC_STATIC,14,50,19,8
+    LTEXT           "&Value:",IDC_STATIC,14,66,21,8
+    GROUPBOX        "Object History",IDC_STATIC,10,105,226,40
+    LTEXT           "Created:",IDC_STATIC,15,116,28,8,NOT WS_GROUP
+    LTEXT           "DT#yyyy-mm-dd-hh:mm:ss.sss",IDC_OBJPROP_CREATEDATE,65,
+                    116,109,8,NOT WS_GROUP
+    LTEXT           "Last modified:",IDC_STATIC,15,130,44,8,NOT WS_GROUP
+    LTEXT           "DT#yyyy-mm-dd-hh:mm:ss.sss",IDC_OBJPROP_LASTMODDATE,65,
+                    130,109,8,NOT WS_GROUP
+    LTEXT           "by:",IDC_STATIC,177,116,10,8,NOT WS_GROUP
+    LTEXT           "Username",IDC_OBJPROP_CREATEUSER,193,116,36,8,NOT 
+                    WS_GROUP
+    LTEXT           "by:",IDC_STATIC,177,130,10,8,NOT WS_GROUP
+    LTEXT           "Username",IDC_OBJPROP_LASTMODUSER,193,130,36,8,NOT 
+                    WS_GROUP
+    GROUPBOX        "Object Information",IDC_STATIC,10,5,226,95
+    LTEXT           "&Alias:",IDC_STATIC,14,35,18,8
+    LTEXT           "Comment:",IDC_STATIC,13,82,32,8
+END
+
+IDD_OBJPROP_GEN_BUTTON DIALOG DISCARDABLE  0, 0, 240, 150
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "General"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Name:",IDC_STATIC,14,32,22,8
+    EDITTEXT        IDC_OBJNAME,45,29,180,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_ALIAS,45,65,180,14,ES_AUTOHSCROLL
+    LTEXT           "&Alias:",IDC_STATIC,14,67,18,8
+    GROUPBOX        "Object History",IDC_STATIC,10,105,226,40
+    LTEXT           "Created:",IDC_STATIC,15,116,28,8,NOT WS_GROUP
+    LTEXT           "DT#yyyy-mm-dd-hh:mm:ss.sss",IDC_OBJPROP_CREATEDATE,65,
+                    116,109,8,NOT WS_GROUP
+    LTEXT           "Last modified:",IDC_STATIC,15,130,44,8,NOT WS_GROUP
+    LTEXT           "DT#yyyy-mm-dd-hh:mm:ss.sss",IDC_OBJPROP_LASTMODDATE,65,
+                    130,109,8,NOT WS_GROUP
+    LTEXT           "by:",IDC_STATIC,177,116,10,8,NOT WS_GROUP
+    LTEXT           "Username",IDC_OBJPROP_CREATEUSER,193,116,36,8,NOT 
+                    WS_GROUP
+    LTEXT           "by:",IDC_STATIC,177,130,10,8,NOT WS_GROUP
+    LTEXT           "Username",IDC_OBJPROP_LASTMODUSER,193,130,36,8,NOT 
+                    WS_GROUP
+    GROUPBOX        "Object Information",IDC_STATIC,10,5,226,95
+END
+
+IDD_OBJPROP_GEN DIALOG DISCARDABLE  0, 0, 240, 150
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "General"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Name:",IDC_STATIC,14,32,22,8
+    EDITTEXT        IDC_OBJNAME,45,29,180,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_ALIAS,45,65,180,14,ES_AUTOHSCROLL
+    LTEXT           "&Alias:",IDC_STATIC,14,67,18,8
+    GROUPBOX        "Object History",IDC_STATIC,10,105,226,40
+    LTEXT           "Created:",IDC_STATIC,15,116,28,8,NOT WS_GROUP
+    LTEXT           "DT#yyyy-mm-dd-hh:mm:ss.sss",IDC_OBJPROP_CREATEDATE,65,
+                    116,109,8,NOT WS_GROUP
+    LTEXT           "Last modified:",IDC_STATIC,15,130,44,8,NOT WS_GROUP
+    LTEXT           "DT#yyyy-mm-dd-hh:mm:ss.sss",IDC_OBJPROP_LASTMODDATE,65,
+                    130,109,8,NOT WS_GROUP
+    LTEXT           "by:",IDC_STATIC,177,116,10,8,NOT WS_GROUP
+    LTEXT           "Username",IDC_OBJPROP_CREATEUSER,193,116,36,8,NOT 
+                    WS_GROUP
+    LTEXT           "by:",IDC_STATIC,177,130,10,8,NOT WS_GROUP
+    LTEXT           "Username",IDC_OBJPROP_LASTMODUSER,193,130,36,8,NOT 
+                    WS_GROUP
+    GROUPBOX        "Object Information",IDC_STATIC,10,5,226,95
+END
+
+IDD_OBJPROP_FUNCTDECL DIALOG DISCARDABLE  0, 0, 240, 150
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Declaration"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Members:",IDC_STATIC,7,8,32,8
+    CONTROL         "List1",IDC_MEMBERS,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_NOSORTHEADER | WS_BORDER | 
+                    WS_TABSTOP,7,21,226,81
+    LTEXT           "&Return type:",IDC_STATIC,7,131,40,8
+    COMBOBOX        IDC_FUNCTTYPE,53,129,180,97,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "&Add Member",IDC_ADDMEMBER,7,107,53,14
+    PUSHBUTTON      "&Modify Member",IDC_MODIFYMEMBER,71,107,53,14,
+                    WS_DISABLED
+    PUSHBUTTON      "&Delete Member",IDC_DELETEMEMBER,135,107,53,14,
+                    WS_DISABLED
+END
+
+IDD_OBJPROP_FBDECL DIALOG DISCARDABLE  0, 0, 240, 150
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Declaration"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "&Add Member",IDC_ADDMEMBER,7,133,53,14
+    PUSHBUTTON      "&Modify Member",IDC_MODIFYMEMBER,73,133,53,14,
+                    WS_DISABLED
+    PUSHBUTTON      "&Delete Member",IDC_DELETEMEMBER,141,133,53,14,
+                    WS_DISABLED
+    CONTROL         "List1",IDC_MEMBERS,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_NOSORTHEADER | WS_BORDER | 
+                    WS_TABSTOP,7,16,226,109
+END
+
+IDD_OBJPROP_DUTDECL DIALOG DISCARDABLE  0, 0, 240, 150
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Declaration"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "List1",IDC_MEMBERS,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_NOSORTHEADER | WS_BORDER | 
+                    WS_TABSTOP,7,16,226,91
+    PUSHBUTTON      "&Add Member",IDC_ADDMEMBER,7,113,53,14
+    PUSHBUTTON      "&Modify Member",IDC_MODIFYMEMBER,65,113,53,14,
+                    WS_DISABLED
+    PUSHBUTTON      "&Delete Member",IDC_DELETEMEMBER,121,113,53,14,
+                    WS_DISABLED
+    PUSHBUTTON      "&Up",IDC_PROP_UPMEMBER,7,133,53,14,WS_DISABLED
+    PUSHBUTTON      "D&own",IDC_PROP_DOWNMEMBER,65,133,53,14,WS_DISABLED
+END
+
+IDD_MODIFY_FBMEMBER DIALOG DISCARDABLE  0, 0, 240, 170
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Modify Member"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_FBMEMBER_NAME,51,12,182,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FBMEMBER_ALIAS,51,32,182,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_FBMEMBER_TYPE,51,52,182,89,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    EDITTEXT        IDC_FBMEMBER_INITVAL,51,72,182,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_FBMEMBER_SCLASS,51,92,122,92,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_FBMEMBER_COMMENT,51,114,182,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,62,149,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,128,149,50,14
+    LTEXT           "&Name:",IDC_STATIC,15,14,28,8
+    LTEXT           "&Alias:",IDC_STATIC,15,34,28,8
+    LTEXT           "&Type:",IDC_STATIC,15,54,28,8
+    LTEXT           "&Initial\nValue:",IDC_STATIC,15,71,28,17
+    LTEXT           "&Storage\nClass:",IDC_STATIC,15,93,28,17
+    LTEXT           "Comment:",IDC_STATIC,15,116,32,8
+END
+
+IDD_MODIFY_DUTMEMBER DIALOG DISCARDABLE  0, 0, 246, 129
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Modify Member"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_MEMBER_NAME,53,11,186,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_MEMBER_ALIAS,53,29,186,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_MEMBER_TYPE,53,47,186,70,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_MEMBER_INITVAL,53,64,186,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_MEMBER_COMMENT,53,84,186,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,62,108,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,128,108,50,14
+    LTEXT           "&Name:",IDC_STATIC,15,14,28,8
+    LTEXT           "&Alias:",IDC_STATIC,15,32,27,8
+    LTEXT           "&Type:",IDC_STATIC,15,50,28,8
+    LTEXT           "&Initial\nValue:",IDC_STATIC,15,64,28,17
+    LTEXT           "Comment:",IDC_STATIC,14,86,32,8
+END
+
+IDD_OBJPROP_GEN_PROGINST DIALOG DISCARDABLE  0, 0, 240, 154
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "General"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Name:",-1,14,22,22,8
+    EDITTEXT        IDC_OBJNAME,50,19,175,14,ES_AUTOHSCROLL
+    LTEXT           "&Program",-1,13,73,27,8
+    COMBOBOX        IDC_PROGCLASS,50,77,147,110,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Object History",-1,10,106,226,40
+    LTEXT           "Created:",-1,15,117,28,8,NOT WS_GROUP
+    LTEXT           "DT#yyyy-mm-dd-hh:mm:ss.sss",IDC_OBJPROP_CREATEDATE,65,
+                    117,109,8,NOT WS_GROUP
+    LTEXT           "Last modified:",-1,15,131,44,8,NOT WS_GROUP
+    LTEXT           "DT#yyyy-mm-dd-hh:mm:ss.sss",IDC_OBJPROP_LASTMODDATE,65,
+                    131,109,8,NOT WS_GROUP
+    LTEXT           "by:",-1,177,117,10,8,NOT WS_GROUP
+    LTEXT           "Username",IDC_OBJPROP_CREATEUSER,193,117,36,8,NOT 
+                    WS_GROUP
+    LTEXT           "by:",-1,177,131,10,8,NOT WS_GROUP
+    LTEXT           "Username",IDC_OBJPROP_LASTMODUSER,193,131,36,8,NOT 
+                    WS_GROUP
+    GROUPBOX        "Object Information",-1,9,7,226,94
+    EDITTEXT        IDC_EDIT_ALIAS,50,48,175,14,ES_AUTOHSCROLL
+    LTEXT           "&Alias:",-1,14,50,18,8
+    PUSHBUTTON      "New",IDC_NEWPROG,203,76,22,14
+    LTEXT           "Class:",-1,14,83,20,8
+END
+
+IDD_OBJPROP_GEN_PROJ DIALOG DISCARDABLE  0, 0, 240, 150
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "General"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_OBJNAME,50,19,175,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_ALIAS,50,48,175,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_LOCATION,50,75,175,14,ES_AUTOHSCROLL
+    LTEXT           "&Name:",-1,14,22,22,8
+    LTEXT           "&Location",-1,14,78,28,8
+    GROUPBOX        "Object History",-1,10,105,226,40
+    LTEXT           "Created:",-1,15,116,28,8,NOT WS_GROUP
+    LTEXT           "DT#yyyy-mm-dd-hh:mm:ss.sss",IDC_OBJPROP_CREATEDATE,65,
+                    116,109,8,NOT WS_GROUP
+    LTEXT           "Last modified:",-1,15,130,44,8,NOT WS_GROUP
+    LTEXT           "DT#yyyy-mm-dd-hh:mm:ss.sss",IDC_OBJPROP_LASTMODDATE,65,
+                    130,109,8,NOT WS_GROUP
+    LTEXT           "by:",-1,177,116,10,8,NOT WS_GROUP
+    LTEXT           "Username",IDC_OBJPROP_CREATEUSER,193,116,36,8,NOT 
+                    WS_GROUP
+    LTEXT           "by:",-1,177,130,10,8,NOT WS_GROUP
+    LTEXT           "Username",IDC_OBJPROP_LASTMODUSER,193,130,36,8,NOT 
+                    WS_GROUP
+    GROUPBOX        "Object Information",-1,9,7,226,95
+    LTEXT           "&Alias:",-1,14,50,18,8
+END
+
+IDD_OBJPROP_RESSETTINGS DIALOG DISCARDABLE  0, 0, 240, 150
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Resource Settings"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_RESOURCES,16,19,209,14,ES_AUTOHSCROLL | WS_DISABLED
+    GROUPBOX        "Resource Settings Page",IDC_STATIC,9,7,226,140
+    LTEXT           "IO Subsystems:",IDC_STATIC,17,49,50,8
+    CONTROL         "PROFIBUS DP / DP-V1",IDC_PROFI,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,74,69,92,10
+    CONTROL         "OPC Client",IDC_OPS,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,74,94,50,10
+    CONTROL         "Serial Communication",IDC_SERIAL,"Button",
+                    BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,74,120,83,10
+END
+
+IDD_OBJPROP_LIBSETTINGS DIALOG DISCARDABLE  0, 0, 240, 150
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Library Settings"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Library Settings Page",IDC_STATIC,7,7,226,140
+    PUSHBUTTON      "Add >",IDC_ADD,95,48,50,14
+    PUSHBUTTON      "< Remove",IDC_REMOVE,95,67,50,14
+    PUSHBUTTON      "Add All >>",IDC_ADDALL,95,102,50,14
+    PUSHBUTTON      "<< Remove All",IDC_REMOVEALL,95,121,50,14
+    LTEXT           "Library Path:",IDC_STATIC,15,23,40,8
+    EDITTEXT        IDC_LIBPATH,60,20,167,14,ES_AUTOHSCROLL
+    CONTROL         "List1",IDC_LIST1,"SysListView32",LVS_SMALLICON | 
+                    WS_BORDER | WS_TABSTOP,153,40,74,101
+    CONTROL         "List1",IDC_LIST2,"SysListView32",LVS_SMALLICON | 
+                    WS_BORDER | WS_TABSTOP,14,40,74,101
+END
+
+IDD_EVENTSELECT DIALOG DISCARDABLE  0, 0, 230, 255
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Event Selection"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,234,44,14
+    PUSHBUTTON      "Cancel",IDCANCEL,179,234,44,14
+    CONTROL         "List1",IDC_EVENT_LIST,"SysListView32",LVS_REPORT | 
+                    WS_BORDER | WS_TABSTOP,7,7,216,194
+    COMBOBOX        IDC_TARGET_COMBO,19,225,80,53,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Target Schema",IDC_STATIC,7,209,104,39
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_MODIFY_FBMEMBER DLGINIT
+BEGIN
+    IDC_FBMEMBER_SCLASS, 0x403, 4, 0
+0x4156, 0x0052, 
+    IDC_FBMEMBER_SCLASS, 0x403, 10, 0
+0x4156, 0x5f52, 0x4e49, 0x5550, 0x0054, 
+    IDC_FBMEMBER_SCLASS, 0x403, 11, 0
+0x4156, 0x5f52, 0x554f, 0x5054, 0x5455, "\000" 
+    IDC_FBMEMBER_SCLASS, 0x403, 11, 0
+0x4156, 0x5f52, 0x4e49, 0x4f5f, 0x5455, "\000" 
+    IDC_FBMEMBER_SCLASS, 0x403, 11, 0
+0x4156, 0x2052, 0x4552, 0x4154, 0x4e49, "\000" 
+    IDC_FBMEMBER_SCLASS, 0x403, 17, 0
+0x4156, 0x5f52, 0x4e49, 0x5550, 0x2054, 0x4552, 0x4154, 0x4e49, "\000" 
+    IDC_FBMEMBER_SCLASS, 0x403, 18, 0
+0x4156, 0x5f52, 0x554f, 0x5054, 0x5455, 0x5220, 0x5445, 0x4941, 0x004e, 
+
+    IDC_FBMEMBER_SCLASS, 0x403, 14, 0
+0x4156, 0x2052, 0x4f4e, 0x524e, 0x5445, 0x4941, 0x004e, 
+    IDC_FBMEMBER_SCLASS, 0x403, 20, 0
+0x4156, 0x5f52, 0x4e49, 0x5550, 0x2054, 0x4f4e, 0x524e, 0x5445, 0x4941, 
+0x004e, 
+    IDC_FBMEMBER_SCLASS, 0x403, 21, 0
+0x4156, 0x5f52, 0x554f, 0x5054, 0x5455, 0x4e20, 0x4e4f, 0x4552, 0x4154, 
+0x4e49, "\000" 
+    IDC_FBMEMBER_SCLASS, 0x403, 10, 0
+0x4156, 0x2052, 0x4f43, 0x534e, 0x0054, 
+    0
+END
+
+IDD_OBJPROP_GEN_GLOBVAR DLGINIT
+BEGIN
+    IDC_COMBO2, 0x403, 11, 0
+0x4156, 0x5f52, 0x4c47, 0x424f, 0x4c41, "\000" 
+    IDC_COMBO2, 0x403, 18, 0
+0x4156, 0x5f52, 0x4c47, 0x424f, 0x4c41, 0x5220, 0x5445, 0x4941, 0x004e, 
+
+    IDC_COMBO2, 0x403, 22, 0
+0x4156, 0x5f52, 0x4c47, 0x424f, 0x4c41, 0x4e20, 0x4e4f, 0x525f, 0x5445, 
+0x4941, 0x004e, 
+    IDC_COMBO2, 0x403, 20, 0
+0x4156, 0x5f52, 0x4c47, 0x424f, 0x4c41, 0x4320, 0x4e4f, 0x5453, 0x4e41, 
+0x0054, 
+    0
+END
+
+IDD_OBJPROP_GEN_PB DLGINIT
+BEGIN
+    IDC_COMBO1, 0x403, 2, 0
+0x0030, 
+    IDC_COMBO1, 0x403, 2, 0
+0x0031, 
+    IDC_COMBO1, 0x403, 2, 0
+0x0032, 
+    IDC_COMBO1, 0x403, 2, 0
+0x0033, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_WIZIMAGELIST        BITMAP  DISCARDABLE     "res\\wizimage.bmp"
+IDB_SELECTSTATES        BITMAP  DISCARDABLE     "res\\selectst.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_OBJPROP_WIZ, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 145
+    END
+
+    IDD_OBJPROP_INFO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 145
+    END
+
+    IDD_OBJPROP_HELP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 143
+    END
+
+    IDD_OBJPROP_GEN_TASK, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 239
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 208
+    END
+
+    IDD_OBJPROP_GEN_RESOURCE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 121
+    END
+
+    IDD_OBJPROP_GEN_PC, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 147
+    END
+
+    IDD_OBJPROP_GEN_PB, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 147
+    END
+
+    IDD_OBJPROP_GEN_GLOBVAR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 171
+    END
+
+    IDD_OBJPROP_GEN_CONST, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 147
+    END
+
+    IDD_OBJPROP_GEN_BUTTON, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 147
+    END
+
+    IDD_OBJPROP_GEN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 147
+    END
+
+    IDD_OBJPROP_FUNCTDECL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 147
+    END
+
+    IDD_OBJPROP_FBDECL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 147
+    END
+
+    IDD_OBJPROP_DUTDECL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 147
+    END
+
+    IDD_MODIFY_FBMEMBER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 163
+    END
+
+    IDD_MODIFY_DUTMEMBER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 239
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 122
+    END
+
+    IDD_OBJPROP_GEN_PROJ, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 147
+    END
+
+    IDD_OBJPROP_RESSETTINGS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 147
+    END
+
+    IDD_OBJPROP_LIBSETTINGS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 147
+    END
+
+    IDD_EVENTSELECT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 223
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 248
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE 7, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\Dialogs.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.deu\afxres.rc"          // Standard components
+#include "version.rc2"   // generic version resource
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

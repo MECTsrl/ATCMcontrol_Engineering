@@ -1,0 +1,19 @@
+(*[[
+    UserURL= "ATCMfile:F_SYNC_FILE.htm"
+]]*)
+
+(* F_SYNC_FILE
+ * ----------------------------------------------------------------------------
+ * Represents a file for synchronous file access.
+ * The access to this structure is not syncronized; it should not be used to 
+ * declare a global variable!
+ *)
+TYPE
+    F_SYNC_FILE : STRUCT
+        FILENAME    : STRING[255];      (* File Name                            *)
+        MODE        : DINT;             (* File access mode                     *)
+        POSITION    : DINT;             (* Start at position; returns last pos. *)
+        LSTERRCD    : DINT;             (* Last error code                      *)
+        ISOPEN      : BOOL;             (* File open                            *)
+    END_STRUCT;
+END_TYPE

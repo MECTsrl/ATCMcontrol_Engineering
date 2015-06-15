@@ -1,0 +1,13 @@
+
+(*[[
+    UserURL= "ATCM:BOOL_TO_LREAL.htm"
+]]*)
+
+FUNCTION BOOL_TO_LREAL : LREAL
+VAR_INPUT 
+    IN : BOOL; 
+END_VAR
+
+inline{%1?1.0:0.0}
+
+END_FUNCTION

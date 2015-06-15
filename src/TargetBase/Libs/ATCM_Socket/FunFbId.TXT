@@ -1,0 +1,13 @@
+; function blocks
+
+; functions
+SocketCreate            360  0  99999
+SocketBind              361  0  99999
+SocketListen            362  0  99999
+SocketAccept            363  0  99999
+SocketConnect           364  0  99999
+SocketSend              365  0  99999
+SocketReceive           366  0  99999
+SocketClose             367  0  99999
+SocketEnableNonblocking 368  0  99999
+SocketSelect				369  0  99999

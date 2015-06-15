@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>GetLocalTaskErrno</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>GetLocalTaskErrno</h2>
+<p>Yields the error number of the task passed as parameter.</p>
+<h3>Interface definition</h3>
+<pre class="preforma">FUNCTION GetLocalTaskErrno : DINT
+VAR_INPUT
+    NAME : ANY_STRING;
+END_VAR</pre>
+<h3>Return value</h3>
+<p>Value of type <i><b>DINT</b></i><br>
+  Error number<br>
+</p>
+<h3>Parameters</h3>
+<h3>INPUT</h3>
+<dl> 
+  <dt><b>NAME</b></dt>
+  <dd>Value of type <i><b>ANY_STRING</b></i><br>
+    Name of the task whose error number is to be detected. <br>
+  </dd>
+</dl>
+<h3>Description</h3>
+<p><b><i>GetLocalTaskState</i></b> returns the error number of the task passed 
+  to <i><b>NAME</b></i>. If the task passed as a parameter doesn&acute;t 
+  comply to any existing task in the current project, an exception is triggered. 
+  Possible returns: </p>
+<p><b>0 </b>No Error<br>
+  <b>2</b> Task is blocked <br>
+  <b>3</b> Runtime error in the task</p>
+</body>
+</html>

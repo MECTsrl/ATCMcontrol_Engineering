@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Task status constants</title>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="stylesheet" href="Lib.css">
+</head>
+<body bgcolor="#ffffcc">
+<h3>Constants describing task status</h3>
+<table border="1">
+  <tbody>
+    <tr>
+      <td align="center"><b>Constant</b></td>
+      <td align="center"><b>Value</b></td>
+      <td align="center"><b>Description</b></td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TSK_STATE_ERROR</b></i></td>
+      <td align="center">-1</td>
+      <td align="left">Task in error state.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TSK_STATE_ONCREATION</b></i></td>
+      <td align="center">0</td>
+      <td align="left">Task on creation (e.g. at incremental download).</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TSK_STATE_STOPPED</b></i></td>
+      <td align="center">1</td>
+      <td align="left">Task execution stopped.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TSK_STATE_RUNNING</b></i></td>
+      <td align="center">2</td>
+      <td align="left">Task running.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TSK_STATE_BREAK</b></i></td>
+      <td align="center">3</td>
+      <td align="left">Task stopped at breakpoint.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TSK_STATE_CONTINUED (not used)</b></i></td>
+      <td align="center">4</td>
+      <td align="left">Task execution continued.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TSK_STATE_STEP</b></i></td>
+      <td align="center">5</td>
+      <td align="left">Task execution continued in single step mode.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TSK_STATE_DELETED</b></i></td>
+      <td align="center">6</td>
+      <td align="left">Task deleted.</td>
+    </tr>
+    <tr>
+      <td align="left"><i><b>TSK_STATE_UNLOADED</b></i></td>
+      <td align="center">7</td>
+      <td align="left">Task removed from memory.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Description</h3>
+<p>Return values of function <i><b>TSK_GetState()</b></i> included in the library <i><b>ATCM System2</b></i>
+describing task status.
+</p>
+<p>&nbsp; </p>
+</body>
+</html>

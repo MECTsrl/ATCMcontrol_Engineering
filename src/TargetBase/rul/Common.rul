@@ -1,0 +1,102 @@
+
+// ATCMControl (Embedded AddOn) Common InstallShield Scripts
+// ----------------------------------------------------------------------------
+
+#include "isrt.h"
+#include "iswi.h"
+
+export prototype GetProductVersion(HWND);
+export prototype Reg_FBCProfiDP(HWND);
+export prototype Reg_FBCBACnet(HWND);
+
+
+// GetProductVersion
+// ----------------------------------------------------------------------------
+function GetProductVersion(hMSI) 
+	STRING svFullProdVer;
+	STRING svBuildNr; 
+	STRING svProdVerMajor;
+	STRING svProdVerMinor;    
+	STRING svProdVerServP;
+    NUMBER nvBuildNr;     
+    NUMBER nvProdVerMajor;
+    NUMBER nvProdVerMinor;
+    NUMBER nvProdVerServP;
+begin             
+
+	nvBuildNr = PRODUCT_BUILD ;	
+	NumToStr(svBuildNr, nvBuildNr);
+	nvProdVerMajor = PROD_VER_MAJOR;
+	NumToStr(svProdVerMajor, nvProdVerMajor);
+	nvProdVerMinor = PROD_VER_MINOR;
+	NumToStr(svProdVerMinor, nvProdVerMinor); 
+	nvProdVerServP = PROD_VER_SERVP;
+	NumToStr(svProdVerServP, nvProdVerServP);
+		                
+	if (StrLength(svProdVerMinor)<2)  then
+		svProdVerMinor = "0" + svProdVerMinor;
+	endif;         
+	if (StrLength(svProdVerServP)<2)  then
+		svProdVerServP = "0" + svProdVerServP;
+	endif;
+	
+		                
+    svFullProdVer =  svProdVerMajor + "." + 
+                     svProdVerMinor + "." +
+                     svProdVerServP + "." + 
+                     svBuildNr;
+                     
+	MsiSetProperty(hMSI, "ProductVersion", svFullProdVer);
+
+end;
+
+// Reg_FBCProfiDP
+// ----------------------------------------------------------------------------
+function Reg_FBCProfiDP(hMSI)   
+    STRING svInstalldir;
+    STRING szProgram;  
+    STRING szPath;
+    STRING szCmdLine;
+	NUMBER nvSize;
+    NUMBER nvRet;
+begin
+	
+	nvSize = 80;	
+	MsiGetProperty(hMSI, "INSTALLDIR", svInstalldir, nvSize);
+	szPath = svInstalldir + "Engineering\\bin\\FBConfig\\FBC_ProfiDP\\";
+	szProgram = "FBC_ProfiDP.exe";   
+	szCmdLine = " /RegServer ";
+	
+	MsiSetProperty(hMSI, "_FC_STARTEXE_PATH", szPath);
+	MsiSetProperty(hMSI, "_FC_STARTEXE_EXE", szProgram);	
+	MsiSetProperty(hMSI, "_FC_STARTEXE_PARAM", szCmdLine);
+	
+	nvRet = MsiDoAction(hMSI, "_4C_StartExecutable");
+	                             	
+end;                
+      
+// Reg_FBCBACnet
+// ----------------------------------------------------------------------------
+function Reg_FBCBACnet(hMSI)   
+    STRING svInstalldir;
+    STRING szProgram;  
+    STRING szPath;
+    STRING szCmdLine;
+	NUMBER nvSize;
+    NUMBER nvRet;
+begin
+	
+	nvSize = 80;	
+	MsiGetProperty(hMSI, "INSTALLDIR", svInstalldir, nvSize);
+	szPath = svInstalldir + "Engineering\\bin\\FBConfig\\FBC_BACnet\\";
+	szProgram = "FBC_BACnet.exe";   
+	szCmdLine = " /RegServer";
+	
+	MsiSetProperty(hMSI, "_FC_STARTEXE_PATH", szPath);
+	MsiSetProperty(hMSI, "_FC_STARTEXE_EXE", szProgram);	
+	MsiSetProperty(hMSI, "_FC_STARTEXE_PARAM", szCmdLine);
+	
+	nvRet = MsiDoAction(hMSI, "_4C_StartExecutable");
+	                             	
+end;                
+      

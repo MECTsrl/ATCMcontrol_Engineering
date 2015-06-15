@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>COMM_CHANNEL</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="Lib.css"></head>
+
+<body bgcolor="#FFFFCC">
+<h2>COMM_CHANNEL </h2>
+<p>Repr&auml;sentiert einen Kommunikationskanal f&uuml;r serielle Kommunikation.</p>
+<h3>Schnittstelle</h3>
+<pre class="preforma">TYPE
+     COMM_CHANNEL : STRUCT
+        hChannel    : DINT;             
+        iCommType   : DINT;             
+        iTimeout    : DINT;              
+     END_STRUCT;
+END_TYPE</pre>
+<h3>Parameter</h3>
+<p><b>hChannel</b></p>
+<p>Wert vom Typ <i><b>DINT</b></i>. <br>
+  Enth&auml;lt den Handle des Kanals.</p>
+<p><b>iCommType</b></p>
+<p>Wert vom Typ <i><b>DINT</b></i>. <br>
+  Verwendete Kommunikationsart. Derzeit wird nur serielle Kommunikation unterst&uuml;tzt. 
+  Einziger g&uuml;ltiger Wert ist deshalb die Konstante <i><b>CFB_Serial</b></i> 
+  oder der entsprechende Wert 0.</p>
+<p><b>iTimeout</b></p>
+<p>Wert vom Typ <i><b>DINT</b></i>. <br>
+  Enth&auml;lt den Timeout f&uuml;r Schreib- und Lesezugriffe in Millisekunden. 
+</p>
+<h3>Beschreibung</h3>
+<p> <i><b>COMM_CHANNEL</b></i> repr&auml;sentiert einen Kommunikationskanal. Eine 
+  Instanz von <i><b>COMM_CHANNEL</b></i> wird beim Herstellen einer Verbindung 
+  mit <a href="CONNECT.htm"><i><b>CONNECT</b></i></a> automatisch erzeugt und 
+  mit Werten initialisiert. Um den zu verwendenden Kommunikationskanal zu identifizieren, 
+  wird bei Read- und Write-Requests mit Instanzen von <a href="SER_READ.htm"><i><b>SER_READ</b></i></a> 
+  und <a href="SER_WRITE.htm"><i><b>SER_WRITE</b></i></a> die beim Herstellen 
+  der Verbindung generierte Instanz von <i><b>COMM_CHANNEL</b></i> an deren Parameter 
+  <i> <b>ID</b></i> &uuml;bergeben. </p>
+</body>
+</html>
