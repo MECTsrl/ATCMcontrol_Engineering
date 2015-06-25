@@ -1,7 +1,7 @@
 # ATCMcontrol_Engineering
 ATCMcontrol Engineering: the PLC SDK
 
-How to install the SDK environment for ATCMcontrol Engineering on Win7 32bit
+How to install the SDK environment for ATCMcontrol Engineering on Win7 32bit:
 
 - Install Visual Studio 6.0 / Microsoft Visual C++ 2998 x86 9.0.21022
 - Install Visual Studio 6.0 service pack 6
