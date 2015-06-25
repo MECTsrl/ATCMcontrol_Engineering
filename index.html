@@ -39,24 +39,36 @@
 <li>Install Visual Studio 6.0 / Microsoft Visual C++ 2998 x86 9.0.21022</li>
 <li>Install Visual Studio 6.0 service pack 6</li>
 <li>Install Doxygen 1.5.6</li>
+<li>create a zero byte "C:\Windows\MSJAVA.DLL" file (DOS command "type nul &gt;&gt; C:\Windows\msjava.dll") </li>
 <li>Install Microsoft Java SDK 4.0</li>
-<li>Install com.ms.xml.* classes (from classes.zip in Microsoft JVM install on WinXp)</li>
+<li>Fix Java installation  (add it to PATH and run DOS command "clspack -auto")</li>
+<li>Install MSXML 2.5</li>
 <li>Install ActivePerl 5.8.8 Build 820</li>
 <li>Install IndigoSTAR Perl2Exe V9.100C</li>
 <li>Install the Install Shield Professional 2.03 into C:\InstallShield</li>
 <li>Install the Install Shield LangPackage West Addon</li>
 <li>Install the Install Shield ServicePack</li>
-<li>Copy the dll msxml.dll into c:\windows\system32 (from Microsoft JVM install on WinXp)</li>
 </ul>
 
-<p>To build the <strong>Engineer</strong>, from an administrator terminal:
-    GenKernel.bat </p>
+<p>To build the Engineer, from an administrator terminal:</p>
 
-<p>To build the <strong>Target</strong>, from an administrator terminal:
-    cd C:\AtcmControl_SDK
-    GenTarget.bat </p>
+<ul>
+<li>cd C:\AtcmControl_SDK</li>
+<li>GenKernel.bat </li>
+</ul>
 
-<p>The <strong>setup files</strong> are created into C:\ATCMControl_SDK\Installer\RELEASE</p>
+<p>To build the Target, from an administrator terminal:</p>
+
+<ul>
+<li>cd C:\AtcmControl_SDK</li>
+<li>GenTarget.bat ATHW119</li>
+</ul>
+
+<p>The setup files are created into C:</p>
+
+<ul>
+<li>\ATCMControl_SDK\Installer\RELEASE</li>
+</ul>
         </section>
 
         <aside id="sidebar">
