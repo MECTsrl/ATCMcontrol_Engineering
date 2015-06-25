@@ -16,12 +16,12 @@ How to install the SDK environment for ATCMcontrol Engineering on Win7 32bit:
 - Install the Install Shield LangPackage West Addon
 - Install the Install Shield ServicePack
 
-To build the Engineer, from an administrator terminal:
+To build the **Engineer**, from an administrator terminal:
 - cd C:\AtcmControl_SDK
 - GenKernel.bat 
 
-To build the Target, from an administrator terminal:
+To build the **Target**, from an administrator terminal:
 - cd C:\AtcmControl_SDK
 - GenTarget.bat ATHW119
 
-The setup files are created into C:\ATCMControl_SDK\Installer\RELEASE
+The **setup files** are created into C:\ATCMControl_SDK\Installer\RELEASE
