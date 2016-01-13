@@ -121,7 +121,7 @@ STDMETHODIMP CBaseTargetObject::doAction(BSTR sMethodName,
                               bHandled);
 
         if (bHandled)
-        {
+        {           
             delete ptTargetData;
             return hr;
         }

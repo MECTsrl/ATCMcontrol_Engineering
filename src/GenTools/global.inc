@@ -81,12 +81,6 @@ LFLAGS        = -DEBUG
 !endif
 AR            = lib -nologo
 BSCMAKE       = bscmake -nologo
-JAVAC         = jvc -nologo
-JFLAGS        = -g -w4 -d $(CLASSES_ROOT) -cp $(CLASSES_ROOT);$(PROJECT_ROOT);$(WINDIR)\Java\Classes\classes.zip
-JAVAH         = msjavah
-JAVAHFLAGS    = -classpath $(CLASSES_ROOT) -helpers -ctors -nowritebarrier -noclinit
-JACTIVEX      = jactivex
-JACTIVEXFLAGS = -javatlb -e -d $(CLASSES_ROOT)
 LEX           = lex
 LEXFLAGS      = -alTv -LC
 YACC          = yacc

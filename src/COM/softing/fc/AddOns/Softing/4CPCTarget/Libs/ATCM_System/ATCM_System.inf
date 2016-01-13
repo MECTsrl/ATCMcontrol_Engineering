@@ -1,9 +1,0 @@
-USER=libname=ATCM_System
-USER=targettype=4CPC
-
-USER=make_lib: force
-USER= $(4CG) $(MAKEDIR)\$(libname).4cp  -ml:$(targettype) $(ENGBIN_DIR)\$(targettype)\libs\$(libname).$(targettype).4cl
-
-USER= $(4CG) -al $(ENGBIN_DIR)\$(targettype)\libs\$(libname).$(targettype).4cl  $(4CL_DIR)\$(libname).4cl
-
-# -------------------------------------------------------------------------------

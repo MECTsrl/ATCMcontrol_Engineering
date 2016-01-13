@@ -24,6 +24,7 @@
 #include "DragDropHelper\PouVarObject.h"
 #include "CEDragDrop.h"
 #include "Settings.h"
+#include "traceif.h"
 
 #include "geneddoc.h"
 
@@ -3438,6 +3439,7 @@ void CNavTreeCtrl::DoAddOnAction(CKADMenuItem* pItem, BOOL bSilent /*=FALSE*/)
     }
 
     m_pNavigator->EnableFileCheck(FALSE);
+
     hr = pAddOnIF->doAction(sMethodName, sSourceFile, sId, m_pProjInfo, sAdditionalInfo);
 
     if(!bSilent)

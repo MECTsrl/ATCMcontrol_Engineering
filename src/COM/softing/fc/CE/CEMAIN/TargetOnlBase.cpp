@@ -260,6 +260,7 @@ HRESULT CTargetOnlBase::Connect()
 
     TrcPrint(TRC_COMM_EVENT, _T("CTargetOnlBase::Connect : TargetId: %s ; Address: %s\n"), m_strId, m_strControlAddress);
 
+
     if(m_bConnected)
     {
         return(MakeHResult(E_CE_TARGETONL_ALREADYCONNECTED));
@@ -366,6 +367,7 @@ BOOL CTargetOnlBase::DoPreConnectStep()
     CComBSTR    sIdPath(m_strIdPath);
 
     hr = pProjInfo->getFileNameFromIdPath(sIdPath, &sSourceFile);
+
     if(hr != S_OK)
     {
         ASSERT(!"could not get file name");
@@ -1476,7 +1478,7 @@ HRESULT CTargetOnlBase::OpenVarSession()
     {
         return S_OK;
     }
-        
+
     hr = CoCreateInstance(CLSID_FCSessions, NULL, CLSCTX_ALL, IID_IFCSessions, (void**)&pIFCSessions);
 	assert(SUCCEEDED(hr));
     if(FAILED(hr))
@@ -1489,6 +1491,7 @@ HRESULT CTargetOnlBase::OpenVarSession()
         UTIL_FatalError(strMessage, hr);
         return(MakeHResult(E_CE_TARGETONL_GENERAL));
     }
+
 	BSTR szMachine = m_strControlAddress.AllocSysString();
 	BSTR szConfig = m_strAssignedResource.AllocSysString(); 
 
@@ -1505,6 +1508,7 @@ HRESULT CTargetOnlBase::OpenVarSession()
 	}
 
     hr = pUnk->QueryInterface(IID_IFCVarSession, (void**)&m_pIFCVarSession);
+
     pUnk->Release();
 	assert(SUCCEEDED(hr));
 	if(FAILED(hr))
@@ -1517,6 +1521,7 @@ HRESULT CTargetOnlBase::OpenVarSession()
 
 	// now try to advise the notification IF
 	hr = CComObject<CImplSessionNotify>::CreateInstance(&m_pSessionNotify);
+
 	assert(SUCCEEDED(hr));
 	if(FAILED(hr))
     {
@@ -1525,9 +1530,13 @@ HRESULT CTargetOnlBase::OpenVarSession()
 		AfxMessageBox(IDS_ERROR_CONNECT);
 		return(MakeHResult(E_CE_TARGETONL_GENERAL));
 	}
-	m_pSessionNotify->SetCallback(&m_SessionNotifyCB);
-	hr = AtlAdvise(m_pIFCVarSession, m_pSessionNotify->GetUnknown(), IID__FCSessionNotification, &m_dwSessionCookie);
-	assert(SUCCEEDED(hr));
+
+    //Link the method with async event. The method is defined on class constructor
+    m_pSessionNotify->SetCallback(&m_SessionNotifyCB);
+
+    hr = AtlAdvise(m_pIFCVarSession, m_pSessionNotify->GetUnknown(), IID__FCSessionNotification, &m_dwSessionCookie);
+
+    assert(SUCCEEDED(hr));
 	if(FAILED(hr))
     {
         TrcPrint(TRC_COMM_EVENT, _T("CTargetOnlBase::OpenVarSession : (TargetId: %s) AtlAdvise SessionNotify returned hr=0x%08X!\n"), m_strId, hr);
@@ -1582,6 +1591,7 @@ HRESULT CTargetOnlBase::SubscribeForState()
     strName.Format("__srt0.%s", CE_STATE_RESOURCE);
 
     hr = SubscribeVariable(strName, &m_StateCB, m_pStateSubscription);
+
     if(FAILED(hr))
     {
         return(hr);
@@ -1607,6 +1617,7 @@ HRESULT CTargetOnlBase::SubscribeForState()
             lState = varValue.lVal;
         }
     }
+
     m_eResourceState = (E_ResourceState)lState;
     GetNewConnectState();
     return(S_OK);
@@ -1794,9 +1805,8 @@ void CTargetOnlBase::OnSessionNotifyCB(CSC_SESSION_STATE sessionState, HRESULT h
 {
 	POSITION pPosition;
 
-    TrcPrint(TRC_COMM_EVENT, _T("CTargetOnlBase::ConOnSessionNotifyCBnect : TargetId: %s ; SessionState: %s, HRESULT: 0x%08X\n"), 
+    TrcPrint(TRC_COMM_EVENT, _T("CTargetOnlBase::OnSessionNotifyCB : TargetId: %s ; SessionState: %s, HRESULT: 0x%08X\n"),
                          m_strId, GetSessionStateText(sessionState), hrError);
-
 
     // Set state before executing callbacks. Some clients
     // may read the state from TargetOnl rather than using the

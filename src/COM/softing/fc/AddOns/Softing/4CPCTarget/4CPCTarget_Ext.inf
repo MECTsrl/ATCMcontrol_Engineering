@@ -1,7 +1,6 @@
 SUBPROJECT=inc\inc.mak
 SUBPROJECT=KAD\KAD.mak
 SUBPROJECT=CSC_OnlSrv\CSC_OnlSrv_Ext.mak
-#SUBPROJECT=Libs\Libs.mak
 SUBPROJECT=cedl\cedl.mak
 SUBPROJECT=ConfigGSD\ConfigGSD.mak
 SUBPROJECT=ParseGSD\ParseGSD.mak

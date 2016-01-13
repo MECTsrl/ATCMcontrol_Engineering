@@ -34,29 +34,6 @@ if errorlevel 1 goto error
 del .\COM\softing\fc\AddOns\Softing\4CPCTarget\OPCutil\*.*			/s /q /f		
 if errorlevel 1 goto error
 
-del .\COM\softing\fc\AddOns\Softing\4CPCTarget\Libs\4C_ACyclicTask\*.*		/s /q /f		
-if errorlevel 1 goto error
-del .\COM\softing\fc\AddOns\Softing\4CPCTarget\Libs\4C_CANopen_IO\*.*		/s /q /f		
-if errorlevel 1 goto error
-del .\COM\softing\fc\AddOns\Softing\4CPCTarget\Libs\4C_ControlLoop\*.*		/s /q /f		
-if errorlevel 1 goto error
-del .\COM\softing\fc\AddOns\Softing\4CPCTarget\Libs\4C_Database\*.*		/s /q /f		
-if errorlevel 1 goto error
-del .\COM\softing\fc\AddOns\Softing\4CPCTarget\Libs\4C_Database2\*.*		/s /q /f		
-if errorlevel 1 goto error
-del .\COM\softing\fc\AddOns\Softing\4CPCTarget\Libs\4C_JAVAControlExtension\*.*	/s /q /f		
-if errorlevel 1 goto error
-del .\COM\softing\fc\AddOns\Softing\4CPCTarget\Libs\4C_OPC_IO\*.*		/s /q /f		
-if errorlevel 1 goto error
-del .\COM\softing\fc\AddOns\Softing\4CPCTarget\Libs\4C_Profibus_IO\*.*		/s /q /f		
-if errorlevel 1 goto error
-del .\COM\softing\fc\AddOns\Softing\4CPCTarget\Libs\4C_Sample\*.*		/s /q /f		
-if errorlevel 1 goto error
-del .\COM\softing\fc\AddOns\Softing\4CPCTarget\Libs\4CFPC_System\*.*		/s /q /f		
-if errorlevel 1 goto error
-del .\COM\softing\fc\AddOns\Softing\4CPCTarget\Libs\4CPC_System\*.*		/s /q /f		
-if errorlevel 1 goto error
-
 del .\Target\4CWin\Control\ioBac\*.*					/s /q /f		
 if errorlevel 1 goto error
 del .\Target\4CWin\Control\lib.bac\*.*					/s /q /f		

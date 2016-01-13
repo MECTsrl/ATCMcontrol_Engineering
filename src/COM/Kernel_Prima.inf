@@ -4,7 +4,6 @@ SUBPROJECT=softing\fc\CMN\4CMN.mak
 SUBPROJECT=softing\fc\CE\4CE.mak
 SUBPROJECT=softing\fc\CCG\4CCG.mak
 SUBPROJECT=softing\fc\CSC\4CSC.mak
-SUBPROJECT=softing\fc\CP\4CP.mak
 SUBPROJECT=softing\fc\CL\4CL.mak
 SUBPROJECT=softing\fc\CLIC\CLIC.mak
 SUBPROJECT=softing\fc\AddOns\AddOns_Prima.mak
