@@ -669,7 +669,7 @@ static const TCHAR* const trcLevelTexts[] = {
     _T("USR_OP"),           // TRC_USER_OPERATION   log important user interaction/operation
     _T("IFACE "),           // TRC_INTERFACE        log action/callback on user interface
     _T("COMM  "),           // TRC_COMM_EVENT       log communication layer event
-    _T("READ  "),           // TRC_READ_VALUE       log read operation with value
+    _T("READ  "),           // TRC_READ_VALUE       log read operation with value	
     _T("WRITE "),           // TRC_WRITE_VALUE      log write operation with value
     _T("<????>")
 };

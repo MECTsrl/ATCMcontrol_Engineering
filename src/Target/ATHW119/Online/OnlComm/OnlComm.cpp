@@ -135,13 +135,13 @@ _ONLCOMM C4CLayer* Construct4CLayer(LPCTSTR lpParam)
 
 	CPhysLayer	*pPhys		= NULL;
 	CLogLayer	*pLog		= NULL;
-	C4CLayer	*p4CLayer	= NULL;
+    C4CLayer	*p4CLayer	= NULL;
 
-	TRY
+    TRY
 	{
 		// create physical layer
 		///////////////////////////////////////////////////////////////////////////
-		if(strCommChannel.CompareNoCase(OC_PHYS_TYPE_TCP_IP) == 0)
+        if(strCommChannel.CompareNoCase(OC_PHYS_TYPE_TCP_IP) == 0)
 		{
 			pPhys = (CPhysSocket *)CPhysSocket::CreateObject();
 
